@@ -29,8 +29,6 @@ def add_node(node, head_var_mapping: dict, used_vars: dict, triples: list, role=
     3. Associate the node lemma and its var_name, as it will be in the UMR graph
     4. Link the var_name to its parent node via their relation (called 'role'), if the node is not the root
     5. If the node is the root, its variable name is also returned
-
-    It does not return anything, instead it appends items directly to the 'triples' list.
     """
     var_name = variable_name(node, used_vars)
     head_var_mapping[node] = var_name
