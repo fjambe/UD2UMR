@@ -1,10 +1,12 @@
-def pronouns(node):
-    pass
+def create_person_node(variable_name, used_vars: dict, head_var_mapping: dict, triples: list):  # which argument?
+    var_name = variable_name('person', used_vars, head_var_mapping)
+    triples.append((var_name, ':instance', 'person'))
 
 
 def get_number(node, head_var_mapping):
     numbers = {'Sing': 'singular', 'Plur': 'plural'}
-    return head_var_mapping[node], ':refer-number', numbers[node.feats['Number']]
+    node_var = list(filter(lambda x: head_var_mapping[x] == node, head_var_mapping))[0]
+    return node_var, ':refer-number', numbers[node.feats['Number']]
 
 
 def possessives(node, add_node, head_var_mapping, used_vars, triples):
