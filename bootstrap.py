@@ -103,19 +103,16 @@ if __name__ == "__main__":
         if [d.upos for d in tree.descendants].count('VERB') == 1 and tree.children[0].upos == 'VERB':
             print('SNT:', tree.text, '\n')
 
-            actor = [d for d in tree.descendants if d.deprel == 'nsubj']
-            patient = [d for d in tree.descendants if d.deprel in ['obj', 'nsubj:pass']]
-            mods = [d for d in tree.descendants if d.deprel == 'amod']
-            obliques = [d for d in tree.descendants if d.deprel == 'obl']
-            determiners = [d for d in tree.descendants if d.deprel == 'det']
-            adverbs = [d for d in tree.descendants if d.deprel == 'advmod']
-
-            deprels['actor'] = actor
-            deprels['patient'] = patient
-            deprels['mod'] = mods
-            deprels['OBLIQUE'] = obliques
-            deprels['det'] = determiners
-            deprels['manner'] = adverbs
+            # mapping deprels - roles
+            deprels['actor'] = [d for d in tree.descendants if d.deprel == 'nsubj']
+            deprels['patient'] = [d for d in tree.descendants if d.deprel in ['obj', 'nsubj:pass']]
+            deprels['mod'] = [d for d in tree.descendants if d.deprel == 'amod']
+            deprels['OBLIQUE'] = [d for d in tree.descendants if d.deprel == 'obl']
+            deprels['det'] = [d for d in tree.descendants if d.deprel == 'det']
+            deprels['manner'] = [d for d in tree.descendants if d.deprel == 'advmod']
+            deprels['temporal'] = [d for d in tree.descendants if d.deprel == 'advmod:tmod']
+            deprels['quant'] = [d for d in tree.descendants if d.deprel == 'nummod']
+            deprels['affectee'] = [d for d in tree.descendants if d.deprel == 'obl:arg']
 
             umr = dict_to_penman({tree.children[0]: deprels})
             print(umr, '\n\n')
