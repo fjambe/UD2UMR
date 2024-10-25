@@ -5,6 +5,8 @@ So let's be tidy this time!
 ### General
 1. I think it could be useful to have function specific to UPOS. E.g., for NOUNs I check refer-number, etc.
 For PRONs I build the usual NE structure, and so on.
+2. I need to create a node (how can I tell if person or thing?) for unexpressed subjects, that I can tell from verbal agreement.
+
 
 
 ### Deprel:
@@ -45,4 +47,8 @@ It might be useful later on.
 3. tree.children: prints out the single direct children of the technical ROOT, i.e. the actual root.
 UD trees are single-rooted, so len(tree.children) == 1, always.
 4. tree.descendants: prints out the whole tree, i.e. all the nodes.
+
+
+## QUESTIONS:
+- UD vocative, what in UMR?
 

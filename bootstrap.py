@@ -4,7 +4,9 @@
 import argparse
 import udapi
 import penman
-import linguistics as l
+from penman.exceptions import LayoutError
+
+import language_info as l
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--treebank", default=False, help="Path of the treebank in input.")
@@ -23,7 +25,7 @@ def variable_name(node, used_vars: dict, head_var_mapping: dict) -> str:
     return var_name
 
 
-def add_node(node, head_var_mapping: dict, used_vars: dict, triples: list, role=None, top_node=False):
+def add_node(node, head_var_mapping: dict, used_vars: dict, triples: list, role=None, return_var_name=False):
     """
     Function that creates and adds a new node. Steps:
     1. Create a variable name and store it with the node it refers to
@@ -33,49 +35,55 @@ def add_node(node, head_var_mapping: dict, used_vars: dict, triples: list, role=
     """
     var_name = variable_name(node, used_vars, head_var_mapping)
     triples.append((var_name, ':instance', node.lemma))
-    if top_node:
+    if return_var_name:
         return var_name
     else:
-        parent = list(filter(lambda x: head_var_mapping[x] == node.parent, head_var_mapping))[0]
-        triples.append((parent, role, var_name))
+        try:
+            parent = list(filter(lambda x: head_var_mapping[x] == node.parent, head_var_mapping))[0]
+            triples.append((parent, role, var_name))
+        except IndexError:
+            pass
 
 
 def dict_to_penman(structure):
     """Function to transform the nested dictionary to a Penman graph."""
     used_vars = {}
     head_var_mapping = {}
+    already_added = []
     triples = []
 
     root, relations = next(iter(structure.items()))  # e.g.: root is 'addresses', relations is a dictionary like  {':actor': 'teacher', ':patient': 'student'}
 
     # Create the root node
-    root_var = add_node(root, head_var_mapping, used_vars, triples, top_node=True)
+    root_var = add_node(root, head_var_mapping, used_vars, triples, return_var_name=True)
 
     for role, node in relations.items():
-        if isinstance(node, list):
-            # If node is a list, create a triple for each item in the list (e.g. multiple modifiers)
-            for item in node:
+        # Node is a list, hence create a triple for each item in the list
+        for item in node:
+            if item.upos == 'PRON' and item.feats['PronType'] == 'Prs':
+                l.possessives(item, head_var_mapping, used_vars, triples, variable_name, role=role)
+                already_added.append(node)
+
+            elif item.upos == 'NOUN' or (item.upos == 'ADJ' and item.deprel in ['nsubj', 'obj', 'obl']):
                 add_node(item, head_var_mapping, used_vars, triples, role)
+                triples.append(l.get_number(item, head_var_mapping))
+                already_added.append(node)
 
-                if item.upos == 'NOUN' or (item.upos == 'ADJ' and item.deprel in ['nsubj', 'obj']):
-                    triples.append(l.get_number(item, head_var_mapping))
-                # if item.descendants:
-                    for kid in item.descendants:
-                        if kid.upos == 'DET':
-                            l.possessives(kid, add_node, head_var_mapping, used_vars, triples)
+            # for kid in item.descendants:
+            #     if kid.upos == 'DET':
+            #         l.possessives(kid, head_var_mapping, used_vars, triples, variable_name)
+            #         already_added.append(node)
 
-        else:
-            add_node(node, head_var_mapping, used_vars, triples, role)
-
-            if node.upos == 'NOUN' or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj']):
-                triples.append(l.get_number(node, head_var_mapping))
-            if node.descendants:
-                for kid in node.descendants:
-                    if kid.upos == 'DET':
-                        l.possessives(kid, add_node, head_var_mapping, used_vars, triples)
+            elif item not in already_added:
+                add_node(item, head_var_mapping, used_vars, triples, role)  # that's a risky move, see what happened with prons. TODO something.
 
     g = penman.Graph(triples)
-    return penman.encode(g, top=root_var, indent=4)
+    try:
+        return penman.encode(g, top=root_var, indent=4)
+    except LayoutError as e:
+        print(f"Skipping sentence due to LayoutError: {e}")
+        pass
+
 
 if __name__ == "__main__":
 
@@ -88,10 +96,10 @@ if __name__ == "__main__":
 
         # To restrict the scope, I'm currently focusing on single-verb sentences.
         if [d.upos for d in tree.descendants].count('VERB') == 1:
-            print('SNT:', tree.text)
+            print('SNT:', tree.text, '\n')
 
-            actor = [d for d in tree.descendants if d.deprel == 'nsubj'][0]
-            patient = [d for d in tree.descendants if d.deprel == 'obj'][0]
+            actor = [d for d in tree.descendants if d.deprel == 'nsubj']
+            patient = [d for d in tree.descendants if d.deprel == 'obj']
             mods = [d for d in tree.descendants if d.deprel == 'amod']
             obliques = [d for d in tree.descendants if d.deprel == 'obl']
             determiners = [d for d in tree.descendants if d.deprel == 'det']
@@ -102,7 +110,7 @@ if __name__ == "__main__":
             deprels['OBLIQUE'] = obliques
 
             umr = dict_to_penman({tree.children[0]: deprels})
-            print(umr)
+            print(umr, '\n\n')
 
             break  # let's focus on one sentence at a time for now.
 
