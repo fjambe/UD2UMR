@@ -17,7 +17,7 @@ def variable_name(node, used_vars: dict, head_var_mapping: dict) -> str:
     Function that assigns variable names according to UMR conventions.
     Either the first letter of the string or, if already assigned, letter and progressive numbering.
     """
-    first_letter = node.lemma[0] if not isinstance(node, str) else node[0]
+    first_letter = node.lemma[0].lower() if not isinstance(node, str) else node[0].lower()
     count = used_vars.get(first_letter, 0) + 1
     used_vars[first_letter] = count
     var_name = first_letter if count == 1 else f'{first_letter}{count}'
@@ -25,7 +25,7 @@ def variable_name(node, used_vars: dict, head_var_mapping: dict) -> str:
     return var_name
 
 
-def add_node(node, head_var_mapping: dict, used_vars: dict, triples: list, role=None, return_var_name=False):
+def add_node(node, head_var_mapping: dict, used_vars: dict, triples: list, role=None, return_var_name=False, def_parent=None):
     """
     Function that creates and adds a new node. Steps:
     1. Create a variable name and store it with the node it refers to
@@ -39,7 +39,10 @@ def add_node(node, head_var_mapping: dict, used_vars: dict, triples: list, role=
         return var_name
     else:
         try:
-            parent = list(filter(lambda x: head_var_mapping[x] == node.parent, head_var_mapping))[0]
+            if not def_parent:
+                parent = list(filter(lambda x: head_var_mapping[x] == node.parent, head_var_mapping))[0]
+            else:
+                parent = def_parent
             triples.append((parent, role, var_name))
         except IndexError:
             pass
@@ -69,8 +72,12 @@ def dict_to_penman(structure):
                 triples.append(l.get_number(item, head_var_mapping))
                 already_added.append(node)
 
-            elif item.upos == 'DET':  # check for PronType=Prs inside the function
+            elif item.upos == 'DET':
+                # check for PronType=Prs is inside the function
                 l.possessives(item, head_var_mapping, used_vars, triples, variable_name, role='poss')
+                # now check for quantifiers (PronType=Tot)
+                l.quantifiers(item, head_var_mapping, used_vars, triples, variable_name, add_node, role=role if role != 'det' else 'quant')
+                already_added.append(node)
 
             elif item not in already_added:
                 add_node(item, head_var_mapping, used_vars, triples, role)  # that's a risky move, see what happened with prons. TODO something.
@@ -92,21 +99,23 @@ if __name__ == "__main__":
 
         deprels = {}
 
-        # To restrict the scope, I'm currently focusing on single-verb sentences.
-        if [d.upos for d in tree.descendants].count('VERB') == 1:
+        # To restrict the scope, I'm currently focusing on single-verb sentences with the verb as root.
+        if [d.upos for d in tree.descendants].count('VERB') == 1 and tree.children[0].upos == 'VERB':
             print('SNT:', tree.text, '\n')
 
             actor = [d for d in tree.descendants if d.deprel == 'nsubj']
-            patient = [d for d in tree.descendants if d.deprel == 'obj']
+            patient = [d for d in tree.descendants if d.deprel in ['obj', 'nsubj:pass']]
             mods = [d for d in tree.descendants if d.deprel == 'amod']
             obliques = [d for d in tree.descendants if d.deprel == 'obl']
             determiners = [d for d in tree.descendants if d.deprel == 'det']
+            adverbs = [d for d in tree.descendants if d.deprel == 'advmod']
 
             deprels['actor'] = actor
             deprels['patient'] = patient
             deprels['mod'] = mods
             deprels['OBLIQUE'] = obliques
-            deprels['det'] = [d for d in tree.descendants if d.deprel == 'det']
+            deprels['det'] = determiners
+            deprels['manner'] = adverbs
 
             umr = dict_to_penman({tree.children[0]: deprels})
             print(umr, '\n\n')
