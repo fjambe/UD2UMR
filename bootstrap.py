@@ -69,10 +69,8 @@ def dict_to_penman(structure):
                 triples.append(l.get_number(item, head_var_mapping))
                 already_added.append(node)
 
-            # for kid in item.descendants:
-            #     if kid.upos == 'DET':
-            #         l.possessives(kid, head_var_mapping, used_vars, triples, variable_name)
-            #         already_added.append(node)
+            elif item.upos == 'DET':  # check for PronType=Prs inside the function
+                l.possessives(item, head_var_mapping, used_vars, triples, variable_name, role='poss')
 
             elif item not in already_added:
                 add_node(item, head_var_mapping, used_vars, triples, role)  # that's a risky move, see what happened with prons. TODO something.
@@ -108,10 +106,11 @@ if __name__ == "__main__":
             deprels['patient'] = patient
             deprels['mod'] = mods
             deprels['OBLIQUE'] = obliques
+            deprels['det'] = [d for d in tree.descendants if d.deprel == 'det']
 
             umr = dict_to_penman({tree.children[0]: deprels})
             print(umr, '\n\n')
 
-            break  # let's focus on one sentence at a time for now.
+            # break  # let's focus on one sentence at a time for now.
 
 
