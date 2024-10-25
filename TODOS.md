@@ -1,11 +1,16 @@
 # TODO - code
 
+First thing to do on Monday: clean this code.
+It feels like there are many repetitions around var_name, and one more function could be created. 
+Then maybe check if you can create a function to pass arguments to a function (??).THat seems to be something that should be cleaned from repetitions. 
+
+
 ### General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
 For PRONs I build the usual NE structure, and so on.
 2. I need to create a node (how can I tell if person or thing?) for unexpressed subjects, that I can tell from verbal agreement.
 3. Re-entrancies: how to check that it's the same entity?
-Cf. sentence _Votoque tuo tua forma repugnat_: now I have 2 distinct 2nd-person nodes, but it should be the same one.
+Cf. _Hoc mihi dicit fatus meus_, _Votoque tuo tua forma repugnat_: now I have 2 distinct 1st/2nd-person nodes, but it should be the same one.
 
 
 ### Deprel:
@@ -17,12 +22,10 @@ Cf. sentence _Votoque tuo tua forma repugnat_: now I have 2 distinct 2nd-person 
 - `obj`:
   - think about `theme`.
   - think about coordinate objects.
-- `obl`
-  - think about `obl:arg` and possible other subtypes.
 - `advmod:lmod` could be mapped to `place`, but it's risky because it could also be `source`, `goal`, depending on the type of adverb.
 On top of that, most often this deprel is assigned to adverbs (_unde_, _hinc_), which could also be discourse connectives.
 Maybe if they're annotated with the subtype `lmod` is because they're actually still lexicalised, but let's not trust the annotation too much.
-
+- `nmod`: now I have a placeholder `:MOD/POSS`. Impossible to distinguish - UD has `nmod:poss` but not Perseus.
 
 ### UPOS:
 - think about `PRON`s.
@@ -53,4 +56,4 @@ UD trees are single-rooted, so len(tree.children) == 1, always.
 
 
 ## Details:
-- advmod = manner --> _ideo_ manner, while I would have either cause or nothing.
+- `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.
