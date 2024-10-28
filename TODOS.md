@@ -2,7 +2,7 @@
 
 First thing to do on Monday: clean this code.
 It feels like there are many repetitions around var_name, and one more function could be created. 
-Then maybe check if you can create a function to pass arguments to a function (??).THat seems to be something that should be cleaned from repetitions. 
+Then maybe check if you can create a function to pass arguments to a function (??).That seems to be something that should be cleaned from repetitions. 
 
 
 ### General
