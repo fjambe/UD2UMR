@@ -12,39 +12,51 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--treebank", default=False, help="Path of the treebank in input.")
 
 
-def variable_name(node, var_node_mapping: dict) -> tuple[str, dict]:
+def variable_name(node,
+                  var_node_mapping: dict) -> tuple[str, dict]:
     """
     Function that assigns variable names according to UMR conventions.
     Either the first letter of the string or, if already assigned, letter + progressive numbering.
     """
+
     first_letter = node.lemma[0].lower() if not isinstance(node, str) else node[0].lower()
     count = 2
+
     if first_letter in var_node_mapping:
         while f"{first_letter}{count}" in var_node_mapping:
             count += 1
+
     var_name = first_letter if first_letter not in var_node_mapping else f"{first_letter}{count}"
-
-
     var_node_mapping[var_name] = node
+
     return var_name, var_node_mapping
 
 
-
-def add_node(node, var_node_mapping: dict, triples: list, artificial_nodes, role=None, return_var_name=False, def_parent=None):
+def add_node(node,
+             var_node_mapping: dict,
+             triples: list,
+             artificial_nodes: dict,
+             role,
+             return_var_name=False,
+             def_parent=None):
     """
     Function that creates and adds a new node. Steps:
     1. Associate the node lemma and its var_name, as it will be in the UMR graph
     2. If the node is the root, its variable name is returned
     3. Link the var_name to its parent node via their relation (called 'role'), if the node is not the root
     """
+
     var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
     if return_var_name:
         return var_name
     else:
         if not def_parent:
-            parent = find_parent(node, var_node_mapping, artificial_nodes)
+            parent = find_parent(node,
+                                 var_node_mapping,
+                                 artificial_nodes)
         else:
             parent = def_parent
+
         triples.append((parent, role, var_name))
 
 
@@ -53,18 +65,88 @@ def find_parent(node, var_node_mapping: dict, artificial_nodes: dict):
         parent = list(filter(lambda x: var_node_mapping[x] == node.parent, var_node_mapping))[0]
     except IndexError:
         parent = list(filter(lambda x: artificial_nodes[x] == node.parent, var_node_mapping))[0]
+
     return parent
 
 
-def dict_to_penman(structure):
-    """Function to transform the nested dictionary into a Penman graph."""
-    # TODO: could probably be split in two: inside this function we call a function like "from UD to UMR" (to be created)
-    var_node_mapping = {}
-    artificial_nodes = {}  # to keep track of which artificial nodes (e.g. person) correspond to real ones
+def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial_nodes: dict) -> list:
+    """Function that maps UD information to UMR structures.
+    TODO: Maybe move to language_info submodule - but that means adding argumnts"""
+
     already_added = []
+
+    if node.upos == 'PRON' and node.feats['PronType'] == 'Prs':
+        triples = l.possessives(node,
+                                var_node_mapping,
+                                triples,
+                                variable_name,
+                                artificial_nodes,
+                                find_parent,
+                                role)
+        already_added.append(node)
+
+    elif node.upos == 'NOUN' or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
+        add_node(node,
+                 var_node_mapping,
+                 triples,
+                 artificial_nodes,
+                 role)
+        triples.append(l.get_number(node, var_node_mapping))
+        already_added.append(node)
+
+    elif node.upos == 'DET':
+        # check for PronType=Prs is inside the function
+        triples = l.possessives(node,
+                                var_node_mapping,
+                                triples,
+                                variable_name,
+                                artificial_nodes,
+                                find_parent,
+                                role='poss')
+        # now check for quantifiers (PronType=Tot)
+        triples = l.quantifiers(node,
+                                var_node_mapping,
+                                triples,
+                                variable_name,
+                                add_node,
+                                artificial_nodes,
+                                find_parent,
+                                role if role != 'det' else 'quant')
+        # check if they substitute for nouns
+        triples = l.det_pro_noun(node,
+                                 var_node_mapping,
+                                 triples,
+                                 variable_name,
+                                 artificial_nodes,
+                                 find_parent,
+                                 role)
+        if node.deprel == 'det':
+            add_node(node,
+                     var_node_mapping,
+                     triples,
+                     artificial_nodes,
+                     'mod')
+        already_added.append(node)
+
+    elif node not in already_added:
+        add_node(node,
+                 var_node_mapping,
+                 triples,
+                 artificial_nodes,
+                 role)
+        already_added.append(node)
+
+    return triples
+
+
+def dict_to_penman(structure: dict):
+    """Function to transform the nested dictionary into a Penman graph."""
+
+    var_node_mapping = {}
+    artificial_nodes = {}  # keep track of which artificial nodes (e.g. person) correspond to real ones
     triples = []
 
-    root, relations = next(iter(structure.items()))  # e.g.: root is 'addresses', relations is a dictionary like  {':actor': 'teacher', ':patient': 'student'}
+    root, relations = next(iter(structure.items()))
 
     # Create the root node
     root_var, var_node_mapping = variable_name(tree.children[0], var_node_mapping)
@@ -77,40 +159,20 @@ def dict_to_penman(structure):
             var_name, var_node_mapping = variable_name(item, var_node_mapping)
             triples.append((var_name, ':instance', item.lemma))
 
-    # Second loop: create relations between variables.
-    # That's where the UMR structure is actually built.
-    for role, node in relations.items():
-        for item in node:
-            if item.upos == 'PRON' and item.feats['PronType'] == 'Prs':
-                triples = l.possessives(item, var_node_mapping, triples, variable_name, artificial_nodes, find_parent, role=role)
-                already_added.append(node)
-
-            elif item.upos == 'NOUN' or (item.upos == 'ADJ' and item.deprel in ['nsubj', 'obj', 'obl']):
-                add_node(item, var_node_mapping, triples, artificial_nodes, role)
-                triples.append(l.get_number(item, var_node_mapping))
-                already_added.append(node)
-
-            elif item.upos == 'DET':
-                # check for PronType=Prs is inside the function
-                triples = l.possessives(item, var_node_mapping, triples, variable_name, artificial_nodes, find_parent, role='poss')
-                # now check for quantifiers (PronType=Tot)
-                triples = l.quantifiers(item, var_node_mapping, triples, variable_name, add_node, artificial_nodes, find_parent, role=role if role != 'det' else 'quant')
-                # check if they substitute for nouns
-                triples = l.det_pro_noun(item, var_node_mapping, triples, variable_name, artificial_nodes, find_parent, role=role)
-                if item.deprel == 'det':
-                    add_node(item, var_node_mapping, triples, artificial_nodes, 'mod')
-                already_added.append(node)
-
-            elif item not in already_added:
-                add_node(item, var_node_mapping, triples, artificial_nodes, role)
-                already_added.append(node)
+    # Second loop: create relations between variables and build the UMR structure.
+    for role, node_list in relations.items():
+        for item in node_list:
+            triples = ud_to_umr(item,
+                                role,
+                                var_node_mapping,
+                                triples,
+                                artificial_nodes)
 
     g = penman.Graph(triples)
     try:
         return penman.encode(g, top=root_var, indent=4)
     except LayoutError as e:
         print(f"Skipping sentence due to LayoutError: {e}")
-        pass
 
 
 if __name__ == "__main__":
