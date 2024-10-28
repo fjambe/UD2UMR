@@ -51,7 +51,7 @@ def add_node(node,
         return var_name
     else:
         if not def_parent:
-            parent = find_parent(node,
+            parent = find_parent(node.parent,
                                  var_node_mapping,
                                  artificial_nodes)
         else:
@@ -60,18 +60,18 @@ def add_node(node,
         triples.append((parent, role, var_name))
 
 
-def find_parent(node, var_node_mapping: dict, artificial_nodes: dict):
+def find_parent(node_parent, var_node_mapping: dict, artificial_nodes: dict) -> str:
     try:
-        parent = list(filter(lambda x: var_node_mapping[x] == node.parent, var_node_mapping))[0]
+        parent = list(filter(lambda x: var_node_mapping[x] == node_parent, var_node_mapping))[0]
     except IndexError:
-        parent = list(filter(lambda x: artificial_nodes[x] == node.parent, var_node_mapping))[0]
+        parent = list(filter(lambda x: artificial_nodes[x] == node_parent, var_node_mapping))[0]
 
     return parent
 
 
-def call_and_check(function, *params):
-    result = function(*params)
-    return result, bool(result)
+# def call_and_check(function, *params):
+#     result = function(*params)
+#     return result, bool(result)
 
 
 def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial_nodes: dict) -> list:
@@ -81,13 +81,13 @@ def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial
     already_added = []
 
     if node.upos == 'PRON' and node.feats['PronType'] == 'Prs':
-        triples = l.possessives(node,
-                                var_node_mapping,
-                                triples,
-                                variable_name,
-                                artificial_nodes,
-                                find_parent,
-                                role)
+        triples, called_possessives = l.possessives(node,
+                                                    var_node_mapping,
+                                                    triples,
+                                                    variable_name,
+                                                    artificial_nodes,
+                                                    find_parent,
+                                                    role)
         already_added.append(node)
 
     elif node.upos == 'NOUN' or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
@@ -101,8 +101,7 @@ def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial
 
     elif node.upos == 'DET':
         # check for PronType=Prs is inside the function
-        triples, called_possessives = call_and_check(l.possessives,
-                                                     node,
+        triples, called_possessives = l.possessives(node,
                                                      var_node_mapping,
                                                      triples,
                                                      variable_name,
@@ -110,8 +109,7 @@ def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial
                                                      find_parent,
                                                      'poss')
         # now check for quantifiers (PronType=Tot)
-        triples, called_quantifiers = call_and_check(l.quantifiers,
-                                                     node,
+        triples, called_quantifiers = l.quantifiers(node,
                                                      var_node_mapping,
                                                      triples,
                                                      variable_name,
@@ -120,8 +118,7 @@ def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial
                                                      find_parent,
                                                      role if role != 'det' else 'quant')
         # check if they substitute for nouns
-        triples, called_det_pro_noun = call_and_check(l.det_pro_noun,
-                                                      node,
+        triples, called_det_pro_noun = l.det_pro_noun(node,
                                                       var_node_mapping,
                                                       triples,
                                                       variable_name,
@@ -135,6 +132,19 @@ def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial
                      artificial_nodes,
                      'mod')
         already_added.append(node)
+
+    elif node.upos == 'VERB':
+        if 'nsubj' not in [d.deprel for d in node.children]:
+            var_name, var_node_mapping, triples = l.create_node(node,
+                                                                variable_name,
+                                                                var_node_mapping,
+                                                                triples,
+                                                                'person',  # try, otherwise FILL
+                                                                elided=True)
+            parent = find_parent(node, var_node_mapping, artificial_nodes)
+            triples.append((parent, 'actor', var_name))
+
+            # what to do with nsubj:pass? sometimes it's impersonal rather than passive
 
     elif node not in already_added:
         add_node(node,
@@ -159,6 +169,11 @@ def dict_to_penman(structure: dict):
     # Create the root node
     root_var, var_node_mapping = variable_name(tree.children[0], var_node_mapping)
     triples.append((root_var, ':instance', tree.children[0].lemma))
+    triples = ud_to_umr(root,
+                        '',  # role is not needed here
+                        var_node_mapping,
+                        triples,
+                        artificial_nodes)
 
     # First loop: create variables for all UD nodes.
     for role, node in relations.items():
@@ -181,6 +196,8 @@ def dict_to_penman(structure: dict):
         return penman.encode(g, top=root_var, indent=4)
     except LayoutError as e:
         print(f"Skipping sentence due to LayoutError: {e}")
+        print(triples)
+        quit()
 
 
 if __name__ == "__main__":
@@ -205,6 +222,7 @@ if __name__ == "__main__":
             deprels['manner'] = [d for d in tree.descendants if d.deprel == 'advmod']
             deprels['temporal'] = [d for d in tree.descendants if d.deprel == 'advmod:tmod']
             deprels['quant'] = [d for d in tree.descendants if d.deprel == 'nummod']
+            deprels['vocative'] = [d for d in tree.descendants if d.deprel == 'vocative']
             deprels['affectee'] = [d for d in tree.descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]
             deprels['MOD/POSS'] = [d for d in tree.descendants if d.deprel == 'nmod']
             deprels['CLAUSE'] = [d for d in tree.descendants if d.deprel == 'advcl']  # patch to avoid crashes

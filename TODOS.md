@@ -47,8 +47,8 @@ UD trees are single-rooted, so len(tree.children) == 1, always.
 
 
 ## QUESTIONS:
-- UD vocative, what in UMR?
+- re-entrancies. 
 
 
 ## Details:
-- `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.
+- `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing. Same for _etiam_.

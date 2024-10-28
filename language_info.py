@@ -3,13 +3,15 @@ def create_node(node,
                 var_node_mapping: dict,
                 triples: list,
                 category: str,
-                replace=False) -> tuple[str, dict, list]:
+                elided: bool = False,
+                replace: bool = False) -> tuple[str, dict, list]:
     """
     Function that creates a new node. Its type is decided based on 'category'.
     Allowed values for 'category' are: ['person','thing', 'FILL'].
     FILL is used when it is not easy to automatically detect if the newly created node should be person or thing.
     If True, the 'replace' parameter deletes an existing node, which is replaced by a newly created one.
     It's e.g. the case of personal pronouns; yet, sometimes we want to insert a new node without replacing any.
+    The 'elided' arg is True when we are dealing with e.g. elided subjects, so we want to create a brand-new entity.
     """
     number = {'Sing': 'singular', 'Plur': 'plural'}
     person = {'1': '1st', '2': '2nd', '3': '3rd', 'ille': '3rd', 'hic': '3rd', 'is': '3rd'}
@@ -17,21 +19,29 @@ def create_node(node,
     new_var_name, var_node_mapping = variable_name(category,
                                                    var_node_mapping)
 
-    if replace:
-        old_var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
-        var_node_mapping = {k: v for k, v in var_node_mapping.items() if v != node}
-        triples = [x for x in triples if x[0] != old_var_name]
+    if not elided:
+        if replace:
+            old_var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
+            var_node_mapping = {k: v for k, v in var_node_mapping.items() if v != node}
+            triples = [x for x in triples if x[0] != old_var_name]
 
-    triples.append((new_var_name, ':instance', category))
+        triples.append((new_var_name, ':instance', category))
 
-    if category == 'person':
-        suus_ref = node.parent if node.parent.upos == 'VERB' else node.parent.parent  # attempt to find referent of suus
-        triples.append((new_var_name, ':refer-person', person.get(node.feats.get(f"Person{'[psor]' if node.feats['Person[psor]'] else ''}")
-                                                              or suus_ref.feats['Person'], 'FILL')))
-        triples.append((new_var_name, ':refer-number', number.get(node.feats.get(f"Number{'[psor]' if node.feats['Number[psor]'] else node.feats['NUmber']}")
-                                                              or suus_ref.feats['Number'], 'FILL')))
+        if category == 'person':
+            suus_ref = node.parent if node.parent.upos == 'VERB' else node.parent.parent  # attempt to find referent of suus
+            triples.append((new_var_name, ':refer-person', person.get(node.feats.get(f"Person{'[psor]' if node.feats['Person[psor]'] else ''}")
+                                                                  or suus_ref.feats['Person'], 'FILL')))
+            triples.append((new_var_name, ':refer-number', number.get(node.feats.get(f"Number{'[psor]' if node.feats['Number[psor]'] else node.feats['Number']}")
+                                                                  or suus_ref.feats['Number'], 'FILL')))
+        else:
+            triples.append((new_var_name, ':refer-number', number.get(node.feats.get('Number'))))
+
     else:
-        triples.append((new_var_name, ':refer-number', number.get(node.feats.get('Number'))))
+        triples.append((new_var_name, ':instance', category))
+
+        if category == 'person':
+            triples.append((new_var_name, ':refer-person', person.get(node.feats.get('Person'), 'FILL')))
+        triples.append((new_var_name, ':refer-number', number.get(node.feats.get('Number'), 'FILL')))
 
     return new_var_name, var_node_mapping, triples
 
@@ -50,26 +60,29 @@ def possessives(node,
                 variable_name,
                 artificial_nodes,
                 find_parent,
-                role) -> list:
+                role) -> tuple[list, bool]:
     """
     Function to handle possessive constructions.
     # 1. easy case: possessive adjectives
     # 2. non-reflexive 3rd person (eius): TODO
     # 3. general possession: undetectable, because it's lexical. Unfortunately, nmod:poss does not occur in Perseus.
     """
+
+    called = False
     if node.feats['PronType'] == 'Prs':
+        called = True
         var_name, var_node_mapping, triples = create_node(node,
                                                           variable_name,
                                                           var_node_mapping,
                                                           triples,
                                                           'person',
                                                           replace=True)
-        parent = find_parent(node,
+        parent = find_parent(node.parent,
                              var_node_mapping,
                              artificial_nodes)
         triples.append((parent, role, var_name))
 
-    return triples
+    return triples, called
 
 
 def quantifiers(node,
@@ -79,12 +92,14 @@ def quantifiers(node,
                 add_node,
                 artificial_nodes: dict,
                 find_parent,
-                role) -> list:
+                role) -> tuple[list, bool]:
     """Function to handle quantifiers (e.g., omnis)."""
 
+    called = False
     if node.feats['PronType'] == 'Tot':
 
         if node.parent.upos in ['ADJ', 'NOUN', 'PROPN']:
+            called = True
             add_node(node,
                      var_node_mapping,
                      triples,
@@ -92,13 +107,14 @@ def quantifiers(node,
                      role)
 
         elif node.parent.upos == 'VERB':
+            called = True
             type_arg = 'thing' if node.feats['Gender'] == 'Neut' else 'FILL'
             var_name, var_node_mapping, triples = create_node(node,
                                                               variable_name,
                                                               var_node_mapping,
                                                               triples,
                                                               type_arg)
-            parent = find_parent(node,
+            parent = find_parent(node.parent,
                                  var_node_mapping,
                                  artificial_nodes)
             triples.append((parent, role, var_name))
@@ -111,7 +127,7 @@ def quantifiers(node,
                      'quant',  #role=
                      def_parent=var_name)
 
-    return triples
+    return triples, called
 
 
 def det_pro_noun(node,
@@ -120,10 +136,12 @@ def det_pro_noun(node,
                  variable_name,
                  artificial_nodes: dict,
                  find_parent,
-                 role) -> list:
+                 role) -> tuple[list, bool]:
     """For cases like 'Illi dixerunt' "They said", where an entity node (person/thing) has to be created to replace the DETs."""
 
+    called = False
     if node.deprel != 'det' and node.feats['PronType'] == 'Dem':
+        called = True
         type_arg = 'thing' if node.feats['Gender'] == 'Neut' else 'person'
         var_name, var_node_mapping, triples = create_node(node,
                                                           variable_name,
@@ -131,9 +149,9 @@ def det_pro_noun(node,
                                                           triples,
                                                           type_arg,
                                                           replace=True)
-        parent = find_parent(node,
+        parent = find_parent(node.parent,
                              var_node_mapping,
                              artificial_nodes)
         triples.append((parent, role, var_name))
 
-    return triples
+    return triples, called
