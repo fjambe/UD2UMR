@@ -69,9 +69,14 @@ def find_parent(node, var_node_mapping: dict, artificial_nodes: dict):
     return parent
 
 
+def call_and_check(function, *params):
+    result = function(*params)
+    return result, bool(result)
+
+
 def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial_nodes: dict) -> list:
     """Function that maps UD information to UMR structures.
-    TODO: Maybe move to language_info submodule - but that means adding argumnts"""
+    TODO: Maybe move to language_info submodule - but that means adding arguments"""
 
     already_added = []
 
@@ -96,31 +101,34 @@ def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial
 
     elif node.upos == 'DET':
         # check for PronType=Prs is inside the function
-        triples = l.possessives(node,
-                                var_node_mapping,
-                                triples,
-                                variable_name,
-                                artificial_nodes,
-                                find_parent,
-                                role='poss')
+        triples, called_possessives = call_and_check(l.possessives,
+                                                     node,
+                                                     var_node_mapping,
+                                                     triples,
+                                                     variable_name,
+                                                     artificial_nodes,
+                                                     find_parent,
+                                                     'poss')
         # now check for quantifiers (PronType=Tot)
-        triples = l.quantifiers(node,
-                                var_node_mapping,
-                                triples,
-                                variable_name,
-                                add_node,
-                                artificial_nodes,
-                                find_parent,
-                                role if role != 'det' else 'quant')
+        triples, called_quantifiers = call_and_check(l.quantifiers,
+                                                     node,
+                                                     var_node_mapping,
+                                                     triples,
+                                                     variable_name,
+                                                     add_node,
+                                                     artificial_nodes,
+                                                     find_parent,
+                                                     role if role != 'det' else 'quant')
         # check if they substitute for nouns
-        triples = l.det_pro_noun(node,
-                                 var_node_mapping,
-                                 triples,
-                                 variable_name,
-                                 artificial_nodes,
-                                 find_parent,
-                                 role)
-        if node.deprel == 'det':
+        triples, called_det_pro_noun = call_and_check(l.det_pro_noun,
+                                                      node,
+                                                      var_node_mapping,
+                                                      triples,
+                                                      variable_name,
+                                                      artificial_nodes,
+                                                      find_parent,
+                                                      role)
+        if node.deprel == 'det' and not (called_possessives or called_quantifiers or called_det_pro_noun):
             add_node(node,
                      var_node_mapping,
                      triples,

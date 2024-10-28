@@ -1,8 +1,5 @@
 # TODO - code
 
-It feels like there are many repetitions around var_name, and one more function could be created. 
-
-
 ### General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
 For PRONs I build the usual NE structure, and so on.
