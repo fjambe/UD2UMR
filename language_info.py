@@ -16,8 +16,7 @@ def create_node(node,
     number = {'Sing': 'singular', 'Plur': 'plural'}
     person = {'1': '1st', '2': '2nd', '3': '3rd', 'ille': '3rd', 'hic': '3rd', 'is': '3rd'}
 
-    new_var_name, var_node_mapping = variable_name(category,
-                                                   var_node_mapping)
+    new_var_name, var_node_mapping = variable_name(category, var_node_mapping)
 
     if not elided:
         if replace:
@@ -77,7 +76,7 @@ def possessives(node,
                                                           triples,
                                                           'person',
                                                           replace=True)
-        parent = find_parent(node.parent,
+        parent, new_root = find_parent(node.parent,
                              var_node_mapping,
                              artificial_nodes)
         triples.append((parent, role, var_name))
@@ -113,7 +112,7 @@ def quantifiers(node,
                                                               var_node_mapping,
                                                               triples,
                                                               type_arg)
-            parent = find_parent(node.parent,
+            parent, new_root = find_parent(node.parent,
                                  var_node_mapping,
                                  artificial_nodes)
             triples.append((parent, role, var_name))
@@ -148,7 +147,7 @@ def det_pro_noun(node,
                                                           triples,
                                                           type_arg,
                                                           replace=True)
-        parent = find_parent(node.parent,
+        parent, new_root = find_parent(node.parent,
                              var_node_mapping,
                              artificial_nodes)
         triples.append((parent, role, var_name))
@@ -164,9 +163,11 @@ def coordination(node,
                  artificial_nodes: dict,
                  track_conj: dict,
                  variable_name,
-                 find_parent) -> tuple[list, set]:
+                 find_parent) -> tuple[list, set, any]:
 
-    conjs = {'or': ['vel', 'uel', 'aut'], 'and': ['et', 'ac', 'atque', 'nec', 'neque', ',']}
+    conjs = {'or': ['vel', 'uel', 'aut'], 'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ',']}
+
+    root_var = None
 
     # create one top node for the conjunction governing the coordination
     if node.parent not in track_conj:  # node.parent is the head conjunct
@@ -174,15 +175,18 @@ def coordination(node,
         cc = next((d for d in node.children if d.deprel == 'cc' or (d.deprel == 'punct' and d.lemma == ',')), None)
         cord = next((k for k, v in conjs.items() if cc and cc.lemma in v), None)
         var_name_conj, var_node_mapping = variable_name(cord, var_node_mapping)
+        triples.append((var_name_conj, 'instance', cord))
 
-        parent = find_parent(node.parent.parent, var_node_mapping, artificial_nodes)
+        parent, new_root = find_parent(node.parent.parent, var_node_mapping, artificial_nodes)
+        # node is the 2nd conjunct, first with deprel conj
+        # node.parent is the 1st conjunct, with the actual deprel
         triples.append((parent, role, var_name_conj))
         track_conj[node.parent] = var_name_conj
 
         # Attach all conjuncts to the conjunction node
         # Handle the first conjunct (node.parent)
         var_name = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
-        triples = [tup for tup in triples if var_name != tup[2]]  # remove previous relation
+        triples = [tup for tup in triples if not (tup[2] == var_name and tup[1] != 'instance')] # remove previous relation, if any (always except if it's root)
         triples.append((var_name_conj, 'op1', var_name))
         already_added.add(node.parent)
 
@@ -196,4 +200,7 @@ def coordination(node,
             var_name = next((k for k, v in var_node_mapping.items() if v == oc), None)
             triples.append((var_name_conj, f'op{num}', var_name))
 
-    return triples, already_added
+        if new_root:
+            root_var = var_name_conj
+
+    return triples, already_added, root_var

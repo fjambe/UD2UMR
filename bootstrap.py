@@ -50,7 +50,7 @@ def add_node(node,
         return var_name
     else:
         if not def_parent:
-            parent = find_parent(node.parent,
+            parent, new_root = find_parent(node.parent,
                                  var_node_mapping,
                                  artificial_nodes)
         else:
@@ -60,13 +60,21 @@ def add_node(node,
 
 def find_parent(node_parent,
                 var_node_mapping: dict,
-                artificial_nodes: dict) -> str:
+                artificial_nodes: dict) -> tuple[str, bool]:
+    new_root = False
     try:
         parent = list(filter(lambda x: var_node_mapping[x] == node_parent, var_node_mapping))[0]
     except IndexError:
-        parent = list(filter(lambda x: artificial_nodes[x] == node_parent, var_node_mapping))[0]
+        try:
+            parent = list(filter(lambda x: artificial_nodes[x] == node_parent, var_node_mapping))[0]
+        except KeyError as e:
+            if node_parent.is_root():
+                new_root = True
+            else:
+                print(f'Failed to locate the node parent. Error: {e}')
+            parent = None
 
-    return parent
+    return parent, new_root
 
 
 def ud_to_umr(node,
@@ -75,8 +83,11 @@ def ud_to_umr(node,
               triples: list,
               artificial_nodes: dict,
               already_added: set,
-              track_conj: dict) -> list:
+              track_conj: dict,
+              relations: dict) -> tuple[list, any]:
     """Function that maps UD information to UMR structures."""
+
+    root_var = None
 
     if node.upos == 'PRON' and node.feats['PronType'] == 'Prs':
         triples, called_possessives = l.possessives(node,
@@ -137,23 +148,36 @@ def ud_to_umr(node,
                                                                 variable_name,
                                                                 var_node_mapping,
                                                                 triples,
-                                                                'person',  # try, otherwise FILL
+                                                                'FILL',
                                                                 elided=True)
-            parent = find_parent(node, var_node_mapping, artificial_nodes)
+            parent, new_root = find_parent(node, var_node_mapping, artificial_nodes)
             triples.append((parent, 'actor', var_name))
 
             # what to do with nsubj:pass? sometimes it's impersonal rather than passive
 
     if node.deprel == 'conj':
-        triples, already_added = l.coordination(node,
-                                                node.parent.deprel,
-                                                var_node_mapping,
-                                                triples,
-                                                already_added,
-                                                artificial_nodes,
-                                                track_conj,
-                                                variable_name,
-                                                find_parent)
+        # for v,x in relations.items():
+        #     print(v,x)
+        #     role = node.parent.deprel
+        # for n in relations['actor']:
+        #     if n == node.parent:
+        #         corresponding_key = next((key for key, value in relations.items() if n in value), None)
+        corresponding_key = next(
+            (key for key, value in relations.items() if node.parent in value and key == 'actor'),
+            None
+        )
+        print(corresponding_key)
+        triples, already_added, root_var = l.coordination(node,
+                                                          # node.parent.deprel,
+                                                          corresponding_key,
+                                                          var_node_mapping,
+                                                          triples,
+                                                          already_added,
+                                                          artificial_nodes,
+                                                          track_conj,
+                                                          variable_name,
+                                                          find_parent)
+        triples = [tup for tup in triples if tup[1] != 'root']
 
     if node not in already_added:
         add_node(node,
@@ -163,7 +187,7 @@ def ud_to_umr(node,
                  role)
         already_added.add(node)
 
-    return triples
+    return triples, root_var
 
 
 def dict_to_penman(structure: dict):
@@ -172,7 +196,7 @@ def dict_to_penman(structure: dict):
     var_node_mapping = {}
     artificial_nodes = {}  # keep track of which artificial nodes (e.g. person) correspond to which real ones
     triples = []
-    already_added = {tree.children[0]}  # root
+    already_added = {tree.children[0]}  # UD root
     track_conj = {}
 
     root, relations = next(iter(structure.items()))
@@ -180,13 +204,14 @@ def dict_to_penman(structure: dict):
     # Create the root node
     root_var, var_node_mapping = variable_name(tree.children[0], var_node_mapping)
     triples.append((root_var, 'instance', tree.children[0].lemma))
-    triples = ud_to_umr(root,
-                        '',
-                        var_node_mapping,
-                        triples,
-                        artificial_nodes,
-                        already_added,
-                        track_conj)
+    triples, root_var = ud_to_umr(root,
+                                  '',
+                                  var_node_mapping,
+                                  triples,
+                                  artificial_nodes,
+                                  already_added,
+                                  track_conj,
+                                  relations)
 
     # First loop: create variables for all UD nodes.
     for role, node in relations.items():
@@ -198,17 +223,18 @@ def dict_to_penman(structure: dict):
     # Second loop: create relations between variables and build the UMR structure.
     for role, node_list in relations.items():
         for item in node_list:
-            triples = ud_to_umr(item,
-                                role,
-                                var_node_mapping,
-                                triples,
-                                artificial_nodes,
-                                already_added,
-                                track_conj)
+            triples, root_var = ud_to_umr(item,
+                                          role,
+                                          var_node_mapping,
+                                          triples,
+                                          artificial_nodes,
+                                          already_added,
+                                          track_conj,
+                                          relations)
 
-    # # delete 'instance' tuples if they are not associated with any role.
+    # delete 'instance' tuples if they are not associated with any role.
     ignored_types = {'instance', 'refer-number', 'refer-person', 'other'}
-    root = triples[0][0]
+    root = triples[0][0] if not root_var else root_var
     valid = {root} | {tup[2] for tup in triples if tup[1] not in ignored_types}
     triples = [tup for tup in triples if tup[1] != 'other' and (tup[1] != 'instance' or tup[0] in valid)]
 
