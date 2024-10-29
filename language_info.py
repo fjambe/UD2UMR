@@ -31,7 +31,7 @@ def create_node(node,
             suus_ref = node.parent if node.parent.upos == 'VERB' else node.parent.parent  # attempt to find referent of suus
             triples.append((new_var_name, ':refer-person', person.get(node.feats.get(f"Person{'[psor]' if node.feats['Person[psor]'] else ''}")
                                                                   or suus_ref.feats['Person'], 'FILL')))
-            triples.append((new_var_name, ':refer-number', number.get(node.feats.get(f"Number{'[psor]' if node.feats['Number[psor]'] else node.feats['Number']}")
+            triples.append((new_var_name, ':refer-number', number.get(node.feats.get(f"Number{'[psor]' if node.feats['Number[psor]'] else ''}")
                                                                   or suus_ref.feats['Number'], 'FILL')))
         else:
             triples.append((new_var_name, ':refer-number', number.get(node.feats.get('Number'))))
@@ -93,10 +93,9 @@ def quantifiers(node,
                 artificial_nodes: dict,
                 find_parent,
                 role) -> tuple[list, bool]:
-    """Function to handle quantifiers (e.g., omnis)."""
 
     called = False
-    if node.feats['PronType'] == 'Tot':
+    if node.feats['PronType'] == 'Tot':  # e.g., omnis
 
         if node.parent.upos in ['ADJ', 'NOUN', 'PROPN']:
             called = True
@@ -137,7 +136,7 @@ def det_pro_noun(node,
                  artificial_nodes: dict,
                  find_parent,
                  role) -> tuple[list, bool]:
-    """For cases like 'Illi dixerunt' "They said", where an entity node (person/thing) has to be created to replace the DETs."""
+    """For cases like 'Illi dixerunt' "They said", where an entity node has to be created to replace the DETs."""
 
     called = False
     if node.deprel != 'det' and node.feats['PronType'] == 'Dem':
@@ -161,56 +160,40 @@ def coordination(node,
                  role: str,
                  var_node_mapping: dict,
                  triples: list,
-                 already_added: list,
+                 already_added: set,
                  artificial_nodes: dict,
+                 track_conj: dict,
                  variable_name,
-                 find_parent) -> tuple[list, list]:
+                 find_parent) -> tuple[list, set]:
 
     conjs = {'or': ['vel', 'uel', 'aut'], 'and': ['et', 'ac', 'atque', 'nec', 'neque', ',']}
 
-    # create a top node for the conjunction
+    # create one top node for the conjunction governing the coordination
+    if node.parent not in track_conj:  # node.parent is the head conjunct
+        # identify conjunction type (polysyndeton or asyndeton)
+        cc = next((d for d in node.children if d.deprel == 'cc' or (d.deprel == 'punct' and d.lemma == ',')), None)
+        cord = next((k for k, v in conjs.items() if cc and cc.lemma in v), None)
+        var_name_conj, var_node_mapping = variable_name(cord, var_node_mapping)
 
-    # NOW the issue is that the conjunction gets created twice if I have multiple conjuncts
+        parent = find_parent(node.parent.parent, var_node_mapping, artificial_nodes)
+        triples.append((parent, role, var_name_conj))
+        track_conj[node.parent] = var_name_conj
 
-    cc = [d for d in node.children if d.deprel == 'cc']  # polysyndeton
-    cc = cc[0] if cc else [d for d in node.children if d.deprel == 'punct' and d.lemma == ','][0]  # asyndeton
-    cord = next((k for k, v in conjs.items() if cc.lemma in v), None)
-    var_name_conj, var_node_mapping = variable_name(cord, var_node_mapping)
-    triples.append((var_name_conj, ':instance', cord))
-    parent = find_parent(node.parent,
-                         var_node_mapping,
-                         artificial_nodes)
-    triples.append((parent, role, var_name_conj))
+        # Attach all conjuncts to the conjunction node
+        # Handle the first conjunct (node.parent)
+        var_name = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+        triples = [tup for tup in triples if var_name != tup[2]]  # remove previous relation
+        triples.append((var_name_conj, 'op1', var_name))
+        already_added.add(node.parent)
 
-    # attach all conjuncts to the newly create conjunction node
-    # first conjunct - need to delete the existing relational (not instance) triple created when it was not known that it is a conjunct
-    # first conjunct == parent of second conjunct --> node.parent
-    var_name = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
-    triples = [tup for tup in triples if var_name != tup[2]]
-    # now we can attach it correctly
-    triples.append((var_name_conj, ':op1', var_name))
-    if node.parent not in already_added:
-        already_added.append(node.parent)
+        # handle the second conjunct (node itself)
+        var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
+        triples.append((var_name_conj, 'op2', var_name))
+        already_added.add(node)
 
-    # second conjunct, i.e. first one with 'conj' deprel
-    var_name, var_node_mapping = variable_name(node, var_node_mapping)
-    # triples.append((var_name, ':instance', node.lemma))
-    triples.append((var_name_conj, ':op2', var_name))
-    if node not in already_added:
-        already_added.append(node)
-
-    # check here for more conjuncts
-    other_conjuncts = [d for d in node.siblings if d.deprel == 'conj']
-    if other_conjuncts:
-        # numbering of opX, starting from the third conjunct (first 2 already handled)
-        num = 2
-        for oc in other_conjuncts:
-            if oc not in already_added:
-                num += 1
-                var_name, var_node_mapping = variable_name(oc, var_node_mapping)
-                # triples.append((var_name, ':instance', oc.lemma))
-                triples.append((var_name_conj, f':op{num}', var_name))
-
-    print(triples)
+        # attach additional conjuncts, if any
+        for num, oc in enumerate((d for d in node.siblings if d.deprel == 'conj' and d not in already_added), start=3):
+            var_name = next((k for k, v in var_node_mapping.items() if v == oc), None)
+            triples.append((var_name_conj, f'op{num}', var_name))
 
     return triples, already_added
