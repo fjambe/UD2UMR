@@ -74,11 +74,9 @@ def find_parent(node_parent, var_node_mapping: dict, artificial_nodes: dict) -> 
 #     return result, bool(result)
 
 
-def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial_nodes: dict) -> list:
+def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial_nodes: dict, already_added: list) -> list:
     """Function that maps UD information to UMR structures.
     TODO: Maybe move to language_info submodule - but that means adding arguments"""
-
-    already_added = []
 
     if node.upos == 'PRON' and node.feats['PronType'] == 'Prs':
         triples, called_possessives = l.possessives(node,
@@ -88,16 +86,18 @@ def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial
                                                     artificial_nodes,
                                                     find_parent,
                                                     role)
-        already_added.append(node)
+        if node not in already_added:
+            already_added.append(node)
 
-    elif node.upos == 'NOUN' or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
+    elif (node.upos == 'NOUN' and role != 'other') or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
         add_node(node,
                  var_node_mapping,
                  triples,
                  artificial_nodes,
                  role)
         triples.append(l.get_number(node, var_node_mapping))
-        already_added.append(node)
+        if node not in already_added:
+            already_added.append(node)
 
     elif node.upos == 'DET':
         # check for PronType=Prs is inside the function
@@ -131,7 +131,8 @@ def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial
                      triples,
                      artificial_nodes,
                      'mod')
-        already_added.append(node)
+        if node not in already_added:
+            already_added.append(node)
 
     elif node.upos == 'VERB':
         if 'nsubj' not in [d.deprel for d in node.children]:
@@ -146,13 +147,24 @@ def ud_to_umr(node, role: str, var_node_mapping: dict, triples: list, artificial
 
             # what to do with nsubj:pass? sometimes it's impersonal rather than passive
 
-    elif node not in already_added:
+    if node.deprel == 'conj':
+        triples, already_added = l.coordination(node,
+                                 node.parent.deprel,
+                                 var_node_mapping,
+                                 triples,
+                                 already_added,
+                                 artificial_nodes,
+                                 variable_name,
+                                 find_parent)
+
+    if node not in already_added:
         add_node(node,
                  var_node_mapping,
                  triples,
                  artificial_nodes,
                  role)
-        already_added.append(node)
+        if node not in already_added:
+            already_added.append(node)
 
     return triples
 
@@ -163,6 +175,7 @@ def dict_to_penman(structure: dict):
     var_node_mapping = {}
     artificial_nodes = {}  # keep track of which artificial nodes (e.g. person) correspond to real ones
     triples = []
+    already_added = [tree.children[0]]  # root
 
     root, relations = next(iter(structure.items()))
 
@@ -173,7 +186,8 @@ def dict_to_penman(structure: dict):
                         '',  # role is not needed here
                         var_node_mapping,
                         triples,
-                        artificial_nodes)
+                        artificial_nodes,
+                        already_added)
 
     # First loop: create variables for all UD nodes.
     for role, node in relations.items():
@@ -189,15 +203,34 @@ def dict_to_penman(structure: dict):
                                 role,
                                 var_node_mapping,
                                 triples,
-                                artificial_nodes)
+                                artificial_nodes,
+                                already_added)
+
+    ####
+    # delete ':instance' tuples if they are not associated with any role.
+    # ignored_types = {':instance', ':refer-number', ':refer-person'}
+    # role_vars = {tup for tup in triples if tup[1] not in ignored_types}
+    # role_vars.add(triples[0][0])  # root_var
+
+    # for tup in triples:
+    #     if tup[1] == ':instance':
+    #         if tup[0] not in
+    # cleaned_triples = [tup for tup in triples if tup[1] == ':instance' and tup[0] in role_vars]
+    to_remove = [tup[2] for tup in triples if tup[1] == 'other']
+    # ci devo tornare
+    cleaned_triples = [tup for tup in triples if tup[1] != 'other']
+
+    # print('cleaned', cleaned_triples)
+    quit()
+
+    # qua devo pulire da other
 
     g = penman.Graph(triples)
     try:
         return penman.encode(g, top=root_var, indent=4)
     except LayoutError as e:
         print(f"Skipping sentence due to LayoutError: {e}")
-        print(triples)
-        quit()
+        print('printo triple', triples)
 
 
 if __name__ == "__main__":
@@ -210,28 +243,31 @@ if __name__ == "__main__":
         deprels = {}
 
         # To restrict the scope, I'm currently focusing on single-verb sentences with the verb as root.
-        if [d.upos for d in tree.descendants].count('VERB') == 1 and tree.children[0].upos == 'VERB':
+        if [d.upos for d in tree.descendants].count('VERB') == 1 and tree.children[0].upos == 'VERB' and not 'cop' in [d.deprel for d in tree.descendants] and 'conj' in [d.deprel for d in tree.descendants]:
             print('SNT:', tree.text, '\n')
 
             # mapping deprels - roles
-            deprels['actor'] = [d for d in tree.descendants if d.deprel == 'nsubj']
-            deprels['patient'] = [d for d in tree.descendants if d.deprel in ['obj', 'nsubj:pass']]
-            deprels['mod'] = [d for d in tree.descendants if d.deprel == 'amod']
-            deprels['OBLIQUE'] = [d for d in tree.descendants if d.deprel == 'obl' and d.feats['Case'] != 'Dat']
-            deprels['det'] = [d for d in tree.descendants if d.deprel == 'det']
-            deprels['manner'] = [d for d in tree.descendants if d.deprel == 'advmod']
-            deprels['temporal'] = [d for d in tree.descendants if d.deprel == 'advmod:tmod']
-            deprels['quant'] = [d for d in tree.descendants if d.deprel == 'nummod']
-            deprels['vocative'] = [d for d in tree.descendants if d.deprel == 'vocative']
-            deprels['affectee'] = [d for d in tree.descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]
-            deprels['MOD/POSS'] = [d for d in tree.descendants if d.deprel == 'nmod']
-            deprels['CLAUSE'] = [d for d in tree.descendants if d.deprel == 'advcl']  # patch to avoid crashes
-            deprels['CONJ'] = [d for d in tree.descendants if d.deprel == 'conj']  # patch to avoid crashes
+            descendants = [d for d in tree.descendants if d.upos != 'PUNCT']
 
+            deprels['actor'] = [d for d in descendants if d.deprel == 'nsubj']
+            deprels['patient'] = [d for d in descendants if d.deprel in ['obj', 'nsubj:pass']]
+            deprels['mod'] = [d for d in descendants if d.deprel == 'amod']
+            deprels['OBLIQUE'] = [d for d in descendants if d.deprel == 'obl' and d.feats['Case'] != 'Dat']
+            deprels['det'] = [d for d in descendants if d.deprel == 'det']
+            deprels['manner'] = [d for d in descendants if d.deprel == 'advmod']
+            deprels['temporal'] = [d for d in descendants if d.deprel == 'advmod:tmod']
+            deprels['quant'] = [d for d in descendants if d.deprel == 'nummod']
+            deprels['vocative'] = [d for d in descendants if d.deprel == 'vocative']
+            deprels['affectee'] = [d for d in descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]
+            deprels['MOD/POSS'] = [d for d in descendants if d.deprel == 'nmod']
+            deprels['CLAUSE'] = [d for d in descendants if d.deprel == 'advcl']  # patch to avoid crashes
+            # deprels['CONJ'] = [d for d in descendants if d.deprel == 'conj']  # patch to avoid crashes
+            deprels['other'] = [d for d in descendants if d.udeprel in ['conj', 'appos', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'cop', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]  # patch to avoid crashes
 
+            # print(deprels)
             umr = dict_to_penman({tree.children[0]: {k:v for k,v in deprels.items() if v}})  # removed empty lists from deprels
             print(umr, '\n')
 
-            # break  # one sentence at a time
+            break  # one sentence at a time
 
 

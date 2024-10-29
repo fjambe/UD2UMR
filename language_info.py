@@ -155,3 +155,62 @@ def det_pro_noun(node,
         triples.append((parent, role, var_name))
 
     return triples, called
+
+
+def coordination(node,
+                 role: str,
+                 var_node_mapping: dict,
+                 triples: list,
+                 already_added: list,
+                 artificial_nodes: dict,
+                 variable_name,
+                 find_parent) -> tuple[list, list]:
+
+    conjs = {'or': ['vel', 'uel', 'aut'], 'and': ['et', 'ac', 'atque', 'nec', 'neque', ',']}
+
+    # create a top node for the conjunction
+
+    # NOW the issue is that the conjunction gets created twice if I have multiple conjuncts
+
+    cc = [d for d in node.children if d.deprel == 'cc']  # polysyndeton
+    cc = cc[0] if cc else [d for d in node.children if d.deprel == 'punct' and d.lemma == ','][0]  # asyndeton
+    cord = next((k for k, v in conjs.items() if cc.lemma in v), None)
+    var_name_conj, var_node_mapping = variable_name(cord, var_node_mapping)
+    triples.append((var_name_conj, ':instance', cord))
+    parent = find_parent(node.parent,
+                         var_node_mapping,
+                         artificial_nodes)
+    triples.append((parent, role, var_name_conj))
+
+    # attach all conjuncts to the newly create conjunction node
+    # first conjunct - need to delete the existing relational (not instance) triple created when it was not known that it is a conjunct
+    # first conjunct == parent of second conjunct --> node.parent
+    var_name = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+    triples = [tup for tup in triples if var_name != tup[2]]
+    # now we can attach it correctly
+    triples.append((var_name_conj, ':op1', var_name))
+    if node.parent not in already_added:
+        already_added.append(node.parent)
+
+    # second conjunct, i.e. first one with 'conj' deprel
+    var_name, var_node_mapping = variable_name(node, var_node_mapping)
+    # triples.append((var_name, ':instance', node.lemma))
+    triples.append((var_name_conj, ':op2', var_name))
+    if node not in already_added:
+        already_added.append(node)
+
+    # check here for more conjuncts
+    other_conjuncts = [d for d in node.siblings if d.deprel == 'conj']
+    if other_conjuncts:
+        # numbering of opX, starting from the third conjunct (first 2 already handled)
+        num = 2
+        for oc in other_conjuncts:
+            if oc not in already_added:
+                num += 1
+                var_name, var_node_mapping = variable_name(oc, var_node_mapping)
+                # triples.append((var_name, ':instance', oc.lemma))
+                triples.append((var_name_conj, f':op{num}', var_name))
+
+    print(triples)
+
+    return triples, already_added

@@ -1,5 +1,10 @@
 # TODO - code
 
+TUESDAY:
+- fix mess for conjunction created twice, es. and
+- fix quitted code in bootstrap and issue with cleaned triples and other relation
+- investigate if I need colon or not for penman
+
 ### General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
 For PRONs I build the usual NE structure, and so on.
@@ -21,6 +26,7 @@ Cf. _Hoc mihi dicit fatus meus_, _Votoque tuo tua forma repugnat_: now I have 2 
 On top of that, most often this deprel is assigned to adverbs (_unde_, _hinc_), which could also be discourse connectives.
 Maybe if they're annotated with the subtype `lmod` is because they're actually still lexicalised, but let's not trust the annotation too much.
 - `nmod`: now I have a placeholder `:MOD/POSS`. Impossible to distinguish - UD has `nmod:poss` but not Perseus.
+- `appos`: what to do with it?
 
 ### UPOS:
 - think about `PRON`s.
@@ -48,6 +54,12 @@ UD trees are single-rooted, so len(tree.children) == 1, always.
 
 ## QUESTIONS:
 - re-entrancies. 
+- elided subjects
+- broken graphs often mean annotation errors [this is a comment]
+- `appos`: what to do with it? Cf. _Homo bellus, tam bonus Chrysanthus animam ebulliit._ "The handsome man, so good, Chrysanthus breathed out his spirit."
+_Chysanthus_ now `appos` di _homo_.
+
+Big things to work on next: coordinations, copular constructions, relative clauses.
 
 
 ## Details:
