@@ -1,5 +1,10 @@
 # TODO - code
 
+Next steps:
+- consider a function `get_person`
+- clean code around _suus_, it's very messy
+
+
 ### General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
 For PRONs I build the usual NE structure, and so on.
