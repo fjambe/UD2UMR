@@ -225,6 +225,7 @@ def coordination(node,
         # identify conjunction type (polysyndeton or asyndeton)
         cc = next((d for d in node.children if d.deprel == 'cc' or (d.deprel == 'punct' and d.lemma == ',')), None)
         cord = next((k for k, v in conjs.items() if cc and cc.lemma in v), None)
+        var_node_mapping = {k:v for k,v in var_node_mapping.items() if v != cc}  # remove cc for correct variable naming
         var_name_conj, var_node_mapping = variable_name(cord, var_node_mapping)
         triples.append((var_name_conj, 'instance', cord))
 
