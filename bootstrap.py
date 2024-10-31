@@ -46,13 +46,12 @@ def add_node(node,
     """
 
     var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
+
     if return_var_name:
         return var_name
     else:
         if not def_parent:
-            parent, new_root = find_parent(node.parent,
-                                 var_node_mapping,
-                                 artificial_nodes)
+            parent, new_root = find_parent(node.parent, var_node_mapping, artificial_nodes)
         else:
             parent = def_parent
         triples.append((parent, role, var_name))
@@ -149,8 +148,7 @@ def ud_to_umr(node,
                                                                 variable_name,
                                                                 var_node_mapping,
                                                                 triples,
-                                                                'FILL',
-                                                                elided=True)
+                                                                'FILL')
             parent, new_root = find_parent(node, var_node_mapping, artificial_nodes)
             triples.append((parent, 'actor', var_name))
 

@@ -5,7 +5,6 @@ def create_node(node,
                 var_node_mapping: dict,
                 triples: list,
                 category: str,
-                elided: bool = False,
                 replace: bool = False,
                 reflex: bool = False) -> tuple[str, dict, list]:
     """
@@ -14,9 +13,7 @@ def create_node(node,
     FILL is used when it is not easy to automatically detect if the newly created node should be person or thing.
     If True, the 'replace' parameter deletes an existing node, which is replaced by a newly created one.
     It's e.g. the case of personal pronouns; yet, sometimes we want to insert a new node without replacing any.
-    The 'elided' arg is True when we are dealing with e.g. elided subjects, so we want to create a brand-new entity.
     """
-    suus_ref = None
 
     new_var_name, var_node_mapping = variable_name(category, var_node_mapping)
 
@@ -25,20 +22,13 @@ def create_node(node,
         var_node_mapping = {k: v for k, v in var_node_mapping.items() if v != node}
         triples = [x for x in triples if x[0] != old_var_name]
 
-    if not elided: # suus va qui ??
-        if category == 'person':
-            suus_ref = node.parent if node.parent.upos == 'VERB' else node.parent.parent  # attempt to find referent of reflexive ADJ
-            triples.append(get_number_person(node, 'person', var_node_mapping, new_var_name, suus_ref))
-
-    else:
-        if category == 'person':
-            triples.append(get_number_person(node, 'person', var_node_mapping, new_var_name))
-
-
     triples.append((new_var_name, 'instance', category))
 
+    if category == 'person':
+        triples.append(get_number_person(node, 'person', var_node_mapping, new_var_name))
+
     if not reflex:
-        triples.append(get_number_person(node, 'number', var_node_mapping, new_var_name, suus_ref))
+        triples.append(get_number_person(node, 'number', var_node_mapping, new_var_name))
 
     return new_var_name, var_node_mapping, triples
 
@@ -46,22 +36,18 @@ def create_node(node,
 def get_number_person(node,
                       feature: str,
                       var_node_mapping: dict,
-                      new_var_name: str = None,
-                      custom: any = False) -> tuple[str, str, str]:
+                      new_var_name: str = None) -> tuple[str, str, str]:
 
     feats = {'Sing': 'singular', 'Plur': 'plural', '1': '1st', '2': '2nd', '3': '3rd', 'ille': '3rd', 'hic': '3rd', 'is': '3rd'}
 
     if not new_var_name:
         var_name = list(filter(lambda x: var_node_mapping[x] == node, var_node_mapping))[0]
-
     else:
         var_name = new_var_name
 
-    feat_psor = node.feats.get(f"{feature.capitalize()}[psor]")
-    feat_main = node.feats.get(feature.capitalize()) or (custom.feats.get(feature.capitalize()) if custom else 'FILL')
-    feat = feats.get(feat_psor if feat_psor else feat_main, 'FILL')
+    feat = feats.get(node.feats.get(f"{feature.capitalize()}[psor]") or node.feats.get(feature.capitalize()), 'FILL')
 
-    return var_name, 'refer-number', feat
+    return var_name, f'refer-{feature}', feat
 
 
 def possessives(node,
@@ -105,7 +91,6 @@ def possessives(node,
                                                               var_node_mapping,
                                                               triples,
                                                               'thing' if node.feats['Gender'] == 'Neut' else 'FILL',
-                                                              elided=True,
                                                               reflex=node.lemma=='suus')
 
             parent, new_root = find_parent(node.parent, var_node_mapping, artificial_nodes)
@@ -130,12 +115,12 @@ def possessives(node,
 
 
 def personal(node,
-                var_node_mapping: dict,
-                triples: list,
-                variable_name: Callable,
-                artificial_nodes: dict,
-                find_parent: Callable,
-                role) -> list:
+             var_node_mapping: dict,
+             triples: list,
+             variable_name: Callable,
+             artificial_nodes: dict,
+             find_parent: Callable,
+             role) -> list:
 
     """Function to handle personal pronouns"""
 
