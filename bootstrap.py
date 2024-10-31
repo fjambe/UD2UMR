@@ -106,7 +106,7 @@ def ud_to_umr(node,
                  triples,
                  artificial_nodes,
                  role)
-        triples.append(l.get_number(node, var_node_mapping))
+        triples.append(l.get_number_person(node, 'number', var_node_mapping))
         already_added.add(node)
 
     elif node.upos == 'DET':
@@ -150,7 +150,6 @@ def ud_to_umr(node,
                                                                 var_node_mapping,
                                                                 triples,
                                                                 'FILL',
-                                                                l.get_number,
                                                                 elided=True)
             parent, new_root = find_parent(node, var_node_mapping, artificial_nodes)
             triples.append((parent, 'actor', var_name))
