@@ -1,11 +1,13 @@
 # TODO - code
 
-Currently, 210 processed sentences, only 12 are disconnected graphs.
+Currently, 210 processed sentences, only 9 are disconnected graphs.
 
 Next steps:
-- handle `appos` as `identity-91`
+- handle `appos` as `identity-91`. Ongoing.
+Capire meglio perchè devo invertire esplicitamente una tripla per avere un inverse role.
 - Elided subjects: how can I tell if person or thing?
 IGT said: if in 80% of the cases it's `person`, just go for `person`. Right now I have `FILL`.
+Have to decide, need to go through the data.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
