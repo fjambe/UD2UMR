@@ -5,7 +5,7 @@ import argparse
 import udapi
 import penman
 from penman.exceptions import LayoutError
-
+from penman.models.amr import model as pm
 import language_info as l
 
 parser = argparse.ArgumentParser()
@@ -57,6 +57,32 @@ def add_node(node,
         triples.append((parent, role, var_name))
 
 
+def abstract_concept(node,
+                     triples: list,
+                     var_node_mapping: dict,
+                     role_aka_concept: any) -> tuple[list, dict]:
+
+    # it might also work for reification in general, so it could be renamed. decide later.
+    # dovrò anche generalise l'argument structure (not always equated-referent). I might use a dictionary.
+    # Or I have a function for each abstract concept, which does not seem reasonable.
+
+    # add modal.strength and aspect. can I? or only for appos?
+
+    # penman should reverse into theme-of by default # insomma
+
+    var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
+    var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+    triples = [tup for tup in triples if tup[1] != role_aka_concept]
+    var_concept, var_node_mapping = variable_name(role_aka_concept, var_node_mapping)
+    triples.append((var_concept, 'instance', role_aka_concept))
+    triples.append((var_concept, 'equated_referent', var_name))
+    triples.append(pm.invert((var_concept, 'theme', var_parent)))  # not sure at all this is the best way to do it, but it works so far
+
+    return triples, var_node_mapping
+
+
+
+
 def find_parent(node_parent,
                 var_node_mapping: dict,
                 artificial_nodes: dict) -> tuple[str, bool]:
@@ -89,6 +115,7 @@ def ud_to_umr(node,
 
     root_var = None
 
+    ### checking UPOS ###
     if node.upos == 'PRON':
         triples = l.personal(node,
                             var_node_mapping,
@@ -154,6 +181,7 @@ def ud_to_umr(node,
 
             # what to do with nsubj:pass? sometimes it's impersonal rather than passive
 
+    ### checking deprel ###
     if node.deprel == 'conj':
         role = next((k for k, v in relations.items() for item in v if item == node.parent), None)
         triples, already_added, root_var = l.coordination(node,
@@ -165,6 +193,13 @@ def ud_to_umr(node,
                                                           track_conj,
                                                           variable_name,
                                                           find_parent)
+
+    elif node.deprel == 'appos' and len([d for d in node.root.descendants if d.deprel == 'appos']) == 1:  # artificially simplified setting until I resolve the 'ciconia' sentence
+        triples, var_node_mapping = abstract_concept(node,
+                                                     triples,
+                                                     var_node_mapping,
+                                                     role)
+        already_added.add(node)
 
     if node not in already_added:
         add_node(node,
@@ -235,6 +270,7 @@ if __name__ == "__main__":
         if [d.upos for d in descendants].count('VERB') == 1 and tree.children[0].upos == 'VERB' and not 'cop' in [d.deprel for d in descendants]:
             print('SNT:', tree.text, '\n')
 
+
             # mapping deprels - roles
             deprels['root'] = tree.children  # list with only one element, i.e. the root of the tree
             deprels['actor'] = [d for d in descendants if d.deprel == 'nsubj']
@@ -248,7 +284,8 @@ if __name__ == "__main__":
             deprels['vocative'] = [d for d in descendants if d.deprel == 'vocative']
             deprels['affectee'] = [d for d in descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]
             deprels['MOD/POSS'] = [d for d in descendants if d.deprel == 'nmod']
-            deprels['other'] = [d for d in descendants if d.udeprel in ['conj', 'appos', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'cop', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]  # patch to avoid crashes
+            deprels['identity-91'] = [d for d in descendants if d.deprel == 'appos']
+            deprels['other'] = [d for d in descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'cop', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]  # patch to avoid crashes
 
             umr = dict_to_penman({deprels['root'][0]: {k:v for k,v in deprels.items() if v}})  # removed empty lists
             print(umr, '\n')
