@@ -217,6 +217,7 @@ def coordination(node,
                  find_parent) -> tuple[list, set, any]:
 
     conjs = {'or': ['vel', 'uel', 'aut'], 'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ',']}
+    # 'sed' to be handled differently -> but-91
 
     root_var = None
 
@@ -226,29 +227,35 @@ def coordination(node,
         cc = next((d for d in node.children if d.deprel == 'cc' or (d.deprel == 'punct' and d.lemma == ',')), None)
         cord = next((k for k, v in conjs.items() if cc and cc.lemma in v), None)
         var_node_mapping = {k:v for k,v in var_node_mapping.items() if v != cc}  # remove cc for correct variable naming
-        triples = [tup for tup in triples if tup[2] != cc.lemma]
+        if not cord:  # coordination without conjunction/comma
+            cord = 'and'
+        if cc:
+            triples = [tup for tup in triples if tup[2] != cc.lemma]
         var_name_conj, var_node_mapping = variable_name(cord, var_node_mapping)
         triples.append((var_name_conj, 'instance', cord))
 
+        # create variables for first two conjuncts, to set up the coordination structure
+        # node.parent: 1st conjunct (true deprel), node: 2nd conjunct (deprel = conj, #1)
+        var_first_conj = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+        var_second_conj = next((k for k, v in var_node_mapping.items() if v == node), None)
+
+        role = role
         parent, new_root = find_parent(node.parent.parent, var_node_mapping, artificial_nodes)
-        # node is the 2nd conjunct, first with deprel conj
-        # node.parent is the 1st conjunct, with the actual deprel
+        for tup in triples:  # avoid clashes of abstract concepts and coordination
+            if tup[2] == var_first_conj:
+                role, parent = tup[1], tup[0]
+                break
+
         triples.append((parent, role, var_name_conj))
         track_conj[node.parent] = var_name_conj
 
-        # Attach all conjuncts to the conjunction node
-        # Handle the first conjunct (node.parent)
-        var_name = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
-        triples = [tup for tup in triples if not (tup[2] == var_name and tup[1] != 'instance')] # remove previous relation, if any (always except if it's root)
-        triples.append((var_name_conj, 'op1', var_name))
-        already_added.add(node.parent)
-
-        # handle the second conjunct (node itself)
-        var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
-        triples.append((var_name_conj, 'op2', var_name))
+        # Attach first and second conjuncts to the conjunction node
+        triples = [tup for tup in triples if not (tup[2] == var_first_conj and tup[1] != 'instance')] # remove previous relation, if any
+        triples.append((var_name_conj, 'op1', var_first_conj))
+        triples.append((var_name_conj, 'op2', var_second_conj))
         if (node.upos == 'NOUN' and role != 'other') or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
             triples.append(get_number_person(node, 'number', var_node_mapping))
-        already_added.add(node)
+        already_added.update({node, node.parent})
 
         # attach additional conjuncts, if any
         for num, oc in enumerate((d for d in node.siblings if d.deprel == 'conj' and d not in already_added), start=3):

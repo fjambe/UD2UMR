@@ -62,13 +62,12 @@ def abstract_concept(node,
                      var_node_mapping: dict,
                      role_aka_concept: any) -> tuple[list, dict]:
 
-    # it might also work for reification in general, so it could be renamed. decide later.
+    # it might also work for reification in general, so it could be renamed. Decide later.
     # dovrò anche generalise l'argument structure (not always equated-referent). I might use a dictionary.
     # Or I have a function for each abstract concept, which does not seem reasonable.
+    # double check also that role inversion can be generalized.
 
     # add modal.strength and aspect. can I? or only for appos?
-
-    # penman should reverse into theme-of by default # insomma
 
     var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
     var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
@@ -79,8 +78,6 @@ def abstract_concept(node,
     triples.append(pm.invert((var_concept, 'theme', var_parent)))  # not sure at all this is the best way to do it, but it works so far
 
     return triples, var_node_mapping
-
-
 
 
 def find_parent(node_parent,
@@ -101,6 +98,21 @@ def find_parent(node_parent,
             parent = None
 
     return parent, new_root
+
+
+def event_attrs(node,
+                feature: str,
+                triples: list):
+    """
+    Function that assigns aspect and modal-strength to events.
+    the feature param specifies if we are assigning aspect or modality.
+    """
+
+    if feature == 'aspect':
+        pass
+
+    elif feature == 'modality':
+        pass
 
 
 def ud_to_umr(node,
@@ -194,7 +206,7 @@ def ud_to_umr(node,
                                                           variable_name,
                                                           find_parent)
 
-    elif node.deprel == 'appos' and len([d for d in node.root.descendants if d.deprel == 'appos']) == 1:  # artificially simplified setting until I resolve the 'ciconia' sentence
+    elif node.deprel == 'appos':
         triples, var_node_mapping = abstract_concept(node,
                                                      triples,
                                                      var_node_mapping,
@@ -224,12 +236,13 @@ def dict_to_penman(structure: dict):
     root, relations = next(iter(structure.items()))
     root_var = False
 
-    # First loop: create variables for all UD nodes.
+    # First loop: create variables for all (non-function) UD nodes.
     for role, node in relations.items():
         # 'node' is a list, hence create a triple for each item in the list
         for item in node:
-            var_name, var_node_mapping = variable_name(item, var_node_mapping)
-            triples.append((var_name, 'instance', item.lemma))
+            if item.deprel not in ['aux', 'case', 'punct', 'mark']:
+                var_name, var_node_mapping = variable_name(item, var_node_mapping)
+                triples.append((var_name, 'instance', item.lemma))
 
     # Second loop: create relations between variables and build the UMR structure.
     for role, node_list in relations.items():
@@ -264,28 +277,28 @@ if __name__ == "__main__":
     for tree in doc.trees:
 
         deprels = {}
-        descendants = [d for d in tree.descendants if d.upos != 'PUNCT']
+        # descendants = [d for d in tree.descendants if d.upos != 'PUNCT']
 
         # To restrict the scope, I'm currently focusing on single-verb sentences with the verb as root.
-        if [d.upos for d in descendants].count('VERB') == 1 and tree.children[0].upos == 'VERB' and not 'cop' in [d.deprel for d in descendants]:
+        if [d.upos for d in tree.descendants].count('VERB') == 1 and tree.children[0].upos == 'VERB' and not 'cop' in [d.deprel for d in tree.descendants]:
             print('SNT:', tree.text, '\n')
 
 
             # mapping deprels - roles
             deprels['root'] = tree.children  # list with only one element, i.e. the root of the tree
-            deprels['actor'] = [d for d in descendants if d.deprel == 'nsubj']
-            deprels['patient'] = [d for d in descendants if d.deprel in ['obj', 'nsubj:pass']]
-            deprels['mod'] = [d for d in descendants if d.deprel == 'amod']
-            deprels['OBLIQUE'] = [d for d in descendants if d.deprel == 'obl' and d.feats['Case'] != 'Dat']
-            deprels['det'] = [d for d in descendants if d.deprel == 'det']
-            deprels['manner'] = [d for d in descendants if d.deprel == 'advmod']
-            deprels['temporal'] = [d for d in descendants if d.deprel == 'advmod:tmod']
-            deprels['quant'] = [d for d in descendants if d.deprel == 'nummod']
-            deprels['vocative'] = [d for d in descendants if d.deprel == 'vocative']
-            deprels['affectee'] = [d for d in descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]
-            deprels['MOD/POSS'] = [d for d in descendants if d.deprel == 'nmod']
-            deprels['identity-91'] = [d for d in descendants if d.deprel == 'appos']
-            deprels['other'] = [d for d in descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'cop', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]  # patch to avoid crashes
+            deprels['actor'] = [d for d in tree.descendants if d.deprel == 'nsubj']
+            deprels['patient'] = [d for d in tree.descendants if d.deprel in ['obj', 'nsubj:pass']]
+            deprels['mod'] = [d for d in tree.descendants if d.deprel == 'amod']
+            deprels['OBLIQUE'] = [d for d in tree.descendants if d.deprel == 'obl' and d.feats['Case'] != 'Dat']
+            deprels['det'] = [d for d in tree.descendants if d.deprel == 'det']
+            deprels['manner'] = [d for d in tree.descendants if d.deprel == 'advmod']
+            deprels['temporal'] = [d for d in tree.descendants if d.deprel == 'advmod:tmod']
+            deprels['quant'] = [d for d in tree.descendants if d.deprel == 'nummod']
+            deprels['vocative'] = [d for d in tree.descendants if d.deprel == 'vocative']
+            deprels['affectee'] = [d for d in tree.descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]
+            deprels['MOD/POSS'] = [d for d in tree.descendants if d.deprel == 'nmod']
+            deprels['identity-91'] = [d for d in tree.descendants if d.deprel == 'appos']
+            deprels['other'] = [d for d in tree.descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'cop', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]  # patch to avoid crashes
 
             umr = dict_to_penman({deprels['root'][0]: {k:v for k,v in deprels.items() if v}})  # removed empty lists
             print(umr, '\n')
