@@ -122,20 +122,20 @@ def ud_to_umr(node,
               artificial_nodes: dict,
               already_added: set,
               track_conj: dict,
-              relations: dict) -> tuple[list, any]:
+              relations: dict) -> tuple[list, any, dict]:
     """Function that maps UD information to UMR structures."""
 
     root_var = None
 
     ### checking UPOS ###
     if node.upos == 'PRON':
-        triples = l.personal(node,
-                            var_node_mapping,
-                            triples,
-                            variable_name,
-                            artificial_nodes,
-                            find_parent,
-                            role)
+        triples, var_node_mapping = l.personal(node,
+                                              var_node_mapping,
+                                              triples,
+                                              variable_name,
+                                              artificial_nodes,
+                                              find_parent,
+                                              role)
         already_added.add(node)
 
     elif (node.upos == 'NOUN' and role != 'other') or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
@@ -183,11 +183,12 @@ def ud_to_umr(node,
 
     elif node.upos == 'VERB':
         if 'nsubj' not in [d.deprel for d in node.children]: # elided subjects to be restored
-            var_name, var_node_mapping, triples = l.create_node(node,
-                                                                variable_name,
-                                                                var_node_mapping,
-                                                                triples,
-                                                                'FILL')
+            var_name, var_node_mapping, triples, artificial_nodes = l.create_node(node,
+                                                                    variable_name,
+                                                                    var_node_mapping,
+                                                                    triples,
+                                                                    'FILL',
+                                                                    artificial_nodes)
             parent, new_root = find_parent(node, var_node_mapping, artificial_nodes)
             triples.append((parent, 'actor', var_name))
 
@@ -213,6 +214,15 @@ def ud_to_umr(node,
                                                      role)
         already_added.add(node)
 
+    elif node.deprel == 'cop':
+        triples, var_node_mapping, root_var = l.copulas(node,
+                                              var_node_mapping,
+                                              triples,
+                                              artificial_nodes,
+                                              variable_name,
+                                              find_parent)
+        already_added.add(node)
+
     if node not in already_added:
         add_node(node,
                  var_node_mapping,
@@ -221,7 +231,7 @@ def ud_to_umr(node,
                  role)
         already_added.add(node)
 
-    return triples, root_var
+    return triples, root_var, var_node_mapping
 
 
 def dict_to_penman(structure: dict):
@@ -247,14 +257,14 @@ def dict_to_penman(structure: dict):
     # Second loop: create relations between variables and build the UMR structure.
     for role, node_list in relations.items():
         for item in node_list:
-            triples, root_var = ud_to_umr(item,
-                                          role,
-                                          var_node_mapping,
-                                          triples,
-                                          artificial_nodes,
-                                          already_added,
-                                          track_conj,
-                                          relations)
+            triples, root_var, var_node_mapping = ud_to_umr(item,
+                                                            role,
+                                                            var_node_mapping,
+                                                            triples,
+                                                            artificial_nodes,
+                                                            already_added,
+                                                            track_conj,
+                                                            relations)
 
     # delete 'instance' tuples if they are not associated with any role.
     ignored_types = {'instance', 'refer-number', 'refer-person', 'other'}
@@ -280,7 +290,9 @@ if __name__ == "__main__":
         # descendants = [d for d in tree.descendants if d.upos != 'PUNCT']
 
         # To restrict the scope, I'm currently focusing on single-verb sentences with the verb as root.
-        if [d.upos for d in tree.descendants].count('VERB') == 1 and tree.children[0].upos == 'VERB' and not 'cop' in [d.deprel for d in tree.descendants]:
+        # restriction = [d for d in tree.descendants if d.upos in ['VERB', 'AUX']]
+        restriction = [d for d in tree.descendants if d.upos == 'AUX']
+        if len(restriction) == 1: # and tree.children[0].upos == 'VERB' and not 'cop' in [d.deprel for d in tree.descendants]:
             print('SNT:', tree.text, '\n')
 
 
@@ -298,11 +310,12 @@ if __name__ == "__main__":
             deprels['affectee'] = [d for d in tree.descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]
             deprels['MOD/POSS'] = [d for d in tree.descendants if d.deprel == 'nmod']
             deprels['identity-91'] = [d for d in tree.descendants if d.deprel == 'appos']
-            deprels['other'] = [d for d in tree.descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'cop', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]  # patch to avoid crashes
+            deprels['COPULA'] = [d for d in tree.descendants if d.deprel == 'cop']
+            deprels['other'] = [d for d in tree.descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]  # patch to avoid crashes
 
             umr = dict_to_penman({deprels['root'][0]: {k:v for k,v in deprels.items() if v}})  # removed empty lists
             print(umr, '\n')
 
-            # break  # one sentence at a time
+            break  # one sentence at a time
 
 

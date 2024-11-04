@@ -11,7 +11,7 @@ Have to decide, need to go through the data.
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
 For PRONs I build the usual NE structure, and so on.
-2. Big things to work on next: copular constructions, relative clauses.
+2. Big things to work on next: copular constructions, relative clauses, advcl.
 
 ## Notes
 
@@ -64,7 +64,8 @@ Cf. _Hoc mihi dicit fatus meus_: now I have 2 distinct 1st/2nd-person nodes, but
 
 
 ## QUESTIONS:
-None
+- Do you think it would be better to have the `aspect` attribute in the sentence, although without any value (just the string `:aspect` ready for the annotator to fill in the value) or not having anything at all?
+Given that I cannot extract automatically the aspect value.
 
 
 ## Details:
