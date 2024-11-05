@@ -65,57 +65,51 @@ def possessives(node,
                 role) -> tuple[list, bool]:
     """
     Function to handle possessive constructions.
-    # 1. basic case: possessive adjectives
-    # 2. non-reflexive 3rd person (eius): TODO
-    # 3. general possession: undetectable, because it's lexical. nmod:poss does not occur in Perseus.
+    1. Basic case: possessive adjectives
+    2. Non-reflexive 3rd person (eius): TODO
+    3. General possession: undetectable, as it's lexical. nmod:poss does not occur in Perseus.
     """
 
     numbers = {'Sing': 'singular', 'Plur': 'plural'}
     called = False
 
-    if node.feats['PronType'] == 'Prs':
+    # proceed only if PronType is 'Prs'
+    if node.feats['PronType'] != 'Prs':
+        return triples, called
 
-        if node.parent.upos in ['ADJ', 'NOUN', 'PROPN']:
-            called = True
-            var_name, var_node_mapping, triples = create_node(node,
-                                                              variable_name,
-                                                              var_node_mapping,
-                                                              triples,
-                                                              'person',
-                                                              replace=True,
-                                                              reflex=node.lemma=='suus')
+    called = True
 
-            parent, new_root = find_parent(node.parent, var_node_mapping)
-            triples.append((parent, 'poss', var_name))
-            if node.lemma == 'suus':
-                triples.append((var_name, 'refer-number', numbers.get(node.parent.parent.feats['Number'])))
+    is_adj_noun = node.parent.upos in ['ADJ', 'NOUN', 'PROPN']
+    is_reflexive = node.lemma == 'suus'
+    parent, new_root = find_parent(node.parent, var_node_mapping)
 
-        elif node.parent.upos == 'VERB':
-            called = True
-            var_name, var_node_mapping, triples = create_node(node,
-                                                              variable_name,
-                                                              var_node_mapping,
-                                                              triples,
-                                                              'thing' if node.feats['Gender'] == 'Neut' else 'FILL',
-                                                              reflex=node.lemma=='suus')
+    base_type = 'person' if is_adj_noun else ('thing' if node.parent.upos == 'VERB' and node.feats['Gender'] == 'Neut' else 'FILL')
+    var_name, var_node_mapping, triples = create_node(node,
+                                                      variable_name,
+                                                      var_node_mapping,
+                                                      triples,
+                                                      base_type,
+                                                      replace=is_adj_noun,
+                                                      reflex=is_reflexive)
 
-            parent, new_root = find_parent(node.parent, var_node_mapping)
-            triples.append((parent, role, var_name))
-            if node.lemma == 'suus':
-                triples.append((var_name, 'refer-number', numbers.get(node.feats['Number'])))
+    triples.append((parent, 'poss' if is_adj_noun else role, var_name))
 
-            # attaching the possessive itself
-            poss_var_name, var_node_mapping, triples = create_node(node,
-                                                                   variable_name,
-                                                                   var_node_mapping,
-                                                                   triples,
-                                                                   'person',
-                                                                   replace=True,
-                                                                   reflex=node.lemma == 'suus')
+    if is_reflexive:
+        refer_number = numbers.get(node.feats['Number'] if not is_adj_noun else node.parent.parent.feats['Number'])
+        triples.append((var_name, 'refer-number', refer_number))
 
-            triples.append((var_name, 'poss', poss_var_name))
-            if node.lemma == 'suus':
-                triples.append((poss_var_name, 'refer-number', numbers.get(node.parent.feats['Number'])))
+    # attaching the possessive itself
+    if node.parent.upos == 'VERB':
+        poss_var_name, var_node_mapping, triples = create_node(node,
+                                                               variable_name,
+                                                               var_node_mapping,
+                                                               triples,
+                                                               'person',
+                                                               replace=True,
+                                                               reflex=is_reflexive)
+        triples.append((var_name, 'poss', poss_var_name))
+        if is_reflexive:
+            triples.append((poss_var_name, 'refer-number', numbers.get(node.parent.feats['Number'])))
 
     return triples, called
 
