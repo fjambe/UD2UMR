@@ -234,16 +234,15 @@ def ud_to_umr(node,
 
     elif node.upos == 'VERB':
         if 'nsubj' not in [d.udeprel for d in node.children]: # elided subjects to be restored
-            arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
-            var_name, var_node_mapping, triples = l.create_node(node,
-                                                                variable_name,
-                                                                var_node_mapping,
-                                                                triples,
-                                                                arg_type)
-            parent, new_root = find_parent(node, var_node_mapping)
-            triples.append((parent, 'actor', var_name))
-
-            # what to do with nsubj:pass? sometimes it's impersonal rather than passive
+            if node.feats['Voice'] != 'Pass':
+                arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
+                var_name, var_node_mapping, triples = l.create_node(node,
+                                                                    variable_name,
+                                                                    var_node_mapping,
+                                                                    triples,
+                                                                    arg_type)
+                parent, new_root = find_parent(node, var_node_mapping)
+                triples.append((parent, 'actor', var_name))
 
     ### checking deprel ###
     if node.deprel == 'conj':
@@ -273,10 +272,24 @@ def ud_to_umr(node,
 
     elif node.deprel == 'acl:relcl':
 
-        rel_pron = next((d for d in node.children if d.feats['PronType'] == 'Rel'), None)
-        role = next((k for k, v in relations.items() for item in v if item == rel_pron), None)
+        # rel_pron = next((d for d in node.children if d.feats['PronType'] == 'Rel'), None)
+        # role = next((k for k, v in relations.items() for item in v if item == rel_pron), None)
+        #
+        # triples = l.relative_clauses(node,
+        #                              var_node_mapping,
+        #                              triples,
+        #                              role,
+        #                              add_node)
+        # already_added.add(node)
+        # already_added.add(rel_pron)
 
-        triples = l.relative_clauses(rel_pron,
+        rel_pron = next((d for d in node.children if d.feats.get('PronType') == 'Rel'), None)
+        if not rel_pron:
+            rel_pron = node.parent if node.parent.feats.get('PronType') == 'Rel' else None
+        role = next((k for k, v in relations.items() if rel_pron in v), None)
+
+        triples = l.relative_clauses(node,
+                                     rel_pron,
                                      var_node_mapping,
                                      triples,
                                      role,

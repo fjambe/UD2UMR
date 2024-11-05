@@ -287,7 +287,7 @@ def copulas(node,
     concept = None
     replace_arg = None
 
-    if node.parent.feats['Case'] == 'Nom' or not node.parent.feats['Case']:  # either nominative or uninflected
+    if node.parent.feats['Case'] == 'Nom' or not node.parent.feats['Case'] or (node.parent.feats['Case'] == 'Acc' and node.feats['VerbForm'] == 'Inf'):
         if node.parent.upos in ['ADJ', 'DET', 'PRON']:  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
             concept = 'have-mod-91'
         elif node.parent.upos == 'NOUN':
@@ -301,16 +301,11 @@ def copulas(node,
         concept = 'have-quant-91'
 
     elif node.parent.feats['Case'] == 'Dat':
-        # double dative
+        # double dative if ref-_dative else dative of possession
         ref_dative = [s for s in node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
-        if ref_dative:  # already added as affectee
-            concept = 'have-purpose-91'
+        concept = 'have-purpose-91' if ref_dative else 'belong-91'
 
-        else:
-            # dative of possession
-            concept = 'belong-91'  # ARG1 possessum, ARG2 possessor
-
-    # infinitives: never tested on real data
+    # infinitives: never tested on real data # TODO
     elif node.parent.upos == 'VERB' and node.parent.feats['VerbForm'] == 'Inf':
         # e.g. Illud erat vivere / Hoc est se ipsum traducere
         concept = 'have-identity-91'
@@ -332,7 +327,8 @@ def copulas(node,
         print(f"Skipping sentence due to missing copular configuration.")
 
 
-def relative_clauses(rel_pron,
+def relative_clauses(node,  # rel_pron before
+                     rel_pron,
                      var_node_mapping: dict,
                      triples: list,
                      role,
@@ -345,11 +341,14 @@ def relative_clauses(rel_pron,
     3. referent of the whole rel clause (referent)
     """
 
-    referent = next((k for k, v in var_node_mapping.items() if v == rel_pron.parent.parent), None)
-    var_pron = next((k for k, v in var_node_mapping.items() if v == rel_pron), None)
-    triples = [tup for tup in triples if var_pron not in [tup[0], tup[2]]]  # remove rel_pron
+    if rel_pron.parent == node:
+        referent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+        var_pron = next((k for k, v in var_node_mapping.items() if v == rel_pron), None)
+        triples = [tup for tup in triples if var_pron not in [tup[0], tup[2]]]  # remove rel_pron
+    else:
+        referent = next((k for k, v in var_node_mapping.items() if v == rel_pron), None)
 
-    add_node(rel_pron.parent,
+    add_node(node,
              var_node_mapping,
              triples,
              role,

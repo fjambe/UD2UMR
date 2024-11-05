@@ -1,12 +1,11 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: relative clauses, advcl, general structure for pronouns, quantities.
+- [coding] Now working on relative clauses.
+- [coding] Big things to work on next: advcl, general structure for pronouns, quantities.
 - [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
 Cf. _Fluminis erat altitudo pedum circiter trium_
 - [coding] _sed_ to `but-91`.
-- [decision making + coding, QUICK] Decide if I want to keep the restored entity for passive constructions.
-Probabilmente no perchè a volte è impersonale.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
