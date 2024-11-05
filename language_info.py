@@ -5,7 +5,7 @@ def create_node(node,
                 var_node_mapping: dict,
                 triples: list,
                 category: str,
-                artificial_nodes:dict,
+                artificial_nodes: dict,
                 replace: bool = False,
                 reflex: bool = False) -> tuple[str, dict, list, dict]:
     """
@@ -125,12 +125,15 @@ def personal(node,
              variable_name: Callable,
              artificial_nodes: dict,
              find_parent: Callable,
-             role) -> tuple[list, dict]:
+             role) -> tuple[list, dict, bool]:
 
     """Function to handle personal pronouns"""
 
+    called = False
+
     if node.feats['PronType'] == 'Prs':
 
+        called = True
         var_name, var_node_mapping, triples, artificial_nodes = create_node(node,
                                                                 variable_name,
                                                                 var_node_mapping,
@@ -141,7 +144,7 @@ def personal(node,
         parent, new_root = find_parent(node.parent, var_node_mapping, artificial_nodes)
         triples.append((parent, role, var_name))
 
-    return triples, var_node_mapping
+    return triples, var_node_mapping, called
 
 
 def quantifiers(node,
@@ -151,12 +154,12 @@ def quantifiers(node,
                 add_node: Callable,
                 artificial_nodes: dict,
                 find_parent: Callable,
-                role) -> tuple[list, bool]:
+                role) -> tuple[list, dict, dict, bool]:
 
     called = False
     if node.feats['PronType'] == 'Tot':  # e.g., omnis
 
-        if node.parent.upos in ['ADJ', 'NOUN', 'PROPN']:
+        if node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] and len([d for d in node.siblings if d.deprel == 'cop']) == 0:
             called = True
             add_node(node,
                      var_node_mapping,
@@ -164,7 +167,7 @@ def quantifiers(node,
                      artificial_nodes,
                      role)
 
-        elif node.parent.upos == 'VERB':
+        elif node.parent.upos == 'VERB' or (node.parent.upos in ['NOUN', 'ADJ', 'PROPN'] and len([d for d in node.siblings if d.deprel == 'cop']) == 1):
             called = True
             type_arg = 'thing' if node.feats['Gender'] == 'Neut' else 'FILL'
             var_name, var_node_mapping, triples, artificial_nodes = create_node(node,
@@ -176,6 +179,8 @@ def quantifiers(node,
 
             parent, new_root = find_parent(node.parent,var_node_mapping, artificial_nodes)
             triples.append((parent, role, var_name))
+            artificial_nodes[var_name] = node
+            del var_node_mapping[var_name]  # TODO: maybe the correct key is not var_name
 
             # attaching the quantifier itself
             add_node(node,
@@ -185,7 +190,7 @@ def quantifiers(node,
                      'quant',
                      def_parent=var_name)
 
-    return triples, called
+    return triples, var_node_mapping, artificial_nodes, called
 
 
 def det_pro_noun(node,
@@ -198,7 +203,7 @@ def det_pro_noun(node,
     """For cases like 'Illi dixerunt' "They said", where an entity node has to be created to replace the DETs."""
 
     called = False
-    if node.deprel != 'det' and node.feats['PronType'] == 'Dem':
+    if node.deprel not in ['det', 'root'] and node.feats['PronType'] == 'Dem':
         called = True
         type_arg = 'thing' if node.feats['Gender'] == 'Neut' else 'person'  # maybe FILL is better
         var_name, var_node_mapping, triples, artificial_nodes = create_node(node,
@@ -225,7 +230,7 @@ def coordination(node,
                  find_parent) -> tuple[list, set, any]:
 
     conjs = {'or': ['vel', 'uel', 'aut'], 'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ',']}
-    # 'sed' to be handled differently -> but-91
+    # 'sed' to be handled differently -> but-91  # TODO
 
     root_var = None
 
@@ -281,33 +286,56 @@ def copulas(node,
             var_node_mapping: dict,
             triples: list,
             artificial_nodes: dict,
-            variable_name: Callable,
-            find_parent) -> tuple[list, dict, any]:  # TODO any or string?
+            replace_with_abstract_roleset: Callable) -> tuple[list, dict, any]:
 
-    root_var = None  # ??
+    family = {'mater', 'pater', 'filia', 'filius', 'avia', 'avus', 'neptis', 'neptis', 'soror',
+              'frater', 'proavia', 'proavus', 'proneptis' , 'pronepos', 'socrus', 'socer',
+              'nurus', 'gener', 'matertera', 'patruus', 'matruelis', 'patruelis'}
 
-    if node.parent.upos == 'NOUN' and node.parent.feats['Case'] == 'Nom':
-        # identity-91
-        var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None) # head of the construction -> equated referent
-        var_sum = next((k for k, v in var_node_mapping.items() if v == node), None)
-        triples = [tup for tup in triples if var_sum not in tup]
+    concept = None
 
-        var_concept, var_node_mapping = variable_name('identity-91', var_node_mapping)
-        triples.append((var_concept, 'instance', 'identity-91'))
+    if node.parent.feats['Case'] == 'Nom' or not node.parent.feats['Case']:  # either nominative or uninflected
+        if node.parent.upos in ['ADJ', 'DET', 'PRON']:  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
+            concept = 'have-mod-91'
+        elif node.parent.upos == 'NOUN':
+            if node.parent.lemma in family:
+                concept = 'have-rel-role-92'
+            else:
+                concept = 'identity-91'
 
-        # reassigning root, if relevant
-        for i, tup in enumerate(triples):
-            if tup[2] == var_parent and tup[1] == 'root':
-                root_var = var_concept
-                triples[i] = (tup[0], tup[1], var_concept)
+    elif node.parent.feats['NumType'] == 'Card':
+        concept = 'have-quant-91'
 
-        nsubj = next((d for d in node.parent.children if d.deprel == 'nsubj'), None)
-        var_nsubj = next((k for k, v in {**var_node_mapping, **artificial_nodes}.items() if v == nsubj), None)
+    # dat: never tested on real data
+    elif node.parent.feats['Case'] == 'Dat':
+        # double dative
+        ref_dative = [s for s in node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
+        if ref_dative:
+            concept = 'have-purpose-91'
+            # ref_dative to be added as an affectee.
+            # obl:arg should already be handled like this, so it should happen automatically. worth a check.
 
-        triples = [tup for tup in triples if tup[2] != var_nsubj]  # remove previous relation, if any
-        triples.extend([
-            (var_concept, 'equated_referent', var_parent),
-            (var_concept, 'theme', var_nsubj)
-        ])
+        else:
+            # dative of possession
+            concept = 'belong-91'  # ARG1 possessum, ARG2 possessor
+
+    # infinitives: never tested on real data
+    elif node.parent.upos == 'VERB' and node.parent.feats['VerbForm'] == 'Inf':
+        # e.g. Illud erat vivere / Hoc est se ipsum traducere
+        concept = 'have-identity-91'
+
+    else:
+        concept = 'TOBEFIXED-101'  # TODO
+
+    try:
+        triples, var_node_mapping, root_var = replace_with_abstract_roleset(node,
+                                                                            triples,
+                                                                            var_node_mapping,
+                                                                            artificial_nodes,
+                                                                            concept)
 
         return triples, var_node_mapping, root_var
+
+    except (TypeError, AttributeError) as e:
+        print(e)
+        print(f"Skipping sentence due to missing copular configuration.")

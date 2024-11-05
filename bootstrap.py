@@ -57,27 +57,82 @@ def add_node(node,
         triples.append((parent, role, var_name))
 
 
-def abstract_concept(node,
+def introduce_abstract_roleset(node,
                      triples: list,
                      var_node_mapping: dict,
                      role_aka_concept: any) -> tuple[list, dict]:
 
     # it might also work for reification in general, so it could be renamed. Decide later.
-    # dovrò anche generalise l'argument structure (not always equated-referent). I might use a dictionary.
-    # Or I have a function for each abstract concept, which does not seem reasonable.
     # double check also that role inversion can be generalized.
-
-    # add modal.strength and aspect. can I? or only for appos?
+    # abstract rolesets seem to be always 'state'.
 
     var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
     var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
     triples = [tup for tup in triples if tup[1] != role_aka_concept]
     var_concept, var_node_mapping = variable_name(role_aka_concept, var_node_mapping)
-    triples.append((var_concept, 'instance', role_aka_concept))
-    triples.append((var_concept, 'equated_referent', var_name))
-    triples.append(pm.invert((var_concept, 'theme', var_parent)))  # not sure at all this is the best way to do it, but it works so far
+    triples.extend([
+        (var_concept, 'instance', role_aka_concept),
+        (var_concept, 'ARG2', var_name),
+        (var_concept, 'aspect', 'state'),
+        pm.invert((var_concept, 'ARG1', var_parent))  # probably not the best way to do it, but it works so far
+    ])
 
     return triples, var_node_mapping
+
+
+def replace_with_abstract_roleset(node,
+                                  triples: list,
+                                  var_node_mapping: dict,
+                                  artificial_nodes: dict,
+                                  role_aka_concept: any) -> tuple[list, dict, any]:
+
+        # Figure out whether it can be merged with introduce_abstract_roleset().
+        # Check that it's fine to use always ARG1 and ARG2.
+
+        root_var = None
+        combined_mapping = {**artificial_nodes, **var_node_mapping}
+
+        var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+        var_sum = next((k for k, v in var_node_mapping.items() if v == node), None)
+        triples = [tup for tup in triples if var_sum not in tup]
+
+        var_concept, var_node_mapping = variable_name(role_aka_concept, var_node_mapping)
+        triples.append((var_concept, 'instance', role_aka_concept))
+
+        nsubj = next((d for d in node.siblings if d.deprel == 'nsubj'), None)
+        var_nsubj = next((k for k, v in combined_mapping.items() if v == nsubj), None)
+
+        for i, tup in enumerate(triples):
+            # reassigning root, if relevant
+            if tup[2] == var_parent and tup[1] == 'root':
+                root_var = var_concept
+                triples[i] = (tup[0], tup[1], var_concept)
+            # reassigning nsubj (previously actor)
+            elif tup[2] == var_nsubj and tup[1] == 'actor':
+                triples[i] = (var_concept, 'ARG1', tup[2])
+
+        triples.extend([
+            (var_concept, 'ARG2', var_parent),
+            (var_concept, 'aspect', 'state')
+        ])
+
+        for n in node.siblings:  # reattach non-core dependents of UD root to UMR abstract predicate
+            if n.deprel in ['vocative', 'obl', 'advmod', 'discourse']:
+                var_n = next((k for k, v in combined_mapping.items() if v == n), None)
+                if var_n:
+                    triples = [(var_concept, tup[1], tup[2]) if tup[2] == var_n else tup for tup in triples]
+
+        if nsubj is None:  # elided subjects to be restored
+            var_name, var_node_mapping, triples, artificial_nodes = l.create_node(node,
+                                                                                  variable_name,
+                                                                                  var_node_mapping,
+                                                                                  triples,
+                                                                                  'FILL',
+                                                                                  artificial_nodes)
+            triples.append((var_concept, 'ARG1', var_name))
+
+        return triples, var_node_mapping, root_var
+
 
 
 def find_parent(node_parent,
@@ -100,21 +155,6 @@ def find_parent(node_parent,
     return parent, new_root
 
 
-def event_attrs(node,
-                feature: str,
-                triples: list):
-    """
-    Function that assigns aspect and modal-strength to events.
-    the feature param specifies if we are assigning aspect or modality.
-    """
-
-    if feature == 'aspect':
-        pass
-
-    elif feature == 'modality':
-        pass
-
-
 def ud_to_umr(node,
               role: str,
               var_node_mapping: dict,
@@ -127,16 +167,27 @@ def ud_to_umr(node,
 
     root_var = None
 
+    if node.deprel == 'root':
+        add_node(node,
+                 var_node_mapping,
+                 triples,
+                 artificial_nodes,
+                 role)
+        already_added.add(node)
+
     ### checking UPOS ###
     if node.upos == 'PRON':
-        triples, var_node_mapping = l.personal(node,
-                                              var_node_mapping,
-                                              triples,
-                                              variable_name,
-                                              artificial_nodes,
-                                              find_parent,
-                                              role)
-        already_added.add(node)
+        triples, var_node_mapping, called_pron = l.personal(node,
+                                                             var_node_mapping,
+                                                             triples,
+                                                             variable_name,
+                                                             artificial_nodes,
+                                                             find_parent,
+                                                             role)
+
+        # TODO: do something with non-personal pronouns, here.
+        if called_pron:
+            already_added.add(node)
 
     elif (node.upos == 'NOUN' and role != 'other') or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
         add_node(node,
@@ -157,14 +208,14 @@ def ud_to_umr(node,
                                                     find_parent,
                                                     role)
         # now check for quantifiers (PronType=Tot)
-        triples, called_quantifiers = l.quantifiers(node,
-                                                     var_node_mapping,
-                                                     triples,
-                                                     variable_name,
-                                                     add_node,
-                                                     artificial_nodes,
-                                                     find_parent,
-                                                     role if role != 'det' else 'quant')
+        triples, var_node_mapping, artificial_nodes, called_quantifiers = l.quantifiers(node,
+                                                                                        var_node_mapping,
+                                                                                        triples,
+                                                                                        variable_name,
+                                                                                        add_node,
+                                                                                        artificial_nodes,
+                                                                                        find_parent,
+                                                                                        role if role != 'det' else 'quant')
         # check if they substitute for nouns
         triples, called_det_pro_noun = l.det_pro_noun(node,
                                                       var_node_mapping,
@@ -208,19 +259,18 @@ def ud_to_umr(node,
                                                           find_parent)
 
     elif node.deprel == 'appos':
-        triples, var_node_mapping = abstract_concept(node,
-                                                     triples,
-                                                     var_node_mapping,
-                                                     role)
+        triples, var_node_mapping = introduce_abstract_roleset(node,
+                                                               triples,
+                                                               var_node_mapping,
+                                                               role)
         already_added.add(node)
 
     elif node.deprel == 'cop':
         triples, var_node_mapping, root_var = l.copulas(node,
-                                              var_node_mapping,
-                                              triples,
-                                              artificial_nodes,
-                                              variable_name,
-                                              find_parent)
+                                                        var_node_mapping,
+                                                        triples,
+                                                        artificial_nodes,
+                                                        replace_with_abstract_roleset)
         already_added.add(node)
 
     if node not in already_added:
@@ -268,14 +318,18 @@ def dict_to_penman(structure: dict):
 
     # delete 'instance' tuples if they are not associated with any role.
     ignored_types = {'instance', 'refer-number', 'refer-person', 'other'}
-    root = [t[2] for t in triples if t[1] == 'root'][0] if not root_var else root_var
-    valid = {root} | {tup[2] for tup in triples if tup[1] not in ignored_types}
-    triples = [tup for tup in triples if tup[1] not in ['root', 'other'] and (tup[1] != 'instance' or tup[0] in valid)]
-
-    g = penman.Graph(triples)
     try:
+        root = [t[2] for t in triples if t[1] == 'root'][0] if not root_var else root_var
+        valid = {root} | {tup[2] for tup in triples if tup[1] not in ignored_types}
+        triples = [tup for tup in triples if tup[1] not in ['root', 'other'] and (tup[1] != 'instance' or tup[0] in valid)]
+    except IndexError:
+        print('Skipping sentence due to copular construction not addressed yet.')  # TEMP, hopefully.
+
+    try:
+        g = penman.Graph(triples)
         return penman.encode(g, top=root, indent=4)
     except LayoutError as e:
+        print(triples)
         print(f"Skipping sentence due to LayoutError: {e}")
 
 
@@ -289,10 +343,10 @@ if __name__ == "__main__":
         deprels = {}
         # descendants = [d for d in tree.descendants if d.upos != 'PUNCT']
 
-        # To restrict the scope, I'm currently focusing on single-verb sentences with the verb as root.
-        # restriction = [d for d in tree.descendants if d.upos in ['VERB', 'AUX']]
-        restriction = [d for d in tree.descendants if d.upos == 'AUX']
-        if len(restriction) == 1: # and tree.children[0].upos == 'VERB' and not 'cop' in [d.deprel for d in tree.descendants]:
+        # restricting the scope
+        auxs = [d for d in tree.descendants if d.upos == 'AUX']
+        verbs = [d for d in tree.descendants if d.upos == 'VERB']
+        if (len(auxs) == 1 and len(verbs) == 0) or (len(verbs) == 1 and len(auxs) == 0):
             print('SNT:', tree.text, '\n')
 
 
@@ -316,6 +370,5 @@ if __name__ == "__main__":
             umr = dict_to_penman({deprels['root'][0]: {k:v for k,v in deprels.items() if v}})  # removed empty lists
             print(umr, '\n')
 
-            break  # one sentence at a time
-
+            # break  # one sentence at a time
 

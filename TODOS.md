@@ -1,17 +1,18 @@
 # TODO - code
 
-Currently, 210 processed sentences, only 9 are disconnected graphs.
-
 Next steps:
-- Elided subjects: how can I tell if person or thing?
+- [TUE] clean the code, e.g. from comments!
+- [decision-making, QUICK] Elided subjects: how can I tell if person or thing?
 IGT said: if in 80% of the cases it's `person`, just go for `person`. Right now I have `FILL`.
 Have to decide, need to go through the data.
-- Generalise `identity-91` > abstract concepts
+- [decision-making + coding] Generalize `identity-91` > abstract concepts.
+- [coding] Big things to work on next: relative clauses, advcl, general structure for pronouns.
+- [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
+Cf. _Fluminis erat altitudo pedum circiter trium_
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
 For PRONs I build the usual NE structure, and so on.
-2. Big things to work on next: copular constructions, relative clauses, advcl.
 
 ## Notes
 
@@ -66,7 +67,41 @@ Cf. _Hoc mihi dicit fatus meus_: now I have 2 distinct 1st/2nd-person nodes, but
 ## QUESTIONS:
 - Do you think it would be better to have the `aspect` attribute in the sentence, although without any value (just the string `:aspect` ready for the annotator to fill in the value) or not having anything at all?
 Given that I cannot extract automatically the aspect value.
+- [Matt]: do you have a smart way to reorder ARGs? For the purpose of clarity, I'd like to rearrange the order e.g. in:
 
+```
+(h / have-mod-91
+    :ARG2 (s / sucossus
+        :manner (v / validus))
+    :aspect state
+    :ARG1 (f / FILL
+        :refer-number plural)) 
+```
+
+- [Julia] `flat` di NUMs: single number? In any case I didn't implement quantities yet.
+- [Julia] abstract rolesets seem to always have `:aspect state`: correct?
+
+## For Dan:
+- what to do with _nec_ split as _ne_ + _c_? o li unisco in Perseus o li tratto in UMR.
+- show him the Appendix 3 about copular constructions. 
 
 ## Details:
-- `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing. Same for _etiam_.
+- `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.
+
+## ERRORS TO FIX:
+1. Brand-new entities + coordination: the parent is fucked up.
+```SNT: Ergo omnes magno circum clamore fremebant, praecipue pius Aeneas. 
+
+(f / fremo
+    :actor (f2 / FILL
+        :quant (a2 / and
+            :op1 (o / omnis)
+            :op2 (a / Aeneas
+                :mod (p / pius)
+                :manner (p2 / praecipuus)))
+        :refer-number plural)
+    :OBLIQUE (c / clamor
+        :refer-number singular
+        :mod (m / magnus))
+    :manner (c2 / circum))
+```
