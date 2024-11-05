@@ -190,18 +190,20 @@ def det_pro_noun(node,
 
     """For cases like 'Illi negarunt' "They denied", where an entity node has to be created to replace the DETs."""
 
-    called = False
-    if node.deprel not in ['det', 'root'] and node.feats['PronType'] == 'Dem':
-        called = True
-        type_arg = 'thing' if node.feats['Gender'] == 'Neut' else 'person'  # maybe FILL is better
-        var_name, var_node_mapping, triples = create_node(node,
-                                                          variable_name,
-                                                          var_node_mapping,
-                                                          triples,
-                                                          type_arg,
-                                                          replace=True)
-        parent, new_root = find_parent(node.parent, var_node_mapping)
-        triples.append((parent, role, var_name))
+    if node.deprel in ['det', 'root'] or node.feats['PronType'] != 'Dem':
+        return triples, var_node_mapping, False
+
+    called = True
+    type_arg = 'thing' if node.feats['Gender'] == 'Neut' else 'person'  # maybe FILL is better
+
+    var_name, var_node_mapping, triples = create_node(node,
+                                                      variable_name,
+                                                      var_node_mapping,
+                                                      triples,
+                                                      type_arg,
+                                                      replace=True)
+    parent, _ = find_parent(node.parent, var_node_mapping)
+    triples.append((parent, role, var_name))
 
     return triples, var_node_mapping, called
 
