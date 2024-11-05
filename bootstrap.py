@@ -34,7 +34,6 @@ def variable_name(node,
 def add_node(node,
              var_node_mapping: dict,
              triples: list,
-             artificial_nodes: dict,
              role,
              return_var_name: bool = False,
              def_parent=None):
@@ -51,7 +50,7 @@ def add_node(node,
         return var_name
     else:
         if not def_parent:
-            parent, new_root = find_parent(node.parent, var_node_mapping, artificial_nodes)
+            parent, new_root = find_parent(node.parent, var_node_mapping)
         else:
             parent = def_parent
         triples.append((parent, role, var_name))
@@ -82,7 +81,6 @@ def introduce_abstract_roleset(node,
 def replace_with_abstract_roleset(node,
                                   triples: list,
                                   var_node_mapping: dict,
-                                  artificial_nodes: dict,
                                   role_aka_concept: any,
                                   replace_arg: tuple[None, str] = None) -> tuple[list, dict, any]:
 
@@ -90,9 +88,8 @@ def replace_with_abstract_roleset(node,
 
         second_arg = 'ARG2' if not replace_arg else replace_arg
         root_var = None
-        combined_mapping = {**var_node_mapping, **artificial_nodes}
 
-        var_parent = next((k for k, v in combined_mapping.items() if v == node.parent), None)
+        var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
         var_sum = next((k for k, v in var_node_mapping.items() if v == node), None)
         triples = [tup for tup in triples if var_sum not in tup]
 
@@ -100,7 +97,7 @@ def replace_with_abstract_roleset(node,
         triples.append((var_concept, 'instance', role_aka_concept))
 
         nsubj = next((d for d in node.siblings if d.deprel == 'nsubj'), None)
-        var_nsubj = next((k for k, v in combined_mapping.items() if v == nsubj), None)
+        var_nsubj = next((k for k, v in var_node_mapping.items() if v == nsubj), None)
 
         for i, tup in enumerate(triples):
             # reassigning root, if relevant
@@ -119,17 +116,16 @@ def replace_with_abstract_roleset(node,
 
         for n in node.siblings:  # reattach non-core (+ obl:arg) dependents of UD root to UMR abstract predicate
             if n.udeprel in ['vocative', 'obl', 'advmod', 'discourse', 'advmod']:
-                var_n = next((k for k, v in combined_mapping.items() if v == n), None)
+                var_n = next((k for k, v in var_node_mapping.items() if v == n), None)
                 if var_n:
                     triples = [(var_concept, tup[1], tup[2]) if tup[2] == var_n else tup for tup in triples]
 
         if nsubj is None:  # elided subjects to be restored
-            var_name, var_node_mapping, triples, artificial_nodes = l.create_node(node,
-                                                                                  variable_name,
-                                                                                  var_node_mapping,
-                                                                                  triples,
-                                                                                  'FILL',
-                                                                                  artificial_nodes)
+            var_name, var_node_mapping, triples = l.create_node(node,
+                                                                variable_name,
+                                                                var_node_mapping,
+                                                                triples,
+                                                                'FILL')
             triples.append((var_concept, 'ARG1', var_name))
 
         return triples, var_node_mapping, root_var
@@ -137,14 +133,12 @@ def replace_with_abstract_roleset(node,
 
 
 def find_parent(node_parent,
-                var_node_mapping: dict,
-                artificial_nodes: dict) -> tuple[str, bool]:
+                var_node_mapping: dict) -> tuple[str, bool]:
 
     new_root = False
-    combined_mapping = {**var_node_mapping, **artificial_nodes}
 
     try:
-        parent = next((k for k, v in combined_mapping.items() if v == node_parent), None)
+        parent = next((k for k, v in var_node_mapping.items() if v == node_parent), None)
     except KeyError as e:
         if node_parent.is_root():
             new_root = True
@@ -159,7 +153,6 @@ def ud_to_umr(node,
               role: str,
               var_node_mapping: dict,
               triples: list,
-              artificial_nodes: dict,
               already_added: set,
               track_conj: dict,
               relations: dict) -> tuple[list, any, dict]:
@@ -172,8 +165,8 @@ def ud_to_umr(node,
         add_node(node,
                  var_node_mapping,
                  triples,
-                 artificial_nodes,
                  role)
+
         already_added.add(node)
 
     ### checking UPOS ###
@@ -182,7 +175,6 @@ def ud_to_umr(node,
                                                              var_node_mapping,
                                                              triples,
                                                              variable_name,
-                                                             artificial_nodes,
                                                              find_parent,
                                                              role)
 
@@ -195,7 +187,6 @@ def ud_to_umr(node,
         add_node(node,
                  var_node_mapping,
                  triples,
-                 artificial_nodes,
                  role)
         triples.append(l.get_number_person(node, 'number', var_node_mapping))
         already_added.add(node)
@@ -206,24 +197,21 @@ def ud_to_umr(node,
                                                     var_node_mapping,
                                                     triples,
                                                     variable_name,
-                                                    artificial_nodes,
                                                     find_parent,
                                                     role)
         # now check for quantifiers (PronType=Tot)
-        triples, var_node_mapping, artificial_nodes, called_quantifiers = l.quantifiers(node,
-                                                                                        var_node_mapping,
-                                                                                        triples,
-                                                                                        variable_name,
-                                                                                        add_node,
-                                                                                        artificial_nodes,
-                                                                                        find_parent,
-                                                                                        role if role != 'det' else 'quant')
+        triples, var_node_mapping, called_quantifiers = l.quantifiers(node,
+                                                                      var_node_mapping,
+                                                                      triples,
+                                                                      variable_name,
+                                                                      add_node,
+                                                                      find_parent,
+                                                                      role if role != 'det' else 'quant')
         # check if they substitute for nouns
         triples, called_det_pro_noun = l.det_pro_noun(node,
                                                       var_node_mapping,
                                                       triples,
                                                       variable_name,
-                                                      artificial_nodes,
                                                       find_parent,
                                                       role)
 
@@ -234,19 +222,17 @@ def ud_to_umr(node,
             add_node(node,
                      var_node_mapping,
                      triples,
-                     artificial_nodes,
                      'mod')
             already_added.add(node)
 
     elif node.upos == 'VERB':
         if 'nsubj' not in [d.deprel for d in node.children]: # elided subjects to be restored
-            var_name, var_node_mapping, triples, artificial_nodes = l.create_node(node,
-                                                                    variable_name,
-                                                                    var_node_mapping,
-                                                                    triples,
-                                                                    'FILL',
-                                                                    artificial_nodes)
-            parent, new_root = find_parent(node, var_node_mapping, artificial_nodes)
+            var_name, var_node_mapping, triples = l.create_node(node,
+                                                                variable_name,
+                                                                var_node_mapping,
+                                                                triples,
+                                                                'FILL',)
+            parent, new_root = find_parent(node, var_node_mapping)
             triples.append((parent, 'actor', var_name))
 
             # what to do with nsubj:pass? sometimes it's impersonal rather than passive
@@ -259,7 +245,6 @@ def ud_to_umr(node,
                                                           var_node_mapping,
                                                           triples,
                                                           already_added,
-                                                          artificial_nodes,
                                                           track_conj,
                                                           variable_name,
                                                           find_parent)
@@ -275,7 +260,6 @@ def ud_to_umr(node,
         triples, var_node_mapping, root_var = l.copulas(node,
                                                         var_node_mapping,
                                                         triples,
-                                                        artificial_nodes,
                                                         replace_with_abstract_roleset)
         already_added.add(node)
 
@@ -283,7 +267,6 @@ def ud_to_umr(node,
         add_node(node,
                  var_node_mapping,
                  triples,
-                 artificial_nodes,
                  role)
         already_added.add(node)
 
@@ -295,7 +278,6 @@ def dict_to_penman(structure: dict):
 
     triples = []
     var_node_mapping = {}
-    artificial_nodes = {}  # keep track of which artificial nodes (e.g. person) correspond to which real ones
     track_conj = {}
     already_added = set()
 
@@ -309,6 +291,7 @@ def dict_to_penman(structure: dict):
                 var_name, var_node_mapping = variable_name(item, var_node_mapping)
                 triples.append((var_name, 'instance', item.lemma))
 
+
     # Second loop: create relations between variables and build the UMR structure.
     for role, node_list in relations.items():
         for item in node_list:
@@ -316,7 +299,6 @@ def dict_to_penman(structure: dict):
                                                             role,
                                                             var_node_mapping,
                                                             triples,
-                                                            artificial_nodes,
                                                             already_added,
                                                             track_conj,
                                                             relations)

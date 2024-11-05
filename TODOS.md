@@ -1,7 +1,6 @@
 # TODO - code
 
 Next steps:
-- [TUE] clean the code, e.g. from comments!
 - [decision-making, QUICK] Elided subjects: how can I tell if person or thing?
 IGT said: if in 80% of the cases it's `person`, just go for `person`. Right now I have `FILL`.
 Have to decide, need to go through the data.
