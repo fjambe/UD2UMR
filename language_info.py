@@ -123,21 +123,21 @@ def personal(node,
 
     """Function to handle personal pronouns"""
 
-    called = False
-
     if node.feats['PronType'] == 'Prs':
-
         called = True
+
         var_name, var_node_mapping, triples = create_node(node,
                                                           variable_name,
                                                           var_node_mapping,
                                                           triples,
                                                           'person' if node.feats['Gender'] != 'Neut' else 'thing',
                                                           replace=True)
-        parent, new_root = find_parent(node.parent, var_node_mapping)
+        parent, _ = find_parent(node.parent, var_node_mapping)
         triples.append((parent, role, var_name))
 
-    return triples, var_node_mapping, called
+        return triples, var_node_mapping, called
+
+    return triples, var_node_mapping, False
 
 
 def quantifiers(node,

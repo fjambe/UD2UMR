@@ -401,7 +401,7 @@ if __name__ == "__main__":
             deprels['quant'] = [d for d in tree.descendants if d.deprel == 'nummod']
             deprels['vocative'] = [d for d in tree.descendants if d.deprel == 'vocative']
             deprels['affectee'] = [d for d in tree.descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]
-            deprels['MOD/POSS'] = [d for d in tree.descendants if d.deprel == 'nmod']
+            deprels['MOD/POSS'] = [d for d in tree.descendants if d.deprel == 'nmod' and d.feats['Case'] == 'Gen']
             deprels['identity-91'] = [d for d in tree.descendants if d.deprel == 'appos']
             deprels['COPULA'] = [d for d in tree.descendants if d.deprel == 'cop']
             deprels['other'] = [d for d in tree.descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]
