@@ -1,14 +1,14 @@
 # TODO - code
 
 Next steps:
-- [decision-making, QUICK] Elided subjects: how can I tell if person or thing?
-IGT said: if in 80% of the cases it's `person`, just go for `person`. Right now I have `FILL`.
-Have to decide, need to go through the data.
+
 - [decision-making + coding] Generalize `identity-91` > abstract concepts.
 - [coding] Big things to work on next: relative clauses, advcl, general structure for pronouns.
 - [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
 Cf. _Fluminis erat altitudo pedum circiter trium_
 - [coding] _sed_ to `but-91`.
+- [decision making + coding, QUICK] Decide if I want to keep the restored entity for passive constructions.
+Probabilmente no perchè a volte è impersonale.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -84,24 +84,15 @@ Given that I cannot extract automatically the aspect value.
 ## For Dan:
 - what to do with _nec_ split as _ne_ + _c_? o li unisco in Perseus o li tratto in UMR.
 - show him the Appendix 3 about copular constructions. 
+- elided arguments: we cannot do anything to restore objects, as they are undetectable, but we can restore subject.
+What has been decided so far is that, in the case of elided subjects, I will restore it. However, how can I tell if person or thing?
+IGT said: if in 80% of the cases it's `person`, just go for `person`.
+However, going through the data, I have the feeling that in the case of 3rd person verbs it's not anywhere close to 80%. Latin topics can be crazy.
+So, what I have now is `person` when the verb is a 1st/2nd person form;
+otherwise, I have a placeholder `FILL` that the annotator will quickly replace with the correct entity (`person`/`thing`) manually. Ok?
 
 ## Details:
 - `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.
 
 ## ERRORS TO FIX:
-1. Brand-new entities + coordination: the parent is fucked up.
-```SNT: Ergo omnes magno circum clamore fremebant, praecipue pius Aeneas. 
-
-(f / fremo
-    :actor (f2 / FILL
-        :quant (a2 / and
-            :op1 (o / omnis)
-            :op2 (a / Aeneas
-                :mod (p / pius)
-                :manner (p2 / praecipuus)))
-        :refer-number plural)
-    :OBLIQUE (c / clamor
-        :refer-number singular
-        :mod (m / magnus))
-    :manner (c2 / circum))
-```
+None

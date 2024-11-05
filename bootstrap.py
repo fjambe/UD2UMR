@@ -121,11 +121,12 @@ def replace_with_abstract_roleset(node,
                     triples = [(var_concept, tup[1], tup[2]) if tup[2] == var_n else tup for tup in triples]
 
         if nsubj is None:  # elided subjects to be restored
+            arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
             var_name, var_node_mapping, triples = l.create_node(node,
                                                                 variable_name,
                                                                 var_node_mapping,
                                                                 triples,
-                                                                'FILL')
+                                                                arg_type)
             triples.append((var_concept, 'ARG1', var_name))
 
         return triples, var_node_mapping, root_var
@@ -227,12 +228,12 @@ def ud_to_umr(node,
 
     elif node.upos == 'VERB':
         if 'nsubj' not in [d.deprel for d in node.children]: # elided subjects to be restored
-            print('caramba')
+            arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
             var_name, var_node_mapping, triples = l.create_node(node,
                                                                 variable_name,
                                                                 var_node_mapping,
                                                                 triples,
-                                                                'FILL',)
+                                                                arg_type)
             parent, new_root = find_parent(node, var_node_mapping)
             triples.append((parent, 'actor', var_name))
 

@@ -240,8 +240,10 @@ def coordination(node,
 
         # create variables for first two conjuncts, to set up the coordination structure
         # node.parent: 1st conjunct (true deprel), node: 2nd conjunct (deprel = conj, #1)
+        var_node_mapping = dict(reversed(var_node_mapping.items()))  # so that artificial nodes have precedence
         var_first_conj = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
         var_second_conj = next((k for k, v in var_node_mapping.items() if v == node), None)
+        print(var_first_conj)
 
         role = role
         parent, new_root = find_parent(node.parent.parent, var_node_mapping)
@@ -265,6 +267,7 @@ def coordination(node,
         for num, oc in enumerate((d for d in node.siblings if d.deprel == 'conj' and d not in already_added), start=3):
             var_name = next((k for k, v in var_node_mapping.items() if v == oc), None)
             triples.append((var_name_conj, f'op{num}', var_name))
+            triples.append(get_number_person(oc, 'number', var_node_mapping))
             already_added.add(oc)
 
         if new_root:
