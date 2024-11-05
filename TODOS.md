@@ -6,6 +6,8 @@ Next steps:
 - [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
 Cf. _Fluminis erat altitudo pedum circiter trium_
 - [coding] _sed_ to `but-91`.
+- [coding] SNT: _Bene nos habemus, at isti nugae, qui tibi non imperant._ is now disconnected because of copular construction
+with no copula, but before fixing that I need to implement _sed_ (here actually _at_) to `but-91`.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -75,6 +77,7 @@ Given that I cannot extract automatically the aspect value.
 
 - [Julia] `flat` di NUMs: single number? In any case I didn't implement quantities yet.
 - [Julia] abstract rolesets seem to always have `:aspect state`: correct?
+- [Julia] UMR of _boves, quorum beneficio panem manducamus_ "oxen, thanks to whose service we have bread to eat"?
 
 ## For Dan:
 - what to do with _nec_ split as _ne_ + _c_? o li unisco in Perseus o li tratto in UMR.

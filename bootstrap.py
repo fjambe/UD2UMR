@@ -215,12 +215,12 @@ def ud_to_umr(node,
                                                                       find_parent,
                                                                       role if role != 'det' else 'quant')
         # check if they substitute for nouns
-        triples, called_det_pro_noun = l.det_pro_noun(node,
-                                                      var_node_mapping,
-                                                      triples,
-                                                      variable_name,
-                                                      find_parent,
-                                                      role)
+        triples, var_node_mapping, called_det_pro_noun = l.det_pro_noun(node,
+                                                                        var_node_mapping,
+                                                                        triples,
+                                                                        variable_name,
+                                                                        find_parent,
+                                                                        role)
 
         if called_possessives or called_quantifiers or called_det_pro_noun:
             already_added.add(node)
@@ -272,20 +272,9 @@ def ud_to_umr(node,
 
     elif node.deprel == 'acl:relcl':
 
-        # rel_pron = next((d for d in node.children if d.feats['PronType'] == 'Rel'), None)
-        # role = next((k for k, v in relations.items() for item in v if item == rel_pron), None)
-        #
-        # triples = l.relative_clauses(node,
-        #                              var_node_mapping,
-        #                              triples,
-        #                              role,
-        #                              add_node)
-        # already_added.add(node)
-        # already_added.add(rel_pron)
-
-        rel_pron = next((d for d in node.children if d.feats.get('PronType') == 'Rel'), None)
+        rel_pron = next((d for d in node.descendants if d.feats.get('PronType') == 'Rel'), None)
         if not rel_pron:
-            rel_pron = node.parent if node.parent.feats.get('PronType') == 'Rel' else None
+            rel_pron = node.parent if node.parent.feats.get('PronType') == 'Rel' else None  # non va sempre bene il suo role
         role = next((k for k, v in relations.items() if rel_pron in v), None)
 
         triples = l.relative_clauses(node,

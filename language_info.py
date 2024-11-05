@@ -192,7 +192,7 @@ def det_pro_noun(node,
                  triples: list,
                  variable_name: Callable,
                  find_parent,
-                 role) -> tuple[list, bool]:
+                 role) -> tuple[list, dict, bool]:
 
     """For cases like 'Illi negarunt' "They denied", where an entity node has to be created to replace the DETs."""
 
@@ -209,7 +209,7 @@ def det_pro_noun(node,
         parent, new_root = find_parent(node.parent, var_node_mapping)
         triples.append((parent, role, var_name))
 
-    return triples, called
+    return triples, var_node_mapping, called
 
 
 def coordination(node,
@@ -341,12 +341,15 @@ def relative_clauses(node,  # rel_pron before
     3. referent of the whole rel clause (referent)
     """
 
-    if rel_pron.parent == node:
-        referent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
-        var_pron = next((k for k, v in var_node_mapping.items() if v == rel_pron), None)
-        triples = [tup for tup in triples if var_pron not in [tup[0], tup[2]]]  # remove rel_pron
-    else:
+    referent = None
+
+    if rel_pron == node.parent:
         referent = next((k for k, v in var_node_mapping.items() if v == rel_pron), None)
+    elif rel_pron.parent == node:
+        referent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+        if rel_pron.udeprel in ['nsubj', 'obj', 'obl']:
+            var_pron = next((k for k, v in var_node_mapping.items() if v == rel_pron), None)
+            triples = [tup for tup in triples if var_pron not in [tup[0], tup[2]]]  # remove rel_pron
 
     add_node(node,
              var_node_mapping,
