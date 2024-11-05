@@ -1,9 +1,7 @@
 # TODO - code
 
 Next steps:
-
-- [decision-making + coding] Generalize `identity-91` > abstract concepts.
-- [coding] Big things to work on next: relative clauses, advcl, general structure for pronouns.
+- [coding] Big things to work on next: relative clauses, advcl, general structure for pronouns, quantities.
 - [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
 Cf. _Fluminis erat altitudo pedum circiter trium_
 - [coding] _sed_ to `but-91`.
@@ -19,27 +17,25 @@ For PRONs I build the usual NE structure, and so on.
 ### Deprel:
 - `nsubj`:
   - Only one `nsubj` is allowed, so mapping it to `actor` shouldn't be a problem (univocal).
-  - `nsubj:pass` handled like `obj`.
-  - think about coordinate subjects.
+  - `nsubj:pass` handled like `obj` -> `patient`.
   - think about `csubj`.
 - `obj`:
   - think about `theme`.
-  - think about coordinate objects.
 - `advmod:lmod` could be mapped to `place`, but it's risky because it could also be `source`, `goal`, depending on the type of adverb.
 On top of that, most often this deprel is assigned to adverbs (_unde_, _hinc_), which could also be discourse connectives.
 Maybe if they're annotated with the subtype `lmod` is because they're actually still lexicalized, but let's not trust the annotation too much.
 - `nmod`: now I have a placeholder `:MOD/POSS`. Impossible to distinguish - UD has `nmod:poss` but not Perseus.
 - `appos`: `identity-91`.
 Cf. _Homo bellus, tam bonus Chrysanthus animam ebulliit._ "The handsome man, so good, Chrysanthus breathed out his spirit."
-_Chysanthus_ now `appos` di _homo_.
+_Chysanthus_ `appos` di _homo_.
 
 ### UPOS:
-- think about `PRON`s.
+None
 
 ### To Penman
 To parse my structure into Penman, it has (?) to look like this:
 ```
-    return {
+    {
         root: {
             ":actor": subj,
             ":patient": obj,

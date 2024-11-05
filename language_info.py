@@ -243,7 +243,6 @@ def coordination(node,
         var_node_mapping = dict(reversed(var_node_mapping.items()))  # so that artificial nodes have precedence
         var_first_conj = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
         var_second_conj = next((k for k, v in var_node_mapping.items() if v == node), None)
-        print(var_first_conj)
 
         role = role
         parent, new_root = find_parent(node.parent.parent, var_node_mapping)
@@ -331,3 +330,30 @@ def copulas(node,
     except (TypeError, AttributeError) as e:
         print(e)
         print(f"Skipping sentence due to missing copular configuration.")
+
+
+def relative_clauses(rel_pron,
+                     var_node_mapping: dict,
+                     triples: list,
+                     role,
+                     add_node: Callable) -> list:
+
+    """
+    Function to process relative clauses. Elements of a relative clause to handle:
+    1. relative pronoun (rel_prol)
+    2. predicate (node)
+    3. referent of the whole rel clause (referent)
+    """
+
+    referent = next((k for k, v in var_node_mapping.items() if v == rel_pron.parent.parent), None)
+    var_pron = next((k for k, v in var_node_mapping.items() if v == rel_pron), None)
+    triples = [tup for tup in triples if var_pron not in [tup[0], tup[2]]]  # remove rel_pron
+
+    add_node(rel_pron.parent,
+             var_node_mapping,
+             triples,
+             role,
+             invert=True,
+             def_parent=referent)
+
+    return triples

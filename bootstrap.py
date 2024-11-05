@@ -36,6 +36,7 @@ def add_node(node,
              triples: list,
              role,
              return_var_name: bool = False,
+             invert: bool = False,
              def_parent=None):
     """
     Function that creates and adds a new node. Steps:
@@ -53,7 +54,12 @@ def add_node(node,
             parent, new_root = find_parent(node.parent, var_node_mapping)
         else:
             parent = def_parent
-        triples.append((parent, role, var_name))
+
+        if not invert:
+            triples.append((parent, role, var_name))
+        else:
+            var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
+            triples.append(pm.invert((var_name, role, def_parent)))
 
 
 def introduce_abstract_roleset(node,
@@ -227,7 +233,7 @@ def ud_to_umr(node,
             already_added.add(node)
 
     elif node.upos == 'VERB':
-        if 'nsubj' not in [d.deprel for d in node.children]: # elided subjects to be restored
+        if 'nsubj' not in [d.udeprel for d in node.children]: # elided subjects to be restored
             arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
             var_name, var_node_mapping, triples = l.create_node(node,
                                                                 variable_name,
@@ -265,6 +271,19 @@ def ud_to_umr(node,
                                                         replace_with_abstract_roleset)
         already_added.add(node)
 
+    elif node.deprel == 'acl:relcl':
+
+        rel_pron = next((d for d in node.children if d.feats['PronType'] == 'Rel'), None)
+        role = next((k for k, v in relations.items() for item in v if item == rel_pron), None)
+
+        triples = l.relative_clauses(rel_pron,
+                                     var_node_mapping,
+                                     triples,
+                                     role,
+                                     add_node)
+        already_added.add(node)
+        already_added.add(rel_pron)
+
     if node not in already_added:
         add_node(node,
                  var_node_mapping,
@@ -292,7 +311,6 @@ def dict_to_penman(structure: dict):
             if item.deprel not in ['aux', 'case', 'punct', 'mark']:
                 var_name, var_node_mapping = variable_name(item, var_node_mapping)
                 triples.append((var_name, 'instance', item.lemma))
-
 
     # Second loop: create relations between variables and build the UMR structure.
     for role, node_list in relations.items():
@@ -335,7 +353,8 @@ if __name__ == "__main__":
         # restricting the scope
         auxs = [d for d in tree.descendants if d.upos == 'AUX']
         verbs = [d for d in tree.descendants if d.upos == 'VERB']
-        if (len(auxs) == 1 and len(verbs) == 0) or (len(verbs) == 1 and len(auxs) == 0):
+        mix = auxs + verbs
+        if ((len(auxs) == 1 and len(verbs) == 0) or (len(verbs) == 1 and len(auxs) == 0)) or (len(mix) == 2 and 'acl:relcl' in [d.deprel for d in tree.descendants if d.upos == 'VERB']):
             print('SNT:', tree.text, '\n')
 
             # mapping deprels - roles
@@ -353,7 +372,7 @@ if __name__ == "__main__":
             deprels['MOD/POSS'] = [d for d in tree.descendants if d.deprel == 'nmod']
             deprels['identity-91'] = [d for d in tree.descendants if d.deprel == 'appos']
             deprels['COPULA'] = [d for d in tree.descendants if d.deprel == 'cop']
-            deprels['other'] = [d for d in tree.descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]  # patch to avoid crashes
+            deprels['other'] = [d for d in tree.descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]
 
             umr = dict_to_penman({deprels['root'][0]: {k:v for k,v in deprels.items() if v}})  # removed empty lists
             print(umr, '\n')
