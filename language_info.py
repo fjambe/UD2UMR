@@ -148,35 +148,39 @@ def quantifiers(node,
                 find_parent: Callable,
                 role) -> tuple[list, dict, bool]:
 
+    if node.feats['PronType'] != 'Tot':
+        return triples, var_node_mapping, False
+
+    cop_siblings = [d for d in node.siblings if d.deprel == 'cop']
+    has_cop_sibling = len(cop_siblings) > 0
     called = False
-    if node.feats['PronType'] == 'Tot':  # e.g., omnis
 
-        if node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] and len([d for d in node.siblings if d.deprel == 'cop']) == 0:
-            called = True
-            add_node(node,
-                     var_node_mapping,
-                     triples,
-                     role)
+    if node.deprel == 'det' and not has_cop_sibling:
+        called = True
+        add_node(node,
+                 var_node_mapping,
+                 triples,
+                 role)
 
-        elif node.parent.upos == 'VERB' or (node.parent.upos in ['NOUN', 'ADJ', 'PROPN'] and len([d for d in node.siblings if d.deprel == 'cop']) == 1):
-            called = True
-            type_arg = 'thing' if node.feats['Gender'] == 'Neut' else 'FILL'
-            var_name, var_node_mapping, triples = create_node(node,
-                                                              variable_name,
-                                                              var_node_mapping,
-                                                              triples,
-                                                              type_arg)
+    elif node.deprel != 'det' or (node.deprel == 'det' and len(cop_siblings) == 1):
+        called = True
+        type_arg = 'thing' if node.feats['Gender'] == 'Neut' else 'FILL'
+        var_name, var_node_mapping, triples = create_node(node,
+                                                          variable_name,
+                                                          var_node_mapping,
+                                                          triples,
+                                                          type_arg)
 
-            parent, new_root = find_parent(node.parent, var_node_mapping)
-            triples.append((parent, role, var_name))
-            var_node_mapping[var_name] = node
+        parent, _ = find_parent(node.parent, var_node_mapping)
+        triples.append((parent, role, var_name))
+        var_node_mapping[var_name] = node
 
-            # attaching the quantifier itself
-            add_node(node,
-                     var_node_mapping,
-                     triples,
-                     'quant',
-                     def_parent=var_name)
+        # attaching the quantifier itself
+        add_node(node,
+                 var_node_mapping,
+                 triples,
+                 'quant',
+                 def_parent=var_name)
 
     return triples, var_node_mapping, called
 
