@@ -172,20 +172,14 @@ def replace_with_abstract_roleset(node,
 
 
 def find_parent(node_parent,
-                var_node_mapping: dict) -> tuple[str, bool]:
+                var_node_mapping: dict) -> tuple[any, bool]:
 
-    new_root = False
+    if node_parent.is_root():
+        return None, True
 
-    try:
-        parent = next((k for k, v in var_node_mapping.items() if v == node_parent), None)
-    except KeyError as e:
-        if node_parent.is_root():
-            new_root = True
-        else:
-            print(f'Failed to locate the node parent. Error: {e}')
-        parent = None
+    parent = next((k for k, v in var_node_mapping.items() if v == node_parent), None)
 
-    return parent, new_root
+    return parent, False
 
 
 def ud_to_umr(node,
