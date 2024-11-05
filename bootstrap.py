@@ -90,7 +90,7 @@ def replace_with_abstract_roleset(node,
 
         second_arg = 'ARG2' if not replace_arg else replace_arg
         root_var = None
-        combined_mapping = {**artificial_nodes, **var_node_mapping}
+        combined_mapping = {**var_node_mapping, **artificial_nodes}
 
         var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
         var_sum = next((k for k, v in var_node_mapping.items() if v == node), None)
@@ -111,13 +111,14 @@ def replace_with_abstract_roleset(node,
             elif tup[2] == var_nsubj and tup[1] == 'actor':
                 triples[i] = (var_concept, 'ARG1', tup[2])
 
+
         triples.extend([
             (var_concept, second_arg, var_parent),
             (var_concept, 'aspect', 'state')
         ])
 
-        for n in node.siblings:  # reattach non-core dependents of UD root to UMR abstract predicate
-            if n.deprel in ['vocative', 'obl', 'advmod', 'discourse', 'advmod', 'advmod:tmod']:
+        for n in node.siblings:  # reattach non-core (+ obl:arg) dependents of UD root to UMR abstract predicate
+            if n.udeprel in ['vocative', 'obl', 'advmod', 'discourse', 'advmod']:
                 var_n = next((k for k, v in combined_mapping.items() if v == n), None)
                 if var_n:
                     triples = [(var_concept, tup[1], tup[2]) if tup[2] == var_n else tup for tup in triples]
@@ -280,7 +281,6 @@ def ud_to_umr(node,
         already_added.add(node)
 
     if node not in already_added:
-        print(node)
         add_node(node,
                  var_node_mapping,
                  triples,

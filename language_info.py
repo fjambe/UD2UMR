@@ -312,11 +312,8 @@ def copulas(node,
     elif node.parent.feats['Case'] == 'Dat':
         # double dative
         ref_dative = [s for s in node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
-        if ref_dative:
+        if ref_dative:  # already added as affectee
             concept = 'have-purpose-91'
-            # ref_dative to be added as an affectee.
-            # obl:arg should already be handled like this.
-            # it does happen automatically, indeed, but it ends up attached to the wrong parent.
 
         else:
             # dative of possession
