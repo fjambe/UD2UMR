@@ -9,6 +9,7 @@ Have to decide, need to go through the data.
 - [coding] Big things to work on next: relative clauses, advcl, general structure for pronouns.
 - [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
 Cf. _Fluminis erat altitudo pedum circiter trium_
+- [coding] _sed_ to `but-91`.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.

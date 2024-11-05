@@ -62,9 +62,8 @@ def introduce_abstract_roleset(node,
                      var_node_mapping: dict,
                      role_aka_concept: any) -> tuple[list, dict]:
 
-    # it might also work for reification in general, so it could be renamed. Decide later.
+    # it should also work for reification in general, so it could be renamed. Decide later.
     # double check also that role inversion can be generalized.
-    # abstract rolesets seem to be always 'state'.
 
     var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
     var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
@@ -74,7 +73,7 @@ def introduce_abstract_roleset(node,
         (var_concept, 'instance', role_aka_concept),
         (var_concept, 'ARG2', var_name),
         (var_concept, 'aspect', 'state'),
-        pm.invert((var_concept, 'ARG1', var_parent))  # probably not the best way to do it, but it works so far
+        pm.invert((var_concept, 'ARG1', var_parent))
     ])
 
     return triples, var_node_mapping
@@ -84,11 +83,12 @@ def replace_with_abstract_roleset(node,
                                   triples: list,
                                   var_node_mapping: dict,
                                   artificial_nodes: dict,
-                                  role_aka_concept: any) -> tuple[list, dict, any]:
+                                  role_aka_concept: any,
+                                  replace_arg: tuple[None, str] = None) -> tuple[list, dict, any]:
 
         # Figure out whether it can be merged with introduce_abstract_roleset().
-        # Check that it's fine to use always ARG1 and ARG2.
 
+        second_arg = 'ARG2' if not replace_arg else replace_arg
         root_var = None
         combined_mapping = {**artificial_nodes, **var_node_mapping}
 
@@ -112,12 +112,12 @@ def replace_with_abstract_roleset(node,
                 triples[i] = (var_concept, 'ARG1', tup[2])
 
         triples.extend([
-            (var_concept, 'ARG2', var_parent),
+            (var_concept, second_arg, var_parent),
             (var_concept, 'aspect', 'state')
         ])
 
         for n in node.siblings:  # reattach non-core dependents of UD root to UMR abstract predicate
-            if n.deprel in ['vocative', 'obl', 'advmod', 'discourse']:
+            if n.deprel in ['vocative', 'obl', 'advmod', 'discourse', 'advmod', 'advmod:tmod']:
                 var_n = next((k for k, v in combined_mapping.items() if v == n), None)
                 if var_n:
                     triples = [(var_concept, tup[1], tup[2]) if tup[2] == var_n else tup for tup in triples]
@@ -163,6 +163,7 @@ def ud_to_umr(node,
               already_added: set,
               track_conj: dict,
               relations: dict) -> tuple[list, any, dict]:
+
     """Function that maps UD information to UMR structures."""
 
     root_var = None
@@ -186,6 +187,7 @@ def ud_to_umr(node,
                                                              role)
 
         # TODO: do something with non-personal pronouns, here.
+
         if called_pron:
             already_added.add(node)
 
@@ -224,13 +226,17 @@ def ud_to_umr(node,
                                                       artificial_nodes,
                                                       find_parent,
                                                       role)
-        if node.deprel == 'det' and not (called_possessives or called_quantifiers or called_det_pro_noun):
+
+        if called_possessives or called_quantifiers or called_det_pro_noun:
+            already_added.add(node)
+
+        elif node.deprel == 'det':
             add_node(node,
                      var_node_mapping,
                      triples,
                      artificial_nodes,
                      'mod')
-        already_added.add(node)
+            already_added.add(node)
 
     elif node.upos == 'VERB':
         if 'nsubj' not in [d.deprel for d in node.children]: # elided subjects to be restored
@@ -274,6 +280,7 @@ def ud_to_umr(node,
         already_added.add(node)
 
     if node not in already_added:
+        print(node)
         add_node(node,
                  var_node_mapping,
                  triples,
@@ -298,7 +305,6 @@ def dict_to_penman(structure: dict):
 
     # First loop: create variables for all (non-function) UD nodes.
     for role, node in relations.items():
-        # 'node' is a list, hence create a triple for each item in the list
         for item in node:
             if item.deprel not in ['aux', 'case', 'punct', 'mark']:
                 var_name, var_node_mapping = variable_name(item, var_node_mapping)
@@ -348,7 +354,6 @@ if __name__ == "__main__":
         verbs = [d for d in tree.descendants if d.upos == 'VERB']
         if (len(auxs) == 1 and len(verbs) == 0) or (len(verbs) == 1 and len(auxs) == 0):
             print('SNT:', tree.text, '\n')
-
 
             # mapping deprels - roles
             deprels['root'] = tree.children  # list with only one element, i.e. the root of the tree

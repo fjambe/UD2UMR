@@ -200,6 +200,7 @@ def det_pro_noun(node,
                  artificial_nodes: dict,
                  find_parent,
                  role) -> tuple[list, bool]:
+
     """For cases like 'Illi dixerunt' "They said", where an entity node has to be created to replace the DETs."""
 
     called = False
@@ -230,7 +231,6 @@ def coordination(node,
                  find_parent) -> tuple[list, set, any]:
 
     conjs = {'or': ['vel', 'uel', 'aut'], 'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ',']}
-    # 'sed' to be handled differently -> but-91  # TODO
 
     root_var = None
 
@@ -293,6 +293,7 @@ def copulas(node,
               'nurus', 'gener', 'matertera', 'patruus', 'matruelis', 'patruelis'}
 
     concept = None
+    replace_arg = None
 
     if node.parent.feats['Case'] == 'Nom' or not node.parent.feats['Case']:  # either nominative or uninflected
         if node.parent.upos in ['ADJ', 'DET', 'PRON']:  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
@@ -300,6 +301,7 @@ def copulas(node,
         elif node.parent.upos == 'NOUN':
             if node.parent.lemma in family:
                 concept = 'have-rel-role-92'
+                replace_arg = 'ARG3'
             else:
                 concept = 'identity-91'
 
@@ -313,7 +315,8 @@ def copulas(node,
         if ref_dative:
             concept = 'have-purpose-91'
             # ref_dative to be added as an affectee.
-            # obl:arg should already be handled like this, so it should happen automatically. worth a check.
+            # obl:arg should already be handled like this.
+            # it does happen automatically, indeed, but it ends up attached to the wrong parent.
 
         else:
             # dative of possession
@@ -325,14 +328,15 @@ def copulas(node,
         concept = 'have-identity-91'
 
     else:
-        concept = 'TOBEFIXED-101'  # TODO
+        concept = 'MISSING'
 
     try:
         triples, var_node_mapping, root_var = replace_with_abstract_roleset(node,
                                                                             triples,
                                                                             var_node_mapping,
                                                                             artificial_nodes,
-                                                                            concept)
+                                                                            concept,
+                                                                            replace_arg)
 
         return triples, var_node_mapping, root_var
 
