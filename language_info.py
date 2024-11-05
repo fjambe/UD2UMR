@@ -308,7 +308,6 @@ def copulas(node,
     elif node.parent.feats['NumType'] == 'Card':
         concept = 'have-quant-91'
 
-    # dat: never tested on real data
     elif node.parent.feats['Case'] == 'Dat':
         # double dative
         ref_dative = [s for s in node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']

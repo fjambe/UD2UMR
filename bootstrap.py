@@ -92,7 +92,7 @@ def replace_with_abstract_roleset(node,
         root_var = None
         combined_mapping = {**var_node_mapping, **artificial_nodes}
 
-        var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+        var_parent = next((k for k, v in combined_mapping.items() if v == node.parent), None)
         var_sum = next((k for k, v in var_node_mapping.items() if v == node), None)
         triples = [tup for tup in triples if var_sum not in tup]
 
@@ -141,17 +141,16 @@ def find_parent(node_parent,
                 artificial_nodes: dict) -> tuple[str, bool]:
 
     new_root = False
+    combined_mapping = {**var_node_mapping, **artificial_nodes}
+
     try:
-        parent = list(filter(lambda x: var_node_mapping[x] == node_parent, var_node_mapping))[0]
-    except IndexError:
-        try:
-            parent = list(filter(lambda x: artificial_nodes[x] == node_parent, var_node_mapping))[0]
-        except KeyError as e:
-            if node_parent.is_root():
-                new_root = True
-            else:
-                print(f'Failed to locate the node parent. Error: {e}')
-            parent = None
+        parent = next((k for k, v in combined_mapping.items() if v == node_parent), None)
+    except KeyError as e:
+        if node_parent.is_root():
+            new_root = True
+        else:
+            print(f'Failed to locate the node parent. Error: {e}')
+        parent = None
 
     return parent, new_root
 
