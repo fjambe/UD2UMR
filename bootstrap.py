@@ -227,6 +227,7 @@ def ud_to_umr(node,
 
     elif node.upos == 'VERB':
         if 'nsubj' not in [d.deprel for d in node.children]: # elided subjects to be restored
+            print('caramba')
             var_name, var_node_mapping, triples = l.create_node(node,
                                                                 variable_name,
                                                                 var_node_mapping,

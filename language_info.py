@@ -39,14 +39,20 @@ def get_number_person(node,
                       var_node_mapping: dict,
                       new_var_name: str = None) -> tuple[str, str, str]:
 
-    feats = {'Sing': 'singular', 'Plur': 'plural', '1': '1st', '2': '2nd', '3': '3rd', 'ille': '3rd', 'hic': '3rd', 'is': '3rd'}
+    feats = {
+        **{k: '3rd' for k in ['3', 'ille', 'hic', 'is', 'ipse']},
+        'Sing': 'singular',
+        'Plur': 'plural',
+        '1': '1st',
+        '2': '2nd',
+    }
 
     if not new_var_name:
         var_name = list(filter(lambda x: var_node_mapping[x] == node, var_node_mapping))[0]
     else:
         var_name = new_var_name
 
-    feat = feats.get(node.feats.get(f"{feature.capitalize()}[psor]") or node.feats.get(feature.capitalize()), 'FILL')
+    feat = feats.get(node.feats.get(f"{feature.capitalize()}[psor]") or node.feats.get(feature.capitalize()) or node.lemma, 'FILL')
 
     return var_name, f'refer-{feature}', feat
 
@@ -188,7 +194,7 @@ def det_pro_noun(node,
                  find_parent,
                  role) -> tuple[list, bool]:
 
-    """For cases like 'Illi dixerunt' "They said", where an entity node has to be created to replace the DETs."""
+    """For cases like 'Illi negarunt' "They denied", where an entity node has to be created to replace the DETs."""
 
     called = False
     if node.deprel not in ['det', 'root'] and node.feats['PronType'] == 'Dem':
