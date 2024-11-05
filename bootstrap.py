@@ -2,6 +2,7 @@
 # Copyright © 2024 Federica Gamba <gamba@ufal.mff.cuni.cz>
 
 import argparse
+import re
 import udapi
 import penman
 from penman.exceptions import LayoutError
@@ -31,6 +32,41 @@ def variable_name(node,
     return var_name, var_node_mapping
 
 
+def correct_variable_naming(triples: list,
+                            var_node_mapping: dict) -> tuple[list, dict]:
+
+    """ Function that returns a list of triples with corrected variable naming, if necessary. """
+
+    var_pattern = re.compile(r"^([a-z])(\d*)$")
+    var_groups = {}
+
+    for var in var_node_mapping.keys():
+        match = var_pattern.match(var)
+        if match:
+            base_letter = match.group(1)
+            number = int(match.group(2)) if match.group(2) else 1
+            var_groups.setdefault(base_letter, []).append((number, var))
+
+    renaming_map = {}
+
+    for base_letter, variables in var_groups.items():
+        variables.sort()
+
+        for new_number, (current_number, var) in enumerate(variables, start=1):
+            new_var = f"{base_letter}{new_number if new_number > 1 else ''}"
+
+            if new_var != var:
+                renaming_map[var] = new_var
+                var_node_mapping[new_var] = var_node_mapping.pop(var)
+
+    corrected_triples = [
+        (renaming_map.get(var, var), relation, renaming_map.get(value, value))
+        for var, relation, value in triples
+    ]
+
+    return corrected_triples, var_node_mapping
+
+
 def add_node(node,
              var_node_mapping: dict,
              triples: list,
@@ -49,17 +85,14 @@ def add_node(node,
 
     if return_var_name:
         return var_name
-    else:
-        if not def_parent:
-            parent, new_root = find_parent(node.parent, var_node_mapping)
-        else:
-            parent = def_parent
 
-        if not invert:
-            triples.append((parent, role, var_name))
-        else:
-            var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
-            triples.append(pm.invert((var_name, role, def_parent)))
+    parent = def_parent or find_parent(node.parent, var_node_mapping)[0]
+
+    if not invert:
+        triples.append((parent, role, var_name))
+    else:
+        var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
+        triples.append(pm.invert((var_name, role, def_parent)))
 
 
 def introduce_abstract_roleset(node,
@@ -136,7 +169,6 @@ def replace_with_abstract_roleset(node,
             triples.append((var_concept, 'ARG1', var_name))
 
         return triples, var_node_mapping, root_var
-
 
 
 def find_parent(node_parent,
@@ -335,8 +367,12 @@ def dict_to_penman(structure: dict):
         print('Skipping sentence due to copular construction not addressed yet.')  # TEMP, hopefully.
 
     try:
+
+        triples, var_node_mapping = correct_variable_naming(triples, var_node_mapping)
+
         g = penman.Graph(triples)
         return penman.encode(g, top=root, indent=4)
+
     except LayoutError as e:
         print(triples)
         print(f"Skipping sentence due to LayoutError: {e}")
