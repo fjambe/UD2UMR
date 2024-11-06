@@ -124,6 +124,7 @@ def personal(node,
 
     """Function to handle personal pronouns"""
 
+
     if node.feats['PronType'] == 'Prs':
         called = True
 
@@ -219,6 +220,7 @@ def coordination(node,
                  triples: list,
                  already_added: set,
                  track_conj: dict,
+                 extra_level: dict,
                  variable_name: Callable,
                  find_parent) -> tuple[list, set, dict, any]:
 
@@ -235,7 +237,6 @@ def coordination(node,
         if cc is None:
             cc = next((d for d in node.children if d.deprel == 'punct' and d.lemma == ','), None)
         cord = next((k for k, v in conjs.items() if cc and cc.lemma in v), None)
-        print(cc, cord)
         var_node_mapping = {k:v for k,v in var_node_mapping.items() if v != cc}  # remove cc for correct variable naming
         if not cord:  # coordination without conjunction/comma
             cord = 'and'
@@ -247,6 +248,7 @@ def coordination(node,
         # create variables for first two conjuncts, to set up the coordination structure
         # node.parent: 1st conjunct (true deprel), node: 2nd conjunct (deprel = conj, #1)
         var_node_mapping = dict(reversed(var_node_mapping.items()))  # so that artificial nodes have precedence
+        # have to handle abstract predicates - there's probably a smarter way to do this
         var_first_conj = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
         var_second_conj = next((k for k, v in var_node_mapping.items() if v == node), None)
 
@@ -263,8 +265,16 @@ def coordination(node,
         # Attach first and second conjuncts to the conjunction node
         triples = [tup for tup in triples if not (tup[2] == var_first_conj and tup[1] != 'instance')] # remove previous relation, if any
         arg_type = 'op' if cord != 'but-91' else 'ARG'
-        triples.append((var_name_conj, f'{arg_type}1', var_first_conj))
-        triples.append((var_name_conj, f'{arg_type}2', var_second_conj))
+
+        if var_first_conj not in extra_level:
+            triples.append((var_name_conj, f'{arg_type}1', var_first_conj))
+        else:
+            triples.append((var_name_conj, f'{arg_type}1', extra_level[var_first_conj]))
+        if var_second_conj not in extra_level:
+            triples.append((var_name_conj, f'{arg_type}2', var_second_conj))
+        else:
+            triples.append((var_name_conj, f'{arg_type}2', extra_level[var_second_conj]))
+
         if (node.upos == 'NOUN' and role != 'other') or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
             triples.append(get_number_person(node, 'number', var_node_mapping))
         already_added.update({node, node.parent})
@@ -284,8 +294,10 @@ def coordination(node,
 
 def copulas(node,
             var_node_mapping: dict,
+            extra_level: dict,
             triples: list,
-            replace_with_abstract_roleset: Callable) -> tuple[list, dict, any]:
+            replace_with_abstract_roleset: Callable,
+            copula: bool = True) -> tuple[list, dict, any]:
 
     family = {'mater', 'pater', 'filia', 'filius', 'avia', 'avus', 'neptis', 'neptis', 'soror',
               'frater', 'proavia', 'proavus', 'proneptis' , 'pronepos', 'socrus', 'socer',
@@ -310,7 +322,7 @@ def copulas(node,
         concept = 'have-quant-91'
 
     elif node.parent.feats['Case'] == 'Dat':
-        # double dative if ref-_dative else dative of possession
+        # double dative if ref_dative else dative of possession
         ref_dative = [s for s in node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
         concept = 'have-purpose-91' if ref_dative else 'belong-91'
 
@@ -326,16 +338,19 @@ def copulas(node,
         triples, var_node_mapping, root_var = replace_with_abstract_roleset(node,
                                                                             triples,
                                                                             var_node_mapping,
+                                                                            extra_level,
                                                                             concept,
-                                                                            replace_arg)
+                                                                            replace_arg,
+                                                                            overt=copula)
         return triples, var_node_mapping, root_var
+
 
     except (TypeError, AttributeError) as e:
         print(e)
         print(f"Skipping sentence due to missing copular configuration.")
 
 
-def relative_clauses(node,  # rel_pron before
+def relative_clauses(node,
                      rel_pron,
                      var_node_mapping: dict,
                      triples: list,

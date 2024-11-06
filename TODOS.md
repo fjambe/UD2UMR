@@ -1,6 +1,7 @@
 # TODO - code
 
 Next steps:
+- [testing/coding] test infinitives in copular constructions.
 - [coding] Relative clauses should be okay.
 - [coding] Big things to work on next: advcl, general structure for pronouns, quantities.
 - [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
@@ -57,12 +58,7 @@ UD trees are single-rooted, so `len(tree.children)` == 1, always.
 I could do it for 1st and 2nd person PRONs/ADJs, if they belong to the same subtree, but it would be a dirty hack. 
 The simplest option as of now is just postponing it, as done in IGT.
 Cf. _Hoc mihi dicit fatus meus_: now I have 2 distinct 1st/2nd-person nodes, but it should be the same one.
-
-
-## QUESTIONS:
-- Do you think it would be better to have the `aspect` attribute in the sentence, although without any value (just the string `:aspect` ready for the annotator to fill in the value) or not having anything at all?
-Given that I cannot extract automatically the aspect value.
-- [Matt]: do you have a smart way to reorder ARGs? For the purpose of clarity, I'd like to rearrange the order e.g. in:
+- How to reorder ARGs: for the purpose of clarity, I'd like to rearrange the order e.g. in:
 
 ```
 (h / have-mod-91
@@ -72,6 +68,13 @@ Given that I cannot extract automatically the aspect value.
     :ARG1 (f / FILL
         :refer-number plural)) 
 ```
+
+Matt said he faced the same issue and there's no straightforward strategy in Penman library to control this.
+
+
+## QUESTIONS:
+- Do you think it would be better to have the `aspect` attribute in the sentence, although without any value (just the string `:aspect` ready for the annotator to fill in the value) or not having anything at all?
+Given that I cannot extract automatically the aspect value.
 
 - [Julia] `flat` di NUMs: single number? In any case I didn't implement quantities yet.
 - [Julia] abstract rolesets seem to always have `:aspect state`: correct?

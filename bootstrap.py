@@ -120,8 +120,10 @@ def introduce_abstract_roleset(node,
 def replace_with_abstract_roleset(node,
                                   triples: list,
                                   var_node_mapping: dict,
+                                  extra_level: dict,
                                   role_aka_concept: any,
-                                  replace_arg: tuple[None, str] = None) -> tuple[list, dict, any]:
+                                  replace_arg=None,
+                                  overt=True) -> tuple[list, dict, any]:
 
         # Figure out whether it can be merged with introduce_abstract_roleset().
 
@@ -129,24 +131,26 @@ def replace_with_abstract_roleset(node,
         root_var = None
 
         var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
-
-        var_sum = next((k for k, v in var_node_mapping.items() if v == node), None)
+        var_sum = next((k for k, v in var_node_mapping.items() if v == node), None) if overt else None
         triples = [tup for tup in triples if var_sum not in tup]
 
         var_concept, var_node_mapping = variable_name(role_aka_concept, var_node_mapping)
         triples.append((var_concept, 'instance', role_aka_concept))
 
         nsubj = next((d for d in node.siblings if d.deprel == 'nsubj'), None)
-        var_nsubj = next((k for k, v in var_node_mapping.items() if v == nsubj), None)
+        var_nsubj = next((k for k, v in var_node_mapping.items() if v == nsubj), None)  if overt else next((k for k, v in var_node_mapping.items() if v == node), None)
 
         for i, tup in enumerate(triples):
             # reassigning root, if relevant
             if tup[2] == var_parent and tup[1] == 'root':
                 root_var = var_concept
                 triples[i] = (tup[0], tup[1], var_concept)
+            if tup[2] == var_parent and tup[1] == 'ARG2':
+                triples[i] = (tup[0], tup[1], var_concept)
             # reassigning nsubj (previously actor)
             elif tup[2] == var_nsubj and tup[1] == 'actor':
                 triples[i] = (var_concept, 'ARG1', tup[2])
+
 
         triples = [tup for tup in triples if tup[2] != var_parent]  # remove old role
         triples.extend([
@@ -160,7 +164,7 @@ def replace_with_abstract_roleset(node,
                 if var_n:
                     triples = [(var_concept, tup[1], tup[2]) if tup[2] == var_n else tup for tup in triples]
 
-        if nsubj is None:  # elided subjects to be restored
+        if overt and nsubj is None:  # elided subjects to be restored
             arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
             var_name, var_node_mapping, triples = l.create_node(node,
                                                                 variable_name,
@@ -168,6 +172,9 @@ def replace_with_abstract_roleset(node,
                                                                 triples,
                                                                 arg_type)
             triples.append((var_concept, 'ARG1', var_name))
+
+        extra_level[var_nsubj] = var_concept
+        extra_level[var_parent] = var_concept
 
         return triples, var_node_mapping, root_var
 
@@ -186,6 +193,7 @@ def find_parent(node_parent,
 def ud_to_umr(node,
               role: str,
               var_node_mapping: dict,
+              extra_level: dict,
               triples: list,
               already_added: set,
               track_conj: dict,
@@ -280,6 +288,7 @@ def ud_to_umr(node,
                                                                             triples,
                                                                             already_added,
                                                                             track_conj,
+                                                                            extra_level,
                                                                             variable_name,
                                                                             find_parent)
 
@@ -293,8 +302,18 @@ def ud_to_umr(node,
     elif node.deprel == 'cop':
         triples, var_node_mapping, root_var = l.copulas(node,
                                                         var_node_mapping,
+                                                        extra_level,
                                                         triples,
                                                         replace_with_abstract_roleset)
+        already_added.add(node)
+
+    elif node.deprel == 'nsubj' and node.parent.upos != 'VERB' and not [d for d in node.siblings if d.deprel == 'cop']:  # no copula
+        triples, var_node_mapping, root_var = l.copulas(node,
+                                                        var_node_mapping,
+                                                        extra_level,
+                                                        triples,
+                                                        replace_with_abstract_roleset,
+                                                        copula=False)
         already_added.add(node)
 
     elif node.deprel == 'acl:relcl':
@@ -313,6 +332,8 @@ def ud_to_umr(node,
         already_added.add(node)
         already_added.add(rel_pron)
 
+        print(triples)
+
     if node not in already_added:
         add_node(node,
                  var_node_mapping,
@@ -329,6 +350,7 @@ def dict_to_penman(structure: dict):
     triples = []
     var_node_mapping = {}
     track_conj = {}
+    extra_level = {}  # node: new_umr_parent, e.g. {ARG(1?): abstract roleset}
     already_added = set()
 
     root, relations = next(iter(structure.items()))
@@ -347,6 +369,7 @@ def dict_to_penman(structure: dict):
             triples, root_var, var_node_mapping = ud_to_umr(item,
                                                             role,
                                                             var_node_mapping,
+                                                            extra_level,
                                                             triples,
                                                             already_added,
                                                             track_conj,
@@ -361,6 +384,8 @@ def dict_to_penman(structure: dict):
     try:
         triples, var_node_mapping = correct_variable_naming(triples, var_node_mapping)
         g = penman.Graph(triples)
+        for t in triples:
+            print(t)
         return penman.encode(g, top=root, indent=4)
 
     except LayoutError as e:
