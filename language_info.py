@@ -222,15 +222,20 @@ def coordination(node,
                  variable_name: Callable,
                  find_parent) -> tuple[list, set, dict, any]:
 
-    conjs = {'or': ['vel', 'uel', 'aut'], 'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ',']}
+    conjs = {'or': ['vel', 'uel', 'aut'],
+             'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ','],
+             'but-91': ['sed', 'at']}
 
     root_var = None
 
     # create one top node for the conjunction governing the coordination
     if node.parent not in track_conj:  # node.parent is the head conjunct
         # identify conjunction type (polysyndeton or asyndeton)
-        cc = next((d for d in node.children if d.deprel == 'cc' or (d.deprel == 'punct' and d.lemma == ',')), None)
+        cc = next((d for d in node.children if d.deprel == 'cc'), None)
+        if cc is None:
+            cc = next((d for d in node.children if d.deprel == 'punct' and d.lemma == ','), None)
         cord = next((k for k, v in conjs.items() if cc and cc.lemma in v), None)
+        print(cc, cord)
         var_node_mapping = {k:v for k,v in var_node_mapping.items() if v != cc}  # remove cc for correct variable naming
         if not cord:  # coordination without conjunction/comma
             cord = 'and'
@@ -257,8 +262,9 @@ def coordination(node,
 
         # Attach first and second conjuncts to the conjunction node
         triples = [tup for tup in triples if not (tup[2] == var_first_conj and tup[1] != 'instance')] # remove previous relation, if any
-        triples.append((var_name_conj, 'op1', var_first_conj))
-        triples.append((var_name_conj, 'op2', var_second_conj))
+        arg_type = 'op' if cord != 'but-91' else 'ARG'
+        triples.append((var_name_conj, f'{arg_type}1', var_first_conj))
+        triples.append((var_name_conj, f'{arg_type}2', var_second_conj))
         if (node.upos == 'NOUN' and role != 'other') or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
             triples.append(get_number_person(node, 'number', var_node_mapping))
         already_added.update({node, node.parent})
