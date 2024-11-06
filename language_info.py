@@ -256,14 +256,19 @@ def coordination(node,
         parent, new_root = find_parent(node.parent.parent, var_node_mapping)
         for tup in triples:  # avoid clashes of abstract concepts and coordination
             if tup[2] == var_first_conj:
-                role, parent = tup[1], tup[0]
+                if var_first_conj not in extra_level:
+                    role, parent = tup[1], tup[0]
+                else:
+                # mossa bold: provare direttamente come root
+                    root_var = var_name_conj
                 break
 
         triples.append((parent, role, var_name_conj))
         track_conj[node.parent] = var_name_conj
 
         # Attach first and second conjuncts to the conjunction node
-        triples = [tup for tup in triples if not (tup[2] == var_first_conj and tup[1] != 'instance')] # remove previous relation, if any
+        if var_first_conj not in extra_level:  # TODO fare un check a tappeto che non abbia sputtanato tutto
+            triples = [tup for tup in triples if not (tup[2] == var_first_conj and tup[1] != 'instance')] # remove previous relation, if any
         arg_type = 'op' if cord != 'but-91' else 'ARG'
 
         if var_first_conj not in extra_level:
@@ -307,12 +312,12 @@ def copulas(node,
     replace_arg = None
 
     if node.parent.feats['Case'] == 'Nom' or not node.parent.feats['Case'] or (node.parent.feats['Case'] == 'Acc' and node.feats['VerbForm'] == 'Inf'):
-        if node.parent.upos in ['ADJ', 'PRON'] or (node.parent.upos == 'DET' and node.parent.feats['PronType'] != 'Prs'):  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
+        if node.parent.upos == 'ADJ' or (node.parent.upos == 'DET' and node.parent.feats['PronType'] != 'Prs'):  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
             concept = 'have-mod-91'
         elif node.parent.upos == 'DET' and node.parent.feats['PronType'] == 'Prs':
             concept= 'belong-91'
-        elif node.parent.upos == 'NOUN':
-            if node.parent.lemma in family:
+        elif node.parent.upos in ['NOUN', 'PRON']:
+            if node.parent.upos == 'NOUN' and node.parent.lemma in family:
                 concept = 'have-rel-role-92'
                 replace_arg = 'ARG3'
             else:
@@ -368,6 +373,8 @@ def relative_clauses(node,
 
     if rel_pron == node.parent:
         referent = next((k for k, v in var_node_mapping.items() if v == rel_pron), None)
+        if rel_pron.deprel == 'root':  # can't do anything about root-of, but I can at least save a root
+            triples.append((None, 'root', referent))
     elif rel_pron.parent == node:
         referent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
         if rel_pron.udeprel in ['nsubj', 'obj', 'obl']:
@@ -380,5 +387,13 @@ def relative_clauses(node,
              role,
              invert=True,
              def_parent=referent)
+
+    for i, tup in enumerate(triples):
+        if tup[1] == 'root-of': # issues with head of relative being the root
+            # look for other dependants
+            if 'nsubj' in [d.deprel for d in node.children]:
+                triples[i] = (tup[0], 'actor-of', tup[2])
+            elif 'obj' in [d.deprel for d in node.children]:
+                triples[i] = (tup[0], 'actor-of', tup[2])
 
     return triples

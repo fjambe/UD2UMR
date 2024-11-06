@@ -1,12 +1,10 @@
 # TODO - code
 
 Next steps:
-- [testing/coding] test infinitives in copular constructions.
-- [coding] Relative clauses should be okay.
+- [testing/coding] test infinitives in copular constructions. [Wed]
 - [coding] Big things to work on next: advcl, general structure for pronouns, quantities.
 - [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
 Cf. _Fluminis erat altitudo pedum circiter trium_
-- [coding] SNT: _Bene nos habemus, at isti nugae, qui tibi non imperant._ has a copular construction with no copula.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.

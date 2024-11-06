@@ -133,6 +133,9 @@ def replace_with_abstract_roleset(node,
         else:
             var_nsubj = next((k for k, v in var_node_mapping.items() if v == node), None)
 
+        extra_level[var_nsubj] = var_concept
+        extra_level[var_parent] = var_concept
+
         for i, tup in enumerate(triples):
             # reassigning root, if relevant
             if tup[2] == var_parent and tup[1] == 'root':
@@ -144,6 +147,8 @@ def replace_with_abstract_roleset(node,
             elif tup[2] == var_nsubj and tup[1] == 'actor':
                 triples[i] = (var_concept, 'ARG1', tup[2])
 
+        if var_nsubj not in [t[2] for t in triples]:
+            triples.append((var_concept, 'ARG1', var_nsubj))
 
         triples = [tup for tup in triples if tup[2] != var_parent]  # remove old role
         triples.extend([
@@ -159,7 +164,7 @@ def replace_with_abstract_roleset(node,
                     triples = [(var_concept, tup[1], tup[2]) if tup[2] == var_n else tup for tup in triples]
 
         # elided subjects to be restored
-        if overt and nsubj is None:
+        if overt and nsubj is None and node.parent.deprel != 'root':  # root check is a bit random
             arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
             var_name, var_node_mapping, triples = l.create_node(node,
                                                                 variable_name,
@@ -167,9 +172,6 @@ def replace_with_abstract_roleset(node,
                                                                 triples,
                                                                 arg_type)
             triples.append((var_concept, 'ARG1', var_name))
-
-        extra_level[var_nsubj] = var_concept
-        extra_level[var_parent] = var_concept
 
         return triples, var_node_mapping, root_var
 
@@ -244,6 +246,7 @@ def ud_to_umr(node,
                                                                       add_node,
                                                                       find_parent,
                                                                       role if role != 'det' else 'quant')
+
         # check if they substitute for nouns
         triples, var_node_mapping, called_det_pro_noun = l.det_pro_noun(node,
                                                                         var_node_mapping,
@@ -263,7 +266,8 @@ def ud_to_umr(node,
             already_added.add(node)
 
     elif node.upos == 'VERB':
-        if 'nsubj' not in [d.udeprel for d in node.children]: # elided subjects to be restored
+        # elided subjects to be restored
+        if 'nsubj' not in [d.udeprel for d in node.children] and node.parent.deprel != 'root':  # root check is a bit random
             if node.feats['Voice'] != 'Pass':
                 arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
                 var_name, var_node_mapping, triples = l.create_node(node,
@@ -313,7 +317,6 @@ def ud_to_umr(node,
         already_added.add(node)
 
     elif node.deprel == 'acl:relcl':
-
         rel_pron = next((d for d in node.descendants if d.feats.get('PronType') == 'Rel'), None)
         if not rel_pron:
             rel_pron = node.parent if node.parent.feats.get('PronType') == 'Rel' else None
