@@ -220,7 +220,7 @@ def coordination(node,
                  already_added: set,
                  track_conj: dict,
                  variable_name: Callable,
-                 find_parent) -> tuple[list, set, any]:
+                 find_parent) -> tuple[list, set, dict, any]:
 
     conjs = {'or': ['vel', 'uel', 'aut'], 'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ',']}
 
@@ -273,7 +273,7 @@ def coordination(node,
         if new_root:
             root_var = var_name_conj
 
-    return triples, already_added, root_var
+    return triples, already_added, var_node_mapping, root_var
 
 
 def copulas(node,

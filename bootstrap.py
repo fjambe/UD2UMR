@@ -274,14 +274,14 @@ def ud_to_umr(node,
     ### checking deprel ###
     if node.deprel == 'conj':
         role = next((k for k, v in relations.items() for item in v if item == node.parent), None)
-        triples, already_added, root_var = l.coordination(node,
-                                                          role,
-                                                          var_node_mapping,
-                                                          triples,
-                                                          already_added,
-                                                          track_conj,
-                                                          variable_name,
-                                                          find_parent)
+        triples, already_added, var_node_mapping, root_var = l.coordination(node,
+                                                                            role,
+                                                                            var_node_mapping,
+                                                                            triples,
+                                                                            already_added,
+                                                                            track_conj,
+                                                                            variable_name,
+                                                                            find_parent)
 
     elif node.deprel == 'appos':
         triples, var_node_mapping = introduce_abstract_roleset(node,
@@ -382,7 +382,8 @@ if __name__ == "__main__":
         auxs = [d for d in tree.descendants if d.upos == 'AUX']
         verbs = [d for d in tree.descendants if d.upos == 'VERB']
         mix = auxs + verbs
-        if ((len(auxs) == 1 and len(verbs) == 0) or (len(verbs) == 1 and len(auxs) == 0)) or (len(mix) == 2 and 'acl:relcl' in [d.deprel for d in tree.descendants if d.upos == 'VERB']):
+        if ((len(auxs) == 1 and len(verbs) == 0) or (len(verbs) == 1 and len(auxs) == 0)) or (len(mix) == 2 and 'acl:relcl' in [d.deprel for d in tree.descendants if d.upos == 'VERB']): #\
+                # and [d for d in tree.descendants if d.lemma == 'sed'] and [d for d in tree.descendants if d.deprel == 'conj']:
             print('SNT:', tree.text, '\n')
 
             # mapping deprels - roles
