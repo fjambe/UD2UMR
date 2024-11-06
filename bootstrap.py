@@ -129,6 +129,7 @@ def replace_with_abstract_roleset(node,
         root_var = None
 
         var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+
         var_sum = next((k for k, v in var_node_mapping.items() if v == node), None)
         triples = [tup for tup in triples if var_sum not in tup]
 
@@ -147,7 +148,7 @@ def replace_with_abstract_roleset(node,
             elif tup[2] == var_nsubj and tup[1] == 'actor':
                 triples[i] = (var_concept, 'ARG1', tup[2])
 
-
+        triples = [tup for tup in triples if tup[2] != var_parent]  # remove old role
         triples.extend([
             (var_concept, second_arg, var_parent),
             (var_concept, 'aspect', 'state')
@@ -226,12 +227,12 @@ def ud_to_umr(node,
 
     elif node.upos == 'DET':
         # check for PronType=Prs is inside the function
-        triples, called_possessives = l.possessives(node,
-                                                    var_node_mapping,
-                                                    triples,
-                                                    variable_name,
-                                                    find_parent,
-                                                    role)
+        triples, var_node_mapping, called_possessives = l.possessives(node,
+                                                                      var_node_mapping,
+                                                                      triples,
+                                                                      variable_name,
+                                                                      find_parent,
+                                                                      role)
         # now check for quantifiers (PronType=Tot)
         triples, var_node_mapping, called_quantifiers = l.quantifiers(node,
                                                                       var_node_mapping,
@@ -267,7 +268,7 @@ def ud_to_umr(node,
                                                                     var_node_mapping,
                                                                     triples,
                                                                     arg_type)
-                parent, new_root = find_parent(node, var_node_mapping)
+                parent, _ = find_parent(node, var_node_mapping)
                 triples.append((parent, 'actor', var_name))
 
     ### checking deprel ###
@@ -353,17 +354,12 @@ def dict_to_penman(structure: dict):
 
     # delete 'instance' tuples if they are not associated with any role.
     ignored_types = {'instance', 'refer-number', 'refer-person', 'other'}
-    try:
-        root = [t[2] for t in triples if t[1] == 'root'][0] if not root_var else root_var
-        valid = {root} | {tup[2] for tup in triples if tup[1] not in ignored_types}
-        triples = [tup for tup in triples if tup[1] not in ['root', 'other'] and (tup[1] != 'instance' or tup[0] in valid)]
-    except IndexError:
-        print('Skipping sentence due to copular construction not addressed yet.')  # TEMP, hopefully.
+    root = [t[2] for t in triples if t[1] == 'root'][0] if not root_var else root_var
+    valid = {root} | {tup[2] for tup in triples if tup[1] not in ignored_types}
+    triples = [tup for tup in triples if tup[1] not in ['root', 'other'] and (tup[1] != 'instance' or tup[0] in valid)]
 
     try:
-
         triples, var_node_mapping = correct_variable_naming(triples, var_node_mapping)
-
         g = penman.Graph(triples)
         return penman.encode(g, top=root, indent=4)
 

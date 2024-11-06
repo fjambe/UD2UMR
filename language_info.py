@@ -21,6 +21,9 @@ def create_node(node,
         old_var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
         var_node_mapping = {k: v for k, v in var_node_mapping.items() if v != node}
         triples = [x for x in triples if x[0] != old_var_name]
+        for i, tup in enumerate(triples):
+            triples[i] = tuple(new_var_name if element == old_var_name else element for element in tup)   # remove old rel
+
         var_node_mapping[new_var_name] = node
 
     triples.append((new_var_name, 'instance', category))
@@ -62,7 +65,7 @@ def possessives(node,
                 triples: list,
                 variable_name: Callable,
                 find_parent: Callable,
-                role) -> tuple[list, bool]:
+                role) -> tuple[list, dict, bool]:
     """
     Function to handle possessive constructions.
     1. Basic case: possessive adjectives
@@ -73,15 +76,13 @@ def possessives(node,
     numbers = {'Sing': 'singular', 'Plur': 'plural'}
     called = False
 
-    # proceed only if PronType is 'Prs'
     if node.feats['PronType'] != 'Prs':
-        return triples, called
+        return triples, var_node_mapping, called
 
     called = True
-
-    is_adj_noun = node.parent.upos in ['ADJ', 'NOUN', 'PROPN']
+    is_adj_noun = node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or [d for d in node.children if d.deprel == 'cop']
     is_reflexive = node.lemma == 'suus'
-    parent, new_root = find_parent(node.parent, var_node_mapping)
+    parent, _ = find_parent(node.parent, var_node_mapping)
 
     base_type = 'person' if is_adj_noun else ('thing' if node.parent.upos == 'VERB' and node.feats['Gender'] == 'Neut' else 'FILL')
     var_name, var_node_mapping, triples = create_node(node,
@@ -111,7 +112,7 @@ def possessives(node,
         if is_reflexive:
             triples.append((poss_var_name, 'refer-number', numbers.get(node.parent.feats['Number'])))
 
-    return triples, called
+    return triples, var_node_mapping, called
 
 
 def personal(node,
@@ -288,8 +289,10 @@ def copulas(node,
     replace_arg = None
 
     if node.parent.feats['Case'] == 'Nom' or not node.parent.feats['Case'] or (node.parent.feats['Case'] == 'Acc' and node.feats['VerbForm'] == 'Inf'):
-        if node.parent.upos in ['ADJ', 'DET', 'PRON']:  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
+        if node.parent.upos in ['ADJ', 'PRON'] or (node.parent.upos == 'DET' and node.parent.feats['PronType'] != 'Prs'):  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
             concept = 'have-mod-91'
+        elif node.parent.upos == 'DET' and node.parent.feats['PronType'] == 'Prs':
+            concept= 'belong-91'
         elif node.parent.upos == 'NOUN':
             if node.parent.lemma in family:
                 concept = 'have-rel-role-92'
@@ -319,7 +322,6 @@ def copulas(node,
                                                                             var_node_mapping,
                                                                             concept,
                                                                             replace_arg)
-
         return triples, var_node_mapping, root_var
 
     except (TypeError, AttributeError) as e:
