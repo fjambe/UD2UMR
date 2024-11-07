@@ -137,8 +137,8 @@ def replace_with_abstract_roleset(node,
     else:
         var_nsubj = next((k for k, v in var_node_mapping.items() if v == node), None)
 
-    extra_level[var_nsubj] = var_concept
     extra_level[var_parent] = var_concept
+    extra_level[var_nsubj] = False
 
     for i, tup in enumerate(triples):
         # reassigning root, if relevant

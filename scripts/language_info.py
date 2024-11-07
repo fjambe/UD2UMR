@@ -1,19 +1,5 @@
 from typing import Callable
-
-
-def get_rel_roles(filename: str = './external_resources/have_rel_role.txt') -> set:
-    """ Read the file with lemmas denoting interpersonal relations, that will qualify for have-rel-role-92. """
-
-    interpersonal = set()
-
-    try:
-        with open(filename, 'r') as f:
-            interpersonal = {line.strip() for line in f if line.strip()}
-    except FileNotFoundError:
-        print("File 'have_rel_role.txt' not found. No interpersonal relations will be assigned.")
-
-    return interpersonal
-
+from bootstrap import interpersonal
 
 def create_node(node,
                 variable_name: Callable,
@@ -274,13 +260,13 @@ def coordination(node,
         parent, new_root = find_parent(node.parent.parent, var_node_mapping)
         for tup in triples:  # avoid clashes of abstract concepts and coordination
             if tup[2] == var_first_conj:
-                if var_first_conj not in extra_level:
-                    role, parent = tup[1], tup[0]
-                else:
-                # mossa bold: provare direttamente come root
+                if var_first_conj in extra_level and node.parent.deprel == 'root':
                     root_var = var_name_conj
+                    break
+                role, parent = tup[1], tup[0]
                 break
 
+        triples = [tup for tup in triples if not (tup[0] == parent and tup[1] == role)]
         triples.append((parent, role, var_name_conj))
         track_conj[node.parent] = var_name_conj
 
@@ -289,14 +275,12 @@ def coordination(node,
             triples = [tup for tup in triples if not (tup[2] == var_first_conj and tup[1] != 'instance')] # remove previous relation, if any
         arg_type = 'op' if cord != 'but-91' else 'ARG'
 
-        if var_first_conj not in extra_level:
-            triples.append((var_name_conj, f'{arg_type}1', var_first_conj))
-        else:
-            triples.append((var_name_conj, f'{arg_type}1', extra_level[var_first_conj]))
-        if var_second_conj not in extra_level:
-            triples.append((var_name_conj, f'{arg_type}2', var_second_conj))
-        else:
-            triples.append((var_name_conj, f'{arg_type}2', extra_level[var_second_conj]))
+        for i, vc in enumerate([var_first_conj, var_second_conj], start=1):
+            if not extra_level.get(vc, None):
+                triples.append((var_name_conj, f'{arg_type}{i}', vc))
+            else:
+                triples.append((var_name_conj, f'{arg_type}{i}', extra_level[vc]))
+
 
         if (node.upos == 'NOUN' and role != 'other') or (node.upos == 'ADJ' and node.deprel in ['nsubj', 'obj', 'obl']):
             triples.append(get_number_person(node, 'number', var_node_mapping))
@@ -322,8 +306,6 @@ def copulas(node,
             replace_with_abstract_roleset: Callable,
             copula: bool = True) -> tuple[list, dict, any]:
     """ Handle copular constructions by assigning the correct abstract roleset to all configurations. """
-
-    interpersonal = get_rel_roles()
 
     concept = None
     replace_arg = None

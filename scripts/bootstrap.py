@@ -7,8 +7,19 @@ import penman
 from penman.exceptions import LayoutError
 import structure as s
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--treebank", default=False, help="Path of the treebank in input.")
+
+def get_rel_roles(filename: str = './external_resources/have_rel_role.txt') -> set:
+    """ Read the file with lemmas denoting interpersonal relations, that will qualify for have-rel-role-92. """
+
+    term_list = set()
+
+    try:
+        with open(filename, 'r') as f:
+            term_list = {line.strip() for line in f if line.strip()}
+    except FileNotFoundError:
+        print("File 'have_rel_role.txt' not found. No interpersonal relations will be assigned.")
+
+    return term_list
 
 
 def dict_to_penman(structure: dict):
@@ -59,6 +70,11 @@ def dict_to_penman(structure: dict):
     except LayoutError as e:
         print(triples)
         print(f"Skipping sentence due to LayoutError: {e}")
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--treebank", default=False, help="Path of the treebank in input.")
+interpersonal = get_rel_roles()
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ Next steps:
 Cf. _Fluminis erat altitudo pedum circiter trium_
 - [coding - low-hanging fruit] _habeo_ to be replaced with `have-91`. Where to put in the code?
 Is `have-91` always the correct choice?
-- [coding] move list of family terms outside, to a file.
+- [coding] `introduce_abstract_rolesets()` looks like it could be deleted and replaced by `replace_with_abstract_roleset()`.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
