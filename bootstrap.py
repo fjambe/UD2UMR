@@ -12,12 +12,12 @@ parser.add_argument("--treebank", default=False, help="Path of the treebank in i
 
 
 def dict_to_penman(structure: dict):
-    """Function to transform the nested dictionary into a Penman graph."""
+    """ Transform the nested dictionary obtained from UD into a Penman graph. """
 
     triples = []
     var_node_mapping = {}
     track_conj = {}
-    extra_level = {}  # node: new_umr_parent, e.g. {ARG(1?): var of abstract roleset}
+    extra_level = {}  # node: new_umr_parent, e.g. {var of ARG1: var of roleset-91}
     already_added = set()
 
     root, relations = next(iter(structure.items()))
@@ -34,15 +34,15 @@ def dict_to_penman(structure: dict):
     for role, node_list in relations.items():
         for item in node_list:
             triples, temp_root_var, var_node_mapping = s.ud_to_umr(item,
-                                                              role,
-                                                              var_node_mapping,
-                                                              extra_level,
-                                                              triples,
-                                                              already_added,
-                                                              track_conj,
-                                                              relations)
-            if temp_root_var is not None:
-                root_var = temp_root_var
+                                                                   role,
+                                                                   var_node_mapping,
+                                                                   extra_level,
+                                                                   triples,
+                                                                   already_added,
+                                                                   track_conj,
+                                                                   relations)
+
+            root_var = temp_root_var or root_var
 
     # delete 'instance' tuples if they are not associated with any role.
     ignored_types = {'instance', 'refer-number', 'refer-person', 'other'}
@@ -90,6 +90,7 @@ if __name__ == "__main__":
             deprels['vocative'] = [d for d in tree.descendants if d.deprel == 'vocative']
             deprels['affectee'] = [d for d in tree.descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]
             deprels['MOD/POSS'] = [d for d in tree.descendants if d.deprel == 'nmod' and d.feats['Case'] == 'Gen']
+            deprels['poss'] = [d for d in tree.descendants if d.deprel == 'nmod:poss']
             deprels['identity-91'] = [d for d in tree.descendants if d.deprel == 'appos']
             deprels['COPULA'] = [d for d in tree.descendants if d.deprel == 'cop']
             deprels['other'] = [d for d in tree.descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]

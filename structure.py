@@ -5,10 +5,8 @@ import language_info as l
 
 def variable_name(node,
                   var_node_mapping: dict) -> tuple[str, dict]:
-    """
-    Function that assigns variable names according to UMR conventions.
-    Either the first letter of the string or, if already assigned, letter + progressive numbering.
-    """
+    """ Assign variable names (the first letter of the string or, if assigned, letter + progressive numbering). """
+
     first_letter = node.lemma[0].lower() if not isinstance(node, str) else node[0].lower()
     count = 2
 
@@ -24,8 +22,7 @@ def variable_name(node,
 
 def correct_variable_naming(triples: list,
                             var_node_mapping: dict) -> tuple[list, dict]:
-
-    """ Function that returns a list of triples with corrected variable naming, if necessary. """
+    """ Returns a list of triples with corrected variable naming, if necessary. """
 
     var_pattern = re.compile(r"^([a-z])(\d*)$")
     var_groups = {}
@@ -65,10 +62,10 @@ def add_node(node,
              invert: bool = False,
              def_parent=None):
     """
-    Function that creates and adds a new node. Steps:
-    1. Associate the node lemma and its var_name, as it will be in the UMR graph
-    2. If the node is the root, its variable name is returned
-    3. Link the var_name to its parent node via their relation (called 'role'), if the node is not the root
+    Create and add a new node. Steps:
+    1. Associate the node lemma and its var_name;
+    2. If the node is the root, its variable name is returned;
+    3. Link the var_name to its parent node via their relation ('role'), if the node is not the root.
     """
 
     var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
@@ -89,6 +86,7 @@ def introduce_abstract_roleset(node,
                      triples: list,
                      var_node_mapping: dict,
                      role_aka_concept: any) -> tuple[list, dict]:
+    """ Build an instance of abstract roleset (e.g., identity-91). """
 
     # TODO: it should also work for reification in general, so it could be renamed. Decide later.
     # double check also that role inversion can be generalized.
@@ -99,9 +97,9 @@ def introduce_abstract_roleset(node,
     var_concept, var_node_mapping = variable_name(role_aka_concept, var_node_mapping)
     triples.extend([
         (var_concept, 'instance', role_aka_concept),
+        pm.invert((var_concept, 'ARG1', var_parent)),
         (var_concept, 'ARG2', var_name),
-        (var_concept, 'aspect', 'state'),
-        pm.invert((var_concept, 'ARG1', var_parent))
+        (var_concept, 'aspect', 'state')
     ])
 
     return triples, var_node_mapping
@@ -114,70 +112,81 @@ def replace_with_abstract_roleset(node,
                                   role_aka_concept: any,
                                   replace_arg=None,
                                   overt=True) -> tuple[list, dict, any]:
+    """
+    Replace a syntactic construction with a UMR abstract roleset.
+    extra_level: dictionary keeping track of nodes that have changed parent (syntactic vs. semantic) due to the
+    introduction of an abstract roleset.
+    overt: whether the predication is explicit (relates to copulas, with or without verb 'to be')
+    """
 
-        # TODO: Figure out whether it can be merged with introduce_abstract_roleset().
+    # TODO: Figure out whether it can be merged with introduce_abstract_roleset().
 
-        second_arg = 'ARG2' if not replace_arg else replace_arg
-        root_var = None
+    second_arg = 'ARG2' if not replace_arg else replace_arg
+    root_var = None
 
-        var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
-        var_sum = next((k for k, v in var_node_mapping.items() if v == node), None) if overt else None
-        triples = [tup for tup in triples if var_sum not in tup]
+    var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
+    var_sum = next((k for k, v in var_node_mapping.items() if v == node), None) if overt else None
+    triples = [tup for tup in triples if var_sum not in tup]
 
-        var_concept, var_node_mapping = variable_name(role_aka_concept, var_node_mapping)
-        triples.append((var_concept, 'instance', role_aka_concept))
+    var_concept, var_node_mapping = variable_name(role_aka_concept, var_node_mapping)
+    triples.append((var_concept, 'instance', role_aka_concept))
 
-        nsubj = next((d for d in node.siblings if d.deprel == 'nsubj'), None)
-        if overt:
-            var_nsubj = next((k for k, v in var_node_mapping.items() if v == nsubj), None)
-        else:
-            var_nsubj = next((k for k, v in var_node_mapping.items() if v == node), None)
+    nsubj = next((s for s in node.siblings if s.deprel == 'nsubj'), None)
+    if overt:
+        var_nsubj = next((k for k, v in var_node_mapping.items() if v == nsubj), None)
+    else:
+        var_nsubj = next((k for k, v in var_node_mapping.items() if v == node), None)
 
-        extra_level[var_nsubj] = var_concept
-        extra_level[var_parent] = var_concept
+    extra_level[var_nsubj] = var_concept
+    extra_level[var_parent] = var_concept
 
-        for i, tup in enumerate(triples):
-            # reassigning root, if relevant
-            if tup[2] == var_parent and tup[1] == 'root':
-                root_var = var_concept
-                triples[i] = (tup[0], tup[1], var_concept)
-            if tup[2] == var_parent and tup[1] == 'ARG2':
-                triples[i] = (tup[0], tup[1], var_concept)
-            # reassigning nsubj (previously actor)
-            elif tup[2] == var_nsubj and tup[1] == 'actor':
-                triples[i] = (var_concept, 'ARG1', tup[2])
+    for i, tup in enumerate(triples):
+        # reassigning root, if relevant
+        if tup[2] == var_parent and tup[1] == 'root':
+            root_var = var_concept
+            triples[i] = (tup[0], tup[1], var_concept)
+        if tup[2] == var_parent and tup[1] == 'ARG2':
+            triples[i] = (tup[0], tup[1], var_concept)
+        # reassigning nsubj (previously actor)
+        elif tup[2] == var_nsubj and tup[1] == 'actor':
+            triples[i] = (var_concept, 'ARG1', tup[2])
 
-        if var_nsubj not in [t[2] for t in triples]:
-            triples.append((var_concept, 'ARG1', var_nsubj))
+    if var_nsubj not in [t[2] for t in triples] and not overt:
+        triples.append((var_concept, 'ARG1', var_nsubj))
 
-        triples = [tup for tup in triples if tup[2] != var_parent]  # remove old role
-        triples.extend([
-            (var_concept, second_arg, var_parent),
-            (var_concept, 'aspect', 'state')
-        ])
+    triples = [tup for tup in triples if tup[2] != var_parent]  # remove old role
+    triples.extend([
+        (var_concept, second_arg, var_parent),
+        (var_concept, 'aspect', 'state')
+    ])
 
-        # reattach non-core (+ obl:arg) dependents of UD root to UMR abstract predicate
-        for n in node.siblings:
-            if n.udeprel in ['vocative', 'obl', 'advmod', 'discourse', 'advmod']:
-                var_n = next((k for k, v in var_node_mapping.items() if v == n), None)
-                if var_n:
-                    triples = [(var_concept, tup[1], tup[2]) if tup[2] == var_n else tup for tup in triples]
+    # reattach non-core (+ obl:arg) dependents of UD root to UMR abstract predicate
+    for n in node.siblings:
+        if n.udeprel in ['vocative', 'obl', 'advmod', 'discourse', 'advmod']:
+            var_n = next((k for k, v in var_node_mapping.items() if v == n), None)
+            if var_n:
+                triples = [(var_concept, tup[1], tup[2]) if tup[2] == var_n else tup for tup in triples]
 
-        # elided subjects to be restored
-        if overt and nsubj is None and node.parent.deprel != 'root':  # root check is a bit random
-            arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
-            var_name, var_node_mapping, triples = l.create_node(node,
-                                                                variable_name,
-                                                                var_node_mapping,
-                                                                triples,
-                                                                arg_type)
-            triples.append((var_concept, 'ARG1', var_name))
+    # elided subjects to be restored
+    rel_dep = [s for s in node.siblings if s.deprel == 'acl:relcl']
+    if overt and nsubj is None and not rel_dep:
+        arg_type = 'person' if node.feats['Person'] in ['1', '2'] else 'FILL'
+        var_name, var_node_mapping, triples = l.create_node(node,
+                                                            variable_name,
+                                                            var_node_mapping,
+                                                            triples,
+                                                            arg_type)
+        triples.append((var_concept, 'ARG1', var_name))
 
-        return triples, var_node_mapping, root_var
+    return triples, var_node_mapping, root_var
 
 
 def find_parent(node_parent,
                 var_node_mapping: dict) -> tuple[any, bool]:
+    """
+    Find the variable associated to the parent node.
+    If the parent is the root of the UD tree, a new top node for the UMR graph is returned.
+    """
 
     if node_parent.is_root():
         return None, True
@@ -195,8 +204,7 @@ def ud_to_umr(node,
               already_added: set,
               track_conj: dict,
               relations: dict) -> tuple[list, any, dict]:
-
-    """Function that maps UD information to UMR structures."""
+    """ Map UD information to UMR structures. """
 
     root_var = None
 
@@ -307,7 +315,7 @@ def ud_to_umr(node,
         already_added.add(node)
 
     # copular constructions with no overt copula
-    elif node.deprel == 'nsubj' and node.parent.upos != 'VERB' and not [d for d in node.siblings if d.deprel == 'cop']:
+    elif node.deprel == 'nsubj' and node.parent.upos != 'VERB' and not [s for s in node.siblings if s.deprel == 'cop']:
         triples, var_node_mapping, root_var = l.copulas(node,
                                                         var_node_mapping,
                                                         extra_level,

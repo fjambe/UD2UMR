@@ -1,10 +1,12 @@
 # TODO - code
 
 Next steps:
-- [testing/coding] test infinitives in copular constructions. [Wed]
-- [coding] Big things to work on next: advcl, general structure for pronouns, quantities.
+- [coding] Big things to work on next: **advcl**, general structure for pronouns, quantities.
 - [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
 Cf. _Fluminis erat altitudo pedum circiter trium_
+- [coding - low-hanging fruit] _habeo_ to be replaced with `have-91`. Where to put in the code?
+Is `have-91` always the correct choice?
+- [coding] move list of family terms outside, to a file.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -87,6 +89,9 @@ IGT said: if in 80% of the cases it's `person`, just go for `person`.
 However, going through the data, I have the feeling that in the case of 3rd person verbs it's not anywhere close to 80%. Latin topics can be crazy.
 So, what I have now is `person` when the verb is a 1st/2nd person form;
 otherwise, I have a placeholder `FILL` that the annotator will quickly replace with the correct entity (`person`/`thing`) manually. Ok?
+- Do you think it's safe to extend the non-overt-copula processing to all copular constructions?
+Basically removing the constraint "no cop in siblings", and merge the two checks.
+Result: no relying explicitly on the cop deprel. Explain the whole situa right now.
 
 ## Details:
 - `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.

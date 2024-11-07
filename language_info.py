@@ -8,11 +8,11 @@ def create_node(node,
                 replace: bool = False,
                 reflex: bool = False) -> tuple[str, dict, list]:
     """
-    Function that creates a new node. Its type is decided based on 'category'.
-    Allowed values for 'category' are: ['person','thing', 'FILL'].
-    FILL is used when it is not easy to automatically detect if the newly created node should be person or thing.
-    If True, the 'replace' parameter deletes an existing node, which is replaced by a newly created one.
-    It's e.g. the case of personal pronouns; yet, sometimes we want to insert a new node without replacing any.
+    Create a new node, whose type is decided based on 'category'. Allowed 'category' values: ['person','thing', 'FILL'].
+    FILL is used when it is not easy to automatically detect if the new node should be person or thing.
+    If True, the 'replace' parameter deletes an existing node, which is then replaced by the newly created one
+    (e.g. the case of personal pronouns).
+    If False (default), a new node is inserted without any being replaced.
     """
 
     new_var_name, var_node_mapping = variable_name(category, var_node_mapping)
@@ -41,6 +41,7 @@ def get_number_person(node,
                       feature: str,
                       var_node_mapping: dict,
                       new_var_name: str = None) -> tuple[str, str, str]:
+    """ Extract refer-number and refer-person attributes. """
 
     feats = {
         **{k: '3rd' for k in ['3', 'ille', 'hic', 'is', 'ipse']},
@@ -67,10 +68,10 @@ def possessives(node,
                 find_parent: Callable,
                 role) -> tuple[list, dict, bool]:
     """
-    Function to handle possessive constructions.
+    Handle possessive constructions.
     1. Basic case: possessive adjectives
     2. Non-reflexive 3rd person (eius): TODO
-    3. General possession: undetectable, as it's lexical. nmod:poss does not occur in Perseus.
+    3. General possession: encoded by the deprel nmod:poss, not treated here. Otherwise undetectable, because lexical.
     """
 
     numbers = {'Sing': 'singular', 'Plur': 'plural'}
@@ -80,7 +81,7 @@ def possessives(node,
         return triples, var_node_mapping, called
 
     called = True
-    is_adj_noun = node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or [d for d in node.children if d.deprel == 'cop']
+    is_adj_noun = node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or [c for c in node.children if c.deprel == 'cop']
     is_reflexive = node.lemma == 'suus'
     parent, _ = find_parent(node.parent, var_node_mapping)
 
@@ -121,8 +122,9 @@ def personal(node,
              variable_name: Callable,
              find_parent: Callable,
              role) -> tuple[list, dict, bool]:
+    """ Handle personal pronouns. """
 
-    """Function to handle personal pronouns"""
+    # TODO: could probably be expanded to handle all pronouns.
 
 
     if node.feats['PronType'] == 'Prs':
@@ -149,11 +151,12 @@ def quantifiers(node,
                 add_node: Callable,
                 find_parent: Callable,
                 role) -> tuple[list, dict, bool]:
+    """ Handle quantifiers. """
 
     if node.feats['PronType'] != 'Tot':
         return triples, var_node_mapping, False
 
-    cop_siblings = [d for d in node.siblings if d.deprel == 'cop']
+    cop_siblings = [s for s in node.siblings if s.deprel == 'cop']
     has_cop_sibling = len(cop_siblings) > 0
     called = False
 
@@ -193,8 +196,7 @@ def det_pro_noun(node,
                  variable_name: Callable,
                  find_parent,
                  role) -> tuple[list, dict, bool]:
-
-    """For cases like 'Illi negarunt' "They denied", where an entity node has to be created to replace the DETs."""
+    """ Create an entity node that replaces the DETs (e.g. 'Illi negarunt' "They denied"). """
 
     if node.deprel in ['det', 'root'] or node.feats['PronType'] != 'Dem':
         return triples, var_node_mapping, False
@@ -223,6 +225,7 @@ def coordination(node,
                  extra_level: dict,
                  variable_name: Callable,
                  find_parent) -> tuple[list, set, dict, any]:
+    """ Handle coordination by building the corresponding UMR structures. """
 
     conjs = {'or': ['vel', 'uel', 'aut'],
              'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ','],
@@ -233,9 +236,9 @@ def coordination(node,
     # create one top node for the conjunction governing the coordination
     if node.parent not in track_conj:  # node.parent is the head conjunct
         # identify conjunction type (polysyndeton or asyndeton)
-        cc = next((d for d in node.children if d.deprel == 'cc'), None)
+        cc = next((c for c in node.children if c.deprel == 'cc'), None)
         if cc is None:
-            cc = next((d for d in node.children if d.deprel == 'punct' and d.lemma == ','), None)
+            cc = next((c for c in node.children if c.deprel == 'punct' and c.lemma == ','), None)
         cord = next((k for k, v in conjs.items() if cc and cc.lemma in v), None)
         var_node_mapping = {k:v for k,v in var_node_mapping.items() if v != cc}  # remove cc for correct variable naming
         if not cord:  # coordination without conjunction/comma
@@ -285,7 +288,7 @@ def coordination(node,
         already_added.update({node, node.parent})
 
         # attach additional conjuncts, if any
-        for num, oc in enumerate((d for d in node.siblings if d.deprel == 'conj' and d not in already_added), start=3):
+        for num, oc in enumerate((s for s in node.siblings if s.deprel == 'conj' and s not in already_added), start=3):
             var_name = next((k for k, v in var_node_mapping.items() if v == oc), None)
             triples.append((var_name_conj, f'op{num}', var_name))
             triples.append(get_number_person(oc, 'number', var_node_mapping))
@@ -303,6 +306,7 @@ def copulas(node,
             triples: list,
             replace_with_abstract_roleset: Callable,
             copula: bool = True) -> tuple[list, dict, any]:
+    """ Handle copular constructions by assigning the correct abstract roleset to all configurations. """
 
     family = {'mater', 'pater', 'filia', 'filius', 'avia', 'avus', 'neptis', 'neptis', 'soror',
               'frater', 'proavia', 'proavus', 'proneptis' , 'pronepos', 'socrus', 'socer',
@@ -311,7 +315,8 @@ def copulas(node,
     concept = None
     replace_arg = None
 
-    if node.parent.feats['Case'] == 'Nom' or not node.parent.feats['Case'] or (node.parent.feats['Case'] == 'Acc' and node.feats['VerbForm'] == 'Inf'):
+    if node.parent.feats['Case'] == 'Nom' or (node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not node.parent.feats['Case']) or (node.parent.feats['Case'] == 'Acc' and node.feats['VerbForm'] == 'Inf'):
+
         if node.parent.upos == 'ADJ' or (node.parent.upos == 'DET' and node.parent.feats['PronType'] != 'Prs'):  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
             concept = 'have-mod-91'
         elif node.parent.upos == 'DET' and node.parent.feats['PronType'] == 'Prs':
@@ -331,9 +336,7 @@ def copulas(node,
         ref_dative = [s for s in node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
         concept = 'have-purpose-91' if ref_dative else 'belong-91'
 
-    # infinitives: never tested on real data # TODO
     elif node.parent.upos == 'VERB' and node.parent.feats['VerbForm'] == 'Inf':
-        # e.g. Illud erat vivere / Hoc est se ipsum traducere
         concept = 'have-identity-91'
 
     else:
@@ -361,12 +364,11 @@ def relative_clauses(node,
                      triples: list,
                      role,
                      add_node: Callable) -> list:
-
     """
-    Function to process relative clauses. Elements of a relative clause to handle:
-    1. relative pronoun (rel_prol)
-    2. predicate (node)
-    3. referent of the whole rel clause (referent)
+    Process relative clauses, by handling:
+    1. relative pronoun (rel_pron);
+    2. predicate (node);
+    3. referent of the whole relative clause (referent).
     """
 
     referent = None
