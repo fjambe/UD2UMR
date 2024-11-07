@@ -1,5 +1,20 @@
 from typing import Callable
 
+
+def get_rel_roles(filename: str = './external_resources/have_rel_role.txt') -> set:
+    """ Read the file with lemmas denoting interpersonal relations, that will qualify for have-rel-role-92. """
+
+    interpersonal = set()
+
+    try:
+        with open(filename, 'r') as f:
+            interpersonal = {line.strip() for line in f if line.strip()}
+    except FileNotFoundError:
+        print("File 'have_rel_role.txt' not found. No interpersonal relations will be assigned.")
+
+    return interpersonal
+
+
 def create_node(node,
                 variable_name: Callable,
                 var_node_mapping: dict,
@@ -308,9 +323,7 @@ def copulas(node,
             copula: bool = True) -> tuple[list, dict, any]:
     """ Handle copular constructions by assigning the correct abstract roleset to all configurations. """
 
-    family = {'mater', 'pater', 'filia', 'filius', 'avia', 'avus', 'neptis', 'neptis', 'soror',
-              'frater', 'proavia', 'proavus', 'proneptis' , 'pronepos', 'socrus', 'socer',
-              'nurus', 'gener', 'matertera', 'patruus', 'matruelis', 'patruelis'}
+    interpersonal = get_rel_roles()
 
     concept = None
     replace_arg = None
@@ -322,7 +335,7 @@ def copulas(node,
         elif node.parent.upos == 'DET' and node.parent.feats['PronType'] == 'Prs':
             concept= 'belong-91'
         elif node.parent.upos in ['NOUN', 'PRON']:
-            if node.parent.upos == 'NOUN' and node.parent.lemma in family:
+            if node.parent.upos == 'NOUN' and node.parent.lemma in interpersonal:
                 concept = 'have-rel-role-92'
                 replace_arg = 'ARG3'
             else:
