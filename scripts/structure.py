@@ -339,6 +339,14 @@ def ud_to_umr(node,
         already_added.add(node)
         already_added.add(rel_pron)
 
+    elif node.deprel == 'advcl':
+        l.adverbial_clauses(node,
+                            role,
+                            triples,
+                            var_node_mapping,
+                            add_node)
+        already_added.add(node)
+
     if node not in already_added:
         add_node(node,
                  var_node_mapping,

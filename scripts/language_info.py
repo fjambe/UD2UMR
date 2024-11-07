@@ -1,5 +1,5 @@
 from typing import Callable
-from bootstrap import interpersonal
+from bootstrap import interpersonal, advcl
 
 def create_node(node,
                 variable_name: Callable,
@@ -394,3 +394,21 @@ def relative_clauses(node,
                 triples[i] = (tup[0], 'actor-of', tup[2])
 
     return triples
+
+
+def adverbial_clauses(node,
+                      role: str,
+                      triples: list,
+                      var_node_mapping: dict,
+                      add_node: Callable):
+    """ Handle adverbial clauses. """
+
+    sconj = next((c for c in node.children if c.deprel == 'mark'), None)
+
+    if sconj and sconj.lemma in advcl:
+        role = advcl.get(sconj.lemma, {}).get('type')
+
+    add_node(node,
+             var_node_mapping,
+             triples,
+             role)

@@ -1,12 +1,16 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: **advcl**, general structure for pronouns, quantities.
+- [coding] Big things to work on next: **advcl**, general structure for pronouns, quantities, NEs.
 - [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
 Cf. _Fluminis erat altitudo pedum circiter trium_
 - [coding - low-hanging fruit] _habeo_ to be replaced with `have-91`. Where to put in the code?
 Is `have-91` always the correct choice?
 - [coding] `introduce_abstract_rolesets()` looks like it could be deleted and replaced by `replace_with_abstract_roleset()`.
+- [coding] consider using classes in the code.
+- [writing] documentation of external resources (put it in Overleaf)
+Aggiungere che _cum_ + congiuntivo (cum narrativo) è troppo polivalente per essere disambiguato in automatico.
+Idem per _ut_ + congiuntivo.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.

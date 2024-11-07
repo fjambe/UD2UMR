@@ -6,20 +6,34 @@ import udapi
 import penman
 from penman.exceptions import LayoutError
 import structure as s
+import csv
+from typing import Union
 
 
-def get_rel_roles(filename: str = './external_resources/have_rel_role.txt') -> set:
-    """ Read the file with lemmas denoting interpersonal relations, that will qualify for have-rel-role-92. """
+def get_external_files(filename: str) -> Union[set, dict]:
+    """
+    Read a file containing lemmas and return them as a set. Used for:
+    1. interpersonal relations (filename: have_rel_role.txt);
+    2. SCONJs determining the type of adverbial clauses (advcl.csv).
+    """
 
-    term_list = set()
+    extension = filename.split('.')[-1]
+    terms = set() if extension == 'txt' else dict()
 
     try:
-        with open(filename, 'r') as f:
-            term_list = {line.strip() for line in f if line.strip()}
-    except FileNotFoundError:
-        print("File 'have_rel_role.txt' not found. No interpersonal relations will be assigned.")
+        with open(f"./external_resources/{filename}", 'r') as f:
+            if extension == 'txt':
+                terms = {line.strip() for line in f if line.strip()}
+            else:
+                reader = csv.reader(f)
+                next(reader)
+                for line in reader:
+                    terms[line[0]] = {'type': line[1], 'constraint': line[2]}
 
-    return term_list
+    except FileNotFoundError:
+        print(f"File {filename.split('/')[-1]} not found. Lexical information not available.")
+
+    return terms
 
 
 def dict_to_penman(structure: dict):
@@ -74,7 +88,8 @@ def dict_to_penman(structure: dict):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--treebank", default=False, help="Path of the treebank in input.")
-interpersonal = get_rel_roles()
+interpersonal = get_external_files('have_rel_role.txt')
+advcl = get_external_files('advcl.csv')
 
 
 if __name__ == "__main__":
@@ -90,7 +105,8 @@ if __name__ == "__main__":
         auxs = [d for d in tree.descendants if d.upos == 'AUX']
         verbs = [d for d in tree.descendants if d.upos == 'VERB']
         mix = auxs + verbs
-        if ((len(auxs) == 1 and len(verbs) == 0) or (len(verbs) == 1 and len(auxs) == 0)) or (len(mix) == 2 and 'acl:relcl' in [d.deprel for d in tree.descendants if d.upos == 'VERB']):
+        if len(mix):
+        # if ((len(auxs) == 1 and len(verbs) == 0) or (len(verbs) == 1 and len(auxs) == 0)) or (len(mix) == 2 and 'acl:relcl' in [d.deprel for d in tree.descendants if d.upos == 'VERB']):
             print('SNT:', tree.text, '\n')
 
             # mapping deprels - roles
@@ -109,7 +125,8 @@ if __name__ == "__main__":
             deprels['poss'] = [d for d in tree.descendants if d.deprel == 'nmod:poss']
             deprels['identity-91'] = [d for d in tree.descendants if d.deprel == 'appos']
             deprels['COPULA'] = [d for d in tree.descendants if d.deprel == 'cop']
-            deprels['other'] = [d for d in tree.descendants if d.udeprel in ['conj', 'advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]
+            deprels['ADVCL'] = [d for d in tree.descendants if d.deprel == 'advcl']
+            deprels['other'] = [d for d in tree.descendants if d.udeprel in ['conj', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp', 'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case', 'parataxis', 'dep', 'orphan']]
 
             umr = dict_to_penman({deprels['root'][0]: {k:v for k,v in deprels.items() if v}})  # removed empty lists
             print(umr, '\n')
