@@ -305,7 +305,10 @@ def copulas(node,
             triples: list,
             replace_with_abstract_roleset: Callable,
             copula: bool = True) -> tuple[list, dict, any]:
-    """ Handle copular constructions by assigning the correct abstract roleset to all configurations. """
+    """
+    Handle copular constructions by assigning the correct abstract roleset to all configurations.
+    If a set of relational terms is provided, it is used here to assign have-rel-role-92.
+    """
 
     concept = None
     replace_arg = None
@@ -403,14 +406,19 @@ def adverbial_clauses(node,
                       triples: list,
                       var_node_mapping: dict,
                       add_node: Callable):
-    """ Handle adverbial clauses. """
+    """
+    Handle adverbial clauses.
+    If a dictionary with disambiguated SCONJs is provided, it is used here to assign more fine-grained relations.
+    """
 
     sconj = next((c for c in node.children if c.deprel == 'mark'), None)
 
     if sconj and sconj.lemma in advcl:
-        role = advcl.get(sconj.lemma, {}).get('type')
-
-    # TODO: implement grammatical checks
+        constraint = advcl.get(sconj.lemma, {}).get('constraint')
+        if constraint:
+            feat, value = constraint.split('=')
+            if sconj.parent.feats[feat] == value:
+                role = advcl.get(sconj.lemma, {}).get('type')
 
     add_node(node,
              var_node_mapping,
