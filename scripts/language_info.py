@@ -310,7 +310,7 @@ def copulas(node,
     concept = None
     replace_arg = None
 
-    if node.parent.feats['Case'] == 'Nom' or (node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not node.parent.feats['Case']) or (node.parent.feats['Case'] == 'Acc' and node.feats['VerbForm'] == 'Inf'):
+    if node.parent.feats['Case'] in ['Nom', 'Acc'] or (node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not node.parent.feats['Case']):
 
         if node.parent.upos == 'ADJ' or (node.parent.upos == 'DET' and node.parent.feats['PronType'] != 'Prs'):  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
             concept = 'have-mod-91'
@@ -322,6 +322,8 @@ def copulas(node,
                 replace_arg = 'ARG3'
             else:
                 concept = 'identity-91'
+        else:
+            concept = 'MISSING'
 
     elif node.parent.feats['NumType'] == 'Card':
         concept = 'have-quant-91'
@@ -357,7 +359,7 @@ def relative_clauses(node,
                      rel_pron,
                      var_node_mapping: dict,
                      triples: list,
-                     role,
+                     role: str,
                      add_node: Callable) -> list:
     """
     Process relative clauses, by handling:
@@ -407,6 +409,8 @@ def adverbial_clauses(node,
 
     if sconj and sconj.lemma in advcl:
         role = advcl.get(sconj.lemma, {}).get('type')
+
+    # TODO: implement grammatical checks
 
     add_node(node,
              var_node_mapping,

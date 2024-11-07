@@ -118,6 +118,7 @@ if __name__ == "__main__":
             deprels['det'] = [d for d in tree.descendants if d.deprel == 'det']
             deprels['manner'] = [d for d in tree.descendants if d.deprel == 'advmod']
             deprels['temporal'] = [d for d in tree.descendants if d.deprel == 'advmod:tmod']
+            deprels['location'] = [d for d in tree.descendants if d.deprel == 'advmod:lmod']
             deprels['quant'] = [d for d in tree.descendants if d.deprel == 'nummod']
             deprels['vocative'] = [d for d in tree.descendants if d.deprel == 'vocative']
             deprels['affectee'] = [d for d in tree.descendants if d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats['Case'] == 'Dat')]

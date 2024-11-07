@@ -126,7 +126,7 @@ def replace_with_abstract_roleset(node,
 
     var_parent = next((k for k, v in var_node_mapping.items() if v == node.parent), None)
     var_sum = next((k for k, v in var_node_mapping.items() if v == node), None) if overt else None
-    triples = [tup for tup in triples if var_sum not in tup]
+    triples = [tup for tup in triples if var_sum != tup[2]]
 
     var_concept, var_node_mapping = variable_name(role_aka_concept, var_node_mapping)
     triples.append((var_concept, 'instance', role_aka_concept))
@@ -327,7 +327,11 @@ def ud_to_umr(node,
     elif node.deprel == 'acl:relcl':
         rel_pron = next((d for d in node.descendants if d.feats.get('PronType') == 'Rel'), None)
         if not rel_pron:
-            rel_pron = node.parent if node.parent.feats.get('PronType') == 'Rel' else None
+            if node.parent.feats.get('PronType') == 'Rel':
+                rel_pron = node.parent
+            else:
+                rel_pron = next((d for d in node.descendants if d.upos == 'ADV'), None)
+
         role = next((k for k, v in relations.items() if rel_pron in v), None)
 
         triples = l.relative_clauses(node,
