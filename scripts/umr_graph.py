@@ -34,7 +34,7 @@ class UMRGraph:
         """Print out the text of the sentence."""
         print(f"SNT: {self.ud_tree.text}")
 
-    def get_variable_name(self, form):
+    def assign_variable_name(self, form):
         """
         Assign a unique variable name based on the first letter of ud_node.lemma.
         If a name is already taken, add a number suffix to make it unique.
@@ -97,24 +97,22 @@ class UMRGraph:
         First, delete 'instance' tuples if they are not associated with any roles,
         as well as other invalid triples (e.g. role is None).
         """
-
-        ignored_types = {'refer-number', 'refer-person', 'other'}
+        ignored_types = {'instance', 'refer-number', 'refer-person', 'other'}
         root = self.root_var or next((t[2] for t in self.triples if t[1] == 'root'), None)
-        valid = {root} | {tup[2] for tup in self.triples if tup[1] not in ignored_types}
-        self.triples = [tup for tup in self.triples if tup[1] not in ['root', 'other', None] and (tup[1] != 'instance' or tup[0] in valid)]
+        valid_third =  {tup[2] for tup in self.triples if tup[1] not in ignored_types}
 
-        entities_with_relations = {src for src, rel, tgt in self.triples if rel != 'instance'}
-        self.triples = [
-            tup for tup in self.triples if
-            (tup[0] in entities_with_relations) or (tup[1] == 'instance' and tup[0] in entities_with_relations)
-        ]
 
-        entities_with_relations = {src for src, rel, tgt in self.triples if rel != 'instance'}
-        self.triples = [
-            tup for tup in self.triples
-            if tup[0] in entities_with_relations or
-               (tup[1] == 'instance' and tup[0] in entities_with_relations)
-        ]
+        to_remove = []
+        for i, tup in enumerate(self.triples):
+            if not tup[1]:
+                to_remove.append(tup[2])
+            if tup[1] in ['other']:
+                to_remove.append(tup[2])
+                print('2', tup)
+            if tup[0] not in valid_third:
+              to_remove.append(tup[0])
+
+        self.triples = [tup for tup in self.triples if tup[0] not in to_remove and tup[2] not in to_remove]
 
         try:
             self.correct_variable_name()
