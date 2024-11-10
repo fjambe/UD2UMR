@@ -1,6 +1,8 @@
 import re
 import penman
 from penman.exceptions import LayoutError
+from sympy.logic.inference import valid
+
 from umr_node import UMRNode
 
 
@@ -26,13 +28,16 @@ class UMRGraph:
         self.track_conj = {}
         self.extra_level = {}  # node: new_umr_parent, e.g. {var of ARG1: var of roleset-91}
 
-
     def __repr__(self):
         return f"Sentence(Text: '{self.ud_tree.text}', nodes={self.nodes})"
 
     def display_text(self):
         """Print out the text of the sentence."""
         print(f"SNT: {self.ud_tree.text}")
+
+    def get_nodes(self):   # TODO:decidere se la voglio tenere
+        """Method to collect nodes dynamically"""
+        return [node for node in self.nodes]
 
     def assign_variable_name(self, form):
         """
@@ -56,6 +61,9 @@ class UMRGraph:
         self.var_node_mapping[var_name] = form
         lemma = form.lemma if hasattr(form, 'lemma') else form
         self.triples.append((var_name, 'instance', lemma))
+
+        if not isinstance(form, str) and form.parent.is_root():
+            self.root_var = var_name
 
         return var_name
 
@@ -97,10 +105,9 @@ class UMRGraph:
         First, delete 'instance' tuples if they are not associated with any roles,
         as well as other invalid triples (e.g. role is None).
         """
-        ignored_types = {'instance', 'refer-number', 'refer-person', 'other'}
+        ignored_types = {'instance', 'other', 'refer-number', 'refer-person', 'aspect'}
         root = self.root_var or next((t[2] for t in self.triples if t[1] == 'root'), None)
         valid_third =  {tup[2] for tup in self.triples if tup[1] not in ignored_types}
-
 
         to_remove = []
         for i, tup in enumerate(self.triples):
@@ -108,9 +115,8 @@ class UMRGraph:
                 to_remove.append(tup[2])
             if tup[1] in ['other']:
                 to_remove.append(tup[2])
-                print('2', tup)
-            if tup[0] not in valid_third:
-              to_remove.append(tup[0])
+            if tup[0] not in valid_third and tup[0] != self.root_var:
+                to_remove.append(tup[0])
 
         self.triples = [tup for tup in self.triples if tup[0] not in to_remove and tup[2] not in to_remove]
 
@@ -126,4 +132,21 @@ class UMRGraph:
     def find_node_by_role(self, role: str) -> list[UMRNode]:  # TODO: think if I want to keep it
         """Find and return nodes by their role."""
         return [node for node in self.nodes if node.role == role]
+
+    def find_in_triples(self, variable, position):
+        """
+        Check if there is at least one triple in triples where the third element iis equal to the given variable.
+
+        Args:
+            variable: the value to compare against the n element of each triple.
+            position: the position (1, 2, 3) of the element to compare against.
+
+        Returns:
+        int: The index of the first triple with the specified element equal to the given variable,
+             or -1 if no such element is found.
+        """
+        for i, triple in enumerate(self.triples):
+            if variable == triple[position]:
+                return i
+        return -1
 
