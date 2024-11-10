@@ -78,7 +78,6 @@ def add_node(node,
     if not invert:
         triples.append((parent, role, var_name))
     else:
-        var_name = next((k for k, v in var_node_mapping.items() if v == node), None)
         triples.append(pm.invert((var_name, role, def_parent)))
 
 

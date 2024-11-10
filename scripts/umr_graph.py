@@ -135,7 +135,7 @@ class UMRGraph:
 
     def find_in_triples(self, variable, position):
         """
-        Check if there is at least one triple in triples where the third element iis equal to the given variable.
+        Check if there is at least one triple in triples where the third element is equal to the given variable.
 
         Args:
             variable: the value to compare against the n element of each triple.
@@ -149,4 +149,35 @@ class UMRGraph:
             if variable == triple[position]:
                 return i
         return -1
+
+    def find_and_remove_from_triples(self, variable, position):
+        """
+        Find and remove the first triple in `self.triples` where the specified element matches the given variable
+        at the specified position.
+
+        Args:
+            variable: The value to compare against the element of each triple.
+            position: The position (0, 1, 2) of the element to compare against.
+        """
+        index = self.find_in_triples(variable, position)
+        if index != -1:
+            del self.triples[index]
+
+    def find_and_replace_in_triples(self, variable_to_find, position, replacement, position_2):
+        """
+        Find and replace the first triple in `self.triples` where the specified element matches the given variable
+        at the specified position.
+
+        Args:
+            variable_to_find: The value to compare against the element of each triple.
+            position: The position (0, 1, 2) of the element to compare against.
+            replacement: The value to replace the queried variable.
+            position_2: The position (0, 1, 2) of the element to replace.
+        """
+        index = self.find_in_triples(variable_to_find, position)
+        if index != -1:
+            triple = list(self.triples[index])
+            triple[position_2] = replacement
+            self.triples[index] = tuple(triple)
+
 

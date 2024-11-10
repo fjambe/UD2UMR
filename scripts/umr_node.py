@@ -1,9 +1,8 @@
 from penman.models.amr import model as pm
 from preprocess import interpersonal, advcl
 
-
 class UMRNode:
-    def __init__(self, ud_node, umr_graph, role: str = "", var_parent = None):
+    def __init__(self, ud_node, umr_graph, role: str = "", already_added=False):
         """
         Initialize a Node with the corresponding Udapi node and its associated role.
 
@@ -15,35 +14,23 @@ class UMRNode:
         self.ud_node = ud_node
         self.umr_graph = umr_graph
         self.role = role
-        self.parent = var_parent
+        self.parent = None
         self.var_name = self.umr_graph.assign_variable_name(ud_node)
-        self.already_added = False
-        self.called_pron = False
-        self.called_quantifiers = False
-        self.called_possessives = False
-        self.called_det_pro_noun = False
+        self.already_added = already_added
 
         if not isinstance(self.ud_node, str):
-            parent, _ = self.find_parent(self.ud_node.parent)
-            self.parent_var_name = parent
+            var_parent, _ = self.find_parent(self.ud_node.parent)
+            self.parent_var_name = var_parent
+            # self.parent = self.find_by_ud_node(umr_graph, self.ud_node.parent)  # MESSES UP EVERYTHING
         else:
             self.parent_var_name = None
 
         self.umr_graph.nodes.append(self)
 
-
     def __repr__(self):
         return (f"Node(token='{self.ud_node.form if not isinstance(self.ud_node, str) else self.ud_node}', "
                 f"role='{self.role}', var_name='{self.var_name}', already_added={self.already_added}, "
-                f"parent_var_name='{self.parent_var_name}')")
-
-    @classmethod
-    def collect_nodes(cls, umr_graph, role_filter=None):  # TODO decidere se lo voglio tenere
-        """Method to collect nodes dynamically with optional role filtering"""
-        nodes = umr_graph.get_nodes()
-        if role_filter:
-            return [node for node in nodes if node.role == role_filter]
-        return nodes
+                f"parent={self.parent}, parent_var_name='{self.parent_var_name}')")
 
     @classmethod
     def find_by_ud_node(cls, umr_graph, ud_node):
@@ -65,8 +52,8 @@ class UMRNode:
     def find_parent(self, query_node):
         """ Find the variable associated to the parent node. """
 
-        # TODO: next could be replace by find_by_ud_node, but it's not as trivial as it seems and I get disconnected graphs
-
+        # TODO: 'next' could be replace by find_by_ud_node, but it's not as trivial as it seems and I get disconnected graphs
+        # the problem lies in artificial nodes.
         var_parent = next((k for k, v in self.umr_graph.var_node_mapping.items() if v == query_node), None)
         if query_node == self.ud_node.parent:
             self.parent_var_name = var_parent
@@ -80,8 +67,8 @@ class UMRNode:
         # double check also that role inversion can be generalized.
 
         var_parent, _ = self.find_parent(self.ud_node.parent)
-        self.umr_graph.triples = [tup for tup in self.umr_graph.triples if tup[1] != role_aka_concept]
-        concept = UMRNode(role_aka_concept, self.umr_graph)
+        self.umr_graph.find_and_remove_from_triples(role_aka_concept, 1)
+        concept = UMRNode(role_aka_concept, self.umr_graph, already_added=True)
         self.umr_graph.triples.extend([
             pm.invert((concept.var_name, 'ARG1', var_parent)),
             (concept.var_name, 'ARG2', self.var_name),
@@ -100,14 +87,12 @@ class UMRNode:
 
         second_arg = 'ARG2' if not replace_arg else replace_arg
 
-        var_sum = self.var_name if overt else None
-        self.umr_graph.triples = [tup for tup in self.umr_graph.triples if var_sum != tup[2]]
-
-        concept_node = UMRNode(role_aka_concept, self.umr_graph)
+        concept_node = UMRNode(role_aka_concept, self.umr_graph, already_added=True)
 
         nsubj = next((s for s in self.ud_node.siblings if s.deprel == 'nsubj'), None)
         if overt:
             nsubj_node = UMRNode.find_by_ud_node(self.umr_graph, nsubj)
+            self.umr_graph.find_and_remove_from_triples(self.var_name, 2)
         else:
             nsubj_node = self.var_name
 
@@ -120,12 +105,8 @@ class UMRNode:
         for i, tup in enumerate(self.umr_graph.triples):
             if tup[2] == self.parent_var_name:
                 self.umr_graph.triples[i] = (tup[0], tup[1], concept_node.var_name)
-            index = self.umr_graph.find_in_triples(nsubj_node.var_name, 2)
-            if index != -1:
-                self.umr_graph.triples.remove(self.umr_graph.triples[index])
-            # index = self.umr_graph.find_in_triples(self.parent_var_name, 2)
-            # if index != -1:
-            #     self.umr_graph.triples.remove(self.umr_graph.triples[index])
+            self.umr_graph.find_and_remove_from_triples(nsubj_node.var_name, 2)
+            # self.umr_graph.find_and_remove_from_triples(self.parent_var_name, 2)
 
         self.umr_graph.triples.extend([
             (concept_node.var_name, 'ARG1', nsubj_node.var_name),
@@ -136,20 +117,16 @@ class UMRNode:
         nsubj_node.parent, nsubj_node.parent_var_name = concept_node, concept_node.var_name
         nsubj_node.role = 'ARG1'
         nsubj_node.already_added = True
-        concept_node.already_added = True
 
         # reattach non-core (+ obl:arg) dependents of UD root to UMR abstract predicate
         for n in self.ud_node.siblings:
             if n.udeprel in ['vocative', 'obl', 'advmod', 'discourse', 'advmod']:
                 n = UMRNode.find_by_ud_node(self.umr_graph, n)
                 if n:
-                    n.parent_var_name = concept_node.var_name
                     n.parent = concept_node
-                    index = self.umr_graph.find_in_triples(n.var_name, 2)
-                    if index != -1:
-                        triple = list(self.umr_graph.triples[index])
-                        triple[0] = concept_node.var_name
-                        self.umr_graph.triples[index] = tuple(triple)
+                    n.parent_var_name = concept_node.var_name
+                    # index = self.umr_graph.find_in_triples(n.var_name, 2)
+                    self.umr_graph.find_and_replace_in_triples(n.var_name, 2, concept_node.var_name, 0)
 
         # elided subjects to be restored
         rel_dep = [s for s in self.ud_node.siblings if s.deprel == 'acl:relcl']
@@ -186,88 +163,83 @@ class UMRNode:
 
         root_var = None
 
-        if self.ud_node.deprel == 'root':
-            self.add_node(self.role)
-            if not self.umr_graph.root_var:
-                self.umr_graph.root_var = self.var_name
-            self.already_added = True
-
-        ### checking UPOS ###
-        if self.ud_node.upos == 'PRON':
-            self.personal()
-
-            # TODO: do something with non-personal pronouns, here.
-            if self.called_pron:
-                self.already_added = True
-
-        elif (self.ud_node.upos == 'NOUN' and self.role != 'other') or (
-                self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
-
-            self.add_node(self.role)
-            self.umr_graph.triples.append(self.get_number_person('number'))
-            self.already_added = True
-
-        elif self.ud_node.upos == 'DET':
-            self.possessives()
-            self.quantifiers(self.role if self.role != 'det' else 'quant')
-            self.det_pro_noun()
-            if self.called_possessives or self.called_quantifiers or self.called_det_pro_noun:
-                self.already_added = True
-
-            elif self.ud_node.deprel == 'det':
-                self.add_node('mod')
-                self.already_added = True
-
-        elif self.ud_node.upos == 'VERB':
-            # elided subjects to be restored
-            if 'nsubj' not in [d.udeprel for d in
-                               self.ud_node.children] and self.ud_node.parent.deprel != 'root':  # root check is a bit random
-                if self.ud_node.feats['Voice'] != 'Pass':
-                    arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
-                    new_node = self.create_node(arg_type)
-                    parent, _ = self.find_parent(self.ud_node)
-                    self.umr_graph.triples.append((parent, 'actor', new_node.var_name))
-
-        ### checking deprel ###
-        if self.ud_node.deprel == 'conj':
-            role = next((k for k, v in self.umr_graph.deprels.items() for item in v if item == self.ud_node.parent), None)
-            already_added, root_var = self.coordination(role)
-        elif self.ud_node.deprel == 'appos':
-            self.introduce_abstract_roleset(self.role)
-            self.already_added = True
-
-        elif self.ud_node.deprel == 'cop':
-            self.copulas()
-            self.already_added = True
-
-        # copular constructions with no overt copula
-        elif self.ud_node.deprel == 'nsubj' and self.ud_node.parent.upos != 'VERB' and not [s for s in self.ud_node.siblings if
-                                                                            s.deprel == 'cop']:
-            self.copulas(copula=False)
-
-            self.already_added = True
-
-        elif self.ud_node.deprel == 'acl:relcl':
-            rel_pron = next((d for d in self.ud_node.descendants if d.feats.get('PronType') == 'Rel'), None)
-            if not rel_pron:
-                if self.ud_node.parent.feats.get('PronType') == 'Rel':
-                    rel_pron = self.ud_node.parent
-                else:
-                    rel_pron = next((d for d in self.ud_node.descendants if d.upos == 'ADV'), None)
-
-            rel_pron_node = UMRNode.find_by_ud_node(self.umr_graph, rel_pron)
-
-            self.relative_clauses(rel_pron_node.ud_node, rel_pron_node.role)
-            self.already_added = True
-            rel_pron_node.already_added = True
-
-        elif self.ud_node.deprel == 'advcl':
-            self.adverbial_clauses()
-            self.already_added = True
-
         if not self.already_added:
-            self.add_node(self.role)
-            self.already_added = True
+
+            if self.ud_node.deprel == 'root':
+                self.add_node(self.role)
+                if not self.umr_graph.root_var:
+                    self.umr_graph.root_var = self.var_name
+                self.already_added = True
+
+            ### checking UPOS ###
+            if self.ud_node.upos == 'PRON':
+                self.personal()
+                # TODO: do something with non-personal pronouns, here.
+
+            elif (self.ud_node.upos == 'NOUN' and self.role != 'other') or (
+                    self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
+
+                self.add_node(self.role)
+                self.get_number_person('number')
+                self.already_added = True
+
+            elif self.ud_node.upos == 'DET':
+                self.possessives()
+                self.quantifiers(self.role if self.role != 'det' else 'quant')
+                self.det_pro_noun()
+
+                if self.ud_node.deprel == 'det':
+                    self.add_node('mod')
+                    self.already_added = True
+
+            elif self.ud_node.upos == 'VERB':
+                # elided subjects to be restored
+                if 'nsubj' not in [d.udeprel for d in
+                                   self.ud_node.children] and self.ud_node.parent.deprel != 'root':  # root check is a bit random
+                    if self.ud_node.feats['Voice'] != 'Pass':
+                        arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
+                        new_node = self.create_node(arg_type)
+                        parent, _ = self.find_parent(self.ud_node)
+                        self.umr_graph.triples.append((parent, 'actor', new_node.var_name))
+
+            ### checking deprel ###
+            if self.ud_node.deprel == 'conj':
+                role = next((k for k, v in self.umr_graph.deprels.items() for item in v if item == self.ud_node.parent), None)
+                root_var = self.coordination(role)
+            elif self.ud_node.deprel == 'appos':
+                self.introduce_abstract_roleset(self.role)
+                self.already_added = True
+
+            elif self.ud_node.deprel == 'cop':
+                self.copulas()
+                self.already_added = True
+
+            # copular constructions with no overt copula
+            elif self.ud_node.deprel == 'nsubj' and self.ud_node.parent.upos != 'VERB' and not [s for s in self.ud_node.siblings if
+                                                                                s.deprel == 'cop']:
+                self.copulas(copula=False)
+
+            elif self.ud_node.deprel == 'acl:relcl':
+                rel_pron = next((d for d in self.ud_node.descendants if d.feats.get('PronType') == 'Rel'), None)
+                if not rel_pron:
+                    if self.ud_node.parent.feats.get('PronType') == 'Rel':
+                        rel_pron = self.ud_node.parent
+                    else:
+                        rel_pron = next((d for d in self.ud_node.descendants if d.upos == 'ADV'), None)
+
+                rel_pron_node = UMRNode.find_by_ud_node(self.umr_graph, rel_pron)
+
+                self.relative_clauses(rel_pron_node)
+                self.already_added = True
+                rel_pron_node.already_added = True
+
+            elif self.ud_node.deprel == 'advcl':
+                self.adverbial_clauses()
+                self.already_added = True
+
+            # else:
+            #     self.add_node(self.role)
+            #     self.already_added = True
 
         self.umr_graph.root_var = root_var if root_var else self.umr_graph.root_var
 
@@ -278,23 +250,17 @@ class UMRNode:
 
         # TODO: could probably be expanded to handle all pronouns.
         if self.ud_node.feats['PronType'] == 'Prs':
-            self.called_pron = True
 
-            pron = self.create_node('person' if self.ud_node.feats['Gender'] != 'Neut' else 'thing', replace=True)
+            pron = self.create_node('person' if self.ud_node.feats['Gender'] != 'Neut' else 'thing', self.role, replace=True)
+            pron.already_added = True
+            self.already_added = True
 
-            for t in self.umr_graph.triples:
-                print(t)
-            index = self.umr_graph.find_in_triples(self.var_name, 2)
-            if index != -1:
-                triple = list(self.umr_graph.triples[index])
-                triple[2] = pron.var_name
-                self.umr_graph.triples[index] = tuple(triple)
-
-            parent, _ = self.find_parent(self.ud_node.parent)
-            self.umr_graph.triples.append((parent, self.role, pron.var_name))
+            self.umr_graph.find_and_replace_in_triples(self.var_name, 2, pron.var_name, 2)
+            self.umr_graph.triples.append((self.parent_var_name, self.role, pron.var_name))
 
     def create_node(self,
                     category: str,
+                    role: str = "",
                     replace: bool = False,
                     reflex: bool = False):
         """
@@ -305,28 +271,26 @@ class UMRNode:
         If False (default), a new node is inserted without any being replaced.
         """
 
-
-        new_node = UMRNode(category, self.umr_graph)
+        new_node = UMRNode(category, self.umr_graph, role=role, already_added=True)
 
         if replace:
             del self.umr_graph.var_node_mapping[self.var_name]
-            triples = [x for x in self.umr_graph.triples if x[0] != self.var_name]
-            for i, tup in enumerate(triples):
-                triples[i] = tuple(new_node.var_name if el == self.var_name else el for el in tup)  # remove old rel
-
             self.umr_graph.var_node_mapping[new_node.var_name] = self.ud_node
+            self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
+            self.umr_graph.find_and_replace_in_triples(self.var_name, 2, new_node.var_name, 2)
 
         if category == 'person':
-            self.umr_graph.triples.append(self.get_number_person('person', new_node.var_name))
+            self.get_number_person('person', new_node.var_name)
 
         if not reflex:
-            self.umr_graph.triples.append(self.get_number_person('number', new_node.var_name))
+            self.get_number_person('number', new_node.var_name)
 
         return new_node
 
     def get_number_person(self,
                           feature: str,
-                          new_var_name: str = None):
+                          new_var_name: str = None,
+                          given_feat: str = None):
         """ Extract refer-number and refer-person attributes. """
 
         feats = {
@@ -338,11 +302,14 @@ class UMRNode:
         }
 
         var_name = new_var_name if new_var_name else self.var_name
-        feat = feats.get(
-            self.ud_node.feats.get(f"{feature.capitalize()}[psor]") or self.ud_node.feats.get(feature.capitalize()) or self.ud_node.lemma,
-            'FILL')
+        if not given_feat:
+            feat = feats.get(
+                self.ud_node.feats.get(f"{feature.capitalize()}[psor]") or self.ud_node.feats.get(feature.capitalize()) or self.ud_node.lemma,
+                'FILL')
+        else:
+            feat = given_feat
 
-        return var_name, f'refer-{feature}', feat
+        self.umr_graph.triples.append((var_name, f'refer-{feature}', feat))
 
     def possessives(self):
         """
@@ -355,7 +322,7 @@ class UMRNode:
         numbers = {'Sing': 'singular', 'Plur': 'plural'}
 
         if self.ud_node.feats['PronType'] == 'Prs':
-            self.called_possessives = True
+            self.already_added = True
             is_adj_noun = self.ud_node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or [c for c in self.ud_node.children if c.deprel == 'cop']
             is_reflexive = self.ud_node.lemma == 'suus'
             parent, _ = self.find_parent(self.ud_node.parent)
@@ -367,14 +334,15 @@ class UMRNode:
 
             if is_reflexive:
                 refer_number = numbers.get(self.ud_node.feats['Number'] if not is_adj_noun else self.ud_node.parent.parent.feats['Number'])
-                self.umr_graph.triples.append((self.var_name, 'refer-number', refer_number))
+                self.get_number_person('number', given_feat=refer_number)
 
             # attaching the possessive itself
             if self.ud_node.parent.upos == 'VERB':
                 poss = self.create_node('person', replace=True, reflex=is_reflexive)
                 self.umr_graph.triples.append((self.var_name, 'poss', poss.var_name))
                 if is_reflexive:
-                    self.umr_graph.triples.append((poss.var_name, 'refer-number', numbers.get(self.ud_node.parent.feats['Number'])))
+                    self.get_number_person('number', new_var_name=poss.var_name,
+                                           given_feat=numbers.get(self.ud_node.parent.feats['Number']))
 
 
     def quantifiers(self, role):
@@ -386,11 +354,11 @@ class UMRNode:
             has_cop_sibling = len(cop_siblings) > 0
 
             if self.ud_node.deprel == 'det' and not has_cop_sibling:
-                self.called_quantifiers = True
+                self.already_added = True
                 self.add_node(role)
 
             elif self.ud_node.deprel != 'det' or (self.ud_node.deprel == 'det' and len(cop_siblings) == 1):
-                self.called_quantifiers = True
+                self.already_added = True
                 new_node = self.create_node('thing' if self.ud_node.feats['Gender'] == 'Neut' else 'FILL')
 
                 parent, _ = self.find_parent(self.ud_node.parent)
@@ -405,7 +373,7 @@ class UMRNode:
 
         if not (self.ud_node.deprel in ['det', 'root'] or self.ud_node.feats['PronType'] != 'Dem'):
 
-            self.called_det_pro_noun = True
+            self.already_added = True
             type_arg = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person'  # maybe FILL is better
 
             new_node = self.create_node(type_arg, replace=True)
@@ -433,13 +401,13 @@ class UMRNode:
             if not cord:  # coordination without conjunction/comma
                 cord = 'and'
             if cc:
-                self.umr_graph.triples = [tup for tup in self.umr_graph.triples if tup[2] != cc.lemma]
-            var_name_conj = self.umr_graph.assign_variable_name(cord)
-            self.umr_graph.triples.append((var_name_conj, 'instance', cord))
+                self.umr_graph.find_and_remove_from_triples(cc.lemma, 2)
+
+            conj = UMRNode(cord, self.umr_graph, already_added=True)
 
             # create variables for first two conjuncts, to set up the coordination structure
             # node.parent: 1st conjunct (true deprel), node: 2nd conjunct (deprel = conj, #1)
-            var_node_mapping = dict(reversed(var_node_mapping.items()))  # so that artificial nodes have precedence
+            var_node_mapping = dict(reversed(var_node_mapping.items()))  # so that artificial nodes have precedence ###?
             # have to handle abstract predicates - there's probably a smarter way to do this
             var_first_conj = next((k for k, v in var_node_mapping.items() if v == self.ud_node.parent), None)
             var_second_conj = next((k for k, v in var_node_mapping.items() if v == self.ud_node), None)
@@ -449,41 +417,41 @@ class UMRNode:
             for tup in self.umr_graph.triples:  # avoid clashes of abstract concepts and coordination
                 if tup[2] == var_first_conj:
                     if var_first_conj in self.umr_graph.extra_level and self.ud_node.parent.deprel == 'root':
-                        root_var = var_name_conj
+                        root_var = conj.var_name
                         break
                     role, parent = tup[1], tup[0]
                     break
 
-            triples = [tup for tup in self.umr_graph.triples if not (tup[0] == parent and tup[1] == role)]
-            triples.append((parent, role, var_name_conj))
-            self.umr_graph.track_conj[self.ud_node.parent] = var_name_conj
+            self.umr_graph.triples = [tup for tup in self.umr_graph.triples if not (tup[0] == parent and tup[1] == role)]
+            self.umr_graph.triples.append((parent, role, conj.var_name))
+            self.umr_graph.track_conj[self.ud_node.parent] = conj.var_name
 
             # Attach first and second conjuncts to the conjunction node
             if var_first_conj not in self.umr_graph.extra_level:  # TODO fare un check a tappeto che non abbia sputtanato tutto
-                triples = [tup for tup in triples if
+                self.umr_graph.triples = [tup for tup in self.umr_graph.triples if
                            not (tup[2] == var_first_conj and tup[1] != 'instance')]  # remove previous relation, if any
             arg_type = 'op' if cord != 'but-91' else 'ARG'
 
             for i, vc in enumerate([var_first_conj, var_second_conj], start=1):
                 if not self.umr_graph.extra_level.get(vc, None):
-                    triples.append((var_name_conj, f'{arg_type}{i}', vc))
+                    self.umr_graph.triples.append((conj.var_name, f'{arg_type}{i}', vc))
                 else:
-                    triples.append((var_name_conj, f'{arg_type}{i}', self.umr_graph.extra_level[vc]))
+                    self.umr_graph.triples.append((conj.var_name, f'{arg_type}{i}', self.umr_graph.extra_level[vc]))
 
-            if (self.ud_node.upos == 'NOUN' and role != 'other') or (
-                    self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
-                self.umr_graph.triples.append(self.get_number_person('number'))
-            # already_added.update({self.ud_node, self.ud_node.parent}) # TODO - FIX
+            if (self.ud_node.upos == 'NOUN' and role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
+                self.get_number_person('number')
+                self.already_added = True
+                UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent).already_added = True
 
             # attach additional conjuncts, if any
-            for num, oc in enumerate((s for s in self.ud_node.siblings if s.deprel == 'conj'), start=3): # and s not in already_added), start=3):
-                var_name = next((k for k, v in var_node_mapping.items() if v == oc), None)
-                self.umr_graph,triples.append((var_name_conj, f'op{num}', var_name))
-                self.umr_graph.triples.append(self.get_number_person(oc, 'number'))  # TODO - FIX
-                # already_added.add(oc) # TODO - FIX
+            for i, oc in enumerate((s for s in self.ud_node.siblings if s.deprel == 'conj'), start=3):
+                if not UMRNode.find_by_ud_node(self.umr_graph, oc).already_added:
+                    oc_node = UMRNode(oc, self.umr_graph, role=f'op{i}', already_added=True)
+                    self.umr_graph.triples.append((conj.var_name, oc_node.role, oc_node.var_name))
+                    oc_node.get_number_person('number')
 
             if new_root:
-                root_var = var_name_conj
+                root_var = conj.var_name
 
         return root_var
 
@@ -530,12 +498,13 @@ class UMRNode:
 
         try:
             self.replace_with_abstract_roleset(concept, replace_arg, overt=copula)
+            self.already_added = True
 
         except (TypeError, AttributeError) as e:
             print(e)
             print(f"Skipping sentence due to missing copular configuration.")
 
-    def relative_clauses(self, rel_pron, role):
+    def relative_clauses(self, rel_pron_node):
         """
         Process relative clauses, by handling:
         1. relative pronoun (rel_pron);
@@ -545,17 +514,16 @@ class UMRNode:
 
         referent = None
 
-        if rel_pron == self.ud_node.parent:
-            referent = next((k for k, v in self.umr_graph.var_node_mapping.items() if v == rel_pron), None)
-            if rel_pron.deprel == 'root':  # can't do anything about root-of, but I can at least save a root
+        if rel_pron_node.ud_node == self.ud_node.parent:
+            referent = next((k for k, v in self.umr_graph.var_node_mapping.items() if v == rel_pron_node), None)
+            if rel_pron_node.deprel == 'root':  # can't do anything about root-of, but I can at least save a root
                 self.umr_graph.triples.append((None, 'root', referent))
-        elif rel_pron.parent == self.ud_node:
+        elif rel_pron_node.ud_node.parent == self.ud_node:
             referent = next((k for k, v in self.umr_graph.var_node_mapping.items() if v == self.ud_node.parent), None)
-            if rel_pron.udeprel in ['nsubj', 'obj', 'obl']:
-                var_pron = next((k for k, v in self.umr_graph.var_node_mapping.items() if v == rel_pron), None)
-                self.umr_graph.triples = [tup for tup in self.umr_graph.triples if var_pron not in [tup[0], tup[2]]]  # remove rel_pron
+            if rel_pron_node.ud_node.udeprel in ['nsubj', 'obj', 'obl']:
+                self.umr_graph.find_and_remove_from_triples(rel_pron_node.var_name, 2)
 
-        self.add_node(role, invert=True, def_parent=referent)
+        self.add_node(rel_pron_node.role, invert=True, def_parent=referent)
 
         for i, tup in enumerate(self.umr_graph.triples):
             if tup[1] == 'root-of':  # issues with head of relative being the root
@@ -563,8 +531,7 @@ class UMRNode:
                 if 'nsubj' in [d.deprel for d in self.ud_node.children]:
                     self.umr_graph.triples[i] = (tup[0], 'actor-of', tup[2])
                 elif 'obj' in [d.deprel for d in self.ud_node.children]:
-                    self.umr_graph.triples[i] = (tup[0], 'actor-of', tup[2])
-
+                    self.umr_graph.triples[i] = (tup[0], 'patient-of', tup[2])
 
     def adverbial_clauses(self):
         """
