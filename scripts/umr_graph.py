@@ -3,24 +3,28 @@ import penman
 from penman.exceptions import LayoutError
 from umr_node import UMRNode
 
-
 class UMRGraph:
     def __init__(self, ud_tree, deprels):
         """
-        Initialize a UMRGraph for a sentence, mainly with:
-        - a dictionary mapping UD deprels to UMR roles,
-        - a root variable,
-        - a list of nodes that are part of the graph,
-        - a list to store all triples that will compose the graph.
+        Initializes a UMRGraph instance to represent a sentence UMR graph.
+
+        Attributes:
+            ud_tree: The UD tree (Udapi Node).
+            deprels (dict): A dictionary mapping UD dependency relations to UMR roles.
+            self.root_var (str, optional): A variable representing the root of the UMR graph.
+            self.nodes (list[UMRNode]): A list of UMRNode instances representing the nodes in the UMR graph.
+            self.triples (list[tuple]): A list of triples that will form the UMR graph.
+            self.track_conj (dict): A dictionary tracking conjunctions in the graph.
+            self.extra_level (dict): A mapping of UMR nodes to additional parent nodes, mostly for abstract roles.
 
         Args:
-            ud_tree: The UD tree as from Udapi.
+            ud_tree: The UD tree representing syntactic dependencies in the sentence.
+            deprels (dict): A dictionary mapping UD dependency relations to UMR roles.
         """
         self.ud_tree = ud_tree
         self.deprels = deprels
         self.root_var = None
         self.nodes: list[UMRNode] = []
-        self.var_node_mapping = {}
         self.triples = []
         self.track_conj = {}
         self.extra_level = {}  # node: new_umr_parent, e.g. {var of ARG1: var of roleset-91}
@@ -31,8 +35,6 @@ class UMRGraph:
     @property
     def variable_names(self):
         """
-        A property that collects the 'var_name' attribute from all nodes in the graph.
-
         Returns:
             list: A list of 'var_name' values from each node in self.nodes.
         """
@@ -74,7 +76,6 @@ class UMRGraph:
         Return a list of triples with corrected variable naming, if necessary.
         Corrects variable names by organizing them by letter, ensuring sequential numbering.
         """
-
         var_pattern = re.compile(r"^([a-z])(\d*)$")
         var_groups = {}
 
@@ -116,7 +117,6 @@ class UMRGraph:
         - removes the triple with the relative pronoun from self.triples,
         - updates the role of the specular, inverted triple to match the node's role, but keeping it inverted.
         """
-
         for node in self.nodes:
             if hasattr(node, 'check_needed') and node.check_needed:
                 removed_triple = self.find_and_remove_from_triples(node.var_name, 2, return_value=True)
@@ -135,7 +135,6 @@ class UMRGraph:
         First, delete 'instance' tuples if they are not associated with any roles,
         as well as other invalid triples (e.g. role is None).
         """
-
         self.remove_duplicate_triples()
         self.postprocessing_checks()
         self.triples = [tup for tup in self.triples if tup[1] != 'other']  # other is a temp label

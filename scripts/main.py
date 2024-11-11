@@ -18,8 +18,8 @@ if __name__ == "__main__":
 
     for tree in doc.trees:
 
+        # restricting the scope - temporary
         verbs = [d for d in tree.descendants if d.upos == 'VERB']
-
         if len(verbs) == 1:
 
             deprels_to_relations = pr.get_deprels(tree)
@@ -34,8 +34,6 @@ if __name__ == "__main__":
             # Second loop: assign initial parents after all nodes have been created.
             for n in sent_tree.nodes:
                 n.parent = n.find_by_ud_node(sent_tree, n.ud_node.parent)
-                if n.parent:
-                    n.parent_var_name = n.parent.var_name
 
             # Third loop: create relations between variables and build the UMR structure.
             for n in sent_tree.nodes:

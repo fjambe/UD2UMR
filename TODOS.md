@@ -105,6 +105,6 @@ None
 
 
 ## CLASSES:
-- clean code, including docstrings [SUN]
+- clean code from TODOs
 - function to reorder triples given a hierarchy.
-- check extra_level and track_conj.
+- check extra_level and track_conj. credo si possano sostituire con qualcosa di più trasparente.
