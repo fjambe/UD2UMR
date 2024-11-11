@@ -90,6 +90,26 @@ class UMRNode:
                 children.append(node)
         return children
 
+    @classmethod
+    def reattach_dependents(cls, umr_graph, old_parent, new_parent, remove=False):
+        """
+        Reassigns dependents of an old parent node to a new parent node within a UMR graph.
+        If `remove` is set to `True`, it also updates self.triples to reflect the new parent.
+
+        Args:
+            umr_graph (UMRGraph): The graph containing the nodes and triples.
+            old_parent (UMRNode): The node whose dependents are being reassigned.
+            new_parent (UMRNode): The node to which the dependents will be reassigned.
+            remove (bool, optional): If `True`, replaces occurrences of `old_parent` in self.triples
+                                     with `new_parent`. Default is `False`.
+        """
+        deps = UMRNode.find_children_by_parent(umr_graph, old_parent)
+        if deps:
+            for d in deps:
+                d.parent = new_parent
+                if remove:
+                    umr_graph.find_and_replace_in_triples(d.var_name, 2, new_parent.var_name, 0)
+
     def introduce_abstract_roleset(self, role_aka_concept):
         """
         Introduces an abstract roleset instance (e.g., "identity-91").
@@ -177,12 +197,8 @@ class UMRNode:
             (concept_node.var_name, 'aspect', 'state')
         ])
 
-        # reassign parent
-        deps = UMRNode.find_children_by_parent(self.umr_graph, self.parent)
-        if deps:
-            for d in deps:
-                d.parent = concept_node
-                self.umr_graph.find_and_replace_in_triples(d.var_name, 2, concept_node.var_name, 0)
+        # reattach dependents
+        UMRNode.reattach_dependents(self.umr_graph, self.parent, concept_node)
 
         # elided subjects to be restored
         rel_dep = [s for s in self.ud_node.siblings if s.deprel == 'acl:relcl']
@@ -208,7 +224,6 @@ class UMRNode:
             if self.parent:
                 parent = self.parent.var_name
             else:
-                print('cosa faccio qui? add_node')
                 parent = None
         else:
             parent = def_parent
@@ -246,7 +261,6 @@ class UMRNode:
 
             elif (self.ud_node.upos == 'NOUN' and self.role != 'other') or (
                     self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
-
                 self.add_node(self.role)
                 self.get_number_person('number')
                 self.already_added = True
@@ -383,10 +397,7 @@ class UMRNode:
             self.umr_graph.triples.append((self.parent.var_name, self.role, pron.var_name))
 
             # reattach dependents
-            deps = UMRNode.find_children_by_parent(self.umr_graph, self)
-            if deps:
-                for d in deps:
-                    d.parent = pron
+            UMRNode.reattach_dependents(self.umr_graph, self, pron)
 
     def possessives(self):
         """
@@ -454,6 +465,9 @@ class UMRNode:
             new_node = self.create_node(type_arg, replace=True)
             new_node.parent = self.parent
             self.umr_graph.triples.append((self.parent.var_name, self.role, new_node.var_name))
+
+            # reattach dependents
+            UMRNode.reattach_dependents(self.umr_graph, self, new_node)
 
     def coordination(self, role):
         """ Handle coordination by building the corresponding UMR structures. """
