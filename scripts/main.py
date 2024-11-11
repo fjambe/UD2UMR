@@ -26,12 +26,16 @@ if __name__ == "__main__":
             if node.deprel not in ['aux', 'case', 'punct', 'mark']:
                 role = pr.get_role_from_deprel(node, deprels_to_relations)
                 item = UMRNode(node, sent_tree, role=role)
-                # sent_tree.nodes.append(item)
 
-        # Second loop: create relations between variables and build the UMR structure.
+        # Second loop: assign initial parents after all nodes have been created.
+        for n in sent_tree.nodes:
+            n.parent = n.find_by_ud_node(sent_tree, n.ud_node.parent)
+            if n.parent:
+                n.parent_var_name = n.parent.var_name
+
+        # Third loop: create relations between variables and build the UMR structure.
         for n in sent_tree.nodes:
             if not isinstance(n.ud_node, str):
-                n.parent_var_name, _ = n.find_parent(n.ud_node.parent)
                 n.ud_to_umr()
 
         umr = sent_tree.to_penman()

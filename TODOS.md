@@ -106,7 +106,5 @@ None
 
 ## CLASSES:
 - replace the use of var_node_mapping {}
-- clean code
-- fix rel_pron...o forse no, per ora.
-- parent in init UMRNode
-- capire perchè aggiungere l'else alla fine di ud to umr mi scombina i piani con castra dorica
+- clean code, eincluding docstrings [SUN]
+- sembra non servire storare esplictiamente parent_var_name. alla fine controlla e nel caso elimina.

@@ -1,8 +1,6 @@
 import re
 import penman
 from penman.exceptions import LayoutError
-from sympy.logic.inference import valid
-
 from umr_node import UMRNode
 
 
@@ -99,12 +97,35 @@ class UMRGraph:
 
         return corrected_triples
 
+    def postprocessing_checks(self):
+        """
+        Checks if 'check_needed' is True for all nodes in the graph.
+        For each node where 'check_needed' is True, the necessary checks are implemented.
+
+        For complex relative clauses, it
+        - removes the triple with the relative pronoun from self.triples,
+        - updates the role of the specular, inverted triple to match the node's role, but keeping it inverted.
+        """
+
+        for node in self.nodes:
+            if hasattr(node, 'check_needed') and node.check_needed:
+                removed_triple = self.find_and_remove_from_triples(node.var_name, 2, return_value=True)
+
+                if removed_triple:
+                    for triple in self.triples:
+                        if triple[1].endswith('-of') and triple[2] == removed_triple[0]:
+                            new_role = node.role.split('-')[0] + '-of'
+                            self.triples.append((triple[0], new_role, triple[2]))
+                            self.triples.remove(triple)
+                            break
+
     def to_penman(self):
         """
         Transform the nested dictionary obtained from UD into a Penman graph.
         First, delete 'instance' tuples if they are not associated with any roles,
         as well as other invalid triples (e.g. role is None).
         """
+        self.postprocessing_checks()
         ignored_types = {'instance', 'other', 'refer-number', 'refer-person', 'aspect'}
         root = self.root_var or next((t[2] for t in self.triples if t[1] == 'root'), None)
         valid_third =  {tup[2] for tup in self.triples if tup[1] not in ignored_types}
@@ -150,7 +171,7 @@ class UMRGraph:
                 return i
         return -1
 
-    def find_and_remove_from_triples(self, variable, position):
+    def find_and_remove_from_triples(self, variable, position, return_value=False):
         """
         Find and remove the first triple in `self.triples` where the specified element matches the given variable
         at the specified position.
@@ -162,6 +183,9 @@ class UMRGraph:
         index = self.find_in_triples(variable, position)
         if index != -1:
             del self.triples[index]
+
+        if return_value:
+            return self.triples[index]
 
     def find_and_replace_in_triples(self, variable_to_find, position, replacement, position_2):
         """
