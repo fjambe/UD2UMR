@@ -108,6 +108,41 @@ class UMRGraph:
         """ Removes duplicate triples from self.triples. """
         self.triples = list(set(self.triples))
 
+    def reorder_triples(self):
+        """
+        Reorders the list of triples stored in `self.triples` based on a predefined hierarchy for the
+        second element in each triple, in order to mirror the natural order of manual annotation.
+        The ordering hierarchy is as follows:
+
+        1. Triples with 'instance' as the second element have the highest priority.
+        2. Triples with 'actor' or 'ARG1' as the second element are next in priority.
+        3. Triples with 'patient' or 'ARG2' as the second element come after that.
+        4. Next, triples with 'affectee' as the second element.
+        5. Other elements not specifically listed (excluding 'refer-number' and 'refer-person').
+        6. Finally, triples with 'aspect' come last among specified elements.
+        7. 'refer-number' and 'refer-person' appear at the end.
+        """
+        hierarchy_order = {
+            'instance': 0,
+            'actor': 1,
+            'patient': 2,
+            'ARG1': 3,
+            'ARG2': 4,
+            'affectee': 5,
+            'refer-person': 6,
+            'refer-number': 7,
+            'aspect': 8
+        }
+
+        def get_priority(triple):
+            priority = hierarchy_order.get(triple[1], 4)
+
+            # if triple[1] in ['refer-number', 'refer-person']:
+            #     priority = 4
+            return priority
+
+        self.triples = sorted(self.triples, key=get_priority)
+
     def postprocessing_checks(self):
         """
         Checks if 'check_needed' is True for all nodes in the graph.
@@ -153,6 +188,7 @@ class UMRGraph:
 
         try:
             self.correct_variable_name()
+            self.reorder_triples()
             g = penman.Graph(self.triples)
             return penman.encode(g, top=root, indent=4)
 

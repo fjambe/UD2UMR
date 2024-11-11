@@ -106,5 +106,4 @@ None
 
 ## CLASSES:
 - clean code from TODOs
-- function to reorder triples given a hierarchy.
 - check extra_level and track_conj. credo si possano sostituire con qualcosa di più trasparente.
