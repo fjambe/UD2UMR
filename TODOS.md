@@ -105,6 +105,6 @@ None
 
 
 ## CLASSES:
-- replace the use of var_node_mapping {}
-- clean code, eincluding docstrings [SUN]
-- sembra non servire storare esplictiamente parent_var_name. alla fine controlla e nel caso elimina.
+- clean code, including docstrings [SUN]
+- function to reorder triples given a hierarchy.
+- check extra_level and track_conj.

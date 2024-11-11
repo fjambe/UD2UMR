@@ -11,7 +11,6 @@ class UMRGraph:
         - a dictionary mapping UD deprels to UMR roles,
         - a root variable,
         - a list of nodes that are part of the graph,
-        - a dictionary to store variable mappings and prepare to add nodes,
         - a list to store all triples that will compose the graph.
 
         Args:
@@ -29,13 +28,19 @@ class UMRGraph:
     def __repr__(self):
         return f"Sentence(Text: '{self.ud_tree.text}', nodes={self.nodes})"
 
+    @property
+    def variable_names(self):
+        """
+        A property that collects the 'var_name' attribute from all nodes in the graph.
+
+        Returns:
+            list: A list of 'var_name' values from each node in self.nodes.
+        """
+        return [node.var_name for node in self.nodes if hasattr(node, 'var_name')]
+
     def display_text(self):
         """Print out the text of the sentence."""
         print(f"SNT: {self.ud_tree.text}")
-
-    def get_nodes(self):   # TODO:decidere se la voglio tenere
-        """Method to collect nodes dynamically"""
-        return [node for node in self.nodes]
 
     def assign_variable_name(self, form):
         """
@@ -51,12 +56,11 @@ class UMRGraph:
         first_letter = form.lemma[0].lower() if hasattr(form, 'lemma') else form[0].lower()
         count = 2
 
-        if first_letter in self.var_node_mapping:
-            while f"{first_letter}{count}" in self.var_node_mapping:
+        if first_letter in self.variable_names:
+            while f"{first_letter}{count}" in self.variable_names:
                 count += 1
 
-        var_name = first_letter if first_letter not in self.var_node_mapping else f"{first_letter}{count}"
-        self.var_node_mapping[var_name] = form
+        var_name = first_letter if first_letter not in self.variable_names else f"{first_letter}{count}"
         lemma = form.lemma if hasattr(form, 'lemma') else form
         self.triples.append((var_name, 'instance', lemma))
 
@@ -66,12 +70,15 @@ class UMRGraph:
         return var_name
 
     def correct_variable_name(self):
-        """ Return a list of triples with corrected variable naming, if necessary. """
+        """
+        Return a list of triples with corrected variable naming, if necessary.
+        Corrects variable names by organizing them by letter, ensuring sequential numbering.
+        """
 
         var_pattern = re.compile(r"^([a-z])(\d*)$")
         var_groups = {}
 
-        for var in self.var_node_mapping.keys():
+        for var in self.variable_names:
             match = var_pattern.match(var)
             if match:
                 base_letter = match.group(1)
@@ -81,14 +88,13 @@ class UMRGraph:
         renaming_map = {}
 
         for base_letter, variables in var_groups.items():
-            variables.sort()
+            variables.sort()  # Sort by number
 
             for new_number, (current_number, var) in enumerate(variables, start=1):
                 new_var = f"{base_letter}{new_number if new_number > 1 else ''}"
 
                 if new_var != var:
                     renaming_map[var] = new_var
-                    self.var_node_mapping[new_var] = self.var_node_mapping.pop(var)
 
         corrected_triples = [
             (renaming_map.get(var, var), relation, renaming_map.get(value, value))
@@ -96,6 +102,10 @@ class UMRGraph:
         ]
 
         return corrected_triples
+
+    def remove_duplicate_triples(self):
+        """ Removes duplicate triples from self.triples. """
+        self.triples = list(set(self.triples))
 
     def postprocessing_checks(self):
         """
@@ -125,16 +135,17 @@ class UMRGraph:
         First, delete 'instance' tuples if they are not associated with any roles,
         as well as other invalid triples (e.g. role is None).
         """
+
+        self.remove_duplicate_triples()
         self.postprocessing_checks()
-        ignored_types = {'instance', 'other', 'refer-number', 'refer-person', 'aspect'}
+        self.triples = [tup for tup in self.triples if tup[1] != 'other']  # other is a temp label
+        ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect'}
         root = self.root_var or next((t[2] for t in self.triples if t[1] == 'root'), None)
         valid_third =  {tup[2] for tup in self.triples if tup[1] not in ignored_types}
 
         to_remove = []
         for i, tup in enumerate(self.triples):
             if not tup[1]:
-                to_remove.append(tup[2])
-            if tup[1] in ['other']:
                 to_remove.append(tup[2])
             if tup[0] not in valid_third and tup[0] != self.root_var:
                 to_remove.append(tup[0])
@@ -179,13 +190,14 @@ class UMRGraph:
         Args:
             variable: The value to compare against the element of each triple.
             position: The position (0, 1, 2) of the element to compare against.
+            return_value: If True, the matching triple is returned.
         """
         index = self.find_in_triples(variable, position)
         if index != -1:
             del self.triples[index]
 
-        if return_value:
-            return self.triples[index]
+            if return_value:
+                return self.triples[index]
 
     def find_and_replace_in_triples(self, variable_to_find, position, replacement, position_2):
         """
