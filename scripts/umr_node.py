@@ -20,6 +20,7 @@ class UMRNode:
             self.parent (Optional[UMRNode]): The parent UMRNode of this node; initialized as None and set during processing.
             self.already_added (bool): Tracks whether this node has been added to the graph to prevent duplicates.
             self.check_needed (bool): A flag indicating if further checks are required for this node; initialized as False.
+            self.extra_level (bool): A flag indicating if the node is involved in an abstract roleset construction; initialized as False.
             """
         self.ud_node = ud_node
         self.umr_graph = umr_graph
@@ -28,12 +29,13 @@ class UMRNode:
         self.parent = None
         self.already_added = already_added
         self.check_needed = False
+        self.extra_level = False
         self.umr_graph.nodes.append(self)
 
     def __repr__(self):
         return (f"Node(token='{self.ud_node.form if not isinstance(self.ud_node, str) else self.ud_node}', "
-                f"role='{self.role}', var_name='{self.var_name}', already_added={self.already_added}, "
-                f"parent={self.parent.var_name}')")
+                f"role='{self.role}', var_name='{self.var_name}', extra_level={self.extra_level}, "
+                f"parent={self.parent}')")
 
     @classmethod
     def find_by_ud_node(cls, umr_graph, ud_node):
@@ -142,9 +144,10 @@ class UMRNode:
         else:
             nsubj_node = None
 
-        self.umr_graph.extra_level[self.parent.var_name] = concept_node.var_name  #?? TODO check
+        self.parent.extra_level = True
         if nsubj:
-            self.umr_graph.extra_level[nsubj_node.var_name] = False  #?? TODO check
+            nsubj_node.extra_level = True
+            nsubj_node.parent = concept_node
 
         if self.umr_graph.root_var == self.parent.var_name:
             self.umr_graph.root_var = concept_node.var_name
@@ -152,12 +155,15 @@ class UMRNode:
         for i, tup in enumerate(self.umr_graph.triples):
             if tup[2] == self.parent.var_name:
                 self.umr_graph.triples[i] = (tup[0], tup[1], concept_node.var_name)
-            if nsubj:
+            if nsubj and not nsubj_node.extra_level:
                 self.umr_graph.find_and_remove_from_triples(nsubj_node.var_name, 2)
-                # self.umr_graph.find_and_remove_from_triples(self.parent.var_name, 2)
 
         if nsubj:
-            self.umr_graph.triples.append((concept_node.var_name, 'ARG1', nsubj_node.var_name))
+            if nsubj not in self.umr_graph.track_conj:
+                self.umr_graph.triples.append((concept_node.var_name, 'ARG1', nsubj_node.var_name))
+            else:
+                self.umr_graph.triples.append((concept_node.var_name, 'ARG1', self.umr_graph.track_conj[nsubj]))
+                self.umr_graph.find_and_remove_from_triples(self.umr_graph.track_conj[nsubj], 2)
             nsubj_node.parent, nsubj_node.parent.var_name = concept_node, concept_node.var_name
             nsubj_node.role = 'ARG1'
             nsubj_node.already_added = True
@@ -167,14 +173,11 @@ class UMRNode:
             (concept_node.var_name, 'aspect', 'state')
         ])
 
-        # reattach non-core (+ obl:arg) dependents of UD root to UMR abstract predicate
-        for n in self.ud_node.siblings:
-            if n.udeprel in ['vocative', 'obl', 'advmod', 'discourse', 'advmod']:
-                n = UMRNode.find_by_ud_node(self.umr_graph, n)
-                if n:
-                    n.parent = concept_node
-                    n.parent.var_name = concept_node.var_name
-                    self.umr_graph.find_and_replace_in_triples(n.var_name, 2, concept_node.var_name, 0)
+        deps = UMRNode.find_children_by_parent(self.umr_graph, self.parent)
+        if deps:
+            for d in deps:
+                d.parent = concept_node
+                self.umr_graph.find_and_replace_in_triples(d.var_name, 2, concept_node.var_name, 0)
 
         # elided subjects to be restored
         rel_dep = [s for s in self.ud_node.siblings if s.deprel == 'acl:relcl']
@@ -458,8 +461,10 @@ class UMRNode:
 
             conj = UMRNode(cord, self.umr_graph, already_added=True)
 
-            var_first_conj = self.parent
-            var_second_conj = self
+            arg_type = 'op' if cord != 'but-91' else 'ARG'
+
+            first_conj = self.parent
+            second_conj = self
             role = role
             if not self.ud_node.parent.parent.is_root():
                 parent = self.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)
@@ -469,34 +474,26 @@ class UMRNode:
                 parent = None
 
             for tup in self.umr_graph.triples:  # avoid clashes of abstract concepts and coordination
-                if tup[2] == var_first_conj.var_name:
-                    if var_first_conj.var_name in self.umr_graph.extra_level and self.ud_node.parent.deprel == 'root':
+                if tup[2] == first_conj.var_name:
+                    print(tup, 'qua')
+                    if self.ud_node.parent.deprel == 'root':
                         root_var = conj.var_name
                         break
-                    role, parent = tup[1], tup[0]  # TODO: cos'è????
+                    role, parent = tup[1], tup[0]
                     break
 
             self.umr_graph.triples = [tup for tup in self.umr_graph.triples if not (tup[0] == parent and tup[1] == role)]
             self.umr_graph.triples.append((parent, role, conj.var_name))
             self.umr_graph.track_conj[self.ud_node.parent] = conj.var_name
 
-            # Attach first and second conjuncts to the conjunction node
-            if var_first_conj not in self.umr_graph.extra_level:  # TODO fare un check a tappeto che non abbia sputtanato tutto
-                self.umr_graph.triples = [tup for tup in self.umr_graph.triples if
-                           not (tup[2] == var_first_conj and tup[1] != 'instance')]  # remove previous relation, if any
-            arg_type = 'op' if cord != 'but-91' else 'ARG'
-
-            for i, vc in enumerate([var_first_conj, var_second_conj], start=1):
-                if not self.umr_graph.extra_level.get(vc, None):
-                    self.umr_graph.triples.append((conj.var_name, f'{arg_type}{i}', vc.var_name))
-                else:
-                    self.umr_graph.triples.append((conj.var_name, f'{arg_type}{i}', self.umr_graph.extra_level[vc.var_name]))
+            for i, vc in enumerate([first_conj, second_conj], start=1):
+                self.umr_graph.triples.append((conj.var_name, f'{arg_type}{i}', vc.var_name))
                 vc.parent = conj
 
             if (self.ud_node.upos == 'NOUN' and role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
                 self.get_number_person('number')
-                var_first_conj.already_added = True
-                var_first_conj.already_added = True
+                first_conj.already_added = True
+                first_conj.already_added = True
 
             # attach additional conjuncts, if any
             for i, oc in enumerate((s for s in self.ud_node.siblings if s.deprel == 'conj'), start=3):

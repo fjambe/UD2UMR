@@ -121,7 +121,9 @@ class UMRGraph:
         5. Other elements not specifically listed (excluding 'refer-number' and 'refer-person').
         6. Finally, triples with 'aspect' come last among specified elements.
         7. 'refer-number' and 'refer-person' appear at the end.
+        8. Roles named 'op1', 'op2', 'op3', etc., are ordered by increasing number (op1 has the highest priority).
         """
+
         hierarchy_order = {
             'instance': 0,
             'actor': 1,
@@ -135,11 +137,16 @@ class UMRGraph:
         }
 
         def get_priority(triple):
-            priority = hierarchy_order.get(triple[1], 4)
+            role = triple[1]
 
-            # if triple[1] in ['refer-number', 'refer-person']:
-            #     priority = 4
-            return priority
+            if role.startswith('op'):
+                try:
+                    op_number = int(role[2:])
+                    return 9 + op_number
+                except ValueError:
+                    return 10
+
+            return hierarchy_order.get(role, 10)
 
         self.triples = sorted(self.triples, key=get_priority)
 
@@ -152,6 +159,7 @@ class UMRGraph:
         - removes the triple with the relative pronoun from self.triples,
         - updates the role of the specular, inverted triple to match the node's role, but keeping it inverted.
         """
+        ##### relative clauses #####
         for node in self.nodes:
             if hasattr(node, 'check_needed') and node.check_needed:
                 removed_triple = self.find_and_remove_from_triples(node.var_name, 2, return_value=True)
@@ -193,12 +201,9 @@ class UMRGraph:
             return penman.encode(g, top=root, indent=4)
 
         except LayoutError as e:
-            print(self.triples)
+            for n in self.triples:
+                print(n)
             print(f"Skipping sentence due to LayoutError: {e}")
-
-    def find_node_by_role(self, role: str) -> list[UMRNode]:  # TODO: think if I want to keep it
-        """Find and return nodes by their role."""
-        return [node for node in self.nodes if node.role == role]
 
     def find_in_triples(self, variable, position):
         """
@@ -250,5 +255,3 @@ class UMRGraph:
             triple = list(self.triples[index])
             triple[position_2] = replacement
             self.triples[index] = tuple(triple)
-
-

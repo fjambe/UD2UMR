@@ -102,8 +102,3 @@ Result: no relying explicitly on the cop deprel. Explain the whole situa right n
 
 ## ERRORS TO FIX:
 None
-
-
-## CLASSES:
-- clean code from TODOs
-- check extra_level and track_conj. credo si possano sostituire con qualcosa di più trasparente.
