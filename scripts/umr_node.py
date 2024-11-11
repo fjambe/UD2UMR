@@ -1,3 +1,4 @@
+from defer import return_value
 from penman.models.amr import model as pm
 from preprocess import interpersonal, advcl
 
@@ -145,6 +146,9 @@ class UMRNode:
             nsubj_node = None
 
         self.parent.extra_level = True
+        concept_node.parent = self.parent.parent
+        self.parent.parent = concept_node
+
         if nsubj:
             nsubj_node.extra_level = True
             nsubj_node.parent = concept_node
@@ -173,6 +177,7 @@ class UMRNode:
             (concept_node.var_name, 'aspect', 'state')
         ])
 
+        # reassign parent
         deps = UMRNode.find_children_by_parent(self.umr_graph, self.parent)
         if deps:
             for d in deps:
@@ -199,16 +204,28 @@ class UMRNode:
             def_parent (str, optional): The default parent to use if no parent is assigned to the current node.
             If not provided, `self.parent.var_name` will be used if `self.parent` is not available. Defaults to None.
         """
-        if not self.parent:
-            parent = def_parent
+        if not def_parent:
+            if self.parent:
+                parent = self.parent.var_name
+            else:
+                print('cosa faccio qui? add_node')
+                parent = None
         else:
-            parent = self.parent.var_name
+            parent = def_parent
 
         if self.umr_graph.find_in_triples(self.var_name, 2) == -1:
             if not invert:
                 self.umr_graph.triples.append((parent, role, self.var_name))
             else:
-                self.umr_graph.triples.append(pm.invert((self.var_name, role, def_parent)))
+                self.umr_graph.triples.append(pm.invert((self.var_name, role, parent)))
+
+        elif self.extra_level:
+            if not invert:
+                self.umr_graph.triples.append((parent, role, self.parent.var_name))
+            else:
+                self.umr_graph.triples.append(pm.invert((self.parent.var_name, role, parent)))
+        else:
+            pass # figure it out
 
     def ud_to_umr(self):
         """ Map UD information to UMR structures. """
@@ -475,7 +492,6 @@ class UMRNode:
 
             for tup in self.umr_graph.triples:  # avoid clashes of abstract concepts and coordination
                 if tup[2] == first_conj.var_name:
-                    print(tup, 'qua')
                     if self.ud_node.parent.deprel == 'root':
                         root_var = conj.var_name
                         break
@@ -563,11 +579,15 @@ class UMRNode:
             if rel_pron_node.ud_node.deprel == 'root':  # can't do anything about root-of, but I can at least save a root
                 self.umr_graph.triples.append((None, 'root', referent))
         elif rel_pron_node.ud_node.parent == self.ud_node:
-            referent = self.parent.var_name if self.parent else None
+            if not self.extra_level:
+                referent = self.parent.var_name if self.parent else None
+            else:
+                referent = self.parent.parent.var_name if self.parent.parent else None
             if rel_pron_node.ud_node.udeprel in ['nsubj', 'obj', 'obl']:
                 self.umr_graph.find_and_remove_from_triples(rel_pron_node.var_name, 2)
 
         self.add_node(rel_pron_node.role, invert=True, def_parent=referent)
+        self.umr_graph.find_and_remove_from_triples(rel_pron_node.var_name, 2)
         rel_pron_node.check_needed = True
 
         for i, tup in enumerate(self.umr_graph.triples):  # TODO: this whole thing might go away

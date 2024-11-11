@@ -162,6 +162,7 @@ class UMRGraph:
         ##### relative clauses #####
         for node in self.nodes:
             if hasattr(node, 'check_needed') and node.check_needed:
+
                 removed_triple = self.find_and_remove_from_triples(node.var_name, 2, return_value=True)
 
                 if removed_triple:
@@ -234,10 +235,12 @@ class UMRGraph:
         """
         index = self.find_in_triples(variable, position)
         if index != -1:
+            triple_to_return = self.triples[index]
+
             del self.triples[index]
 
             if return_value:
-                return self.triples[index]
+                return triple_to_return
 
     def find_and_replace_in_triples(self, variable_to_find, position, replacement, position_2):
         """
