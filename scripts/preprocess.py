@@ -66,7 +66,7 @@ def get_external_files(filename: str) -> Union[set, dict]:
                 reader = csv.reader(f)
                 next(reader)
                 for line in reader:
-                    terms[line[0]] = {'type': line[1], 'constraint': line[2]}
+                    terms[line[0]] = {'type': line[1], 'constraint': line[2].split('|') if line[2] else None}
 
     except FileNotFoundError:
         print(f"File {filename.split('/')[-1]} not found. Lexical information not available.")

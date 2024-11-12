@@ -36,7 +36,7 @@ if __name__ == "__main__":
             if not isinstance(n.ud_node, str):
                 n.ud_to_umr()
 
-        # Forth pass: replace pronouns and determiners that are supposed to correspond to a UMR entity.
+        # Fourth pass: replace pronouns and determiners that are supposed to correspond to a UMR entity.
         # They are processed separately to avoid clashes with layered constructions (e.g., abstract rolesets).
         for n in sent_tree.nodes:
             n.replace_entities()

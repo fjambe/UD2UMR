@@ -277,11 +277,6 @@ class UMRNode:
                 self.entity = True
                 # TODO: do something with non-personal pronouns, here.
 
-            elif (self.ud_node.upos == 'NOUN' and self.role != 'other') or (
-                    self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):  # TODO: might be merged with leftover add_role
-                self.add_node(self.role)
-                self.get_number_person('number')
-
             elif self.ud_node.upos == 'DET':
                 self.determiners_initial()
 
@@ -324,12 +319,15 @@ class UMRNode:
             elif self.ud_node.deprel == 'advcl':
                 self.adverbial_clauses()
 
+            elif self.ud_node.deprel == 'advmod:neg':
+                self.umr_graph.triples.append((self.parent.var_name, 'modal-strength', 'full-negative'))
+
             if not self.already_added:
                 self.add_node(self.role)
+                if (self.ud_node.upos == 'NOUN' and self.role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
+                    self.get_number_person('number')
 
         self.umr_graph.root_var = root_var if root_var else self.umr_graph.root_var
-
-    ####################### Language transformations #######################
 
     def create_node(self, category: str, role: str = "", replace: bool = False, reflex: bool = False):
         """
@@ -388,6 +386,8 @@ class UMRNode:
             feat = given_feat
 
         self.umr_graph.triples.append((var_name, f'refer-{feature}', feat))
+
+        ####################### Language transformations #######################
 
     def determiners_initial(self):
         """
@@ -679,9 +679,15 @@ class UMRNode:
         if sconj and sconj.lemma in advcl:
             constraint = advcl.get(sconj.lemma, {}).get('constraint')
             if constraint:
-                feat, value = constraint.split('=')
-                if sconj.parent.feats[feat] == value:
+                valid = []
+                for c in constraint:
+                    if c:
+                        feat, value = c.split('=')
+                        valid.append(sconj.parent.feats[feat] == value)
+                if all(valid):
                     role = advcl.get(sconj.lemma, {}).get('type')
+                else:
+                    print(sconj.parent.feats)
 
         if not self.extra_level:
             self.add_node(role)

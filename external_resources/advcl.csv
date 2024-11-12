@@ -18,8 +18,7 @@ etiamsi,concessive,Mood=Subj
 quamquam,concessive,
 quamvis,concessive,Mood=Subj
 licet,concessive,Mood=Subj
-ad,purpose,VerbForm=Ger
-ad,purpose,VerbForm=Gdv
+ad,purpose,VerbForm=Part|Aspect=Prosp|Voice=Pass
 nisi,conditional,
 ni,conditional,
 dum,conditional,Mood=Sub

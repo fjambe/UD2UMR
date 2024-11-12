@@ -2,16 +2,12 @@
 
 Next steps:
 - [coding] Big things to work on next: **advcl**, general structure for pronouns, quantities, NEs.
-- [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon:
-Cf. _Fluminis erat altitudo pedum circiter trium_
+- [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon.
 - [coding - low-hanging fruit] _habeo_ to be replaced with `have-91`. Where to put in the code?
 Is `have-91` always the correct choice?
 - [coding] `introduce_abstract_rolesets()` looks like it could be deleted and replaced by `replace_with_abstract_roleset()`.
-- [coding] consider using classes in the code.
-- [writing] documentation of external resources (put it in Overleaf)
-Aggiungere che _cum_ + congiuntivo (cum narrativo) è troppo polivalente per essere disambiguato in automatico.
-Idem per _ut_ + congiuntivo.
-- implementare negation, almeno basic one (`advmod:neg` among dependents).
+- [writing] documentation of external resources (put it in Overleaf). Specify that _cum_ + subjunctive (cum narrativo)
+is too polysemous to be automatically disambiguated. Same for _ut_ + subjunctive.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -52,7 +48,7 @@ To parse my structure into Penman, it has (?) to look like this:
 
 ### Udapi cheatsheet:
 1. `tree`: prints out the technical `<ROOT>` of the sentence (== `tree`).
-2. `ree.text`: prints out the actual sentence. So tech_root = tree.
+2. `tree.text`: prints out the actual sentence. So tech_root = tree.
 3. `tree.children`: prints out the single direct children of the technical `<ROOT>`, i.e. the actual root.
 UD trees are single-rooted, so `len(tree.children)` == 1, always.
 4. `tree.descendants`: prints out the whole tree, i.e. all the nodes.
@@ -75,11 +71,17 @@ Cf. _Hoc mihi dicit fatus meus_: now I have 2 distinct 1st/2nd-person nodes, but
 ```
 
 Matt said he faced the same issue and there's no straightforward strategy in Penman library to control this.
+Now I have a function that kinda does it, although not perfectly - but it's at least way less confusing.
 
 
 ## QUESTIONS:
-- Do you think it would be better to have the `aspect` attribute in the sentence, although without any value (just the string `:aspect` ready for the annotator to fill in the value) or not having anything at all?
+- [A] Do you think it would be better to have the `aspect` attribute in the sentence, although without any value (just the string `:aspect` ready for the annotator to fill in the value) or not having anything at all?
 Given that I cannot extract automatically the aspect value.
+To me, it feels like it depends on what the goal is: make annotators' job easier or claim to get UMRs automatically?
+- [A] negation (`advmod:neg` as `:modal-strength full-negative`). As of now I am following the 80% of the times rule.
+There are of course exceptions: now we have negative modality annotated for nouns (which are supposed to be events, but
+they are not overt).
+C.f., e.g., _Puerum basiavi frugalissimum, **non** propter formal, sed quia frugi est_ (from Perseus_test).
 
 - [Julia] `flat` di NUMs: single number? In any case I didn't implement quantities yet.
 - [Julia] abstract rolesets seem to always have `:aspect state`: correct?
@@ -96,7 +98,7 @@ So, what I have now is `person` when the verb is a 1st/2nd person form;
 otherwise, I have a placeholder `FILL` that the annotator will quickly replace with the correct entity (`person`/`thing`) manually. Ok?
 - Do you think it's safe to extend the non-overt-copula processing to all copular constructions?
 Basically removing the constraint "no cop in siblings", and merge the two checks.
-Result: no relying explicitly on the cop deprel. Explain the whole situa right now.
+Result: no relying explicitly on the cop deprel. Explain the whole situation as it is now.
 
 ## Details:
 - `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.
@@ -104,4 +106,4 @@ Result: no relying explicitly on the cop deprel. Explain the whole situa right n
 ## ERRORS TO FIX:
 - There is still a problem with coordination, cf. SNT:
 _atque ego haec non in M. Tullio neque his temporibus vereor, sed in magna civitate multa et varia ingenia sunt._
-Yet, it's a crazy structure.
+Yet, it's a crazy structure, it can most probably be ignored.
