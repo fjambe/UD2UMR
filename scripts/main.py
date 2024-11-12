@@ -19,8 +19,8 @@ if __name__ == "__main__":
     for tree in doc.trees:
 
         # restricting the scope - temporary
-        verbs = [d for d in tree.descendants if d.upos == 'VERB']
-        if len(verbs) == 1:
+        # verbs = [d for d in tree.descendants if d.upos == 'VERB']
+        if tree:
 
             deprels_to_relations = pr.get_deprels(tree)
             sent_tree = UMRGraph(tree, deprels_to_relations)
@@ -40,11 +40,16 @@ if __name__ == "__main__":
                 if not isinstance(n.ud_node, str):
                     n.ud_to_umr()
 
+            # Forth loop: replace pronouns and determiners that are supposed to correspond to a UMR entity.
+            # They are processed separately to avoid clashes with layered constructions (e.g., abstract rolesets).
+            for n in sent_tree.nodes:
+                n.replace_entities()
+
             umr = sent_tree.to_penman()
 
             # Print out the UMR graph
             sent_tree.display_text()
             print(umr, '\n')
 
-            break
+            # break
 

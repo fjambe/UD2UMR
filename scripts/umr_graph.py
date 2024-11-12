@@ -1,6 +1,5 @@
 import re
 import penman
-from more_itertools.more import first
 from penman.exceptions import LayoutError
 from umr_node import UMRNode
 
@@ -185,9 +184,9 @@ class UMRGraph:
         """
         self.remove_duplicate_triples()
         self.postprocessing_checks()
-        self.triples = [tup for tup in self.triples if tup[1] != 'other']  # other is a temp label
+        self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
         ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect'}
-        root = self.root_var or next((t[2] for t in self.triples if t[1] == 'root'), None)
+        # root = self.root_var or next((t[2] for t in self.triples if t[1] == 'root'), None)  # TODO check
         valid_third =  {tup[2] for tup in self.triples if tup[1] not in ignored_types}
 
         to_remove = []
@@ -240,16 +239,32 @@ class UMRGraph:
         index = self.find_in_triples(variable, position)
         if index != -1:
             triple_to_return = self.triples[index]
-
             del self.triples[index]
 
             if return_value:
                 return triple_to_return
 
+    # def find_and_replace_in_triples(self, variable_to_find, position, replacement, position_2):
+    #     """
+    #     Find and replace the first triple in `self.triples` where the specified element matches the given variable
+    #     at the specified position.
+    #
+    #     Args:
+    #         variable_to_find: The value to compare against the element of each triple.
+    #         position: The position (0, 1, 2) of the element to compare against.
+    #         replacement: The value to replace the queried variable.
+    #         position_2: The position (0, 1, 2) of the element to replace.
+    #     """
+    #     index = self.find_in_triples(variable_to_find, position)
+    #     if index != -1:
+    #         triple = list(self.triples[index])
+    #         triple[position_2] = replacement
+    #         self.triples[index] = tuple(triple)
+
     def find_and_replace_in_triples(self, variable_to_find, position, replacement, position_2):
         """
-        Find and replace the first triple in `self.triples` where the specified element matches the given variable
-        at the specified position.
+        Find and replace all triples in `self.triples` where the specified element matches
+        the given variable at the specified position.
 
         Args:
             variable_to_find: The value to compare against the element of each triple.
@@ -257,8 +272,9 @@ class UMRGraph:
             replacement: The value to replace the queried variable.
             position_2: The position (0, 1, 2) of the element to replace.
         """
-        index = self.find_in_triples(variable_to_find, position)
-        if index != -1:
-            triple = list(self.triples[index])
-            triple[position_2] = replacement
-            self.triples[index] = tuple(triple)
+        for i, triple in enumerate(self.triples):
+            if triple[position] == variable_to_find:
+                modified_triple = list(triple)
+                modified_triple[position_2] = replacement
+                self.triples[i] = tuple(modified_triple)
+

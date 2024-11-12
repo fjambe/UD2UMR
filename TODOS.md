@@ -11,6 +11,7 @@ Is `have-91` always the correct choice?
 - [writing] documentation of external resources (put it in Overleaf)
 Aggiungere che _cum_ + congiuntivo (cum narrativo) è troppo polivalente per essere disambiguato in automatico.
 Idem per _ut_ + congiuntivo.
+- implementare negation, almeno basic one (`advmod:neg` among dependents).
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -107,4 +108,5 @@ Yet, it's a crazy structure.
 - SNT: Corcillum est quod homines facit, cetera quisquilia omnia.
 
 # TODO:
-- already_added inside add_node
+- already_added inside `add_node`.
+- fix actor and ARG1 coexisting (e.g., in _Illud erat vivere_).
