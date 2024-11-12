@@ -106,3 +106,5 @@ _atque ego haec non in M. Tullio neque his temporibus vereor, sed in magna civit
 Yet, it's a crazy structure.
 - SNT: Corcillum est quod homines facit, cetera quisquilia omnia.
 
+# TODO:
+- already_added inside add_node

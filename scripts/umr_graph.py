@@ -166,7 +166,7 @@ class UMRGraph:
 
                 if removed_triple:
                     for triple in self.triples:
-                        if triple[1].endswith('-of') and triple[2] == removed_triple[0]:
+                        if triple[1] and triple[1].endswith('-of') and triple[2] == removed_triple[0]:
                             new_role = node.role.split('-')[0] + '-of'
                             self.triples.append((triple[0], new_role, triple[2]))
                             self.triples.remove(triple)
