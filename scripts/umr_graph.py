@@ -1,5 +1,6 @@
 import re
 import penman
+from more_itertools.more import first
 from penman.exceptions import LayoutError
 from umr_node import UMRNode
 
@@ -79,7 +80,9 @@ class UMRGraph:
         var_pattern = re.compile(r"^([a-z])(\d*)$")
         var_groups = {}
 
-        for var in self.variable_names:
+        var_names = [v for v in self.variable_names if v == self.root_var or self.find_in_triples(v, 2) != -1]
+
+        for var in var_names:
             match = var_pattern.match(var)
             if match:
                 base_letter = match.group(1)
@@ -89,7 +92,7 @@ class UMRGraph:
         renaming_map = {}
 
         for base_letter, variables in var_groups.items():
-            variables.sort()  # Sort by number
+            variables.sort()
 
             for new_number, (current_number, var) in enumerate(variables, start=1):
                 new_var = f"{base_letter}{new_number if new_number > 1 else ''}"
@@ -102,7 +105,9 @@ class UMRGraph:
             for var, relation, value in self.triples
         ]
 
-        return corrected_triples
+        self.triples = corrected_triples
+
+        return renaming_map.get(self.root_var, self.root_var)
 
     def remove_duplicate_triples(self):
         """ Removes duplicate triples from self.triples. """
@@ -195,7 +200,7 @@ class UMRGraph:
         self.triples = [tup for tup in self.triples if tup[0] not in to_remove and tup[2] not in to_remove]
 
         try:
-            self.correct_variable_name()
+            root = self.correct_variable_name()
             self.reorder_triples()
             g = penman.Graph(self.triples)
             return penman.encode(g, top=root, indent=4)
