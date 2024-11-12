@@ -166,6 +166,7 @@ class UMRGraph:
         ##### relative clauses #####
         for node in self.nodes:
             if hasattr(node, 'check_needed') and node.check_needed:
+                print(node)
                 removed_triple = self.find_and_remove_from_triples(node.var_name, 2, return_value=True)
 
                 if removed_triple:
@@ -183,11 +184,13 @@ class UMRGraph:
         as well as other invalid triples (e.g. role is None).
         """
         self.remove_duplicate_triples()
-        self.postprocessing_checks()
+        self.remove_non_inverted_triples_if_duplicated()
+        # self.postprocessing_checks()
         self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
         ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect'}
-        # root = self.root_var or next((t[2] for t in self.triples if t[1] == 'root'), None)  # TODO check
         valid_third =  {tup[2] for tup in self.triples if tup[1] not in ignored_types}
+        inverted_third = {tup[0] for tup in self.triples if tup[1] and tup[1].endswith('-of') and tup[1] not in ignored_types}
+        valid_third = valid_third | inverted_third
 
         to_remove = []
         for i, tup in enumerate(self.triples):
@@ -244,23 +247,6 @@ class UMRGraph:
             if return_value:
                 return triple_to_return
 
-    # def find_and_replace_in_triples(self, variable_to_find, position, replacement, position_2):
-    #     """
-    #     Find and replace the first triple in `self.triples` where the specified element matches the given variable
-    #     at the specified position.
-    #
-    #     Args:
-    #         variable_to_find: The value to compare against the element of each triple.
-    #         position: The position (0, 1, 2) of the element to compare against.
-    #         replacement: The value to replace the queried variable.
-    #         position_2: The position (0, 1, 2) of the element to replace.
-    #     """
-    #     index = self.find_in_triples(variable_to_find, position)
-    #     if index != -1:
-    #         triple = list(self.triples[index])
-    #         triple[position_2] = replacement
-    #         self.triples[index] = tuple(triple)
-
     def find_and_replace_in_triples(self, variable_to_find, position, replacement, position_2):
         """
         Find and replace all triples in `self.triples` where the specified element matches
@@ -272,9 +258,33 @@ class UMRGraph:
             replacement: The value to replace the queried variable.
             position_2: The position (0, 1, 2) of the element to replace.
         """
+        called = False
         for i, triple in enumerate(self.triples):
             if triple[position] == variable_to_find:
+                called=True
                 modified_triple = list(triple)
                 modified_triple[position_2] = replacement
                 self.triples[i] = tuple(modified_triple)
+
+        return called
+
+    def remove_non_inverted_triples_if_duplicated(self):
+        """
+        Modifies self.triples by removing any non-inverted triples that have a corresponding inverted version.
+        A pair is defined as (a, role, b) and (b, role-of, a), where the non-inverted triple (a, role, b) is removed.
+        """
+        to_remove = set()
+        ignored_roles = ['other', 'refer-number', 'refer-person', 'aspect', 'instance']
+
+        for triple in self.triples:
+            a, role, b = triple
+            if role and role not in ignored_roles:
+                if not role.endswith('-of'):
+                    inverted_role = f"{role}-of"
+                    inverted_triple = (b, inverted_role, a)
+                    if inverted_triple in self.triples:
+                        to_remove.add(triple)
+
+        self.triples = [triple for triple in self.triples if triple not in to_remove]
+
 

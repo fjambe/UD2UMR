@@ -105,7 +105,3 @@ Result: no relying explicitly on the cop deprel. Explain the whole situa right n
 - There is still a problem with coordination, cf. SNT:
 _atque ego haec non in M. Tullio neque his temporibus vereor, sed in magna civitate multa et varia ingenia sunt._
 Yet, it's a crazy structure.
-- SNT: Corcillum est quod homines facit, cetera quisquilia omnia.
-
-# TODO:
-- fix actor and ARG1 coexisting (e.g., in _Illud erat vivere_).
