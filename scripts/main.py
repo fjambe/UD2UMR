@@ -46,5 +46,5 @@ if __name__ == "__main__":
             sent_tree.display_text()
             print(umr, '\n')
 
-            # break
+            break
 

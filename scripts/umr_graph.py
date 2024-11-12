@@ -162,7 +162,6 @@ class UMRGraph:
         ##### relative clauses #####
         for node in self.nodes:
             if hasattr(node, 'check_needed') and node.check_needed:
-
                 removed_triple = self.find_and_remove_from_triples(node.var_name, 2, return_value=True)
 
                 if removed_triple:
