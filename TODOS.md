@@ -108,5 +108,4 @@ Yet, it's a crazy structure.
 - SNT: Corcillum est quod homines facit, cetera quisquilia omnia.
 
 # TODO:
-- already_added inside `add_node`.
 - fix actor and ARG1 coexisting (e.g., in _Illud erat vivere_).

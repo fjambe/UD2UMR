@@ -237,12 +237,15 @@ class UMRNode:
                 self.umr_graph.triples.append((parent, role, self.var_name))
             else:
                 self.umr_graph.triples.append(pm.invert((self.var_name, role, parent)))
+            self.already_added = True
 
         elif self.extra_level:
             if not invert:
                 self.umr_graph.triples.append((parent, role, self.parent.var_name))
             else:
                 self.umr_graph.triples.append(pm.invert((self.parent.var_name, role, parent)))
+                self.already_added = True
+
         else:
             pass # it should be already okay
 
@@ -256,7 +259,6 @@ class UMRNode:
                 self.add_node(self.role)
                 if not self.umr_graph.root_var:
                     self.umr_graph.root_var = self.var_name
-                self.already_added = True
 
             ########## check by UPOS ##########
             if self.ud_node.upos == 'PRON':
@@ -267,7 +269,6 @@ class UMRNode:
                     self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):  # TODO: might be merged with leftover add_role
                 self.add_node(self.role)
                 self.get_number_person('number')
-                self.already_added = True
 
             elif self.ud_node.upos == 'DET':
                 self.determiners_initial()
@@ -287,11 +288,9 @@ class UMRNode:
                 root_var = self.coordination(role)
             elif self.ud_node.deprel == 'appos':
                 self.introduce_abstract_roleset(self.role)
-                self.already_added = True
 
             elif self.ud_node.deprel == 'cop':
                 self.copulas()
-                self.already_added = True
 
             # copular constructions with no overt copula
             elif self.ud_node.deprel == 'nsubj' and self.ud_node.parent.upos != 'VERB' and not [s for s in self.ud_node.siblings if s.deprel == 'cop']:
@@ -308,16 +307,13 @@ class UMRNode:
                 rel_pron_node = UMRNode.find_by_ud_node(self.umr_graph, rel_pron)
 
                 self.relative_clauses(rel_pron_node)
-                self.already_added = True
                 rel_pron_node.already_added = True
 
             elif self.ud_node.deprel == 'advcl':
                 self.adverbial_clauses()
-                self.already_added = True
 
             if not self.already_added:
                 self.add_node(self.role)
-                self.already_added = True
 
         self.umr_graph.root_var = root_var if root_var else self.umr_graph.root_var
 
@@ -395,28 +391,23 @@ class UMRNode:
 
             if self.ud_node.deprel == 'det' and not has_cop_sibling:
                 self.add_node(role)
-                self.already_added = True
                 self.entity = False
             else:
                 role = self.role
                 self.add_node(role)
-                self.already_added = True
 
         elif self.ud_node.upos == 'DET' and self.ud_node.feats['PronType'] == 'Prs':
             cop = [c for c in self.ud_node.children if c.deprel == 'cop']
             is_adj_noun = self.ud_node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or len(cop) > 0
             role = 'poss' if is_adj_noun else self.role
             self.add_node(role)
-            self.already_added = True
 
         else:
             role = self.role
             self.add_node(role)
-            self.already_added = True
 
         if self.ud_node.deprel == 'det' and not self.already_added:
             self.add_node('mod')
-            self.already_added = True
 
     def replace_entities(self):
         """
