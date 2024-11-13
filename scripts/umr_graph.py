@@ -305,6 +305,17 @@ class UMRGraph:
         result.extend(unique_triples.values())
         self.triples = result
 
+    def alignments(self):
+
+        variables = {triple[0] for triple in self.triples if triple[1] == 'instance'}
+
+        for v in variables:
+            node = UMRNode.find_by_var_name(self, v)
+            num_token = node.ud_node.ord if hasattr(node.ud_node, 'ord') else 0
+            print(f'{v}: {num_token}-{num_token}')
+
+
+
 
 
 

@@ -1,13 +1,14 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: **advcl**, general structure for pronouns, quantities, NEs.
-- [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet.
+- [coding] Big things to work on next: **advcl**, general structure for pronouns, quantities, NEs, ccomp/csubj.
+- [coding] `advcl:cmp`.
+- [coding] `flat` di NUMs: single number?
 - [writing] documentation of external resources (put it in Overleaf). Specify that _cum_ + subjunctive (cum narrativo)
 is too polysemous to be automatically disambiguated. Same for _ut_ + subjunctive.
 - [decision-making] Can I assign `: aspect performance` safely if `Aspect=Perf|Tense=Past`? Re-check Overleaf. Of course
-there will be exceptions like _memini_, but the 80% rule should be satisfied by far.
-- [coding - not now] Implement alignments.
+there will be exceptions like _memini_, but the 80% rule should be satisfied by far. [EASY, THU]
+- [evaluation / coding] Check if alignments are decent, by going through them and checking. [EASY, THU]
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.

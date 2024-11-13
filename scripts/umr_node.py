@@ -155,6 +155,7 @@ class UMRNode:
         second_arg = 'ARG2' if not replace_arg else replace_arg
 
         concept_node = UMRNode(role_aka_concept, self.umr_graph, already_added=True)
+        concept_node.ud_node = self.ud_node
         self.parent.extra_level = True
         concept_node.parent = self.parent.parent
         self.parent.parent = concept_node
@@ -315,7 +316,7 @@ class UMRNode:
                 self.relative_clauses(rel_pron_node)
                 rel_pron_node.already_added = True
 
-            elif self.ud_node.deprel == 'advcl':
+            elif self.ud_node.udeprel == 'advcl':
                 self.adverbial_clauses()
 
             elif self.ud_node.deprel == 'advmod:neg':
@@ -439,6 +440,7 @@ class UMRNode:
 
             category = 'person' if self.ud_node.feats['Gender'] != 'Neut' else 'thing'
             pron = self.create_node(category, self.role, replace=True)
+            pron.ud_node = self.ud_node
             pron.parent = self.parent
             self.replaced = True
 
@@ -466,6 +468,7 @@ class UMRNode:
 
             if is_adj_noun:
                 poss = self.create_node(category, role=role, replace=True, reflex=is_reflexive)
+                poss.ud_node = self.ud_node
                 poss.parent = self.parent
                 if is_reflexive:
                     refer_number = numbers.get(
@@ -478,6 +481,7 @@ class UMRNode:
                 entity = self.create_node(category, role=role, replace=True, reflex=is_reflexive)
                 entity.parent = self.parent
                 poss = self.create_node('person', role=self.role, reflex=is_reflexive)
+                poss.ud_node = self.ud_node
                 poss.parent = self.parent
                 self.umr_graph.find_and_replace_in_triples(self.var_name, 2, poss.var_name, 2)
                 self.umr_graph.triples.append((entity.var_name, 'poss', poss.var_name))
@@ -513,7 +517,7 @@ class UMRNode:
 
             category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person'  # maybe FILL is better
             new_node = self.create_node(category, role=self.role, replace=True)
-
+            new_node.ud_node = self.ud_node
             new_node.parent = self.parent
             new_node.extra_level = self.extra_level
             self.already_added = True
@@ -544,6 +548,7 @@ class UMRNode:
                 self.umr_graph.find_and_remove_from_triples(cc.lemma, 2)
 
             conj = UMRNode(cord, self.umr_graph, already_added=True)
+            conj.ud_node = cc
             arg_type = 'op' if cord != 'but-91' else 'ARG'
 
             if not self.extra_level:
@@ -675,18 +680,26 @@ class UMRNode:
         role = self.role
         sconj = next((c for c in self.ud_node.children if c.deprel == 'mark'), None)
 
-        if sconj and sconj.lemma in advcl:
-            constraint = advcl.get(sconj.lemma, {}).get('constraint')
-            if constraint:
-                valid = []
-                for c in constraint:
-                    if c:
-                        feat, value = c.split('=')
-                        valid.append(sconj.parent.feats[feat] == value)
-                if all(valid):
-                    role = advcl.get(sconj.lemma, {}).get('type')
+        if self.ud_node.deprel != 'advcl:cmp':
+            if sconj and sconj.lemma in advcl:
+                constraint = advcl.get(sconj.lemma, {}).get('constraint')
+                if constraint:
+                    valid = []
+                    for c in constraint:
+                        if c:
+                            feat, value = c.split('=')
+                            valid.append(sconj.parent.feats[feat] == value)
+                    if all(valid):
+                        role = advcl.get(sconj.lemma, {}).get('type')
 
-        if not self.extra_level:
-            self.add_node(role)
+            if not self.extra_level:
+                print(role)
+                self.add_node(role)
+            else:
+                self.add_node(self.role, def_parent=self.parent.parent.var_name)
+
         else:
-            self.add_node(self.role, def_parent=self.parent.parent.var_name)
+            pass
+
+
+

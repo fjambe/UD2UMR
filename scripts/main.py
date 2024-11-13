@@ -6,6 +6,7 @@ import udapi
 from umr_node import UMRNode
 from umr_graph import UMRGraph
 import preprocess as pr
+from print_structure import print_structure
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--treebank", default=False, help="Path of the treebank in input.")
@@ -43,9 +44,8 @@ if __name__ == "__main__":
 
         umr = sent_tree.to_penman()
 
-        # Print out the UMR graph
-        sent_tree.display_text()
-        print(umr, '\n')
+        # Print out the UMR structure
+        print_structure(tree, sent_tree, umr)
 
         # break
 
