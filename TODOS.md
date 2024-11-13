@@ -2,12 +2,12 @@
 
 Next steps:
 - [coding] Big things to work on next: **advcl**, general structure for pronouns, quantities, NEs.
-- [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet. But it has to be implemented soon.
-- [coding - low-hanging fruit] _habeo_ to be replaced with `have-91`. Where to put in the code?
-Is `have-91` always the correct choice?
-- [coding] `introduce_abstract_rolesets()` looks like it could be deleted and replaced by `replace_with_abstract_roleset()`.
+- [coding] `flat` di NUMs: single number? In any case I didn't implement quantities yet.
 - [writing] documentation of external resources (put it in Overleaf). Specify that _cum_ + subjunctive (cum narrativo)
 is too polysemous to be automatically disambiguated. Same for _ut_ + subjunctive.
+- [decision-making] Can I assign `: aspect performance` safely if `Aspect=Perf|Tense=Past`? Re-check Overleaf. Of course
+there will be exceptions like _memini_, but the 80% rule should be satisfied by far.
+- [coding - not now] Implement alignments.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -73,19 +73,23 @@ Cf. _Hoc mihi dicit fatus meus_: now I have 2 distinct 1st/2nd-person nodes, but
 Matt said he faced the same issue and there's no straightforward strategy in Penman library to control this.
 Now I have a function that kinda does it, although not perfectly - but it's at least way less confusing.
 
+- [discussed, agreed for now] Let's have the `aspect` attribute in the sentence, although without any value (just the
+string `:aspect` ready for the annotator to fill in the value), everytime I have a predicate. Given that I cannot
+extract automatically the aspect value.
+To me, it feels like it depends on what the goal is: make annotators' job easier or claim to get UMRs automatically?
+After discussing it with Alexis, we came to the conclusion that it would definitely be beneficial for annotators.
+I still think it will be confusing when it comes to evaluation, but it's gonna be very easy to remove (not add it, 
+actually) if I don't want it anymore in my UMRs. It's one line of code. Maybe discuss it with Dan. 
+
 
 ## QUESTIONS:
-- [A] Do you think it would be better to have the `aspect` attribute in the sentence, although without any value (just the string `:aspect` ready for the annotator to fill in the value) or not having anything at all?
-Given that I cannot extract automatically the aspect value.
-To me, it feels like it depends on what the goal is: make annotators' job easier or claim to get UMRs automatically?
-- [A] negation (`advmod:neg` as `:modal-strength full-negative`). As of now I am following the 80% of the times rule.
+- [all] negation (`advmod:neg` as `:modal-strength full-negative`). As of now I am following the 80% of the times rule.
 There are of course exceptions: now we have negative modality annotated for nouns (which are supposed to be events, but
 they are not overt).
 C.f., e.g., _Puerum basiavi frugalissimum, **non** propter formal, sed quia frugi est_ (from Perseus_test).
-
-- [Julia] `flat` di NUMs: single number? In any case I didn't implement quantities yet.
-- [Julia] abstract rolesets seem to always have `:aspect state`: correct?
-- [Julia] UMR of _boves, quorum beneficio panem manducamus_ "oxen, thanks to whose service we have bread to eat"?
+I could also implement an additional check for UPOS (= only VERB). What do you prefer?
+- [Julia] abstract rolesets seem to always have `:aspect state`: correct? [mail]
+- [Julia] UMR of _boves, quorum beneficio panem manducamus_ "oxen, thanks to whose service we eat bread"? [mail]
 
 ## For Dan:
 - what to do with _nec_ split as _ne_ + _c_? o li unisco in Perseus o li tratto in UMR.
@@ -99,6 +103,7 @@ otherwise, I have a placeholder `FILL` that the annotator will quickly replace w
 - Do you think it's safe to extend the non-overt-copula processing to all copular constructions?
 Basically removing the constraint "no cop in siblings", and merge the two checks.
 Result: no relying explicitly on the cop deprel. Explain the whole situation as it is now.
+- Empty aspect in UMRs.
 
 ## Details:
 - `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.

@@ -185,6 +185,7 @@ class UMRGraph:
         """
         self.remove_duplicate_triples()
         self.remove_non_inverted_triples_if_duplicated()
+        self.clean_modal_strength()
         # self.postprocessing_checks()
         self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
         ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect'}
@@ -208,8 +209,8 @@ class UMRGraph:
             return penman.encode(g, top=root, indent=4)
 
         except LayoutError as e:
-            for n in self.triples:
-                print(n)
+            # for n in self.triples:
+            #     print(n)
             print(f"Skipping sentence due to LayoutError: {e}")
 
     def find_in_triples(self, variable, position):
@@ -286,5 +287,25 @@ class UMRGraph:
                         to_remove.add(triple)
 
         self.triples = [triple for triple in self.triples if triple not in to_remove]
+
+    def clean_modal_strength(self):
+
+        unique_triples = {}
+        result = []
+
+        for triple in self.triples:
+            key = (triple[0], triple[1])
+
+            if triple[1] == 'modal-strength':
+                if triple[2] != 'MS' or key not in unique_triples:
+                    unique_triples[key] = triple
+            else:
+                result.append(triple)
+
+        result.extend(unique_triples.values())
+        self.triples = result
+
+
+
 
 

@@ -126,7 +126,7 @@ class UMRNode:
             - An ARG2 relation linking the new roleset concept to this node.
             - An aspect "state" relation.
         """
-        # TODO: it should also work for reification in general, so it could be renamed. Decide later.
+        # TODO: it should also work for reification in general, so it could be renamed.
         # double check also that role inversion can be generalized.
 
         self.umr_graph.find_and_remove_from_triples(role_aka_concept, 1)
@@ -152,9 +152,6 @@ class UMRNode:
             - Non-core dependents (e.g., vocatives, adverbial modifiers) are reattached to the new abstract roleset.
             - If the subject is elided (e.g., in the absence of a subject argument), a new node may be introduced.
         """
-
-        # TODO: Figure out whether it can be merged with introduce_abstract_roleset().
-
         second_arg = 'ARG2' if not replace_arg else replace_arg
 
         concept_node = UMRNode(role_aka_concept, self.umr_graph, already_added=True)
@@ -288,6 +285,8 @@ class UMRNode:
                         arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
                         new_node = self.create_node(arg_type)
                         self.umr_graph.triples.append((self.var_name, 'actor', new_node.var_name))
+                self.umr_graph.triples.append((self.var_name, 'aspect', 'ASP'))
+                self.umr_graph.triples.append((self.var_name, 'modal-strength', 'MS'))
 
             ########## check by deprel ##########
             if self.ud_node.deprel == 'conj':
@@ -686,8 +685,6 @@ class UMRNode:
                         valid.append(sconj.parent.feats[feat] == value)
                 if all(valid):
                     role = advcl.get(sconj.lemma, {}).get('type')
-                else:
-                    print(sconj.parent.feats)
 
         if not self.extra_level:
             self.add_node(role)
