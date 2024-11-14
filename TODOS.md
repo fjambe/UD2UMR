@@ -4,7 +4,6 @@ Next steps:
 - [coding] Big things to work on next: general structure for pronouns, quantities, NEs, ccomp/csubj.
 - [coding] Implement `advcl:cmp`.
 - [coding] `flat` di NUMs: single number?
-- [evaluation / coding] Check if alignments are decent, by going through them and checking. [EASY, THU]
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -101,6 +100,8 @@ otherwise, I have a placeholder `FILL` that the annotator will quickly replace w
 Basically removing the constraint "no cop in siblings", and merge the two checks.
 Result: no relying explicitly on the cop deprel. Explain the whole situation as it is now.
 - Empty aspect in UMRs.
+- Alignments: I already check if two variables are aligned to the same UD token (thus excluding 0-0 alignments), and
+raise a warning if it's the case.
 
 ## Details:
 - `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.

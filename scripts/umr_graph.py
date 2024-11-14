@@ -1,5 +1,6 @@
 import re
 import penman
+import warnings
 from penman.exceptions import LayoutError
 from umr_node import UMRNode
 
@@ -98,6 +99,11 @@ class UMRGraph:
 
                 if new_var != var:
                     renaming_map[var] = new_var
+                    to_replace = UMRNode.find_by_var_name(self, new_var)
+                    if to_replace:
+                        to_replace.var_name = None
+                    to_rename = UMRNode.find_by_var_name(self, var)
+                    to_rename.var_name = new_var
 
         corrected_triples = [
             (renaming_map.get(var, var), relation, renaming_map.get(value, value))
@@ -163,7 +169,6 @@ class UMRGraph:
         ##### relative clauses #####
         for node in self.nodes:
             if hasattr(node, 'check_needed') and node.check_needed:
-                print(node)
                 removed_triple = self.find_and_remove_from_triples(node.var_name, 2, return_value=True)
 
                 if removed_triple:
@@ -182,7 +187,6 @@ class UMRGraph:
         """
         self.remove_duplicate_triples()
         self.remove_non_inverted_triples_if_duplicated()
-        self.clean_modal_strength()
         # self.postprocessing_checks()
         self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
         ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect'}
@@ -285,35 +289,31 @@ class UMRGraph:
 
         self.triples = [triple for triple in self.triples if triple not in to_remove]
 
-    def clean_modal_strength(self):
-
-        unique_triples = {}
-        result = []
-
-        for triple in self.triples:
-            key = (triple[0], triple[1])
-
-            if triple[1] == 'modal-strength':
-                if triple[2] != 'MS' or key not in unique_triples:
-                    unique_triples[key] = triple
-            else:
-                result.append(triple)
-
-        result.extend(unique_triples.values())
-        self.triples = result
-
     def alignments(self):
-
+        """
+        Computes alignment block based on UD tokens.
+        Raises a warning if there are two UMR nodes aligned to the same token.
+        """
         variables = {triple[0] for triple in self.triples if triple[1] == 'instance'}
+        alignments = {}
 
         for v in variables:
             node = UMRNode.find_by_var_name(self, v)
             num_token = node.ud_node.ord if hasattr(node.ud_node, 'ord') else 0
+            alignments[v] = num_token
             print(f'{v}: {num_token}-{num_token}')
 
+        # Check that two variables are not aligned to a same UD token
+        non_zero_values = [value for value in alignments.values() if value != 0]
+        seen_values = set()
 
-
-
-
+        for value in non_zero_values:
+            if value in seen_values:
+                dup = [v for v in alignments if alignments[v] == value]
+                warning_message = (
+                    f"[Warning] Two variables aligned to the same token: {dup} in sentence {self.ud_tree.address()}"
+                )
+                warnings.warn(warning_message)
+            seen_values.add(value)
 
 

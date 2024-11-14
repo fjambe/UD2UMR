@@ -37,7 +37,7 @@ class UMRNode:
         self.umr_graph.nodes.append(self)
 
     def __repr__(self):
-        return (f"Node(token='{self.ud_node.form if not isinstance(self.ud_node, str) else self.ud_node}', "
+        return (f"Node(token='{self.ud_node if not isinstance(self.ud_node, str) else self.ud_node}', "
                 f"role='{self.role}', var_name='{self.var_name}', extra_level={self.extra_level}, "
                 f"parent={self.parent.var_name if hasattr(self.parent, 'var_name') else self.parent}')")
 
@@ -156,7 +156,6 @@ class UMRNode:
         second_arg = 'ARG2' if not replace_arg else replace_arg
 
         concept = UMRNode(role_aka_concept, self.umr_graph, already_added=True)
-        concept.ud_node = self.ud_node
         self.parent.extra_level = True
         concept.parent = self.parent.parent
         self.parent.parent = concept
@@ -169,8 +168,10 @@ class UMRNode:
             if overt:
                 nsubj_node = UMRNode.find_by_ud_node(self.umr_graph, nsubj)
                 self.umr_graph.find_and_remove_from_triples(self.var_name, 2)
+                concept.ud_node = self.ud_node
             else:
                 nsubj_node = self
+                concept.ud_node = None
             nsubj_node.extra_level = True
             nsubj_node.parent = concept
         else:
@@ -503,8 +504,8 @@ class UMRNode:
             else:
                 entity = self.create_node(category, role=role, replace=True, reflex=is_reflexive)
                 entity.parent = self.parent
+                entity.ud_node = self.ud_node
                 poss = self.create_node('person', role=self.role, reflex=is_reflexive)
-                poss.ud_node = self.ud_node
                 poss.parent = self.parent
                 self.umr_graph.find_and_replace_in_triples(self.var_name, 2, poss.var_name, 2)
                 self.umr_graph.triples.append((entity.var_name, 'poss', poss.var_name))
@@ -631,7 +632,7 @@ class UMRNode:
                 self.ud_node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not self.ud_node.parent.feats['Case']):
 
             if self.ud_node.parent.upos == 'ADJ' or (self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats[
-                'PronType'] != 'Prs'):  # TODO: double-check DET (anche ok 'tantus', ma hic sarebbe meglio identity...ma both Dem!!) + remove PRON and do smth with it
+                'PronType'] != 'Prs'):  # TODO: double-check DET (for 'tantus' it can be ok, but for 'hic' identity would be better...ma both Dem!!)
                 concept = 'have-mod-91'
             elif self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats['PronType'] == 'Prs':
                 concept = 'belong-91'
@@ -716,7 +717,6 @@ class UMRNode:
                         role = advcl.get(sconj.lemma, {}).get('type')
 
             if not self.extra_level:
-                print(role)
                 self.add_node(role)
             else:
                 self.add_node(self.role, def_parent=self.parent.parent.var_name)
