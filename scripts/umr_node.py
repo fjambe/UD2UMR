@@ -134,8 +134,9 @@ class UMRNode:
         self.umr_graph.triples.extend([
             pm.invert((concept.var_name, 'ARG1', self.parent.var_name)),
             (concept.var_name, 'ARG2', self.var_name),
-            (concept.var_name, 'aspect', 'state')
         ])
+        concept.aspect('state')
+        concept.modality()
 
     def replace_with_abstract_roleset(self, role_aka_concept, replace_arg=None, overt=True):
         """
@@ -154,14 +155,14 @@ class UMRNode:
         """
         second_arg = 'ARG2' if not replace_arg else replace_arg
 
-        concept_node = UMRNode(role_aka_concept, self.umr_graph, already_added=True)
-        concept_node.ud_node = self.ud_node
+        concept = UMRNode(role_aka_concept, self.umr_graph, already_added=True)
+        concept.ud_node = self.ud_node
         self.parent.extra_level = True
-        concept_node.parent = self.parent.parent
-        self.parent.parent = concept_node
+        concept.parent = self.parent.parent
+        self.parent.parent = concept
 
         if self.umr_graph.root_var == self.parent.var_name:
-            self.umr_graph.root_var = concept_node.var_name
+            self.umr_graph.root_var = concept.var_name
 
         nsubj = next((s for s in self.ud_node.parent.children if s.udeprel in ['nsubj', 'csubj']), None)
         if nsubj:
@@ -171,13 +172,13 @@ class UMRNode:
             else:
                 nsubj_node = self
             nsubj_node.extra_level = True
-            nsubj_node.parent = concept_node
+            nsubj_node.parent = concept
         else:
             nsubj_node = None
 
         for i, tup in enumerate(self.umr_graph.triples):
             if tup[2] == self.parent.var_name:
-                self.umr_graph.triples[i] = (tup[0], tup[1], concept_node.var_name)
+                self.umr_graph.triples[i] = (tup[0], tup[1], concept.var_name)
             if nsubj and not nsubj_node.extra_level:
                 self.umr_graph.find_and_remove_from_triples(nsubj_node.var_name, 2)
 
@@ -188,9 +189,9 @@ class UMRNode:
                     for tup in check:
                         if tup[2] == nsubj_node.var_name:
                             self.umr_graph.triples.remove(tup)
-                self.umr_graph.triples.append((concept_node.var_name, 'ARG1', nsubj_node.var_name))
+                self.umr_graph.triples.append((concept.var_name, 'ARG1', nsubj_node.var_name))
                 if not nsubj_node.extra_level:
-                    self.umr_graph.triples.append((concept_node.var_name, second_arg, self.parent.var_name))
+                    self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
                 else:
                     parent = UMRNode.find_by_ud_node(self.umr_graph, nsubj.parent)
                     check = [tup for tup in self.umr_graph.triples if tup[1] == 'patient']
@@ -198,28 +199,29 @@ class UMRNode:
                         for tup in check:
                             if tup[2] == parent.var_name:
                                 self.umr_graph.triples.remove(tup)
-                    self.umr_graph.triples.append((concept_node.var_name, second_arg, parent.var_name))
+                    self.umr_graph.triples.append((concept.var_name, second_arg, parent.var_name))
 
             else:
-                self.umr_graph.triples.append((concept_node.var_name, 'ARG1', self.umr_graph.track_conj[nsubj]))
+                self.umr_graph.triples.append((concept.var_name, 'ARG1', self.umr_graph.track_conj[nsubj]))
                 self.umr_graph.find_and_remove_from_triples(self.umr_graph.track_conj[nsubj], 2)
-                self.umr_graph.triples.append((concept_node.var_name, second_arg, self.var_name))
+                self.umr_graph.triples.append((concept.var_name, second_arg, self.var_name))
 
-            nsubj_node.parent, nsubj_node.parent.var_name = concept_node, concept_node.var_name
+            nsubj_node.parent, nsubj_node.parent.var_name = concept, concept.var_name
             nsubj_node.role = 'ARG1'
             nsubj_node.already_added = True
 
-        self.umr_graph.triples.append((concept_node.var_name, 'aspect', 'state'))
+        concept.aspect('state')
+        concept.modality()
 
         # reattach dependents
-        UMRNode.reattach_dependents(self.umr_graph, self.parent, concept_node)
+        UMRNode.reattach_dependents(self.umr_graph, self.parent, concept)
 
         # elided subjects to be restored
         rel_dep = [s for s in self.ud_node.siblings if s.deprel == 'acl:relcl']
         if overt and nsubj is None and not rel_dep:
             arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
             new_node = self.create_node(arg_type)
-            self.umr_graph.triples.append((concept_node.var_name, 'ARG1', new_node.var_name))
+            self.umr_graph.triples.append((concept.var_name, 'ARG1', new_node.var_name))
 
     def add_node(self,
                  role,
@@ -286,8 +288,8 @@ class UMRNode:
                         arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
                         new_node = self.create_node(arg_type)
                         self.umr_graph.triples.append((self.var_name, 'actor', new_node.var_name))
-                self.umr_graph.triples.append((self.var_name, 'aspect', 'ASP'))
-                self.umr_graph.triples.append((self.var_name, 'modal-strength', 'MS'))
+                self.aspect()
+                self.modality()
 
             ########## check by deprel ##########
             if self.ud_node.deprel == 'conj':
@@ -320,7 +322,7 @@ class UMRNode:
                 self.adverbial_clauses()
 
             elif self.ud_node.deprel == 'advmod:neg':
-                self.umr_graph.triples.append((self.parent.var_name, 'modal-strength', 'full-negative'))
+                self.parent.modality(value='full-negative')
 
             if not self.already_added:
                 self.add_node(self.role)
@@ -386,6 +388,27 @@ class UMRNode:
             feat = given_feat
 
         self.umr_graph.triples.append((var_name, f'refer-{feature}', feat))
+
+    def aspect(self, value=None):
+        """ Assign aspect attribute"""
+
+        if value:
+            value = value
+        else:
+            if self.ud_node.feats['Aspect'] == 'Perf':
+                value = 'performance'
+            else:
+                value = 'ASP'
+
+        self.umr_graph.triples.append((self.var_name, 'aspect', value))
+
+    def modality(self, value=None):
+        """ Assign modal-strength attribute """
+
+        if not value:
+            value = 'MS'
+
+        self.umr_graph.triples.append((self.var_name, 'modal-strength', value))
 
         ####################### Language transformations #######################
 

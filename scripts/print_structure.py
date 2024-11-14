@@ -36,7 +36,7 @@ def print_structure(tree, sent_tree, umr):
     """
 
     print(f'# sent_id = {tree.address()}')
-    print('# :: snt')  # progressive numbering implemented
+    print('# :: snt')  # progressive numbering to be implemented
     numbered_line_with_alignment(tree)
     print(f'Sentence: {tree.text}', '\n')
     print('# sentence level graph:')

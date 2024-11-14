@@ -115,17 +115,7 @@ class UMRGraph:
     def reorder_triples(self):
         """
         Reorders the list of triples stored in `self.triples` based on a predefined hierarchy for the
-        second element in each triple, in order to mirror the natural order of manual annotation.
-        The ordering hierarchy is as follows:
-
-        1. Triples with 'instance' as the second element have the highest priority.
-        2. Triples with 'actor' or 'ARG1' as the second element are next in priority.
-        3. Triples with 'patient' or 'ARG2' as the second element come after that.
-        4. Next, triples with 'affectee' as the second element.
-        5. Other elements not specifically listed (excluding 'refer-number' and 'refer-person').
-        6. Finally, triples with 'aspect' come last among specified elements.
-        7. 'refer-number' and 'refer-person' appear at the end.
-        8. Roles named 'op1', 'op2', 'op3', etc., are ordered by increasing number (op1 has the highest priority).
+        role (second element) in each triple, to reflect a natural order of manual annotation.
         """
 
         hierarchy_order = {
@@ -135,22 +125,29 @@ class UMRGraph:
             'ARG1': 3,
             'ARG2': 4,
             'affectee': 5,
-            'refer-person': 6,
-            'refer-number': 7,
-            'aspect': 8
+            'OBLIQUE': 6,
+            'refer-person': 7,
+            'refer-number': 8,
+            'aspect': 9,
+            'modal-strength': 10
         }
 
         def get_priority(triple):
             role = triple[1]
 
+            if role == 'aspect':
+                return 20
+            elif role == 'modal-strength':
+                return 21
+
             if role.startswith('op'):
                 try:
                     op_number = int(role[2:])
-                    return 9 + op_number
+                    return 11 + op_number
                 except ValueError:
-                    return 10
+                    return 12
 
-            return hierarchy_order.get(role, 10)
+            return hierarchy_order.get(role, 18)
 
         self.triples = sorted(self.triples, key=get_priority)
 
