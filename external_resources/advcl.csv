@@ -9,7 +9,7 @@ quoad,temporal,
 quamdiu,temporal,
 ut,temporal,Mood=Ind
 cum,temporal,Mood=Ind
-quia,causal,Mood=Ind
+quia,causal,
 quod,causal,
 quoniam,temporal,Mood=Ind
 etsi,concessive,Mood=Ind

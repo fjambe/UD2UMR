@@ -205,11 +205,14 @@ class UMRNode:
             else:
                 self.umr_graph.triples.append((concept.var_name, 'ARG1', self.umr_graph.track_conj[nsubj]))
                 self.umr_graph.find_and_remove_from_triples(self.umr_graph.track_conj[nsubj], 2)
-                self.umr_graph.triples.append((concept.var_name, second_arg, self.var_name))
+                self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
 
             nsubj_node.parent, nsubj_node.parent.var_name = concept, concept.var_name
             nsubj_node.role = 'ARG1'
             nsubj_node.already_added = True
+
+        else:
+            self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
 
         concept.aspect('state')
         concept.modality()
@@ -296,6 +299,10 @@ class UMRNode:
             if self.ud_node.deprel == 'conj':
                 role = next((k for k, v in self.umr_graph.deprels.items() for item in v if item == self.ud_node.parent), None)
                 root_var = self.coordination(role)
+
+            elif self.ud_node.deprel == 'ccomp':
+                self.ccomps()
+
             elif self.ud_node.deprel == 'appos':
                 self.introduce_abstract_roleset(self.role)
 
@@ -393,9 +400,7 @@ class UMRNode:
     def aspect(self, value=None):
         """ Assign aspect attribute"""
 
-        if value:
-            value = value
-        else:
+        if not value:
             if self.ud_node.feats['Aspect'] == 'Perf':
                 value = 'performance'
             else:
@@ -406,10 +411,15 @@ class UMRNode:
     def modality(self, value=None):
         """ Assign modal-strength attribute """
 
-        if not value:
-            value = 'MS'
+        already = [tup for tup in self.umr_graph.triples if tup[0] == self.var_name and tup[1] == 'modal-strength']
+        if not already:
+            if not value:
+                    if hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Ind' and self.ud_node.parent.is_root():
+                         value = 'full-affirmative'
+                    else:
+                        value = 'MS'
 
-        self.umr_graph.triples.append((self.var_name, 'modal-strength', value))
+            self.umr_graph.triples.append((self.var_name, 'modal-strength', value))
 
         ####################### Language transformations #######################
 
@@ -663,6 +673,8 @@ class UMRNode:
 
         self.replace_with_abstract_roleset(concept, replace_arg, overt=copula)
         self.already_added = True
+        if copula:
+            self.umr_graph.triples.remove((self.var_name, 'instance', self.ud_node.lemma))
 
     def relative_clauses(self, rel_pron_node):
         """
@@ -701,7 +713,7 @@ class UMRNode:
         Handle adverbial clauses.
         If a dictionary with disambiguated SCONJs is provided, it is used here to assign more fine-grained relations.
         """
-        role = self.role
+        role = 'ADVCL'
         sconj = next((c for c in self.ud_node.children if c.deprel == 'mark'), None)
 
         if self.ud_node.deprel != 'advcl:cmp':
@@ -715,14 +727,26 @@ class UMRNode:
                             valid.append(sconj.parent.feats[feat] == value)
                     if all(valid):
                         role = advcl.get(sconj.lemma, {}).get('type')
+                else:
+                    role = advcl.get(sconj.lemma, {}).get('type')
 
             if not self.extra_level:
                 self.add_node(role)
             else:
-                self.add_node(self.role, def_parent=self.parent.parent.var_name)
+                self.parent.add_node(role, def_parent=self.parent.parent.var_name)
 
         else:
             pass
+            # advcl:cmp
+
+    def ccomps(self):
+        """
+        Handle clausal complements.
+        TODO: consider ccomp:reported, 'say' verbs, and so on.
+        """
+
+        self.role = 'patient'
+        self.add_node(self.role)
 
 
 

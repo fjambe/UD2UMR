@@ -1,7 +1,8 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: general structure for pronouns, quantities, NEs, ccomp/csubj.
+- [coding] Big things to work on next: general structure for pronouns, quantities, NEs, ccomp/csubj,
+participles with acl deprel like relative clauses.
 - [coding] Implement `advcl:cmp`.
 - [coding] `flat` di NUMs: single number?
 

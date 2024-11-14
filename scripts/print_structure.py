@@ -35,12 +35,16 @@ def print_structure(tree, sent_tree, umr):
     - umr: the UMR graph itself.
     """
 
-    print(f'# sent_id = {tree.address()}')
-    print('# :: snt')  # progressive numbering to be implemented
-    numbered_line_with_alignment(tree)
-    print(f'Sentence: {tree.text}', '\n')
-    print('# sentence level graph:')
-    print(umr, '\n')
-    print('# alignment:')
-    sent_tree.alignments()
-    print('\n')
+    if umr:
+        print(f'# sent_id = {tree.address()}')
+        print('# :: snt')  # progressive numbering to be implemented
+        numbered_line_with_alignment(tree)
+        print(f'Sentence: {tree.text}', '\n')
+        print('# sentence level graph:')
+        print(umr, '\n')
+        print('# alignment:')
+        sent_tree.alignments()
+        print('\n')
+    else:
+        print(f'# sent_id = {tree.address()}')
+        print(f'Sentence: {tree.text}', '\n')
