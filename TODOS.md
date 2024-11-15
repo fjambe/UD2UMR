@@ -1,10 +1,11 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: general structure for pronouns, quantities, NEs, ccomp/csubj,
-participles with acl deprel like relative clauses.
+- [coding] Big things to work on next: general structure for pronouns, NEs, ccomp/csubj,
+participles with `acl` deprel like relative clauses.
 - [coding] Implement `advcl:cmp`.
 - [coding] `flat` di NUMs: single number?
+- [documentation] Document how quantities are handled in Overleaf.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -28,7 +29,11 @@ Cf. _Homo bellus, tam bonus Chrysanthus animam ebulliit._ "The handsome man, so 
 _Chysanthus_ `appos` di _homo_.
 
 ### UPOS:
-None
+- NUM. Chosen strategy to convert from string to digit: use EN as pivoting language.
+Translate instances to EN, use a Python library like `text2num` or `num2words` (also supporting few other languages -
+but it feels less language-dependent to just translate everything to EN) to convert the string into a digit,
+and include the obtained digit in the UMR graph.
+
 
 ### To Penman
 To parse my structure into Penman, it has (?) to look like this:
@@ -52,7 +57,7 @@ UD trees are single-rooted, so `len(tree.children)` == 1, always.
 
 
 ## Unresolved/postponed issues:
-- re-entrancies: since it's coreference, it wasn't handled in IGT. It's hard to check that it's the same entity.
+- Re-entrancies: since it's coreference, it wasn't handled in IGT. It's hard to check that it's the same entity.
 I could do it for 1st and 2nd person PRONs/ADJs, if they belong to the same subtree, but it would be a dirty hack. 
 The simplest option as of now is just postponing it, as done in IGT.
 Cf. _Hoc mihi dicit fatus meus_: now I have 2 distinct 1st/2nd-person nodes, but it should be the same one.
@@ -75,7 +80,7 @@ string `:aspect` ready for the annotator to fill in the value), everytime I have
 extract automatically the aspect value.
 To me, it feels like it depends on what the goal is: make annotators' job easier or claim to get UMRs automatically?
 After discussing it with Alexis, we came to the conclusion that it would definitely be beneficial for annotators.
-I still think it will be confusing when it comes to evaluation, but it's gonna be very easy to remove (not add it, 
+I still think it will be confusing when it comes to evaluation, but it's going to be very easy to remove (not add it, 
 actually) if I don't want it anymore in my UMRs. It's one line of code. Maybe discuss it with Dan. 
 
 
@@ -88,21 +93,19 @@ I could also implement an additional check for UPOS (= only VERB). What do you p
 - [Julia] abstract rolesets seem to always have `:aspect state`: correct? [mail]
 - [Julia] UMR of _boves, quorum beneficio panem manducamus_ "oxen, thanks to whose service we eat bread"? [mail]
 
+## UPDATES
+- Describe implementation of quantities.
+
 ## For Dan:
-- what to do with _nec_ split as _ne_ + _c_? o li unisco in Perseus o li tratto in UMR.
-- show him the Appendix 3 about copular constructions. 
-- elided arguments: we cannot do anything to restore objects, as they are undetectable, but we can restore subject.
-What has been decided so far is that, in the case of elided subjects, I will restore it. However, how can I tell if person or thing?
-IGT said: if in 80% of the cases it's `person`, just go for `person`.
-However, going through the data, I have the feeling that in the case of 3rd person verbs it's not anywhere close to 80%. Latin topics can be crazy.
-So, what I have now is `person` when the verb is a 1st/2nd person form;
-otherwise, I have a placeholder `FILL` that the annotator will quickly replace with the correct entity (`person`/`thing`) manually. Ok?
-- Do you think it's safe to extend the non-overt-copula processing to all copular constructions?
-Basically removing the constraint "no cop in siblings", and merge the two checks.
-Result: no relying explicitly on the cop deprel. Explain the whole situation as it is now.
-- Empty aspect in UMRs.
-- Alignments: I already check if two variables are aligned to the same UD token (thus excluding 0-0 alignments), and
-raise a warning if it's the case.
+- What to do with _nec_ split as _ne_ + _c_? do I merge them in Perseus or handle them in UMR?
+Sent tlg0031.tlg027.perseus-lat1.tb.xml@88 in Perseus test.
+All other _nec_ s are not split in two as a MWE.
+- Is the UFeat _NumValue_ really a thing in UD? Couldn't find much documentation. 
+It could be useful for quantities in UMR.
+As of now, quantities (`nummod`) are implemented as proper nodes (e.g., `t / ten`), while they should be attributes
+(`:quant 10`). The problem is that I cannot extract the number itself if not on a lexical basis, but even so it'd be an
+infinite list, so I don't think it's the way to go.
+
 
 ## Details:
 - `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.

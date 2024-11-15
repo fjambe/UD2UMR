@@ -1,6 +1,7 @@
 import csv
 from typing import Union
-
+from googletrans import Translator
+from word2number import w2n
 
 def get_deprels(ud_tree) -> dict:
     """ Map UD deprels to UMR roles, mostly based on UD deprels. """
@@ -22,7 +23,6 @@ def get_deprels(ud_tree) -> dict:
         'poss': lambda d: d.deprel == 'nmod:poss',
         'identity-91': lambda d: d.deprel == 'appos',
         'COPULA': lambda d: d.deprel == 'cop',
-        # 'ADVCL': lambda d: d.udeprel == 'advcl',
         'other': lambda d: d.udeprel in ['advcl', 'conj', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp',
                                          'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case',
                                          'parataxis', 'dep', 'orphan']
@@ -72,6 +72,29 @@ def get_external_files(filename: str) -> Union[set, dict]:
         print(f"File {filename.split('/')[-1]} not found. Lexical information not available.")
 
     return terms
+
+
+def translate_number(numeral, input_lang):
+    """
+    Translates a given numeral from the specified input language to English and converts it to a digit.
+
+    Args:
+        numeral (str): The numeral to be translated.
+        input_lang (str): The language code of the input numeral.
+
+    Returns:
+        int: The numeric value of the translated numeral.
+    """
+    translator = Translator()
+
+    translation = translator.translate(numeral, src=input_lang, dest='en')
+    en_text = translation.text
+
+    try:
+        numeric_value = w2n.word_to_num(en_text)
+        return numeric_value
+    except ValueError:
+        return numeral
 
 #########################################################
 

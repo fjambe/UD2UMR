@@ -1,5 +1,5 @@
 from penman.models.amr import model as pm
-from preprocess import interpersonal, advcl
+from preprocess import interpersonal, advcl, translate_number
 
 class UMRNode:
     def __init__(self, ud_node, umr_graph, role: str = "", already_added=False):
@@ -109,10 +109,14 @@ class UMRNode:
         deps = UMRNode.find_children_by_parent(umr_graph, old_parent)
         if deps:
             for d in deps:
-                if d.role not in ['actor', 'patient']:
+                if d.role not in ['actor', 'patient', 'quant']:
                     d.parent = new_parent
                     if remove:
                         umr_graph.find_and_replace_in_triples(d.var_name, 2, new_parent.var_name, 0)
+                        # attributes as well
+                        for i, tup in enumerate(umr_graph.triples):
+                            if tup[0] == old_parent.var_name and tup[1] != 'instance':
+                                umr_graph.triples[i] = (new_parent.var_name, tup[1], tup[2])
 
     def introduce_abstract_roleset(self, role_aka_concept):
         """
@@ -218,7 +222,7 @@ class UMRNode:
         concept.modality()
 
         # reattach dependents
-        UMRNode.reattach_dependents(self.umr_graph, self.parent, concept)
+        UMRNode.reattach_dependents(self.umr_graph, self.parent, concept, remove=True)
 
         # elided subjects to be restored
         rel_dep = [s for s in self.ud_node.siblings if s.deprel == 'acl:relcl']
@@ -296,7 +300,10 @@ class UMRNode:
                 self.modality()
 
             ########## check by deprel ##########
-            if self.ud_node.deprel == 'conj':
+            if self.ud_node.deprel == 'nummod':
+                self.quantities()
+
+            elif self.ud_node.deprel == 'conj':
                 role = next((k for k, v in self.umr_graph.deprels.items() for item in v if item == self.ud_node.parent), None)
                 root_var = self.coordination(role)
 
@@ -748,5 +755,18 @@ class UMRNode:
         self.role = 'patient'
         self.add_node(self.role)
 
+    def quantities(self):
+        """ Handle quantities, which are attributes in UMRs. """
 
+        number = self.ud_node.form
+        components = [c for c in self.ud_node.children if c.deprel == 'flat']
+        components = [self.find_by_ud_node(self.umr_graph, c) for c in components]
+        if components:
+            for c in components:
+                number += f' {c.ud_node.form}'
+                c.already_added = True
+
+        digit = translate_number(number, 'la')  # change lang
+        self.umr_graph.triples.append((self.parent.var_name, ':quant', digit))
+        self.already_added = True
 

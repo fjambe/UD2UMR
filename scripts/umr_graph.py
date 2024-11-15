@@ -2,7 +2,6 @@ import re
 import penman
 import warnings
 from penman.exceptions import LayoutError
-from sympy.physics.units import current
 
 from umr_node import UMRNode
 
