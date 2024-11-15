@@ -35,6 +35,7 @@ class UMRNode:
         self.entity = False
         self.replaced = False
         self.umr_graph.nodes.append(self)
+        self.lang = self.umr_graph.lang
 
     def __repr__(self):
         return (f"Node(token='{self.ud_node if not isinstance(self.ud_node, str) else self.ud_node}', "
@@ -759,14 +760,14 @@ class UMRNode:
         """ Handle quantities, which are attributes in UMRs. """
 
         number = self.ud_node.form
-        components = [c for c in self.ud_node.children if c.deprel == 'flat']
+        components = [c for c in self.ud_node.children if c.deprel == 'flat' and c.upos == 'NUM']
         components = [self.find_by_ud_node(self.umr_graph, c) for c in components]
         if components:
             for c in components:
                 number += f' {c.ud_node.form}'
                 c.already_added = True
 
-        digit = translate_number(number, 'la')  # change lang
+        digit = translate_number(number, self.lang)
         self.umr_graph.triples.append((self.parent.var_name, ':quant', digit))
         self.already_added = True
 

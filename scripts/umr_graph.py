@@ -2,11 +2,10 @@ import re
 import penman
 import warnings
 from penman.exceptions import LayoutError
-
 from umr_node import UMRNode
 
 class UMRGraph:
-    def __init__(self, ud_tree, deprels):
+    def __init__(self, ud_tree, deprels, language):
         """
         Initializes a UMRGraph instance to represent a sentence UMR graph.
 
@@ -27,6 +26,7 @@ class UMRGraph:
         self.deprels = deprels
         self.root_var = None
         self.nodes: list[UMRNode] = []
+        self.lang = language
         self.triples = []
         self.track_conj = {}
         self.extra_level = {}  # node: new_umr_parent, e.g. {var of ARG1: var of roleset-91}

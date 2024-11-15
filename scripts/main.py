@@ -9,7 +9,8 @@ import preprocess as pr
 from print_structure import print_structure
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--treebank", default=False, help="Path of the treebank in input.")
+parser.add_argument("--treebank", help="Path of the treebank in input.", required=True)
+parser.add_argument("--lang", help="Language code of the treebank (e.g., 'en' for English).", required=True)
 
 
 if __name__ == "__main__":
@@ -20,7 +21,7 @@ if __name__ == "__main__":
     for tree in doc.trees:
 
         deprels_to_relations = pr.get_deprels(tree)
-        sent_tree = UMRGraph(tree, deprels_to_relations)
+        sent_tree = UMRGraph(tree, deprels_to_relations, args.lang)
 
         # First pass: create variables for UD nodes.
         for node in tree.descendants:

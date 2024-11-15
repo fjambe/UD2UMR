@@ -1,11 +1,12 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: general structure for pronouns, NEs, ccomp/csubj,
-participles with `acl` deprel like relative clauses.
+- [coding] Big things to work on next: general structure for pronouns, NEs, ccomp/csubj, participles with `acl`
+deprel like relative clauses.
 - [coding] Implement `advcl:cmp`.
-- [coding] `flat` di NUMs: single number?
-- [documentation] Document how quantities are handled in Overleaf.
+- [documentation] Document how quantities are handled in Overleaf. [EASY, FRI]
+- [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
+to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
