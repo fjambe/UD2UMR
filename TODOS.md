@@ -1,8 +1,7 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: NEs, ccomp/csubj.
-- [coding] Implement `advcl:cmp`.
+- [coding] Big things to work on next: ccomp/csubj, `advcl:cmp`.
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent.
@@ -108,6 +107,10 @@ infinite list, so I don't think it's the way to go.
 - Participles with `acl` deprel treated as relative clauses - e.g., _the eaten apples_ as _the apples that were eaten_.
 For Latin, I have to specify the constraint `Aspect != Prosp`, because otherwise I capture gerund(ive)s - but it does
 feel specific to the way Latin is annotated. WHat do you think from a UD perspective: is this true? Solution?
+- First implementation of NEs (no NER involved as of now, just detecting PROPNs).
+I'm not sure how much adding NER to the pipeline improves the outcome. It would be some effort + it'd be a
+language-specific module, while I'm trying to be as language-agnostic as possible (although with limitations).
+And in any case I'd end up with very coarse-grained labels (PER, LOC, ORG) that would have to be corrected manually.
 
 
 ## Details:

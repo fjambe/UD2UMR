@@ -11,7 +11,7 @@ def get_deprels(ud_tree) -> dict:
         'actor': lambda d: d.deprel == 'nsubj',
         'patient': lambda d: d.deprel in ['obj', 'nsubj:pass'],
         'mod': lambda d: d.deprel == 'amod' or (d.deprel == 'nmod' and d.feats.get('Case') != 'Gen'),
-        'OBLIQUE': lambda d: d.deprel == 'obl' and d.feats.get('Case') != 'Dat',
+        'OBLIQUE': lambda d: d.deprel == 'obl', # and d.feats.get('Case') != 'Dat',
         'det': lambda d: d.deprel == 'det',
         'manner': lambda d: d.deprel == 'advmod',
         'temporal': lambda d: d.deprel == 'advmod:tmod',

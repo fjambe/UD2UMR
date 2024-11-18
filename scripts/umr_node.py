@@ -1,6 +1,7 @@
 from penman.models.amr import model as pm
 from preprocess import interpersonal, advcl, translate_number
 
+
 class UMRNode:
     def __init__(self, ud_node, umr_graph, role: str = "", already_added=False):
         """
@@ -299,6 +300,9 @@ class UMRNode:
                 self.aspect()
                 self.modality()
 
+            elif self.ud_node.upos == 'PROPN':
+                self.entity = True
+
             ########## check by deprel ##########
             if self.ud_node.deprel == 'nummod':
                 self.quantities()
@@ -357,9 +361,11 @@ class UMRNode:
             - 'person': A node representing a person.
             - 'thing': A node representing a non-person entity.
             - 'FILL': Used when the node type cannot be automatically classified as 'person' or 'thing'.
+            - 'type-NE': Specifies the type of Named Entity (NE).
+            - 'name': Specifies the name of the NE itself.
 
         Args:
-            category (str): The category/type of the node to create. Must be one of ['person', 'thing', 'FILL'].
+            category (str): The category/type of the node to create. Must be one of ['person', 'thing', 'FILL', 'type-NE', 'name'].
             role (str, optional): The role of the node in the sentence or graph. Default is an empty string.
             replace (bool, optional): If True, replace an existing node in the graph. This is typically used for cases like replacing personal pronouns. 
                                       Default is False, which adds the new node without replacing any existing nodes.
@@ -378,7 +384,7 @@ class UMRNode:
         if category == 'person':
             self.get_number_person('person', new_node.var_name)
 
-        if not reflex:
+        if not reflex and category not in ['type-NE', 'name']:
             self.get_number_person('number', new_node.var_name)
 
         return new_node
@@ -471,6 +477,7 @@ class UMRNode:
             self.possessives()
             self.quantifiers()
             self.det_pro_noun()
+            self.named_entities()
 
     def personal(self):
         """ Handle pronouns - with a special focus on personal and indefinite. """
@@ -573,6 +580,33 @@ class UMRNode:
             # reattach dependents
             UMRNode.reattach_dependents(self.umr_graph, self, new_node, remove=True)
 
+    def named_entities(self):
+        """
+        Processes proper nouns (PROPNs) and represents them as Named Entities (NE) following the conventions of the UMR
+        framework. The entity type is not specified; `type-NE` is a placeholder that will have to be replaced by the
+        annotator.
+        """
+        if self.ud_node.upos == 'PROPN' and not self.replaced and self.role != 'other':  # might be replaced by NER
+
+            entity = self.create_node('type-NE', self.role, replace=True)
+            entity.ud_node = self.ud_node
+            entity.parent = self.parent
+            entity.extra_level = self.extra_level
+            self.already_added, self.replaced = True, True
+
+            name = self.create_node('name', 'name')
+            name.add_node(name.role, def_parent=entity.var_name)
+
+            names = [c for c in self.ud_node.children if c.deprel == 'flat:name' and c.upos == 'PROPN']
+            names = [self] + [UMRNode.find_by_ud_node(self.umr_graph, n) for n in names]
+
+            for i, n in enumerate(names, start=1):
+                self.umr_graph.triples.append((name.var_name, f'op{i}', f'"{n.ud_node.lemma}"'))
+                n.already_added, n.replaced = True, True
+
+            # reattach dependents
+            UMRNode.reattach_dependents(self.umr_graph, self, entity, remove=True)
+
     def coordination(self, role):
         """ Handle coordination by building the corresponding UMR structures. """
 
@@ -608,7 +642,7 @@ class UMRNode:
             first_conj.parent, second_conj.parent = conj, conj
 
             if not self.ud_node.parent.parent.is_root():
-                parent = self.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)
+                parent = UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)
                 conj.parent = parent
             else:
                 root_var = conj.var_name
@@ -619,7 +653,7 @@ class UMRNode:
                     role, parent = tup[1], tup[0]
                     break
 
-            self.umr_graph.triples = [tup for tup in self.umr_graph.triples if not (tup[0] == parent and tup[1] == role)]
+            self.umr_graph.triples = [tup for tup in self.umr_graph.triples if not (tup[0] == parent and tup[1] == role and tup[2] == first_conj.var_name)]
             if conj.var_name != root_var:
                 self.umr_graph.triples.append((parent, role, conj.var_name))
             self.umr_graph.track_conj[self.ud_node.parent] = conj.var_name
@@ -773,7 +807,7 @@ class UMRNode:
 
         number = self.ud_node.form
         components = [c for c in self.ud_node.children if c.deprel == 'flat' and c.upos == 'NUM']
-        components = [self.find_by_ud_node(self.umr_graph, c) for c in components]
+        components = [UMRNode.find_by_ud_node(self.umr_graph, c) for c in components]
         if components:
             for c in components:
                 number += f' {c.ud_node.form}'
@@ -782,4 +816,3 @@ class UMRNode:
         digit = translate_number(number, self.lang)
         self.umr_graph.triples.append((self.parent.var_name, ':quant', digit))
         self.already_added = True
-
