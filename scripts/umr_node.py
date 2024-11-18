@@ -284,7 +284,6 @@ class UMRNode:
             ########## check by UPOS ##########
             if self.ud_node.upos == 'PRON':
                 self.entity = True
-                # TODO: do something with non-personal pronouns, here.
 
             elif self.ud_node.upos == 'DET':
                 self.determiners_initial()
@@ -477,20 +476,29 @@ class UMRNode:
             self.det_pro_noun()
 
     def personal(self):
-        """ Handle personal pronouns. """
+        """ Handle pronouns - with a special focus on personal and indefinite. """
 
-        # TODO: could probably be expanded to handle all pronouns.
+        if self.ud_node.upos == 'PRON' and not self.replaced:
 
-        if self.ud_node.upos == 'PRON' and self.ud_node.feats['PronType'] == 'Prs':
+            entity = None
+            category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person' if self.ud_node.feats['PronType'] == 'Prs' else 'FILL'
 
-            category = 'person' if self.ud_node.feats['Gender'] != 'Neut' else 'thing'
-            pron = self.create_node(category, self.role, replace=True)
-            pron.ud_node = self.ud_node
-            pron.parent = self.parent
+            entity = self.create_node(category, self.role, replace=True)
+            entity.ud_node = self.ud_node
+            entity.parent = self.parent
             self.replaced = True
 
+            if self.ud_node.feats['PronType'] != 'Rel':
+
+                if self.ud_node.feats['PronType'] == 'Ind':
+                    if self.ud_node.feats['Polarity'] == 'Neg':
+                        self.umr_graph.triples.append((entity.var_name, 'polarity', '-'))
+                    else:
+                        pass  # ask Julia - something, someone, aliquis
+
             # reattach dependents
-            UMRNode.reattach_dependents(self.umr_graph, self, pron, remove=True)
+            if entity:
+                UMRNode.reattach_dependents(self.umr_graph, self, entity, remove=True)
 
     def possessives(self):
         """

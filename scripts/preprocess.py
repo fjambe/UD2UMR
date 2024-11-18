@@ -87,13 +87,20 @@ def translate_number(numeral, input_lang):
     """
     translator = Translator()
 
-    translation = translator.translate(numeral, src=input_lang, dest='en')
-    en_text = translation.text
-
     try:
+        translation = translator.translate(numeral, src=input_lang, dest='en')
+        en_text = translation.text
+
         numeric_value = w2n.word_to_num(en_text)
         return numeric_value
-    except ValueError:
+
+    except ValueError as e:
+        print(f"Conversion error occurred: {e}")
+        return numeral
+
+
+    except Exception as e:
+        print(f"Unexpected error occurred: {e}")
         return numeral
 
 #########################################################

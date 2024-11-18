@@ -1,7 +1,7 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: general structure for pronouns, NEs, ccomp/csubj.
+- [coding] Big things to work on next: NEs, ccomp/csubj.
 - [coding] Implement `advcl:cmp`.
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
@@ -90,11 +90,11 @@ There are of course exceptions: now we have negative modality annotated for noun
 they are not overt).
 C.f., e.g., _Puerum basiavi frugalissimum, **non** propter formal, sed quia frugi est_ (from Perseus_test).
 I could also implement an additional check for UPOS (= only VERB). What do you prefer?
+- [Julia] How should indefinite pronouns like _somehing_, _someone_ be annotated? I have `person` now, but there's no
+mark of (in)definitess now, right?
 - [Julia] abstract rolesets seem to always have `:aspect state`: correct? [mail]
 - [Julia] UMR of _boves, quorum beneficio panem manducamus_ "oxen, thanks to whose service we eat bread"? [mail]
 
-## UPDATES
-- Describe implementation of quantities.
 
 ## For Dan:
 - What to do with _nec_ split as _ne_ + _c_? do I merge them in Perseus or handle them in UMR?
