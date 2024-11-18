@@ -459,11 +459,8 @@ class UMRNode:
             self.add_node(role)
 
         else:
-            role = self.role
+            role = self.role if self.role != 'det' else 'mod'
             self.add_node(role)
-
-        if self.ud_node.deprel == 'det' and not self.already_added:
-            self.add_node('mod')
 
     def replace_entities(self):
         """
@@ -480,9 +477,7 @@ class UMRNode:
 
         if self.ud_node.upos == 'PRON' and not self.replaced:
 
-            entity = None
             category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person' if self.ud_node.feats['PronType'] == 'Prs' else 'FILL'
-
             entity = self.create_node(category, self.role, replace=True)
             entity.ud_node = self.ud_node
             entity.parent = self.parent
@@ -497,8 +492,7 @@ class UMRNode:
                         pass  # ask Julia - something, someone, aliquis
 
             # reattach dependents
-            if entity:
-                UMRNode.reattach_dependents(self.umr_graph, self, entity, remove=True)
+            UMRNode.reattach_dependents(self.umr_graph, self, entity, remove=True)
 
     def possessives(self):
         """
