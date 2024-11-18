@@ -1,12 +1,11 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: general structure for pronouns, NEs, ccomp/csubj, participles with `acl`
-deprel like relative clauses.
+- [coding] Big things to work on next: general structure for pronouns, NEs, ccomp/csubj.
 - [coding] Implement `advcl:cmp`.
-- [documentation] Document how quantities are handled in Overleaf. [EASY, FRI]
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
+Not really urgent.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -106,6 +105,9 @@ It could be useful for quantities in UMR.
 As of now, quantities (`nummod`) are implemented as proper nodes (e.g., `t / ten`), while they should be attributes
 (`:quant 10`). The problem is that I cannot extract the number itself if not on a lexical basis, but even so it'd be an
 infinite list, so I don't think it's the way to go.
+- Participles with `acl` deprel treated as relative clauses - e.g., _the eaten apples_ as _the apples that were eaten_.
+For Latin, I have to specify the constraint `Aspect != Prosp`, because otherwise I capture gerund(ive)s - but it does
+feel specific to the way Latin is annotated. WHat do you think from a UD perspective: is this true? Solution?
 
 
 ## Details:

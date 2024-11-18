@@ -293,7 +293,7 @@ class UMRNode:
                 # elided subjects to be restored
                 if 'nsubj' not in [d.udeprel for d in
                                    self.ud_node.children] and self.ud_node.parent.deprel != 'root':  # root check is a bit random
-                    if self.ud_node.feats['Voice'] != 'Pass':
+                    if self.ud_node.feats['Voice'] != 'Pass' and self.ud_node.feats['VerbForm'] != 'Part':
                         arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
                         new_node = self.create_node(arg_type)
                         self.umr_graph.triples.append((self.var_name, 'actor', new_node.var_name))
@@ -333,6 +333,9 @@ class UMRNode:
 
                 self.relative_clauses(rel_pron_node)
                 rel_pron_node.already_added = True
+
+            elif self.ud_node.deprel == 'acl' and self.ud_node.feats['VerbForm'] == 'Part' and self.ud_node.feats['Aspect'] != 'Prosp':
+                self.acl_participles()
 
             elif self.ud_node.udeprel == 'advcl':
                 self.adverbial_clauses()
@@ -715,6 +718,13 @@ class UMRNode:
                     self.umr_graph.triples[i] = (tup[0], 'patient-of', tup[2])
                 elif 'obj' in [d.deprel for d in self.ud_node.children]:
                     self.umr_graph.triples[i] = (tup[0], 'actor-of', tup[2])
+
+    def acl_participles(self):
+        """
+        Handle attributive participles (with deprel 'acl') similarly to relative clauses.
+        """
+        role = 'actor' if self.ud_node.feats['Voice'] == 'Act' else 'patient'
+        self.add_node(role, invert=True, def_parent=self.parent.var_name)
 
     def adverbial_clauses(self):
         """
