@@ -291,8 +291,7 @@ class UMRNode:
 
             elif self.ud_node.upos == 'VERB':
                 # elided subjects to be restored
-                if 'nsubj' not in [d.udeprel for d in
-                                   self.ud_node.children] and self.ud_node.parent.deprel != 'root':  # root check is a bit random
+                if not any(d.udeprel in {'nsubj', 'csubj'} for d in self.ud_node.children) and self.ud_node.parent.deprel != 'root':  # root check is a bit random
                     if self.ud_node.feats['Voice'] != 'Pass' and self.ud_node.feats['VerbForm'] != 'Part':
                         arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
                         new_node = self.create_node(arg_type)
@@ -311,8 +310,8 @@ class UMRNode:
                 role = next((k for k, v in self.umr_graph.deprels.items() for item in v if item == self.ud_node.parent), None)
                 root_var = self.coordination(role)
 
-            elif self.ud_node.deprel == 'ccomp':
-                self.ccomps()
+            elif self.ud_node.udeprel in ['csubj', 'ccomp']:
+                self.clauses()
 
             elif self.ud_node.deprel == 'appos':
                 self.introduce_abstract_roleset(self.role)
@@ -793,15 +792,20 @@ class UMRNode:
             pass
             # advcl:cmp
 
-    def ccomps(self):
+    def clauses(self):
         """
-        Handle clausal complements.
-        TODO: consider ccomp:reported, 'say' verbs, and so on.
+        Handle clausal subjects and complements (csubj and ccomp).
         """
 
-        self.role = 'undergoer'
+        if self.ud_node.deprel == 'csubj':
+            self.role = 'actor'
+        elif self.ud_node.deprel in ['ccomp', 'csubj:pass']:
+            self.role = 'undergoer'
+        elif self.ud_node.deprel == 'ccomp:reported':
+            self.role = 'theme'
+            self.umr_graph.triples.append((self.var_name, 'quot', self.parent.var_name))
+
         self.add_node(self.role)
-        print('caramba')
 
     def quantities(self):
         """ Handle quantities, which are attributes in UMRs. """

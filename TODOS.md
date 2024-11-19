@@ -1,14 +1,14 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: `ccomp`/`csubj`, `advcl:cmp`.
+- [coding] Big things to work on next: `advcl:cmp` + all remaining `advcl`s (e.g., `advcl:abs`) as just `ADVCL`.
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
 - [investigation] Reconsider `advmod:lmod`, see below.
 - [documentation] Start writing a guide for annotators with a list of the things to check, because they're not perfect
-in the automatic conversion (e.g. `patient`/`theme`, `OBLIQUE`, `ADVCL`, etc.). Basically what to pay attention to, what
-to check.
+in the automatic conversion (e.g. `patient`/`theme`, `OBLIQUE`, `ADVCL`, `modal-strength`, `aspect`, etc.).
+Basically what to pay attention to, what to check.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.

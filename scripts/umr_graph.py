@@ -123,29 +123,33 @@ class UMRGraph:
         """
         Reorders the list of triples stored in `self.triples` based on a predefined hierarchy for the
         role (second element) in each triple, to reflect a natural order of manual annotation.
+        Main features:
+        - triples are grouped based on their first node (triple[0]) to facilitate handling nested dependencies.
+        - a recursive function ensures that child nodes are added after their parent.
+        - each group of triples for a given node is sorted based on the predefined get_priority function.
         """
-
         hierarchy_order = {
             'instance': 0,
             'actor': 1,
             'undergoer': 2,
-            'ARG1': 3,
-            'ARG2': 4,
-            'affectee': 5,
-            'OBLIQUE': 6,
-            'refer-person': 7,
-            'refer-number': 8,
-            'aspect': 9,
-            'modal-strength': 10
+            'theme': 3,
+            'ARG1': 4,
+            'ARG2': 5,
+            'affectee': 6,
+            'OBLIQUE': 7,
+            'refer-person': 8,
+            'refer-number': 9,
         }
 
         def get_priority(triple):
             role = triple[1]
 
-            if role == 'aspect':
+            if role == 'quot':
                 return 20
-            elif role == 'modal-strength':
+            elif role == 'aspect':
                 return 21
+            elif role == 'modal-strength':
+                return 22
 
             if role.startswith('op'):
                 try:
@@ -156,7 +160,32 @@ class UMRGraph:
 
             return hierarchy_order.get(role, 18)
 
-        self.triples = sorted(self.triples, key=get_priority)
+        visited_nodes = set()
+        reordered_triples = []
+
+        def add_triples(node):
+            if node in visited_nodes:
+                return
+            visited_nodes.add(node)
+
+            for triple in grouped_triples.get(node, []):
+                if triple not in reordered_triples:
+                    reordered_triples.append(triple)
+                    add_triples(triple[2])  # Recurse on the child node
+
+        # Step 1: Group triples by their source node
+        grouped_triples = {}
+        for tup in self.triples:
+            source = tup[0]
+            grouped_triples.setdefault(source, []).append(tup)
+
+        # Step 2: Process triples starting from the root node(s)
+        for tup in self.triples:
+            if tup[0] not in visited_nodes:
+                add_triples(tup[0])
+
+        # Step 3: Sort the triples based on their priorities
+        self.triples = sorted(reordered_triples, key=get_priority)
 
     def postprocessing_checks(self):
         """
@@ -211,8 +240,8 @@ class UMRGraph:
             return penman.encode(g, top=root, indent=4)
 
         except LayoutError as e:
-            # for n in self.triples:
-            #     print(n)
+            for n in self.triples:
+                print(n)
             print(f"Skipping sentence due to LayoutError: {e}")
 
     def find_in_triples(self, variable, position):
