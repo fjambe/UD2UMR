@@ -115,6 +115,8 @@ feel specific to the way Latin is annotated. WHat do you think from a UD perspec
 I'm not sure how much adding NER to the pipeline improves the outcome. It would be some effort + it'd be a
 language-specific module, while I'm trying to be as language-agnostic as possible (although with limitations).
 And in any case I'd end up with very coarse-grained labels (PER, LOC, ORG) that would have to be corrected manually.
+- What do I do with `xcomp`? Can you come up with different UMR annotations based on different `xcomp` types (and what
+would be the constraints?)?
 
 
 ## Details:

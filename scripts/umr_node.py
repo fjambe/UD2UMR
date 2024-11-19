@@ -132,9 +132,6 @@ class UMRNode:
             - An ARG2 relation linking the new roleset concept to this node.
             - An aspect "state" relation.
         """
-        # TODO: it should also work for reification in general, so it could be renamed.
-        # double check also that role inversion can be generalized.
-
         self.umr_graph.find_and_remove_from_triples(role_aka_concept, 1)
         concept = UMRNode(role_aka_concept, self.umr_graph, already_added=True)
         self.umr_graph.triples.extend([
@@ -197,8 +194,10 @@ class UMRNode:
                         if tup[2] == nsubj_node.var_name:
                             self.umr_graph.triples.remove(tup)
                 self.umr_graph.triples.append((concept.var_name, 'ARG1', nsubj_node.var_name))
+                nsubj_node.parent = concept
                 if not nsubj_node.extra_level:
                     self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
+                    self.parent.parent = concept
                 else:
                     parent = UMRNode.find_by_ud_node(self.umr_graph, nsubj.parent)
                     check = [tup for tup in self.umr_graph.triples if tup[1] == 'undergoer']
@@ -207,11 +206,15 @@ class UMRNode:
                             if tup[2] == parent.var_name:
                                 self.umr_graph.triples.remove(tup)
                     self.umr_graph.triples.append((concept.var_name, second_arg, parent.var_name))
+                    parent.parent = concept
 
             else:
                 self.umr_graph.triples.append((concept.var_name, 'ARG1', self.umr_graph.track_conj[nsubj]))
+                arg1 = UMRNode.find_by_var_name(self.umr_graph, self.umr_graph.track_conj[nsubj])
                 self.umr_graph.find_and_remove_from_triples(self.umr_graph.track_conj[nsubj], 2)
                 self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
+                arg1.parent = concept
+                self.parent.parent = concept
 
             nsubj_node.parent, nsubj_node.parent.var_name = concept, concept.var_name
             nsubj_node.role = 'ARG1'
@@ -502,10 +505,8 @@ class UMRNode:
 
     def possessives(self):
         """
-        Handle possessive constructions.
-        1. Basic case: possessive adjectives
-        2. Non-reflexive 3rd person (eius): TODO
-        3. General possession: encoded by the deprel nmod:poss, not treated here. Otherwise undetectable, because lexical.
+        Handle possessive constructions expressed with possessive adjectives.
+        General possession should be encoded by the deprel nmod:poss (not treated here).
         """
 
         numbers = {'Sing': 'singular', 'Plur': 'plural'}
@@ -663,8 +664,7 @@ class UMRNode:
 
             if (self.ud_node.upos == 'NOUN' and role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
                 self.get_number_person('number')
-                first_conj.already_added = True
-                first_conj.already_added = True
+                second_conj.already_added = True
 
             # attach additional conjuncts, if any
             for i, oc in enumerate((s for s in self.ud_node.siblings if s.deprel == 'conj'), start=3):
@@ -674,6 +674,7 @@ class UMRNode:
                     oc_node.parent = conj
                     self.umr_graph.triples.append((conj.var_name, oc_node.role, oc_node.var_name))
                     oc_node.get_number_person('number')
+                    oc_node.already_added = True
 
         return root_var
 

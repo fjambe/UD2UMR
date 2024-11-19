@@ -187,6 +187,10 @@ class UMRGraph:
         # Step 3: Sort the triples based on their priorities
         self.triples = sorted(reordered_triples, key=get_priority)
 
+        # Post-processing: make sure that 'quot' is not listed too early, in order to avoid the Penman library to
+        # reverse the relation automatically (quot-of).
+        self.triples = [t for t in self.triples if t[1] != 'quot'] + [t for t in self.triples if t[1] == 'quot']
+
     def postprocessing_checks(self):
         """
         Checks if 'check_needed' is True for all nodes in the graph.
@@ -240,8 +244,8 @@ class UMRGraph:
             return penman.encode(g, top=root, indent=4)
 
         except LayoutError as e:
-            for n in self.triples:
-                print(n)
+            # for n in self.triples:
+            #     print(n)
             print(f"Skipping sentence due to LayoutError: {e}")
 
     def find_in_triples(self, variable, position):

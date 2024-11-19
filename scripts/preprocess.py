@@ -23,7 +23,8 @@ def get_deprels(ud_tree) -> dict:
         'poss': lambda d: d.deprel == 'nmod:poss',
         'identity-91': lambda d: d.deprel == 'appos',
         'COPULA': lambda d: d.deprel == 'cop',
-        'other': lambda d: d.udeprel in ['advcl', 'conj', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp',
+        'conj': lambda d: d.deprel == 'conj',
+        'other': lambda d: d.udeprel in ['advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp',
                                          'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case',
                                          'parataxis', 'dep', 'orphan']
     }
