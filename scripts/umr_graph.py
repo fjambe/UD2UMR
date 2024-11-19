@@ -128,7 +128,7 @@ class UMRGraph:
         hierarchy_order = {
             'instance': 0,
             'actor': 1,
-            'patient': 2,
+            'undergoer': 2,
             'ARG1': 3,
             'ARG2': 4,
             'affectee': 5,

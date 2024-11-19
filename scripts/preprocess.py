@@ -9,7 +9,7 @@ def get_deprels(ud_tree) -> dict:
     mapping_conditions = {
         'root': lambda d: d.deprel == 'root',  # All children are included for 'root'
         'actor': lambda d: d.deprel == 'nsubj',
-        'patient': lambda d: d.deprel in ['obj', 'nsubj:pass'],
+        'undergoer': lambda d: d.deprel in ['obj', 'nsubj:pass'],
         'mod': lambda d: d.deprel == 'amod' or (d.deprel == 'nmod' and d.feats.get('Case') != 'Gen'),
         'OBLIQUE': lambda d: d.deprel == 'obl', # and d.feats.get('Case') != 'Dat',
         'det': lambda d: d.deprel == 'det',

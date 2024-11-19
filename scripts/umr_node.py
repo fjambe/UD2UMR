@@ -111,7 +111,7 @@ class UMRNode:
         deps = UMRNode.find_children_by_parent(umr_graph, old_parent)
         if deps:
             for d in deps:
-                if d.role not in ['actor', 'patient', 'quant']:
+                if d.role not in ['actor', 'undergoer', 'quant']:
                     d.parent = new_parent
                     if remove:
                         umr_graph.find_and_replace_in_triples(d.var_name, 2, new_parent.var_name, 0)
@@ -201,7 +201,7 @@ class UMRNode:
                     self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
                 else:
                     parent = UMRNode.find_by_ud_node(self.umr_graph, nsubj.parent)
-                    check = [tup for tup in self.umr_graph.triples if tup[1] == 'patient']
+                    check = [tup for tup in self.umr_graph.triples if tup[1] == 'undergoer']
                     if check:
                         for tup in check:
                             if tup[2] == parent.var_name:
@@ -751,7 +751,7 @@ class UMRNode:
             if tup[1] == 'root-of':  # issues with head of relative being the root
                 # look for other dependants
                 if 'nsubj' in [d.deprel for d in self.ud_node.children]:
-                    self.umr_graph.triples[i] = (tup[0], 'patient-of', tup[2])
+                    self.umr_graph.triples[i] = (tup[0], 'undergoer-of', tup[2])
                 elif 'obj' in [d.deprel for d in self.ud_node.children]:
                     self.umr_graph.triples[i] = (tup[0], 'actor-of', tup[2])
 
@@ -759,7 +759,7 @@ class UMRNode:
         """
         Handle attributive participles (with deprel 'acl') similarly to relative clauses.
         """
-        role = 'actor' if self.ud_node.feats['Voice'] == 'Act' else 'patient'
+        role = 'actor' if self.ud_node.feats['Voice'] == 'Act' else 'undergoer'
         self.add_node(role, invert=True, def_parent=self.parent.var_name)
 
     def adverbial_clauses(self):
@@ -799,8 +799,9 @@ class UMRNode:
         TODO: consider ccomp:reported, 'say' verbs, and so on.
         """
 
-        self.role = 'patient'
+        self.role = 'undergoer'
         self.add_node(self.role)
+        print('caramba')
 
     def quantities(self):
         """ Handle quantities, which are attributes in UMRs. """
