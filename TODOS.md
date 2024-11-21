@@ -2,7 +2,7 @@
 
 Next steps:
 - [coding] external file that assigns more specific `modal-strength` values.
-- [coding] `have-degree-91` for UD `Degree`.
+- [coding] `have-degree-91` for UD `Degree`. controllare 'other'. ccomp and conceptt crashes.
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.

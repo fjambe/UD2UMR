@@ -162,7 +162,7 @@ class UMRNode:
         """
         second_arg = 'ARG2' if not replace_arg else replace_arg
 
-        concept = UMRNode(role_aka_concept, self.umr_graph, already_added=True)
+        concept = UMRNode(role_aka_concept, self.umr_graph, self.role, already_added=True)  # added role
         self.parent.extra_level = True
         concept.parent = self.parent.parent
         self.parent.parent = concept
@@ -241,6 +241,8 @@ class UMRNode:
             new_node = self.create_node(arg_type)
             self.umr_graph.triples.append((concept.var_name, 'ARG1', new_node.var_name))
 
+        print(self.umr_graph.triples)
+
         return concept
 
     def add_node(self,
@@ -313,7 +315,7 @@ class UMRNode:
             elif self.ud_node.upos == 'PROPN':
                 self.entity = True
 
-            elif self.ud_node.upos in ['ADJ', 'ADV']:
+            elif self.ud_node.upos in ['ADJ', 'ADV'] and self.ud_node.feats['Degree']:
                 self.have_degree()
 
             ########## check by deprel ##########
@@ -360,6 +362,7 @@ class UMRNode:
                 self.parent.modality(value='full-negative')
 
             if not self.already_added:
+                print('fine', self, self.already_added)
                 self.add_node(self.role)
                 if (self.ud_node.upos == 'NOUN' and self.role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.udeprel in ['nsubj', 'obj', 'obl']):
                     self.get_number_person('number')
@@ -716,12 +719,15 @@ class UMRNode:
         If a set of relational terms is provided, it is used here to assign 'have-rel-role-92'.
         """
         replace_arg = None
-        print(self.already_added)
 
         if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or (
                 self.ud_node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not self.ud_node.parent.feats['Case']):
 
-            if self.ud_node.parent.upos == 'ADJ' or (self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats[
+            if self.ud_node.parent.feats['Degree']:
+                self.parent.have_degree()
+                return None
+
+            elif self.ud_node.parent.upos == 'ADJ' or (self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats[
                 'PronType'] != 'Prs'):  # TODO: double-check DET (for 'tantus' it can be ok, but for 'hic' identity would be better...ma both Dem!!)
                 concept = 'have-mod-91'
             elif self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats['PronType'] == 'Prs':
@@ -854,31 +860,42 @@ class UMRNode:
     def have_degree(self):
         """ Convert comparative/superlative constructions to the abstract roleset have-degree-91. """
 
-        if self.ud_node.feats['Degree']:
+        degree = self.ud_node.feats['Degree']
 
-            degree = self.ud_node.feats['Degree']
+        head = self.ud_node.udeprel in ['root', 'advcl', 'ccomp', 'xcomp', 'csubj', 'acl', 'conj']
+        rebuild = self.ud_node.udeprel in ['nsubj', 'obj']
+        modifier = self.ud_node.deprel == 'amod'
+        adverb = self.ud_node.deprel == 'advmod'
+        other = self.ud_node.udeprel not in ['amod', 'root', 'advcl', 'ccomp', 'xcomp', 'csubj', 'acl', 'conj']
 
-            head = self.ud_node.deprel in ['root', 'advcl', 'ccomp', 'xcomp', 'csubj']
-            modifier = self.ud_node.deprel == 'amod'
-            other = self.ud_node.deprel not in ['amod', 'root', 'advcl', 'ccomp', 'xcomp', 'csubj']
+        if degree == 'Cmp':
+            umr_degree = 'more'
+        elif degree in ['Sup', 'Abs']:
+            umr_degree = 'most'
+        else:
+            umr_degree = None
 
-            if degree == 'Cmp':
-                umr_degree = 'more'
-            elif degree in ['Sup', 'Abs']:
-                umr_degree = 'most'
-            else:
-                umr_degree = None
-
+        if umr_degree:
             if modifier:
                 have_degree = self.introduce_abstract_roleset('have-degree-91')
+                degree_node = self.create_node(umr_degree, 'ARG3')
+                self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
+                self.already_added = True
 
-                if degree:
-                    # self.umr_graph.find_and_remove_from_triples(self.var_name, 2)
-                    degree_node = self.create_node(umr_degree, 'ARG3')
-                    self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
-                    self.already_added = True
+            elif adverb:
+                concept = UMRNode('have-degree-91', self.umr_graph, already_added=True)
+                degree_node = self.create_node(umr_degree, 'ARG3')
+                self.add_node(self.role)
+                self.umr_graph.triples.extend([
+                    pm.invert((concept.var_name, 'ARG2', self.var_name)),
+                    (concept.var_name, degree_node.role, degree_node.var_name),
+                ])
+                self.parent, self.parent.parent = concept, concept
+                self.already_added = True
+                concept.aspect('state')
+                concept.modality()
 
-            if head:
+            elif head:
                 cop = [c for c in self.ud_node.children if c.deprel == 'cop']
                 if cop:
                     cop_node = UMRNode.find_by_ud_node(self.umr_graph, cop[0])
@@ -886,8 +903,19 @@ class UMRNode:
                     degree_node = self.create_node(umr_degree, 'ARG3')
                     self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
                     self.already_added = True
+                    cop_node.already_added = True
 
-            if other:
-                print(self)
+            elif rebuild:
+                # substantivized ADJs
+                print('mannaggia')
+                new_node = self.create_node('FILL', self.role)
+                self.add_node('mod', def_parent=new_node.var_name)
+                have_degree = self.introduce_abstract_roleset('have-degree-91')
+                degree_node = self.create_node(umr_degree, 'ARG3')
+                self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
+                self.already_added = True
 
-        # what about obl:cmp? ARG4/5?
+            elif other:
+                print('ciao', self)
+
+    # what about obl:cmp? ARG4/5?
