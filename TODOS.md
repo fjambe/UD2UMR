@@ -1,6 +1,8 @@
 # TODO - code
 
 Next steps:
+- [coding] external file that assigns more specific `modal-strength` values.
+- [coding] `have-degree-91` for UD `Degree`.
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
@@ -132,7 +134,27 @@ And in any case I'd end up with very coarse-grained labels (PER, LOC, ORG) that 
 would be the constraints?)?
 - I wanted to treat `advcl:cmp` separately from other `advcl`s, hoping to build the `have-degree` structure, but it's
 very lexicalised and I had to give up not to be language-dependent. Any thoughts on this?
-- `advcl:pred` con testa nominale è sempre `have-role-91`? no idea about other languages. 
+- `advcl:pred` con testa nominale è sempre `have-role-91`? no idea about other languages.
+- I tried to come up with a strategy to extract dates, in order to annotate them in the UMR format, e.g.:
+
+```
+March 23rd, 2021
+(d/ date-entity
+	:year 2021
+	:month 3
+	:day 23)
+```
+
+but it's not doable in a language-agnostic way - too different strategies of encoding dates, and too many calendars.
+I tried with English and Latin. Tried `dateutil` library, but does not extract dates; then I tried with `datefinder`,
+and it works on English, but not on Latin - so not a generalizable strategy. I also researched some alternatives, but
+unsuccessfully. Any thoughts on that?
+- No strategy for `Degree`. The only one relevant wrt UMR attribute `degree` is `Abs` for absolute superlative, but it
+doesn't seem to be a widespread feature. Comparative and superlative degrees should be annotated as `have-degree-91`:
+can I extract that?
+- Is it okay to treat both UD `Degree={Sup,Abs}` as UMR `most`?
+- Otherwise, I feel like I've reached the point where I cannot improve the conversion without going language-specific/
+phenomenon-specific.
 
 
 ## Details:

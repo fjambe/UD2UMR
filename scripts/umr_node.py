@@ -141,6 +141,10 @@ class UMRNode:
         concept.aspect('state')
         concept.modality()
 
+        self.parent, self.parent.parent = concept, concept
+
+        return concept
+
     def replace_with_abstract_roleset(self, role_aka_concept, replace_arg=None, overt=True):
         """
         Replaces a syntactic construction with a UMR abstract roleset in the graph, and updates the graph accordingly.
@@ -162,6 +166,7 @@ class UMRNode:
         self.parent.extra_level = True
         concept.parent = self.parent.parent
         self.parent.parent = concept
+        self.already_added = True
 
         if self.umr_graph.root_var == self.parent.var_name:
             self.umr_graph.root_var = concept.var_name
@@ -236,6 +241,8 @@ class UMRNode:
             new_node = self.create_node(arg_type)
             self.umr_graph.triples.append((concept.var_name, 'ARG1', new_node.var_name))
 
+        return concept
+
     def add_node(self,
                  role,
                  invert: bool = False,
@@ -306,6 +313,9 @@ class UMRNode:
             elif self.ud_node.upos == 'PROPN':
                 self.entity = True
 
+            elif self.ud_node.upos in ['ADJ', 'ADV']:
+                self.have_degree()
+
             ########## check by deprel ##########
             if self.ud_node.deprel == 'nummod':
                 self.quantities()
@@ -318,7 +328,7 @@ class UMRNode:
                 self.clauses()
 
             elif self.ud_node.deprel == 'appos':
-                self.introduce_abstract_roleset(self.role)
+                _ = self.introduce_abstract_roleset(self.role)
 
             elif self.ud_node.deprel == 'cop':
                 self.copulas()
@@ -387,7 +397,7 @@ class UMRNode:
         if category == 'person':
             self.get_number_person('person', new_node.var_name)
 
-        if not reflex and category not in ['type-NE', 'name']:
+        if not reflex and category not in ['type-NE', 'name', 'more', 'most']:
             self.get_number_person('number', new_node.var_name)
 
         return new_node
@@ -499,10 +509,9 @@ class UMRNode:
     def personal(self):
         """ Handle pronouns - with a special focus on personal and indefinite. """
 
-        if self.ud_node.upos == 'PRON' and not self.replaced:
+        if self.ud_node.upos in ['PRON', 'DET'] and not self.replaced:
 
             category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person' if self.ud_node.feats['PronType'] == 'Prs' else 'FILL'
-            # to_replace = not (self.ud_node.feats['PronType'] == 'Ind' and not self.ud_node.feats['Polarity'])
             entity = self.create_node(category, self.role, replace=True)
             entity.ud_node = self.ud_node
             entity.parent = self.parent
@@ -707,6 +716,7 @@ class UMRNode:
         If a set of relational terms is provided, it is used here to assign 'have-rel-role-92'.
         """
         replace_arg = None
+        print(self.already_added)
 
         if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or (
                 self.ud_node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not self.ud_node.parent.feats['Case']):
@@ -741,7 +751,7 @@ class UMRNode:
         else:
             concept = 'MISSING'
 
-        self.replace_with_abstract_roleset(concept, replace_arg, overt=copula)
+        _ = self.replace_with_abstract_roleset(concept, replace_arg, overt=copula)
         self.already_added = True
         if copula:
             self.umr_graph.triples.remove((self.var_name, 'instance', self.ud_node.lemma))
@@ -840,3 +850,44 @@ class UMRNode:
         digit = translate_number(number, self.lang)
         self.umr_graph.triples.append((self.parent.var_name, ':quant', digit))
         self.already_added = True
+
+    def have_degree(self):
+        """ Convert comparative/superlative constructions to the abstract roleset have-degree-91. """
+
+        if self.ud_node.feats['Degree']:
+
+            degree = self.ud_node.feats['Degree']
+
+            head = self.ud_node.deprel in ['root', 'advcl', 'ccomp', 'xcomp', 'csubj']
+            modifier = self.ud_node.deprel == 'amod'
+            other = self.ud_node.deprel not in ['amod', 'root', 'advcl', 'ccomp', 'xcomp', 'csubj']
+
+            if degree == 'Cmp':
+                umr_degree = 'more'
+            elif degree in ['Sup', 'Abs']:
+                umr_degree = 'most'
+            else:
+                umr_degree = None
+
+            if modifier:
+                have_degree = self.introduce_abstract_roleset('have-degree-91')
+
+                if degree:
+                    # self.umr_graph.find_and_remove_from_triples(self.var_name, 2)
+                    degree_node = self.create_node(umr_degree, 'ARG3')
+                    self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
+                    self.already_added = True
+
+            if head:
+                cop = [c for c in self.ud_node.children if c.deprel == 'cop']
+                if cop:
+                    cop_node = UMRNode.find_by_ud_node(self.umr_graph, cop[0])
+                    have_degree = cop_node.replace_with_abstract_roleset('have-degree-91')
+                    degree_node = self.create_node(umr_degree, 'ARG3')
+                    self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
+                    self.already_added = True
+
+            if other:
+                print(self)
+
+        # what about obl:cmp? ARG4/5?
