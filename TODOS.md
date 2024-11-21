@@ -1,11 +1,9 @@
 # TODO - code
 
 Next steps:
-- [coding] Big things to work on next: `advcl:cmp` + all remaining `advcl`s (e.g., `advcl:abs`) as just `ADVCL`.
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
-- [investigation] Reconsider `advmod:lmod`, see below.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -93,6 +91,25 @@ they are not overt).
 C.f., e.g., _Puerum basiavi frugalissimum, **non** propter formal, sed quia frugi est_ (from Perseus_test).
 I could also implement an additional check for UPOS (= only VERB). What do you prefer?
 - [Julia] UMR of _boves, quorum beneficio panem manducamus_ "oxen, thanks to whose service we eat bread"? [mail]
+- [observation] In UMR guidelines, 3-1-4 (2):
+
+```
+并且 还 有 很多 高层 的 人物 哦 ！
+There will even be many VIPs!
+(x/ and
+     :op2 (e/ exist-91
+           :mod (x2/ 还)
+           :ARG2 (x3/ 人物
+                  :mod (x4/ 高层)
+                  :quant (x5/ 很多))
+           :mode Expressive
+       :aspect State
+       :modstr FullAff))
+```
+But in 3-3-2. Mode it reads:
+"`expressive`: used for exclamational words such as hmm, wow, yup etc., which express emotion but don't clearly refer 
+to events, objects or properties, as in (1a). This value is not used for mere emphasis, or for exclamation marks."
+Confusing.
 
 
 ## For Dan:
@@ -113,6 +130,9 @@ language-specific module, while I'm trying to be as language-agnostic as possibl
 And in any case I'd end up with very coarse-grained labels (PER, LOC, ORG) that would have to be corrected manually.
 - What do I do with `xcomp`? Can you come up with different UMR annotations based on different `xcomp` types (and what
 would be the constraints?)?
+- I wanted to treat `advcl:cmp` separately from other `advcl`s, hoping to build the `have-degree` structure, but it's
+very lexicalised and I had to give up not to be language-dependent. Any thoughts on this?
+- `advcl:pred` con testa nominale è sempre `have-role-91`? no idea about other languages. 
 
 
 ## Details:

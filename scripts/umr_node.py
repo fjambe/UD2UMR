@@ -301,6 +301,7 @@ class UMRNode:
                         self.umr_graph.triples.append((self.var_name, 'actor', new_node.var_name))
                 self.aspect()
                 self.modality()
+                self.mode()
 
             elif self.ud_node.upos == 'PROPN':
                 self.entity = True
@@ -350,7 +351,7 @@ class UMRNode:
 
             if not self.already_added:
                 self.add_node(self.role)
-                if (self.ud_node.upos == 'NOUN' and self.role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
+                if (self.ud_node.upos == 'NOUN' and self.role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.udeprel in ['nsubj', 'obj', 'obl']):
                     self.get_number_person('number')
 
         self.umr_graph.root_var = root_var if root_var else self.umr_graph.root_var
@@ -438,6 +439,20 @@ class UMRNode:
                         value = 'MS'
 
             self.umr_graph.triples.append((self.var_name, 'modal-strength', value))
+
+    def mode(self):
+        """ Assign mode attribute"""
+        value=None
+        punct = [c for c in self.ud_node.children if c.upos == 'PUNCT']
+
+        if self.ud_node.feats['Mood'] == 'Imp':
+            value = 'imperative'
+        elif punct:
+            if any(item.lemma == '?' for item in punct):
+                value = 'interrogative'
+
+        if value:
+            self.umr_graph.triples.append((self.var_name, 'mode', value))
 
         ####################### Language transformations #######################
 
@@ -778,28 +793,23 @@ class UMRNode:
         role = 'ADVCL'
         sconj = next((c for c in self.ud_node.children if c.deprel == 'mark'), None)
 
-        if self.ud_node.deprel != 'advcl:cmp':
-            if sconj and sconj.lemma in advcl:
-                constraint = advcl.get(sconj.lemma, {}).get('constraint')
-                if constraint:
-                    valid = []
-                    for c in constraint:
-                        if c:
-                            feat, value = c.split('=')
-                            valid.append(sconj.parent.feats[feat] == value)
-                    if all(valid):
-                        role = advcl.get(sconj.lemma, {}).get('type')
-                else:
+        if sconj and sconj.lemma in advcl:
+            constraint = advcl.get(sconj.lemma, {}).get('constraint')
+            if constraint:
+                valid = []
+                for c in constraint:
+                    if c:
+                        feat, value = c.split('=')
+                        valid.append(sconj.parent.feats[feat] == value)
+                if all(valid):
                     role = advcl.get(sconj.lemma, {}).get('type')
-
-            if not self.extra_level:
-                self.add_node(role)
             else:
-                self.parent.add_node(role, def_parent=self.parent.parent.var_name)
+                role = advcl.get(sconj.lemma, {}).get('type')
 
+        if not self.extra_level:
+            self.add_node(role)
         else:
-            pass
-            # advcl:cmp
+            self.parent.add_node(role, def_parent=self.parent.parent.var_name)
 
     def clauses(self):
         """
