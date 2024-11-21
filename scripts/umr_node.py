@@ -487,18 +487,22 @@ class UMRNode:
         if self.ud_node.upos == 'PRON' and not self.replaced:
 
             category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person' if self.ud_node.feats['PronType'] == 'Prs' else 'FILL'
+            # to_replace = not (self.ud_node.feats['PronType'] == 'Ind' and not self.ud_node.feats['Polarity'])
             entity = self.create_node(category, self.role, replace=True)
             entity.ud_node = self.ud_node
             entity.parent = self.parent
             self.replaced = True
 
-            if self.ud_node.feats['PronType'] != 'Rel':
+            if entity.ud_node.feats['PronType'] != 'Rel':
 
-                if self.ud_node.feats['PronType'] == 'Ind':
-                    if self.ud_node.feats['Polarity'] == 'Neg':
-                        self.umr_graph.triples.append((entity.var_name, 'polarity', '-'))
+                if entity.ud_node.feats['PronType'] == 'Ind':
+                    if entity.ud_node.feats['Polarity'] == 'Neg':
+                        entity.umr_graph.triples.append((entity.var_name, 'polarity', '-'))
                     else:
-                        pass  # ask Julia - something, someone, aliquis
+                        self.umr_graph.triples.append((self.var_name, 'instance', self.ud_node.lemma))
+                        self.add_node('mod', def_parent=entity.var_name)
+
+            self.ud_node = None
 
             # reattach dependents
             UMRNode.reattach_dependents(self.umr_graph, self, entity, remove=True)
@@ -511,74 +515,77 @@ class UMRNode:
 
         numbers = {'Sing': 'singular', 'Plur': 'plural'}
 
-        if self.ud_node.upos == 'DET' and self.ud_node.feats['PronType'] == 'Prs' and not self.replaced:
+        if not self.replaced:
+            if self.ud_node.upos == 'DET' and self.ud_node.feats['PronType'] == 'Prs':
 
-            cop = [c for c in self.ud_node.children if c.deprel == 'cop']
-            is_adj_noun = self.ud_node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or len(cop) > 0
-            is_reflexive = self.ud_node.lemma == 'suus'
+                cop = [c for c in self.ud_node.children if c.deprel == 'cop']
+                is_adj_noun = self.ud_node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or len(cop) > 0
+                is_reflexive = self.ud_node.lemma == 'suus'
 
-            category = 'person' if is_adj_noun else ('thing' if self.ud_node.parent.upos == 'VERB' and self.ud_node.feats['Gender'] == 'Neut' else 'FILL')
-            role = 'poss' if is_adj_noun else self.role
+                category = 'person' if is_adj_noun else ('thing' if self.ud_node.parent.upos == 'VERB' and self.ud_node.feats['Gender'] == 'Neut' else 'FILL')
+                role = 'poss' if is_adj_noun else self.role
 
-            if is_adj_noun:
-                poss = self.create_node(category, role=role, replace=True, reflex=is_reflexive)
-                poss.ud_node = self.ud_node
-                poss.parent = self.parent
-                if is_reflexive:
-                    refer_number = numbers.get(
-                        self.ud_node.feats['Number'] if not is_adj_noun else self.ud_node.parent.parent.feats[
-                            'Number'])
-                    if refer_number:
-                        poss.get_number_person('number', given_feat=refer_number)
+                if is_adj_noun:
+                    poss = self.create_node(category, role=role, replace=True, reflex=is_reflexive)
+                    poss.ud_node = self.ud_node
+                    poss.parent = self.parent
+                    if is_reflexive:
+                        refer_number = numbers.get(
+                            self.ud_node.feats['Number'] if not is_adj_noun else self.ud_node.parent.parent.feats[
+                                'Number'])
+                        if refer_number:
+                            poss.get_number_person('number', given_feat=refer_number)
 
-            else:
-                entity = self.create_node(category, role=role, replace=True, reflex=is_reflexive)
-                entity.parent = self.parent
-                entity.ud_node = self.ud_node
-                poss = self.create_node('person', role=self.role, reflex=is_reflexive)
-                poss.parent = self.parent
-                self.umr_graph.find_and_replace_in_triples(self.var_name, 2, poss.var_name, 2)
-                self.umr_graph.triples.append((entity.var_name, 'poss', poss.var_name))
+                else:
+                    entity = self.create_node(category, role=role, replace=True, reflex=is_reflexive)
+                    entity.parent = self.parent
+                    entity.ud_node = self.ud_node
+                    poss = self.create_node('person', role=self.role, reflex=is_reflexive)
+                    poss.parent = self.parent
+                    self.umr_graph.find_and_replace_in_triples(self.var_name, 2, poss.var_name, 2)
+                    self.umr_graph.triples.append((entity.var_name, 'poss', poss.var_name))
 
-                if is_reflexive:
-                    refer_number = numbers.get(self.ud_node.parent.feats['Number'])
-                    if refer_number:
-                        poss.get_number_person('number', new_var_name=poss.var_name, given_feat=refer_number)
+                    if is_reflexive:
+                        refer_number = numbers.get(self.ud_node.parent.feats['Number'])
+                        if refer_number:
+                            poss.get_number_person('number', new_var_name=poss.var_name, given_feat=refer_number)
 
-            self.replaced = True
+                self.replaced = True
 
     def quantifiers(self):
         """ Handle quantifiers. """
 
-        if self.ud_node.feats['PronType'] == 'Tot':
+        if not self.replaced:
+            if self.ud_node.feats['PronType'] == 'Tot':
 
-            cop_siblings = [s for s in self.ud_node.siblings if s.deprel == 'cop']
+                cop_siblings = [s for s in self.ud_node.siblings if s.deprel == 'cop']
 
-            if self.ud_node.deprel != 'det' or (self.ud_node.deprel == 'det' and len(cop_siblings) == 1):
-                self.already_added = True
-                new_node = self.create_node('thing' if self.ud_node.feats['Gender'] == 'Neut' else 'FILL')
-                self.umr_graph.find_and_replace_in_triples(self.var_name, 2, new_node.var_name, 2)
-                self.parent = new_node
+                if self.ud_node.deprel != 'det' or (self.ud_node.deprel == 'det' and len(cop_siblings) == 1):
+                    self.already_added = True
+                    new_node = self.create_node('thing' if self.ud_node.feats['Gender'] == 'Neut' else 'FILL')
+                    self.umr_graph.find_and_replace_in_triples(self.var_name, 2, new_node.var_name, 2)
+                    self.parent = new_node
 
-                # attaching the quantifier itself
-                self.add_node('quant', def_parent=new_node.var_name)
-                self.replaced = True
+                    # attaching the quantifier itself
+                    self.add_node('quant', def_parent=new_node.var_name)
+                    self.replaced = True
 
     def det_pro_noun(self):
         """ Create an entity node that replaces the DETs (e.g. 'Illi negarunt' "They denied"). """
 
-        if self.ud_node.deprel != 'det' and self.ud_node.feats['PronType'] == 'Dem' and not self.replaced:
+        if not self.replaced:
+            if self.ud_node.deprel != 'det' and self.ud_node.feats['PronType'] == 'Dem':
 
-            category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person'  # maybe FILL is better
-            new_node = self.create_node(category, role=self.role, replace=True)
-            new_node.ud_node = self.ud_node
-            new_node.parent = self.parent
-            new_node.extra_level = self.extra_level
-            self.already_added = True
-            self.replaced = True
+                category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person'  # maybe FILL is better
+                new_node = self.create_node(category, role=self.role, replace=True)
+                new_node.ud_node = self.ud_node
+                new_node.parent = self.parent
+                new_node.extra_level = self.extra_level
+                self.already_added = True
+                self.replaced = True
 
-            # reattach dependents
-            UMRNode.reattach_dependents(self.umr_graph, self, new_node, remove=True)
+                # reattach dependents
+                UMRNode.reattach_dependents(self.umr_graph, self, new_node, remove=True)
 
     def named_entities(self):
         """
@@ -586,26 +593,27 @@ class UMRNode:
         framework. The entity type is not specified; `type-NE` is a placeholder that will have to be replaced by the
         annotator.
         """
-        if self.ud_node.upos == 'PROPN' and not self.replaced and self.role != 'other':  # might be replaced by NER
+        if not self.replaced:
+            if self.ud_node.upos == 'PROPN' and self.role != 'other':
 
-            entity = self.create_node('type-NE', self.role, replace=True)
-            entity.ud_node = self.ud_node
-            entity.parent = self.parent
-            entity.extra_level = self.extra_level
-            self.already_added, self.replaced = True, True
+                entity = self.create_node('type-NE', self.role, replace=True)
+                entity.ud_node = self.ud_node
+                entity.parent = self.parent
+                entity.extra_level = self.extra_level
+                self.already_added, self.replaced = True, True
 
-            name = self.create_node('name', 'name')
-            name.add_node(name.role, def_parent=entity.var_name)
+                name = self.create_node('name', 'name')
+                name.add_node(name.role, def_parent=entity.var_name)
 
-            names = [c for c in self.ud_node.children if c.deprel == 'flat:name' and c.upos == 'PROPN']
-            names = [self] + [UMRNode.find_by_ud_node(self.umr_graph, n) for n in names]
+                names = [c for c in self.ud_node.children if c.deprel == 'flat:name' and c.upos == 'PROPN']
+                names = [self] + [UMRNode.find_by_ud_node(self.umr_graph, n) for n in names]
 
-            for i, n in enumerate(names, start=1):
-                self.umr_graph.triples.append((name.var_name, f'op{i}', f'"{n.ud_node.lemma}"'))
-                n.already_added, n.replaced = True, True
+                for i, n in enumerate(names, start=1):
+                    self.umr_graph.triples.append((name.var_name, f'op{i}', f'"{n.ud_node.lemma}"'))
+                    n.already_added, n.replaced = True, True
 
-            # reattach dependents
-            UMRNode.reattach_dependents(self.umr_graph, self, entity, remove=True)
+                # reattach dependents
+                UMRNode.reattach_dependents(self.umr_graph, self, entity, remove=True)
 
     def coordination(self, role):
         """ Handle coordination by building the corresponding UMR structures. """

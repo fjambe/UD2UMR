@@ -6,9 +6,6 @@ Next steps:
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
 - [investigation] Reconsider `advmod:lmod`, see below.
-- [documentation] Start writing a guide for annotators with a list of the things to check, because they're not perfect
-in the automatic conversion (e.g. `patient`/`theme`, `OBLIQUE`, `ADVCL`, `modal-strength`, `aspect`, etc.).
-Basically what to pay attention to, what to check.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -36,6 +33,8 @@ _Chysanthus_ `appos` di _homo_.
 Translate instances to EN, use a Python library like `text2num` or `num2words` (also supporting few other languages -
 but it feels less language-dependent to just translate everything to EN) to convert the string into a digit,
 and include the obtained digit in the UMR graph.
+- PRON. Indefinite pronouns like _something_, _someone_ are annotated as a `person` entity + a `mod` for _some_. Same
+for _any_.
 
 
 ### To Penman
@@ -93,9 +92,6 @@ There are of course exceptions: now we have negative modality annotated for noun
 they are not overt).
 C.f., e.g., _Puerum basiavi frugalissimum, **non** propter formal, sed quia frugi est_ (from Perseus_test).
 I could also implement an additional check for UPOS (= only VERB). What do you prefer?
-- [Julia] How should indefinite pronouns like _somehing_, _someone_ be annotated? I have `person` now, but there's no
-mark of (in)definitess now, right?
-- [Julia] abstract rolesets seem to always have `:aspect state`: correct? [mail]
 - [Julia] UMR of _boves, quorum beneficio panem manducamus_ "oxen, thanks to whose service we eat bread"? [mail]
 
 

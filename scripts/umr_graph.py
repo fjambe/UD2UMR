@@ -244,8 +244,8 @@ class UMRGraph:
             return penman.encode(g, top=root, indent=4)
 
         except LayoutError as e:
-            # for n in self.triples:
-            #     print(n)
+            for n in self.triples:
+                print(n)
             print(f"Skipping sentence due to LayoutError: {e}")
 
     def find_in_triples(self, variable, position):
