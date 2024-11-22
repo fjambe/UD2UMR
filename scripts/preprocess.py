@@ -1,4 +1,4 @@
-import csv
+import csv, json
 from typing import Union
 from googletrans import Translator
 from word2number import w2n
@@ -50,7 +50,7 @@ def get_role_from_deprel(ud_node, deprels):
     return None
 
 
-def get_external_files(filename: str) -> Union[set, dict]:
+def load_external_files(filename: str) -> Union[set, dict]:
     """
     Read a file containing lemmas and return them as a set. Used for:
     1. interpersonal relations (filename: have_rel_role.txt);
@@ -64,11 +64,13 @@ def get_external_files(filename: str) -> Union[set, dict]:
         with open(f"./external_resources/{filename}", 'r') as f:
             if extension == 'txt':
                 terms = {line.strip() for line in f if line.strip()}
-            else:
+            elif extension == 'csv':
                 reader = csv.reader(f)
                 next(reader)
                 for line in reader:
                     terms[line[0]] = {'type': line[1], 'constraint': line[2].split('|') if line[2] else None}
+            elif extension == 'json':
+                terms = json.load(f)
 
     except FileNotFoundError:
         print(f"File {filename.split('/')[-1]} not found. Lexical information not available.")
@@ -107,5 +109,6 @@ def translate_number(numeral, input_lang):
 
 #########################################################
 
-interpersonal = get_external_files('have_rel_role.txt')
-advcl = get_external_files('advcl.csv')
+interpersonal = load_external_files('have_rel_role.txt')
+advcl = load_external_files('advcl.csv')
+modality = load_external_files('modality.json')

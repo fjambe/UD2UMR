@@ -1,7 +1,8 @@
 # TODO - code
 
 Next steps:
-- [coding] external file that assigns more specific `modal-strength` values.
+- [coding] `modal-strength`: implement removal of the main verb (e.g., _possum_) when `modal-strength` is specified
+in the json file. Add a new flag `remove=yes`, because who know how it works in other languages. Then correct it in  Overleaf.
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
@@ -110,7 +111,14 @@ There will even be many VIPs!
 But in 3-3-2. Mode it reads:
 "`expressive`: used for exclamational words such as hmm, wow, yup etc., which express emotion but don't clearly refer 
 to events, objects or properties, as in (1a). This value is not used for mere emphasis, or for exclamation marks."
-Confusing.
+Confusing. It's maybe because of _even_?
+
+- [Julia, IMP] English modals (4-3-2) reads
+"For example, _want_ is in the `NeutAff` list, which indicates that there is a `NeutAff` link between the want node and
+its complement event node in the full dependency structure."
+However, in all the graphs in the guidelines the complement event node is not annotated wrt `modal-strength`, but
+`modal-predicate`. I assume `modal-predicate` is the correct one (right?), and yet this sentence can be very misleading.
+And what am I supposed to do with _hope, fear, worry, dread_? _Need_? All of them, actually.
 
 
 ## For Dan:
@@ -154,6 +162,7 @@ can I extract that?
 - Is it okay to treat both UD `Degree={Sup,Abs}` as UMR `most`?
 - Otherwise, I feel like I've reached the point where I cannot improve the conversion without going language-specific/
 phenomenon-specific.
+- Is `eval()` so bad?
 
 
 ## Details:

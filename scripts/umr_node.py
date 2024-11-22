@@ -1,5 +1,6 @@
 from penman.models.amr import model as pm
-from preprocess import interpersonal, advcl, translate_number
+from preprocess import interpersonal, advcl, modality, translate_number
+import re
 
 
 class UMRNode:
@@ -358,9 +359,6 @@ class UMRNode:
             elif self.ud_node.udeprel == 'advcl':
                 self.adverbial_clauses()
 
-            elif self.ud_node.deprel == 'advmod:neg':
-                self.parent.modality(value='full-negative')
-
             if not self.already_added:
                 self.add_node(self.role)
                 if (self.ud_node.upos == 'NOUN' and self.role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.udeprel in ['nsubj', 'obj', 'obl']):
@@ -429,7 +427,7 @@ class UMRNode:
         self.umr_graph.triples.append((var_name, f'refer-{feature}', feat))
 
     def aspect(self, value=None):
-        """ Assign aspect attribute"""
+        """ Assign aspect attribute. """
 
         if not value:
             if self.ud_node.feats['Aspect'] == 'Perf':
@@ -439,21 +437,70 @@ class UMRNode:
 
         self.umr_graph.triples.append((self.var_name, 'aspect', value))
 
-    def modality(self, value=None):
-        """ Assign modal-strength attribute """
+    def is_negative(self):
+        """ something"""
 
-        already = [tup for tup in self.umr_graph.triples if tup[0] == self.var_name and tup[1] == 'modal-strength']
+        if hasattr(self.ud_node, 'children'):
+            negation = [c for c in self.ud_node.children if c.deprel == 'advmod:neg']
+            neg_element = [c for c in self.ud_node.children if c.feats['Polarity'] == 'Neg']
+            return 'negative' if negation or neg_element else 'affirmative'
+
+    def modality(self):
+        """
+        Assign modal-strength attribute.
+        If a file with modality values for specific verbs is provided, it is used here to assign modal-strength and
+        modal-predicate.
+        """
+
+        already = [tup for tup in self.umr_graph.triples if tup[0] == self.var_name and tup[1] in ['modal-strength', 'modal-predicate']]
+        value = None
+
+        # if modal-strength / modal-predicate have not assigned yet
         if not already:
+
+            if self.parent and hasattr(self.parent.ud_node, 'lemma'):
+                # first, checking external file for modality - lexical check based on lemma.
+                modpred = next(
+                    (el["modal-predicate"] for el in modality["lexical"]
+                     if el["lemma"] == self.parent.ud_node.lemma
+                     and (el["constraint"] is None or eval(el["constraint"]))),
+                    None
+                )
+
+                if modpred:
+                    self.umr_graph.triples.append((self.var_name, 'modal-predicate', self.parent.var_name))
+                    return
+
+                else:
+                    value = next(
+                        (el["modal-strength"] for el in modality["lexical"]
+                         if el["lemma"] == self.parent.ud_node.lemma
+                         and (el["constraint"] is None or eval(el["constraint"]))),
+                        None
+                    )
+
+            # then, checking external file for modality - grammatical check based on construction.
+            if not value and hasattr(self.ud_node, 'upos'):
+                for el in modality["grammatical"]:
+                    feats_from_el = el['node.feats'].split('|')
+                    if el["node.upos"] == self.ud_node.upos and eval(el["constraint_on_children"]):
+                        if all(feat in str(self.ud_node.feats).split('|') for feat in feats_from_el):
+                            value = el["modal-strength"]
+
+            # if no value has been retrieved, check verbal features.
             if not value:
-                    if hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Ind' and self.ud_node.parent.is_root():
-                         value = 'full-affirmative'
-                    else:
-                        value = 'MS'
+                if hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Ind' and self.ud_node.parent.is_root():
+                    value = f'full-{self.is_negative()}'
+                elif hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Imp':
+                    value = f'partial-{self.is_negative()}'
+                # otherwise, just assign a placeholder for modal-strength.
+                else:
+                    value = 'MS'
 
             self.umr_graph.triples.append((self.var_name, 'modal-strength', value))
 
     def mode(self):
-        """ Assign mode attribute"""
+        """ Assign mode attribute. """
         value=None
         punct = [c for c in self.ud_node.children if c.upos == 'PUNCT']
 
@@ -522,9 +569,7 @@ class UMRNode:
             if entity.ud_node.feats['PronType'] != 'Rel':
 
                 if entity.ud_node.feats['PronType'] == 'Ind':
-                    if entity.ud_node.feats['Polarity'] == 'Neg':
-                        entity.umr_graph.triples.append((entity.var_name, 'polarity', '-'))
-                    else:
+                    if not entity.ud_node.feats['Polarity'] == 'Neg':
                         self.umr_graph.triples.append((self.var_name, 'instance', self.ud_node.lemma))
                         self.add_node('mod', def_parent=entity.var_name)
 
