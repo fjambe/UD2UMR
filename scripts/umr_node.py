@@ -161,12 +161,13 @@ class UMRNode:
             - If the subject is elided (e.g., in the absence of a subject argument), a new node may be introduced.
         """
         second_arg = 'ARG2' if not replace_arg else replace_arg
-
-        concept = UMRNode(role_aka_concept, self.umr_graph, self.role, already_added=True)  # added role
+        concept = UMRNode(role_aka_concept, self.umr_graph, self.parent.role, already_added=True)  # added role, check in debug
         self.parent.extra_level = True
         concept.parent = self.parent.parent
         self.parent.parent = concept
         self.already_added = True
+        if concept.parent:
+            self.umr_graph.triples.append((concept.parent.var_name, concept.role, concept.var_name))
 
         if self.umr_graph.root_var == self.parent.var_name:
             self.umr_graph.root_var = concept.var_name
@@ -241,8 +242,6 @@ class UMRNode:
             new_node = self.create_node(arg_type)
             self.umr_graph.triples.append((concept.var_name, 'ARG1', new_node.var_name))
 
-        print(self.umr_graph.triples)
-
         return concept
 
     def add_node(self,
@@ -316,7 +315,8 @@ class UMRNode:
                 self.entity = True
 
             elif self.ud_node.upos in ['ADJ', 'ADV'] and self.ud_node.feats['Degree']:
-                self.have_degree()
+                if not [c for c in self.ud_node.children if c.deprel == 'cop']:
+                    self.have_degree()
 
             ########## check by deprel ##########
             if self.ud_node.deprel == 'nummod':
@@ -362,7 +362,6 @@ class UMRNode:
                 self.parent.modality(value='full-negative')
 
             if not self.already_added:
-                print('fine', self, self.already_added)
                 self.add_node(self.role)
                 if (self.ud_node.upos == 'NOUN' and self.role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.udeprel in ['nsubj', 'obj', 'obl']):
                     self.get_number_person('number')
@@ -825,19 +824,16 @@ class UMRNode:
         if not self.extra_level:
             self.add_node(role)
         else:
+            if self.parent.role == 'other':
+                self.umr_graph.find_and_replace_in_triples(self.parent.var_name, 2, role, 1)
+                self.parent.role = role
             self.parent.add_node(role, def_parent=self.parent.parent.var_name)
 
     def clauses(self):
         """
         Handle clausal subjects and complements (csubj and ccomp).
         """
-
-        if self.ud_node.deprel == 'csubj':
-            self.role = 'actor'
-        elif self.ud_node.deprel in ['ccomp', 'csubj:pass']:
-            self.role = 'undergoer'
-        elif self.ud_node.deprel == 'ccomp:reported':
-            self.role = 'theme'
+        if self.ud_node.deprel == 'ccomp:reported':
             self.umr_graph.triples.append((self.var_name, 'quot', self.parent.var_name))
 
         self.add_node(self.role)
@@ -902,14 +898,14 @@ class UMRNode:
                     have_degree = cop_node.replace_with_abstract_roleset('have-degree-91')
                     degree_node = self.create_node(umr_degree, 'ARG3')
                     self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
-                    self.already_added = True
                     cop_node.already_added = True
 
             elif rebuild:
                 # substantivized ADJs
-                print('mannaggia')
                 new_node = self.create_node('FILL', self.role)
-                self.add_node('mod', def_parent=new_node.var_name)
+                new_node.parent = self.parent
+                new_node.add_node(new_node.role)
+                self.parent = new_node
                 have_degree = self.introduce_abstract_roleset('have-degree-91')
                 degree_node = self.create_node(umr_degree, 'ARG3')
                 self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
