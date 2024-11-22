@@ -859,10 +859,9 @@ class UMRNode:
         degree = self.ud_node.feats['Degree']
 
         head = self.ud_node.udeprel in ['root', 'advcl', 'ccomp', 'xcomp', 'csubj', 'acl', 'conj']
-        rebuild = self.ud_node.udeprel in ['nsubj', 'obj']
+        rebuild = self.ud_node.udeprel in ['nsubj', 'obj', 'obl', 'vocative']
         modifier = self.ud_node.deprel == 'amod'
         adverb = self.ud_node.deprel == 'advmod'
-        other = self.ud_node.udeprel not in ['amod', 'root', 'advcl', 'ccomp', 'xcomp', 'csubj', 'acl', 'conj']
 
         if degree == 'Cmp':
             umr_degree = 'more'
@@ -911,7 +910,13 @@ class UMRNode:
                 self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
                 self.already_added = True
 
-            elif other:
-                print('ciao', self)
-
-    # what about obl:cmp? ARG4/5?
+            if any([modifier, adverb, head, rebuild]):
+                cmp = [c for c in self.ud_node.children if c.deprel == 'obl:cmp']
+                if cmp:
+                    cmp_node = UMRNode.find_by_ud_node(self.umr_graph, cmp[0])
+                    cmp_node.role = 'ARG4'
+                    cmp_node.add_node(cmp_node.role)
+                    if cmp_node.ud_node.upos in ['NOUN', 'ADJ']:
+                        cmp_node.get_number_person('number')
+                    elif cmp_node.ud_node.upos in ['PRON', 'DET']:
+                        cmp_node.entity = True
