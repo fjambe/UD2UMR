@@ -1,6 +1,5 @@
 from penman.models.amr import model as pm
 from preprocess import interpersonal, advcl, modality, translate_number
-import re
 
 
 class UMRNode:
@@ -308,8 +307,8 @@ class UMRNode:
                         arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
                         new_node = self.create_node(arg_type)
                         self.umr_graph.triples.append((self.var_name, 'actor', new_node.var_name))
-                self.aspect()
                 self.modality()
+                self.aspect()
                 self.mode()
 
             elif self.ud_node.upos == 'PROPN':
@@ -438,7 +437,7 @@ class UMRNode:
         self.umr_graph.triples.append((self.var_name, 'aspect', value))
 
     def is_negative(self):
-        """ something"""
+        """ Checks if the predicate qualifies for negative modal-strength based on syntactic elements like negation. """
 
         if hasattr(self.ud_node, 'children'):
             negation = [c for c in self.ud_node.children if c.deprel == 'advmod:neg']
@@ -458,7 +457,12 @@ class UMRNode:
         # if modal-strength / modal-predicate have not assigned yet
         if not already:
 
-            if self.parent and hasattr(self.parent.ud_node, 'lemma'):
+            # if hasattr(self.ud_node, 'lemma'):
+                if [el for el in modality["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]:
+                    self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
+                    return
+
+            elif self.parent and hasattr(self.parent.ud_node, 'lemma'):
                 # first, checking external file for modality - lexical check based on lemma.
                 modpred = next(
                     (el["modal-predicate"] for el in modality["lexical"]
@@ -472,12 +476,29 @@ class UMRNode:
                     return
 
                 else:
-                    value = next(
-                        (el["modal-strength"] for el in modality["lexical"]
+                    value_temp, replace = next(
+                        ((el["modal-strength"], el["replace"]) for el in modality["lexical"]
                          if el["lemma"] == self.parent.ud_node.lemma
                          and (el["constraint"] is None or eval(el["constraint"]))),
-                        None
+                        (None, None)
                     )
+                    value = f'{value_temp}-{self.is_negative()}'
+
+                    if value and replace == 'yes':
+                        print('eccoci', self)
+                        # self.umr_graph.find_and_remove_from_triples(self.parent.var_name, 0)
+                        # self.umr_graph.find_and_remove_from_triples(self.parent.var_name, 2)
+                        for i, tup in enumerate(self.umr_graph.triples):
+                            if tup[0] == self.var_name and tup[1] in ['aspect', 'modal-strength']:
+                                del self.umr_graph.triples[i]
+                        value = f"{value.split('-')[0]}-{self.parent.is_negative()}"
+                        if self.parent.role == 'root' and self.parent.var_name == self.umr_graph.root_var:
+                            self.umr_graph.root_var = self.var_name
+                            self.add_node('root')
+                        else:
+                            self.add_node(self.parent.role, def_parent=self.parent.parent)
+                        UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True)
+
 
             # then, checking external file for modality - grammatical check based on construction.
             if not value and hasattr(self.ud_node, 'upos'):
@@ -485,7 +506,7 @@ class UMRNode:
                     feats_from_el = el['node.feats'].split('|')
                     if el["node.upos"] == self.ud_node.upos and eval(el["constraint_on_children"]):
                         if all(feat in str(self.ud_node.feats).split('|') for feat in feats_from_el):
-                            value = el["modal-strength"]
+                            value = f'{el["modal-strength"]}-{self.is_negative()}'
 
             # if no value has been retrieved, check verbal features.
             if not value:
@@ -558,7 +579,7 @@ class UMRNode:
     def personal(self):
         """ Handle pronouns - with a special focus on personal and indefinite. """
 
-        if self.ud_node.upos in ['PRON', 'DET'] and not self.replaced:
+        if self.ud_node.upos in ['PRON', 'DET'] and not self.replaced and self.ud_node.deprel != 'det':
 
             category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person' if self.ud_node.feats['PronType'] == 'Prs' else 'FILL'
             entity = self.create_node(category, self.role, replace=True)
@@ -963,5 +984,5 @@ class UMRNode:
                     cmp_node.add_node(cmp_node.role)
                     if cmp_node.ud_node.upos in ['NOUN', 'ADJ']:
                         cmp_node.get_number_person('number')
-                    elif cmp_node.ud_node.upos in ['PRON', 'DET']:
+                    elif cmp_node.ud_node.upos in ['PRON', 'DET'] and cmp_node.ud_node.deprel != 'det':
                         cmp_node.entity = True
