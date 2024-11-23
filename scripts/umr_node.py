@@ -302,7 +302,7 @@ class UMRNode:
 
             elif self.ud_node.upos == 'VERB':
                 # elided subjects to be restored
-                if not any(d.udeprel in {'nsubj', 'csubj'} for d in self.ud_node.children) and self.ud_node.parent.deprel != 'root':  # root check is a bit random
+                if not any(d.udeprel in {'nsubj', 'csubj'} for d in self.ud_node.children):
                     if self.ud_node.feats['Voice'] != 'Pass' and self.ud_node.feats['VerbForm'] != 'Part':
                         arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
                         new_node = self.create_node(arg_type)
@@ -390,7 +390,10 @@ class UMRNode:
         new_node = UMRNode(category, self.umr_graph, role=role, already_added=True)
 
         if replace:
-            self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
+            triples = self.umr_graph.find_and_remove_from_triples(self.var_name, 0, return_value=True)
+            for t in triples:
+                if t[1] and t[1].endswith('-of'):
+                    self.umr_graph.triples.append(t)
             self.umr_graph.find_and_replace_in_triples(self.var_name, 2, new_node.var_name, 2)
 
         if category == 'person':
@@ -428,13 +431,16 @@ class UMRNode:
     def aspect(self, value=None):
         """ Assign aspect attribute. """
 
-        if not value:
-            if self.ud_node.feats['Aspect'] == 'Perf':
-                value = 'performance'
-            else:
-                value = 'ASP'
+        already = [tup for tup in self.umr_graph.triples if tup[0] == self.var_name and tup[1] == 'aspect']
+        if not already:
 
-        self.umr_graph.triples.append((self.var_name, 'aspect', value))
+            if not value:
+                if self.ud_node.feats['Aspect'] == 'Perf':
+                    value = 'performance'
+                else:
+                    value = 'ASP'
+
+            self.umr_graph.triples.append((self.var_name, 'aspect', value))
 
     def is_negative(self):
         """ Checks if the predicate qualifies for negative modal-strength based on syntactic elements like negation. """
@@ -457,12 +463,12 @@ class UMRNode:
         # if modal-strength / modal-predicate have not assigned yet
         if not already:
 
-            # if hasattr(self.ud_node, 'lemma'):
+            if hasattr(self.ud_node, 'lemma'):
                 if [el for el in modality["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]:
                     self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
                     return
 
-            elif self.parent and hasattr(self.parent.ud_node, 'lemma'):
+            if self.parent and hasattr(self.parent.ud_node, 'lemma') and hasattr(self.ud_node, 'deprel') and self.ud_node.deprel in ['ccomp', 'xcomp']:
                 # first, checking external file for modality - lexical check based on lemma.
                 modpred = next(
                     (el["modal-predicate"] for el in modality["lexical"]
@@ -487,18 +493,19 @@ class UMRNode:
                     if value and replace == 'yes':
                         print('eccoci', self)
                         # self.umr_graph.find_and_remove_from_triples(self.parent.var_name, 0)
-                        # self.umr_graph.find_and_remove_from_triples(self.parent.var_name, 2)
+                        # self.umr_graph.find_and_replace_in_triples(self.parent.var_name, 2, self.var_name, 2)
                         for i, tup in enumerate(self.umr_graph.triples):
                             if tup[0] == self.var_name and tup[1] in ['aspect', 'modal-strength']:
                                 del self.umr_graph.triples[i]
                         value = f"{value.split('-')[0]}-{self.parent.is_negative()}"
                         if self.parent.role == 'root' and self.parent.var_name == self.umr_graph.root_var:
                             self.umr_graph.root_var = self.var_name
+                            UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True)
+                            self.parent = None
                             self.add_node('root')
                         else:
                             self.add_node(self.parent.role, def_parent=self.parent.parent)
-                        UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True)
-
+                            UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True)
 
             # then, checking external file for modality - grammatical check based on construction.
             if not value and hasattr(self.ud_node, 'upos'):
@@ -888,7 +895,8 @@ class UMRNode:
                 role = advcl.get(sconj.lemma, {}).get('type')
 
         if not self.extra_level:
-            self.add_node(role)
+            self.role = role
+            self.add_node(self.role)
         else:
             if self.parent.role == 'other':
                 self.umr_graph.find_and_replace_in_triples(self.parent.var_name, 2, role, 1)

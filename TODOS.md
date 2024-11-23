@@ -1,8 +1,11 @@
 # TODO - code
 
 Next steps:
+- [coding - IMPORTANT] Figure out why some sentences are skipped (see `sent_num`).
+Forse è a posto, printa su file invece che stdout e vedi se va a posto.
+è meglio anche per vedere il numero effettivo di frasi skipped.
 - [coding] `modal-strength`: implement removal of the main verb (e.g., _possum_) when `modal-strength` is specified
-in the json file. Add a new flag `remove=yes`, because who know how it works in other languages. Then correct it in  Overleaf.
+in the json file. Then correct it in  Overleaf. LOT OF DEBUGGING STILL TO DO.
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.

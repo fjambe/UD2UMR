@@ -26,18 +26,19 @@ def numbered_line_with_alignment(tree):
     print(f'Words: {word_line}')
 
 
-def print_structure(tree, sent_tree, umr):
+def print_structure(tree, sent_tree, umr, sent_num):
     """
     Prints a structured UMR representation, including the sentence id, text, sentence-level graph, and alignments.
     Takes in input:
     - tree: Udapi tree.
     - sent_tree: UMRGraph
     - umr: the UMR graph itself.
+    - sent_num: the progressive number of the sentence.
     """
 
     if umr:
         print(f'# sent_id = {tree.address()}')
-        print('# :: snt')  # progressive numbering to be implemented
+        print(f'# :: snt {sent_num}')
         numbered_line_with_alignment(tree)
         print(f'Sentence: {tree.text}', '\n')
         print('# sentence level graph:')
@@ -47,4 +48,5 @@ def print_structure(tree, sent_tree, umr):
         print('\n')
     else:
         print(f'# sent_id = {tree.address()}')
+        print(f'# :: snt {sent_num}')
         print(f'Sentence: {tree.text}', '\n')

@@ -17,8 +17,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     doc = udapi.Document(args.treebank)
+    sent_num = 0
 
     for tree in doc.trees:
+
+        sent_num += 1
 
         deprels_to_relations = pr.get_deprels(tree)
         sent_tree = UMRGraph(tree, deprels_to_relations, args.lang)
@@ -46,7 +49,7 @@ if __name__ == "__main__":
         umr = sent_tree.to_penman()
 
         # Print out the UMR structure
-        print_structure(tree, sent_tree, umr)
+        print_structure(tree, sent_tree, umr, sent_num)
 
         # break
 

@@ -2,6 +2,8 @@ import re
 import penman
 import warnings
 from penman.exceptions import LayoutError
+from sympy.logic.inference import valid
+
 from umr_node import UMRNode
 
 class UMRGraph:
@@ -224,7 +226,7 @@ class UMRGraph:
         self.remove_non_inverted_triples_if_duplicated()
         # self.postprocessing_checks()
         self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
-        ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect'}
+        ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect', 'mode', 'modal-predicate', 'modal-strength'}
         valid_third =  {tup[2] for tup in self.triples if tup[1] not in ignored_types}
         inverted_third = {tup[0] for tup in self.triples if tup[1] and tup[1].endswith('-of') and tup[1] not in ignored_types}
         valid_third = valid_third | inverted_third
