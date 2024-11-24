@@ -23,6 +23,7 @@ class UMRNode:
             self.check_needed (bool): A flag indicating if further checks are required for this node; initialized as False.
             self.extra_level (bool): A flag indicating if the node is involved in an abstract roleset construction; initialized as False.
             self.entity (bool): A flag indicating if the node will have to be replaced since it is ane entity; initialized as False.
+            self.replace (bool): A flag indicating if the node has to be replaced (for modals); initialized as False.
             self.replaced (bool): A flag indicating if the node (entity) has already been replaced; initialized as False.
             """
         self.ud_node = ud_node
@@ -34,6 +35,7 @@ class UMRNode:
         self.check_needed = False
         self.extra_level = False
         self.entity = False
+        self.replace = False
         self.replaced = False
         self.umr_graph.nodes.append(self)
         self.lang = self.umr_graph.lang
@@ -96,7 +98,7 @@ class UMRNode:
         return children
 
     @classmethod
-    def reattach_dependents(cls, umr_graph, old_parent, new_parent, remove=False):
+    def reattach_dependents(cls, umr_graph, old_parent, new_parent, remove=False, relaxed=False):
         """
         Reassigns dependents of an old parent node to a new parent node within a UMR graph.
         If `remove` is set to `True`, it also updates self.triples to reflect the new parent.
@@ -107,18 +109,22 @@ class UMRNode:
             new_parent (UMRNode): The node to which the dependents will be reassigned.
             remove (bool, optional): If `True`, replaces occurrences of `old_parent` in self.triples
                                      with `new_parent`. Default is `False`.
+            relaxed (bool, optional): If `True`, skips role restrictions. Default is `False`.
         """
         deps = UMRNode.find_children_by_parent(umr_graph, old_parent)
         if deps:
             for d in deps:
-                if d.role not in ['actor', 'undergoer', 'quant']:
-                    d.parent = new_parent
-                    if remove:
-                        umr_graph.find_and_replace_in_triples(d.var_name, 2, new_parent.var_name, 0)
-                        # attributes as well
-                        for i, tup in enumerate(umr_graph.triples):
-                            if tup[0] == old_parent.var_name and tup[1] != 'instance':
-                                umr_graph.triples[i] = (new_parent.var_name, tup[1], tup[2])
+                # Check role restrictions only if relaxed is False
+                if not relaxed and d.role not in ['actor', 'undergoer', 'quant']:
+                    continue
+                d.parent = new_parent
+                if remove:
+                    umr_graph.find_and_replace_in_triples(d.var_name, 2, new_parent.var_name, 0)
+                    umr_graph.triples = [
+                        (new_parent.var_name, tup[1], tup[2]) if tup[0] == old_parent.var_name and tup[1] != 'instance'
+                        else tup
+                        for tup in umr_graph.triples
+                    ]
 
     def introduce_abstract_roleset(self, role_aka_concept):
         """
@@ -178,6 +184,7 @@ class UMRNode:
                 nsubj_node = UMRNode.find_by_ud_node(self.umr_graph, nsubj)
                 self.umr_graph.find_and_remove_from_triples(self.var_name, 2)
                 concept.ud_node = self.ud_node
+                concept.ud_node.deprel = self.ud_node.parent.deprel
             else:
                 nsubj_node = self
                 concept.ud_node = None
@@ -302,7 +309,7 @@ class UMRNode:
 
             elif self.ud_node.upos == 'VERB':
                 # elided subjects to be restored
-                if not any(d.udeprel in {'nsubj', 'csubj'} for d in self.ud_node.children):
+                if not any(d.udeprel in {'nsubj', 'csubj'} for d in self.ud_node.children) and self.ud_node.deprel != 'xcomp':
                     if self.ud_node.feats['Voice'] != 'Pass' and self.ud_node.feats['VerbForm'] != 'Part':
                         arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
                         new_node = self.create_node(arg_type)
@@ -352,7 +359,7 @@ class UMRNode:
                 self.relative_clauses(rel_pron_node)
                 rel_pron_node.already_added = True
 
-            elif self.ud_node.deprel == 'acl' and self.ud_node.feats['VerbForm'] == 'Part' and self.ud_node.feats['Aspect'] != 'Prosp':
+            elif self.ud_node.deprel == 'acl':
                 self.acl_participles()
 
             elif self.ud_node.udeprel == 'advcl':
@@ -392,9 +399,10 @@ class UMRNode:
         if replace:
             triples = self.umr_graph.find_and_remove_from_triples(self.var_name, 0, return_value=True)
             for t in triples:
-                if t[1] and t[1].endswith('-of'):
+                if t[1] and (t[1].endswith('-of') or t[1] != 'instance'):
                     self.umr_graph.triples.append(t)
             self.umr_graph.find_and_replace_in_triples(self.var_name, 2, new_node.var_name, 2)
+            self.umr_graph.find_and_replace_in_triples(self.var_name, 0, new_node.var_name, 0)
 
         if category == 'person':
             self.get_number_person('person', new_node.var_name)
@@ -460,12 +468,13 @@ class UMRNode:
         already = [tup for tup in self.umr_graph.triples if tup[0] == self.var_name and tup[1] in ['modal-strength', 'modal-predicate']]
         value = None
 
-        # if modal-strength / modal-predicate have not assigned yet
+        # if modal-strength / modal-predicate have not been assigned yet
         if not already:
 
             if hasattr(self.ud_node, 'lemma'):
                 if [el for el in modality["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]:
                     self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
+                    self.already_added = True
                     return
 
             if self.parent and hasattr(self.parent.ud_node, 'lemma') and hasattr(self.ud_node, 'deprel') and self.ud_node.deprel in ['ccomp', 'xcomp']:
@@ -491,16 +500,14 @@ class UMRNode:
                     value = f'{value_temp}-{self.is_negative()}'
 
                     if value and replace == 'yes':
-                        print('eccoci', self)
-                        # self.umr_graph.find_and_remove_from_triples(self.parent.var_name, 0)
-                        # self.umr_graph.find_and_replace_in_triples(self.parent.var_name, 2, self.var_name, 2)
+                        self.parent.replace = True
                         for i, tup in enumerate(self.umr_graph.triples):
                             if tup[0] == self.var_name and tup[1] in ['aspect', 'modal-strength']:
                                 del self.umr_graph.triples[i]
                         value = f"{value.split('-')[0]}-{self.parent.is_negative()}"
                         if self.parent.role == 'root' and self.parent.var_name == self.umr_graph.root_var:
                             self.umr_graph.root_var = self.var_name
-                            UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True)
+                            UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True, relaxed=True)
                             self.parent = None
                             self.add_node('root')
                         else:
@@ -521,7 +528,7 @@ class UMRNode:
                     value = f'full-{self.is_negative()}'
                 elif hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Imp':
                     value = f'partial-{self.is_negative()}'
-                # otherwise, just assign a placeholder for modal-strength.
+                # otherwise, assign a placeholder for modal-strength.
                 else:
                     value = 'MS'
 
@@ -748,12 +755,13 @@ class UMRNode:
 
             first_conj.parent, second_conj.parent = conj, conj
 
-            if not self.ud_node.parent.parent.is_root():
-                parent = UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)
-                conj.parent = parent
-            else:
+            parent_parent = UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)
+            if self.ud_node.parent.parent.is_root() or (parent_parent.replace and parent_parent.ud_node.parent.is_root()):
                 root_var = conj.var_name
                 parent = None
+            else:
+                parent = UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)
+                conj.parent = parent
 
             for tup in self.umr_graph.triples:  # avoid clashes of abstract concepts and coordination
                 if tup[2] == first_conj.var_name:
@@ -866,13 +874,6 @@ class UMRNode:
                 elif 'obj' in [d.deprel for d in self.ud_node.children]:
                     self.umr_graph.triples[i] = (tup[0], 'actor-of', tup[2])
 
-    def acl_participles(self):
-        """
-        Handle attributive participles (with deprel 'acl') similarly to relative clauses.
-        """
-        role = 'actor' if self.ud_node.feats['Voice'] == 'Act' else 'undergoer'
-        self.add_node(role, invert=True, def_parent=self.parent.var_name)
-
     def adverbial_clauses(self):
         """
         Handle adverbial clauses.
@@ -895,13 +896,27 @@ class UMRNode:
                 role = advcl.get(sconj.lemma, {}).get('type')
 
         if not self.extra_level:
-            self.role = role
-            self.add_node(self.role)
+            if not (hasattr(self.ud_node, 'lemma') and [el for el in modality["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]):
+                self.role = role
+                self.add_node(self.role)
+                self.aspect()
+                self.modality()
+            else:
+                xcomp = [c for c in self.ud_node.children if c.deprel == 'xcomp']
+                if xcomp:
+                    self.role = role
+                    xcomp = UMRNode.find_by_ud_node(self.umr_graph, xcomp[0])
+                    xcomp.add_node(self.role, def_parent=self.parent.var_name)
+                    self.already_added = True
+                    xcomp.aspect()
+                    xcomp.modality()
         else:
             if self.parent.role == 'other':
                 self.umr_graph.find_and_replace_in_triples(self.parent.var_name, 2, role, 1)
                 self.parent.role = role
             self.parent.add_node(role, def_parent=self.parent.parent.var_name)
+            self.aspect()
+            self.modality()
 
     def clauses(self):
         """
@@ -994,3 +1009,11 @@ class UMRNode:
                         cmp_node.get_number_person('number')
                     elif cmp_node.ud_node.upos in ['PRON', 'DET'] and cmp_node.ud_node.deprel != 'det':
                         cmp_node.entity = True
+
+    def acl_participles(self):
+        """
+        Handle attributive participles (with deprel 'acl') similarly to relative clauses.
+        """
+        if self.ud_node.feats['VerbForm'] == 'Part':
+            role = 'actor' if self.ud_node.feats['Voice'] == 'Act' else 'undergoer'
+            self.add_node(role, invert=True, def_parent=self.parent.var_name)

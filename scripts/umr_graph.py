@@ -203,6 +203,7 @@ class UMRGraph:
         ##### relative clauses #####
         for node in self.nodes:
             if hasattr(node, 'check_needed') and node.check_needed:
+                print('inside')
                 removed_triple = self.find_and_remove_from_triples(node.var_name, 2, return_value=True)
 
                 if removed_triple:
@@ -222,7 +223,7 @@ class UMRGraph:
         """
         self.remove_duplicate_triples()
         self.remove_non_inverted_triples_if_duplicated()
-        # self.postprocessing_checks()
+        self.postprocessing_checks()
         self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
         ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect', 'mode', 'modal-predicate', 'modal-strength'}
         valid_third =  {tup[2] for tup in self.triples if tup[1] not in ignored_types}
@@ -329,6 +330,7 @@ class UMRGraph:
         Raises a warning if there are two UMR nodes aligned to the same token.
         """
         destination = output_file if output_file else sys.stdout
+
         variables = {triple[0] for triple in self.triples if triple[1] == 'instance'}
         alignments = {}
 

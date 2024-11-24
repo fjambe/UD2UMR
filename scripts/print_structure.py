@@ -54,6 +54,6 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
     else:
         print(f'# sent_id = {tree.address()}', file=destination)
         print(f'# :: snt {sent_num}', file=destination)
-        print(f'Sentence: {tree.text}', file=destination)
-        print('Skipping sentence...', '\n', file=destination)
+        print(f'Sentence: {tree.text}', '\n', file=destination)
+        # print('Skipping sentence...', '\n', file=destination)
 
