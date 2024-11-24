@@ -1,8 +1,6 @@
 # TODO - code
 
 Next steps:
-- [coding - IMPO] `modal-strength`: debug removal of the main verb (e.g., _possum_) when `modal-strength` is specified
-in the json file. Then correct it in  Overleaf.
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
