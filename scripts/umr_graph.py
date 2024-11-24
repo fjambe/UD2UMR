@@ -1,9 +1,7 @@
-import re
+import re, sys
 import penman
 import warnings
 from penman.exceptions import LayoutError
-from sympy.logic.inference import valid
-
 from umr_node import UMRNode
 
 class UMRGraph:
@@ -325,11 +323,12 @@ class UMRGraph:
 
         self.triples = [triple for triple in self.triples if triple not in to_remove]
 
-    def alignments(self):
+    def alignments(self, output_file=None):
         """
         Computes alignment block based on UD tokens.
         Raises a warning if there are two UMR nodes aligned to the same token.
         """
+        destination = output_file if output_file else sys.stdout
         variables = {triple[0] for triple in self.triples if triple[1] == 'instance'}
         alignments = {}
 
@@ -337,7 +336,7 @@ class UMRGraph:
             node = UMRNode.find_by_var_name(self, v)
             num_token = node.ud_node.ord if hasattr(node.ud_node, 'ord') else 0
             alignments[v] = num_token
-            print(f'{v}: {num_token}-{num_token}')
+            print(f'{v}: {num_token}-{num_token}', file=destination)
 
         # Check that two variables are not aligned to a same UD token
         non_zero_values = [value for value in alignments.values() if value != 0]

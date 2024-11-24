@@ -19,37 +19,39 @@ if __name__ == "__main__":
     doc = udapi.Document(args.treebank)
     sent_num = 0
 
-    for tree in doc.trees:
+    with open(f"{args.treebank.split('.')[0]}.umr", "w") as output:
 
-        sent_num += 1
+        for tree in doc.trees:
 
-        deprels_to_relations = pr.get_deprels(tree)
-        sent_tree = UMRGraph(tree, deprels_to_relations, args.lang)
+            sent_num += 1
 
-        # First pass: create variables for UD nodes.
-        for node in tree.descendants:
-            if node.deprel not in ['aux', 'case', 'punct', 'mark']:
-                role = pr.get_role_from_deprel(node, deprels_to_relations)
-                item = UMRNode(node, sent_tree, role=role)
+            deprels_to_relations = pr.get_deprels(tree)
+            sent_tree = UMRGraph(tree, deprels_to_relations, args.lang)
 
-        # Second pass: assign initial parents after all nodes have been created.
-        for n in sent_tree.nodes:
-            n.parent = n.find_by_ud_node(sent_tree, n.ud_node.parent)
+            # First pass: create variables for UD nodes.
+            for node in tree.descendants:
+                if node.deprel not in ['aux', 'case', 'punct', 'mark']:
+                    role = pr.get_role_from_deprel(node, deprels_to_relations)
+                    item = UMRNode(node, sent_tree, role=role)
 
-        # Third pass: create relations between variables and build the UMR structure.
-        for n in sent_tree.nodes:
-            if not isinstance(n.ud_node, str):
-                n.ud_to_umr()
+            # Second pass: assign initial parents after all nodes have been created.
+            for n in sent_tree.nodes:
+                n.parent = n.find_by_ud_node(sent_tree, n.ud_node.parent)
 
-        # Fourth pass: replace nodes that are supposed to correspond to a UMR entity (PRON, PROPN).
-        # They are processed separately to avoid clashes with layered constructions (e.g., abstract rolesets).
-        for n in sent_tree.nodes:
-            n.replace_entities()
+            # Third pass: create relations between variables and build the UMR structure.
+            for n in sent_tree.nodes:
+                if not isinstance(n.ud_node, str):
+                    n.ud_to_umr()
 
-        umr = sent_tree.to_penman()
+            # Fourth pass: replace nodes that are supposed to correspond to a UMR entity (PRON, PROPN).
+            # They are processed separately to avoid clashes with layered constructions (e.g., abstract rolesets).
+            for n in sent_tree.nodes:
+                n.replace_entities()
 
-        # Print out the UMR structure
-        print_structure(tree, sent_tree, umr, sent_num)
+            umr = sent_tree.to_penman()
 
-        # break
+            # Print out the UMR structure
+            print_structure(tree, sent_tree, umr, sent_num, output_file=output, print_in_file=True)
+
+            # break
 
