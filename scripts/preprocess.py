@@ -12,16 +12,16 @@ def get_deprels(ud_tree) -> dict:
         'undergoer': lambda d: d.deprel in ['obj', 'nsubj:pass', 'ccomp', 'csubj:pass'],
         'theme': lambda d: d.deprel == 'ccomp:reported',
         'mod': lambda d: d.deprel == 'amod' or (d.deprel == 'nmod' and d.feats.get('Case') != 'Gen'),
-        'OBLIQUE': lambda d: d.deprel == 'obl', # and d.feats.get('Case') != 'Dat',
+        'OBLIQUE': lambda d: d.udeprel == 'obl' and d.sdeprel != 'arg', # and d.feats.get('Case') != 'Dat',
         'det': lambda d: d.deprel == 'det',
         'manner': lambda d: d.deprel == 'advmod',
-        'temporal': lambda d: d.deprel == 'advmod:tmod',
+        'temporal': lambda d: d.deprel in ['advmod:tmod', 'obl:tmod'],
         'location': lambda d: d.deprel == 'advmod:lmod',
         'quant': lambda d: d.deprel == 'nummod',
         'vocative': lambda d: d.deprel == 'vocative',
         'affectee': lambda d: d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats.get('Case') == 'Dat'),
         'MOD/POSS': lambda d: d.deprel == 'nmod' and d.feats.get('Case') == 'Gen',
-        'poss': lambda d: d.deprel == 'nmod:poss',
+        'poss': lambda d: d.sdeprel == 'poss',
         'identity-91': lambda d: d.deprel == 'appos',
         'COPULA': lambda d: d.deprel == 'cop',
         'conj': lambda d: d.deprel == 'conj',
@@ -92,8 +92,11 @@ def translate_number(numeral, input_lang):
     translator = Translator()
 
     try:
-        translation = translator.translate(numeral, src=input_lang, dest='en')
-        en_text = translation.text
+        if input_lang != 'en':
+            translation = translator.translate(numeral, src=input_lang, dest='en')
+            en_text = translation.text
+        else:
+            en_text = numeral
 
         numeric_value = w2n.word_to_num(en_text)
         return numeric_value

@@ -51,7 +51,7 @@ if __name__ == "__main__":
             umr = sent_tree.to_penman()
 
             # Print out the UMR structure
-            print_structure(tree, sent_tree, umr, sent_num, print_in_file=False)
+            print_structure(tree, sent_tree, umr, sent_num, output, print_in_file=True)
 
             # break
 

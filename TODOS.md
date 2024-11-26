@@ -1,9 +1,16 @@
 # TODO - code
 
 Next steps:
+- [coding] Negation not only with `advmod:neg` but also `advmod` & `Polarity=Neg` (e.g., English PUD).
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
+- [coding] Deprels to check:
+  - from FR: `expl:comp`, `expl:subj`, `fixed`, `flat:foreign`.
+  - from CS: `advmod:emph`, `obl:agent` (whole construction), `nummod:gov`, `det:numgov`, 'det:nummod', `compound`,
+  `iobj` (also IT) + check what happens to `flat` now.
+  - from EN: `compound:prt`, `det:predet`, `nmod:unmarked`, `obl:unmarked`.
+- [coding] Check that the `poss` relation (e.g., from `nmod:poss`) goes in the right direction.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -81,7 +88,7 @@ extract automatically the aspect value.
 To me, it feels like it depends on what the goal is: make annotators' job easier or claim to get UMRs automatically?
 After discussing it with Alexis, we came to the conclusion that it would definitely be beneficial for annotators.
 I still think it will be confusing when it comes to evaluation, but it's going to be very easy to remove (not add it, 
-actually) if I don't want it anymore in my UMRs. It's one line of code. Maybe discuss it with Dan. 
+actually) if I don't want it anymore in my UMRs. It's one line of code. Maybe discuss it with Dan.
 
 
 ## QUESTIONS:
@@ -153,7 +160,7 @@ March 23rd, 2021
 but it's not doable in a language-agnostic way - too different strategies of encoding dates, and too many calendars.
 I tried with English and Latin. Tried `dateutil` library, but does not extract dates; then I tried with `datefinder`,
 and it works on English, but not on Latin - so not a generalizable strategy. I also researched some alternatives, but
-unsuccessfully. Any thoughts on that?
+unsuccessfully. Any thoughts on that? Cf. fr PUD, 31 octobre 13xx....just vrey wrong.
 - No strategy for `Degree`. The only one relevant wrt UMR attribute `degree` is `Abs` for absolute superlative, but it
 doesn't seem to be a widespread feature. Comparative and superlative degrees should be annotated as `have-degree-91`:
 can I extract that?
@@ -161,6 +168,7 @@ can I extract that?
 - Otherwise, I feel like I've reached the point where I cannot improve the conversion without going language-specific/
 phenomenon-specific.
 - Is `eval()` so bad?
+- What to do with `parataxis`?
 
 
 ## Details:
