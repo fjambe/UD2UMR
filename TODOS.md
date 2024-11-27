@@ -11,6 +11,23 @@ Not really urgent, not frequent at all.
   `iobj` (also IT) + check what happens to `flat` now.
   - from EN: `compound:prt`, `det:predet`, `nmod:unmarked`, `obl:unmarked`.
 - [coding] Check that the `poss` relation (e.g., from `nmod:poss`) goes in the right direction.
+- [coding] do somethign about `xcomp`, to avoid disconnected graphs - either use a placeholder/temporary solution, or
+fianlly implement removal of dependents.
+- [documentation] Nobody know what to do with `parataxis`, e.g.also for PDT conversion.
+- [documentation] For NEs, cf. something like `universalner.org` (from projects related to UD), at least as a citation.
+It's about annotating NEs in UD.
+- [documentation] Participles with `acl` deprel treated as relative clauses - e.g., _the eaten apples_ as _the apples that were eaten_.
+For Latin, I have to specify the constraint `Aspect != Prosp`, because otherwise I capture gerund(ive)s - but it does
+feel specific to the way Latin is annotated. WHat do you think from a UD perspective: is this true? Gerunds are a mess,
+there's not much you can do about it.
+- [documentation] I wanted to treat `advcl:cmp` separately from other `advcl`s, hoping to build the
+`have-degree` structure, but it's very lexicalized + it's can be messy in UD because often you have implicit events,
+that are supposed to be explicit in UMR. Don't waste time on this.
+- [documentation] `advcl:pred` is only found in Latin, (Old) Italian and Ukrainian. Not worth a specific treatment.
+- [documentation] I tried to come up with a strategy to extract dates, in order to annotate them in the UMR format,
+but it's not doable in a language-agnostic way - too different strategies of encoding dates, and too many calendars. So
+they just look very wrong in the UMR graph.
+
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -130,45 +147,7 @@ And what am I supposed to do with _hope, fear, worry, dread_? _Need_? All of the
 - What to do with _nec_ split as _ne_ + _c_? do I merge them in Perseus or handle them in UMR?
 Sent tlg0031.tlg027.perseus-lat1.tb.xml@88 in Perseus test.
 All other _nec_ s are not split in two as a MWE.
-- Is the UFeat _NumValue_ really a thing in UD? Couldn't find much documentation. 
-It could be useful for quantities in UMR.
-As of now, quantities (`nummod`) are implemented as proper nodes (e.g., `t / ten`), while they should be attributes
-(`:quant 10`). The problem is that I cannot extract the number itself if not on a lexical basis, but even so it'd be an
-infinite list, so I don't think it's the way to go.
-- Participles with `acl` deprel treated as relative clauses - e.g., _the eaten apples_ as _the apples that were eaten_.
-For Latin, I have to specify the constraint `Aspect != Prosp`, because otherwise I capture gerund(ive)s - but it does
-feel specific to the way Latin is annotated. WHat do you think from a UD perspective: is this true? Solution?
-- First implementation of NEs (no NER involved as of now, just detecting PROPNs).
-I'm not sure how much adding NER to the pipeline improves the outcome. It would be some effort + it'd be a
-language-specific module, while I'm trying to be as language-agnostic as possible (although with limitations).
-And in any case I'd end up with very coarse-grained labels (PER, LOC, ORG) that would have to be corrected manually.
-- What do I do with `xcomp`? Can you come up with different UMR annotations based on different `xcomp` types (and what
-would be the constraints?)?
-- I wanted to treat `advcl:cmp` separately from other `advcl`s, hoping to build the `have-degree` structure, but it's
-very lexicalised and I had to give up not to be language-dependent. Any thoughts on this?
-- `advcl:pred` con testa nominale è sempre `have-role-91`? no idea about other languages.
-- I tried to come up with a strategy to extract dates, in order to annotate them in the UMR format, e.g.:
-
-```
-March 23rd, 2021
-(d/ date-entity
-	:year 2021
-	:month 3
-	:day 23)
-```
-
-but it's not doable in a language-agnostic way - too different strategies of encoding dates, and too many calendars.
-I tried with English and Latin. Tried `dateutil` library, but does not extract dates; then I tried with `datefinder`,
-and it works on English, but not on Latin - so not a generalizable strategy. I also researched some alternatives, but
-unsuccessfully. Any thoughts on that? Cf. fr PUD, 31 octobre 13xx....just vrey wrong.
-- No strategy for `Degree`. The only one relevant wrt UMR attribute `degree` is `Abs` for absolute superlative, but it
-doesn't seem to be a widespread feature. Comparative and superlative degrees should be annotated as `have-degree-91`:
-can I extract that?
 - Is it okay to treat both UD `Degree={Sup,Abs}` as UMR `most`?
-- Otherwise, I feel like I've reached the point where I cannot improve the conversion without going language-specific/
-phenomenon-specific.
-- Is `eval()` so bad?
-- What to do with `parataxis`?
 
 
 ## Details:
@@ -178,3 +157,4 @@ phenomenon-specific.
 - There is still a problem with coordination, cf. SNT:
 _atque ego haec non in M. Tullio neque his temporibus vereor, sed in magna civitate multa et varia ingenia sunt._
 Yet, it's a crazy structure, it can most probably be ignored.
+
