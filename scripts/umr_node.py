@@ -461,6 +461,7 @@ class UMRNode:
         if hasattr(self.ud_node, 'children'):
             negation = [c for c in self.ud_node.children if c.deprel == 'advmod:neg']
             neg_element = [c for c in self.ud_node.children if c.feats['Polarity'] == 'Neg']
+            print('ecce', neg_element)
             return 'negative' if negation or neg_element else 'affirmative'
 
     def modality(self):
@@ -529,10 +530,14 @@ class UMRNode:
 
             # if no value has been retrieved, check verbal features.
             if not value:
+                if self.ud_node and not isinstance(self.ud_node, str):
+                    print(self.ud_node.feats)
                 if hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Ind' and self.ud_node.parent.is_root():
                     value = f'full-{self.is_negative()}'
                 elif hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Imp':
                     value = f'partial-{self.is_negative()}'
+                elif hasattr(self.ud_node, 'feats') and self.ud_node.feats['VerbForm'] == 'Inf':
+                    value = f'MS-{self.is_negative()}'
                 # otherwise, assign a placeholder for modal-strength.
                 else:
                     value = 'MS'
@@ -577,7 +582,7 @@ class UMRNode:
         elif self.ud_node.upos == 'DET' and self.ud_node.feats['PronType'] == 'Prs':
             cop = [c for c in self.ud_node.children if c.deprel == 'cop']
             is_adj_noun = self.ud_node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or len(cop) > 0
-            role = 'poss' if is_adj_noun else self.role
+            role = 'possessor' if is_adj_noun else self.role
             self.add_node(role)
 
         elif self.ud_node.upos == 'DET' and self.ud_node.feats['PronType'] == 'Art':
@@ -637,7 +642,7 @@ class UMRNode:
                 is_reflexive = self.ud_node.lemma == 'suus'
 
                 category = 'person' if is_adj_noun else ('thing' if self.ud_node.parent.upos == 'VERB' and self.ud_node.feats['Gender'] == 'Neut' else 'FILL')
-                role = 'poss' if is_adj_noun else self.role
+                role = 'possessor' if is_adj_noun else self.role
 
                 if is_adj_noun:
                     poss = self.create_node(category, role=role, replace=True, reflex=is_reflexive)
@@ -657,7 +662,7 @@ class UMRNode:
                     poss = self.create_node('person', role=self.role, reflex=is_reflexive)
                     poss.parent = self.parent
                     self.umr_graph.find_and_replace_in_triples(self.var_name, 2, poss.var_name, 2)
-                    self.umr_graph.triples.append((entity.var_name, 'poss', poss.var_name))
+                    self.umr_graph.triples.append((entity.var_name, 'possessor', poss.var_name))
 
                     if is_reflexive:
                         refer_number = numbers.get(self.ud_node.parent.feats['Number'])
