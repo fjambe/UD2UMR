@@ -7,7 +7,7 @@ to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self
 Not really urgent, not frequent at all.
 - [coding] Deprels to check:
   - from FR: `expl:comp`, `expl:subj`, `fixed`, `flat:foreign`.
-  - from CS: `advmod:emph`, `obl:agent` (whole construction), `nummod:gov`, `det:numgov`, 'det:nummod', `compound`,
+  - from CS: `advmod:emph`, `obl:agent` (whole construction), `nummod:gov`, `det:numgov`, `det:nummod`, `compound`,
   `iobj` (also IT) + check what happens to `flat` now.
   - from EN: `compound:prt`, `det:predet`, `nmod:unmarked`, `obl:unmarked`.
 - [coding] do something about `xcomp`, to avoid disconnected graphs - either use a placeholder/temporary solution, or
