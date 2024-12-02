@@ -464,6 +464,7 @@ class UMRNode:
         if hasattr(self.ud_node, 'children'):
             negation = [c for c in self.ud_node.children if c.deprel == 'advmod:neg']
             neg_element = [c for c in self.ud_node.children if c.feats['Polarity'] == 'Neg']
+            print('ecce', neg_element)
             return 'negative' if negation or neg_element else 'affirmative'
 
     def modality(self):
@@ -532,6 +533,8 @@ class UMRNode:
 
             # if no value has been retrieved, check verbal features.
             if not value:
+                if self.ud_node and not isinstance(self.ud_node, str):
+                    print(self.ud_node.feats)
                 if hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Ind' and self.ud_node.parent.is_root():
                     value = f'full-{self.is_negative()}'
                 elif hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Imp':
