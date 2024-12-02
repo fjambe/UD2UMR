@@ -1,7 +1,7 @@
 # TODO - code
 
 Next steps:
-- [coding] Negation not only with `advmod:neg` but also `advmod` & `Polarity=Neg` (e.g., English PUD).
+- [coding] Figure out what to do with modals that are tagged as `AUX` (e.g., _can_ English PUD).
 - [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
 to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
@@ -10,9 +10,8 @@ Not really urgent, not frequent at all.
   - from CS: `advmod:emph`, `obl:agent` (whole construction), `nummod:gov`, `det:numgov`, 'det:nummod', `compound`,
   `iobj` (also IT) + check what happens to `flat` now.
   - from EN: `compound:prt`, `det:predet`, `nmod:unmarked`, `obl:unmarked`.
-- [coding] Check that the `poss` relation (e.g., from `nmod:poss`) goes in the right direction.
-- [coding] do somethign about `xcomp`, to avoid disconnected graphs - either use a placeholder/temporary solution, or
-fianlly implement removal of dependents.
+- [coding] do something about `xcomp`, to avoid disconnected graphs - either use a placeholder/temporary solution, or
+finally implement removal of dependents.
 - [documentation] Nobody know what to do with `parataxis`, e.g.also for PDT conversion.
 - [documentation] For NEs, cf. something like `universalner.org` (from projects related to UD), at least as a citation.
 It's about annotating NEs in UD.
