@@ -5,7 +5,7 @@ from penman.exceptions import LayoutError
 from umr_node import UMRNode
 
 class UMRGraph:
-    def __init__(self, ud_tree, deprels, language, rels, advcls, modality):
+    def __init__(self, ud_tree, deprels, language, rel_roles, advcls, modality):
         """
         Initializes a UMRGraph instance to represent a sentence UMR graph.
 
@@ -22,7 +22,7 @@ class UMRGraph:
             ud_tree: The UD tree representing syntactic dependencies in the sentence.
             deprels (dict): A dictionary mapping UD dependency relations to UMR roles.
             language (str): The langauge of the tree.
-            rels (set): lexical resource to disambiguate have-rel-role-92.
+            rel_roles (set): lexical resource to disambiguate have-rel-role-92.
             advcls (dict): lexical resource to disambiguate adverbial clauses.
             modality (dict): lexical resource to disambiguate modal-strength and modal-predicate.
         """
@@ -34,7 +34,7 @@ class UMRGraph:
         self.triples = []
         self.track_conj = {}
         self.extra_level = {}  # node: new_umr_parent, e.g. {var of ARG1: var of roleset-91}
-        self.rels = rels
+        self.rel_roles = rel_roles
         self.advcl =  advcls
         self.modals = modality
 
@@ -44,8 +44,7 @@ class UMRGraph:
     @property
     def variable_names(self):
         """
-        Returns:
-            list: A list of 'var_name' values from each node in self.nodes.
+        Returns a list of 'var_name' values from each node in self.nodes.
         """
         return [node.var_name for node in self.nodes if hasattr(node, 'var_name')]
 
@@ -158,20 +157,22 @@ class UMRGraph:
                 'stimulus': 5,
                 'ARG1': 6,
                 'ARG2': 7,
-                'affectee': 8,
-                'OBLIQUE': 9,
-                'manner': 10,
-                'op1': 11,
-                'op2': 12,
-                'op3': 13,
-                'op4': 14,
-                'op5': 15,
-                'refer-person': 16,
-                'refer-number': 17,
-                'modal-predicate': 18,
-                'modal-strength': 19,
-                'aspect': 20,
-                'quot': 21
+                'ARG3': 8,
+                'ARG4': 9,
+                'affectee': 10,
+                'OBLIQUE': 11,
+                'manner': 12,
+                'op1': 13,
+                'op2': 14,
+                'op3': 15,
+                'op4': 16,
+                'op5': 17,
+                'refer-person': 18,
+                'refer-number': 19,
+                'modal-predicate': 20,
+                'modal-strength': 21,
+                'aspect': 22,
+                'quot': 23
             }
             return hierarchy_order.get(role, float('inf'))
 
@@ -316,7 +317,6 @@ class UMRGraph:
         # Check that two variables are not aligned to a same UD token
         non_zero_values = [value for value in alignments.values() if value != 0]
         seen_values = set()
-
         for value in non_zero_values:
             if value in seen_values:
                 dup = [v for v in alignments if alignments[v] == value]

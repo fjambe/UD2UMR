@@ -1,7 +1,6 @@
 from penman.models.amr import model as pm
 from preprocess import translate_number
 
-
 class UMRNode:
     def __init__(self, ud_node, umr_graph, role: str = "", already_added=False):
         """
@@ -168,7 +167,7 @@ class UMRNode:
             - If the subject is elided (e.g., in the absence of a subject argument), a new node may be introduced.
         """
         second_arg = 'ARG2' if not replace_arg else replace_arg
-        concept = UMRNode(role_aka_concept, self.umr_graph, self.parent.role, already_added=True)  # added role, check in debug
+        concept = UMRNode(role_aka_concept, self.umr_graph, self.parent.role, already_added=True)
         self.parent.extra_level = True
         concept.parent = self.parent.parent
         self.parent.parent = concept
@@ -241,7 +240,7 @@ class UMRNode:
         concept.modality()
 
         # reattach dependents
-        UMRNode.reattach_dependents(self.umr_graph, self.parent, concept, remove=True)
+        UMRNode.reattach_dependents(self.umr_graph, self.parent, concept, remove=True, relaxed=True)
 
         # elided subjects to be restored
         rel_dep = [s for s in self.ud_node.siblings if s.deprel == 'acl:relcl']
@@ -281,13 +280,11 @@ class UMRNode:
             self.already_added = True
 
         elif self.extra_level:
-            grandparent = UMRNode.find_by_var_name(self.umr_graph, parent)  # TODO: needs more debugging
+            grandparent = UMRNode.find_by_var_name(self.umr_graph, parent)
             if not invert:
-                # self.umr_graph.triples.append((parent, role, self.parent.var_name))
                 self.umr_graph.triples.append((grandparent.var_name, role, self.parent.var_name))
             else:
-                self.umr_graph.triples.append(pm.invert((self.parent.var_name, role, grandparent.var_name)))  # TODO: needs more debugging
-                # self.umr_graph.triples.append(pm.invert((self.parent.var_name, role, parent)))
+                self.umr_graph.triples.append(pm.invert((self.parent.var_name, role, grandparent.var_name)))
                 self.already_added = True
 
         else:
@@ -303,6 +300,13 @@ class UMRNode:
                 self.add_node(self.role)
                 if not self.umr_graph.root_var:
                     self.umr_graph.root_var = self.var_name
+
+            # replace 'actor' based on more conditions
+            if self.role == 'actor':
+                if[el for el in self.umr_graph.modals["lexical"]
+                   if el["lemma"] == self.ud_node.parent.lemma and el["replace"] in ["no", None]]:
+                    dependent = next((s for s in self.ud_node.siblings if s.deprel == 'ccomp:reported'), None)
+                    self.role = 'experiencer' if not dependent else self.role
 
             ########## check by UPOS ##########
             if self.ud_node.upos == 'PRON':
@@ -364,7 +368,7 @@ class UMRNode:
                     elif 'Rel' in self.ud_node.parent.feats.get('PronType'):
                         rel_pron = self.ud_node.parent
                     else:
-                        rel_pron = next((d for d in self.ud_node.descendants if d.upos == 'PRON'), None)  # TODO: might cause issues
+                        rel_pron = next((d for d in self.ud_node.descendants if d.upos == 'PRON' and d.feats['PronType'] != 'Prs'), None)
                         if not rel_pron:
                             rel_pron = next((d for d in self.ud_node.descendants if d.upos == 'ADV'), None)
 
@@ -570,7 +574,7 @@ class UMRNode:
                     value = f'partial-{self.is_negative()}'
                 elif hasattr(self.ud_node, 'feats') and not self.ud_node.feats['Mood']:
                     value = f'MS-{self.is_negative()}'
-                # otherwise, assign a placeholder for modal-strength.
+                # otherwise, assign a default placeholder for modal-strength.
                 else:
                     value = 'MS'
 
@@ -673,7 +677,9 @@ class UMRNode:
                 is_adj_noun = self.ud_node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or len(cop) > 0
                 is_reflexive = self.ud_node.lemma == 'suus'
 
-                category = 'person' if is_adj_noun else ('thing' if self.ud_node.parent.upos == 'VERB' and self.ud_node.feats['Gender'] == 'Neut' else 'FILL')
+                category = 'person' if is_adj_noun else ('thing' if self.ud_node.parent.upos == 'VERB'
+                                                                    and self.ud_node.feats['Gender'] == 'Neut'
+                                                         else 'FILL')
                 role = 'possessor' if is_adj_noun else self.role
 
                 if is_adj_noun:
@@ -797,11 +803,12 @@ class UMRNode:
             else:
                 first_conj = self.parent.parent if self.parent.parent else None
                 second_conj = self.parent
-            if first_conj:  # TODO - ask Dan. what to do if the first conjunct is e.g. a mark?
+            if first_conj:
                 first_conj.parent, second_conj.parent = conj, conj
 
                 parent_parent = UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)
-                if self.ud_node.parent.parent.is_root() or (parent_parent.replace and parent_parent.ud_node.parent.is_root()):
+                if (self.ud_node.parent.parent.is_root() or
+                        (parent_parent.replace and parent_parent.ud_node.parent.is_root())):
                     root_var = conj.var_name
                     parent = None
                 else:
@@ -813,7 +820,8 @@ class UMRNode:
                         role, parent = tup[1], tup[0]
                         break
 
-                self.umr_graph.triples = [tup for tup in self.umr_graph.triples if not (tup[0] == parent and tup[1] == role and tup[2] == first_conj.var_name)]
+                self.umr_graph.triples = [tup for tup in self.umr_graph.triples
+                                          if not (tup[0] == parent and tup[1] == role and tup[2] == first_conj.var_name)]
                 if conj.var_name != root_var:
                     self.umr_graph.triples.append((parent, role, conj.var_name))
                 self.umr_graph.track_conj[self.ud_node.parent] = conj.var_name
@@ -823,7 +831,8 @@ class UMRNode:
                     self.umr_graph.triples.append((conj.var_name, f'{arg_type}{i}', vc.var_name))
                     vc.parent = conj
 
-                if (self.ud_node.upos == 'NOUN' and role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl']):
+                if ((self.ud_node.upos == 'NOUN' and role != 'other') or
+                        (self.ud_node.upos == 'ADJ' and self.ud_node.deprel in ['nsubj', 'obj', 'obl'])):
                     self.get_number_person('number')
                     second_conj.already_added = True
 
@@ -853,13 +862,13 @@ class UMRNode:
                 self.parent.have_degree()
                 return None
 
-            elif self.ud_node.parent.upos == 'ADJ' or (self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats[
-                'PronType'] != 'Prs'):  # TODO: double-check DET (for 'tantus' it can be ok, but for 'hic' identity would be better...ma both Dem!!)
+            elif self.ud_node.parent.upos == 'ADJ':
                 concept = 'have-mod-91'
             elif self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats['PronType'] == 'Prs':
                 concept = 'belong-91'
-            elif self.ud_node.parent.upos in ['NOUN', 'PRON']:
-                if self.ud_node.parent.upos == 'NOUN' and self.ud_node.parent.lemma in self.umr_graph.rels:
+            elif (self.ud_node.parent.upos in ['NOUN', 'PRON'] or
+                  (self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats['PronType'] != 'Prs')):
+                if self.ud_node.parent.upos == 'NOUN' and self.ud_node.parent.lemma in self.umr_graph.rel_roles:
                     concept = 'have-rel-role-92'
                     replace_arg = 'ARG3'
                 else:
@@ -908,9 +917,6 @@ class UMRNode:
                 referent = self.parent.parent.var_name if self.parent.parent else None
             if rel_pron_node.ud_node.udeprel in ['nsubj', 'obj', 'obl']:
                 self.umr_graph.find_and_remove_from_triples(rel_pron_node.var_name, 2)
-        elif rel_pron_node == self:
-            print('check here')  # TODO
-            # referent = self.parent.var_name
 
         if rel_pron_node.role:
             self.add_node(rel_pron_node.role, invert=True, def_parent=referent)
@@ -946,7 +952,8 @@ class UMRNode:
                 role = self.umr_graph.advcl.get(sconj.lemma, {}).get('type')
 
         if not self.extra_level:
-            if not (hasattr(self.ud_node, 'lemma') and [el for el in self.umr_graph.modals["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]):
+            if not (hasattr(self.ud_node, 'lemma') and [el for el in self.umr_graph.modals["lexical"]
+                                                        if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]):
                 self.role = role
                 self.add_node(self.role)
                 self.aspect()
@@ -975,11 +982,12 @@ class UMRNode:
         if self.ud_node.deprel == 'ccomp:reported':
             self.umr_graph.triples.append((self.var_name, 'quot', self.parent.var_name))
         elif self.ud_node.udeprel == 'xcomp':
-            if self.parent:
+            if self.parent and not isinstance(self.parent.ud_node, str):
                 nsubj = next((c for c in self.parent.ud_node.children if c.deprel == 'nsubj'), None)
                 actor = [tup for tup in self.umr_graph.triples if tup[1] == 'actor' and tup[0] == self.parent.var_name]
                 if nsubj:
-                    self.umr_graph.find_and_replace_in_triples(nsubj.var_name, 2, 'experiencer', 1)
+                    nsubj_node = UMRNode.find_by_ud_node(self.umr_graph, nsubj)
+                    self.umr_graph.find_and_replace_in_triples(nsubj_node.var_name, 2, 'experiencer', 1)
                 elif actor:
                     triple = actor[0]
                     index = self.umr_graph.triples.index(triple)
