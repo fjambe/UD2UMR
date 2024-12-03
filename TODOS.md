@@ -1,9 +1,6 @@
 # TODO - code
 
 Next steps:
-- [coding] Figure out what to do with modals that are tagged as `AUX` (e.g., _can_ English PUD). CS, FR have `xcomp`
-like in Latin, while IT has `AUX` like EN. Working for IT, check EN.
-
 - [coding] Do something about `xcomp`, to avoid disconnected graphs - either use a placeholder/temporary solution, or
 finally implement removal of dependents.
 

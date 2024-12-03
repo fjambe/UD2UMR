@@ -1,0 +1,12 @@
+{
+  "lexical": [
+    {"lemma": "can", "modal-strength": "neutral", "replace": "no", "modal-predicate": null, "constraint": null},
+    {"lemma": "must", "modal-strength": "partial", "replace": "no", "modal-predicate": null, "constraint": null},
+    {"lemma": "think", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "want", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "say", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "declare", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "affirm", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null}
+  ],
+  "grammatical": []
+}
