@@ -5,7 +5,7 @@ from penman.exceptions import LayoutError
 from umr_node import UMRNode
 
 class UMRGraph:
-    def __init__(self, ud_tree, deprels, language):
+    def __init__(self, ud_tree, deprels, language, rels, advcls, modality):
         """
         Initializes a UMRGraph instance to represent a sentence UMR graph.
 
@@ -21,6 +21,10 @@ class UMRGraph:
         Args:
             ud_tree: The UD tree representing syntactic dependencies in the sentence.
             deprels (dict): A dictionary mapping UD dependency relations to UMR roles.
+            language (str): The langauge of the tree.
+            rels (set): lexical resource to disambiguate have-rel-role-92.
+            advcls (dict): lexical resource to disambiguate adverbial clauses.
+            modality (dict): lexical resource to disambiguate modal-strength and modal-predicate.
         """
         self.ud_tree = ud_tree
         self.deprels = deprels
@@ -30,6 +34,9 @@ class UMRGraph:
         self.triples = []
         self.track_conj = {}
         self.extra_level = {}  # node: new_umr_parent, e.g. {var of ARG1: var of roleset-91}
+        self.rels = rels
+        self.advcl =  advcls
+        self.modals = modality
 
     def __repr__(self):
         return f"Sentence(Text: '{self.ud_tree.text}', nodes={self.nodes})"
@@ -118,6 +125,38 @@ class UMRGraph:
     def remove_duplicate_triples(self):
         """ Removes duplicate triples from self.triples. """
         self.triples = list(set(self.triples))
+
+    def remove_invalid_triples(self):
+        """ Removes invalid triples with same parent and child (e.g. A :role A). """
+        self.triples = [tup for tup in self.triples if tup[0] != tup[2]]
+
+    def remove_disconnecting_triples(self):
+        """
+        Removes triples from the graph where the parent (first element)
+        is not a child in another triple, except for the root variable.
+        """
+        self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
+
+        ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect', 'mode', 'modal-predicate', 'modal-strength'}
+        valid_third = {tup[2] for tup in self.triples if tup[1] not in ignored_types} | {self.root_var}
+        inverted_third = {tup[0] for tup in self.triples if tup[1] and tup[1].endswith('-of') and tup[1] not in ignored_types}
+        valid_third = valid_third | inverted_third
+
+        to_remove = {tup[2] for tup in self.triples if not tup[1]}
+        to_remove.update(tup[0] for tup in self.triples if tup[0] not in valid_third)
+        self.triples = [tup for tup in self.triples if tup[0] not in to_remove and tup[2] not in to_remove]
+
+        # valid_referential_triples = [
+        #     tup for tup in self.triples
+        #     if tup[1] and tup[0] in valid_third and tup[2] in valid_third
+        # ]
+        #
+        # instance_attribute_triples = [
+        #     tup for tup in self.triples
+        #     if tup[1] in ignored_types and tup[0] in valid_third
+        # ]
+        #
+        # self.triples = valid_referential_triples + instance_attribute_triples
 
     def reorder_triples(self):
         """
@@ -222,21 +261,9 @@ class UMRGraph:
         """
         self.remove_duplicate_triples()
         self.remove_non_inverted_triples_if_duplicated()
+        self.remove_invalid_triples()
         self.postprocessing_checks()
-        self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
-        ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect', 'mode', 'modal-predicate', 'modal-strength'}
-        valid_third =  {tup[2] for tup in self.triples if tup[1] not in ignored_types}
-        inverted_third = {tup[0] for tup in self.triples if tup[1] and tup[1].endswith('-of') and tup[1] not in ignored_types}
-        valid_third = valid_third | inverted_third
-
-        to_remove = []
-        for i, tup in enumerate(self.triples):
-            if not tup[1]:
-                to_remove.append(tup[2])
-            if tup[0] not in valid_third and tup[0] != self.root_var:
-                to_remove.append(tup[0])
-
-        self.triples = [tup for tup in self.triples if tup[0] not in to_remove and tup[2] not in to_remove]
+        self.remove_disconnecting_triples()
 
         try:
             root = self.correct_variable_name()

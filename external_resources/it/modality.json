@@ -1,0 +1,13 @@
+{
+  "lexical": [
+    {"lemma": "potere", "modal-strength": "neutral", "replace": "no", "modal-predicate": null, "constraint": null},
+    {"lemma": "dovere", "modal-strength": "partial", "replace": "no", "modal-predicate": null, "constraint": null},
+    {"lemma": "pensare", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "volere", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "dire", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "affermare", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "dichiarare", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "proclamare", "modal-strength": null, "replace": null, "modal-predicate": "yes", "constraint": null}
+  ],
+  "grammatical": []
+}

@@ -1,5 +1,5 @@
 from penman.models.amr import model as pm
-from preprocess import interpersonal, advcl, modality, translate_number
+from preprocess import translate_number
 
 
 class UMRNode:
@@ -39,6 +39,7 @@ class UMRNode:
         self.replaced = False
         self.umr_graph.nodes.append(self)
         self.lang = self.umr_graph.lang
+
 
     def __repr__(self):
         return (f"Node(token='{self.ud_node if not isinstance(self.ud_node, str) else self.ud_node}', "
@@ -298,6 +299,9 @@ class UMRNode:
 
         if not self.already_added:
 
+            if self.ud_node.deprel == 'fixed':
+                print('ecco', self)
+
             if self.ud_node.deprel == 'root':
                 self.add_node(self.role)
                 if not self.umr_graph.root_var:
@@ -329,7 +333,7 @@ class UMRNode:
                     self.have_degree()
 
             ########## check by deprel ##########
-            if self.ud_node.deprel == 'nummod':
+            if self.ud_node.udeprel == 'nummod' or self.ud_node.sdeprel in ['nummod', 'numgov']:
                 self.quantities()
 
             elif self.ud_node.deprel == 'conj':
@@ -372,6 +376,12 @@ class UMRNode:
 
             elif self.ud_node.udeprel == 'advcl':
                 self.adverbial_clauses()
+
+            elif self.ud_node.deprel == 'compound:prt':
+                for i, tup in enumerate(self.umr_graph.triples):
+                    if tup[0] == self.parent.var_name and tup[1] == 'instance':
+                        self.umr_graph.triples[i] = (tup[0], tup[1], self.parent.ud_node.lemma + '-' + self.ud_node.lemma)
+                self.already_added = True
 
             if not self.already_added:
                 self.add_node(self.role)
@@ -464,7 +474,7 @@ class UMRNode:
         if hasattr(self.ud_node, 'children'):
             negation = [c for c in self.ud_node.children if c.deprel == 'advmod:neg']
             neg_element = [c for c in self.ud_node.children if c.feats['Polarity'] == 'Neg']
-            return 'negative' if negation or neg_element else 'affirmative'
+            return 'negative' if (negation or neg_element) else 'affirmative'
 
     def modality(self):
         """
@@ -480,7 +490,7 @@ class UMRNode:
         if not already:
 
             if hasattr(self.ud_node, 'lemma'):
-                if [el for el in modality["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]:
+                if [el for el in self.umr_graph.modals["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]:
                     self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
                     self.already_added = True
                     return
@@ -488,7 +498,7 @@ class UMRNode:
             if self.parent and hasattr(self.parent.ud_node, 'lemma') and hasattr(self.ud_node, 'deprel') and self.ud_node.deprel in ['ccomp', 'xcomp']:
                 # first, checking external file for modality - lexical check based on lemma.
                 modpred = next(
-                    (el["modal-predicate"] for el in modality["lexical"]
+                    (el["modal-predicate"] for el in self.umr_graph.modals["lexical"]
                      if el["lemma"] == self.parent.ud_node.lemma
                      and (el["constraint"] is None or eval(el["constraint"]))),
                     None
@@ -500,12 +510,12 @@ class UMRNode:
 
                 else:
                     value_temp, replace = next(
-                        ((el["modal-strength"], el["replace"]) for el in modality["lexical"]
+                        ((el["modal-strength"], el["replace"]) for el in self.umr_graph.modals["lexical"]
                          if el["lemma"] == self.parent.ud_node.lemma
                          and (el["constraint"] is None or eval(el["constraint"]))),
                         (None, None)
                     )
-                    value = f'{value_temp}-{self.is_negative()}'
+                    value = f"{value_temp if value_temp else 'MS'}-{self.is_negative()}"
 
                     if value and replace == 'yes':
                         self.parent.replace = True
@@ -524,11 +534,30 @@ class UMRNode:
 
             # then, checking external file for modality - grammatical check based on construction.
             if not value and hasattr(self.ud_node, 'upos'):
-                for el in modality["grammatical"]:
+                for el in self.umr_graph.modals["grammatical"]:
                     feats_from_el = el['node.feats'].split('|')
                     if el["node.upos"] == self.ud_node.upos and eval(el["constraint_on_children"]):
                         if all(feat in str(self.ud_node.feats).split('|') for feat in feats_from_el):
                             value = f'{el["modal-strength"]}-{self.is_negative()}'
+
+            if self.ud_node and not isinstance(self.ud_node, str):
+                auxiliaries = [c for c in self.ud_node.children if c.deprel == 'aux']
+                if auxiliaries:
+                    values = set()
+                    for a in auxiliaries:
+                        value_temp, replace = next(
+                            ((el["modal-strength"], el["replace"]) for el in self.umr_graph.modals["lexical"]
+                             if el["lemma"] == a.lemma
+                             and el["modal-strength"]
+                             and (el["constraint"] is None or eval(el["constraint"]))),
+                            (None, None)
+                        )
+                        if value_temp and replace == 'no':
+                            values.add(f"{value_temp}-{self.is_negative()}")
+                    if len(values) > 1:
+                        print('Warning: more than one modality value found.', values)
+                    elif len(values) == 1:
+                        value = list(values)[0]
 
             # if no value has been retrieved, check verbal features.
             if not value:
@@ -536,7 +565,7 @@ class UMRNode:
                     value = f'full-{self.is_negative()}'
                 elif hasattr(self.ud_node, 'feats') and self.ud_node.feats['Mood'] == 'Imp':
                     value = f'partial-{self.is_negative()}'
-                elif hasattr(self.ud_node, 'feats') and self.ud_node.feats['VerbForm'] == 'Inf':
+                elif hasattr(self.ud_node, 'feats') and not self.ud_node.feats['Mood']:
                     value = f'MS-{self.is_negative()}'
                 # otherwise, assign a placeholder for modal-strength.
                 else:
@@ -567,12 +596,12 @@ class UMRNode:
         """
         self.entity = True
 
-        if self.ud_node.feats['PronType'] == 'Tot':
+        if self.ud_node.feats['PronType'] == 'Tot' or self.ud_node.sdeprel in ['nummod', 'numgov']:
             role = self.role if self.role != 'det' else 'quant'
             cop_siblings = [s for s in self.ud_node.siblings if s.deprel == 'cop']
             has_cop_sibling = len(cop_siblings) > 0
 
-            if self.ud_node.deprel == 'det' and not has_cop_sibling:
+            if self.ud_node.udeprel == 'det' and not has_cop_sibling:
                 self.add_node(role)
                 self.entity = False
             else:
@@ -606,7 +635,7 @@ class UMRNode:
     def personal(self):
         """ Handle pronouns - with a special focus on personal and indefinite. """
 
-        if self.ud_node.upos in ['PRON', 'DET'] and not self.replaced and self.ud_node.deprel != 'det':
+        if self.ud_node.upos in ['PRON', 'DET'] and not self.replaced and self.ud_node.udeprel != 'det':
 
             category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person' if self.ud_node.feats['PronType'] == 'Prs' else 'FILL'
             entity = self.create_node(category, self.role, replace=True)
@@ -679,7 +708,7 @@ class UMRNode:
 
                 cop_siblings = [s for s in self.ud_node.siblings if s.deprel == 'cop']
 
-                if self.ud_node.deprel != 'det' or (self.ud_node.deprel == 'det' and len(cop_siblings) == 1):
+                if self.ud_node.udeprel != 'det' or (self.ud_node.udeprel == 'det' and len(cop_siblings) == 1):
                     self.already_added = True
                     new_node = self.create_node('thing' if self.ud_node.feats['Gender'] == 'Neut' else 'FILL')
                     self.umr_graph.find_and_replace_in_triples(self.var_name, 2, new_node.var_name, 2)
@@ -693,7 +722,7 @@ class UMRNode:
         """ Create an entity node that replaces the DETs (e.g. 'Illi negarunt' "They denied"). """
 
         if not self.replaced:
-            if self.ud_node.deprel != 'det' and self.ud_node.feats['PronType'] == 'Dem':
+            if self.ud_node.udeprel != 'det' and self.ud_node.feats['PronType'] == 'Dem':
 
                 category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person'  # maybe FILL is better
                 new_node = self.create_node(category, role=self.role, replace=True)
@@ -724,7 +753,7 @@ class UMRNode:
                 name = self.create_node('name', 'name')
                 name.add_node(name.role, def_parent=entity.var_name)
 
-                names = [c for c in self.ud_node.children if c.deprel == 'flat:name' and c.upos == 'PROPN']
+                names = [c for c in self.ud_node.children if c.udeprel == 'flat'] # and c.upos == 'PROPN']
                 names = [self] + [UMRNode.find_by_ud_node(self.umr_graph, n) for n in names]
 
                 for i, n in enumerate(names, start=1):
@@ -817,7 +846,7 @@ class UMRNode:
         if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or (
                 self.ud_node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not self.ud_node.parent.feats['Case']):
 
-            if self.ud_node.parent.feats['Degree']:
+            if self.ud_node.parent.feats['Degree'] and self.ud_node.parent.feats['Degree'] != 'Pos':
                 self.parent.have_degree()
                 return None
 
@@ -827,7 +856,7 @@ class UMRNode:
             elif self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats['PronType'] == 'Prs':
                 concept = 'belong-91'
             elif self.ud_node.parent.upos in ['NOUN', 'PRON']:
-                if self.ud_node.parent.upos == 'NOUN' and self.ud_node.parent.lemma in interpersonal:
+                if self.ud_node.parent.upos == 'NOUN' and self.ud_node.parent.lemma in self.umr_graph.rels:
                     concept = 'have-rel-role-92'
                     replace_arg = 'ARG3'
                 else:
@@ -900,8 +929,8 @@ class UMRNode:
         role = 'ADVCL'
         sconj = next((c for c in self.ud_node.children if c.deprel == 'mark'), None)
 
-        if sconj and sconj.lemma in advcl:
-            constraint = advcl.get(sconj.lemma, {}).get('constraint')
+        if sconj and sconj.lemma in self.umr_graph.advcl:
+            constraint = self.umr_graph.advcl.get(sconj.lemma, {}).get('constraint')
             if constraint:
                 valid = []
                 for c in constraint:
@@ -909,12 +938,12 @@ class UMRNode:
                         feat, value = c.split('=')
                         valid.append(sconj.parent.feats[feat] == value)
                 if all(valid):
-                    role = advcl.get(sconj.lemma, {}).get('type')
+                    role = self.umr_graph.advcl.get(sconj.lemma, {}).get('type')
             else:
-                role = advcl.get(sconj.lemma, {}).get('type')
+                role = self.umr_graph.advcl.get(sconj.lemma, {}).get('type')
 
         if not self.extra_level:
-            if not (hasattr(self.ud_node, 'lemma') and [el for el in modality["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]):
+            if not (hasattr(self.ud_node, 'lemma') and [el for el in self.umr_graph.modals["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]):
                 self.role = role
                 self.add_node(self.role)
                 self.aspect()
@@ -956,8 +985,14 @@ class UMRNode:
                 number += f' {c.ud_node.form}'
                 c.already_added = True
 
-        digit = translate_number(number, self.lang)
-        self.umr_graph.triples.append((self.parent.var_name, ':quant', digit))
+        if self.ud_node.upos == 'NUM':
+            digit = translate_number(number, self.lang)
+            if isinstance(digit, int):
+                self.umr_graph.triples.append((self.parent.var_name, ':quant', digit))
+            else:
+                self.add_node('quant')
+        else:
+            self.add_node('quant')
         self.already_added = True
 
     def have_degree(self):
@@ -1025,7 +1060,7 @@ class UMRNode:
                     cmp_node.add_node(cmp_node.role)
                     if cmp_node.ud_node.upos in ['NOUN', 'ADJ']:
                         cmp_node.get_number_person('number')
-                    elif cmp_node.ud_node.upos in ['PRON', 'DET'] and cmp_node.ud_node.deprel != 'det':
+                    elif cmp_node.ud_node.upos in ['PRON', 'DET'] and cmp_node.ud_node.udeprel != 'det':
                         cmp_node.entity = True
 
     def acl_participles(self):

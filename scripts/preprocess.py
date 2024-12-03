@@ -8,25 +8,25 @@ def get_deprels(ud_tree) -> dict:
 
     mapping_conditions = {
         'root': lambda d: d.deprel == 'root',  # All children are included for 'root'
-        'actor': lambda d: d.deprel in ['nsubj', 'csubj'],
+        'actor': lambda d: d.deprel in ['nsubj', 'csubj', 'obl:agent'],
         'undergoer': lambda d: d.deprel in ['obj', 'nsubj:pass', 'ccomp', 'csubj:pass'],
         'theme': lambda d: d.deprel == 'ccomp:reported',
-        'mod': lambda d: d.deprel == 'amod' or (d.deprel == 'nmod' and d.feats.get('Case') != 'Gen'),
+        'mod': lambda d: d.deprel == 'amod' or (d.udeprel == 'nmod' and d.sdeprel != 'poss' and d.feats.get('Case') != 'Gen'),
         'OBLIQUE': lambda d: d.udeprel == 'obl' and d.sdeprel != 'arg', # and d.feats.get('Case') != 'Dat',
-        'det': lambda d: d.deprel == 'det',
-        'manner': lambda d: d.deprel == 'advmod' and d.feats['Polarity'] != 'Neg',
+        'det': lambda d: d.udeprel == 'det',
+        'manner': lambda d: d.udeprel == 'advmod' and d.sdeprel not in ['neg', 'tmod', 'lmod'] and d.feats['Polarity'] != 'Neg',
         'temporal': lambda d: d.deprel in ['advmod:tmod', 'obl:tmod'],
         'location': lambda d: d.deprel == 'advmod:lmod',
-        'quant': lambda d: d.deprel == 'nummod',
+        'quant': lambda d: d.deprel == 'nummod' or d.sdeprel in ['nummod', 'numgov'],
         'vocative': lambda d: d.deprel == 'vocative',
-        'affectee': lambda d: d.deprel == 'obl:arg' or (d.deprel == 'obl' and d.feats.get('Case') == 'Dat'),
+        'affectee': lambda d: d.deprel in ['iobj', 'obl:arg'] or (d.deprel == 'obl' and d.feats.get('Case') == 'Dat'),
         'MOD/POSS': lambda d: d.deprel == 'nmod' and d.feats.get('Case') == 'Gen',
         'possessor': lambda d: d.sdeprel == 'poss',
         'identity-91': lambda d: d.deprel == 'appos',
         'COPULA': lambda d: d.deprel == 'cop',
         'conj': lambda d: d.deprel == 'conj',
         'other': lambda d: d.udeprel in ['advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp',
-                                         'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case',
+                                         'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case', 'compound',
                                          'parataxis', 'dep', 'orphan']
     }
 
@@ -50,7 +50,7 @@ def get_role_from_deprel(ud_node, deprels):
     return None
 
 
-def load_external_files(filename: str) -> Union[set, dict]:
+def load_external_files(filename: str, language: str) -> Union[set, dict]:
     """
     Read a file containing lemmas and return them as a set. Used for:
     1. interpersonal relations (filename: have_rel_role.txt);
@@ -61,7 +61,7 @@ def load_external_files(filename: str) -> Union[set, dict]:
     terms = set() if extension == 'txt' else dict()
 
     try:
-        with open(f"./external_resources/{filename}", 'r') as f:
+        with open(f"./external_resources/{language}/{filename}", 'r') as f:
             if extension == 'txt':
                 terms = {line.strip() for line in f if line.strip()}
             elif extension == 'csv':
@@ -91,27 +91,21 @@ def translate_number(numeral, input_lang):
     """
     translator = Translator()
 
-    try:
-        if input_lang != 'en':
+    if input_lang != 'en' and not numeral.isdigit():
+        try:
+            translator.raise_Exception = True
             translation = translator.translate(numeral, src=input_lang, dest='en')
             en_text = translation.text
-        else:
-            en_text = numeral
 
-        numeric_value = w2n.word_to_num(en_text)
-        return numeric_value
+            numeric_value = w2n.word_to_num(en_text)
+            return numeric_value
 
-    except ValueError as e:
-        print(f"Conversion error occurred: {e}")
+        except ValueError as e:
+            print(f"Conversion error occurred: {e}")
+            return numeral
+
+        except Exception as e:
+            print(f"Unexpected error occurred: {e}")
+            return numeral
+    else:
         return numeral
-
-
-    except Exception as e:
-        print(f"Unexpected error occurred: {e}")
-        return numeral
-
-#########################################################
-
-interpersonal = load_external_files('have_rel_role.txt')
-advcl = load_external_files('advcl.csv')
-modality = load_external_files('modality.json')

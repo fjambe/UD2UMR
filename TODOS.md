@@ -1,17 +1,12 @@
 # TODO - code
 
 Next steps:
-- [coding] Figure out what to do with modals that are tagged as `AUX` (e.g., _can_ English PUD).
-- [decision-making] Do I want to support code-switching? Because I specify the language in input, but it could be doable
-to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
-Not really urgent, not frequent at all.
-- [coding] Deprels to check:
-  - from FR: `expl:comp`, `expl:subj`, `fixed`, `flat:foreign`.
-  - from CS: `advmod:emph`, `obl:agent` (whole construction), `nummod:gov`, `det:numgov`, `det:nummod`, `compound`,
-  `iobj` (also IT) + check what happens to `flat` now.
-  - from EN: `compound:prt`, `det:predet`, `nmod:unmarked`, `obl:unmarked`.
-- [coding] do something about `xcomp`, to avoid disconnected graphs - either use a placeholder/temporary solution, or
+- [coding] Figure out what to do with modals that are tagged as `AUX` (e.g., _can_ English PUD). CS, FR have `xcomp`
+like in Latin, while IT has `AUX` like EN. Working for IT, check EN.
+
+- [coding] Do something about `xcomp`, to avoid disconnected graphs - either use a placeholder/temporary solution, or
 finally implement removal of dependents.
+
 - [documentation] Nobody know what to do with `parataxis`, e.g.also for PDT conversion.
 - [documentation] For NEs, cf. something like `universalner.org` (from projects related to UD), at least as a citation.
 It's about annotating NEs in UD.
@@ -26,6 +21,13 @@ that are supposed to be explicit in UMR. Don't waste time on this.
 - [documentation] I tried to come up with a strategy to extract dates, in order to annotate them in the UMR format,
 but it's not doable in a language-agnostic way - too different strategies of encoding dates, and too many calendars. So
 they just look very wrong in the UMR graph.
+- [documentation] `expl:subj` should be absent from the UMR graph, I think. Probably, I don't have to do anything also
+wrt `expl:comp` (in FR, only _il y a_); it would be a different word sense. Or maybe I can treat it as `compound:prt`
+for English phrasal verbs...? Actually no, because in UMR we would probably have an abstract predicate (e.g., `exist-91`,
+`have-place-91`).
+
+- [disconnected] Poi non resta che analizzare i disconnected graphs e capire perchè, come correggerli, come produrre
+UMRs incomplete piuttosto che niente.
 
 
 ## General
@@ -106,6 +108,10 @@ After discussing it with Alexis, we came to the conclusion that it would definit
 I still think it will be confusing when it comes to evaluation, but it's going to be very easy to remove (not add it, 
 actually) if I don't want it anymore in my UMRs. It's one line of code. Maybe discuss it with Dan.
 
+- [postponed, irrelevant] Do I want to support code-switching? Because I specify the language in input, but it could be
+doable to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
+Not really urgent, not frequent at all.
+
 
 ## QUESTIONS:
 - [all] negation (`advmod:neg` as `:modal-strength full-negative`). As of now I am following the 80% of the times rule.
@@ -147,6 +153,14 @@ And what am I supposed to do with _hope, fear, worry, dread_? _Need_? All of the
 Sent tlg0031.tlg027.perseus-lat1.tb.xml@88 in Perseus test.
 All other _nec_ s are not split in two as a MWE.
 - Is it okay to treat both UD `Degree={Sup,Abs}` as UMR `most`?
+- What should `compound` be in UMR? We can take CS as an example.
+- Eventually I ended up facing the issue of Too many requests (429) for Google Translate, as expected. The stable
+library is https://pypi.org/project/google-cloud-translate/, but it comes with quota and more limitations as it is
+official. Can you think of an alternative to make it more stable?
+- _Consumer Technology Association_ is `flat` in CS but `compound` in EN. In FR è tutto X e `flat:foreign`. Se anche
+riuscissimo a riconoscerla come una NE (ma UPOS è quasi sempre NOUN), non avremmo un trattamento omogeneo.
+Suggestions?
+- What to do in general with `flat:foreign` (FR), `fixed` (FR) and `compound` (CS)?
 
 
 ## Details:

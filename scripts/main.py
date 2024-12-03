@@ -19,6 +19,10 @@ if __name__ == "__main__":
     doc = udapi.Document(args.treebank)
     sent_num = 0
 
+    interpersonal = pr.load_external_files('have_rel_role.txt', args.lang)
+    advcl = pr.load_external_files('advcl.csv', args.lang)
+    modals = pr.load_external_files('modality.json', args.lang)
+
     with open(f"{args.treebank.split('.')[0]}.umr", "w") as output:
 
         for tree in doc.trees:
@@ -26,7 +30,7 @@ if __name__ == "__main__":
             sent_num += 1
 
             deprels_to_relations = pr.get_deprels(tree)
-            sent_tree = UMRGraph(tree, deprels_to_relations, args.lang)
+            sent_tree = UMRGraph(tree, deprels_to_relations, args.lang, interpersonal, advcl, modals)
 
             # First pass: create variables for UD nodes.
             for node in tree.descendants:
