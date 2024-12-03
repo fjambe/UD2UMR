@@ -136,7 +136,28 @@ official. Can you think of an alternative to make it more stable?
 - _Consumer Technology Association_ is `flat` in CS but `compound` in EN. In FR è tutto X e `flat:foreign`. Se anche
 riuscissimo a riconoscerla come una NE (ma UPOS è quasi sempre NOUN), non avremmo un trattamento omogeneo.
 Suggestions?
-- What to do in general with `flat:foreign` (FR), `fixed` (FR) and `compound` (CS)?
+- en_pud uses `parataxis` where `conj` would apply...
+- What to do in general with `flat:foreign` (FR), `fixed` (FR) and `compound` (CS, EN)?
+Cf. EN:
+```
+21	in	in	ADP	IN	_	24	case	24:case	_
+22	Sesto	Sesto	PROPN	NNP	Number=Sing	24	compound	24:compound	_
+23	San	San	PROPN	NNP	Number=Sing	24	compound	24:compound	_
+24	Giovanni	Giovanni	PROPN	NNP	Number=Sing	19	nmod	19:nmod:in	SpaceAfter=No
+```
+It seems to matter watter more than I thought.
+
+Some errors in en_pud (why is _get_ an `xcomp`):
+```
+9	the	the	DET	DT	Definite=Def|PronType=Art	10	det	10:det	_
+10	settlers	settler	NOUN	NNS	Number=Plur	11	nsubj	11:nsubj|13:nsubj:xsubj	_
+11	needed	need	VERB	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	8	acl:relcl	8:acl:relcl	_
+12	to	to	PART	TO	_	13	mark	13:mark	_
+13	get	get	VERB	VB	VerbForm=Inf	11	xcomp	11:xcomp	_
+14	their	their	PRON	PRP$	Number=Plur|Person=3|Poss=Yes|PronType=Prs	15	nmod:poss	15:nmod:poss	_
+15	independence	independence	NOUN	NN	Number=Sing	13	obj	13:obj	SpaceAfter=No
+16	.	.	PUNCT	.	_	4	punct	4:punct	_
+```
 
 
 ## Details:

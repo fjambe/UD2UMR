@@ -151,7 +151,7 @@ class UMRNode:
 
         return concept
 
-    def replace_with_abstract_roleset(self, role_aka_concept, replace_arg=None, overt=True):
+    def replace_with_abstract_roleset(self, role_aka_concept, replace_arg=None, overt=True, relaxed=False):
         """
         Replaces a syntactic construction with a UMR abstract roleset in the graph, and updates the graph accordingly.
 
@@ -159,6 +159,7 @@ class UMRNode:
             role_aka_concept (str): The concept name for the abstract roleset to be introduced (e.g., "identity-91").
             replace_arg (str, optional): The argument to replace. If not provided, the default is "ARG2".
             overt (bool, optional): A flag indicating whether the predication is explicit (relevant to copulas). Default is `True`.
+            relaxed (bool, optional): If `True`, skips role restrictions when reattaching dependents. Default is `False`.
 
         Updates:
             - The UMR graph is modified by introducing a new abstract roleset concept node.
@@ -222,9 +223,9 @@ class UMRNode:
                     parent.parent = concept
 
             else:
+                self.umr_graph.find_and_remove_from_triples(self.umr_graph.track_conj[nsubj], 2)
                 self.umr_graph.triples.append((concept.var_name, 'ARG1', self.umr_graph.track_conj[nsubj]))
                 arg1 = UMRNode.find_by_var_name(self.umr_graph, self.umr_graph.track_conj[nsubj])
-                self.umr_graph.find_and_remove_from_triples(self.umr_graph.track_conj[nsubj], 2)
                 self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
                 arg1.parent = concept
                 self.parent.parent = concept
@@ -240,7 +241,7 @@ class UMRNode:
         concept.modality()
 
         # reattach dependents
-        UMRNode.reattach_dependents(self.umr_graph, self.parent, concept, remove=True, relaxed=True)
+        UMRNode.reattach_dependents(self.umr_graph, self.parent, concept, remove=True, relaxed=relaxed)
 
         # elided subjects to be restored
         rel_dep = [s for s in self.ud_node.siblings if s.deprel == 'acl:relcl']
@@ -1058,7 +1059,7 @@ class UMRNode:
                 cop = [c for c in self.ud_node.children if c.deprel == 'cop']
                 if cop:
                     cop_node = UMRNode.find_by_ud_node(self.umr_graph, cop[0])
-                    have_degree = cop_node.replace_with_abstract_roleset('have-degree-91')
+                    have_degree = cop_node.replace_with_abstract_roleset('have-degree-91', relaxed=True)
                     degree_node = self.create_node(umr_degree, 'ARG3')
                     self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
                     cop_node.already_added = True
