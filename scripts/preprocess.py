@@ -9,8 +9,9 @@ def get_deprels(ud_tree) -> dict:
     mapping_conditions = {
         'root': lambda d: d.deprel == 'root',  # All children are included for 'root'
         'actor': lambda d: d.deprel in ['nsubj', 'csubj', 'obl:agent'],
-        'undergoer': lambda d: d.deprel in ['obj', 'nsubj:pass', 'ccomp', 'csubj:pass'],
+        'undergoer': lambda d: d.deprel in ['obj', 'nsubj:pass', 'csubj:pass'],
         'theme': lambda d: d.deprel == 'ccomp:reported',
+        'stimulus': lambda d: d.deprel in ['xcomp', 'ccomp'],
         'mod': lambda d: d.deprel == 'amod' or (d.udeprel == 'nmod' and d.sdeprel != 'poss' and d.feats.get('Case') != 'Gen'),
         'OBLIQUE': lambda d: d.udeprel == 'obl' and d.sdeprel != 'arg', # and d.feats.get('Case') != 'Dat',
         'det': lambda d: d.udeprel == 'det',
@@ -25,9 +26,9 @@ def get_deprels(ud_tree) -> dict:
         'identity-91': lambda d: d.deprel == 'appos',
         'COPULA': lambda d: d.deprel == 'cop',
         'conj': lambda d: d.deprel == 'conj',
-        'other': lambda d: d.udeprel in ['advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'csubj', 'ccomp',
-                                         'xcomp', 'dislocated', 'aux', 'discourse', 'acl', 'case', 'compound',
-                                         'parataxis', 'dep', 'orphan']
+        'other': lambda d: d.udeprel in ['advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'xcomp',
+                                         'dislocated', 'aux', 'discourse', 'acl', 'case', 'compound', 'parataxis',
+                                         'dep', 'orphan']
     }
 
     deprels = {rel: [d for d in ud_tree.descendants if condition(d)] for rel, condition in mapping_conditions.items()}

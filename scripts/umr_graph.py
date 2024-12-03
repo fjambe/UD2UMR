@@ -260,6 +260,7 @@ class UMRGraph:
         as well as other invalid triples (e.g. role is None).
         """
         self.remove_duplicate_triples()
+        print(self.triples)
         self.remove_non_inverted_triples_if_duplicated()
         self.remove_invalid_triples()
         self.postprocessing_checks()

@@ -342,6 +342,8 @@ class UMRNode:
 
             elif self.ud_node.udeprel in ['csubj', 'ccomp']:
                 self.clauses()
+            elif self.ud_node.udeprel == 'xcomp':
+                print('xcomp', self)
 
             elif self.ud_node.deprel == 'appos':
                 _ = self.introduce_abstract_roleset(self.role)
@@ -474,6 +476,7 @@ class UMRNode:
         if hasattr(self.ud_node, 'children'):
             negation = [c for c in self.ud_node.children if c.deprel == 'advmod:neg']
             neg_element = [c for c in self.ud_node.children if c.feats['Polarity'] == 'Neg']
+            print(negation, neg_element)
             return 'negative' if (negation or neg_element) else 'affirmative'
 
     def modality(self):
