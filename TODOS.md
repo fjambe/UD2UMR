@@ -1,8 +1,6 @@
 # TODO - code
 
 Next steps:
-- [coding] Do something about `xcomp`, to avoid disconnected graphs - use a placeholder/temporary solution.
-
 - [documentation] Nobody know what to do with `parataxis`, e.g.also for PDT conversion.
 - [documentation] For NEs, cf. something like `universalner.org` (from projects related to UD), at least as a citation.
 It's about annotating NEs in UD.

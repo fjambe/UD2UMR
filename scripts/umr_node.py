@@ -317,7 +317,13 @@ class UMRNode:
                     if self.ud_node.feats['Voice'] != 'Pass' and self.ud_node.feats['VerbForm'] != 'Part':
                         arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
                         new_node = self.create_node(arg_type)
-                        self.umr_graph.triples.append((self.var_name, 'actor', new_node.var_name))
+
+                        if ([el for el in self.umr_graph.modals["lexical"] if
+                            el["lemma"] == self.ud_node.lemma and el["replace"] in ["no", None]]
+                                and self.ud_node.deprel != 'ccomp:reported'):
+                            self.umr_graph.triples.append((self.var_name, 'experiencer', new_node.var_name))
+                        else:
+                            self.umr_graph.triples.append((self.var_name, 'actor', new_node.var_name))
                 self.modality()
                 self.aspect()
                 self.mode()
@@ -337,10 +343,8 @@ class UMRNode:
                 role = next((k for k, v in self.umr_graph.deprels.items() for item in v if item == self.ud_node.parent), None)
                 root_var = self.coordination(role)
 
-            elif self.ud_node.udeprel in ['csubj', 'ccomp']:
+            elif self.ud_node.udeprel in ['csubj', 'ccomp', 'xcomp']:
                 self.clauses()
-            elif self.ud_node.udeprel == 'xcomp':
-                print('xcomp', self)
 
             elif self.ud_node.deprel == 'appos':
                 _ = self.introduce_abstract_roleset(self.role)
@@ -970,6 +974,17 @@ class UMRNode:
         """
         if self.ud_node.deprel == 'ccomp:reported':
             self.umr_graph.triples.append((self.var_name, 'quot', self.parent.var_name))
+        elif self.ud_node.udeprel == 'xcomp':
+            if self.parent:
+                nsubj = next((c for c in self.parent.ud_node.children if c.deprel == 'nsubj'), None)
+                actor = [tup for tup in self.umr_graph.triples if tup[1] == 'actor' and tup[0] == self.parent.var_name]
+                if nsubj:
+                    self.umr_graph.find_and_replace_in_triples(nsubj.var_name, 2, 'experiencer', 1)
+                elif actor:
+                    triple = actor[0]
+                    index = self.umr_graph.triples.index(triple)
+                    self.umr_graph.triples[index] = (triple[0], 'experiencer', triple[2])
+
 
         self.add_node(self.role)
 
