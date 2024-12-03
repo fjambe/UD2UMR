@@ -1092,3 +1092,5 @@ class UMRNode:
         if self.ud_node.feats['VerbForm'] == 'Part':
             role = 'actor' if self.ud_node.feats['Voice'] == 'Act' else 'undergoer'
             self.add_node(role, invert=True, def_parent=self.parent.var_name)
+        else:
+            self.add_node('mod')

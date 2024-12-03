@@ -1,28 +1,8 @@
 # TODO - code
 
 Next steps:
-- [documentation] Nobody know what to do with `parataxis`, e.g.also for PDT conversion.
-- [documentation] For NEs, cf. something like `universalner.org` (from projects related to UD), at least as a citation.
-It's about annotating NEs in UD.
-- [documentation] Participles with `acl` deprel treated as relative clauses - e.g., _the eaten apples_ as _the apples that were eaten_.
-For Latin, I have to specify the constraint `Aspect != Prosp`, because otherwise I capture gerund(ive)s - but it does
-feel specific to the way Latin is annotated. WHat do you think from a UD perspective: is this true? Gerunds are a mess,
-there's not much you can do about it.
-- [documentation] I wanted to treat `advcl:cmp` separately from other `advcl`s, hoping to build the
-`have-degree` structure, but it's very lexicalized + it's can be messy in UD because often you have implicit events,
-that are supposed to be explicit in UMR. Don't waste time on this.
-- [documentation] `advcl:pred` is only found in Latin, (Old) Italian and Ukrainian. Not worth a specific treatment.
-- [documentation] I tried to come up with a strategy to extract dates, in order to annotate them in the UMR format,
-but it's not doable in a language-agnostic way - too different strategies of encoding dates, and too many calendars. So
-they just look very wrong in the UMR graph.
-- [documentation] `expl:subj` should be absent from the UMR graph, I think. Probably, I don't have to do anything also
-wrt `expl:comp` (in FR, only _il y a_); it would be a different word sense. Or maybe I can treat it as `compound:prt`
-for English phrasal verbs...? Actually no, because in UMR we would probably have an abstract predicate (e.g., `exist-91`,
-`have-place-91`).
-
-- [disconnected] Poi non resta che analizzare i disconnected graphs e capire perchè, come correggerli, come produrre
+- [coding] Poi non resta che analizzare i disconnected graphs e capire perchè, come correggerli, come produrre
 UMRs incomplete piuttosto che niente.
-
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
