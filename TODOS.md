@@ -142,6 +142,8 @@ its complement event node in the full dependency structure."
 However, in all the graphs in the guidelines the complement event node is not annotated wrt `modal-strength`, but
 `modal-predicate`. I assume `modal-predicate` is the correct one (right?), and yet this sentence can be very misleading.
 And what am I supposed to do with _hope, fear, worry, dread_? _Need_? All of them, actually.
+- [Matt] Do you know how to prevent some triples from inverting? E.g., I do not want `modal-predicate-of`, and it keeps
+changing every time I rerun the script.
 
 
 ## For Dan:

@@ -146,89 +146,39 @@ class UMRGraph:
         to_remove.update(tup[0] for tup in self.triples if tup[0] not in valid_third)
         self.triples = [tup for tup in self.triples if tup[0] not in to_remove and tup[2] not in to_remove]
 
-        # valid_referential_triples = [
-        #     tup for tup in self.triples
-        #     if tup[1] and tup[0] in valid_third and tup[2] in valid_third
-        # ]
-        #
-        # instance_attribute_triples = [
-        #     tup for tup in self.triples
-        #     if tup[1] in ignored_types and tup[0] in valid_third
-        # ]
-        #
-        # self.triples = valid_referential_triples + instance_attribute_triples
-
     def reorder_triples(self):
         """
-        Reorders the list of triples stored in `self.triples` based on a predefined hierarchy for the
-        role (second element) in each triple, to reflect a natural order of manual annotation.
-        Main features:
-        - triples are grouped based on their first node (triple[0]) to facilitate handling nested dependencies.
-        - a recursive function ensures that child nodes are added after their parent.
-        - each group of triples for a given node is sorted based on the predefined get_priority function.
+        Reorders the list of triples stored in `self.triples` based on a custom hierarchy for the role in each
+        triple, to reflect a natural order of manual annotation.
         """
-        hierarchy_order = {
-            'instance': 0,
-            'actor': 1,
-            'undergoer': 2,
-            'theme': 3,
-            'ARG1': 4,
-            'ARG2': 5,
-            'affectee': 6,
-            'OBLIQUE': 7,
-            'refer-person': 8,
-            'refer-number': 9,
-        }
+        def get_priority(role):
 
-        def get_priority(triple):
-            role = triple[1]
+            hierarchy_order = {
+                'instance': 0,
+                'actor': 1,
+                'undergoer': 2,
+                'theme': 3,
+                'stimulus': 4,
+                'ARG1': 5,
+                'ARG2': 6,
+                'affectee': 7,
+                'OBLIQUE': 8,
+                'manner': 9,
+                'op1': 10,
+                'op2': 11,
+                'op3': 12,
+                'op4': 13,
+                'op5': 14,
+                'refer-person': 15,
+                'refer-number': 16,
+                'modal-predicate': 17,
+                'modal-strength': 18,
+                'aspect': 19,
+                'quot': 20
+            }
+            return hierarchy_order.get(role, float('inf'))
 
-            if role == 'quot':
-                return 20
-            elif role == 'aspect':
-                return 21
-            elif role == 'modal-strength':
-                return 22
-
-            if role.startswith('op'):
-                try:
-                    op_number = int(role[2:])
-                    return 11 + op_number
-                except ValueError:
-                    return 12
-
-            return hierarchy_order.get(role, 18)
-
-        visited_nodes = set()
-        reordered_triples = []
-
-        def add_triples(node):
-            if node in visited_nodes:
-                return
-            visited_nodes.add(node)
-
-            for triple in grouped_triples.get(node, []):
-                if triple not in reordered_triples:
-                    reordered_triples.append(triple)
-                    add_triples(triple[2])  # Recurse on the child node
-
-        # Step 1: Group triples by their source node
-        grouped_triples = {}
-        for tup in self.triples:
-            source = tup[0]
-            grouped_triples.setdefault(source, []).append(tup)
-
-        # Step 2: Process triples starting from the root node(s)
-        for tup in self.triples:
-            if tup[0] not in visited_nodes:
-                add_triples(tup[0])
-
-        # Step 3: Sort the triples based on their priorities
-        self.triples = sorted(reordered_triples, key=get_priority)
-
-        # Post-processing: make sure that 'quot' is not listed too early, in order to avoid the Penman library to
-        # reverse the relation automatically (quot-of).
-        self.triples = [t for t in self.triples if t[1] != 'quot'] + [t for t in self.triples if t[1] == 'quot']
+        self.triples = sorted(self.triples, key=lambda t: get_priority(t[1]))
 
     def postprocessing_checks(self):
         """
