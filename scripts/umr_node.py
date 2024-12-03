@@ -299,9 +299,6 @@ class UMRNode:
 
         if not self.already_added:
 
-            if self.ud_node.deprel == 'fixed':
-                print('ecco', self)
-
             if self.ud_node.deprel == 'root':
                 self.add_node(self.role)
                 if not self.umr_graph.root_var:

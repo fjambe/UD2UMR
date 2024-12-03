@@ -49,10 +49,6 @@ class UMRGraph:
         """
         return [node.var_name for node in self.nodes if hasattr(node, 'var_name')]
 
-    def display_text(self):
-        """Print out the text of the sentence."""
-        print(f"SNT: {self.ud_tree.text}")
-
     def assign_variable_name(self, form):
         """
         Assign a unique variable name based on the first letter of ud_node.lemma.
@@ -210,15 +206,14 @@ class UMRGraph:
         as well as other invalid triples (e.g. role is None).
         """
         self.remove_duplicate_triples()
-        print(self.triples)
         self.remove_non_inverted_triples_if_duplicated()
         self.remove_invalid_triples()
         self.postprocessing_checks()
         self.remove_disconnecting_triples()
+        root = self.correct_variable_name()
+        self.reorder_triples()
 
         try:
-            root = self.correct_variable_name()
-            self.reorder_triples()
             g = penman.Graph(self.triples)
             return penman.encode(g, top=root, indent=4)
 
