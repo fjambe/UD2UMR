@@ -3,6 +3,8 @@
 Next steps:
 - [coding] Poi non resta che analizzare i disconnected graphs e capire perchè, come correggerli, come produrre
 UMRs incomplete piuttosto che niente.
+- [evaluation] Talk to Marie about evaluation - maybe she knows how to measure specific stuff/phenomena (not necessarily
+the whole graph.)
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.

@@ -1,4 +1,4 @@
-import sys
+import sys, re
 
 def numbered_line_with_alignment(tree, output_file=None):
     """
@@ -45,7 +45,13 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
         print(f'# sent_id = {tree.address()}', file=destination)
         print(f'# :: snt {sent_num}', file=destination)
         numbered_line_with_alignment(tree, destination)
-        print(f'Sentence: {tree.text}', '\n', file=destination)
+        print(f'Sentence: {tree.text}', file=destination)
+        if sent_tree.lang != 'en':
+            en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
+            if en_sent:
+                print('Sentence (en):', f"{en_sent[0].lstrip(' text_en = ')}", '\n', file=destination)
+        else:
+            print(file=destination)
         print('# sentence level graph:', file=destination)
         print(umr, '\n', file=destination)
         print('# alignment:', file=destination)
@@ -54,6 +60,12 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
     else:
         print(f'# sent_id = {tree.address()}', file=destination)
         print(f'# :: snt {sent_num}', file=destination)
-        print(f'Sentence: {tree.text}', '\n', file=destination)
+        print(f'Sentence: {tree.text}', file=destination)
+        if sent_tree.lang != 'en':
+            en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
+            if en_sent:
+                print('Sentence (en):', f"{en_sent[0].lstrip(' text_en = ')}", '\n', file=destination)
+        else:
+            print(file=destination)
         # print('Skipping sentence...', '\n', file=destination)
 
