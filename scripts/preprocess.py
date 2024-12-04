@@ -1,4 +1,5 @@
 import csv, json
+import re
 from typing import Union
 from googletrans import Translator
 from word2number import w2n
@@ -79,6 +80,12 @@ def load_external_files(filename: str, language: str) -> Union[set, dict]:
     return terms
 
 
+def is_number(text):
+    """ Regular expression for a valid number with optional commas, decimals, or scientific notation. """
+    pattern = r'^[+-]?(\d{1,3}(,\d{3})*|\d+)(\.\d+)?([eE][+-]?\d+)?$'
+    return bool(re.match(pattern, text))
+
+
 def translate_number(numeral, input_lang):
     """
     Translates a given numeral from the specified input language to English and converts it to a digit.
@@ -92,21 +99,22 @@ def translate_number(numeral, input_lang):
     """
     translator = Translator()
 
-    if input_lang != 'en' and not numeral.isdigit():
-        try:
-            translator.raise_Exception = True
-            translation = translator.translate(numeral, src=input_lang, dest='en')
-            en_text = translation.text
+    if input_lang != 'en':
+        if not is_number(numeral):
+            try:
+                translator.raise_Exception = True
+                translation = translator.translate(numeral, src=input_lang, dest='en')
+                en_text = translation.text
+                return w2n.word_to_num(en_text)
 
-            numeric_value = w2n.word_to_num(en_text)
-            return numeric_value
+            except ValueError as e:
+                print(f"Conversion error occurred: {e}")
+                return numeral
 
-        except ValueError as e:
-            print(f"Conversion error occurred: {e}")
-            return numeral
-
-        except Exception as e:
-            print(f"Unexpected error occurred: {e}")
+            except Exception as e:
+                print(f"Unexpected error occurred: {e}")
+                return numeral
+        else:
             return numeral
     else:
-        return numeral
+        return w2n.word_to_num(numeral) if not is_number(numeral) else numeral

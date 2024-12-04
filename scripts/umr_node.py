@@ -1,5 +1,5 @@
 from penman.models.amr import model as pm
-from preprocess import translate_number
+from preprocess import translate_number, is_number
 
 class UMRNode:
     def __init__(self, ud_node, umr_graph, role: str = "", already_added=False):
@@ -856,6 +856,8 @@ class UMRNode:
         """
         replace_arg = None
 
+        print('TADA', self)
+
         if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or (
                 self.ud_node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not self.ud_node.parent.feats['Case']):
 
@@ -1009,7 +1011,7 @@ class UMRNode:
 
         if self.ud_node.upos == 'NUM':
             digit = translate_number(number, self.lang)
-            if isinstance(digit, int):
+            if isinstance(digit, int) or is_number(digit):
                 self.umr_graph.triples.append((self.parent.var_name, ':quant', digit))
             else:
                 self.add_node('quant')
