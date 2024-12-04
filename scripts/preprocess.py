@@ -117,4 +117,10 @@ def translate_number(numeral, input_lang):
         else:
             return numeral
     else:
-        return w2n.word_to_num(numeral) if not is_number(numeral) else numeral
+        if not is_number(numeral):
+            try:
+                return w2n.word_to_num(numeral)
+            except ValueError:
+                return numeral
+        else:
+            return numeral

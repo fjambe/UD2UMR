@@ -305,7 +305,6 @@ class UMRNode:
             # replace 'actor' based on more conditions
             if self.role == 'actor':
                 if self.umr_graph.modals:
-                    print(self.umr_graph.modals)
                     if[el for el in self.umr_graph.modals["lexical"]
                        if el["lemma"] == self.ud_node.parent.lemma and el["replace"] in ["no", None]]:
                         dependent = next((s for s in self.ud_node.siblings if s.deprel == 'ccomp:reported'), None)
@@ -858,8 +857,6 @@ class UMRNode:
         If a set of relational terms is provided, it is used here to assign 'have-rel-role-92'.
         """
         replace_arg = None
-
-        print('TADA', self)
 
         if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or (
                 self.ud_node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not self.ud_node.parent.feats['Case']):
