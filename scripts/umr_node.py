@@ -304,10 +304,12 @@ class UMRNode:
 
             # replace 'actor' based on more conditions
             if self.role == 'actor':
-                if[el for el in self.umr_graph.modals["lexical"]
-                   if el["lemma"] == self.ud_node.parent.lemma and el["replace"] in ["no", None]]:
-                    dependent = next((s for s in self.ud_node.siblings if s.deprel == 'ccomp:reported'), None)
-                    self.role = 'experiencer' if not dependent else self.role
+                if self.umr_graph.modals:
+                    print(self.umr_graph.modals)
+                    if[el for el in self.umr_graph.modals["lexical"]
+                       if el["lemma"] == self.ud_node.parent.lemma and el["replace"] in ["no", None]]:
+                        dependent = next((s for s in self.ud_node.siblings if s.deprel == 'ccomp:reported'), None)
+                        self.role = 'experiencer' if not dependent else self.role
 
             ########## check by UPOS ##########
             if self.ud_node.upos == 'PRON':
@@ -497,75 +499,76 @@ class UMRNode:
         # if modal-strength / modal-predicate have not been assigned yet
         if not already:
 
-            if hasattr(self.ud_node, 'lemma'):
-                if [el for el in self.umr_graph.modals["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]:
-                    self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
-                    self.already_added = True
-                    return
+            if self.umr_graph.modals:
+                if hasattr(self.ud_node, 'lemma'):
+                    if [el for el in self.umr_graph.modals["lexical"] if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]:
+                        self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
+                        self.already_added = True
+                        return
 
-            if self.parent and hasattr(self.parent.ud_node, 'lemma') and hasattr(self.ud_node, 'deprel') and self.ud_node.deprel in ['ccomp', 'xcomp']:
-                # first, checking external file for modality - lexical check based on lemma.
-                modpred = next(
-                    (el["modal-predicate"] for el in self.umr_graph.modals["lexical"]
-                     if el["lemma"] == self.parent.ud_node.lemma
-                     and (el["constraint"] is None or eval(el["constraint"]))),
-                    None
-                )
-
-                if modpred:
-                    self.umr_graph.triples.append((self.var_name, 'modal-predicate', self.parent.var_name))
-                    return
-
-                else:
-                    value_temp, replace = next(
-                        ((el["modal-strength"], el["replace"]) for el in self.umr_graph.modals["lexical"]
+                if self.parent and hasattr(self.parent.ud_node, 'lemma') and hasattr(self.ud_node, 'deprel') and self.ud_node.deprel in ['ccomp', 'xcomp']:
+                    # first, checking external file for modality - lexical check based on lemma.
+                    modpred = next(
+                        (el["modal-predicate"] for el in self.umr_graph.modals["lexical"]
                          if el["lemma"] == self.parent.ud_node.lemma
                          and (el["constraint"] is None or eval(el["constraint"]))),
-                        (None, None)
+                        None
                     )
-                    value = f"{value_temp if value_temp else 'MS'}-{self.is_negative()}"
 
-                    if value and replace == 'yes':
-                        self.parent.replace = True
-                        for i, tup in enumerate(self.umr_graph.triples):
-                            if tup[0] == self.var_name and tup[1] in ['aspect', 'modal-strength']:
-                                del self.umr_graph.triples[i]
-                        value = f"{value.split('-')[0]}-{self.parent.is_negative()}"
-                        if self.parent.role == 'root' and self.parent.var_name == self.umr_graph.root_var:
-                            self.umr_graph.root_var = self.var_name
-                            UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True, relaxed=True)
-                            self.parent = None
-                            self.add_node('root')
-                        else:
-                            self.add_node(self.parent.role, def_parent=self.parent.parent)
-                            UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True)
+                    if modpred:
+                        self.umr_graph.triples.append((self.var_name, 'modal-predicate', self.parent.var_name))
+                        return
 
-            # then, checking external file for modality - grammatical check based on construction.
-            if not value and hasattr(self.ud_node, 'upos'):
-                for el in self.umr_graph.modals["grammatical"]:
-                    feats_from_el = el['node.feats'].split('|')
-                    if el["node.upos"] == self.ud_node.upos and eval(el["constraint_on_children"]):
-                        if all(feat in str(self.ud_node.feats).split('|') for feat in feats_from_el):
-                            value = f'{el["modal-strength"]}-{self.is_negative()}'
-
-            if self.ud_node and not isinstance(self.ud_node, str):
-                auxiliaries = [c for c in self.ud_node.children if c.deprel == 'aux']
-                if auxiliaries:
-                    values = set()
-                    for a in auxiliaries:
+                    else:
                         value_temp, replace = next(
                             ((el["modal-strength"], el["replace"]) for el in self.umr_graph.modals["lexical"]
-                             if el["lemma"] == a.lemma
-                             and el["modal-strength"]
+                             if el["lemma"] == self.parent.ud_node.lemma
                              and (el["constraint"] is None or eval(el["constraint"]))),
                             (None, None)
                         )
-                        if value_temp and replace == 'no':
-                            values.add(f"{value_temp}-{self.is_negative()}")
-                    if len(values) > 1:
-                        print('Warning: more than one modality value found.', values)
-                    elif len(values) == 1:
-                        value = list(values)[0]
+                        value = f"{value_temp if value_temp else 'MS'}-{self.is_negative()}"
+
+                        if value and replace == 'yes':
+                            self.parent.replace = True
+                            for i, tup in enumerate(self.umr_graph.triples):
+                                if tup[0] == self.var_name and tup[1] in ['aspect', 'modal-strength']:
+                                    del self.umr_graph.triples[i]
+                            value = f"{value.split('-')[0]}-{self.parent.is_negative()}"
+                            if self.parent.role == 'root' and self.parent.var_name == self.umr_graph.root_var:
+                                self.umr_graph.root_var = self.var_name
+                                UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True, relaxed=True)
+                                self.parent = None
+                                self.add_node('root')
+                            else:
+                                self.add_node(self.parent.role, def_parent=self.parent.parent)
+                                UMRNode.reattach_dependents(self.umr_graph, self.parent, self, remove=True)
+
+                # then, checking external file for modality - grammatical check based on construction.
+                if not value and hasattr(self.ud_node, 'upos'):
+                    for el in self.umr_graph.modals["grammatical"]:
+                        feats_from_el = el['node.feats'].split('|')
+                        if el["node.upos"] == self.ud_node.upos and eval(el["constraint_on_children"]):
+                            if all(feat in str(self.ud_node.feats).split('|') for feat in feats_from_el):
+                                value = f'{el["modal-strength"]}-{self.is_negative()}'
+
+                if self.ud_node and not isinstance(self.ud_node, str):
+                    auxiliaries = [c for c in self.ud_node.children if c.deprel == 'aux']
+                    if auxiliaries:
+                        values = set()
+                        for a in auxiliaries:
+                            value_temp, replace = next(
+                                ((el["modal-strength"], el["replace"]) for el in self.umr_graph.modals["lexical"]
+                                 if el["lemma"] == a.lemma
+                                 and el["modal-strength"]
+                                 and (el["constraint"] is None or eval(el["constraint"]))),
+                                (None, None)
+                            )
+                            if value_temp and replace == 'no':
+                                values.add(f"{value_temp}-{self.is_negative()}")
+                        if len(values) > 1:
+                            print('Warning: more than one modality value found.', values)
+                        elif len(values) == 1:
+                            value = list(values)[0]
 
             # if no value has been retrieved, check verbal features.
             if not value:
@@ -955,8 +958,9 @@ class UMRNode:
                 role = self.umr_graph.advcl.get(sconj.lemma, {}).get('type')
 
         if not self.extra_level:
-            if not (hasattr(self.ud_node, 'lemma') and [el for el in self.umr_graph.modals["lexical"]
-                                                        if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"]):
+            if not (hasattr(self.ud_node, 'lemma') and (self.umr_graph.modals and
+                                                        [el for el in self.umr_graph.modals["lexical"]
+                                                         if el["lemma"] == self.ud_node.lemma and el["replace"] == "yes"])):
                 self.role = role
                 self.add_node(self.role)
                 self.aspect()
