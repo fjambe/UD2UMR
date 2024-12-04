@@ -994,7 +994,6 @@ class UMRNode:
                     index = self.umr_graph.triples.index(triple)
                     self.umr_graph.triples[index] = (triple[0], 'experiencer', triple[2])
 
-
         self.add_node(self.role)
 
     def quantities(self):

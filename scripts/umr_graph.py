@@ -237,7 +237,7 @@ class UMRGraph:
              or -1 if no such element is found.
         """
         for i, triple in enumerate(self.triples):
-            if variable == triple[position]:
+            if variable == triple[position] and triple[1] != 'instance':
                 return i
         return -1
 
