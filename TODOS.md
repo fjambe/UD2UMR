@@ -1,8 +1,9 @@
 # TODO - code
 
 Next steps:
-- [coding] Poi non resta che analizzare i disconnected graphs e capire perchè, come correggerli, come produrre
-UMRs incomplete piuttosto che niente.
+- [coding] Graphs that are still disconnected should be disconnected because of wrong edges, and not because of missing
+edges as before. Can inspect them, but I'm not sure that there is going to be much to do about it - it feels like I
+would have to handle quite specific phenomena.
 - [evaluation] Talk to Marie about evaluation - maybe she knows how to measure specific stuff/phenomena (not necessarily
 the whole graph.)
 

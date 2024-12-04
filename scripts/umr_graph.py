@@ -1,4 +1,5 @@
 import re, sys
+import networkx as nx
 import penman
 import warnings
 from penman.exceptions import LayoutError
@@ -122,14 +123,12 @@ class UMRGraph:
         self.triples = list(set(self.triples))
 
     def remove_invalid_triples(self):
-        """ Removes invalid triples with same parent and child (e.g. A :role A). """
+        """
+        Removes from the graph triples:
+        - with same parent and child, e.g. (A :role A),
+        - where the parent is not a child in another triple, except for the root variable.
+        """
         self.triples = [tup for tup in self.triples if tup[0] != tup[2]]
-
-    def remove_disconnecting_triples(self):
-        """
-        Removes triples from the graph where the parent (first element)
-        is not a child in another triple, except for the root variable.
-        """
         self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
 
         ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect', 'mode', 'modal-predicate', 'modal-strength'}
@@ -209,9 +208,8 @@ class UMRGraph:
         """
         self.remove_duplicate_triples()
         self.remove_non_inverted_triples_if_duplicated()
-        self.remove_invalid_triples()
         self.postprocessing_checks()
-        self.remove_disconnecting_triples()
+        self.remove_invalid_triples()
         root = self.correct_variable_name()
         self.reorder_triples()
 
@@ -219,10 +217,23 @@ class UMRGraph:
             g = penman.Graph(self.triples)
             return penman.encode(g, top=root, indent=4)
 
-        except LayoutError as e:
-            for n in self.triples:
-                print(n)
-            print(f"Skipping sentence due to LayoutError: {e}")
+        except LayoutError:
+            # Keeping only a connected subgraph.
+            g = nx.Graph((s, t) for (s, e, t) in self.triples)
+            components = list(nx.connected_components(g))
+            largest_component = max(components, key=len)
+            self.triples = [tup for tup in self.triples if tup[2] in largest_component]
+            # root = self.correct_variable_name()  # for some reason, it increases the number of disconnected graphs.
+            self.reorder_triples()
+
+            try:
+                g = penman.Graph(self.triples)
+                return penman.encode(g, top=root, indent=4)
+
+            except LayoutError as e:
+                for n in self.triples:
+                    print(n)
+                print(f"Skipping sentence due to LayoutError: {e}")
 
     def find_in_triples(self, variable, position):
         """

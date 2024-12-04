@@ -82,7 +82,7 @@ def load_external_files(filename: str, language: str) -> Union[set, dict]:
 
 def is_number(text):
     """ Regular expression for a valid number with optional commas, decimals, or scientific notation. """
-    pattern = r'^[+-]?(\d{1,3}(,\d{3})*|\d+)(\.\d+)?([eE][+-]?\d+)?$'
+    pattern = r'^[+-]?(\d{1,3}(,\d{3})*|\d+)([\.,]\d+)?([eE][+-]?\d+)?$'
     return bool(re.match(pattern, text))
 
 
@@ -107,8 +107,8 @@ def translate_number(numeral, input_lang):
                 en_text = translation.text
                 return w2n.word_to_num(en_text)
 
-            except ValueError as e:
-                print(f"Conversion error occurred: {e}")
+            except ValueError: # as e:
+                # print(f"Conversion error occurred: {e}")
                 return numeral
 
             except Exception as e:
