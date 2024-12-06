@@ -1,0 +1,12 @@
+lemma,type,constraint_on_parent
+quando,temporal,
+prima,temporal,
+dopo,temporal,
+finché,temporal,
+siccome,causal,
+perché,causal,
+poiché,causal,
+sebbene,concessive,
+benché,concessive,
+purché,conditional,
+se,conditional,

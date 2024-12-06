@@ -1,0 +1,11 @@
+lemma,type,constraint_on_parent
+when,temporal,
+before,temporal,
+until,temporal,
+once,temporal,
+after,temporal,
+because,causal,
+although,concessive,
+though,concessive,
+unless,conditional,
+if,conditional,
