@@ -1,9 +1,99 @@
 import re, sys
-import networkx as nx
+from collections import defaultdict
 import penman
 import warnings
 from penman.exceptions import LayoutError
 from umr_node import UMRNode
+
+
+def type_of_triple(triple):
+    """
+    Returns the type of the edge in the triple, which can be 'instance', 'attribute', 'relation'.
+    """
+    parent, edge, child = triple
+    if edge == 'instance':
+        return edge
+    elif edge in ['mode', 'modal-strength', 'aspect', 'refer-number', 'refer-person']:
+        return 'attribute'
+    elif edge == 'quant' or edge.startswith('op'):
+        # child is a variable or a constant?
+        if isinstance(child, int) or (child.startswith('"') and child.endswith('"')):
+            return 'attribute'
+        else:
+            return 'relation'
+    else:
+        return 'relation'
+
+def has_parent_attached(parent, stored_dependencies, root, visited=None):
+    """ Checks whether a node is connected to another node, in order to identify disconnected ones.
+    Returns the parent node if it is disconnected, else None.
+
+    Args:
+        parent (str): The current node being checked.
+        stored_dependencies (dict): A dictionary representing the graph, where keys are nodes and values are sets of
+        child nodes.
+        root (str): The root node of the graph, representing the expected endpoint of a valid path.
+        visited (set, optional): A set of nodes that have been visited during the traversal, used to detect cycles.
+        Defaults to `None`.
+    """
+    if visited is None:
+        visited = set()
+
+    # if the parent is None, or the root has been reached, return None (no disconnection).
+    if parent is None or parent == root:
+        return None
+
+    # if this node has already been visited, it is a cycle.
+    if parent in visited:
+        # raise ValueError(f"Cyclic dependency detected starting at {parent}")
+        return None
+
+    visited.add(parent)
+    keys_with_child = [key for key, value_set in stored_dependencies.items() if parent in value_set]
+    if not keys_with_child:
+        return parent
+    grandparent = keys_with_child[0]
+    return has_parent_attached(grandparent, stored_dependencies, root, visited)
+
+
+def reorder_triples(triples):
+    """
+    Reorders the list of triples stored based on a custom hierarchy for the role in each triple, to reflect a natural
+    order of manual annotation.
+    """
+    def get_priority(role):
+
+        hierarchy_order = {
+            'instance': 0,
+            'actor': 1,
+            'experiencer': 2,
+            'undergoer': 3,
+            'theme': 4,
+            'stimulus': 5,
+            'ARG1': 6,
+            'ARG2': 7,
+            'ARG3': 8,
+            'ARG4': 9,
+            'affectee': 10,
+            'OBLIQUE': 11,
+            'manner': 12,
+            'mod': 13,
+            'op1': 14,
+            'op2': 15,
+            'op3': 16,
+            'op4': 17,
+            'op5': 18,
+            'refer-person': 19,
+            'refer-number': 20,
+            'modal-predicate': 21,
+            'modal-strength': 22,
+            'aspect': 23,
+            'quot': 24
+        }
+        return hierarchy_order.get(role, float('inf'))
+
+    return sorted(triples, key=lambda t: get_priority(t[1]))
+
 
 class UMRGraph:
     def __init__(self, ud_tree, deprels, language, rel_roles, advcls, modality):
@@ -114,9 +204,7 @@ class UMRGraph:
             for var, relation, value in self.triples
         ]
 
-        self.triples = corrected_triples
-
-        return renaming_map.get(self.root_var, self.root_var)
+        return corrected_triples, renaming_map.get(self.root_var, self.root_var)
 
     def remove_duplicate_triples(self):
         """ Removes duplicate triples from self.triples. """
@@ -129,53 +217,7 @@ class UMRGraph:
         - where the parent is not a child in another triple, except for the root variable.
         """
         self.triples = [tup for tup in self.triples if tup[0] != tup[2]]
-        self.triples = [tup for tup in self.triples if tup[1] not in ['other', 'root']]  # other is a temp label
-
-        ignored_types = {'instance', 'refer-number', 'refer-person', 'aspect', 'mode', 'modal-predicate', 'modal-strength'}
-        valid_third = {tup[2] for tup in self.triples if tup[1] not in ignored_types} | {self.root_var}
-        inverted_third = {tup[0] for tup in self.triples if tup[1] and tup[1].endswith('-of') and tup[1] not in ignored_types}
-        valid_third = valid_third | inverted_third
-
-        to_remove = {tup[2] for tup in self.triples if not tup[1]}
-        to_remove.update(tup[0] for tup in self.triples if tup[0] not in valid_third)
-        self.triples = [tup for tup in self.triples if tup[0] not in to_remove and tup[2] not in to_remove]
-
-    def reorder_triples(self):
-        """
-        Reorders the list of triples stored in `self.triples` based on a custom hierarchy for the role in each
-        triple, to reflect a natural order of manual annotation.
-        """
-        def get_priority(role):
-
-            hierarchy_order = {
-                'instance': 0,
-                'actor': 1,
-                'experiencer': 2,
-                'undergoer': 3,
-                'theme': 4,
-                'stimulus': 5,
-                'ARG1': 6,
-                'ARG2': 7,
-                'ARG3': 8,
-                'ARG4': 9,
-                'affectee': 10,
-                'OBLIQUE': 11,
-                'manner': 12,
-                'op1': 13,
-                'op2': 14,
-                'op3': 15,
-                'op4': 16,
-                'op5': 17,
-                'refer-person': 18,
-                'refer-number': 19,
-                'modal-predicate': 20,
-                'modal-strength': 21,
-                'aspect': 22,
-                'quot': 23
-            }
-            return hierarchy_order.get(role, float('inf'))
-
-        self.triples = sorted(self.triples, key=lambda t: get_priority(t[1]))
+        self.triples = [tup for tup in self.triples if tup[1] and tup[1] not in ['other', 'root']]
 
     def postprocessing_checks(self):
         """
@@ -210,30 +252,71 @@ class UMRGraph:
         self.remove_non_inverted_triples_if_duplicated()
         self.postprocessing_checks()
         self.remove_invalid_triples()
-        root = self.correct_variable_name()
-        self.reorder_triples()
 
         try:
-            g = penman.Graph(self.triples)
+            corrected_triples, root = self.correct_variable_name()
+            triples = reorder_triples(corrected_triples)
+            g = penman.Graph(triples)
             return penman.encode(g, top=root, indent=4)
 
         except LayoutError:
             # Keeping only a connected subgraph.
-            g = nx.Graph((s, t) for (s, e, t) in self.triples)
-            components = list(nx.connected_components(g))
-            largest_component = max(components, key=len)
-            self.triples = [tup for tup in self.triples if tup[2] in largest_component]
-            # root = self.correct_variable_name()  # for some reason, it increases the number of disconnected graphs.
-            self.reorder_triples()
+            dependencies = defaultdict(set)
+            disconnecting = set()
+
+            for tup in self.triples:
+                if '-of' not in tup[1]:
+                    par, ed, ch = tup
+                else:
+                    ch, ed, par = tup
+                if type_of_triple((par, ed, ch)) == 'relation':
+                    dependencies[par].add(ch)
+
+            for tup in self.triples:
+                if '-of' not in tup[1]:
+                    par, ed, ch = tup
+                else:
+                    ch, ed, par = tup
+                res = has_parent_attached(par, dependencies, self.root_var)
+                if res:
+                    disconnecting.add(res)
+
+            for node in disconnecting:
+                self.find_and_remove_from_triples(node, 0)
+                self.remove_orphans(node, dependencies)
 
             try:
-                g = penman.Graph(self.triples)
+                corrected_triples, root = self.correct_variable_name()
+                triples = reorder_triples(corrected_triples)
+                g = penman.Graph(triples)
                 return penman.encode(g, top=root, indent=4)
 
             except LayoutError as e:
-                for n in self.triples:
+                for n in reorder_triples(self.triples):
                     print(n)
                 print(f"Skipping sentence due to LayoutError: {e}")
+
+    def remove_orphans(self, parent, stored_dependencies, visited=None):
+        """
+        Recursively removes nodes that are disconnected from the graph.
+
+        Args:
+            parent (str): The current node being checked.
+            stored_dependencies (dict): A dictionary representing the graph, where keys are parent nodes and values are
+            sets of child nodes.
+            visited (set, optional): A set of nodes that have already been visited during the traversal, to prevent
+            cycles. Defaults to `None`.
+        """
+
+        if visited is None:
+            visited = set()
+        if parent in visited:
+            return
+        visited.add(parent)
+
+        for child in list(stored_dependencies.get(parent, [])):
+            self.triples = [tup for tup in self.triples if tup[0] != child and tup[2] != child]
+            self.remove_orphans(child, stored_dependencies, visited)
 
     def find_in_triples(self, variable, position):
         """
@@ -296,7 +379,7 @@ class UMRGraph:
         A pair is defined as (a, role, b) and (b, role-of, a), where the non-inverted triple (a, role, b) is removed.
         """
         to_remove = set()
-        ignored_roles = ['other', 'refer-number', 'refer-person', 'aspect', 'instance']
+        ignored_roles = ['other', 'refer-number', 'refer-person', 'aspect', 'instance', 'mode', 'modal-strength']
 
         for triple in self.triples:
             a, role, b = triple
@@ -321,7 +404,8 @@ class UMRGraph:
 
         for v in variables:
             node = UMRNode.find_by_var_name(self, v)
-            num_token = node.ud_node.ord if hasattr(node.ud_node, 'ord') else 0
+            # num_token = node.ud_node.ord if hasattr(node.ud_node, 'ord') else 0
+            num_token = node.ord if node else 0
             alignments[v] = num_token
             print(f'{v}: {num_token}-{num_token}', file=destination)
 

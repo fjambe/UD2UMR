@@ -1,17 +1,24 @@
 # TODO - code
 
 Next steps:
-- [coding] Graphs that are still disconnected should be disconnected because of wrong edges, and not because of missing
-edges as before. Can inspect them, but I'm not sure that there is going to be much to do about it - it feels like I
-would have to handle quite specific phenomena.
-- [evaluation] Talk to Marie about evaluation - maybe she knows how to measure specific stuff/phenomena (not necessarily
-the whole graph.)
+- [Alexis] Discuss with Alexis evaluation + paper (which conference? How can we improve it?) + future work + thanks.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
 For PRONs I build the usual NE structure, and so on.
 
 ## Notes
+Currently disconnected graphs:
+
+
+| Language        | Disconnected | Empty_triples |
+|:----------------|:------------:|--------------:|
+| en_pud          |      11      |             4 |
+| it_pud          |      10      |             5 |
+| fr_pud          |      12      |             5 |
+| cs_pud          |      4       |             1 |
+| la_perseus_test |      15      |            13 |
+
 
 ### Deprel:
 - `nsubj`:
@@ -123,8 +130,6 @@ its complement event node in the full dependency structure."
 However, in all the graphs in the guidelines the complement event node is not annotated wrt `modal-strength`, but
 `modal-predicate`. I assume `modal-predicate` is the correct one (right?), and yet this sentence can be very misleading.
 And what am I supposed to do with _hope, fear, worry, dread_? _Need_? All of them, actually.
-- [Matt] Do you know how to prevent some triples from inverting? E.g., I do not want `modal-predicate-of`, and it keeps
-changing every time I rerun the script.
 
 
 ## For Dan:
@@ -141,6 +146,7 @@ riuscissimo a riconoscerla come una NE (ma UPOS è quasi sempre NOUN), non avrem
 Suggestions?
 - en_pud uses `parataxis` where `conj` would apply...
 - What to do in general with `flat:foreign` (FR), `fixed` (FR) and `compound` (CS, EN)?
+Maybe for `compound` we could consider `:mod` (idea based on EN). E.g., _winter solstice_.
 Cf. EN:
 ```
 21	in	in	ADP	IN	_	24	case	24:case	_
@@ -166,8 +172,21 @@ Some errors in en_pud (why is _get_ an `xcomp`):
 ## Details:
 - `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.
 
-## ERRORS TO FIX:
-- There is still a problem with coordination, cf. SNT:
-_atque ego haec non in M. Tullio neque his temporibus vereor, sed in magna civitate multa et varia ingenia sunt._
-Yet, it's a crazy structure, it can most probably be ignored.
+# EVALUATION
+- Input from Marie (09.12.2024):
+  - Subtask evaluation: evaluate specific parts of graphs.
+  GRAPES is the best system for sub-scores (https://arxiv.org/pdf/2312.03480).
+  - Unlabeled Attachment Score (UAS) on node attachment.
+  - ANCAST++: they do some UAS/LAS.
+  Paper: https://aclanthology.org/2024.lrec-main.94.pdf.
+  - I could measure edge recall, node recall, .... Graph-based evaluation.
+  - Besides that, also do some evaluation based on linguistic phenomena.
+- So, main steps:
+  1. Evaluation comparing UD tree to UMR graph, to show hoe well my parser works. Just UAS, because the labels are
+  different so not relevant.
+  2. UMR evaluation on single graphs. Gold UMRs needed here.
+    I can use some of the Latin ones from Sallust, plus annotate some more, ideally for other languages.
+    They don't need to be that many, I guess.
+- In any case, before the final evaluation, got through converted UMRS with Dan / UMR team  + refine external resources
+for languages other than Latin.
 

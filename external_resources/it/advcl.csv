@@ -4,8 +4,10 @@ prima,temporal,
 dopo,temporal,
 finché,temporal,
 siccome,causal,
-perché,causal,
+perché,causal,Mood=Ind
 poiché,causal,
+perché,purpose,Mood=Sub
+affinché,purpose,Mood=Sub
 sebbene,concessive,
 benché,concessive,
 purché,conditional,
