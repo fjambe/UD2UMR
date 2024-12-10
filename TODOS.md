@@ -1,7 +1,8 @@
 # TODO - code
 
 Next steps:
-- [Alexis] Discuss with Alexis evaluation + paper (which conference? How can we improve it?) + future work + thanks.
+- [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out a bit more
+about the evaluation.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -13,20 +14,17 @@ Currently disconnected graphs:
 
 | Language        | Disconnected | Empty_triples |
 |:----------------|:------------:|--------------:|
-| en_pud          |      11      |             4 |
-| it_pud          |      10      |             5 |
-| fr_pud          |      12      |             5 |
-| cs_pud          |      4       |             1 |
-| la_perseus_test |      15      |            13 |
+| en_pud          |  11  / 1000  |             4 |
+| it_pud          |  10 / 1000   |             5 |
+| fr_pud          |  12 / 1000   |             5 |
+| cs_pud          |   4 / 1000   |             1 |
+| la_perseus_test |   15 / 939   |            13 |
 
 
 ### Deprel:
 - `nsubj`:
   - Only one `nsubj` is allowed, so mapping it to `actor` shouldn't be a problem (univocal).
   - `nsubj:pass` handled like `obj` -> `patient`.
-  - think about `csubj`.
-- `obj`:
-  - think about `theme`.
 - `advmod:lmod` could be mapped to `place`, but it's risky because it could also be `source`, `goal`, depending on the type of adverb.
 On top of that, most often this deprel is assigned to adverbs (_unde_, _hinc_), which could also be discourse connectives.
 Maybe if they're annotated with the subtype `lmod` is because they're actually still lexicalized, but let's not trust the annotation too much.
@@ -189,4 +187,14 @@ Some errors in en_pud (why is _get_ an `xcomp`):
     They don't need to be that many, I guess.
 - In any case, before the final evaluation, got through converted UMRS with Dan / UMR team  + refine external resources
 for languages other than Latin.
+
+- Alexis (10.12.2024):
+  - You could add some time evaluation, e.g. by involving Czech annotators and measuring how much time it takes for them
+  to build a UMR from scratch vs. having the converted graphs.
+
+# PAPER
+- Alexis (10.12.2024): possible venues could be:
+  - Designing Meaning Representation Workshop (4-5 Aug, Prague).
+  - TLT -> SyntaxFest (26-29 Aug 2025, deadline in April)
+  - Linguistic Annotation Workshop (LAW) - TBA
 
