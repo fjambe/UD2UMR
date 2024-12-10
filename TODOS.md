@@ -1,8 +1,8 @@
 # TODO - code
 
 Next steps:
-- [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out a bit more
-about the evaluation.
+- [Alexis] Discuss with Alexis evaluation + paper (which conference? How can we improve it?) + future work + thanks.
+- [coding] Implement a function that assigns `refer-number` to NOUNs (or other relevant cases) that don't have it.
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
@@ -14,17 +14,20 @@ Currently disconnected graphs:
 
 | Language        | Disconnected | Empty_triples |
 |:----------------|:------------:|--------------:|
-| en_pud          |  11  / 1000  |             4 |
-| it_pud          |  10 / 1000   |             5 |
-| fr_pud          |  12 / 1000   |             5 |
-| cs_pud          |   4 / 1000   |             1 |
-| la_perseus_test |   15 / 939   |            13 |
+| en_pud          |      11      |             4 |
+| it_pud          |      10      |             5 |
+| fr_pud          |      12      |             5 |
+| cs_pud          |      4       |             1 |
+| la_perseus_test |      15      |            13 |
 
 
 ### Deprel:
 - `nsubj`:
   - Only one `nsubj` is allowed, so mapping it to `actor` shouldn't be a problem (univocal).
   - `nsubj:pass` handled like `obj` -> `patient`.
+  - think about `csubj`.
+- `obj`:
+  - think about `theme`.
 - `advmod:lmod` could be mapped to `place`, but it's risky because it could also be `source`, `goal`, depending on the type of adverb.
 On top of that, most often this deprel is assigned to adverbs (_unde_, _hinc_), which could also be discourse connectives.
 Maybe if they're annotated with the subtype `lmod` is because they're actually still lexicalized, but let's not trust the annotation too much.
@@ -152,20 +155,7 @@ Cf. EN:
 23	San	San	PROPN	NNP	Number=Sing	24	compound	24:compound	_
 24	Giovanni	Giovanni	PROPN	NNP	Number=Sing	19	nmod	19:nmod:in	SpaceAfter=No
 ```
-It seems to matter watter more than I thought.
-
-Some errors in en_pud (why is _get_ an `xcomp`):
-```
-9	the	the	DET	DT	Definite=Def|PronType=Art	10	det	10:det	_
-10	settlers	settler	NOUN	NNS	Number=Plur	11	nsubj	11:nsubj|13:nsubj:xsubj	_
-11	needed	need	VERB	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	8	acl:relcl	8:acl:relcl	_
-12	to	to	PART	TO	_	13	mark	13:mark	_
-13	get	get	VERB	VB	VerbForm=Inf	11	xcomp	11:xcomp	_
-14	their	their	PRON	PRP$	Number=Plur|Person=3|Poss=Yes|PronType=Prs	15	nmod:poss	15:nmod:poss	_
-15	independence	independence	NOUN	NN	Number=Sing	13	obj	13:obj	SpaceAfter=No
-16	.	.	PUNCT	.	_	4	punct	4:punct	_
-```
-
+It seems to matter more than I thought.
 
 ## Details:
 - `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.
@@ -180,21 +170,11 @@ Some errors in en_pud (why is _get_ an `xcomp`):
   - I could measure edge recall, node recall, .... Graph-based evaluation.
   - Besides that, also do some evaluation based on linguistic phenomena.
 - So, main steps:
-  1. Evaluation comparing UD tree to UMR graph, to show hoe well my parser works. Just UAS, because the labels are
-  different so not relevant.
+  1. Evaluation comparing UD tree to UMR graph, to show how well my parser works. Just UAS, because the labels are
+  different, ergo not relevant.
   2. UMR evaluation on single graphs. Gold UMRs needed here.
     I can use some of the Latin ones from Sallust, plus annotate some more, ideally for other languages.
     They don't need to be that many, I guess.
-- In any case, before the final evaluation, got through converted UMRS with Dan / UMR team  + refine external resources
+- In any case, before the final evaluation, go through converted UMRS with Dan / UMR team  + refine external resources
 for languages other than Latin.
-
-- Alexis (10.12.2024):
-  - You could add some time evaluation, e.g. by involving Czech annotators and measuring how much time it takes for them
-  to build a UMR from scratch vs. having the converted graphs.
-
-# PAPER
-- Alexis (10.12.2024): possible venues could be:
-  - Designing Meaning Representation Workshop (4-5 Aug, Prague).
-  - TLT -> SyntaxFest (26-29 Aug 2025, deadline in April)
-  - Linguistic Annotation Workshop (LAW) - TBA
 
