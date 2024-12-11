@@ -1,8 +1,7 @@
 # UD2UMR
 This repository contains all materials for the UD2UMR project, which provides a tool to convert any Universal
-Dependencies (UD) treebank into a Uniform Meaning Representation (UMR) graph.
+Dependencies (UD) treebank into a Uniform Meaning Representation (UMR) graph. \
 The converter only handles sentence-level graphs and alignments; document-level annotation has not been implemented.
-annotation.
 
 ## Set up
 The UD2UMR converter requires the Python packages `penman`, `udapi` `word2number`, `googletrans==4.0.0-rc1`, all listed
@@ -57,7 +56,7 @@ Language-specific material for additional languages should be stored in the same
 It is not required to include all three files; you may include one or two only.
 
 ```
-GrAPES
+UD2UMR
 ├── requirements.txt                        # required dependencies
 ├── scripts
 │ ├── main.py                               # main conversion script (to run) 
@@ -69,18 +68,18 @@ GrAPES
 ├── external_resources                      # folder for language-specific information
 │ ├── cs                                    # materials for Czech
 │ │ ├── advcl.csv
-│ │ ├── have-rel-role,txt
+│ │ ├── have-rel-role.txt
 │ ├── en                                    # materials for English
 │ │ ├── advcl.csv
-│ │ ├── have-rel-role,txt
+│ │ ├── have-rel-role.txt
 │ │ ├── modality.json
 │ ├── it                                    # materials for Italian
 │ │ ├── advcl.csv
-│ │ ├── have-rel-role,txt
+│ │ ├── have-rel-role.txt
 │ │ ├── modality.json
 │ ├── la                                    # materials for Latin
 │ │ ├── advcl.csv
-│ │ ├── have-rel-role,txt
+│ │ ├── have-rel-role.txt
 │ │ ├── modality.json   
 ├── README.md         
 ```
