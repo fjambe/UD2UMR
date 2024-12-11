@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # Copyright © 2024 Federica Gamba <gamba@ufal.mff.cuni.cz>
 
+import os
 import argparse
 import udapi
 from umr_node import UMRNode
@@ -11,19 +12,24 @@ from print_structure import print_structure
 parser = argparse.ArgumentParser()
 parser.add_argument("--treebank", help="Path of the treebank in input.", required=True)
 parser.add_argument("--lang", help="Language code of the treebank (e.g., 'en' for English).", required=True)
+parser.add_argument("--data_dir",
+                    help="Path of the directory where the input treebanks are stored, if not 'data'.", default='./data')
+parser.add_argument("--output_dir",
+                    help="Path of the directory where converted UMRs are stored, if not 'output'.", default='./output')
 
 
 if __name__ == "__main__":
 
     args = parser.parse_args()
-    doc = udapi.Document(args.treebank)
+    doc = udapi.Document(f'{args.data_dir}/{args.treebank}')
     sent_num = 0
 
     interpersonal = pr.load_external_files('have_rel_role.txt', args.lang)
     advcl = pr.load_external_files('advcl.csv', args.lang)
     modals = pr.load_external_files('modality.json', args.lang)
 
-    with open(f"{args.treebank.split('.')[0]}.umr", "w") as output:
+    os.makedirs(args.output_dir, exist_ok=True)
+    with open(os.path.join(args.output_dir, f"{args.treebank.split('.')[0]}.umr"), "w",  encoding="utf-8") as output:
 
         for tree in doc.trees:
 

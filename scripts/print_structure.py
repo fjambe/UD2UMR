@@ -68,7 +68,4 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
         print('Triples:', file=destination)
         for n in sent_tree.triples:
             print(n, file=destination)
-        print('ALLERTA', len(sent_tree.triples), file=destination)
         print(file=destination)
-        # print('Skipping sentence...', '\n', file=destination)
-
