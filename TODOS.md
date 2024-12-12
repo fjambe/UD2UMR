@@ -1,27 +1,30 @@
-# TODO - code
+# TODO - UD2UMR converter
 
 Next steps:
-- [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out a bit more
-about the evaluation.
+- [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
+more about the evaluation.
+- [coding] re-implement modal-predicate based on what Julia said.
+- [coding] do something about nominal ADVCL (e.g. add abstract concept `have-role-91`/`identity-91`).
+Maybe something similar with `stimulus` for nominal `x|ccomp` + nominal `condition`.
+- [coding] come up with a solution for `compound` based on UPOS. E.g. ADV: single node, NOUND: `mod`.
 
 ## General
-1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check refer-number, etc.
+1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check `refer-number`, etc.
 For PRONs I build the usual NE structure, and so on.
 
 ## Notes
 Currently disconnected graphs:
 
-
 | Language        | Disconnected | Empty_triples |
 |:----------------|:------------:|--------------:|
-| en_pud          |  11  / 1000  |             4 |
+| en_pud          |  11 / 1000   |             4 |
 | it_pud          |  10 / 1000   |             5 |
 | fr_pud          |  12 / 1000   |             5 |
 | cs_pud          |   4 / 1000   |             1 |
 | la_perseus_test |   15 / 939   |            13 |
 
 
-### Deprel:
+### UD deprels:
 - `nsubj`:
   - Only one `nsubj` is allowed, so mapping it to `actor` shouldn't be a problem (univocal).
   - `nsubj:pass` handled like `obj` -> `patient`.
@@ -33,13 +36,24 @@ Maybe if they're annotated with the subtype `lmod` is because they're actually s
 Cf. _Homo bellus, tam bonus Chrysanthus animam ebulliit._ "The handsome man, so good, Chrysanthus breathed out his spirit."
 _Chysanthus_ `appos` di _homo_.
 
-### UPOS:
+### UD UPOS:
 - NUM. Chosen strategy to convert from string to digit: use EN as pivoting language.
 Translate instances to EN, use a Python library like `text2num` or `num2words` (also supporting few other languages -
 but it feels less language-dependent to just translate everything to EN) to convert the string into a digit,
 and include the obtained digit in the UMR graph.
 - PRON. Indefinite pronouns like _something_, _someone_ are annotated as a `person` entity + a `mod` for _some_. Same
 for _any_.
+
+### UMR guidelines
+- [modal-predicate] English modals (4-3-2) reads
+"For example, _want_ is in the `NeutAff` list, which indicates that there is a `NeutAff` link between the want node and
+its complement event node in the full dependency structure."
+However, in all the graphs in the guidelines the complement event node is not annotated wrt `modal-strength`, but
+`modal-predicate`. I assume `modal-predicate` is the correct one (right?), and yet this sentence can be very misleading.
+And what am I supposed to do with _hope, fear, worry, dread_? _Need_? All of them, actually.
+Apparently BOTH, because `modal-predicate` is just a shortcut to extract the polarity of the modal verb, used by the
+UMR Writer and Jin's postprocessing to build up doc-level annotation. Neither `modal-strength` nor `modal-predicate`
+are supposed to appear in the sentence-level graph. Also, the `unspecified` value in doc-level is valid only for stage 0.
 
 ### To Penman
 To parse my structure into Penman, it has (?) to look like this:
@@ -93,55 +107,22 @@ actually) if I don't want it anymore in my UMRs. It's one line of code. Maybe di
 doable to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
 
-
-## QUESTIONS:
-- [all] negation (`advmod:neg` as `:modal-strength full-negative`). As of now I am following the 80% of the times rule.
+- Negation (`advmod:neg` as `:modal-strength full-negative`). As of now I am following the 80% of the times rule.
 There are of course exceptions: now we have negative modality annotated for nouns (which are supposed to be events, but
 they are not overt).
 C.f., e.g., _Puerum basiavi frugalissimum, **non** propter formal, sed quia frugi est_ (from Perseus_test).
-I could also implement an additional check for UPOS (= only VERB). What do you prefer?
-- [Julia] UMR of _boves, quorum beneficio panem manducamus_ "oxen, thanks to whose service we eat bread"? [mail]
-- [observation] In UMR guidelines, 3-1-4 (2):
+I could also implement an additional check for UPOS (= only VERB), but maybe it would be too restraining.
 
-```
-并且 还 有 很多 高层 的 人物 哦 ！
-There will even be many VIPs!
-(x/ and
-     :op2 (e/ exist-91
-           :mod (x2/ 还)
-           :ARG2 (x3/ 人物
-                  :mod (x4/ 高层)
-                  :quant (x5/ 很多))
-           :mode Expressive
-       :aspect State
-       :modstr FullAff))
-```
-But in 3-3-2. Mode it reads:
-"`expressive`: used for exclamational words such as hmm, wow, yup etc., which express emotion but don't clearly refer 
-to events, objects or properties, as in (1a). This value is not used for mere emphasis, or for exclamation marks."
-Confusing. It's maybe because of _even_?
 
-- [Julia, IMP] English modals (4-3-2) reads
-"For example, _want_ is in the `NeutAff` list, which indicates that there is a `NeutAff` link between the want node and
-its complement event node in the full dependency structure."
-However, in all the graphs in the guidelines the complement event node is not annotated wrt `modal-strength`, but
-`modal-predicate`. I assume `modal-predicate` is the correct one (right?), and yet this sentence can be very misleading.
-And what am I supposed to do with _hope, fear, worry, dread_? _Need_? All of them, actually.
-
+## QUESTIONS:
+- How many sentences do you think I need for evaluation.
 
 ## For Dan:
 - What to do with _nec_ split as _ne_ + _c_? do I merge them in Perseus or handle them in UMR?
 Sent tlg0031.tlg027.perseus-lat1.tb.xml@88 in Perseus test.
 All other _nec_ s are not split in two as a MWE.
 - Is it okay to treat both UD `Degree={Sup,Abs}` as UMR `most`?
-- What should `compound` be in UMR? We can take CS as an example.
-- Eventually I ended up facing the issue of Too many requests (429) for Google Translate, as expected. The stable
-library is https://pypi.org/project/google-cloud-translate/, but it comes with quota and more limitations as it is
-official. Can you think of an alternative to make it more stable?
-- _Consumer Technology Association_ is `flat` in CS but `compound` in EN. In FR è tutto X e `flat:foreign`. Se anche
-riuscissimo a riconoscerla come una NE (ma UPOS è quasi sempre NOUN), non avremmo un trattamento omogeneo.
-Suggestions?
-- en_pud uses `parataxis` where `conj` would apply...
+- _Consumer Technology Association_ is `flat` in CS but `compound` in EN. In FR è tutto X e `flat:foreign`. 
 - What to do in general with `flat:foreign` (FR), `fixed` (FR) and `compound` (CS, EN)?
 Maybe for `compound` we could consider `:mod` (idea based on EN). E.g., _winter solstice_.
 Cf. EN:
@@ -176,6 +157,15 @@ for languages other than Latin.
 - Alexis (10.12.2024):
   - You could add some time evaluation, e.g. by involving Czech annotators and measuring how much time it takes for them
   to build a UMR from scratch vs. having the converted graphs.
+
+- Dan (12.12.2024):
+  - I can take UMR released data, parse them to get UMRs, and then run the evaluation.
+  - If you start annotating from the output of the conversion, you need to state very clearly the reasons to convince
+  the reviewer of the thesis. Otherwise the evaluation might look unfair. You might say that annotating from scratch is
+  extremely time-consuming and labour-intensive, and also that starting from a converted backbone ensures you to have a
+  comparable UMRs, since many different UMR structures can be equally correct (e.g. _Lennart Mari_, _kandidovat_).
+  But you also need to compare how the annotation from scratch differs from that from backbone, e.g. on Latin data.
+  You could e.g. measure the time it takes and discuss differences you end up noticing in grpahs,
 
 # PAPER
 - Alexis (10.12.2024): possible venues could be:

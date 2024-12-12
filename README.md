@@ -1,6 +1,6 @@
 # UD2UMR
-This repository contains all materials for the UD2UMR project, which provides a tool to convert any Universal
-Dependencies (UD) treebank into a Uniform Meaning Representation (UMR) graph. \
+This repository contains all materials for the UD2UMR converter, which converts any Universal Dependencies (UD) treebank
+into a Uniform Meaning Representation (UMR) graph. \
 The converter only handles sentence-level graphs and alignments; document-level annotation has not been implemented.
 
 ## Set up
@@ -32,7 +32,7 @@ python3 main.py --treebank en_example.conllu --lang en
 ```
 
 The CoNLL-U files to be passed in input are expected to be stored in a `data/` directory;
-however, a different directory can be specified using the `--data_dir` command line argument. For example:
+however, a different directory can be specified using the `--data_dir` command line argument:
 
 ```commandline
 python3 main.py --treebank en_pud-ud-test.conllu --lang en --data_dir /directory/with/conllu/file
@@ -40,7 +40,7 @@ python3 main.py --treebank en_pud-ud-test.conllu --lang en --data_dir /directory
 
 Converted UMRs will be saved in an `output/` folder, which will be created by the converter if it doesn't already exist.
 You can also specify a different output directory (either an existing one or one to be created by the converter) using
-the `--output_dir` argument. For example:
+the `--output_dir` argument:
 
 ```commandline
 python3 main.py --treebank en_pud-ud-test.conllu --lang en --output_dir /directory/to/store/umrs
@@ -53,7 +53,8 @@ python3 main.py --treebank en_pud-ud-test.conllu --lang en --output_dir /directo
 * External resources providing language-specific lexical information can be found in the `external_resources/` folder.
 Each language has its own subdirectory, where the files are named `advcl.csv`, `have-rel-role,txt`, `modality.json`.
 Language-specific material for additional languages should be stored in the same way.
-It is not required to include all three files; you may include one or two only.
+It is not required to include all three files; you may include one or two only. In any case, the converter works even
+without any lexical files available.
 
 ```
 UD2UMR

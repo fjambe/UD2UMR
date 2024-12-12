@@ -3,26 +3,7 @@ from collections import defaultdict
 import penman
 import warnings
 from penman.exceptions import LayoutError
-from umr_node import UMRNode
-
-
-def type_of_triple(triple):
-    """
-    Returns the type of the edge in the triple, which can be 'instance', 'attribute', 'relation'.
-    """
-    parent, edge, child = triple
-    if edge == 'instance':
-        return edge
-    elif edge in ['mode', 'modal-strength', 'aspect', 'refer-number', 'refer-person']:
-        return 'attribute'
-    elif edge == 'quant' or edge.startswith('op'):
-        # child is a variable or a constant?
-        if isinstance(child, int) or (child.startswith('"') and child.endswith('"')):
-            return 'attribute'
-        else:
-            return 'relation'
-    else:
-        return 'relation'
+from umr_node import UMRNode, type_of_triple
 
 def has_parent_attached(parent, stored_dependencies, root, visited=None):
     """ Checks whether a node is connected to another node, in order to identify disconnected ones.
@@ -241,6 +222,16 @@ class UMRGraph:
                                 self.triples.append((triple[0], new_role, triple[2]))
                                 self.triples.remove(triple)
                                 break
+        ### refer-number for NOUNs
+        # useful for debugging
+        for node in self.nodes:
+            if node.ud_node and not isinstance(node.ud_node, str):
+                if node.ud_node.upos == 'NOUN' and node.role not in ['ADVCL', 'other']:
+                    number = [tup for tup in self.triples if tup[0] == node.var_name and tup[1] == 'refer-number']
+                    if len(number) > 1:
+                        print("Something went wrong", number)
+                    elif not number:
+                        print(node, node.ud_node.address)
 
     def to_penman(self):
         """

@@ -1,6 +1,24 @@
 from penman.models.amr import model as pm
 from preprocess import translate_number, is_number
 
+def type_of_triple(triple):
+    """
+    Returns the type of the edge in the triple, which can be 'instance', 'attribute', 'relation'.
+    """
+    parent, edge, child = triple
+    if edge == 'instance':
+        return edge
+    elif edge in ['mode', 'modal-strength', 'aspect', 'refer-number', 'refer-person']:
+        return 'attribute'
+    elif edge == 'quant' or edge.startswith('op'):
+        # child is a variable or a constant?
+        if isinstance(child, int) or (child.startswith('"') and child.endswith('"')):
+            return 'attribute'
+        else:
+            return 'relation'
+    else:
+        return 'relation'
+
 class UMRNode:
     def __init__(self, ud_node, umr_graph, role: str = "", already_added=False):
         """
@@ -123,7 +141,7 @@ class UMRNode:
                 if remove:
                     umr_graph.find_and_replace_in_triples(d.var_name, 2, new_parent.var_name, 0)
                     umr_graph.triples = [
-                        (new_parent.var_name, tup[1], tup[2]) if tup[0] == old_parent.var_name and tup[1] != 'instance'
+                        (new_parent.var_name, tup[1], tup[2]) if tup[0] == old_parent.var_name and tup[1] == 'relation'
                         else tup
                         for tup in umr_graph.triples
                     ]
@@ -216,6 +234,8 @@ class UMRNode:
                 if not nsubj_node.extra_level:
                     self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
                     self.parent.parent = concept
+                    if self.parent.ud_node.upos == 'NOUN':
+                        self.parent.get_number_person('number')
                 else:
                     parent = UMRNode.find_by_ud_node(self.umr_graph, nsubj.parent)
                     check = [tup for tup in self.umr_graph.triples if tup[1] == 'undergoer']
@@ -225,21 +245,30 @@ class UMRNode:
                                 self.umr_graph.triples.remove(tup)
                     self.umr_graph.triples.append((concept.var_name, second_arg, parent.var_name))
                     parent.parent = concept
+                    if parent.ud_node.upos == 'NOUN':
+                        parent.get_number_person('number')
 
             else:
+
                 self.umr_graph.find_and_remove_from_triples(self.umr_graph.track_conj[nsubj], 2)
                 self.umr_graph.triples.append((concept.var_name, 'ARG1', self.umr_graph.track_conj[nsubj]))
                 arg1 = UMRNode.find_by_var_name(self.umr_graph, self.umr_graph.track_conj[nsubj])
                 self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
                 arg1.parent = concept
                 self.parent.parent = concept
+                if self.parent.ud_node.upos == 'NOUN':
+                    self.parent.get_number_person('number')
 
             nsubj_node.parent, nsubj_node.parent.var_name = concept, concept.var_name
             nsubj_node.role = 'ARG1'
+            if nsubj_node.ud_node.upos in ['NOUN', 'ADJ'] and nsubj_node.ud_node.udeprel == 'nsubj':
+                nsubj_node.get_number_person('number')
             nsubj_node.already_added = True
 
         else:
             self.umr_graph.triples.append((concept.var_name, second_arg, self.parent.var_name))
+            if self.parent.ud_node.upos == 'NOUN':
+                self.parent.get_number_person('number')
 
         concept.aspect('state')
         concept.modality()
@@ -303,6 +332,8 @@ class UMRNode:
 
             if self.ud_node.deprel == 'root':
                 self.add_node(self.role)
+                if self.ud_node.upos == 'NOUN':
+                    self.get_number_person('number')
                 if not self.umr_graph.root_var:
                     self.umr_graph.root_var = self.var_name
 
@@ -398,7 +429,8 @@ class UMRNode:
 
             if not self.already_added:
                 self.add_node(self.role)
-                if (self.ud_node.upos == 'NOUN' and self.role != 'other') or (self.ud_node.upos == 'ADJ' and self.ud_node.udeprel in ['nsubj', 'obj', 'obl']):
+                if ((self.ud_node.upos == 'NOUN' and self.role != 'other') or
+                        (self.ud_node.upos == 'ADJ' and self.ud_node.udeprel in ['nsubj', 'obj', 'obl'])):
                     self.get_number_person('number')
 
         self.umr_graph.root_var = root_var if root_var else self.umr_graph.root_var
@@ -695,8 +727,7 @@ class UMRNode:
                     poss.parent = self.parent
                     if is_reflexive:
                         refer_number = numbers.get(
-                            self.ud_node.feats['Number'] if not is_adj_noun else self.ud_node.parent.parent.feats[
-                                'Number'])
+                            self.ud_node.feats['Number'] if not is_adj_noun else self.ud_node.parent.parent.feats['Number'])
                         if refer_number:
                             poss.get_number_person('number', given_feat=refer_number)
 
@@ -735,7 +766,7 @@ class UMRNode:
                     self.replaced = True
 
     def det_pro_noun(self):
-        """ Create an entity node that replaces the DETs (e.g. 'Illi negarunt' "They denied"). """
+        """ Create an entity node that replaces the DETs (e.g. "They denied"). """
 
         if not self.replaced:
             if self.ud_node.udeprel != 'det' and self.ud_node.feats['PronType'] == 'Dem':
@@ -883,7 +914,7 @@ class UMRNode:
                 else:
                     concept = 'identity-91'
             else:
-                concept = 'MISSING'
+                concept = 'COPULAR-CONSTRUCTION'
 
         elif self.ud_node.parent.feats['NumType'] == 'Card':
             concept = 'have-quant-91'
@@ -899,7 +930,7 @@ class UMRNode:
         elif self.ud_node.parent.upos in ['NOUN', 'PROPN'] and self.ud_node.parent.feats['Case'] == 'Gen':
             concept = 'belong-91'
         else:
-            concept = 'MISSING'
+            concept = 'COPULAR-CONSTRUCTION'
 
         _ = self.replace_with_abstract_roleset(concept, replace_arg, overt=copula)
         self.already_added = True
