@@ -5,7 +5,7 @@ Next steps:
 more about the evaluation.
 - [coding] do something about nominal ADVCL (e.g. add abstract concept `have-role-91`/`identity-91`).
 Maybe something similar with `stimulus` for nominal `x|ccomp` + nominal `condition`.
-- [coding] come up with a solution for `compound` based on UPOS. E.g. ADV: single node, NOUN: `mod`. [FRI]
+- check _città stato di Atene_
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check `refer-number`, etc.

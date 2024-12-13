@@ -421,11 +421,8 @@ class UMRNode:
             elif self.ud_node.udeprel == 'advcl':
                 self.adverbial_clauses()
 
-            elif self.ud_node.deprel == 'compound:prt':
-                for i, tup in enumerate(self.umr_graph.triples):
-                    if tup[0] == self.parent.var_name and tup[1] == 'instance':
-                        self.umr_graph.triples[i] = (tup[0], tup[1], self.parent.ud_node.lemma + '-' + self.ud_node.lemma)
-                self.already_added = True
+            elif self.ud_node.udeprel == 'compound':
+                self.compound()
 
             if not self.already_added:
                 self.add_node(self.role)
@@ -913,19 +910,22 @@ class UMRNode:
             else:
                 concept = 'COPULAR-CONSTRUCTION'
 
-        elif self.ud_node.parent.feats['NumType'] == 'Card':
+        if self.ud_node.parent.feats['NumType'] == 'Card':
             concept = 'have-quant-91'
 
-        elif self.ud_node.parent.feats['Case'] == 'Dat':
+        if self.ud_node.parent.feats['Case'] == 'Dat':
             # double dative if ref_dative else dative of possession
             ref_dative = [s for s in self.ud_node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
             concept = 'have-purpose-91' if ref_dative else 'belong-91'
 
-        elif self.ud_node.parent.upos == 'VERB' and self.ud_node.parent.feats['VerbForm'] == 'Inf':
+        if self.ud_node.parent.upos == 'VERB' and self.ud_node.parent.feats['VerbForm'] == 'Inf':
             concept = 'have-identity-91'
 
-        elif self.ud_node.parent.upos in ['NOUN', 'PROPN'] and self.ud_node.parent.feats['Case'] == 'Gen':
+        if self.ud_node.parent.upos in ['NOUN', 'PROPN'] and self.ud_node.parent.feats['Case'] == 'Gen':
             concept = 'belong-91'
+        if (self.ud_node.parent.upos == 'PROPN' and
+              (self.ud_node.parent.feats['Case'] != 'Gen' or not [c for c in self.ud_node.children if c.upos == 'ADP'])):
+            concept = 'identity-91'
         else:
             concept = 'COPULAR-CONSTRUCTION'
 
@@ -1014,9 +1014,7 @@ class UMRNode:
             self.modality()
 
     def clauses(self):
-        """
-        Handle clausal subjects and complements (csubj and ccomp).
-        """
+        """ Handle clausal subjects and complements (csubj and ccomp). """
         if self.ud_node.deprel == 'ccomp:reported':
             self.umr_graph.triples.append((self.var_name, 'quot', self.parent.var_name))
         elif self.ud_node.udeprel == 'xcomp':
@@ -1037,14 +1035,18 @@ class UMRNode:
         """ Handle quantities, which are attributes in UMRs. """
 
         number = self.ud_node.form
-        components = [c for c in self.ud_node.children if c.deprel == 'flat' and c.upos == 'NUM']
+        components = [c for c in self.ud_node.children if c.deprel in ['flat', 'compound'] and c.upos == 'NUM']
         components = [UMRNode.find_by_ud_node(self.umr_graph, c) for c in components]
         if components:
             for c in components:
-                number += f' {c.ud_node.form}'
+                if c.ud_node.deprel == 'flat':
+                    number += f' {c.ud_node.form}'
+                else:
+                    number = f'{c.ud_node.form} ' + number
                 c.already_added = True
 
         if self.ud_node.upos == 'NUM':
+            print(self)
             digit = translate_number(number, self.lang)
             if isinstance(digit, int) or is_number(digit):
                 self.umr_graph.triples.append((self.parent.var_name, 'quant', digit))
@@ -1123,11 +1125,30 @@ class UMRNode:
                         cmp_node.entity = True
 
     def acl_participles(self):
-        """
-        Handle attributive participles (with deprel 'acl') similarly to relative clauses.
-        """
+        """ Handle attributive participles (with deprel 'acl') similarly to relative clauses. """
         if self.ud_node.feats['VerbForm'] == 'Part':
             role = 'actor' if self.ud_node.feats['Voice'] == 'Act' else 'undergoer'
             self.add_node(role, invert=True, def_parent=self.parent.var_name)
         else:
             self.add_node('mod')
+
+    def compound(self):
+        """ Handle constructions with the 'compound' deprel. """
+        # NUMs are already handled in quantifiers()
+
+        if self.ud_node.sdeprel == 'prt' or self.parent.ud_node.upos in ['VERB', 'ADJ']:
+            print('compound di VERB', self)
+            for i, tup in enumerate(self.umr_graph.triples):
+                if tup[0] == self.parent.var_name and tup[1] == 'instance':
+                    if self.parent.ud_node.upos == 'ADJ':
+                        self.umr_graph.triples[i] = (tup[0], tup[1], self.ud_node.lemma + '-' + self.parent.ud_node.lemma)
+                    else:
+                        self.umr_graph.triples[i] = (tup[0], tup[1], self.parent.ud_node.lemma + '-' + self.ud_node.lemma)
+            self.already_added = True
+
+        if self.parent.ud_node.upos == 'NOUN':
+            print('compound di NOUN', self)
+            self.role = 'mod'
+            self.add_node(self.role)
+            if self.ud_node.upos == 'NOUN':
+                self.get_number_person('number')
