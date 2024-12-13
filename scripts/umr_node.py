@@ -1046,7 +1046,6 @@ class UMRNode:
                 c.already_added = True
 
         if self.ud_node.upos == 'NUM':
-            print(self)
             digit = translate_number(number, self.lang)
             if isinstance(digit, int) or is_number(digit):
                 self.umr_graph.triples.append((self.parent.var_name, 'quant', digit))
@@ -1137,7 +1136,6 @@ class UMRNode:
         # NUMs are already handled in quantifiers()
 
         if self.ud_node.sdeprel == 'prt' or self.parent.ud_node.upos in ['VERB', 'ADJ']:
-            print('compound di VERB', self)
             for i, tup in enumerate(self.umr_graph.triples):
                 if tup[0] == self.parent.var_name and tup[1] == 'instance':
                     if self.parent.ud_node.upos == 'ADJ':
@@ -1147,7 +1145,6 @@ class UMRNode:
             self.already_added = True
 
         if self.parent.ud_node.upos == 'NOUN':
-            print('compound di NOUN', self)
             self.role = 'mod'
             self.add_node(self.role)
             if self.ud_node.upos == 'NOUN':

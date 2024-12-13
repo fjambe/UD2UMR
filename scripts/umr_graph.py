@@ -223,7 +223,7 @@ class UMRGraph:
                                 self.triples.remove(triple)
                                 break
         ### refer-number for NOUNs
-        # useful for debugging
+        # for debugging only -- temp
         for node in self.nodes:
             if node.ud_node and not isinstance(node.ud_node, str):
                 if node.ud_node.upos == 'NOUN' and node.role not in ['ADVCL', 'other']:
@@ -238,18 +238,15 @@ class UMRGraph:
         disconnecting = set()
 
         for tup in self.triples:
-            if '-of' not in tup[1]:
-                par, ed, ch = tup
-            else:
-                ch, ed, par = tup
-            if type_of_triple((par, ed, ch)) == 'relation':
+            par, ed, ch = tup
+            if type_of_triple(tup) == 'relation':
                 dependencies[par].add(ch)
 
         for tup in self.triples:
-            if '-of' not in tup[1]:
-                par, ed, ch = tup
-            else:
-                ch, ed, par = tup
+            # if '-of' not in tup[1]:
+            par, ed, ch = tup
+            # else:
+            #     ch, ed, par = tup
             res = has_parent_attached(par, dependencies, self.root_var)
             if res:
                 disconnecting.add(res)

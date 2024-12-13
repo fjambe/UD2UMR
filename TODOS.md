@@ -5,7 +5,6 @@ Next steps:
 more about the evaluation.
 - [coding] do something about nominal ADVCL (e.g. add abstract concept `have-role-91`/`identity-91`).
 Maybe something similar with `stimulus` for nominal `x|ccomp` + nominal `condition`.
-- check _città stato di Atene_
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check `refer-number`, etc.
@@ -16,11 +15,11 @@ Currently disconnected graphs:
 
 | Language        | Disconnected | Empty_triples |
 |:----------------|:------------:|--------------:|
-| en_pud          |  11 / 1000   |             4 |
-| it_pud          |   9 / 1000   |             4 |
-| fr_pud          |  12 / 1000   |             5 |
-| cs_pud          |   4 / 1000   |             1 |
-| la_perseus_test |   22 / 939   |            13 |
+| en_pud          |   6 / 1000   |             2 |
+| it_pud          |   6 / 1000   |             1 |
+| fr_pud          |   6 / 1000   |             1 |
+| cs_pud          |   1 / 1000   |             1 |
+| la_perseus_test |   10 / 939   |             1 |
 
 
 ### UD deprels:
