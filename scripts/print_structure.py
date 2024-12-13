@@ -50,6 +50,8 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
             en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
             if en_sent:
                 print('Sentence (en):', f"{en_sent[0].lstrip(' text_en = ')}", '\n', file=destination)
+            else:
+                print(file=destination)
         else:
             print(file=destination)
         print('# sentence level graph:', file=destination)

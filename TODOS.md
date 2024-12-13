@@ -3,10 +3,9 @@
 Next steps:
 - [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
 more about the evaluation.
-- [coding] re-implement modal-predicate based on what Julia said.
 - [coding] do something about nominal ADVCL (e.g. add abstract concept `have-role-91`/`identity-91`).
 Maybe something similar with `stimulus` for nominal `x|ccomp` + nominal `condition`.
-- [coding] come up with a solution for `compound` based on UPOS. E.g. ADV: single node, NOUND: `mod`.
+- [coding] come up with a solution for `compound` based on UPOS. E.g. ADV: single node, NOUN: `mod`. [FRI]
 
 ## General
 1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check `refer-number`, etc.
@@ -18,10 +17,10 @@ Currently disconnected graphs:
 | Language        | Disconnected | Empty_triples |
 |:----------------|:------------:|--------------:|
 | en_pud          |  11 / 1000   |             4 |
-| it_pud          |  10 / 1000   |             5 |
+| it_pud          |   9 / 1000   |             4 |
 | fr_pud          |  12 / 1000   |             5 |
 | cs_pud          |   4 / 1000   |             1 |
-| la_perseus_test |   15 / 939   |            13 |
+| la_perseus_test |   22 / 939   |            13 |
 
 
 ### UD deprels:
@@ -115,7 +114,23 @@ I could also implement an additional check for UPOS (= only VERB), but maybe it 
 
 
 ## QUESTIONS:
-- How many sentences do you think I need for evaluation.
+- How many sentences do you think I need for evaluation?
+- [Julia] Guidelines: "Weak deontic modals, including desire (e.g., want) and permission (e.g., allow), impart NeutAff strength
+on their complements. Certain modals may also lexicalize negation, such as doubt, forbid, or wish. These are annotated
+with the NeutNeg, PrtNeg, and FullNeg values, respectively." --> why permission == neutral vs forbid partial?
+- [Julia] Double negation with modals, or kind of. E.g., I forbid you from not eating.
+
+```
+(f / forbid
+    :ARG0 (p / person
+           :refer-number singular
+           :refer-person plural)
+    :ARG1 (e / eat
+            :aspect ...
+            :modal-strength partial-affirmative)   ???
+    :aspect ...
+    :modal-strength full-affirmative)
+```
 
 ## For Dan:
 - What to do with _nec_ split as _ne_ + _c_? do I merge them in Perseus or handle them in UMR?

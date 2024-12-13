@@ -233,6 +233,31 @@ class UMRGraph:
                     elif not number:
                         print(node, node.ud_node.address)
 
+    def avoid_disconnection(self):
+        dependencies = defaultdict(set)
+        disconnecting = set()
+
+        for tup in self.triples:
+            if '-of' not in tup[1]:
+                par, ed, ch = tup
+            else:
+                ch, ed, par = tup
+            if type_of_triple((par, ed, ch)) == 'relation':
+                dependencies[par].add(ch)
+
+        for tup in self.triples:
+            if '-of' not in tup[1]:
+                par, ed, ch = tup
+            else:
+                ch, ed, par = tup
+            res = has_parent_attached(par, dependencies, self.root_var)
+            if res:
+                disconnecting.add(res)
+
+        for node in disconnecting:
+            self.find_and_remove_from_triples(node, 0)
+            self.remove_orphans(node, dependencies)
+
     def to_penman(self):
         """
         Transform the nested dictionary obtained from UD into a Penman graph.
@@ -243,6 +268,7 @@ class UMRGraph:
         self.remove_non_inverted_triples_if_duplicated()
         self.postprocessing_checks()
         self.remove_invalid_triples()
+        self.avoid_disconnection()
 
         try:
             corrected_triples, root = self.correct_variable_name()
@@ -250,42 +276,10 @@ class UMRGraph:
             g = penman.Graph(triples)
             return penman.encode(g, top=root, indent=4)
 
-        except LayoutError:
-            # Keeping only a connected subgraph.
-            dependencies = defaultdict(set)
-            disconnecting = set()
-
-            for tup in self.triples:
-                if '-of' not in tup[1]:
-                    par, ed, ch = tup
-                else:
-                    ch, ed, par = tup
-                if type_of_triple((par, ed, ch)) == 'relation':
-                    dependencies[par].add(ch)
-
-            for tup in self.triples:
-                if '-of' not in tup[1]:
-                    par, ed, ch = tup
-                else:
-                    ch, ed, par = tup
-                res = has_parent_attached(par, dependencies, self.root_var)
-                if res:
-                    disconnecting.add(res)
-
-            for node in disconnecting:
-                self.find_and_remove_from_triples(node, 0)
-                self.remove_orphans(node, dependencies)
-
-            try:
-                corrected_triples, root = self.correct_variable_name()
-                triples = reorder_triples(corrected_triples)
-                g = penman.Graph(triples)
-                return penman.encode(g, top=root, indent=4)
-
-            except LayoutError as e:
-                for n in reorder_triples(self.triples):
-                    print(n)
-                print(f"Skipping sentence due to LayoutError: {e}")
+        except LayoutError as e:
+            for n in reorder_triples(self.triples):
+                print(n)
+            print(f"Skipping sentence due to LayoutError: {e}")
 
     def remove_orphans(self, parent, stored_dependencies, visited=None):
         """
