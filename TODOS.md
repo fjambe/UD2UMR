@@ -1,14 +1,20 @@
 # TODO - UD2UMR converter
 
-Next steps:
 - [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
 more about the evaluation.
-- [coding] do something about nominal ADVCL (e.g. add abstract concept `have-role-91`/`identity-91`).
-Maybe something similar with `stimulus` for nominal `x|ccomp` + nominal `condition`.
+- [coding] Figure out what to do with `flat:foreign` (FR). E.g., _Consumer Technology Association_ is
+`flat` in CS. In FR è tutto X e `flat:foreign`. [MON]
+```
+names = [c for c in self.ud_node.children if c.udeprel == 'flat']
+if self.ud_node.upos == 'NOUN' and names:
+  replace the NOUN node with a NE that includes the flat dependants.
+```
+
+- [coding + documentation] Move coordinate conjunctions to a new external resource. [MON]
 
 ## General
-1. I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check `refer-number`, etc.
-For PRONs I build the usual NE structure, and so on.
+- I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check `refer-number`, etc.
+For PRONs I build the usual NE structure, and so on. [don't think so anymore, especially for `refer-number`].
 
 ## Notes
 Currently disconnected graphs:
@@ -21,37 +27,6 @@ Currently disconnected graphs:
 | cs_pud          |   1 / 1000   |             1 |
 | la_perseus_test |   10 / 939   |             1 |
 
-
-### UD deprels:
-- `nsubj`:
-  - Only one `nsubj` is allowed, so mapping it to `actor` shouldn't be a problem (univocal).
-  - `nsubj:pass` handled like `obj` -> `patient`.
-- `advmod:lmod` could be mapped to `place`, but it's risky because it could also be `source`, `goal`, depending on the type of adverb.
-On top of that, most often this deprel is assigned to adverbs (_unde_, _hinc_), which could also be discourse connectives.
-Maybe if they're annotated with the subtype `lmod` is because they're actually still lexicalized, but let's not trust the annotation too much.
-- `nmod`: now I have a placeholder `:MOD/POSS`. Impossible to distinguish - UD has `nmod:poss` but not Perseus.
-- `appos`: `identity-91`.
-Cf. _Homo bellus, tam bonus Chrysanthus animam ebulliit._ "The handsome man, so good, Chrysanthus breathed out his spirit."
-_Chysanthus_ `appos` di _homo_.
-
-### UD UPOS:
-- NUM. Chosen strategy to convert from string to digit: use EN as pivoting language.
-Translate instances to EN, use a Python library like `text2num` or `num2words` (also supporting few other languages -
-but it feels less language-dependent to just translate everything to EN) to convert the string into a digit,
-and include the obtained digit in the UMR graph.
-- PRON. Indefinite pronouns like _something_, _someone_ are annotated as a `person` entity + a `mod` for _some_. Same
-for _any_.
-
-### UMR guidelines
-- [modal-predicate] English modals (4-3-2) reads
-"For example, _want_ is in the `NeutAff` list, which indicates that there is a `NeutAff` link between the want node and
-its complement event node in the full dependency structure."
-However, in all the graphs in the guidelines the complement event node is not annotated wrt `modal-strength`, but
-`modal-predicate`. I assume `modal-predicate` is the correct one (right?), and yet this sentence can be very misleading.
-And what am I supposed to do with _hope, fear, worry, dread_? _Need_? All of them, actually.
-Apparently BOTH, because `modal-predicate` is just a shortcut to extract the polarity of the modal verb, used by the
-UMR Writer and Jin's postprocessing to build up doc-level annotation. Neither `modal-strength` nor `modal-predicate`
-are supposed to appear in the sentence-level graph. Also, the `unspecified` value in doc-level is valid only for stage 0.
 
 ### To Penman
 To parse my structure into Penman, it has (?) to look like this:
@@ -113,10 +88,13 @@ I could also implement an additional check for UPOS (= only VERB), but maybe it 
 
 
 ## QUESTIONS:
-- How many sentences do you think I need for evaluation?
+- [Alexis] How many sentences do you think I need for evaluation?
+- [Julia] Is there something like `foreign-entity`, `foreign...`? I recall something but not much. Otherwise, how do I
+include a foreign expression/word in a graph? Don't have a real example because all those I have are actually supposed
+to be named entities.
 - [Julia] Guidelines: "Weak deontic modals, including desire (e.g., want) and permission (e.g., allow), impart NeutAff strength
 on their complements. Certain modals may also lexicalize negation, such as doubt, forbid, or wish. These are annotated
-with the NeutNeg, PrtNeg, and FullNeg values, respectively." --> why permission == neutral vs forbid partial?
+with the NeutNeg, PrtNeg, and FullNeg values, respectively." --> why permission = neutral vs. _forbid_ = partial?
 - [Julia] Double negation with modals, or kind of. E.g., I forbid you from not eating.
 
 ```
@@ -136,22 +114,9 @@ with the NeutNeg, PrtNeg, and FullNeg values, respectively." --> why permission 
 Sent tlg0031.tlg027.perseus-lat1.tb.xml@88 in Perseus test.
 All other _nec_ s are not split in two as a MWE.
 - Is it okay to treat both UD `Degree={Sup,Abs}` as UMR `most`?
-- _Consumer Technology Association_ is `flat` in CS but `compound` in EN. In FR è tutto X e `flat:foreign`. 
-- What to do in general with `flat:foreign` (FR), `fixed` (FR) and `compound` (CS, EN)?
-Maybe for `compound` we could consider `:mod` (idea based on EN). E.g., _winter solstice_.
-Cf. EN:
-```
-21	in	in	ADP	IN	_	24	case	24:case	_
-22	Sesto	Sesto	PROPN	NNP	Number=Sing	24	compound	24:compound	_
-23	San	San	PROPN	NNP	Number=Sing	24	compound	24:compound	_
-24	Giovanni	Giovanni	PROPN	NNP	Number=Sing	19	nmod	19:nmod:in	SpaceAfter=No
-```
-
-## Details:
-- `advmod` = `manner` --> _ideo_ ends up being `manner`, while I would have either `cause` or maybe even nothing.
 
 # EVALUATION
-- Input from Marie (09.12.2024):
+- [Marie (09.12.2024)]
   - Subtask evaluation: evaluate specific parts of graphs.
   GRAPES is the best system for sub-scores (https://arxiv.org/pdf/2312.03480).
   - Unlabeled Attachment Score (UAS) on node attachment.
@@ -159,6 +124,7 @@ Cf. EN:
   Paper: https://aclanthology.org/2024.lrec-main.94.pdf.
   - I could measure edge recall, node recall, .... Graph-based evaluation.
   - Besides that, also do some evaluation based on linguistic phenomena.
+
 - So, main steps:
   1. Evaluation comparing UD tree to UMR graph, to show hoe well my parser works. Just UAS, because the labels are
   different so not relevant.
@@ -168,21 +134,21 @@ Cf. EN:
 - In any case, before the final evaluation, got through converted UMRS with Dan / UMR team  + refine external resources
 for languages other than Latin.
 
-- Alexis (10.12.2024):
+- [Alexis (10.12.2024)]
   - You could add some time evaluation, e.g. by involving Czech annotators and measuring how much time it takes for them
   to build a UMR from scratch vs. having the converted graphs.
 
-- Dan (12.12.2024):
+- [Dan (12.12.2024)]
   - I can take UMR released data, parse them to get UMRs, and then run the evaluation.
   - If you start annotating from the output of the conversion, you need to state very clearly the reasons to convince
-  the reviewer of the thesis. Otherwise the evaluation might look unfair. You might say that annotating from scratch is
+  the reviewer of the thesis. Otherwise, the evaluation might look unfair. You might say that annotating from scratch is
   extremely time-consuming and labour-intensive, and also that starting from a converted backbone ensures you to have a
   comparable UMRs, since many different UMR structures can be equally correct (e.g. _Lennart Mari_, _kandidovat_).
   But you also need to compare how the annotation from scratch differs from that from backbone, e.g. on Latin data.
-  You could e.g. measure the time it takes and discuss differences you end up noticing in grpahs,
+  You could e.g. measure the time it takes and discuss differences you end up noticing in graphs,
 
 # PAPER
-- Alexis (10.12.2024): possible venues could be:
-  - Designing Meaning Representation Workshop (4-5 Aug, Prague).
-  - TLT -> SyntaxFest (26-29 Aug 2025, deadline in April)
-  - Linguistic Annotation Workshop (LAW) - TBA
+- [Alexis (10.12.2024)] Possible venues could be:
+  - _Designing Meaning Representation Workshop_ (4-5 Aug, Prague, no deadline for now).
+  - _TLT_ -> _SyntaxFest_ (26-29 Aug 2025, deadline in April)
+  - _Linguistic Annotation Workshop (LAW)_ - TBA

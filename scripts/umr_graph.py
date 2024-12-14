@@ -222,16 +222,6 @@ class UMRGraph:
                                 self.triples.append((triple[0], new_role, triple[2]))
                                 self.triples.remove(triple)
                                 break
-        ### refer-number for NOUNs
-        # for debugging only -- temp
-        for node in self.nodes:
-            if node.ud_node and not isinstance(node.ud_node, str):
-                if node.ud_node.upos == 'NOUN' and node.role not in ['ADVCL', 'other']:
-                    number = [tup for tup in self.triples if tup[0] == node.var_name and tup[1] == 'refer-number']
-                    if len(number) > 1:
-                        print("Something went wrong", number)
-                    elif not number:
-                        print(node, node.ud_node.address)
 
     def avoid_disconnection(self):
         dependencies = defaultdict(set)

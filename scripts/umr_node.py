@@ -424,6 +424,12 @@ class UMRNode:
             elif self.ud_node.udeprel == 'compound':
                 self.compound()
 
+            elif self.ud_node.udeprel == 'fixed':
+                self.fixed()
+
+            elif self.ud_node.udeprel == 'flat':
+                self.flat()
+
             if not self.already_added:
                 self.add_node(self.role)
                 if ((self.ud_node.upos == 'NOUN' and self.role != 'other') or
@@ -782,8 +788,9 @@ class UMRNode:
         framework. The entity type is not specified; `type-NE` is a placeholder that will have to be replaced by the
         annotator.
         """
-        if not self.replaced:
-            if self.ud_node.upos == 'PROPN' and self.role != 'other':
+        if not self.replaced and self.role != 'other':
+
+            if self.ud_node.upos == 'PROPN':
 
                 entity = self.create_node('type-NE', self.role, replace=True)
                 entity.ud_node = self.ud_node
@@ -794,7 +801,7 @@ class UMRNode:
                 name = self.create_node('name', 'name')
                 name.add_node(name.role, def_parent=entity.var_name)
 
-                names = [c for c in self.ud_node.children if c.udeprel == 'flat'] # and c.upos == 'PROPN']
+                names = [c for c in self.ud_node.children if c.udeprel == 'flat']
                 names = [self] + [UMRNode.find_by_ud_node(self.umr_graph, n) for n in names]
 
                 for i, n in enumerate(names, start=1):
@@ -807,7 +814,7 @@ class UMRNode:
     def coordination(self, role):
         """ Handle coordination by building the corresponding UMR structures. """
 
-        conjs = {'or': ['vel', 'uel', 'aut'],
+        conjs = {'or': ['vel', 'uel', 'aut'],  # TODO: make it an external resource
                  'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ','],
                  'but-91': ['sed', 'at']}
 
@@ -887,52 +894,64 @@ class UMRNode:
         Handle copular constructions by assigning the correct abstract roleset to the various configurations.
         If a set of relational terms is provided, it is used here to assign 'have-rel-role-92'.
         """
-        replace_arg = None
+        replace_arg, concept = None, None
 
-        if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or (
-                self.ud_node.parent.upos in ['NOUN', 'ADJ', 'PROPN', 'PRON'] and not self.ud_node.parent.feats['Case']):
+        if self.ud_node.parent.feats['Degree'] and self.ud_node.parent.feats['Degree'] != 'Pos':
+            self.parent.have_degree()
+            return None
 
-            if self.ud_node.parent.feats['Degree'] and self.ud_node.parent.feats['Degree'] != 'Pos':
-                self.parent.have_degree()
-                return None
-
-            elif self.ud_node.parent.upos == 'ADJ':
-                concept = 'have-mod-91'
-            elif self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats['PronType'] == 'Prs':
-                concept = 'belong-91'
-            elif (self.ud_node.parent.upos in ['NOUN', 'PRON'] or
-                  (self.ud_node.parent.upos == 'DET' and self.ud_node.parent.feats['PronType'] != 'Prs')):
-                if self.ud_node.parent.upos == 'NOUN' and self.ud_node.parent.lemma in self.umr_graph.rel_roles:
-                    concept = 'have-rel-role-92'
-                    replace_arg = 'ARG3'
-                else:
-                    concept = 'identity-91'
-            else:
-                concept = 'COPULAR-CONSTRUCTION'
-
-        if self.ud_node.parent.feats['NumType'] == 'Card':
+        elif self.ud_node.parent.feats['NumType'] == 'Card':
             concept = 'have-quant-91'
 
-        if self.ud_node.parent.feats['Case'] == 'Dat':
-            # double dative if ref_dative else dative of possession
-            ref_dative = [s for s in self.ud_node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
-            concept = 'have-purpose-91' if ref_dative else 'belong-91'
+        if self.ud_node.parent.upos == 'VERB':
+            if self.ud_node.parent.feats['VerbForm'] == 'Inf':
+                concept = 'have-identity-91'
 
-        if self.ud_node.parent.upos == 'VERB' and self.ud_node.parent.feats['VerbForm'] == 'Inf':
-            concept = 'have-identity-91'
+        elif self.ud_node.parent.upos == 'ADJ':
+            if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or not self.ud_node.parent.feats['Case']:
+                concept = 'have-mod-91'
 
-        if self.ud_node.parent.upos in ['NOUN', 'PROPN'] and self.ud_node.parent.feats['Case'] == 'Gen':
-            concept = 'belong-91'
-        if (self.ud_node.parent.upos == 'PROPN' and
-              (self.ud_node.parent.feats['Case'] != 'Gen' or not [c for c in self.ud_node.children if c.upos == 'ADP'])):
-            concept = 'identity-91'
+        elif self.ud_node.parent.upos == 'DET':
+            if self.ud_node.parent.feats['PronType'] == 'Prs':
+                concept = 'belong-91'
+            else:
+                concept = 'identity-91'
+
+        elif self.ud_node.parent.upos == 'PRON':
+            if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc']:
+                concept = 'identity-91'
+
+        elif self.ud_node.parent.upos == 'NOUN':
+            if self.ud_node.parent.feats['Case'] == 'Gen':
+                concept = 'belong-91'
+            elif self.ud_node.parent.feats['Case'] == 'Dat':
+                # double dative if ref_dative else dative of possession
+                ref_dative = [s for s in self.ud_node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
+                concept = 'have-purpose-91' if ref_dative else 'belong-91'
+            elif self.ud_node.parent.lemma in self.umr_graph.rel_roles:
+                concept = 'have-rel-role-92'
+                replace_arg = 'ARG3'
+            else:
+                concept = 'identity-91'
+
+        elif self.ud_node.parent.upos == 'PROPN':
+            if self.ud_node.parent.feats['Case'] == 'Gen':
+                concept = 'belong-91'
+            elif self.ud_node.parent.feats['Case'] == 'Dat':
+                # double dative if ref_dative else dative of possession
+                ref_dative = [s for s in self.ud_node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
+                concept = 'have-purpose-91' if ref_dative else 'belong-91'
+            elif self.ud_node.parent.feats['Case'] not in ['Gen', 'Dat'] or not [c for c in self.ud_node.children if c.upos == 'ADP']:
+                concept = 'identity-91'
+
         else:
             concept = 'COPULAR-CONSTRUCTION'
 
-        _ = self.replace_with_abstract_roleset(concept, replace_arg, overt=copula)
-        self.already_added = True
-        if copula:
-            self.umr_graph.triples.remove((self.var_name, 'instance', self.ud_node.lemma))
+        if concept:
+            _ = self.replace_with_abstract_roleset(concept, replace_arg, overt=copula)
+            self.already_added = True
+            if copula:
+                self.umr_graph.triples.remove((self.var_name, 'instance', self.ud_node.lemma))
 
     def relative_clauses(self, rel_pron_node):
         """
@@ -1135,7 +1154,7 @@ class UMRNode:
         """ Handle constructions with the 'compound' deprel. """
         # NUMs are already handled in quantifiers()
 
-        if self.ud_node.sdeprel == 'prt' or self.parent.ud_node.upos in ['VERB', 'ADJ']:
+        if self.ud_node.sdeprel == 'prt' or self.parent.ud_node.upos in ['VERB', 'ADJ', 'ADV']:
             for i, tup in enumerate(self.umr_graph.triples):
                 if tup[0] == self.parent.var_name and tup[1] == 'instance':
                     if self.parent.ud_node.upos == 'ADJ':
@@ -1149,3 +1168,19 @@ class UMRNode:
             self.add_node(self.role)
             if self.ud_node.upos == 'NOUN':
                 self.get_number_person('number')
+
+    def fixed(self):
+        """
+        Handle constructions with the 'fixed' deprel, but only for tokens that are expected to be part of the UMR graph.
+        For example, adpositions are not converted.
+        """
+        if self.ud_node.parent.deprel in ['advmod', 'obl']:
+            for i, tup in enumerate(self.umr_graph.triples):
+                if tup[0] == self.parent.var_name and tup[1] == 'instance':
+
+                    self.umr_graph.triples[i] = (tup[0], tup[1], self.parent.ud_node.lemma + '-' + self.ud_node.lemma)
+            self.already_added = True
+
+    def flat(self):
+        """ Handle constructions with the 'flat' and 'flat:foreign' deprel. """
+        components = [c for c in self.ud_node.siblings if c.udeprel == 'flat']
