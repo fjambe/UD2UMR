@@ -428,7 +428,7 @@ class UMRNode:
                 self.fixed()
 
             elif self.ud_node.udeprel == 'flat':
-                self.flat()
+                self.parent.named_entities()
 
             if not self.already_added:
                 self.add_node(self.role)
@@ -448,14 +448,16 @@ class UMRNode:
             - 'FILL': Used when the node type cannot be automatically classified as 'person' or 'thing'.
             - 'type-NE': Specifies the type of Named Entity (NE).
             - 'name': Specifies the name of the NE itself.
+            - 'more'/'most': Specifies the degree in a have-degree-91 construction.
 
         Args:
-            category (str): The category/type of the node to create. Must be one of ['person', 'thing', 'FILL', 'type-NE', 'name'].
+            category (str): The category/type of the node to create.
             role (str, optional): The role of the node in the sentence or graph. Default is an empty string.
-            replace (bool, optional): If True, replace an existing node in the graph. This is typically used for cases like replacing personal pronouns. 
-                                      Default is False, which adds the new node without replacing any existing nodes.
-            reflex (bool, optional): If True, the node is treated as a reflexive entity, typically used to determine whether the number (singular/plural) 
-                                      should be handled differently. Default is False.
+            replace (bool, optional): If True, replace an existing node in the graph. This is typically used for cases
+                                    like replacing personal pronouns.
+                                    Default is False, which adds the new node without replacing any existing nodes.
+            reflex (bool, optional): If True, the node is treated as a reflexive entity, typically used to determine
+                                    whether the number (sing/plur) should be handled differently. Default is False.
 
         Returns:
             UMRNode: The newly created UMRNode instance.
@@ -790,7 +792,11 @@ class UMRNode:
         """
         if not self.replaced and self.role != 'other':
 
-            if self.ud_node.upos == 'PROPN':
+            names = [c for c in self.ud_node.children if c.udeprel == 'flat']
+            if self.ud_node.upos == 'PROPN' or (self.ud_node.upos in ['NOUN', 'X'] and names):
+
+                if self.ud_node.upos in ['NOUN', 'X'] and names:
+                    self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
 
                 entity = self.create_node('type-NE', self.role, replace=True)
                 entity.ud_node = self.ud_node
@@ -1181,6 +1187,3 @@ class UMRNode:
                     self.umr_graph.triples[i] = (tup[0], tup[1], self.parent.ud_node.lemma + '-' + self.ud_node.lemma)
             self.already_added = True
 
-    def flat(self):
-        """ Handle constructions with the 'flat' and 'flat:foreign' deprel. """
-        components = [c for c in self.ud_node.siblings if c.udeprel == 'flat']

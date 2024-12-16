@@ -1,15 +1,9 @@
 # TODO - UD2UMR converter
 
-- [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
+- [a Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
 more about the evaluation.
 - [coding] Figure out what to do with `flat:foreign` (FR). E.g., _Consumer Technology Association_ is
 `flat` in CS. In FR è tutto X e `flat:foreign`. [MON]
-```
-names = [c for c in self.ud_node.children if c.udeprel == 'flat']
-if self.ud_node.upos == 'NOUN' and names:
-  replace the NOUN node with a NE that includes the flat dependants.
-```
-
 - [coding + documentation] Move coordinate conjunctions to a new external resource. [MON]
 
 ## General
@@ -21,12 +15,13 @@ Currently disconnected graphs:
 
 | Language        | Disconnected | Empty_triples |
 |:----------------|:------------:|--------------:|
-| en_pud          |   6 / 1000   |             2 |
-| it_pud          |   6 / 1000   |             1 |
-| fr_pud          |   6 / 1000   |             1 |
-| cs_pud          |   1 / 1000   |             1 |
+| en_pud          |  10 / 1000   |             6 |
+| it_pud          |   9 / 1000   |             4 |
+| fr_pud          |  11 / 1000   |             6 |
+| cs_pud          |   4 / 1000   |             1 |
 | la_perseus_test |   10 / 939   |             1 |
 
+Numbers seem to have increased after restructuring copulas - except for Latin.
 
 ### To Penman
 To parse my structure into Penman, it has (?) to look like this:
