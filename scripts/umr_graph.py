@@ -77,7 +77,7 @@ def reorder_triples(triples):
 
 
 class UMRGraph:
-    def __init__(self, ud_tree, deprels, language, rel_roles, advcls, modality):
+    def __init__(self, ud_tree, deprels, language, rel_roles, advcls, modality, conjunctions):
         """
         Initializes a UMRGraph instance to represent a sentence UMR graph.
 
@@ -97,6 +97,7 @@ class UMRGraph:
             rel_roles (set): lexical resource to disambiguate have-rel-role-92.
             advcls (dict): lexical resource to disambiguate adverbial clauses.
             modality (dict): lexical resource to disambiguate modal-strength and modal-predicate.
+            conjunctions (dict): lexical resource to disambiguate coordinating conjunctions.
         """
         self.ud_tree = ud_tree
         self.deprels = deprels
@@ -109,6 +110,7 @@ class UMRGraph:
         self.rel_roles = rel_roles
         self.advcl =  advcls
         self.modals = modality
+        self.conjs = conjunctions
 
     def __repr__(self):
         return f"Sentence(Text: '{self.ud_tree.text}', nodes={self.nodes})"

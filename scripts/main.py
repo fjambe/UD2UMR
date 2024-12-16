@@ -27,6 +27,7 @@ if __name__ == "__main__":
     interpersonal = pr.load_external_files('have_rel_role.txt', args.lang)
     advcl = pr.load_external_files('advcl.csv', args.lang)
     modals = pr.load_external_files('modality.json', args.lang)
+    conjunctions = pr.load_external_files('conj.json', args.lang)
 
     os.makedirs(args.output_dir, exist_ok=True)
     with open(os.path.join(args.output_dir, f"{args.treebank.split('.')[0]}.umr"), "w",  encoding="utf-8") as output:
@@ -36,7 +37,7 @@ if __name__ == "__main__":
             sent_num += 1
 
             deprels_to_relations = pr.get_deprels(tree)
-            sent_tree = UMRGraph(tree, deprels_to_relations, args.lang, interpersonal, advcl, modals)
+            sent_tree = UMRGraph(tree, deprels_to_relations, args.lang, interpersonal, advcl, modals, conjunctions)
 
             # First pass: create variables for UD nodes.
             for node in tree.descendants:

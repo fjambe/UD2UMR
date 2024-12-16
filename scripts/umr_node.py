@@ -820,10 +820,6 @@ class UMRNode:
     def coordination(self, role):
         """ Handle coordination by building the corresponding UMR structures. """
 
-        conjs = {'or': ['vel', 'uel', 'aut'],  # TODO: make it an external resource
-                 'and': ['que', 'et', 'ac', 'atque', 'nec', 'neque', ','],
-                 'but-91': ['sed', 'at']}
-
         root_var = None
 
         # create one top node for the conjunction governing the coordination
@@ -832,7 +828,7 @@ class UMRNode:
             cc = next((c for c in self.ud_node.children if c.deprel == 'cc'), None)
             if cc is None:
                 cc = next((c for c in self.ud_node.children if c.deprel == 'punct' and c.lemma == ','), None)
-            cord = next((k for k, v in conjs.items() if cc and cc.lemma in v), None)
+            cord = next((k for k, v in self.umr_graph.conjs.items() if cc and cc.lemma in v), None)
             if not cord:  # coordination without conjunction/comma
                 cord = 'and'
             if cc:

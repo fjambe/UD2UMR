@@ -2,9 +2,6 @@
 
 - [a Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
 more about the evaluation.
-- [coding] Figure out what to do with `flat:foreign` (FR). E.g., _Consumer Technology Association_ is
-`flat` in CS. In FR è tutto X e `flat:foreign`. [MON]
-- [coding + documentation] Move coordinate conjunctions to a new external resource. [MON]
 
 ## General
 - I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check `refer-number`, etc.
