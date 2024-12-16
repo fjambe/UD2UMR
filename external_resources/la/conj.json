@@ -1,0 +1,5 @@
+{
+  "and": ["que", "et", "ac", "atque", "nec", "neque", ","],
+  "or": ["vel", "uel", "aut"],
+  "but-91": ["sed", "at"]
+}
