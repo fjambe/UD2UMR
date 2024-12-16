@@ -10,15 +10,14 @@ For PRONs I build the usual NE structure, and so on. [don't think so anymore, es
 ## Notes
 Currently disconnected graphs:
 
-| Language        | Disconnected | Empty_triples |
-|:----------------|:------------:|--------------:|
-| en_pud          |  10 / 1000   |             6 |
-| it_pud          |   9 / 1000   |             4 |
-| fr_pud          |  11 / 1000   |             6 |
-| cs_pud          |   4 / 1000   |             1 |
-| la_perseus_test |   10 / 939   |             1 |
+| Language        | Disconnected | Empty_triples |             Notes              |
+|:----------------|:------------:|--------------:|:------------------------------:|
+| en_pud          |   1 / 1000   |             1 | What should the UMR look like? |
+| it_pud          |   0 / 1000   |             0 |                                |
+| fr_pud          |   0 / 1000   |             0 |                                |
+| cs_pud          |   0 / 1000   |             0 |                                |
+| la_perseus_test |   1 / 939    |             1 | What should the UMR look like? |
 
-Numbers seem to have increased after restructuring copulas - except for Latin.
 
 ### To Penman
 To parse my structure into Penman, it has (?) to look like this:

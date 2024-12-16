@@ -201,6 +201,7 @@ class UMRGraph:
         """
         self.triples = [tup for tup in self.triples if tup[0] != tup[2]]
         self.triples = [tup for tup in self.triples if tup[1] and tup[1] not in ['other', 'root']]
+        self.triples = [tup for tup in self.triples if tup[0]]
 
     def postprocessing_checks(self):
         """
@@ -225,6 +226,16 @@ class UMRGraph:
                                 self.triples.remove(triple)
                                 break
 
+        ##### refer-number incorrectly assigned to NEs #####
+        for triple in self.triples:
+            if triple[1] == 'instance' and triple[2] == 'type-NE':
+                corresponding_triple = next(
+                    (t for t in self.triples if t[0] == triple[0] and t[1] == 'refer-number'),
+                    None
+                )
+                if corresponding_triple:
+                    self.triples.remove(corresponding_triple)
+
     def avoid_disconnection(self):
         dependencies = defaultdict(set)
         disconnecting = set()
@@ -235,10 +246,7 @@ class UMRGraph:
                 dependencies[par].add(ch)
 
         for tup in self.triples:
-            # if '-of' not in tup[1]:
             par, ed, ch = tup
-            # else:
-            #     ch, ed, par = tup
             res = has_parent_attached(par, dependencies, self.root_var)
             if res:
                 disconnecting.add(res)
@@ -378,7 +386,6 @@ class UMRGraph:
 
         for v in variables:
             node = UMRNode.find_by_var_name(self, v)
-            # num_token = node.ud_node.ord if hasattr(node.ud_node, 'ord') else 0
             num_token = node.ord if node else 0
             alignments[v] = num_token
             print(f'{v}: {num_token}-{num_token}', file=destination)

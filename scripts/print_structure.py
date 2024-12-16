@@ -1,4 +1,5 @@
 import sys
+from umr_graph import reorder_triples
 
 def numbered_line_with_alignment(tree, output_file=None):
     """
@@ -67,7 +68,8 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
             en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
             if en_sent:
                 print('Sentence (en):', f"{en_sent[0].lstrip(' text_en = ')}", '\n', file=destination)
+        print(f'Root: {sent_tree.root_var}', file=destination)
         print('Triples:', file=destination)
-        for n in sent_tree.triples:
+        for n in reorder_triples(sent_tree.triples):
             print(n, file=destination)
         print(file=destination)

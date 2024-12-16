@@ -795,9 +795,6 @@ class UMRNode:
             names = [c for c in self.ud_node.children if c.udeprel == 'flat']
             if self.ud_node.upos == 'PROPN' or (self.ud_node.upos in ['NOUN', 'X'] and names):
 
-                if self.ud_node.upos in ['NOUN', 'X'] and names:
-                    self.umr_graph.find_and_remove_from_triples(self.var_name, 0)
-
                 entity = self.create_node('type-NE', self.role, replace=True)
                 entity.ud_node = self.ud_node
                 entity.parent = self.parent
@@ -887,6 +884,8 @@ class UMRNode:
                         oc_node.parent = conj
                         self.umr_graph.triples.append((conj.var_name, oc_node.role, oc_node.var_name))
                         oc_node.get_number_person('number')
+                        if oc.upos in ['PROPN', 'PRON']:
+                            oc_node.entity = True
                         oc_node.already_added = True
 
             return root_var
@@ -920,8 +919,17 @@ class UMRNode:
                 concept = 'identity-91'
 
         elif self.ud_node.parent.upos == 'PRON':
-            if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc']:
+            if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or not self.ud_node.parent.feats['Case']:
                 concept = 'identity-91'
+            if self.ud_node.parent.feats['Case'] == 'Gen':
+                concept = 'belong-91'
+            elif self.ud_node.parent.feats['Case'] == 'Dat':
+                # double dative if ref_dative else dative of possession
+                ref_dative = [s for s in self.ud_node.siblings if
+                              s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
+                concept = 'have-purpose-91' if ref_dative else 'belong-91'
+            else:
+                concept = 'copular-construction'
 
         elif self.ud_node.parent.upos == 'NOUN':
             if self.ud_node.parent.feats['Case'] == 'Gen':
