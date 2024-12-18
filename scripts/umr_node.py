@@ -561,6 +561,8 @@ class UMRNode:
                          and (el["constraint"] is None or eval(el["constraint"]))),
                         (None, None)
                     )
+                    if value and value.split('-')[1] != 'negative':  # cases like forbid
+                        value = self.invert_polarity(value)
 
                     if value and replace == 'yes':
                         self.parent.replace = True
@@ -1045,7 +1047,7 @@ class UMRNode:
     def clauses(self):
         """ Handle clausal subjects and complements (csubj and ccomp). """
         if self.ud_node.deprel == 'ccomp:reported':
-            self.umr_graph.triples.append((self.var_name, 'quot', self.parent.var_name))
+            self.umr_graph.triples.append((self.var_name, 'quote', self.parent.var_name))
         elif self.ud_node.udeprel == 'xcomp':
             if self.parent and not isinstance(self.parent.ud_node, str):
                 nsubj = next((c for c in self.parent.ud_node.children if c.deprel == 'nsubj'), None)
@@ -1058,6 +1060,8 @@ class UMRNode:
                     index = self.umr_graph.triples.index(triple)
                     self.umr_graph.triples[index] = (triple[0], 'experiencer', triple[2])
 
+        self.aspect()
+        self.modality()
         self.add_node(self.role)
 
     def quantities(self):

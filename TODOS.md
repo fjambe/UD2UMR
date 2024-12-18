@@ -67,6 +67,15 @@ After discussing it with Alexis, we came to the conclusion that it would definit
 I still think it will be confusing when it comes to evaluation, but it's going to be very easy to remove (not add it, 
 actually) if I don't want it anymore in my UMRs. It's one line of code. Maybe discuss it with Dan.
 
+- [discussed, no real solution] Double negation with modals, or kind of. E.g., _I forbid you from not eating_.
+It is an issue of the guidelines: encoding by default the lexicalized negation is not a valid strategy, because we can
+happen a negated complement (e.g., _not eating_). It feels weird to reverse the negation in that case, and have e.g.
+`full-affirmative`. Guidelines need refinement. For now, I'll just not do the reversing.
+Also, for the specific case of _forbid_: it shouldn't imply a negative modality, but rather a neutral one. Cf.
+guidelines: "Weak deontic modals, including desire (e.g., want) and permission (e.g., allow), impart NeutAff strength
+on their complements. Certain modals may also lexicalize negation, such as doubt, forbid, or wish. These are annotated
+with the NeutNeg, PrtNeg, and FullNeg values, respectively." --> why permission = neutral vs. _forbid_ = partial?
+
 - [postponed, irrelevant] Do I want to support code-switching? Because I specify the language in input, but it could be
 doable to check for UFeat `Foreign=Yes` and `Lang=grc` (e.g.) in MISC, and update `self.lang` for processing of numbers.
 Not really urgent, not frequent at all.
@@ -79,26 +88,9 @@ I could also implement an additional check for UPOS (= only VERB), but maybe it 
 
 
 ## QUESTIONS:
-- [Alexis] How many sentences do you think I need for evaluation?
-- [Julia] Is there something like `foreign-entity`, `foreign...`? I recall something but not much. Otherwise, how do I
+- [Julia, not asked] Is there something like `foreign-entity`, `foreign...`? I recall something but not much. Otherwise, how do I
 include a foreign expression/word in a graph? Don't have a real example because all those I have are actually supposed
 to be named entities.
-- [Julia] Guidelines: "Weak deontic modals, including desire (e.g., want) and permission (e.g., allow), impart NeutAff strength
-on their complements. Certain modals may also lexicalize negation, such as doubt, forbid, or wish. These are annotated
-with the NeutNeg, PrtNeg, and FullNeg values, respectively." --> why permission = neutral vs. _forbid_ = partial?
-- [Julia] Double negation with modals, or kind of. E.g., I forbid you from not eating.
-
-```
-(f / forbid
-    :ARG0 (p / person
-           :refer-number singular
-           :refer-person plural)
-    :ARG1 (e / eat
-            :aspect ...
-            :modal-strength partial-affirmative)   ???
-    :aspect ...
-    :modal-strength full-affirmative)
-```
 
 ## For Dan:
 - What to do with _nec_ split as _ne_ + _c_? do I merge them in Perseus or handle them in UMR?
@@ -142,4 +134,5 @@ for languages other than Latin.
 - [Alexis (10.12.2024)] Possible venues could be:
   - _Designing Meaning Representation Workshop_ (4-5 Aug, Prague, no deadline for now).
   - _TLT_ -> _SyntaxFest_ (26-29 Aug 2025, deadline in April)
-  - _Linguistic Annotation Workshop (LAW)_ - TBA
+  - _Linguistic Annotation Workshop (LAW)_ - (Jul/Aug, ACL, Vienna, deadline via ARR: 25 Mar, direct submission: 04 Apr)
+  [probably, favourite venue as of now].

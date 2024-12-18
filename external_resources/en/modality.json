@@ -6,7 +6,8 @@
     {"lemma": "think", "modal-strength": "full-affirmative", "replace": null, "modal-predicate": "yes", "constraint": null},
     {"lemma": "say", "modal-strength": "full-affirmative", "replace": null, "modal-predicate": "yes", "constraint": null},
     {"lemma": "declare", "modal-strength": "full-affirmative", "replace": null, "modal-predicate": "yes", "constraint": null},
-    {"lemma": "affirm", "modal-strength": "full-affirmative", "replace": null, "modal-predicate": "yes", "constraint": null}
+    {"lemma": "affirm", "modal-strength": "full-affirmative", "replace": null, "modal-predicate": "yes", "constraint": null},
+    {"lemma": "forbid", "modal-strength": "partial-negative", "replace": null, "modal-predicate": "yes", "constraint": null}
   ],
   "grammatical": []
 }
