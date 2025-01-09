@@ -1,6 +1,9 @@
 # TODO - UD2UMR converter
 
-- [a Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
+- [coding] Consider implementing adverbs that affect `modal-strength` (already available for Czech, see PDT conversion).
+- [resources] External resources for all languages (en, it + fr).
+- [checking] After lists for cs are ready, send output to UFAL UMR.
+- [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
 more about the evaluation.
 
 ## General
@@ -110,7 +113,7 @@ All other _nec_ s are not split in two as a MWE.
 
 - So, main steps:
   1. Evaluation comparing UD tree to UMR graph, to show hoe well my parser works. Just UAS, because the labels are
-  different so not relevant.
+  different and therefore not relevant.
   2. UMR evaluation on single graphs. Gold UMRs needed here.
     I can use some of the Latin ones from Sallust, plus annotate some more, ideally for other languages.
     They don't need to be that many, I guess.
