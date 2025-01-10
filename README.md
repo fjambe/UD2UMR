@@ -11,8 +11,6 @@ in the `requirements.txt` file.
 pip install -r requirements.txt
 ```
 
-**TODO**: double check udapi.
-
 The UD2UMR converter has been tested with Python 3.9.5.
 
 ## Usage
@@ -23,19 +21,19 @@ To run the code, two arguments are required:
 For example, in order to convert the English PUD test file to UMR, run the following:
 
 ```commandline
-python3 main.py --treebank en_pud-ud-test.conllu --lang en
+python3 scripts/main.py --treebank en_pud-ud-test.conllu --lang en
 ```
 
 To convert the English example stored in `data/`, run the following:
 ```commandline
-python3 main.py --treebank en_example.conllu --lang en
+python3 scripts/main.py --treebank en_example.conllu --lang en
 ```
 
 The CoNLL-U files to be passed in input are expected to be stored in a `data/` directory;
 however, a different directory can be specified using the `--data_dir` command line argument:
 
 ```commandline
-python3 main.py --treebank en_pud-ud-test.conllu --lang en --data_dir /directory/with/conllu/file
+python3 scripts/main.py --treebank en_pud-ud-test.conllu --lang en --data_dir /directory/with/conllu/file
 ```
 
 Converted UMRs will be saved in an `output/` folder, which will be created by the converter if it doesn't already exist.
@@ -43,7 +41,7 @@ You can also specify a different output directory (either an existing one or one
 the `--output_dir` argument:
 
 ```commandline
-python3 main.py --treebank en_pud-ud-test.conllu --lang en --output_dir /directory/to/store/umrs
+python3 scripts/main.py --treebank en_pud-ud-test.conllu --lang en --output_dir /directory/to/store/umrs
 ```
 
 ## Structure of this repository
