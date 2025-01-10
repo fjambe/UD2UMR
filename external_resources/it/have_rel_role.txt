@@ -42,3 +42,4 @@ madrina
 padrino
 figlioccia
 figlioccio
+parente

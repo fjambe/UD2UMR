@@ -1,7 +1,7 @@
-lemma,type,constraint_on_parent
-zatímco,temporal,Mood=Ind
-když,temporal,
-dokud,temporal,
-jakmile,temporal,
-pokud,temporal,
-protože,cause,
+lemma,type,constraint_on_parent,polarity
+zatímco,temporal,Mood=Ind,
+když,temporal,,
+dokud,temporal,,
+jakmile,temporal,,
+pokud,temporal,,
+protože,cause,,

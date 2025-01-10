@@ -71,7 +71,9 @@ def load_external_files(filename: str, language: str) -> Union[set, dict]:
                 reader = csv.reader(f)
                 next(reader)
                 for line in reader:
-                    terms[line[0]] = {'type': line[1], 'constraint': line[2].split('|') if line[2] else None}
+                    terms[line[0]] = {'type': line[1],
+                                      'constraint': line[2].split('|') if line[2] else None,
+                                      'polarity': line[3] if line[3] else None}
             elif extension == 'json':
                 terms = json.load(f)
         return terms

@@ -1,7 +1,7 @@
 # TODO - UD2UMR converter
 
 - [coding] Consider implementing adverbs that affect `modal-strength` (already available for Czech, see PDT conversion).
-- [resources] External resources for all languages (en, it + fr).
+- [resources] External resources for all languages (en, fr + it: only modality not revised yet).
 - [checking] After lists for cs are ready, send output to UFAL UMR.
 - [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
 more about the evaluation.

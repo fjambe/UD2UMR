@@ -1,5 +1,6 @@
 {
-  "and": ["e", "ed", ","],
+  "and": ["e", "ed", "né", "sia", ","],
   "or": ["o", "oppure"],
-  "but-91": ["ma", "però"]
+  "but-91": ["ma", "però"],
+  "contrast-91": ["mentre", "invece"]
 }

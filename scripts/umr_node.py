@@ -840,7 +840,7 @@ class UMRNode:
             conj.ud_node = cc
             if cc:
                 conj.ord = cc.ord
-            arg_type = 'op' if cord != 'but-91' else 'ARG'
+            arg_type = 'op' if not cord.endswith('-91') else 'ARG'
 
             if not self.extra_level:
                 first_conj = self.parent
@@ -1009,6 +1009,10 @@ class UMRNode:
         role = 'ADVCL'
         sconj = next((c for c in self.ud_node.children if c.deprel == 'mark'), None)
 
+        if sconj and sconj.lemma not in self.umr_graph.advcl:
+            print(sconj.lemma)
+            print(sconj.root.text)
+
         if sconj and self.umr_graph.advcl and sconj.lemma in self.umr_graph.advcl:
             constraint = self.umr_graph.advcl.get(sconj.lemma, {}).get('constraint')
             if constraint:
@@ -1019,8 +1023,14 @@ class UMRNode:
                         valid.append(sconj.parent.feats[feat] == value)
                 if all(valid):
                     role = self.umr_graph.advcl.get(sconj.lemma, {}).get('type')
+                    polarity = self.umr_graph.advcl.get(sconj.lemma, {}).get('polarity')
+                    if polarity:
+                        self.umr_graph.triples.append((self.var_name, 'polarity', polarity))
             else:
                 role = self.umr_graph.advcl.get(sconj.lemma, {}).get('type')
+                polarity = self.umr_graph.advcl.get(sconj.lemma, {}).get('polarity')
+                if polarity:
+                    self.umr_graph.triples.append((self.var_name, 'polarity', polarity))
 
         if not self.extra_level:
             if not (hasattr(self.ud_node, 'lemma') and (self.umr_graph.modals and
