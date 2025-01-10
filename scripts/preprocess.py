@@ -53,9 +53,11 @@ def get_role_from_deprel(ud_node, deprels):
 
 def load_external_files(filename: str, language: str) -> Union[set, dict]:
     """
-    Read a file containing lemmas and return them as a set. Used for:
+    Store language-specific information. Used for:
     1. interpersonal relations (filename: have_rel_role.txt);
     2. SCONJs determining the type of adverbial clauses (advcl.csv).
+    3. VERBs entailing different values for modality (filename: modality.json);
+    4. disambiguated conjunctions (filename: conj.json).
     """
 
     extension = filename.split('.')[-1]
@@ -72,11 +74,10 @@ def load_external_files(filename: str, language: str) -> Union[set, dict]:
                     terms[line[0]] = {'type': line[1], 'constraint': line[2].split('|') if line[2] else None}
             elif extension == 'json':
                 terms = json.load(f)
+        return terms
 
     except FileNotFoundError:
         print(f"File {filename.split('/')[-1]} not found. Lexical information not available.")
-
-    return terms
 
 
 def is_number(text):

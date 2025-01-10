@@ -1,10 +1,7 @@
 # TODO - UD2UMR converter
 
-- [coding] Update function `load_lexical_resources` (docstring, `return` statement)
-- [coding] Verify what happens when no file for conjunction is provided (fr), and decide how essential it is.
 - [coding] Consider implementing adverbs that affect `modal-strength` (already available for Czech, see PDT conversion).
 - [deployment] Figure out what happens with Udapi installation.
-- [documentation] Update description of external resources in README.
 - [resources] External resources for all languages (en, it + fr).
 - [checking] After lists for cs are ready, send output to UFAL UMR.
 - [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something

@@ -49,12 +49,12 @@ python3 main.py --treebank en_pud-ud-test.conllu --lang en --output_dir /directo
 ## Structure of this repository
 
 * The `data/` folder contains `en_example.conllu`, a sample input file with a single sentence.
-* All necessary python scripts are in the `scripts/` folder.
+* All scripts are in the `scripts/` folder.
 * External resources providing language-specific lexical information can be found in the `external_resources/` folder.
-Each language has its own subdirectory, where the files are named `advcl.csv`, `have-rel-role,txt`, `modality.json`.
-Language-specific material for additional languages should be stored in the same way.
-It is not required to include all three files; you may include one or two only. In any case, the converter works even
-without any lexical files available.
+Each language has its own subdirectory, where the files are named `advcl.csv`, `have-rel-role,txt`, `modality.json`,
+`conj.json`. Language-specific material for additional languages should be stored in the same way.
+It is not required to include all three files; you may include as many as available. In any case, the converter works
+even without any lexical files.
 
 ```
 UD2UMR
@@ -72,14 +72,17 @@ UD2UMR
 │ │ ├── have-rel-role.txt
 │ ├── en                                    # materials for English
 │ │ ├── advcl.csv
+│ │ ├── conj.json
 │ │ ├── have-rel-role.txt
 │ │ ├── modality.json
 │ ├── it                                    # materials for Italian
 │ │ ├── advcl.csv
+│ │ ├── conj.json
 │ │ ├── have-rel-role.txt
 │ │ ├── modality.json
 │ ├── la                                    # materials for Latin
 │ │ ├── advcl.csv
+│ │ ├── conj.json
 │ │ ├── have-rel-role.txt
 │ │ ├── modality.json   
 ├── README.md         

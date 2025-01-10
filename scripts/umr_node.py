@@ -827,7 +827,10 @@ class UMRNode:
             cc = next((c for c in self.ud_node.children if c.deprel == 'cc'), None)
             if cc is None:
                 cc = next((c for c in self.ud_node.children if c.deprel == 'punct' and c.lemma == ','), None)
-            cord = next((k for k, v in self.umr_graph.conjs.items() if cc and cc.lemma in v), None)
+            if self.umr_graph.conjs:
+                cord = next((k for k, v in self.umr_graph.conjs.items() if cc and cc.lemma in v), None)
+            else:
+                cord = None
             if not cord:  # coordination without conjunction/comma
                 cord = 'and'
             if cc:
@@ -923,7 +926,7 @@ class UMRNode:
         elif self.ud_node.parent.upos == 'PRON':
             if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or not self.ud_node.parent.feats['Case']:
                 concept = 'identity-91'
-            if self.ud_node.parent.feats['Case'] == 'Gen':
+            elif self.ud_node.parent.feats['Case'] == 'Gen':
                 concept = 'belong-91'
             elif self.ud_node.parent.feats['Case'] == 'Dat':
                 # double dative if ref_dative else dative of possession
@@ -940,7 +943,7 @@ class UMRNode:
                 # double dative if ref_dative else dative of possession
                 ref_dative = [s for s in self.ud_node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
                 concept = 'have-purpose-91' if ref_dative else 'belong-91'
-            elif self.ud_node.parent.lemma in self.umr_graph.rel_roles:
+            elif self.umr_graph.rel_roles and self.ud_node.parent.lemma in self.umr_graph.rel_roles:
                 concept = 'have-rel-role-92'
                 replace_arg = 'ARG3'
             else:
@@ -1006,7 +1009,7 @@ class UMRNode:
         role = 'ADVCL'
         sconj = next((c for c in self.ud_node.children if c.deprel == 'mark'), None)
 
-        if sconj and sconj.lemma in self.umr_graph.advcl:
+        if sconj and self.umr_graph.advcl and sconj.lemma in self.umr_graph.advcl:
             constraint = self.umr_graph.advcl.get(sconj.lemma, {}).get('constraint')
             if constraint:
                 valid = []
