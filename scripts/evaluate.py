@@ -3,6 +3,8 @@
 
 import argparse
 import penman
+import pandas as pd
+
 import tests
 
 def extract_umr_graph(file_path):
@@ -35,13 +37,22 @@ def extract_umr_graph(file_path):
 
 def run_tests(predicted, gold):
     """ Runs the evaluation tests on predicted and gold UMR graphs. """
-    print("EVALUATION")
-    print("|________________|")
+    # TODO: implement check of sent number (assert snt number is the same) and do something (check, assert?) same number of sentences
+    data = [
+        ("modal-strength", "strength", "precision", tests.modal_strength(predicted, gold)[0]),
+        ("modal-strength", "polarity", "precision", tests.modal_strength(predicted, gold)[1]),
+        ("abstract predicates", "predicate", "precision", tests.abstract(predicted, gold)[0]),
+        ("abstract predicates", "dependent ARGs", "recall", tests.abstract(predicted, gold)[1]),
+        ("abstract predicates", "dependent ARGs", "precision", tests.abstract(predicted, gold)[2]),
+        ("refer-number (entities)", "-", "precision", tests.pronouns(predicted, gold)[0]),
+        ("refer-person (entities)", "-", "precision", tests.pronouns(predicted, gold)[1]),
+        ("inverted relations", "parent", "precision", tests.inverted_relations(predicted, gold)[0]),
+        ("inverted relations", "edge", "precision", tests.inverted_relations(predicted, gold)[1])
+    ]
     # tests.coordination(predicted, gold)
-    tests.modal_strength(predicted, gold)
-    # tests.abstract(predicted, gold)
-    tests.pronouns(predicted, gold)
-    tests.inverted_relations(predicted, gold)
+
+    df = pd.DataFrame(data, columns=["Type", "Sub-type", "Metric", "Score"])
+    print(df.to_string(index=False))
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--converted", help="Path of the converted file to evaluate.", required=True)
