@@ -35,13 +35,13 @@ def extract_umr_graph(file_path):
 
 def run_tests(predicted, gold):
     """ Runs the evaluation tests on predicted and gold UMR graphs. """
-    print("Evaluation scores:")
+    print("EVALUATION")
+    print("|________________|")
     # tests.coordination(predicted, gold)
     tests.modal_strength(predicted, gold)
-    # tests.named_entities(predicted, gold)
     # tests.abstract(predicted, gold)
     tests.pronouns(predicted, gold)
-    # tests.relatives(predicted, gold)
+    tests.inverted_relations(predicted, gold)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--converted", help="Path of the converted file to evaluate.", required=True)
