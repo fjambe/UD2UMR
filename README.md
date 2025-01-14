@@ -4,8 +4,8 @@ into a Uniform Meaning Representation (UMR) graph. \
 The converter only handles sentence-level graphs and alignments; document-level annotation has not been implemented.
 
 ## Set up
-The UD2UMR converter requires the Python packages `penman`, `udapi` `word2number`, `googletrans==4.0.0-rc1`, all listed
-in the `requirements.txt` file.
+The UD2UMR converter requires the Python packages `penman`, `udapi` `word2number`, `googletrans==4.0.0-rc1`, `scikit-learn`,
+all listed in the `requirements.txt` file.
 
 ```commandline
 pip install -r requirements.txt
