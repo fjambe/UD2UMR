@@ -1,11 +1,34 @@
 from penman import layout
 from sklearn.metrics import accuracy_score
 
-def coordination(predicted, gold):
+from preprocess import load_external_files
+
+def coordination(predicted, gold, lang):
     """ Evaluates the accuracy of coordination relations. """
+    conjunctions = load_external_files('conj.json', lang)
     for g_pred, g_gold in zip(predicted, gold):
         # print(g_pred.triples)
-        pass
+        coord_pred = [t for t in g_pred.instances() if t[2] in conjunctions] if conjunctions else \
+            [t for t in g_pred.instances() if t[2] == 'and']
+        coord_pred = [t for t in coord_pred if any('ARG' in c[1] for c in g_pred.edges(source=t[0])) or
+                 any('op' in c[1] for c in g_pred.edges(source=t[0]))]
+        coord_gold = [t for t in g_gold.instances() if t[2] in conjunctions] if conjunctions else\
+            [t for t in g_gold.instances() if t[2] == 'and']
+        coord_gold = [t for t in coord_gold if any('ARG' in c[1] for c in g_gold.edges(source=t[0])) or
+                 any('op' in c[1] for c in g_gold.edges(source=t[0]))]
+
+    # TODO: ASK HOWTO
+    # 1. I wanted to check if the correct conjunction has been selected, but I can't just do 'if t_pred[2] == t_gold[2],
+    # where both are 'and', because I could match two different hands.
+    # Possible solution: I constrained the 'and' on its dependents, i.e. the two conjs are the same only if they share
+    # the dependent nodes. Issue: UMR freedom in lemmatizing concepts.
+    # So, not doable! I can't check if the conjunction is correct.
+
+    # 2. I wanted to check if all opX dependents have been retrieved. Again, same issues as above. Can't do it.
+
+    # 3. About the nodes that have been attached as opX to the conjunction: are they supposed to be attached as
+    # coordinated items? Again, not really doable due to the issues descrcibed above.
+
 def abstract(predicted, gold):
     """
     Evaluates the accuracy of abstract predicates and their dependent ARGs, by checking:

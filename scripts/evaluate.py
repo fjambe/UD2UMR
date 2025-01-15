@@ -61,7 +61,7 @@ def run_tests(predicted, gold):
         ("refer-person (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[1]),
         ("inverted relations", "parent", "accuracy", tests.inverted_relations(predicted, gold)[0]),
         ("inverted relations", "edge", "accuracy", tests.inverted_relations(predicted, gold)[1]),
-        ("coordination", "opX", "accuracy", tests.coordination(predicted, gold))
+        ("coordination", "opX", "accuracy", tests.coordination(predicted, gold, args.lang))
     ]
 
     df = pd.DataFrame(data, columns=["Type", "Sub-type", "Metric", "Score"])
@@ -70,6 +70,7 @@ def run_tests(predicted, gold):
 parser = argparse.ArgumentParser()
 parser.add_argument("--converted", help="Path of the converted file to evaluate.", required=True)
 parser.add_argument("--gold", help="Path of the gold standard file for evaluation.", required=True)
+parser.add_argument("--lang", help="Language code of the graphs (e.g., 'en' for English).", required=True)
 
 
 if __name__ == "__main__":

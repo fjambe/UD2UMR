@@ -4,6 +4,8 @@
 - [coding] Check how negation in coordination is handled.
 - [resources] External resources for all languages (en, fr + it: only modality not revised yet).
 - [checking] After lists for cs are ready, send output to UFAL UMR.
+- [deployment] Ask somebody else to run the converter, and see if they encounter new issues. Most probably, first finish
+the evaluation, so that it can be tested as well.
 - [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
 more about the evaluation.
 
