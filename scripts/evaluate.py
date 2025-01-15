@@ -8,24 +8,18 @@ import pandas as pd
 import tests
 
 def extract_umr_graph(file_path):
-    """
-    Extracts the UMR graph section from a text file.
-
-    Args:
-        file_path (str): The path to the input text file containing the UMR graphs.
-
-    Returns:
-        list of penman.Graphs: A list of Penman graphs loaded from the extracted UMR graph section.
-    """
     with open(file_path) as file:
         in_graph_section = False
         graph_lines = []
+        metadata = {}
 
         for line in file:
             stripped_line = line.lstrip()
             if stripped_line.startswith('#'):
                 if "sentence level graph" in stripped_line:
                     in_graph_section = True
+                elif ":: snt" in stripped_line:  # graph identifier
+                    metadata['snt'] = stripped_line.split()[-1]
                 elif in_graph_section:
                     # End of UMR graph section at the next comment line
                     in_graph_section = False
@@ -33,11 +27,30 @@ def extract_umr_graph(file_path):
                 graph_lines.append(line)
 
     graph_data = ''.join(graph_lines)  # join the graph lines into a single string
-    return penman.loads(graph_data)
+    graph = penman.loads(graph_data)
+
+    if isinstance(graph, list):
+        for g in graph:
+            g.metadata = metadata
+    else:
+        graph.metadata = metadata
+
+    return graph
 
 def run_tests(predicted, gold):
     """ Runs the evaluation tests on predicted and gold UMR graphs. """
-    # TODO: implement check of sent number (assert snt number is the same) and do something (check, assert?) same number of sentences
+
+    assert len(gold) == len(predicted), (
+        f"Number of gold graphs ({len(gold)}) and converted graphs ({len(predicted)}) do not match."
+    )
+
+    # Check if IDs of each graph match
+    for gold_graph, predicted_graph in zip(gold, predicted):
+        assert gold_graph.metadata.get('snt') == predicted_graph.metadata.get('snt'), (
+            f"Graph ID mismatch: Gold graph ID '{gold_graph.metadata.get('snt')}' "
+            f"does not match predicted graph ID '{predicted_graph.metadata.get('snt')}'."
+        )
+
     data = [
         ("modal-strength", "strength", "accuracy", tests.modal_strength(predicted, gold)[0]),
         ("modal-strength", "polarity", "accuracy", tests.modal_strength(predicted, gold)[1]),
@@ -47,9 +60,9 @@ def run_tests(predicted, gold):
         ("refer-number (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[0]),
         ("refer-person (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[1]),
         ("inverted relations", "parent", "accuracy", tests.inverted_relations(predicted, gold)[0]),
-        ("inverted relations", "edge", "accuracy", tests.inverted_relations(predicted, gold)[1])
+        ("inverted relations", "edge", "accuracy", tests.inverted_relations(predicted, gold)[1]),
+        ("coordination", "opX", "accuracy", tests.coordination(predicted, gold))
     ]
-    # tests.coordination(predicted, gold)
 
     df = pd.DataFrame(data, columns=["Type", "Sub-type", "Metric", "Score"])
     print(df.to_string(index=False))

@@ -2,8 +2,10 @@ from penman import layout
 from sklearn.metrics import accuracy_score
 
 def coordination(predicted, gold):
-    print("Coordination: %")
-
+    """ Evaluates the accuracy of coordination relations. """
+    for g_pred, g_gold in zip(predicted, gold):
+        # print(g_pred.triples)
+        pass
 def abstract(predicted, gold):
     """
     Evaluates the accuracy of abstract predicates and their dependent ARGs, by checking:
@@ -17,6 +19,7 @@ def abstract(predicted, gold):
     arg_score_gold, arg_score_pred = [], []
 
     for g_pred, g_gold in zip(predicted, gold):
+
         abstract_pred = [t for t in g_pred.instances() if t[2].endswith("-91") or t[2].endswith("-92")]
         abstract_gold = {t[0]: t[2] for t in g_gold.instances() if t[2].endswith(("-91", "-92"))}
 
