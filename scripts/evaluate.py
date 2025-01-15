@@ -39,15 +39,15 @@ def run_tests(predicted, gold):
     """ Runs the evaluation tests on predicted and gold UMR graphs. """
     # TODO: implement check of sent number (assert snt number is the same) and do something (check, assert?) same number of sentences
     data = [
-        ("modal-strength", "strength", "precision", tests.modal_strength(predicted, gold)[0]),
-        ("modal-strength", "polarity", "precision", tests.modal_strength(predicted, gold)[1]),
-        ("abstract predicates", "predicate", "precision", tests.abstract(predicted, gold)[0]),
+        ("modal-strength", "strength", "accuracy", tests.modal_strength(predicted, gold)[0]),
+        ("modal-strength", "polarity", "accuracy", tests.modal_strength(predicted, gold)[1]),
+        ("abstract predicates", "predicate", "accuracy", tests.abstract(predicted, gold)[0]),
         ("abstract predicates", "dependent ARGs", "recall", tests.abstract(predicted, gold)[1]),
-        ("abstract predicates", "dependent ARGs", "precision", tests.abstract(predicted, gold)[2]),
-        ("refer-number (entities)", "-", "precision", tests.pronouns(predicted, gold)[0]),
-        ("refer-person (entities)", "-", "precision", tests.pronouns(predicted, gold)[1]),
-        ("inverted relations", "parent", "precision", tests.inverted_relations(predicted, gold)[0]),
-        ("inverted relations", "edge", "precision", tests.inverted_relations(predicted, gold)[1])
+        ("abstract predicates", "ARGs nodes", "accuracy", tests.abstract(predicted, gold)[2]),
+        ("refer-number (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[0]),
+        ("refer-person (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[1]),
+        ("inverted relations", "parent", "accuracy", tests.inverted_relations(predicted, gold)[0]),
+        ("inverted relations", "edge", "accuracy", tests.inverted_relations(predicted, gold)[1])
     ]
     # tests.coordination(predicted, gold)
 

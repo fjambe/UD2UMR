@@ -5,11 +5,16 @@ def coordination(predicted, gold):
     print("Coordination: %")
 
 def abstract(predicted, gold):
-    """ Evaluates the precision of abstract predicates and their dependent ARGs. """  # TODO: improve
-    # TODO: move to accuracy_score
-    predicate_score, predicate_count = 0, 0
+    """
+    Evaluates the accuracy of abstract predicates and their dependent ARGs, by checking:
+    - if the abstract concept label has been correctly selected (e.g., have-mod-91 both in predicted and gold);
+    - how many correct relations having the abstract predicate as parent have been retrieved;
+    - if ARG relations are assigned to the correct nodes.
+    """
+    # TODO: it might be necessary to re-think this function radically.
     children_edges_score, children_edges_count = 0, 0
-    arg_score, arg_count = 0, 0
+    predicate_gold, predicate_pred = [], []
+    arg_score_gold, arg_score_pred = [], []
 
     for g_pred, g_gold in zip(predicted, gold):
         abstract_pred = [t for t in g_pred.instances() if t[2].endswith("-91") or t[2].endswith("-92")]
@@ -24,8 +29,8 @@ def abstract(predicted, gold):
             if t[2] == abstract_gold[t[0]]:  # finds only matching predicates
                 abs_variable = t[0]
                 children_gold = children_pred
-                predicate_count += 1
-                predicate_score += 1
+                predicate_gold.append(abstract_gold[t[0]])
+                predicate_pred.append(t[2])
             else:
                 # find first ARG among dependent nodes and check if its parent is a different abstract predicate
                 # not perfect. TODO: think about how to retrieve more mistakes in assigning the abstract concept label.
@@ -39,24 +44,26 @@ def abstract(predicted, gold):
                         if abs_variable_gold:
                             abs_variable = abs_variable_gold
                             children_gold = g_gold.edges(source=matching_gold[0])
-                            predicate_count += 1
+                            predicate_gold.append(abs_variable[2])
+                            predicate_pred.append(t[2])
 
-            # How many relations having the abstract predicate as parent have been retrieved?
+            # How many correct relations having the abstract predicate as parent have been retrieved?
             if abs_variable:
                 children_edges_count += len(children_gold)
                 children_edges_score += sum(1 for x in children_pred if x in children_gold)
 
-            # Are ARGs assigned to the correct nodes?  # TODO: not sure it makes sense given UMR freedom in naming concepts.
+            # # Are ARGs assigned to the correct nodes?  # TODO: not sure it makes sense given UMR freedom in naming concepts.
             for a in [c for c in children_pred if 'ARG' in c[1]]:
-                arg_count += 1
-                arg_score += (next((g for g in g_gold.edges(source=a[0]) if a[1] == g[1] and a[2] == g[2]), None) is not None)
+                arg_score_gold.append(a[2])
+                match = next((g for g in g_gold.edges(source=a[0]) if a[1] == g[1]), None)
+                arg_score_pred.append(match[2] if match else None)
 
-    return (f"{predicate_score / predicate_count:.2f}" if predicate_count else "-",
+    return (f"{accuracy_score(predicate_gold, predicate_pred):.2f}" if predicate_gold else "-",
             f"{children_edges_score / children_edges_count:.2f}" if children_edges_count else "-",
-            f"{arg_score / arg_count:.2f}" if arg_count else "-")
+            f"{accuracy_score(arg_score_gold, arg_score_pred):.2f}" if arg_score_gold else "-")
 
 def modal_strength(predicted, gold):
-    """ Evaluates the precision for both the strength and polarity components of `modal-strength` attributes. """
+    """ Evaluates the accuracy for both the strength and polarity components of `modal-strength` attributes. """
     strength_gold, strength_pred, polarity_gold, polarity_pred = [], [], [], []
 
     for g_pred, g_gold in zip(predicted, gold):
@@ -78,7 +85,7 @@ def modal_strength(predicted, gold):
 
 
 def pronouns(predicted, gold):
-    """ Evaluates the precision of `refer-number` and `refer-person` annotations for entity nodes (`person`/`thing`). """
+    """ Evaluates the accuracy of `refer-number` and `refer-person` annotations for entity nodes (`person`/`thing`). """
     number_gold, number_pred, person_gold, person_pred = [], [], [], []
 
     for g_pred, g_gold in zip(predicted, gold):
@@ -107,7 +114,7 @@ def pronouns(predicted, gold):
 
 
 def inverted_relations(predicted, gold):
-    """ Evaluates the precision of inverted relations in the predicted UMR graphs. """
+    """ Evaluates the accuracy of inverted relations in the predicted UMR graphs. """
     parent_pred, parent_gold, edge_pred, edge_gold = [], [], [], []
 
     for g_pred, g_gold in zip(predicted, gold):
