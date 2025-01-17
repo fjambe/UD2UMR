@@ -1009,10 +1009,6 @@ class UMRNode:
         role = 'ADVCL'
         sconj = next((c for c in self.ud_node.children if c.deprel == 'mark'), None)
 
-        if sconj and sconj.lemma not in self.umr_graph.advcl:
-            print(sconj.lemma)
-            print(sconj.root.text)
-
         if sconj and self.umr_graph.advcl and sconj.lemma in self.umr_graph.advcl:
             constraint = self.umr_graph.advcl.get(sconj.lemma, {}).get('constraint')
             if constraint:

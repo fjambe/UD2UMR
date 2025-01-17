@@ -2,7 +2,7 @@
 
 - [coding] Consider implementing adverbs that affect `modal-strength` (already available for Czech, see PDT conversion).
 - [coding] Check how negation in coordination is handled.
-- [checking] After lists for cs are ready, send output to UFAL UMR.
+- [checking] Send cs output to UFAL UMR.
 - [deployment] Ask somebody else to run the converter, and see if they encounter new issues. Most probably, first finish
 the evaluation, so that it can be tested as well.
 

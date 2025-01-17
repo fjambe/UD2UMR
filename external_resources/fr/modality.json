@@ -32,7 +32,7 @@
     {"lemma": "énoncer", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
     {"lemma": "asserter", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
     {"lemma": "soutenir", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
-    {"lemma": "certifier", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "certifier", "modal-strength": "full-affirmative", "replace": "no", "constraint": null}
   ],
   "grammatical": []
 }
