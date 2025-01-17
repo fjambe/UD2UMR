@@ -1,0 +1,12 @@
+lemma,type,constraint_on_parent,polarity
+quand,temporal,,
+avant,temporal,,
+après,temporal,,
+comme,cause,,
+parce,cause,,
+puisque,cause,,
+si,condition,,
+sans,manner,,-
+quoique,concession,,
+malgré,concession,,
+pour,purpose,VerbForm=Inf,

@@ -64,5 +64,5 @@ if __name__ == "__main__":
             # Print out the UMR structure
             print_structure(tree, sent_tree, umr, sent_num, output, print_in_file=True)
 
-            # break
+            break
 

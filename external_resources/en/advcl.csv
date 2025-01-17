@@ -7,6 +7,8 @@ after,temporal,,
 because,cause,,
 although,concession,,
 though,concession,,
-unless,condition,,
+unless,condition,,-
 if,condition,,
+provided,condition,,
 without,manner,VerbForm=Ger,-
+by,manner,VerbForm=Ger,

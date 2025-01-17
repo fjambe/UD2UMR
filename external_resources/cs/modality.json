@@ -1,0 +1,31 @@
+{
+  "lexical": [
+    {"lemma": "moci", "modal-strength": "neutral-affirmative", "replace": "yes", "constraint": null},
+    {"lemma": "muset", "modal-strength": "partial-affirmative", "replace": "yes", "constraint": null},
+    {"lemma": "chtít", "modal-strength": "neutral-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "myslet", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "myslit", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "říci", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "říct", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "říkat", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "povědět", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "povídat", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "pravit", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "prohlásit", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "potvrdit", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "zakázat", "modal-strength": "partial-negative", "replace": "no", "constraint": null},
+    {"lemma": "deklarovat", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "oznámit", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "ohlásit", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "plánovat", "modal-strength": "partial-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "zamýšlet", "modal-strength": "partial-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "potřebovat", "modal-strength": "partial-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "doufat", "modal-strength": "neutral-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "preferovat", "modal-strength": "neutral-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "upřednostňovat", "modal-strength": "neutral-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "dovolit", "modal-strength": "neutral-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "popřít", "modal-strength": "full-negative", "replace": "no", "constraint": null},
+    {"lemma": "zabránit", "modal-strength": "full-negative", "replace": "no", "constraint": null}
+  ],
+  "grammatical": []
+}
