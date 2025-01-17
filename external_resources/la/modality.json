@@ -46,7 +46,14 @@
     {"lemma": "renuo", "modal-strength": "full-negative", "replace": "no", "constraint": null},
     {"lemma": "impedio", "modal-strength": "full-negative", "replace": "no", "constraint": null},
     {"lemma": "inhibeo", "modal-strength": "full-negative", "replace": "no", "constraint": null},
-    {"lemma": "interpello", "modal-strength": "full-negative", "replace": "no", "constraint": null}
+    {"lemma": "interpello", "modal-strength": "full-negative", "replace": "no", "constraint": null},
+    {"lemma": "declaro", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "denuntio", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "denuncio", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "indico", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "profiteor", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "renuntio", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
+    {"lemma": "testor", "modal-strength": "full-affirmative", "replace": "no", "constraint": null}
   ],
   "grammatical": [
     {

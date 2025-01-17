@@ -2,12 +2,12 @@
 
 - [coding] Consider implementing adverbs that affect `modal-strength` (already available for Czech, see PDT conversion).
 - [coding] Check how negation in coordination is handled.
-- [resources] External resources for all languages (en, fr + it: only modality not revised yet).
+- [resources] External resources for all languages (en, fr + cs: from Hanka).
+- [resources] Maybe check what happens with multiword tokens (e.g., cs _abychom_).
+- [coding] ARGx for constrast-91 in advcl.csv
 - [checking] After lists for cs are ready, send output to UFAL UMR.
 - [deployment] Ask somebody else to run the converter, and see if they encounter new issues. Most probably, first finish
 the evaluation, so that it can be tested as well.
-- [Monday morning] Ask for a venue for the conversion work (besides DSM in Prague). Maybe after I figure out something
-more about the evaluation.
 
 ## General
 - I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check `refer-number`, etc.
