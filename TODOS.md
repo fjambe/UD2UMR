@@ -131,7 +131,18 @@ for languages other than Latin.
   extremely time-consuming and labour-intensive, and also that starting from a converted backbone ensures you to have a
   comparable UMRs, since many different UMR structures can be equally correct (e.g. _Lennart Mari_, _kandidovat_).
   But you also need to compare how the annotation from scratch differs from that from backbone, e.g. on Latin data.
-  You could e.g. measure the time it takes and discuss differences you end up noticing in graphs,
+  You could e.g. measure the time it takes and discuss differences you end up noticing in graphs.
+
+- [Notes (20.01.2025)]
+  - _AnCast_ paper: 2 methods to find anchor pairs. If manual alignment between a graph and the word tokens exist, the
+  alignment between a pair of concepts can be inferred from it (a pair of concepts aligned to the same word tokens can be
+  considered to be an initial anchor pair). If graphs are not manually aligned to word tokens, the alternative is to
+  extract a subset of highly similar pairs from a pair of graphs for the same sentence (FG: not doable).
+  - The issue is that then they update the initial anchor matrix in the iterative anchor broadcast step -> FG: not doable.
+  - It could be nice if I could use their alignment system, and then just do my evaluation. Seems to be working!
+  - "Micro F1 is calculated by averaging all triple-pair scores across the whole dataset."
+  - An interesting feature is that it provides precision, recall, F1 scores, which could be an interesting measure (recall)
+  of how much information I am losing to avoid graph disconnection.
 
 # PAPER
 - [Alexis (10.12.2024)] Possible venues could be:

@@ -7,6 +7,7 @@ import pandas as pd
 
 import tests
 
+
 def extract_umr_graph(file_path):
     with open(file_path) as file:
         in_graph_section = False
@@ -40,15 +41,15 @@ def extract_umr_graph(file_path):
 def run_tests(predicted, gold):
     """ Runs the evaluation tests on predicted and gold UMR graphs. """
 
-    assert len(gold) == len(predicted), (
-        f"Number of gold graphs ({len(gold)}) and converted graphs ({len(predicted)}) do not match."
+    assert len(predicted) == len(gold), (
+        f"Number of converted graphs ({len(predicted)}) and gold graphs ({len(gold)}) do not match."
     )
 
     # Check if IDs of each graph match
-    for gold_graph, predicted_graph in zip(gold, predicted):
-        assert gold_graph.metadata.get('snt') == predicted_graph.metadata.get('snt'), (
-            f"Graph ID mismatch: Gold graph ID '{gold_graph.metadata.get('snt')}' "
-            f"does not match predicted graph ID '{predicted_graph.metadata.get('snt')}'."
+    for predicted_graph, gold_graph in zip(predicted, gold):
+        assert predicted_graph.metadata.get('snt') == gold_graph.metadata.get('snt'), (
+            f"Graph ID mismatch: Predicted graph ID '{predicted_graph.metadata.get('snt')}' "
+            f"does not match gold graph ID '{gold_graph.metadata.get('snt')}'."
         )
 
     data = [

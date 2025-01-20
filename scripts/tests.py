@@ -19,7 +19,7 @@ def coordination(predicted, gold, lang):
 
     # TODO: ASK HOWTO
     # 1. I wanted to check if the correct conjunction has been selected, but I can't just do 'if t_pred[2] == t_gold[2],
-    # where both are 'and', because I could match two different hands.
+    # where both are 'and', because I could match two different and.
     # Possible solution: I constrained the 'and' on its dependents, i.e. the two conjs are the same only if they share
     # the dependent nodes. Issue: UMR freedom in lemmatizing concepts.
     # So, not doable! I can't check if the conjunction is correct.
@@ -27,7 +27,7 @@ def coordination(predicted, gold, lang):
     # 2. I wanted to check if all opX dependents have been retrieved. Again, same issues as above. Can't do it.
 
     # 3. About the nodes that have been attached as opX to the conjunction: are they supposed to be attached as
-    # coordinated items? Again, not really doable due to the issues descrcibed above.
+    # coordinated items? Again, not really doable due to the issues described above.
 
 def abstract(predicted, gold):
     """
