@@ -91,9 +91,9 @@ I could also implement an additional check for UPOS (= only VERB), but maybe it 
 
 
 ## QUESTIONS:
-- [Julia, not asked] Is there something like `foreign-entity`, `foreign...`? I recall something but not much. Otherwise, how do I
-include a foreign expression/word in a graph? Don't have a real example because all those I have are actually supposed
-to be named entities.
+- [Julia, not asked] Is there something like `foreign-entity`, `foreign...`? I recall something but not much. Otherwise,
+how do I include a foreign expression/word in a graph? Don't have a real example because all those I have are actually
+supposed to be named entities.
 
 ## For Dan:
 - What to do with _nec_ split as _ne_ + _c_? do I merge them in Perseus or handle them in UMR?
@@ -120,9 +120,11 @@ All other _nec_ s are not split in two as a MWE.
 - In any case, before the final evaluation, got through converted UMRS with Dan / UMR team  + refine external resources
 for languages other than Latin.
 
+
 - [Alexis (10.12.2024)]
   - You could add some time evaluation, e.g. by involving Czech annotators and measuring how much time it takes for them
   to build a UMR from scratch vs. having the converted graphs.
+
 
 - [Dan (12.12.2024)]
   - I can take UMR released data, parse them to get UMRs, and then run the evaluation.
@@ -132,6 +134,7 @@ for languages other than Latin.
   comparable UMRs, since many different UMR structures can be equally correct (e.g. _Lennart Mari_, _kandidovat_).
   But you also need to compare how the annotation from scratch differs from that from backbone, e.g. on Latin data.
   You could e.g. measure the time it takes and discuss differences you end up noticing in graphs.
+
 
 - [Notes (20.01.2025)]
   - _AnCast_ paper: 2 methods to find anchor pairs. If manual alignment between a graph and the word tokens exist, the
@@ -144,9 +147,42 @@ for languages other than Latin.
   - An interesting feature is that it provides precision, recall, F1 scores, which could be an interesting measure (recall)
   of how much information I am losing to avoid graph disconnection.
 
+  - Issue: the AnCast GitHub repo is undergoing some substantial changes, in preparation of the `pypi` release.
+  Currently, my code still relies on the old version, because trying to update it according to the new one did not work.
+  However, I need to come back to this at some point. \
+  Old repo: https://github.com/sxndqc/ancast \
+  New repo: https://github.com/umr4nlp/ancast
+
+
+- [Dan (21.01.2025)]
+  - Possible things to evaluate (backbone):
+    - How many nodes should have a node and they don't?
+    - For nodes that I have, look at the relations between them: is it correct (sort of LAS)?
+    - Attributes are approachable similarly to tagging.
+  - Interesting phenomena revolve around places of UMR graphs where the structure is very different from the UD one
+  (e.g., coordination, any non-verbal predication).
+
+  - TEST SET:
+    - Come up with an ordered list of sentences to annotate from scratch (and from converted graphs).
+    - In PUD, 2 genres (Wikipedia - w, and news - n) + original langauge of the data (5).
+    E.g., n01: should be English news. "The first 750 sentences are originally English (01).
+    The remaining 250 sentences are originally German (02), French (03), Italian (04) or Spanish (05)
+    and they were translated to other languages via English"
+    - Manual annotation/correction of converted graphs?
+    Start with some (50?) sentences from scratch, note down the time it takes, as well as the `sent_id`.
+    - A test set of 200 sentences (per language) would be nice - doable with correction of converted graphs.
+    - Preparing the backbone (initial block of comments, block with alignments) is not cheating.
+    - Is the annotator going to be faster having the backbone with nodes, also in the alignment block?
+    It's a research question itself.
+    - At some point, some manual evaluation needs to be done (for the thesis).
+    - For the paper, it is fine having 2 languages.
+
+
 # PAPER
-- [Alexis (10.12.2024)] Possible venues could be:
+- [Alexis (10.12.2024)] \
+  Possible venues could be:
   - _Designing Meaning Representation Workshop_ (4-5 Aug, Prague, no deadline for now).
   - _TLT_ -> _SyntaxFest_ (26-29 Aug 2025, deadline in April)
-  - _Linguistic Annotation Workshop (LAW)_ - (Jul/Aug, ACL, Vienna, deadline via ARR: 25 Mar, direct submission: 04 Apr)
-  [probably, favourite venue as of now].
+  - _Linguistic Annotation Workshop (LAW)_ - (Jul/Aug, ACL, Vienna, deadline via ARR: 25 Mar, direct submission: 04 Apr).
+
+    
