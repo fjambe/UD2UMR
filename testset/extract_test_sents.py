@@ -1,7 +1,6 @@
 import random
 
 def select_sentences(dataset):
-    # news = {"en": [], "de": [], "fr": [], "it": [], "es": []}
     news = {"01": [], "02": [], "03": [], "04": [], "05": []}
     wiki = {"01": [], "02": [], "03": [], "04": [], "05": []}
 
@@ -15,11 +14,11 @@ def select_sentences(dataset):
 
     selected = []
 
-    # Select 20 + 20 sentences for each language, from both news and Wikipedia
+    # Select 35 sentences from news and 35 from Wikipedia, distributed across all languages
     for language in ["01", "02", "03", "04", "05"]:
-        # Randomly choose 20 news sentences and 20 wiki sentences for each language
-        selected.extend(random.sample(news[language], 20))
-        selected.extend(random.sample(wiki[language], 20))
+        # Randomly choose 7 news sentences and 7 wiki sentences for each language
+        selected.extend(random.sample(news[language], 7))
+        selected.extend(random.sample(wiki[language], 7))
     return selected
 
 
@@ -32,6 +31,6 @@ with open("../data/en_pud-ud-test.conllu") as file:
 
 selected_sentences = sorted(select_sentences(sent_ids))
 
-with open("test_sent_ids.txt", "w") as output:
+with open("converted_70_test_sent_ids.txt", "w") as output:
     for s in selected_sentences:
         output.write(s + '\n')

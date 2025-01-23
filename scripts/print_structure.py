@@ -59,7 +59,8 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
         print(umr, '\n', file=destination)
         print('# alignment:', file=destination)
         sent_tree.alignments(output_file)
-        print('\n', '# document level annotation', file=destination)
+        print(file=destination)
+        print('# document level annotation', file=destination)
         print('\n', file=destination)
     else:
         print(f'# sent_id = {tree.address()}', file=destination)
@@ -73,5 +74,6 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
         print('Triples:', file=destination)
         for n in reorder_triples(sent_tree.triples):
             print(n, file=destination)
-        print('\n', '# document level annotation', file=destination)
+        print(file=destination)
+        print('# document level annotation', file=destination)
         print(file=destination)
