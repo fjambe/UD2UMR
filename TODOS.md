@@ -164,16 +164,14 @@ for languages other than Latin.
 
   - TEST SET:
     - Come up with an ordered list of sentences to annotate from scratch (and from converted graphs).
-    - In PUD, 2 genres (Wikipedia - w, and news - n) + original langauge of the data (5).
-    E.g., n01: should be English news. "The first 750 sentences are originally English (01).
-    The remaining 250 sentences are originally German (02), French (03), Italian (04) or Spanish (05)
-    and they were translated to other languages via English"
+    - In PUD, 2 genres (Wikipedia - w, and news - n) + original langauge of the data (5). E.g., _n01_: English news.
+    Cf. "The first 750 sentences are originally English (01). The remaining 250 sentences are originally German (02),
+    French (03), Italian (04) or Spanish (05) and they were translated to other languages via English"
     - Manual annotation/correction of converted graphs?
     Start with some (50?) sentences from scratch, note down the time it takes, as well as the `sent_id`.
     - A test set of 200 sentences (per language) would be nice - doable with correction of converted graphs.
-    - Preparing the backbone (initial block of comments, block with alignments) is not cheating.
-    - Is the annotator going to be faster having the backbone with nodes, also in the alignment block?
-    It's a research question itself.
+    - Preparing the backbone (initial block of comments, block with alignments) is not cheating. Is the annotator going
+    to be faster having the backbone with nodes, also in the alignment block? It's a research question itself.
     - At some point, some manual evaluation needs to be done (for the thesis).
     - For the paper, it is fine having 2 languages.
 
