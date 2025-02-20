@@ -2,7 +2,6 @@
 
 - [coding] Consider implementing adverbs that affect `modal-strength` (already available for Czech, see PDT conversion).
 - [coding] Check how negation in coordination is handled.
-- [checking] Send cs output to UFAL UMR.
 - [deployment] Ask somebody else to run the converter, and see if they encounter new issues. Most probably, first finish
 the evaluation, so that it can be tested as well.
 
@@ -177,10 +176,11 @@ for languages other than Latin.
 
 
 # PAPER
-- [Alexis (10.12.2024)] \
+- [Alexis (10.12.2024) + other] \
   Possible venues could be:
-  - _Designing Meaning Representation Workshop_ (4-5 Aug, Prague, no deadline for now).
-  - _TLT_ -> _SyntaxFest_ (26-29 Aug 2025, deadline in April)
-  - _Linguistic Annotation Workshop (LAW)_ - (Jul/Aug, ACL, Vienna, deadline via ARR: 25 Mar, direct submission: 04 Apr).
+  - _6th International Workshop on Designing Meaning Representation_ (4-5 Aug, Prague, deadline: 21 Apr; dual submission allowed).
+  - _TLT_ -> _SyntaxFest_ (26-29 Aug 2025, deadline: 15 Apr).
+  - _19th Linguistic Annotation Workshop (LAW-XIX)_ (Jul/Aug, ACL, Vienna, deadline via ARR: 25 Mar, direct submission: 04 Apr).
+  - _16th International Conference on Computational Semantics (IWCS)_ (22-24 Sep, Heinrich Heine University Düsseldorf, deadline: 06 Jun; dual submission allowed).
 
     
