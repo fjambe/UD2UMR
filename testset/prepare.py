@@ -58,10 +58,10 @@ if __name__ == "__main__":
     doc = udapi.Document(f'{args.data_dir}/{args.treebank}')
     sent_num = 0
 
-    with open("manual_30_test_sent_ids.txt", "r") as selection:
+    with open("converted_70_test_sent_ids.txt", "r") as selection:
         sents = [s.rstrip() for s in selection.readlines()]
 
-    with open(f"manual_{args.treebank.split('_')[0]}_test.txt", "w",  encoding="utf-8") as output:
+    with open(f"converted_{args.treebank.split('_')[0]}_test.txt", "w",  encoding="utf-8") as output:
         for tree in doc.trees:
             if tree.address() in sents:
                 sent_num += 1
