@@ -1036,40 +1036,81 @@ Sentence: La Grecia era divisa in molte piccole comunità autogovernate, un mode
 Sentence (en): Greece was divided into many small, self-governing communities, a pattern largely dictated by Greek geography: every island, valley and plain is cut off from its neighbours by the sea or mountain ranges. 
 
 # sentence level graph:
-(s23 / )
+(s23d / dividere
+    :theme (s23c / country
+        :name (s23n / name :op1 "Grecia"))
+    :result (s23c2 / comunità
+        :refer-number plural
+        :mod (s23p / piccola)
+        :quant (s23m3 / molto)
+        :undergoer-of (s23g / governare
+            :actor s23c2
+            :aspect performance
+            :modal-strength full-affirmative)
+            :ARG1-of (s23i / identity-91
+                :ARG2 (s23m / modello
+                    :refer-number singular
+                    :ARG1-of (s23h / have-cause-91
+                        :ARG2 (s23g2 / geografia
+                            :refer-number singular
+                            :mod s23c
+                            :ARG1-of (s23i2 / identity-91
+                                :ARG2 (s23s / separare
+                                    :theme (s23a / and
+                                        :op1 (s23i3 / isola
+                                            :quant (s23o / ogni))
+                                        :op2 (s23v / valle
+                                            :quant (s23o2 / ogni))
+                                        :op3 (s23p2 / pianura
+                                            :quant (s23o3 / ogni)))
+                                    :source (s23l2 / luogo
+                                        :refer-number singular
+                                        :mod (s23v2 / vicino))
+                                    :cause (s23o4 / or
+                                        :op1 (s23m2 / mare :refer-number singular)
+                                        :op2 (s23c3 / catena
+                                            :refer-number plural
+                                            :mod (s23m3 / montuoso)))
+                                :aspect state
+                                :modal-strength full-affirmative)
+                            :aspect state
+                            :modal-strength full-affirmative))
+                        :extent (s23l / largamente)
+                        :aspect state
+                        :modal-strength full-affirmative))
+                :aspect state
+                :modal-strength full-affirmative))
+    :aspect state
+    :modal-strength full-affirmative)
 
 # alignment:
-s23l: 
-s23g: 
-s23e: 
-s23d: 
-s23m: 
-s23p: 
-s23c: 
-s23a: 
-s23u: 
-s23m2: 
-s23l2: 
-s23d2: 
-s23l3: 
-s23g2: 
-s23g3: 
-s23o: 
-s23i: 
-s23v: 
-s23e2: 
-s23p2: 
-s23è: 
-s23s: 
-s23i2: 
-s23l4: 
-s23v2: 
-s23i3: 
-s23m3: 
-s23o2: 
-s23l5: 
-s23c2: 
-s23m4: 
+s23d: 3-4
+s23c: 2-2
+s23n: 0-0
+s23m3: 6-6
+s23p: 7-7
+s23c2: 8-8
+s23g: 9-9
+s23i: 10-10
+s23m: 11-11
+s23l: 13-13
+s23h: 14-14
+s23g2: 17-17
+s23i2: 19-19
+s23o: 20-20
+s23o2: 20-20
+s23o3: 20-20
+s23i3: 21-21
+s23v: 23-23
+s23a: 24-24
+s23p2: 25-25
+s23s: 26-27
+s23l2: 30-30
+s23v2: 31-31
+s23m2: 34-34
+s23o4: 35-35
+s23c3: 38-38
+s23m3: 39-39
 
 # document level annotation
 
@@ -1082,27 +1123,44 @@ Sentence: Il commercio venne sviluppato stabilendo avamposti commerciali in tutt
 Sentence (en): Trade was developed by establishing commercial outposts throughout the Mediterranean, a technique that had not been used until then. 
 
 # sentence level graph:
-(s24 / )
+(s24s / sviluppare
+    :undergoer (s24c / commercio :refer-number singular)
+    :manner (s24s2 / stabilire
+        :theme (s24a / avamposto
+            :refer-number plural
+            :mod (s24c / commerciale))
+        :goal (s24g / geographical-entity
+            :name (s24n / name :op1 "Mediterraneo")
+            :quant (s24t / tutto))
+        :aspect performance
+        :modal-strength full-affirmative
+        :ARG1-of (s24i / identity-91
+            :ARG2 (s24t / tecnica
+                :refer-number singular
+                :undergoer-of (s24u / usare
+                    :temporal (s24u2 / until
+                        :op1 (s24a2 / allora))
+                    :aspect process
+                    :modal-strength full-negative))
+            :aspect state
+            :modal-strength full-affirmative))
+    :aspect performance
+    :modal-strength full-affirmative)
 
 # alignment:
-s24i: 
-s24c: 
-s24v: 
-s24s: 
-s24s2: 
-s24a: 
-s24c2: 
-s24t: 
-s24i2: 
-s24m: 
-s24u: 
-s24t2: 
-s24c3: 
-s24n: 
-s24s3: 
-s24u2: 
-s24a2: 
-s24a3: 
+s24c: 2-2
+s24s: 3-4
+s24s2: 5-5
+s24a: 6-6
+s24c2: 7-7
+s24t: 9-9
+s24g: 11-11
+s24n: 0-0
+s24i: 12-12
+s24t: 14-14
+s24u: 16-19
+s24u2: 20-21
+s24a2: 22-22
 
 # document level annotation
 
@@ -1115,31 +1173,45 @@ Sentence: Nel 1976 cadde in disuso l'ippodromo, e nel 1990 un incendio distrusse
 Sentence (en): In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables. 
 
 # sentence level graph:
-(s25 / )
+(s25a / and
+    :op1 (s25u / usare
+        :undergoer (s25i / ippodromo :refer-number singular)
+        :temporal (s25d / date-entity :year 1976)
+        :aspect endeavor
+        :modal-strength full-affirmative)
+    :op2 (s25d2 / distruggere
+        :force (s25i2 / incendio :refer-number singular)
+        :temporal (s25d4 / date-entity :year 1990)
+        :undergoer (s25t / thing
+            :theme-of (s25r / rimanere
+                :source (s25t2 / tribuna
+                    :refer-number plural
+                    :material (s25l / legno)
+                    :undergoer-of (s25d3 / demolire
+                        :temporal (s25s / seguito)
+                        :undergoer (s25s2 / stalla :refer-number singular)
+                        :aspect performance
+                        :modal-strength full-affirmative))
+                :aspect state
+                :modal-strength full-affirmative))
+        :aspect performance
+        :modal-strength full-affirmative))
 
 # alignment:
-s25i: 
-s251: 
-s25c: 
-s25d: 
-s25l: 
-s25i2: 
-s25e: 
-s25i3: 
-s2512: 
-s25u: 
-s25i4: 
-s25d2: 
-s25c2: 
-s25c3: 
-s25r: 
-s25l2: 
-s25t: 
-s25l3: 
-s25s: 
-s25d3: 
-s25a: 
-s25s2: 
+s25u: 4-6
+s25i: 8-8
+s24d: 3-3
+s25a: 10-10
+s25s4: 13-13
+s25i2: 15-15
+s25d2: 16-16
+s25t: 17-17
+s25r: 19-19
+s25t2: 22-22
+s25l: 24-24
+s25s: 26-27
+s25d3: 28-28
+s25s2: 31-31
 
 # document level annotation
 
@@ -1152,24 +1224,38 @@ Sentence: Le emissioni di moneta hanno carattere prevalentemente numismatico, e 
 Sentence (en): The issuing of coinage is predominantly numismatic in nature, with the intention of being sold mainly to collectors. 
 
 # sentence level graph:
-(s26 / )
+(s26a / and
+    :op1 (s26h / have-mod-91
+        :ARG1 (s26e / emettere
+            :theme (s26m / moneta)
+            :aspect performance
+            :modal-strength full-affirmative)
+        :ARG2 (s26n / numismatico)
+        :manner (s26p / prevalentemente)
+        :aspect state
+        :modal-strength full-affirmative)
+    :op2 (s26h2 / have-purpose-91
+        :ARG1 s26e
+        :ARG2 (s26v / vendere
+            :theme s26e
+            :recipient (s26c / collezionista :Refer-number plural)
+            :aspect performance
+            :modal-strength full-affirmative)
+        :manner (s26s / soprattutto)
+        :aspect state
+        :modal-strength full-affirmative))
 
 # alignment:
-s26l: 
-s26e: 
-s26m: 
-s26h: 
-s26c: 
-s26p: 
-s26n: 
-s26e2: 
-s26s: 
-s26d: 
-s26s2: 
-s26e3: 
-s26v: 
-s26i: 
-s26c2: 
+s26e: 2-2
+s26m: 4-4
+s26h: 5-6
+s26p: 7-7
+s26n: 8-8
+s26a: 10-10
+s26h2: 11-12
+s26s: 13-13
+s26v: 15-16
+s26c: 19-19
 
 # document level annotation
 
@@ -1182,34 +1268,69 @@ Sentence: L'uomo gli dice che è in arrivo una guerra tra i due universi, come l
 Sentence (en): The man told him that a war between the two universes is coming, as he and Walter had predicted; it is for this reason that Olivia, among others, was trained as a child. 
 
 # sentence level graph:
-(s27 / )
+(s27d / dire
+    :actor (s27u / uomo :refer-number singular)
+    :recipient (s27p / person
+        :refer-number singular
+        :refer-person 3rd)
+    :theme (s27a3 / and
+        :op1 (s27a / arrivare
+            :theme (s27c / combattere
+                :actor (s27u2 / universo :quant 2)
+                :aspect activity
+                :modal-strength full-affirmative)
+            :aspect activity
+            :modal-strength full-affirmative
+            :ARG1-of (s27r / resemble-91
+                :ARG2 (s27p2 / predire
+                    :actor (s27a2 / and
+                        :op1 s27u
+                        :op2 (s27p3 / person
+                            :name (s27n / name :op1 "Walter")))
+                    :aspect performance
+                    :modal-strength full-affirmative)
+                :aspect state
+                :modal-strength full-affirmative))
+        :op2 (s27h / have-reason-91
+            :ARG1 (s27a4 / addestrare
+                :undergoer (s27a5 / and
+                    :op1 (s27p4 / person
+                        :name (s27n2 / name :op1 "Olivia"))
+                    :op2 (s27a6 / altro :refer-number plural))
+                :temporal (s27i / identity-91
+                    :ARG1 s27p4
+                    :ARG2 (s27b / bambino)
+                    :aspect state
+                    :modal-strength full-affirmative)
+                :aspect performance
+                :modal-strength full-affirmative)
+            :ARG2 s27a
+            :aspect state
+            :modal-strength full-affirmative))
+    :aspect
+    :modal-strength full-affirmative)
 
 # alignment:
-s27l: 
-s27u: 
-s27g: 
-s27d: 
-s27è: 
-s27a: 
-s27u2: 
-s27g2: 
-s27i: 
-s27d2: 
-s27u3: 
-s27l2: 
-s27e: 
-s27w: 
-s27p: 
-s27e2: 
-s27è2: 
-s27q: 
-s27m: 
-s27o: 
-s27a2: 
-s27a3: 
-s27f: 
-s27a4: 
-s27b: 
+s27u: 2-2
+s27p: 3-3
+s27d: 4-4
+s27a: 6-8
+s27c: 10-10
+s27u2: 12-13
+s27r: 16-16
+s27a2: 18-18
+s27n: 0-0
+s27p3: 19-19
+s27p2: 20-21
+s27a3: 23-23
+s27h: 25-28
+s27p4: 30-30
+s27n2: 0-0
+s27a5: 32-33
+s27a6: 34-34
+s27a4: 36-37
+s27i: 38-38
+s27b: 39-39
 
 # document level annotation
 
@@ -1222,25 +1343,41 @@ Sentence: Prima che si formassero le Ande, il limite occidentale del Sud America
 Sentence (en): Before the Andes were formed, the western margin of South America had already been the site of several orogenies. 
 
 # sentence level graph:
-(s28 / )
+(s28i / identity-91
+    :ARG1 (s28l / limite
+        :mod (s28o / occidentale)
+        :mod (s28w / world-region
+            :name (s28n2 / name
+                :op1 "Sud"
+                :op2 "America")))
+    :ARG2 (s28s / sito
+        :mod (s28o2 / orogenesi
+            :refer-number plural
+            :quant (s28d / diverso)))
+    :manner (s28g2 / già)
+    :temporal (s28b / before
+        :op1 (s28f / formare
+            :theme (s28g / geographical-entity
+                :name (s28n / name :op1 "Ande"))
+            :aspect performance
+            :modal-strength full-affirmative))
+    :aspect state
+    :modal-strength full-affirmative)
 
 # alignment:
-s28c: 
-s28s: 
-s28f: 
-s28l: 
-s28a: 
-s28i: 
-s28l2: 
-s28o: 
-s28i2: 
-s28s2: 
-s28a2: 
-s28g: 
-s28s3: 
-s28s4: 
-s28d: 
-s28o2: 
+s28b: 1-1
+s28f: 3-4
+s28n: 0-0
+s28g: 6-6
+s28l: 9-9
+s28o: 10-10
+s28w: 13-14
+s28i: 15-15, 17-17
+s28n2: 0-0
+s28g2: 16-16
+s28s: 18-18
+s28d: 20-20
+s28o2: 21-21
 
 # document level annotation
 
@@ -1253,42 +1390,75 @@ Sentence: Nel 1976, si incontrò con Kiki Dee, un amico che lavorava con la sua 
 Sentence (en): In 1976 he met with a friend who worked with his record label The Rocket Record Company, Kiki Dee, to record what would be another remarkable success for him: "Don't Go Breaking My Heart". 
 
 # sentence level graph:
-(s29 / )
+(s29i / incontrare
+    :actor (s29p / person
+        :refer-number singular
+        :refer-person 3rd)
+    :co-actor (s29p2 / person
+        :name (s29n / name :op1 "Kiki" :op2 "Dee")
+        :ARG1-of (s29i2 / identity-91
+            :ARG2 (s29a / amico
+                :actor-of (s29l / lavorare
+                    :companion (s29e / etichetta
+                        :refer-number singular
+                        :mod (s29d / discografico)
+                        :poss s29p
+                        :ARG1-of (s29h / have-name-91
+                            :ARG2 (s29n2 / name
+                                :op1 "The"
+                                :op2 "Rocket"
+                                :op3 "Record"
+                                :op4 "Company")
+                            :aspect state
+                            :modal-strength full-affirmative))
+                    :purpose (s29r / registrare
+                        :actor s29p
+                        :undergoer (s29m / music
+                            :name (s29n3 / name
+                                :op1 "Don"
+                                :op2 "'t"
+                                :op3 "go"
+                                :op4 "Breaking"
+                                :op5 "My"
+                                :op6 "Heart")
+                            :ARG1-of (s29i3 / identity-91
+                                :ARG2 (s29s / successo
+                                    :mod (s29a2 / altro)
+                                    :mod (s29d3 / degno
+                                        :mod (s29n4 / nota :refer-number singular)))
+                                :aspect state
+                                :modal-strength full-affirmative))
+                        :aspect process
+                        :modal-strength full-affirmative)
+                    :aspect activity
+                    :modal-strength full-affirmative))
+            :aspect state
+            :modal-strength full-affirmative))
+    :temporal (s29d / date-entity :year 1976)
+    :aspect performance
+    :modal-strength full-affirmative)
 
 # alignment:
-s29i: 
-s291: 
-s29s: 
-s29i2: 
-s29k: 
-s29d: 
-s29u: 
-s29a: 
-s29c: 
-s29l: 
-s29l2: 
-s29s2: 
-s29e: 
-s29d2: 
-s29t: 
-s29r: 
-s29r2: 
-s29c2: 
-s29r3: 
-s29q: 
-s29c3: 
-s29s3: 
-s29u2: 
-s29a2: 
-s29s4: 
-s29d3: 
-s29n: 
-s29d4: 
-s29t2: 
-s29g: 
-s29b: 
-s29m: 
-s29h: 
+s29i: 5-6
+s29d: 3-3
+s29p: 0-0
+s29p2: 8-9
+s29n: 0-0
+s29i2: 0-0
+s29a: 12-12
+s29l: 14-14
+s29e: 18-18
+s29d2: 19-19
+s29n2: 0-0
+s29h: 20-23
+s29r: 26-26
+s29m: 27-27, 39-44
+s29n3: 0-0
+s29i3: 29-30
+s29a2: 32-32
+s29s: 33-33
+s29d3: 34-34
+s29n4: 36-36
 
 # document level annotation
 
@@ -1301,29 +1471,51 @@ Sentence: Il 1 gennaio 49 d.C., Marco Antonio lesse una dichiarazione di Cesare 
 Sentence (en): On the 1st January 49 BC, Marco Antonio read a declaration from Caesar in which the proconsul declared himself a friend of peace. 
 
 # sentence level graph:
-(s30 / )
+(s30l / leggere
+    :actor (s30p / person
+        :name (s30n / name
+            :op1 "Marco"
+            :op2 "Antonio"))
+    :theme (s30d2 / dichiarazione
+        :actor (s30p2 / person
+            :name (s30n2 / name :op1 "Cesare"))
+        :place (s30d3 / dichiarare
+            :actor (s30p3 / person
+                :ARG1-of (s30h / have-role-91
+                    :ARG3 (s30p4 / proconsole)
+                    :aspect state
+                    :modal-strength full-affirmative))
+            :result (s30h2 / have-rol-91
+                :ARG2 (s30p5 / pace)
+                :ARG3 (s30a / amico)
+                :aspect state
+                :modal-strength full-affirmative)
+            :theme s30p3
+            :aspect performance
+            :modal-strength full-affirmative))
+    :temporal (s30d / date-entity
+        :day 1
+        :month 1
+        :year 49
+        :era d.C.)
+    :aspect performance
+    :modal-strength full-affirmative)
 
 # alignment:
-s30i: 
-s301: 
-s30g: 
-s304: 
-s30d: 
-s30m: 
-s30a: 
-s30l: 
-s30u: 
-s30d2: 
-s30c: 
-s30l2: 
-s30q: 
-s30i2: 
-s30p: 
-s30s: 
-s30d3: 
-s30a2: 
-s30l3: 
-s30p2: 
+s30d: 2-5
+s30n: 0-0
+s30p: 7-8
+s30l: 9-9
+s30d2: 11-11
+s30n2: 0-0
+s30p2: 13-13
+s30p3: 0-0
+s30p4: 18-18
+s30d3: 20-20
+s30a: 21-21
+s30p5: 24-24
+s30h: 0-0
+s30h2: 0-0
 
 # document level annotation
 
