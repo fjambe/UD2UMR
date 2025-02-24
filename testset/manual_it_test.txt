@@ -214,7 +214,8 @@ Sentence (en): By the 3rd century the emperor Caracalla made a new division whic
                 :mod (s5s / solo))
             :aspect performance
             :modal-strength full-affirmative))
-    :temporal (s5d2 / date-entity :century 3)
+    :temporal (s5b / before
+        :op1 (s5d2 / date-entity :century 3))
     :aspect performance
     :modal-strength full-affirmative)
 
@@ -226,7 +227,8 @@ s5p: 8-8
 s5f: 9-9
 s5d: 12-12
 s5u: 11-11
-s5d2: 1-4
+a5b: 1-1
+s5d2: 3-4
 s5s2:  15-15
 s5p2: 17-17
 s5t: 18-18
