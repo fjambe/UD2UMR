@@ -29,40 +29,46 @@ if __name__ == "__main__":
     modals = pr.load_external_files('modality.json', args.lang)
     conjunctions = pr.load_external_files('conj.json', args.lang)
 
+    # with open("testset/converted_70_test_sent_ids.txt", "r", encoding="utf8") as for_test_file:  # to produce the test set only
+    #     test = for_test_file.read().splitlines()
+
     os.makedirs(args.output_dir, exist_ok=True)
     with open(os.path.join(args.output_dir, f"{args.treebank.split('.')[0]}.umr"), "w",  encoding="utf-8") as output:
+    # with open(f"testset/converted_{args.lang}_test.txt", "w", encoding="utf-8") as output:  # to produce the test set only
 
         for tree in doc.trees:
 
-            sent_num += 1
+            # if tree.address() in test:
 
-            deprels_to_relations = pr.get_deprels(tree)
-            sent_tree = UMRGraph(tree, deprels_to_relations, args.lang, interpersonal, advcl, modals, conjunctions)
+                sent_num += 1
 
-            # First pass: create variables for UD nodes.
-            for node in tree.descendants:
-                if node.deprel not in ['aux', 'case', 'punct', 'mark']:
-                    role = pr.get_role_from_deprel(node, deprels_to_relations)
-                    item = UMRNode(node, sent_tree, role=role)
+                deprels_to_relations = pr.get_deprels(tree)
+                sent_tree = UMRGraph(tree, sent_num, deprels_to_relations, args.lang, interpersonal, advcl, modals, conjunctions)
 
-            # Second pass: assign initial parents after all nodes have been created.
-            for n in sent_tree.nodes:
-                n.parent = n.find_by_ud_node(sent_tree, n.ud_node.parent)
+                # First pass: create variables for UD nodes.
+                for node in tree.descendants:
+                    if node.deprel not in ['aux', 'case', 'punct', 'mark']:
+                        role = pr.get_role_from_deprel(node, deprels_to_relations)
+                        item = UMRNode(node, sent_tree, role=role)
 
-            # Third pass: create relations between variables and build the UMR structure.
-            for n in sent_tree.nodes:
-                if not isinstance(n.ud_node, str):
-                    n.ud_to_umr()
+                # Second pass: assign initial parents after all nodes have been created.
+                for n in sent_tree.nodes:
+                    n.parent = n.find_by_ud_node(sent_tree, n.ud_node.parent)
 
-            # Fourth pass: replace nodes that are supposed to correspond to a UMR entity (PRON, PROPN).
-            # They are processed separately to avoid clashes with layered constructions (e.g., abstract rolesets).
-            for n in sent_tree.nodes:
-                n.replace_entities()
+                # Third pass: create relations between variables and build the UMR structure.
+                for n in sent_tree.nodes:
+                    if not isinstance(n.ud_node, str):
+                        n.ud_to_umr()
 
-            umr = sent_tree.to_penman()
+                # Fourth pass: replace nodes that are supposed to correspond to a UMR entity (PRON, PROPN).
+                # They are processed separately to avoid clashes with layered constructions (e.g., abstract rolesets).
+                for n in sent_tree.nodes:
+                    n.replace_entities()
 
-            # Print out the UMR structure
-            print_structure(tree, sent_tree, umr, sent_num, output, print_in_file=True)
+                umr = sent_tree.to_penman()
 
-            # break
+                # Print out the UMR structure
+                print_structure(tree, sent_tree, umr, sent_num, output, print_in_file=True)
+
+                # break
 

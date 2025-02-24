@@ -3,6 +3,7 @@ from collections import defaultdict
 import penman
 import warnings
 from penman.exceptions import LayoutError
+
 from umr_node import UMRNode, type_of_triple
 
 def has_parent_attached(parent, stored_dependencies, root, visited=None):
@@ -77,12 +78,13 @@ def reorder_triples(triples):
 
 
 class UMRGraph:
-    def __init__(self, ud_tree, deprels, language, rel_roles, advcls, modality, conjunctions):
+    def __init__(self, ud_tree, sent_num, deprels, language, rel_roles, advcls, modality, conjunctions):
         """
         Initializes a UMRGraph instance to represent a sentence UMR graph.
 
         Attributes:
             ud_tree: The UD tree (Udapi Node).
+            sent_num: The sentence number.
             deprels (dict): A dictionary mapping UD dependency relations to UMR roles.
             self.root_var (str, optional): A variable representing the root of the UMR graph.
             self.nodes (list[UMRNode]): A list of UMRNode instances representing the nodes in the UMR graph.
@@ -100,6 +102,7 @@ class UMRGraph:
             conjunctions (dict): lexical resource to disambiguate coordinating conjunctions.
         """
         self.ud_tree = ud_tree
+        self.sent_num = sent_num
         self.deprels = deprels
         self.root_var = None
         self.nodes: list[UMRNode] = []
@@ -134,6 +137,7 @@ class UMRGraph:
             str: A unique variable name.
         """
         first_letter = form.lemma[0].lower() if hasattr(form, 'lemma') else form[0].lower()
+        first_letter = 's' + str(self.sent_num) + first_letter
         count = 2
 
         if first_letter in self.variable_names:
@@ -154,7 +158,8 @@ class UMRGraph:
         Return a list of triples with corrected variable naming, if necessary.
         Corrects variable names by organizing them by letter, ensuring sequential numbering.
         """
-        var_pattern = re.compile(r"^([a-z])(\d*)$")
+        var_pattern = re.compile(r"^([a-z])(\d+)([a-z])(\d*)$")
+
         var_groups = {}
 
         var_names = [v for v in self.variable_names if v == self.root_var or self.find_in_triples(v, 2) != -1]
@@ -162,8 +167,8 @@ class UMRGraph:
         for var in var_names:
             match = var_pattern.match(var)
             if match:
-                base_letter = match.group(1)
-                number = int(match.group(2)) if match.group(2) else 1
+                base_letter = match.group(3)
+                number = int(match.group(4)) if match.group(4) else 1
                 var_groups.setdefault(base_letter, []).append((number, var))
 
         renaming_map = {}
@@ -172,7 +177,7 @@ class UMRGraph:
             variables.sort()
 
             for new_number, (current_number, var) in enumerate(variables, start=1):
-                new_var = f"{base_letter}{new_number if new_number > 1 else ''}"
+                new_var = f"s{self.sent_num}{base_letter}{new_number if new_number > 1 else ''}"
 
                 if new_var != var:
                     renaming_map[var] = new_var
