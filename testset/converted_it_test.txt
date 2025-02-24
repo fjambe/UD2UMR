@@ -6,48 +6,38 @@ Sentence: In Cina, i capelli vengono solitamente sottoposti a un bagno chimico a
 Sentence (en): In China the hair is typically put in a chemical bath to remove the cuticle completely, Tarlo explains. 
 
 # sentence level graph:
-(s1s2 / sottoporre
-    :undergoer (s1c / capello
-        :mod (s1i / il)
-        :refer-number plural)
-    :OBLIQUE (s1f / fine
-        :mod (s1r / rimuovere
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :actor (s1f2 / FILL
-                :refer-number FILL)
-            :undergoer (s1c4 / cuticola
-                :mod (s1i2 / il)
-                :refer-number plural)
+(s1s2 / spiegare
+    :actor (s1p / person
+        :name (s1n2 / name :op1 "Tarlo"))
+    :theme (s1b / bagnare
+        :undergoer (s1c / capello :refer-number plural)
+        :manner (s1c2 / chimico)
+        :purpose (s1r / rimuovere
+            :modal-strength full-affirmative
+            :aspect process
+            :theme (s1c4 / cuticola :refer-number plural)
             :manner (s1c3 / completo))
-        :refer-number singular)
-    :OBLIQUE (s1b / bagno
-        :mod (s1u / uno)
-        :mod (s1c2 / chimico)
-        :refer-number singular)
-    :OBLIQUE (s1t / type-NE
-        :name (s1n / name
-            :op1 "Cina"))
-    :manner (s1s / solito)
-    :modal-strength MS-affirmative
-    :aspect ASP) 
+        :place (s1c5 / country
+            :name (s1n / name :op1 "Cina"))
+        :manner (s1s / solito)
+        :modal-strength full-affirmative
+        :aspect habitual)
+    :aspect activity
+    :modal-strength full-affirmative)
 
 # alignment:
 s1n: 0-0
+s1n2: 0-0
+s1c5: 2-2
+s1c: 5-5
 s1c3: 18-18
 s1s: 7-7
 s1r: 17-17
-s1u: 10-10
-s1c5: 0-0
-s1f2: 0-0
-s1s2: 8-8
-s1i: 4-4
-s1t2: 0-0
+s1b: 6-6, 8-8
 s1c2: 12-12
-s1f: 15-15
-s1i3: 0-0
 s1c4: 20-20
-s1b: 11-11
+s1p: 23-23
+s1s2: 22-22
 
 # document level annotation
 
@@ -61,67 +51,58 @@ Sentence (en): He also said Klein was uncommunicative, uncooperative and unwilli
 
 # sentence level graph:
 (s2d / descrivere
-    :experiencer (s2f / FILL
-        :refer-number FILL)
-    :undergoer (s2t2 / type-NE
+    :actor (s2p / person
+        :refer-number singular
+        :refer-person 3rd)
+    :theme (s2p2 / person
         :name (s2n / name
             :op1 "Klein"))
-    :stimulus (s2a / and
+    :result (s2a / and
         :op1 (s2c / comunicativo
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :manner (s2p / poco))
+            :manner (s2p3 / poco))
         :op2 (s2c2 / collaborativo
-            :manner (s2p2 / poco))
+            :manner (s2p4 / poco))
         :op3 (s2r / restio
-            :refer-number singular
-            :stimulus (s2l / lasciare
+            :other-role (s2l / lasciare
                 :modal-strength MS-affirmative
-                :aspect ASP
-                :undergoer (s2c3 / cella
-                    :mod (s2i2 / il)
-                    :mod (s2s / sottostante
-                        :modal-strength MS-affirmative
-                        :aspect ASP
-                        :actor (s2f2 / FILL
-                            :refer-number plural)
-                        :OBLIQUE (s2t / tribunale
-                            :refer-number singular
-                            :ADVCL (s2p3 / partecipare
-                                :actor (s2f3 / FILL
-                                    :refer-number FILL)
-                                :OBLIQUE (s2u / udienza
-                                    :refer-number singular
-                                    :det (s2s2 / suo))
-                                :modal-strength MS-affirmative
-                                :aspect ASP)))
-                    :refer-number plural))))
+                :aspect full-affirmative
+                :source (s2c3 / cella
+                    :refer-number plural
+                    :ARG1-of (s2h / have-place-91
+                        :ARG2 (s2s / sotto
+                            :mod (s2t / tribunale :refer-number singular))
+                        :aspect state
+                        :modal-strength full-affirmative))
+                        :purpose (s2p5 / partecipare
+                            :actor s2p2
+                            :OBLIQUE (s2u / udienza
+                                :refer-number singular
+                                :poss s2p2)
+                            :modal-strength full-affirmative
+                            :aspect activity))))
     :manner (s2i / inoltre)
-    :modal-strength MS-affirmative
-    :aspect ASP) 
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
-s2i2: 17-17
-s2f: 0-0
-s2f2: 0-0
-s2u: 28-28
-s2p3: 24-24
+s2p: 0-0
+s2d: 3-3
+s2p2: 4-4
+s2n: 0-0
 s2i: 2-2
-s2c4: 0-0
+s2a: 8-8
+s2p3: 6-6
+s2c: 7-7
+s2p4: 9-9
 s2c2: 10-10
-s2s2: 27-27
 s2r: 14-14
 s2l: 16-16
-s2t2: 0-0
-s2n: 0-0
+s2h: 19-19
+s2s: 0-0
+s2u: 28-28
+s2p5: 24-24
 s2t: 22-22
-s2a: 8-8
-s2p: 6-6
-s2p2: 9-9
-s2c: 7-7
-s2f3: 0-0
-s2s: 19-19
-s2d: 3-3
+s23c: 18-18
 
 # document level annotation
 
@@ -135,36 +116,30 @@ Sentence (en): That's not what we need in our country, folks.
 
 # sentence level graph:
 (s3i / identity-91
-    :ARG1 (s3f / FILL
-        :refer-number singular)
-    :ARG2 (s3f2 / FILL
+    :ARG1 (s3t / thing :refer-number singular)
+    :ARG2 (s3t2 / thing
         :refer-number singular
-        :OBLIQUE-of (s3a2 / avere
+        :undergoer-of (s3a2 / avere-bisogno
             :actor (s3p2 / person
                 :refer-person 1st
                 :refer-number plural)
-            :undergoer (s3b / bisogno
-                :refer-number singular)
-            :OBLIQUE (s3p / paese
+            :place (s3p / paese
                 :refer-number singular
-                :det (s3n / nostro))
-            :modal-strength MS
-            :aspect ASP)
-        :vocative (s3a / amico
-            :refer-number plural))
-    :modal-strength MS
+                :poss s3p2)
+            :modal-strength full-affirmative
+            :aspect state)
+        :vocative (s3a / amico :refer-number plural))
+    :modal-strength full-negative
     :aspect state) 
 
 # alignment:
+s3t: 3-3
+s3t2: 6-6
 s3p: 14-14
-s3f: 0-0
-s3n2: 0-0
 s3a: 1-1
-s3f2: 0-0
-s3i2: 0-0
-s3p2: 0-0
 s3b: 10-10
-s3a2: 9-9
+s3a2: 9-10
+s3p2: 0-0
 
 # document level annotation
 
@@ -177,40 +152,31 @@ Sentence: La sua abilità nell'avere risposte per i contribuenti verrà molto a 
 Sentence (en): His skill in getting answers for taxpayers will be sorely missed. 
 
 # sentence level graph:
-(s4v / venire
-    :experiencer (s4a / abilità
-        :mod (s4i / il)
-        :mod (s4a2 / avere
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :actor (s4f / FILL
-                :refer-number FILL)
-            :undergoer (s4r / risposta
-                :mod (s4c / contribuente
-                    :refer-number plural
-                    :mod (s4i2 / il))
-                :refer-number plural))
+(s4m / mancare
+    :theme (s4a / abilità
         :refer-number singular
-        :det (s4s / suo))
-    :stimulus (s4m2 / mancare
-        :manner (s4m / molto)
-        :modal-strength MS-affirmative
-        :aspect ASP)
+        :poss (s3p / person
+            :refer-number singular
+            :refer-person 3rd)
+        :mod (s4h / have-91
+            :modal-strength full-affirmative
+            :aspect aspect
+            :ARG1 s3p
+            :ARG2 (s4r / risposta
+                :recipient (s4c / contribuente :refer-number plural)
+                :refer-number plural)))
+    :quant (s4m2 / molto)
     :modal-strength full-affirmative
-    :aspect ASP) 
+    :aspect state)
 
 # alignment:
-s4f: 0-0
 s4c: 10-10
-s4i: 1-1
 s4r: 7-7
-s4a2: 6-6
-s4v: 11-11
-s4m: 12-12
-s4s: 2-2
+s4h: 6-6
+s4m: 11-11, 13-14
+s4p: 2-2
 s4a: 3-3
-s4m2: 14-14
-s4i3: 0-0
+s4m2: 12-12
 
 # document level annotation
 
