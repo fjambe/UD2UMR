@@ -59,58 +59,63 @@ Sentence (en): He also said Klein was uncommunicative, uncooperative and unwilli
 
 # sentence level graph:
 (u / uvést
-    :stimulus (a / and
+    :actor (p / person
+        :refer-person 3rd
+        :refer-number singular)
+    :theme (a / and
         :op1 (k / komunikovat
-            :modal-strength MS-negative
-            :aspect ASP
-            :actor (t2 / type-NE
+            :modal-strength full-negative
+            :aspect activity
+            :actor (t2 / person
                 :name (n / name
-                    :op1 "Klein")))
+                    :op1 "Klein")
+                :refer-number singular))
         :op2 (s / spolupracovat
-            :modal-strength MS-affirmative
-            :aspect ASP)
+            :modal-strength full-negative
+            :aspect activity
+            :actor t2)
         :op3 (h / have-mod-91
-            :modal-strength MS
+            :modal-strength full-negative
             :aspect state
-            :ARG1 (f / FILL
-                :refer-number singular)
+            :ARG1 t2
             :ARG2 (o / ochotný
                 :refer-number singular
-                :stimulus (j / jít
-                    :OBLIQUE (b / budova
+                :theme (j / jít
+                    :goal (b / budova
                         :mod (s2 / soudní)
                         :refer-number singular)
-                    :OBLIQUE (c / cela
+                    :start (c / cela
                         :refer-number singular)
-                    :modal-strength MS-affirmative
-                    :aspect ASP
-                    :purpose (z / zúčastnit
+                    :modal-strength full-affirmative
+                    :aspect activity
+                    :purpose (z / zúčastnit-se
                         :affectee (s3 / slyšení
                             :refer-number singular
-                            :possessor (p / person
-                                :refer-person FILL
-                                :refer-number singular))
-                        :modal-strength MS-affirmative
+                            :possessor t2)
+                        :modal-strength neutral-affirmative
                         :aspect performance)))))
     :manner (t / také)
-    :modal-strength MS-negative
-    :aspect ASP)
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
+a: 4-4, 9-9
+t2: 5-5, 23-23
+k: 6-6
 b2: 0-0
-c: 14-14
 s: 8-8
-z: 22-22
-o: 11-11
 p2: 0-0
 u: 2-2
-n: 0-0
 a2: 0-0
-j: 12-12
-s5: 0-0
 h: 10-10
+o: 11-11
+j: 12-12
+c: 13-14
+b: 15-15, 17-17
 s2: 16-16
-t2: 0-0
+z: 19-22
+s3: 24-24
+n: 0-0
 t: 1-1
 k2: 0-0
 f: 0-0
