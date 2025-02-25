@@ -35,7 +35,6 @@ Sentence (en): In China the hair is typically put in a chemical bath to remove t
 s1n: 0-0
 s1n2: 0-0
 s1t3: 0-0
-s1t4: 0-0
 s1t2: 1-2
 s1t: 4-4
 s1d: 5-5
@@ -99,12 +98,8 @@ Sentence (en): He also said Klein was uncommunicative, uncooperative and unwilli
     :aspect performance)
 
 # alignment:
-s2a2: 0-0
-s2b2: 0-0
-s2f: 0-0
-s2k2: 0-0
 s2n: 0-0
-s2p2: 0-0
+s2p: 0-0
 s2t: 1-1
 s2u: 2-2
 s2a: 4-4, 9-9
@@ -325,13 +320,13 @@ Sentence (en): I love to play with that and I am always looking for muses that f
                 :aspect ASP))))
 
 # alignment:
-s6a2: 0-0
+s6a: 0-0
 s6p: 0-0
 s6p2: 0-0
 s6p3: 0-0
 s6p4: 0-0
 s6p5: 0-0
-s6s2: 0-0
+s6s: 0-0
 s6k: 2-2
 s6r: 4-4
 s6h: 5-5
@@ -371,7 +366,7 @@ Sentence (en): There is no parade and there never has been.
         :manner (s7n / nikdy)))
 
 # alignment:
-s7a2: 0-0
+s7a: 0-0
 s7ž: 1-1
 s7k: 2-2
 s7t: 4-4
@@ -438,8 +433,8 @@ Sentence (en): In his haste to capture Kadesh, Ramesses II committed a major tac
     :aspect performance)
 
 # alignment:
-s9n2: 0-0
-s9t3: 0-0
+s9n: 0-0
+s9t2: 0-0
 s9d: 6-6
 s9i: 9-9
 s9z: 11-11
@@ -551,11 +546,11 @@ Sentence (en): De Gaulle had instructed that there be no excessive displays of p
     :aspect performance)
 
 # alignment:
-s11a2: 0-0
-s11d2: 0-0
+s11a: 0-0
+s11d: 0-0
 s11n3: 0-0
 s11n4: 0-0
-s11o2: 0-0
+s11o: 0-0
 s11p4: 0-0
 s11p5: 0-0
 s11t: 0-0
@@ -598,8 +593,8 @@ Sentence (en): The system was simple, direct, and worked well, even with previou
             :mod (s12š / školený))))
 
 # alignment:
-s12a3: 0-0
-s12s2: 0-0
+s12a: 0-0
+s12s: 0-0
 s12j: 3-3
 s12p: 5-5
 s12f: 7-7
@@ -647,7 +642,7 @@ Sentence (en): He also built and renovated five traditional markets in 2013 and 
             :refer-number singular)))
 
 # alignment:
-s13a2: 0-0
+s13a: 0-0
 s13r: 2-2
 s13t: 4-4
 s13v: 5-5
@@ -704,13 +699,13 @@ Sentence (en): Pebe moved the family to Nashville, Tennessee, in 1991 after secu
     :aspect performance)
 
 # alignment:
+s14n2: 0-0
 s14n3: 0-0
-s14n4: 0-0
 s14p5: 0-0
 s14p6: 0-0
-s14s2: 0-0
+s14s: 0-0
+s14t: 0-0
 s14t2: 0-0
-s14t3: 0-0
 s14r: 2-2
 s14p: 4-4
 s14p2: 8-8
@@ -938,8 +933,8 @@ Sentence (en): The husband of the current candidate for the White House, Hillary
     :aspect performance)
 
 # alignment:
-s20d2: 0-0
-s20i2: 0-0
+s20d: 0-0
+s20i: 0-0
 s20n: 0-0
 s20n2: 0-0
 s20p3: 0-0
@@ -1004,9 +999,9 @@ Sentence (en): It is no surprise that the federal and state governments have cla
     :aspect state)
 
 # alignment:
-s21a3: 0-0
-s21a4: 0-0
-s21h2: 0-0
+s21a: 0-0
+s21a2: 0-0
+s21h: 0-0
 s21m: 0-0
 s21p3: 0-0
 s21i: 1-1
@@ -1184,8 +1179,6 @@ Sentence (en): Even if the majority of situations that arise in the workplace ca
     :modal-strength neutral-affirmative)
 
 # alignment:
-s26k3: 0-0
-s26v3: 0-0
 
 # document level annotation
 
@@ -1233,10 +1226,10 @@ Sentence (en): It aims to take the journey time into account after deducting thi
     :aspect ASP)
 
 # alignment:
-s27c2: 0-0
+s27c: 0-0
 s27f: 0-0
 s27p2: 0-0
-s27s2: 0-0
+s27s: 0-0
 s27k: 1-1
 s27b: 5-5
 s27d: 8-8
@@ -1317,8 +1310,8 @@ Sentence (en): A voucher is generated that can be saved on your smartphone, or p
 # alignment:
 s29f: 0-0
 s29f2: 0-0
-s29n2: 0-0
-s29p4: 0-0
+s29n: 0-0
+s29p2: 0-0
 s29t: 0-0
 s29h: 1-1
 s29v: 2-2
@@ -1356,7 +1349,7 @@ Sentence (en): From the 1st of January there will be an increase in petrol and d
     :aspect ASP)
 
 # alignment:
-s30a2: 0-0
+s30a: 0-0
 s30f: 0-0
 s30l: 4-4
 s30d: 5-5
@@ -1416,11 +1409,11 @@ Sentence (en): As stated, the decision is the prerogative of the ECB and would a
             :refer-number singular)))
 
 # alignment:
-s31a3: 0-0
-s31b3: 0-0
+s31a: 0-0
+s31b: 0-0
 s31f: 0-0
-s31j4: 0-0
-s31p3: 0-0
+s31j2: 0-0
+s31p2: 0-0
 s31j: 1-1
 s31u: 3-3
 s31v: 8-8
@@ -1473,11 +1466,11 @@ Sentence (en): This is what has been written in a note to Mps after the decision
     :aspect state)
 
 # alignment:
-s32b3: 0-0
+s32b: 0-0
 s32f: 0-0
 s32f2: 0-0
-s32t3: 0-0
-s32t4: 0-0
+s32t: 0-0
+s32t2: 0-0
 s32i: 2-2
 s32n: 7-7
 s32m: 8-8
@@ -1538,9 +1531,9 @@ Sentence (en): Four students at Roma Tre University have developed a motorcycle 
 
 # alignment:
 s33f: 0-0
-s33f3: 0-0
+s33f2: 0-0
 s33n: 0-0
-s33t3: 0-0
+s33t: 0-0
 s33s: 2-2
 s33u: 3-3
 s33v: 6-6
@@ -1593,10 +1586,10 @@ Sentence (en): More and more tech companies are calling the shots more than ever
         :mod (s34s2 / Silicon)))
 
 # alignment:
-s34a3: 0-0
+s34a: 0-0
 s34h5: 0-0
 s34m: 0-0
-s34s3: 0-0
+s34s2: 0-0
 s34s: 1-1
 s34h: 2-2
 s34h2: 4-4
@@ -1643,11 +1636,11 @@ Sentence (en): Leaders of companies such as Spotify, Tesla, Uber and Snapchat wi
     :aspect performance)
 
 # alignment:
-s35a2: 0-0
+s35a: 0-0
 s35n3: 0-0
-s35s4: 0-0
-s35s5: 0-0
-s35t2: 0-0
+s35s2: 0-0
+s35s3: 0-0
+s35t: 0-0
 s35v: 1-1
 s35p: 2-2
 s35s: 3-3
@@ -1732,7 +1725,7 @@ Sentence (en): Furthermore, the Government will have to deal with another "hot p
     :aspect performance)
 
 # alignment:
-s38v2: 0-0
+s38v: 0-0
 s38d: 9-9
 s38h: 11-11
 s38b: 12-12
@@ -1766,7 +1759,7 @@ Sentence (en): The consulted sources have said that it is "100% Cospedal".
     :aspect ASP)
 
 # alignment:
-s39t2: 0-0
+s39t: 0-0
 s39k: 1-1
 s39z: 2-2
 s39u: 3-3
@@ -1817,8 +1810,8 @@ Sentence (en): Pedro Sánchez, like many other socialists, said in the programme
 # alignment:
 s40n3: 0-0
 s40n4: 0-0
-s40p2: 0-0
-s40s3: 0-0
+s40p: 0-0
+s40s: 0-0
 s40t: 0-0
 s40t2: 0-0
 s40m: 6-6
@@ -1946,7 +1939,7 @@ Sentence (en): The Islamic citizens who have settled since the beginning of the 
 
 # alignment:
 s43n: 0-0
-s43t2: 0-0
+s43t: 0-0
 s43i: 1-1
 s43o: 2-2
 s43u: 6-6
@@ -2033,7 +2026,7 @@ Sentence (en): The Industrial Revolution took place in Great Britain earlier tha
     :aspect ASP)
 
 # alignment:
-s45b2: 0-0
+s45b: 0-0
 s45h: 0-0
 s45m: 0-0
 s45n: 0-0
@@ -2090,12 +2083,12 @@ Sentence (en): After the Russian Revolution in 1917, some countries, such as Fin
     :aspect ASP)
 
 # alignment:
-s46a2: 0-0
+s46a: 0-0
 s46i: 0-0
 s46n4: 0-0
 s46n5: 0-0
 s46n6: 0-0
-s46p3: 0-0
+s46p: 0-0
 s46t: 0-0
 s46t2: 0-0
 s46t3: 0-0
@@ -2146,7 +2139,7 @@ Sentence (en): One of his last means of placing pressure on Hungary was the thre
     :aspect state)
 
 # alignment:
-s47a2: 0-0
+s47a: 0-0
 s47n: 0-0
 s47p3: 0-0
 s47t2: 0-0
@@ -2187,7 +2180,7 @@ Sentence (en): The Disibodenberg cloister was disbanded and fell into ruin as a 
             :refer-number singular)))
 
 # alignment:
-s48a2: 0-0
+s48a: 0-0
 s48n: 0-0
 s48t: 0-0
 s48k: 1-1
@@ -2245,7 +2238,7 @@ Sentence (en): After these successes, he signed a contract with Team Telekom and
                 :refer-number singular))))
 
 # alignment:
-s49a3: 0-0
+s49a: 0-0
 s49n2: 0-0
 s49p3: 0-0
 s49p4: 0-0
@@ -2310,12 +2303,12 @@ Sentence (en): The Viguier and La Conte districts contain the majority of the ci
     :aspect ASP)
 
 # alignment:
-s50a2: 0-0
+s50a: 0-0
+s50n: 0-0
 s50n2: 0-0
-s50n3: 0-0
 s50t2: 0-0
 s50t3: 0-0
-s50v2: 0-0
+s50v: 0-0
 s50o: 1-1
 s50o2: 6-6
 s50m: 8-8
@@ -2358,11 +2351,18 @@ Sentence (en): In the early 2000s, there were five doctors per 100,000 inhabitan
     :aspect state)
 
 # alignment:
+s51l: 0-0
+s51o: 0-0
+s51p: 0-0
+s51r2: 0-0
+s51z: 0-0
 s51r: 2-2
 s51c: 6-6
 1: 10-10
+s51r: 2-2
 s51z: 3-3
 s51r2: 4-4
+s51c: 6-6
 s51p: 7-7
 s51l: 8-8
 s51o: 11-11
@@ -2409,10 +2409,10 @@ Sentence (en): Literacy had been lost and Mycenaean script forgotten, but the Gr
                 :refer-number singular))))
 
 # alignment:
-s52a5: 0-0
-s52a6: 0-0
-s52a7: 0-0
-s52h2: 0-0
+s52a: 0-0
+s52a2: 0-0
+s52a4: 0-0
+s52h: 0-0
 s52n: 0-0
 s52p2: 0-0
 s52t2: 0-0
@@ -2471,11 +2471,11 @@ Sentence (en): From about the 8th century BC city states began to appear: small,
     :aspect ASP)
 
 # alignment:
-s53a3: 0-0
+s53a: 0-0
 s53i: 0-0
-s53m3: 0-0
+s53m: 0-0
 s53p2: 0-0
-s53s5: 0-0
+s53s2: 0-0
 s53s: 5-5
 s53l: 10-10
 s53z: 13-13
@@ -2514,7 +2514,7 @@ Sentence (en): This affair can be seen as the starting point for his career as a
     :modal-strength neutral-affirmative)
 
 # alignment:
-s54b2: 0-0
+s54b: 0-0
 s54p2: 0-0
 s54p: 5-5
 s54v: 7-7
@@ -2567,20 +2567,37 @@ Sentence (en): In the summer, Georges and his wife returned to Switzerland, acco
     :aspect performance)
 
 # alignment:
-s55j2: 0-0
+s55a: 0-0
+s55d: 0-0
+s55d2: 0-0
+s55g: 0-0
+s55h: 0-0
+s55j: 0-0
+s55l: 0-0
+s55m: 0-0
+s55n: 0-0
+s55n2: 0-0
 s55n3: 0-0
+s55p: 0-0
+s55p2: 0-0
+s55t: 0-0
+s55t2: 0-0
 s55t3: 0-0
 s55v: 8-8
 1: 13-13
-s55a2: 0-0
-s55g2: 0-0
+s55a: 0-0
+s55g: 0-0
+s55j: 0-0
 s55n: 0-0
 s55n2: 0-0
-s55p3: 0-0
+s55n3: 0-0
+s55p2: 0-0
 s55t: 0-0
 s55t2: 0-0
+s55t3: 0-0
 s55l: 2-2
 s55m: 7-7
+s55v: 8-8
 s55d: 12-12
 s55h: 17-17
 s55d2: 18-18
@@ -2772,7 +2789,7 @@ s59f: 0-0
 s59f2: 0-0
 s59h: 0-0
 s59m: 0-0
-s59s3: 0-0
+s59s: 0-0
 s59r: 2-2
 s59z: 5-5
 s59u: 6-6
@@ -2872,10 +2889,10 @@ Sentence (en): Historian David Crouch suggests that Stephen abandoned from the c
 # alignment:
 s61n2: 0-0
 s61n3: 0-0
-s61o3: 0-0
-s61s3: 0-0
+s61o2: 0-0
+s61s2: 0-0
+s61t: 0-0
 s61t2: 0-0
-s61t3: 0-0
 s61h: 1-1
 s61n: 4-4
 s61o: 8-8
@@ -2928,10 +2945,10 @@ Sentence (en): Although not a resolver of the conflict, the French victory at th
 s62n: 0-0
 s62n2: 0-0
 s62n3: 0-0
+s62t: 0-0
 s62t2: 0-0
 s62t3: 0-0
 s62t4: 0-0
-s62t5: 0-0
 s62z: 3-3
 s62v: 4-4
 s62k: 5-5
@@ -2985,11 +3002,11 @@ Sentence (en): With regards to religious practices, Fiorello was educated within
                 :refer-number singular))))
 
 # alignment:
-s63a2: 0-0
-s63c4: 0-0
-s63f2: 0-0
+s63a: 0-0
+s63c: 0-0
+s63f: 0-0
 s63n2: 0-0
-s63p3: 0-0
+s63p2: 0-0
 s63t2: 0-0
 s63t: 3-3
 s63n: 4-4
@@ -3095,9 +3112,9 @@ Sentence (en): However, the breakdown between him and Linares and the discontinu
     :aspect performance)
 
 # alignment:
-s65a2: 0-0
-s65l2: 0-0
-s65n2: 0-0
+s65a: 0-0
+s65l: 0-0
+s65n: 0-0
 s65p5: 0-0
 s65p6: 0-0
 s65t: 0-0
@@ -3150,7 +3167,7 @@ Sentence (en): The collapse of and intervention in dozens of banks lead to a fli
                 :refer-number plural))))
 
 # alignment:
-s66a3: 0-0
+s66a: 0-0
 s66f2: 0-0
 s66z: 1-1
 s66i: 3-3
@@ -3184,7 +3201,7 @@ Sentence (en): This was the coup de grâce and encouragement the settlers needed
         :refer-number singular))
 
 # alignment:
-s67a2: 0-0
+s67a: 0-0
 s67r: 3-3
 s67m: 5-5
 s67p: 7-7
@@ -3245,15 +3262,15 @@ Sentence (en): Nonetheless, if the English law had been accepted, the daughters 
         :aspect ASP))
 
 # alignment:
-s68a3: 0-0
-s68f2: 0-0
+s68a2: 0-0
+s68f: 0-0
 s68h: 0-0
 s68m3: 0-0
+s68n: 0-0
 s68n2: 0-0
 s68n3: 0-0
 s68n4: 0-0
 s68n5: 0-0
-s68n6: 0-0
 s68p3: 0-0
 s68t3: 0-0
 s68t4: 0-0
@@ -3325,10 +3342,10 @@ Sentence (en): The attempts at making peace finally ended in spring of 1415 and 
                     :refer-number singular)))))
 
 # alignment:
-s69a2: 0-0
+s69a: 0-0
 s69i: 0-0
 s69n4: 0-0
-s69p5: 0-0
+s69p4: 0-0
 s69t2: 0-0
 s69t: 1-1
 s69p: 2-2
@@ -3391,7 +3408,7 @@ Sentence (en): On the 1st January 49 BC, Marco Antonio read a declaration from C
     :aspect ASP)
 
 # alignment:
-s70m3: 0-0
+s70m: 0-0
 s70n: 0-0
 s70p6: 0-0
 s70p7: 0-0
