@@ -136,31 +136,28 @@ Sentence (en): That's not what we need in our country, folks.
         :refer-number singular)
     :ARG2 (t2 / thing
         :refer-number singular
-        :vocative (p2 / přítel
-            :refer-number plural)
-        :undergoer-of (p / potřebovat
+        :stimulus-of (p / potřebovat
             :experiencer (p3 / person
                 :refer-person 1st
                 :refer-number plural)
-            :OBLIQUE (z / země
+            :place (z / země
                 :refer-number singular
-                :possessor (p4 / person
-                    :refer-person FILL
-                    :refer-number singular))
-            :modal-strength MS
-            :aspect ASP))
-    :modal-strength MS
+                :possessor p3)
+            :modal-strength full-affirmative
+            :aspect state))
+    :vocative (p2 / přítel
+        :refer-number plural)
+    :modal-strength full-negative
     :aspect state)
 
 # alignment:
-t3: 0-0
-z: 8-8
+t: 1-1
 i: 2-2
-p2: 11-11
-p4: 0-0
-t4: 0-0
+t2: 3-3, 5-5
+z: 6-6, 8-8
 p: 9-9
-p3: 0-0
+p3: 7-7
+p2: 11-11
 
 # document level annotation
 
@@ -175,37 +172,35 @@ Sentence (en): His skill in getting answers for taxpayers will be sorely missed.
 # sentence level graph:
 (c / chybět
     :actor (s / schopnost
+        :possessor (p2 / person
+            :refer-person 3rd
+            :refer-number singular)
         :mod (z / získávat
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :actor (f / FILL
-                :refer-number FILL)
-            :undergoer (o / odpověď
+            :modal-strength neutral-affirmative
+            :aspect activity
+            :recipient p2
+            :theme (o / odpověď
                 :mod (o2 / otázka
                     :refer-number plural
-                    :MOD/POSS (p / poplatník
+                    :possessor (p / poplatník
                         :mod (d / daňový)
                         :refer-number plural))
                 :refer-number plural))
-        :refer-number singular
-        :possessor (p2 / person
-            :refer-person 3rd
-            :refer-number singular))
+        :refer-number singular)
     :manner (t / těžce)
-    :modal-strength MS-affirmative
-    :aspect ASP)
+    :modal-strength full-affirmative
+    :aspect state)
 
 # alignment:
-c: 11-11
+p2: 1-1
 s: 2-2
 z: 3-3
 o: 4-4
-p2: 0-0
-o2: 6-6
+o2: 5-6
 d: 7-7
-t: 10-10
 p: 8-8
-f: 0-0
+t: 10-10
+c: 9-9, 11-11
 
 # document level annotation
 
