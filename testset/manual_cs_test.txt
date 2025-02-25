@@ -304,14 +304,14 @@ Sentence (en): The smartphone generation received an app it deserved, where, in 
 
 # sentence level graph:
 (s8z / získat
-  :experiencer (s8g / generace
+  :recipient (s8g / generace
     :mod (s8s / smartphone
       :refer-number plural))
   :theme (s8a / aplikace
     :theme-of (s8z2 / zasloužit-si
       :actor s8g)
     :mod (s8z3 / získat
-      :experiencer (s8s3 / situace
+      :recipient (s8s3 / situace
         :mod (s8n / stupidní
           :degree intensifier))
       :theme (s8p2 / publikum
