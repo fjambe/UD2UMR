@@ -373,29 +373,29 @@ Sentence: V achaimenovské multietnické armádě bylo mnoho mužů z Balkánu.
 Sentence (en): The multi-ethnic Achaemenid army possessed many soldiers from the Balkans.
 
 # sentence level graph:
-(s8i / identity-91
-    :ARG1 (s8m3 / muž
+(s8i / exist-91
+    :ARG2 (s8m3 / muž
         :refer-number plural
-        :MOD/POSS (s8t / type-NE
+        :source (s8t / peninsula
             :name (s8n / name
                 :op1 "Balkán"))
         :quant (s8m2 / mnoho))
-    :ARG2 (s8a2 / armáda
+    :ARG1 (s8a2 / armáda
         :mod (s8a / achaimenovský)
         :mod (s8m / multietnický)
         :refer-number singular)
-    :modal-strength MS-affirmative
+    :modal-strength full-affirmative
     :aspect state)
 
 # alignment:
 s8n: 0-0
-s8t: 0-0
+s8a2: 1-1, 4-4
 s8a: 2-2
 s8m: 3-3
-s8a2: 4-4
 s8i: 5-5
 s8m2: 6-6
 s8m3: 7-7
+s8t: 8-9
 
 # document level annotation
 
