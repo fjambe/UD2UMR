@@ -275,67 +275,54 @@ Sentence (en): I love to play with that and I am always looking for muses that f
 
 # sentence level graph:
 (s6a / and
-    :op1 (s6h / hrát
+    :op1 (s6h / hrát-si
         :modal-strength full-affirmative
-        :aspect ASP
-        :ADVCL (s6r / rád
-            :modal-strength MS-affirmative
-            :aspect ASP)
+        :aspect activity
+        :manner (s6r / rád)
         :actor (s6p / person
             :refer-person 1st
             :refer-number singular)
-        :affectee (s6p4 / person
-            :refer-person FILL
-            :refer-number FILL)
-        :OBLIQUE (s6k / kolekce
+        :undergoer (s6k / kolekce
             :refer-number singular))
     :op2 (s6h2 / hledat
-        :modal-strength MS
-        :aspect ASP
-        :actor (s6p2 / person
-            :refer-person 1st
-            :refer-number singular)
+        :modal-strength full-affirmative
+        :aspect habitual
+        :actor s6p
         :undergoer (s6i / inspirace
-            :mod (s6s / splňující
+            :actor-of (s6s / splňovat
+                :modal-strength full-affirmative
+                :aspect state
                 :undergoer (s6k2 / kritérium
                     :mod (s6t / tento)
                     :refer-number plural))
             :refer-number singular)
         :manner (s6v / vždy))
     :op3 (s6h3 / have-mod-91
-        :modal-strength MS
+        :modal-strength full-affirmative
         :aspect state
         :ARG1 (s6t2 / ten)
         :ARG2 (s6z / zajímavý
             :manner (s6v2 / velmi)
-            :refer-number singular
-            :ADVCL (s6n / najít
-                :actor (s6p3 / person
-                    :refer-person 1st
-                    :refer-number singular)
-                :undergoer (s6p5 / person
-                    :refer-person 3rd
-                    :refer-number singular)
-                :modal-strength MS
-                :aspect ASP))))
+            :refer-number singular)
+        :condition (s6n / najít
+            :actor s6p
+            :undergoer s6i
+            :modal-strength full-affirmative
+            :aspect performance)))
 
 # alignment:
-s6a: 0-0
 s6p: 0-0
-s6p2: 0-0
-s6p3: 0-0
-s6p4: 0-0
-s6p5: 0-0
-s6s: 0-0
-s6k: 2-2
+s6k: 1-2
+s6h: 3-3, 5-5
 s6r: 4-4
-s6h: 5-5
 s6v: 7-7
 s6h2: 8-8
-s6i: 9-9
+s6i: 9-9, 15-15
+s6s: 10-10
 s6t: 11-11
 s6k2: 12-12
-s6n: 16-16
+s6a: 13-13
+s6n: 14-14, 16-16
 s6h3: 18-18
 s6t2: 19-19
 s6v2: 20-20
