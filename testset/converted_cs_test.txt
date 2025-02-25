@@ -342,22 +342,23 @@ Sentence (en): There is no parade and there never has been.
 (s7a / and
     :op1 (s7p / pořádat
         :modal-strength full-negative
-        :aspect ASP
+        :aspect activity
         :undergoer (s7k / karneval
             :mod (s7ž / žádný)
             :refer-number singular)
-        :manner (s7t / tu))
+        :place (s7t / tu))
     :op2 (s7p2 / pořádat
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :manner (s7n / nikdy)))
+        :modal-strength full-negative
+        :aspect activity
+        :undergoer s7k
+        :temporal (s7n / nikdy)))
 
 # alignment:
-s7a: 0-0
 s7ž: 1-1
 s7k: 2-2
 s7t: 4-4
 s7p: 5-5
+s7a: 6-6
 s7n: 7-7
 s7p2: 8-8
 
