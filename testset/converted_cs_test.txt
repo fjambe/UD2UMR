@@ -218,50 +218,55 @@ Sentence (en): A coal-fired power station in Badarpur, south-east Delhi, will st
         :modal-strength full-affirmative
         :aspect performance
         :actor (e / elektrárna
-            :mod (t / type-NE
+            :place (t / city
                 :name (n / name
                     :op1 "Badarpur")
                 :ARG1-of (i2 / identity-91
-                    :ARG2 (t2 / type-NE
+                    :ARG2 (t2 / city
                         :mod (j / jihovýchodní)
                         :name (n2 / name
                             :op1 "Dillí"))
-                    :modal-strength MS
+                    :modal-strength full-affirmative
                     :aspect state))
             :mod (u / uhelný)
             :refer-number singular)
         :undergoer (p2 / provoz
             :refer-number singular)
-        :OBLIQUE (d / den
-            :refer-number plural
-            :quant 10))
-    :op2 (v / vypnutý
+        :duration (t3 / temporal-quantity
+            :quant 10
+            :unit (d / den
+                :refer-number plural))
+    :op2 (v / vypnout
+        :modal-strength full-affirmative
+        :aspect performance
         :undergoer (g / generátor
-            :manner i
+            :manner (i / i)
             :mod (d2 / dieselový)
             :refer-number plural)
-        :OBLIQUE (m / město
+        :place (m / město
             :refer-number singular)
         :manner (s / stejně)))
 
 # alignment:
 u: 1-1
 e: 2-2
-v: 22-22
-t3: 0-0
-i2: 0-0
-s: 17-17
-p2: 14-14
-d3: 0-0
-g: 25-25
+t: 3-4
 n: 0-0
-a2: 0-0
+i2: 0-0
+t2: 6-6, 8-8
 j: 7-7
-m: 21-21
-t2: 0-0
-d4: 0-0
-p: 13-13
 n2: 0-0
+t3: 10-12
+d: 0-0
+p: 13-13
+p2: 14-14
+a: 16-16
+s: 17-18
+m: 20-21
+v: 19-19, 22-22
+i: 23-23
+d2: 24-24
+g: 25-25
 
 # document level annotation
 
