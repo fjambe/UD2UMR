@@ -877,67 +877,75 @@ Sentence (en): The husband of the current candidate for the White House, Hillary
 
 # sentence level graph:
 (s20c2 / condonare
-    :actor (s20m / marito
-        :mod (s20c / candidato
-            :mod (s20t2 / type-NE
-                :name (s20n2 / name
-                    :op1 "Casa")
-                :mod (s20b / Bianca))
-            :mod (s20a / attuale)
-            :mod (s20t / type-NE
-                :name (s20n / name
+    :actor (s20p5 / person
+        :ARG1-of (s20h / have-rel-role-92
+            :ARG3 (s20m / marito)
+            :ARG2 (s20p4 / person
+                :name (s20n3 / name
                     :op1 "Hillary"
-                    :op2 "Clinton"))
-            :refer-number singular)
-        :mod (s20i / il)
-        :refer-number singular)
+                    :op2 "Clinton")
+                :wiki "Q6294"
+                :ARG1-of (s20h2 / have-role-91
+                    :ARG3 (s20c / candidare
+                        :goal (s20g2 / government-organization
+                            :name (s20n2 / name
+                                :op1 "Casa")
+                                :op2 "Bianca")
+                            :wiki "Q35525")
+                        :aspect performance
+                        :modal-strength full-affirmative)
+                    :temporal (s20a / attuale)
+                    :aspect state
+                    :modal-strength full-affirmative)
+            :aspect state
+            :modal-strength full-affirmative))
     :undergoer (s20p2 / pena
-        :mod (s20p3 / persona
-            :mod (s20d / diverso)
-            :refer-number plural
-            :mod-of (s20r / Rich
-                :mod (s20f / FILL
-                    :refer-number plural)))
-        :mod (s20i3 / il)
-        :refer-number singular)
-    :OBLIQUE (s20g / giorno
+        :poss (s20p3 / persona
+            :quant (s20d / diverso)
+            :ARG2-of (s20i / include-91
+                :ARG1 (s20p6 / person
+                    :name (s20n4 / name :op1 "Rich"))
+                :aspect state
+                :modal-strength full-affirmative)))
+    :temporal (s20g / giorno
         :mod (s20u / ultimo)
-        :mod (s20p / presidenza
-            :refer-number singular
-            :det (s20s / suo))
-        :refer-number singular
-        :ARG1-of (s20i4 / identity-91
-            :ARG2 (s202 / 20
-                :mod (s20i2 / il))
-            :modal-strength MS
+        :temporal-of (s20p / presiedere
+            :actor s20p5
+            :modal-strength full-affirmative
+            :aspect activity)
+        :ARG1-of (s20i2 / identity-91
+            :ARG2 (s20d2 / date-entity
+                :day 20
+                :month 1
+                :year 2001)
+            :modal-strength full-affirmative
             :aspect state))
-    :modal-strength MS-affirmative
-    :aspect ASP) 
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
-s20t2: 0-0
-s20d: 33-33
-s20u: 16-16
-s20p2: 31-31
-s20r: 37-37
-s20n: 0-0
-s20g: 17-17
-s20c4: 0-0
-s20i7: 0-0
-s202: 24-24
-s20p3: 34-34
-s20s: 20-20
-s20b: 10-10
-s20i: 1-1
-s20p: 21-21
-s20a: 5-5
-s20n2: 0-0
-s20m: 2-2
-s20f: 0-0
-s20t: 0-0
-s20i6: 0-0
+s20c2: 28-29
+s20p5: 2-2
+s20h: 0-0
+s20h2: 0-0
+s20m: 0-0
+s20p4: 11-12
+s20n3: 0-0
 s20c: 6-6
-s20i8: 0-0
+s20g2: 9-10
+s20n2: 0-0
+s20a: 5-5
+s20p2: 31-31
+s20p3: 34-34
+s20d: 33-33
+s20i: 35-36
+s20i2: 0-0
+s20p6: 37-37
+s20n4: 0-0
+s20g: 17-17
+s20u: 16-16
+s20p: 21-21
+s20d2: 24-26
 
 # document level annotation
 
@@ -951,80 +959,60 @@ Sentence (en): It is no surprise that the federal and state governments have cla
 
 # sentence level graph:
 (s21s / sorprendere
-    :actor (s21f2 / FILL
-        :refer-number singular)
     :stimulus (s21c / classificare
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :actor (s21a / and
-            :op1 (s21g / governo
+        :modal-strength full-affirmative
+        :aspect performance
+        :actor (s21g / governo
                 :refer-number plural
-                :mod (s21f / federale)
-                :mod (s21i / il))
-            :op2 (s21s2 / statale))
-        :undergoer (s21p / Patrimonio
-            :mod (s21n / Naturale)
-            :mod (s21i2 / il)
-            :mod (s21i3 / impegno
-                :mod (s21s3 / scala
-                    :refer-number singular
-                    :mod (s21p2 / priorità
-                        :refer-number singular
-                        :ARG1-of (s21h / have-degree-91
-                            :ARG2 (s21m / massimo)
-                            :ARG3 (s21m2 / most)
-                            :modal-strength MS
-                            :aspect state))
-                    :mod (s21n3 / nazionale))
-                :mod (s21u / uno)
-                :refer-number singular
-                :mod (s21d / documentare
-                    :modal-strength MS-affirmative
-                    :aspect ASP
-                    :stimulus (s21p3 / partire
-                        :OBLIQUE (s212 / 2005)
-                        :modal-strength MS-affirmative
-                        :aspect ASP
-                        :actor (s21f3 / FILL
-                            :refer-number FILL))
-                    :OBLIQUE (s21c2 / contratto
-                        :mod (s21u2 / uno)
-                        :mod (s21c3 / coalizione
-                            :refer-number singular)
-                        :refer-number singular)))
-            :mod (s21n2 / Nazionale)
-            :refer-number singular))
+                :mod (s21a / and
+                    :op1 (s21s2 / statale)
+                    :op2 (s21f / federale)))
+        :theme (s21t / thing
+            :name (s21n / name
+                :op1 "Patrimonio"
+                :op2 "Naturale"
+                :op3 "Nazionale")
+        :result (s21i / impegno
+            :mod (s21s3 / scala
+                :mod (s21n2 / nazionale)
+                :mod (s21p / priorità
+                    :ARG1-of (s21h / have-degree-91
+                        :ARG2 (s21a2 / alto)
+                        :ARG3 (s21m / most)
+                        :modal-strength full-affirmative
+                        :aspect state)))
+            :undergoer-of (s21d / documentare
+                :modal-strength full-affirmative
+                :aspect performance
+                :temporal (s21a3 / after
+                    :op1 (s21d2 / date-entity :year 2005))
+                :place (s21c2 / contratto
+                    :mod (s21c3 / coalizione)
+                    :refer-number singular)))))
     :modal-strength full-negative
-    :aspect ASP) 
+    :aspect state)
 
 # alignment:
-s21i3: 17-17
+s21i: 17-17
 s21g: 5-5
-s21h: 0-0
 s21f: 6-6
-s21i2: 11-11
-s21m: 22-22
 s21s2: 8-8
-s21u2: 32-32
 s21a: 7-7
-s21i: 4-4
-s21n3: 20-20
-s21f3: 0-0
+s21n2: 20-20
 s21d: 25-25
-s21f2: 0-0
 s21c2: 33-33
-s21c: 10-10
-s21p2: 23-23
-s212: 30-30
-s21s: 2-2
+s21c: 9-10
+s21p: 23-23
+s21d2: 30-30
+s21s: 1-2
 s21c3: 35-35
-s21p3: 27-27
 s21s3: 19-19
-s21n4: 0-0
-s21n2: 14-14
-s21m2: 0-0
-s21p: 12-12
-s21u: 16-16
+s21n: 0-0
+s21m: 0-0
+s21t: 12-14
+s21a2: 0-0
+s21h: 21-22
+s21a3: 26-28
 
 # document level annotation
 
@@ -1082,21 +1070,23 @@ Sentence: Secondo il programma, parlerà alle 23:45.
 Sentence (en): According to the programme, she will speak at 23.45. 
 
 # sentence level graph:
-(s23p2 / parlare
-    :actor (s23f / FILL
-        :refer-number singular)
-    :OBLIQUE (s232 / 23:45)
-    :OBLIQUE (s23p / programma
-        :mod (s23i / il)
-        :refer-number singular)
-    :modal-strength full-affirmative
-    :aspect ASP) 
+(s23s / say-91
+    :ARG0 (s23p / programma :refer-number singular)
+    :ARG1 (s23p2 / parlare
+        :actor (s23p3 / person
+            :refer-number singular
+            :refer-person 3rd)
+        :temporal (s23d / date-entity :time 23:45)
+        :modal-strength full-affirmative
+        :aspect activity)
+    :aspect state
+    :modal-strength full-affirmative)
 
 # alignment:
-s232: 8-8
+s23s: 1-1
+s23d: 8-8
+s23p3: 0-0
 s23p2: 5-5
-s23f: 0-0
-s23i: 2-2
 s23p: 3-3
 
 # document level annotation
@@ -1111,36 +1101,31 @@ Sentence (en): The AKP's Islamic conservatives have taken this refusal as justif
 
 # sentence level graph:
 (s24p / prendere
-    :actor (s24c / conservatore|conservatorio
-        :mod (s24i2 / islamico)
-        :mod (s24t / type-NE
-            :name (s24n / name
-                :op1 "AKP"))
-        :mod (s24i / il)
-        :refer-number plural)
+    :actor (s24c / conservatore
+        :refer-number plural
+        :mod (s24i / islamico)
+        :mod (s24p2 / political-organization
+            :name (s24n / name :op1 "AKP")
+            :wiki "Q19077"))
     :undergoer (s24r / rifiuto
         :mod (s24q / questo)
         :refer-number singular)
-    :OBLIQUE (s24g / giustificazione
-        :mod (s24i4 / interrogatore|interrogatorio
-            :refer-number plural
-            :mod (s24i3 / il))
+    :result (s24g / giustificazione
+        :mod (s24i2 / interrogatorio :refer-number plural)
         :refer-number singular)
-    :modal-strength MS-affirmative
-    :aspect ASP) 
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
 s24p: 8-8
-s24i4: 15-15
+s24i2: 15-15
 s24g: 12-12
-s24i2: 3-3
-s24t: 0-0
+s24i: 3-3
 s24n: 0-0
-s24i: 1-1
 s24q: 9-9
 s24r: 10-10
 s24c: 2-2
-s24i5: 0-0
+s24p2: 6-6
 
 # document level annotation
 
@@ -1153,39 +1138,33 @@ Sentence: Quali sono i limiti che potrebbero inibire l'espressione del credo rel
 Sentence (en): What are the limits that could inhibit the expression of religious beliefs in private companies? 
 
 # sentence level graph:
-(s25i4 / identity-91
+(s25i / identity-91
     :ARG1 (s25l / limite
-        :mod (s25i / il)
         :refer-number plural
-        :actor-of (s25i2 / inibire
-            :undergoer (s25e / espressione
-                :mod (s25i3 / il)
-                :mod (s25c / credere
-                    :refer-number singular
+        :cause-of (s25i2 / inibire
+            :undergoer (s25e / esprimere
+                :theme (s25c / credo
                     :mod (s25r / religioso))
-                :mod (s25a / azienda
+                :place (s25a / azienda
                     :refer-number plural
-                    :mod (s25p / privato))
-                :refer-number singular)
-            :modal-strength MS-affirmative
-            :aspect ASP))
-    :ARG2 (s25f / FILL
-        :refer-number plural)
-    :modal-strength MS
-    :aspect state) 
+                    :mod (s25p / privato)))
+            :modal-strength neutral-affirmative
+            :aspect activity))
+    :ARG2 (s25u / umr-unknown)
+    :modal-strength full-affirmative
+    :aspect state
+    :mode interrogative)
 
 # alignment:
 s25l: 4-4
+s25i: 2-2
 s25p: 17-17
 s25i2: 7-7
-s25i: 3-3
-s25c2: 0-0
-s25i3: 8-8
+s25c: 12-12
 s25r: 13-13
-s25f: 0-0
-s25i6: 0-0
 s25a: 16-16
-s25e2: 0-0
+s25e: 9-9
+s25u: 1-1
 
 # document level annotation
 
@@ -1198,33 +1177,38 @@ Sentence: Anche se la maggior parte delle situazioni che emerge nei contesti lav
 Sentence (en): Even if the majority of situations that arise in the workplace can be resolved without conflict. 
 
 # sentence level graph:
-(s26r / risolvere
-    :actor (s26p / parte
-        :mod (s26i / il)
-        :mod (s26s / situazione
-            :refer-number plural)
-        :mod (s26m / maggiore)
-        :refer-number singular
-        :actor-of (s26e / emergere
-            :OBLIQUE (s26c / contesto
-                :mod (s26l / lavorativo)
-                :refer-number plural)
-            :modal-strength MS
-            :aspect ASP))
-    :OBLIQUE (s26c2 / conflitto
-        :refer-number plural)
-    :modal-strength MS-affirmative
-    :aspect ASP) 
+(s26h / have-concessive-condition-91
+    :ARG1 (s26e / event)
+    :ARG2 (s26r / risolvere
+        :theme (s26s / situazione
+            :quant (s26p / parte
+                :mod (s26m / grande
+                    :degree (s26m2 / more)))
+            :theme-of (s26e / emergere
+                :place (s26c / contesto
+                    :mod (s26l / lavorativo)
+                    :refer-number plural)
+                :modal-strength full-affirmative
+                :aspect activity))
+        :manner (s26c2 / conflitto
+            :refer-number plural
+            :polarity -)
+        :modal-strength neutral-affirmative
+        :aspect process)
+    :aspect state
+    :modal-strength full-affirmative)
 
 # alignment:
+s26h: 1-2
+s26e: 0-0
 s26m: 4-4
+s26m2: 0-0
+s26s: 8-8
+s26c: 13-13
 s26l: 14-14
-s26c3: 0-0
-s26i: 3-3
-s26s2: 0-0
 s26c2: 19-19
 s26p: 5-5
-s26r: 17-17
+s26r: 15-17
 s26e: 10-10
 
 # document level annotation
@@ -1239,80 +1223,55 @@ Sentence (en): It aims to take the journey time into account after deducting thi
 
 # sentence level graph:
 (s27p / puntare
-    :experiencer (s27f / FILL
+    :actor (s27p3 / person
+        :refer-person 3rd
         :refer-number singular)
-    :stimulus (s27p2 / portare
-        :OBLIQUE (s27c / considerazione
-            :refer-number singular)
-        :manner (s27i3 / identity-91
-            :modal-strength MS
-            :aspect state
-            :ARG1 (s27f3 / FILL
-                :refer-number FILL)
-            :ARG2 (s27g / grado
-                :mod (s27m / misurare
-                    :modal-strength MS-affirmative
-                    :aspect ASP
-                    :actor (s27f4 / FILL
-                        :refer-number FILL)
-                    :undergoer (s27t2 / tempo
-                        :mod (s27r / reale)
-                        :mod (s27i2 / il)
-                        :mod (s27v2 / viaggio
-                            :refer-number singular)
-                        :refer-number singular))
-                :refer-number singular
-                :modal-strength MS-affirmative
-                :aspect ASP
-                :polarity -))
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :temporal (s27d / dedurre
-            :actor (s27f2 / FILL
-                :refer-number FILL)
-            :undergoer (s27f5 / FILL
-                :refer-number singular)
-            :OBLIQUE (s27o / ora
-                :mod (s27l / lavoro
-                    :refer-number singular
-                    :mod (s27c2 / completare
-                        :modal-strength MS-affirmative
-                        :aspect ASP
+    :purpose (s27p2 / portare
+        :goal (s27c / considerazione)
+        :theme (s27t / tempo
+            :mod (s27v / viaggio))
+        :manner (s27m / misurare
+            :modal-strength neutral-negative
+            :aspect activity
+            :actor s27p3
+            :undergoer (s27t2 / tempo
+                :mod (s27r / reale)
+                :mod (s27v2 / viaggio)))
+        :temporal (s27a / after
+            :op1 (s27d / dedurre
+                :actor s27p3
+                :undergoer s27t2
+                :source (s27o / ora
+                    :refer-number plural
+                    :mod (s27l / lavoro)
+                    undergoer-of (s27c2 / completare
+                        :actor s27p3
+                        :modal-strength full-affirmative
+                        :aspect performance
                         :manner (s27e / effettivo)))
-                :refer-number plural)
-            :modal-strength MS-affirmative
-            :aspect ASP)
-        :undergoer (s27t / tempo
-            :mod (s27i / il)
-            :mod (s27v / viaggio
-                :refer-number singular)
-            :refer-number singular))
+                :modal-strength full-affirmative
+                :aspect performance))
+        :modal-strength full-affirmative
+        :aspect activity)
     :modal-strength full-affirmative
-    :aspect ASP) 
+    :aspect state)
 
 # alignment:
-s27f3: 0-0
+s27p3: 0-0
 s27p: 1-1
-s27f: 0-0
 s27t: 7-7
 s27r: 31-31
-s27g: 26-26
+s27a: 11-11
 s27o: 17-17
 s27e: 20-20
-s27i6: 0-0
 s27c2: 21-21
+s27l: 19-19
 s27m: 28-28
-s27i4: 0-0
-s27f2: 0-0
 s27p2: 3-3
-s27f5: 0-0
 s27c: 5-5
-s27l2: 0-0
 s27v2: 34-34
 s27d: 14-14
 s27t2: 30-30
-s27i: 6-6
-s27f4: 0-0
 s27v: 10-10
 
 # document level annotation
@@ -1326,25 +1285,20 @@ Sentence: La Francia non ha una buona reputazione.
 Sentence (en): France doesn't have a good reputation. 
 
 # sentence level graph:
-(s28a / avere
-    :actor (s28t / type-NE
-        :mod (s28i / il)
-        :name (s28n / name
-            :op1 "Francia"))
-    :undergoer (s28r / reputazione
-        :mod (s28u / uno)
-        :mod (s28b / buono)
-        :refer-number singular)
+(s28h / have-91
+    :ARG1 (s28c / country
+        :name (s28n / name :op1 "Francia")
+        :wiki "Q142")
+    :ARG2 (s28r / reputazione
+        :mod (s28b / buono))
     :modal-strength full-negative
-    :aspect ASP) 
+    :aspect state)
 
 # alignment:
-s28i: 1-1
-s28t: 0-0
+s28c: 2-2
 s28r: 7-7
-s28n2: 0-0
-s28a: 4-4
-s28u: 5-5
+s28h: 3-4
+s28n: 0-0
 s28b: 6-6
 
 # document level annotation
@@ -1360,38 +1314,32 @@ Sentence (en): A voucher is generated that can be saved on your smartphone, or p
 # sentence level graph:
 (s29g / generare
     :undergoer (s29b / buono
-        :mod (s29i / il)
         :refer-number singular
         :undergoer-of (s29o / or
             :op1 (s29s / salvare
-                :modal-strength MS-affirmative
-                :aspect ASP
-                :OBLIQUE (s29s2 / smartphone
-                    :refer-number singular))
+                :modal-strength neutral-affirmative
+                :aspect performance
+                :place (s29s2 / smartphone :refer-number singular))
             :op2 (s29a / and
                 :op2 (s29p / presentare
-                    :modal-strength MS-affirmative
-                    :aspect ASP
-                    :OBLIQUE (s29c / cassa
-                        :refer-number singular))
+                    :modal-strength neutral-affirmative
+                    :aspect performance
+                    :goal (s29c / cassa :refer-number singular))
                 :op1 (s29s3 / stampare
-                    :modal-strength MS-affirmative
-                    :aspect ASP))))
-    :manner (s29q / quindi)
+                    :modal-strength neutral-affirmative
+                    :aspect performance))))
     :modal-strength full-affirmative
-    :aspect ASP) 
+    :aspect performance)
 
 # alignment:
-s29c2: 0-0
-s29i: 4-4
 s29s2: 12-12
-s29o2: 0-0
-s29q: 1-1
 s29a: 15-15
+s29o: 13-13
+s29s: 7-9
 s29b: 5-5
 s29p: 16-16
-s29g: 3-3
-s29s4: 0-0
+s29g: 2-3
+s29c: 19-19
 s29s3: 14-14
 
 # document level annotation
@@ -1406,24 +1354,21 @@ Sentence (en): From the 1st of January there will be an increase in petrol and d
 
 # sentence level graph:
 (s30a / aumentare
-    :actor (s30a2 / and
-        :op1 (s30b / benzina
-            :refer-number singular)
-        :op2 (s30g2 / gasolio
-            :refer-number singular))
-    :OBLIQUE (s30p / primo
-        :OBLIQUE (s30g / gennaio
-            :refer-number singular))
+    :theme (s30a2 / and
+        :op1 (s30b / benzina :refer-number singular)
+        :op2 (s30g2 / gasolio :refer-number singular))
+    :temporal (s30a3 / after
+        :op1 (s30d / date-entity :day 1 :month 1))
     :modal-strength full-affirmative
-    :aspect ASP) 
+    :aspect process)
 
 # alignment:
-s30g: 4-4
+s30d: 3-4
+s30a3: 1-1
 s30a2: 7-7
-s30g2: 8-8
+s30g: 8-8
 s30a: 5-5
 s30b: 6-6
-s30p: 3-3
 
 # document level annotation
 
@@ -1437,63 +1382,60 @@ Sentence (en): As stated, the decision is the prerogative of the ECB and would a
 
 # sentence level graph:
 (s31a3 / and
-    :op1 (s31p / prerogativa
-        :refer-number singular
-        :ADVCL (s31d / dire
-            :modal-strength MS-affirmative
-            :aspect ASP)
-        :mod (s31t / type-NE
-            :name (s31n2 / name
-                :op1 "BCE")))
+    :op1 (s31i / identity-91
+        :ARG1 (s31d / decisione :refer-number singular)
+        :ARG2 (s31p / prerogativa
+            :poss (s31o / organization
+                :name (s31n2 / name :op1 "BCE")
+                :wiki "Q8901"))
+        :ARG1-of (s31r / resemble-91
+            :ARG2 (s31d2 / dire
+                :modal-strength full-affirmative
+                :aspect performance)
+            :aspect state
+            :modal-strength full-affirmative)
+        :aspect state
+        :modal-strength full-affirmative)
     :op2 (s31h / have-mod-91
-        :modal-strength MS
+        :modal-strength neutral-affirmative
         :aspect state
         :ARG1 (s31p2 / parlare
-            :OBLIQUE (s31n / nome
-                :refer-number singular
-                :det (s31s / suo))
-            :ADVCL (s31e / escludere
-                :actor (s31f / FILL
-                    :refer-number FILL)
-                :undergoer (s31p3 / possibilità
-                    :mod (s31i3 / il)
-                    :mod (s31e2 / esaminare
-                        :modal-strength MS-affirmative
-                        :aspect ASP
-                        :actor (s31f2 / FILL
-                            :refer-number FILL)
-                        :undergoer (s31a2 / alternativa
-                            :mod (s31a / altro)
-                            :refer-number plural))
-                    :refer-number singular)
-                :modal-strength MS-affirmative
-                :aspect ASP))
-        :ARG2 (s31i / inopportuno
-            :OBLIQUE (s31b / Banca
-                :mod (s31i2 / il)
-                :refer-number singular)))) 
+            :aspect activity
+            :modal-strength full-affirmative
+            :manner (s31n / nome
+                :poss s31o)
+            :manner (s31e / escludere
+                :theme (s31e2 / esaminare
+                    :modal-strength neutral-affirmative
+                    :aspect activity
+                    :undergoer (s31a2 / alternativa
+                        :mod (s31a / altro)
+                        :refer-number plural))
+                :modal-strength full-affirmative
+                :aspect activity))
+        :ARG2 (s31i2 / inopportuno)
+        :affectee (s31o2 / organization
+            :name (s31n3 / name :op1 "Banca"))))
 
 # alignment:
-s31d: 2-2
-s31i5: 0-0
+s31r: 1-1
+s31d2: 2-2
+s31d: 5-5
+s31o: 10-10
+s31i: 6-6
+s31a3: 11-11
 s31n: 20-20
 s31h: 12-12
-s31s: 19-19
-s31i4: 0-0
-s31a3: 11-11
-s31t: 0-0
-s31b2: 0-0
 s31n2: 0-0
 s31p2: 17-17
-s31e5: 0-0
-s31e4: 0-0
 s31a2: 27-27
-s31p3: 23-23
-s31f2: 0-0
-s31i3: 22-22
+s31e: 21-21
+s31e2: 25-25
 s31p: 7-7
 s31a: 26-26
-s31f: 0-0
+s31i2: 13-13
+s31o2: 16-16
+s31n3: 0-0
 
 # document level annotation
 
@@ -1506,55 +1448,53 @@ Sentence: È quanto scrive in una nota a Mps dopo la decisione dell'ex ministro 
 Sentence (en): This is what has been written in a note to Mps after the decision of the ex-minister to leave the party. 
 
 # sentence level graph:
-(s32i2 / identity-91
-    :undergoer (s32s / scrivere
-        :OBLIQUE (s32d / decisione
-            :mod (s32u2 / uscire
-                :modal-strength MS-affirmative
-                :aspect ASP
-                :actor (s32f3 / FILL
-                    :refer-number FILL)
-                :OBLIQUE (s32p / partita
-                    :refer-number singular))
-            :mod (s32i / il)
-            :mod (s32m / ministro
+(s32i / identity-91
+    :ARG1 (s32t / thing)
+    :ARG2 (s32t2 / thing
+        :undergoer-of (s32s / scrivere
+            :actor (s32p / person
                 :refer-number singular
-                :mod (s32e / ex))
-            :refer-number singular)
-        :OBLIQUE (s32n / nota
-            :mod (s32t / type-NE
-                :name (s32n2 / name
-                    :op1 "Mps"))
-            :mod (s32u / uno)
-            :refer-number singular)
-        :modal-strength MS
-        :aspect ASP
-        :actor (s32f2 / FILL
-            :refer-number singular))
-    :ARG1 (s32f / FILL
-        :refer-number singular)
-    :ARG2 (s32f4 / FILL
-        :refer-number singular)
-    :modal-strength MS
+                :refer-person 3rd)
+            :place (s32n / nota
+                :recipient (s32o / organization
+                    :name (s32n2 / name :op1 "Mps"))
+                    :refer-number singular)
+            :temporal (s32d / decidere
+                :aspect performance
+                :modal-strength full-affirmative
+                :actor (s32p2 / person
+                    :refer-number singular
+                    :ARG1-of (s32h / have-org-role-91
+                        :ARG3 (s32m / ministro
+                            :mod (s32e / ex))
+                        :aspect state
+                        :modal-strength full-affirmative))
+                :undergoer (s32u / uscire
+                    :actor s32p2
+                    :modal-strength full-affirmative
+                    :aspect performance
+                    :source (s32p3 / partita :refer-number singular)))
+            :modal-strength full-affirmative
+            :aspect process))
+    :modal-strength full-affirmative
     :aspect state) 
 
 # alignment:
-s32f3: 0-0
-s32f: 0-0
-s32f4: 0-0
-s32s: 3-3
-s32m2: 0-0
-s32u: 5-5
 s32t: 0-0
-s32i4: 0-0
-s32p: 20-20
+s32t2: 2-2
+s32s: 3-3
+s32p: 0-0
+s32m: 0-0
+s32p3: 20-20
+s32p2: 14-15
+s32h: 0-0
 s32d: 11-11
-s32i: 10-10
-s32u2: 17-17
+s32i: 1-1
+s32u: 17-17
 s32n: 6-6
-s32f2: 0-0
+s32o: 8-8
 s32n2: 0-0
-s32e2: 0-0
+s32e: 0-0
 
 # document level annotation
 
@@ -1569,63 +1509,48 @@ Sentence (en): Four students at Roma Tre University have developed a motorcycle 
 # sentence level graph:
 (s33s2 / sviluppare
     :actor (s33s / studente
-        :mod (s33t2 / type-NE
-            :name (s33n2 / name
-                :op1 "università")
-            :mod (s33t / type-NE
-                :name (s33n / name
-                    :op1 "Roma"
-                    :op2 "Tre")))
-        :refer-number plural
+        :mod (s33a4 / academic-organization
+            :name (s33n / name
+                :op1 "università"
+                :op2 "Roma"
+                :op3 "Tre")
+            :wiki "Q2297486")
         :quant 4)
     :undergoer (s33c / casco
-        :mod (s33u / uno)
-        :mod (s33m / motociclista
-            :refer-number singular)
+        :mod (s33m / motociclista)
         :refer-number singular
         :actor-of (s33a3 / and
             :op1 (s33l / leggere
-                :modal-strength MS
-                :aspect ASP
-                :undergoer (s33p / pensiero
-                    :mod (s33i / il)
-                    :refer-number singular))
+                :modal-strength full-affirmative
+                :aspect activity
+                :undergoer (s33p / pensiero))
             :op2 (s33a / aiutare
-                :modal-strength MS
-                :aspect ASP
-                :experiencer (s33f / FILL
-                    :refer-number singular)
-                :stimulus (s33a2 / anticipare
-                    :modal-strength MS-affirmative
-                    :aspect ASP
+                :modal-strength full-affirmative
+                :aspect activity
+                :purpose (s33a2 / anticipare
+                    :modal-strength full-affirmative
+                    :aspect activity
                     :undergoer (s33m2 / manovra
-                        :mod (s33i2 / il)
                         :mod (s33g / guidatore
                             :refer-number singular)
                         :refer-number plural)))))
-    :modal-strength MS-affirmative
-    :aspect ASP) 
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
-s33f: 0-0
 s33p: 18-18
+s33a4: 5-7
 s33c: 11-11
 s33m2: 25-25
 s33m: 13-13
-s33i2: 24-24
 s33g: 28-28
 s33a: 21-21
 s33n: 0-0
-s33u2: 0-0
 s33a2: 23-23
 s33a3: 20-20
-s33s: 2-2
+s33s: 1-2
 s33l: 16-16
-s33t2: 0-0
-s33i3: 0-0
-s33s2: 9-9
-s33t3: 0-0
-s33n2: 0-0
+s33s2: 8-9
 
 # document level annotation
 
