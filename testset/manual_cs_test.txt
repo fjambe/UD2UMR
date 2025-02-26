@@ -7,6 +7,8 @@ Sentence (en): “While much of the digital transition is unprecedented in the U
 
 # sentence level graph:
 (s1n / napsat
+  :modal-strength full-affirmative
+  :aspect performance
   :actor (s1a / asistentka
     :possessor (s1o2 / person
       :name (s1n3 / name
@@ -21,6 +23,8 @@ Sentence (en): “While much of the digital transition is unprecedented in the U
     :possessor s1a)
   :theme (s1b2 / but-91
     :ARG1 (s1d / dít-se
+      :modal-strength full-affirmative
+      :aspect activity
       :place (s1p / proces
         :mod (s1t / tento)
         :mod (s1p2 / předávat
@@ -32,10 +36,14 @@ Sentence (en): “While much of the digital transition is unprecedented in the U
       :undergoer (s1m2 / mnoho)
       :manner (s1p3 / poprvé)
       :additive (s1t2 / týkat-se
+        :modal-strength full-affirmative
+        :aspect state
         :manner (s1p4 / především)
         :undergoer (s1p5 / prostředek
           :mod (s1d2 / digitální))))
     :ARG2 (s1h / have-mod-91
+      :modal-strength full-affirmative
+      :aspect state
       :ARG1 (s1p6 / poklidnost
         :mod (s1p7 / předávat
           :undergoer (s1m3 / moc)))
@@ -83,7 +91,11 @@ Sentence (en): "Tonight we are carrying out punishments using a high beam," the 
 
 # sentence level graph:
 (s2s / stát
+  :modal-strength full-affirmative
+  :aspect state
   :theme (s2t / trestat
+    :modal-strength full-affirmative
+    :aspect activity
     :actor (s2p3 / person
       :refer-person 1st
       :refer-number plural)
@@ -109,16 +121,23 @@ Sentence (en): The debris formed a ring around the Earth's equator and was event
 
 # sentence level graph:
 (s3v / vytvořit
+  :modal-strength full-affirmative
+  :aspect performance
   :actor (s3s / suť)
   :place (s3r / rovník
     :mod (s3z / zemský))
   :undergoer (s3p / prstenec)
   :temporal (s3p2 / before
     :op1 (s3s3 / shluknout-se
+      :modal-strength full-affirmative
+      :aspect peformance
+      :actor s3s
       :cause (s3p3 / působit
         :actor (s3g / gravitace))
       :temporal (s3a / before
         :op1 (s3s4 / stát-se
+          :modal-strength full-affirmative
+          :aspect performance
           :actor (s3m / měsíc)
           :material s3s)))))
 
@@ -148,6 +167,8 @@ Sentence (en): Its importance resides in two facts.
 
 # sentence level graph:
 (s4s / spočívat
+  :modal-strength full-affirmative
+  :aspect state
   :theme (s4v / význam
     :possessor (s4j / person
       :refer-person 3rd
@@ -174,6 +195,8 @@ Sentence (en): By the 3rd century the emperor Caracalla made a new division whic
 # sentence level graph:
 (s5a / but-91
   :ARG1 (s5p / rozdělit
+    :modal-strength full-affirmative
+    :aspect performance
     :actor (s5c / císař
       :name (s5c2 / name
         :op1 "Caracalla"))
@@ -182,6 +205,8 @@ Sentence (en): By the 3rd century the emperor Caracalla made a new division whic
     :theme (s5r / rozdělit
       :mod (s5d / další)))
   :ARG2 (s5v / vydržet
+    :modal-strength full-affirmative
+    :aspect performance
     :actor s5r
     :mod (s5j / jen)
     :manner (s5k / krátkodobě)))
@@ -211,6 +236,8 @@ Sentence (en): In 1955, Mishima took up weight training and his workout regimen 
 # sentence level graph:
 (s6a / and
   :op1 (s6z / začít
+    :modal-strength full-affirmative
+    :aspect performance
     :temporal (s6r / date-entity
       :year 1955)
     :actor (s6m / person
@@ -219,6 +246,8 @@ Sentence (en): In 1955, Mishima took up weight training and his workout regimen 
     :theme (s6p / posilovat
       :actor s6m))
   :op2 (s6n / přerušit
+    :modal-strength full-negative
+    :aspect performance
     :polarity -
     :actor s6m
     :theme (s6r2 / režim
@@ -270,6 +299,8 @@ Sentence (en): Von Beust justified the cost increases as lack of detailed planni
 
 # sentence level graph:
 (s7o / ospravedlňovat
+  :modal-strength full-affirmative
+  :aspect activity
   :actor (s7p2 / person
     :name (s7n3 / name
       :op1 "Von"
@@ -303,13 +334,19 @@ Sentence (en): The smartphone generation received an app it deserved, where, in 
 
 # sentence level graph:
 (s8z / získat
+  :modal-strength full-affirmative
+  :aspect performance
   :recipient (s8g / generace
     :mod (s8s / smartphone
       :refer-number plural))
   :theme (s8a / aplikace
     :theme-of (s8z2 / zasloužit-si
+      :modal-strength full-affirmative
+      :aspect state
       :actor s8g)
     :mod (s8z3 / získat
+      :modal-strength full-affirmative
+      :aspect performance
       :recipient (s8s3 / situace
         :mod (s8n / stupidní
           :degree intensifier))
@@ -340,6 +377,8 @@ Sentence (en): Dündar warned Europe about having too much understanding for Erd
 
 # sentence level graph:
 (s9v / varovat
+  :modal-strength full-affirmative
+  :aspect performance
   :actor (s9d / person
     :name (s9n2 / name
       :op1 "Dündar"))
@@ -347,6 +386,8 @@ Sentence (en): Dündar warned Europe about having too much understanding for Erd
     :name (s9n3 / name
       :op1 "Evropa"))
   :purpose (s9n / mít-pochopení
+    :modal-strength full-affirmative
+    :aspect activity
     :actor s9e
     :degree (s9m / mnoho
       :degree (s9p / příliš))
@@ -380,14 +421,18 @@ Sentence (en): According to the programme, she will speak at 23.45.
 
 # sentence level graph:
 (s10m / mluvit
+  :modal-strength full-affirmative
+  :aspect activity
   :actor (s10p2 / person
     :refer-person 3rd
     :refer-number singular)
   :temporal (s10d / date-entity
-    :time 23:45))
+    :time 23:45)
+  :other-role (s10p / program))
 
 # alignment:
 s10p2: 0-0
+s10p: 1-2
 s10m: 3-4
 s10d: 5-8
 
