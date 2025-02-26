@@ -976,64 +976,69 @@ Sentence (en): It is no surprise that the federal and state governments have cla
 (s21i / identity-91
     :ARG1 (s21a2 / and
         :op1 (s21k / klasifikovat
-            :experiencer (s21v / vláda
+            :actor (s21v / vláda
                 :mod (s21a / and
                     :op1 (s21f / federální)
                     :op2 (s21s / státní))
                 :refer-number plural)
-            :undergoer (s21n / National
-                :refer-number FILL)
-            :stimulus (s21ú / úsilí
-                :mod (s21c / celostátní)
-                :mod (s21p2 / priorita
-                    :refer-number singular
-                    :ARG1-of (s21h / have-degree-91
-                        :ARG2 (s21v2 / vysoký)
-                        :ARG3 (s21m / most)
-                        :modal-strength MS
-                        :aspect state))
-                :modal-strength MS-affirmative
-                :aspect ASP))
+            :undergoer (s21n / government-output
+                :refer-number singular
+                :name (s21n2 / name
+                    :op1 "National"
+                    :op2 "Natural"
+                    :op3 "Heritage"))
+            :ARG1-of (s21h2 / have-role-91
+                :ARG3: (s21ú / úsilí
+                    :mod (s21c / celostátní)
+                    :mod (s21p2 / priorita
+                        :refer-number singular
+                        :ARG1-of (s21h / have-degree-91
+                            :ARG2 (s21v2 / vysoký)
+                            :ARG3 (s21m / most)
+                            :modal-strength full-affirmative
+                            :aspect state)))
+                :modal-strength full-affirmative
+                :aspect state)
+            :modal-strength full-affirmative
+            :aspect performance)
         :op2 (s21z / zdokumentovat
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :undergoer (s21p3 / person
-                :refer-person 3rd
-                :refer-number singular)
-            :OBLIQUE (s21s2 / smlouva
+            :modal-strength full-affirmative
+            :aspect performance
+            :undergoer s21n
+            :place (s21s2 / smlouva
                 :mod (s21k2 / koaliční)
                 :refer-number singular)
-            :OBLIQUE (s21r / rok
-                :refer-number singular
-                :quant 2005)))
+            :temporal (s21r / date-entity
+                :year 2005)))
     :ARG2 (s21p / překvapení
         :mod (s21ž / žádný)
         :refer-number singular)
-    :modal-strength MS
+    :modal-strength full-negative
     :aspect state)
 
 # alignment:
-s21a: 0-0
-s21a2: 0-0
 s21h: 0-0
+s21h2: 0-0
 s21m: 0-0
-s21p3: 0-0
+s21n2: 0-0
 s21i: 1-1
 s21ž: 2-2
 s21p: 3-3
+s21k: 5-5, 10-10
 s21f: 6-6
+s21a: 7-7
 s21s: 8-8
 s21v: 9-9
-s21k: 10-10
-s21n: 11-11
+s21n: 11-13, 22-22
+s21ú: 14-14, 16-16
 s21c: 15-15
-s21ú: 16-16
+s21p2: 17-17, 19-19
 s21v2: 18-18
-s21p2: 19-19
+s21a2: 20-20
 s21z: 21-21
-s21r: 24-24
+s21r: 23-25
+s21s2: 26-26, 28-28
 s21k2: 27-27
-s21s2: 28-28
 
 # document level annotation
 
