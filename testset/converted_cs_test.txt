@@ -1098,23 +1098,21 @@ Sentence (en): According to the programme, she will speak at 23.45.
 
 # sentence level graph:
 (s23m / mluvit
-    :actor (s23f / FILL
-        :refer-number FILL)
-    :OBLIQUE (s23p / program
+    :actor (s23f / person
+        :refer-person 3rd
         :refer-number singular)
-    :OBLIQUE (s23a / and
-        :op1 (2 / 23)
-        :op2 (4 / 45))
-    :modal-strength MS-affirmative
-    :aspect ASP)
+    :other-role (s23p / program
+        :refer-number singular)
+    :temporal (s23a / date-entity
+        :time 23:45)
+    :modal-strength full-affirmative
+    :aspect activity)
 
 # alignment:
-4: 8-8
-2: 6-6
-s23a: 0-0
 s23f: 0-0
-s23p: 2-2
-s23m: 4-4
+s23p: 1-2
+s23m: 3-4
+s23a: 5-8
 
 # document level annotation
 
