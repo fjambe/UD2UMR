@@ -848,16 +848,17 @@ Sentence: A teď je také mistrem světa.
 Sentence (en): And now he is also world champion.
 
 # sentence level graph:
-(s18i / identity-91
-    :ARG1 (s18f / FILL
+(s18i / have-role-91
+    :ARG1 (s18f / person
+        :refer-person 3rd
         :refer-number singular)
-    :ARG2 (s18m / mistr
-        :manner (s18t2 / také)
-        :manner (s18t / teď)
+    :ARG3 (s18m / mistr
         :refer-number singular
-        :MOD/POSS (s18s / svět
+        :mod (s18s / svět
             :refer-number singular))
-    :modal-strength MS
+    :manner (s18t2 / také)
+    :temporal (s18t / teď)
+    :modal-strength full-affirmative
     :aspect state)
 
 # alignment:
