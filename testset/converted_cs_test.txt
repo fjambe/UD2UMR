@@ -881,13 +881,19 @@ Sentence (en): The issue might not be over for Barroso.
 
 # sentence level graph:
 (s19u / ukončený
-    :experiencer (s19p / případ
+    :affectee (s19p2 / person
+        :name (s19n / name
+            :op1 "Barroso"))
+    :undergoer (s19p / případ
         :refer-number singular)
-    :modal-strength partial-affirmative)
+    :modal-strength partial-negative
+    :aspect state)
 
 # alignment:
+s19n: 0-0
+s19p2: 1-2
+s19u: 3-4, 6-6
 s19p: 5-5
-s19u: 6-6
 
 # document level annotation
 
