@@ -408,23 +408,23 @@ Sentence: Jak spěchal uchvátit Kadeš, dopustil se Ramses II. zásadní taktic
 Sentence (en): In his haste to capture Kadesh, Ramesses II committed a major tactical error.
 
 # sentence level graph:
-(s9d / dopustit
-    :actor (s9t2 / type-NE
+(s9d / dopustit-se
+    :actor (s9t2 / person
         :name (s9n / name
-            :op1 "Ramses")
-        :quant (s9i / II))
-    :affectee (s9c / chyba
+            :op1 "Ramses"
+            :op2 "II"
+            :op3 "."))
+    :undergoer (s9c / chyba
         :mod (s9t / taktický)
         :mod (s9z / zásadní)
         :refer-number singular)
-    :modal-strength MS-affirmative
+    :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
 s9n: 0-0
-s9t2: 0-0
-s9d: 6-6
-s9i: 9-9
+s9d: 6-7
+s9t2: 8-10
 s9z: 11-11
 s9t: 12-12
 s9c: 13-13
@@ -441,47 +441,40 @@ Sentence (en): They had been so moved by the beauty of the Rudyard Lake area tha
 
 # sentence level graph:
 (s10h / have-mod-91
-    :ARG1 (s10f / FILL
+    :ARG1 (s10f / person
+        :refer-person 3rd
         :refer-number plural)
     :ARG2 (s10p / pohnutý
+        :stimulus (s10k / krása
+            :refer-number singular
+            :mod (s10k2 / krajina
+                :place (s10j / jezero
+                    :name (s10n / name
+                        :op1 "Rudyard")
+                    :refer-number singular)
+                :refer-number singular))
         :manner (s10t / tak
-            :ADVCL (s10p2 / pojmenovat
+            :cause-of (s10p2 / pojmenovat
                 :undergoer (s10d / dítě
                     :mod (s10p3 / prvorozený)
                     :refer-number singular
-                    :possessor (s10p5 / person
-                        :refer-person FILL
-                        :refer-number singular))
-                :OBLIQUE (s10p4 / person
-                    :refer-person 3rd
-                    :refer-number singular)
-                :modal-strength MS-affirmative
-                :aspect performance))
-        :mod (s10k / krása
-            :refer-number singular
-            :MOD/POSS (s10k2 / krajina
-                :MOD/POSS (s10j / jezero
-                    :mod (s10t2 / type-NE
-                        :name (s10n / name
-                            :op1 "Rudyard"))
-                    :refer-number singular)
-                :refer-number singular)))
-    :modal-strength MS
+                    :possessor s10f)
+                :other-role s10j
+                :modal-strength full-affirmative
+                :aspect performance)))
+    :modal-strength full-affirmative
     :aspect state)
 
 # alignment:
-s10f: 0-0
-s10n: 0-0
-s10p4: 0-0
-s10p5: 0-0
-s10t2: 0-0
 s10h: 1-1
 s10k: 2-2
 s10k2: 3-3
-s10j: 5-5
+s10j: 4-5
+s10n: 6-6
 s10t: 7-7
 s10p: 8-8
-s10p2: 13-13
+s10p2: 10-10, 13-13
+s10f: 14-14
 s10p3: 15-15
 s10d: 16-16
 
@@ -497,63 +490,59 @@ Sentence (en): De Gaulle had instructed that there be no excessive displays of p
 
 # sentence level graph:
 (s11v / vydat
-    :actor (s11t / type-NE
+    :actor (s11t / person
         :name (s11n3 / name
             :op1 "Charles"
             :op2 "de"
             :op3 "Gaulle"))
     :undergoer (s11p / pokyn
         :refer-number plural
-        :undergoer-of (s11a / and
-            :op1 (s11d / daný
+        :mod (s11a / and
+            :op1 (s11d / dát-najevo
+                :modal-strength full-negative
+                :aspect performance
                 :undergoer (s11n2 / náklonnost
                     :mod (s11p2 / přehnaný)
                     :mod (s11ž / žádný)
                     :refer-number singular)
-                :affectee (s11t2 / type-NE
+                :affectee (s11t2 / person
                     :name (s11n4 / name
                         :op1 "Winston"
                         :op2 "Churchill"))
-                :manner (s11v2 / veřejně)
-                :manner (s11n / najevo))
-            :op2 (s11u / udílený
+                :manner (s11v2 / veřejně))
+            :op2 (s11u / udílet
+                :modal-strength full-negative
+                :aspect activity
                 :undergoer (s11v3 / vyznamenání
                     :mod (s11ž2 / žádný)
                     :mod (s11o / oficiální)
                     :refer-number plural)
-                :affectee (s11p5 / person
-                    :refer-person 3rd
-                    :refer-number singular)
-                :OBLIQUE (s11s / souhlas
+                :affectee s11t2
+                :condition (s11s / souhlas
                     :mod (s11p3 / předešlý)
                     :refer-number singular
-                    :possessor (s11p4 / person
-                        :refer-person 3rd
-                        :refer-number singular)))))
-    :modal-strength MS-affirmative
+                    :possessor s11t))))
+    :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
-s11a: 0-0
-s11d: 0-0
 s11n3: 0-0
 s11n4: 0-0
-s11o: 0-0
-s11p4: 0-0
-s11p5: 0-0
-s11t: 0-0
-s11t2: 0-0
+s11t: 1-3, 20-20
 s11v: 4-4
 s11p: 5-5
+s11d: 7-7, 10-10, 12-13
+s11t2: 8-9, 23-23
 s11v2: 11-11
-s11n: 13-13
 s11ž: 14-14
 s11p2: 15-15
 s11n2: 16-16
+s11a: 17-17
+s11u: 18-18, 24-25
+s11s: 19-19, 22-22
 s11p3: 21-21
-s11s: 22-22
-s11u: 25-25
 s11ž2: 26-26
+s11o: 27-27
 s11v3: 28-28
 
 # document level annotation
