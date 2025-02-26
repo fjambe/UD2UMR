@@ -1052,37 +1052,39 @@ Sentence (en): If his Democrat opponent were to be elected, he assured that she 
 
 # sentence level graph:
 (s22u / ujistit
-    :stimulus (s22v / vyšetřovaný
-        :OBLIQUE (s22r / rok
-            :mod (s22c / celý)
-            :refer-number plural)
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :condition (s22z / zvolený
+    :theme (s22v / vyšetřovat
+        :condition (s22z / zvolit
             :undergoer (s22o / oponent
                 :mod (s22d / demokratický)
                 :refer-number singular
                 :possessor (s22p / person
                     :refer-person 3rd
                     :refer-number singular))
-            :modal-strength MS-affirmative
-            :aspect performance))
+            :modal-strength neutral-affirmative
+            :aspect performance)
+        :undergoer s22o
+        :duration (s22r / rok
+            :mod (s22c / celý)
+            :refer-number plural)
+        :modal-strength full-affirmative
+        :aspect activity)
+    :actor s22p
     :affectee (s22p2 / person
         :refer-person 1st
         :refer-number plural)
-    :modal-strength MS-affirmative
+    :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
-s22p: 0-0
 s22p2: 0-0
+s22z: 1-3, 7-7
+s22p: 4-4
 s22d: 5-5
 s22o: 6-6
-s22z: 7-7
 s22u: 9-9
-s22v: 16-16
+s22v: 12-14, 16-16
+s22r: 17-17, 19-19
 s22c: 18-18
-s22r: 19-19
 
 # document level annotation
 
