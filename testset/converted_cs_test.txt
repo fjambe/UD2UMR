@@ -557,28 +557,42 @@ Sentence (en): The system was simple, direct, and worked well, even with previou
 
 # sentence level graph:
 (s12a / and
-    :op1 (s12j / jednoduchý)
-    :op2 (s12p / přímý)
+    :op1 (s12h / have-mod-91
+        :modal-strength full-affirmative
+        :aspect state
+        :ARG1 (s12s2 / systém
+            :refer-number singular)
+        :ARG2 (s12j / jednoduchý))
+    :op2 (s12h2 / have-mod-91
+        :modal-strength full-affirmative
+        :aspect state
+        :ARG1 s12s2
+        :ARG2 (s12p / přímý))
     :op3 (s12a2 / and
         :op1 (s12f / fungovat
-            :refer-number singular
+            :modal-strength full-affirmative
+            :aspect state
             :manner (s12s / skvěle))
-        :op2 (s12p2 / pilot
-            :refer-number plural
-            :manner i
-            :manner (s12d / dokonce)
-            :mod (s12š / školený))))
+        :op2 (s12f2 / fungovat
+            :modal-strength full-affirmative
+            :aspect state
+            :other-role (s12p2 / pilot
+                :refer-number plural
+                :undergoer-of (s12š / školit)))))
 
 # alignment:
-s12a: 0-0
-s12s: 0-0
+s12f2: 0-0
+s12h2: 0-0
+s12s2: 1-1
+s12h: 2-2
 s12j: 3-3
 s12p: 5-5
+s12a: 6-6
 s12f: 7-7
-s12a2: 9-9
-s12d: 10-10
+s12s: 8-8
+s12a2: 10-11
+s12p2: 12-12, 14-14
 s12š: 13-13
-s12p2: 14-14
 
 # document level annotation
 
