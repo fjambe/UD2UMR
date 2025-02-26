@@ -668,55 +668,52 @@ Sentence (en): Pebe moved the family to Nashville, Tennessee, in 1991 after secu
 
 # sentence level graph:
 (s14p4 / přestěhovat
+    :actor (s14p2 / person
+        :refer-number singular
+        :name (s14n4 / name
+            :op1 "Pebe"))
     :undergoer (s14r2 / rodina
         :refer-number singular)
-    :OBLIQUE (s14r / rok
-        :refer-number singular
-        :quant 1991)
-    :OBLIQUE (s14t / type-NE
-        :mod (s14t2 / type-NE
+    :temporal (s14r / date-entity
+        :year 1991)
+    :goal (s14t / human-settlement
+        :place (s14t2 / country-region
             :name (s14n3 / name
                 :op1 "Tennessee"))
         :name (s14n2 / name
             :op1 "Nashville"))
-    :manner (s14p / poté
-        :ADVCL (s14z / zajistit
+    :temporal (s14p / poté
+        :op1 (s14z / zajistit
             :undergoer (s14s / smlouva
                 :mod (s14v / vydavatelský)
                 :mod (s14p3 / písnička
                     :refer-number plural
-                    :possessor (s14p6 / person
-                        :refer-person FILL
-                        :refer-number plural))
+                    :possessor s14p2)
                 :mod (s14n / nový)
                 :refer-number singular)
-            :OBLIQUE (s14p2 / Pebe
-                :refer-number FILL)
-            :OBLIQUE (s14p5 / person
-                :refer-person FILL
-                :refer-number FILL)
-            :modal-strength MS-affirmative
+            :actor s14p2
+            :affectee s14p2
+            :modal-strength full-affirmative
             :aspect performance))
     :modal-strength MS-affirmative
     :aspect performance)
 
 # alignment:
-s14n2: 0-0
 s14n3: 0-0
-s14p5: 0-0
-s14p6: 0-0
-s14s: 0-0
+s14n4: 0-0
 s14t: 0-0
-s14t2: 0-0
-s14r: 2-2
-s14p: 4-4
-s14p2: 8-8
+s14r: 1-3
+s14p: 4-6
+s14p2: 7-8, 14-14
 s14z: 9-9
 s14n: 10-10
 s14v: 11-11
-s14p3: 15-15
+s14s: 12-12
+s14p3: 13-13, 15-15
 s14p4: 17-17
 s14r2: 18-18
+s14n2: 19-20
+s14t2: 21-22
 
 # document level annotation
 
