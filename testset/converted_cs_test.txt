@@ -908,50 +908,59 @@ Sentence (en): The husband of the current candidate for the White House, Hillary
 # sentence level graph:
 (s20o / omilostnit
     :actor (s20m / manžel
-        :mod (s20t / type-NE
+        :possessor (s20t / person
             :name (s20n / name
                 :op1 "Hillary"
-                :op2 "Clintonová"))
+                :op2 "Clintonová")
+            :ARG1-of (s20h / have-role-91
+                :ARG3 (s20k / kandidátka
+                    :mod (s20s / současný)
+                    :mod (s20g / government-organization
+                        :name (s20n3 / name
+                            :op1 "Bílý"
+                            :op2 "dům")))))
         :refer-number singular)
     :undergoer (s20č / člověk
         :refer-number plural
         :quant (s20m2 / mnoho)
-        :MOD/POSS (s20t2 / type-NE
+        :mod (s20t2 / person
             :name (s20n2 / name
                 :op1 "Riche")))
-    :OBLIQUE (s20d / den
+    :temporal (s20d / den
         :mod (s20p / poslední)
         :refer-number singular
-        :MOD/POSS (s20p2 / prezidentství
+        :mod (s20p2 / prezidentství
             :refer-number singular
-            :possessor (s20p3 / person
-                :refer-person FILL
-                :refer-number singular))
+            :possessor s20m)
         :ARG1-of (s20i / identity-91
-            :ARG2 (s20l / leden
-                :refer-number singular
-                :quant 2001
-                :quant 20)
-            :modal-strength MS
+            :ARG2 (s20l / date-entity
+                :year 2001
+                :month 1
+                :day 20)
+            :modal-strength full-affirmative
             :aspect state))
-    :modal-strength MS-affirmative
+    :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
-s20d: 0-0
+s20h: 0-0
 s20i: 0-0
 s20n: 0-0
 s20n2: 0-0
-s20p3: 0-0
-s20t: 0-0
-s20t2: 0-0
-s20m: 1-1
+s20n3: 0-0
+s20m: 1-1, 14-14
+s20t: 2-3
+s20s: 5-5
+s20k: 6-6
+s20g: 7-9
 s20o: 11-11
 s20p: 12-12
+s20d: 13-13
 s20p2: 15-15
-s20l: 19-19
+s20l: 17-20
 s20m2: 22-22
 s20č: 23-23
+s20t2: 25-26
 
 # document level annotation
 
