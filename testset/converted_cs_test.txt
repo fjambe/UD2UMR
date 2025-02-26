@@ -769,43 +769,37 @@ Sentence: Na fotografii je nad klávesnicí jasně vidět úzký pruh dotykovéh
 Sentence (en): The photo clearly shows the narrow touch display bar above the keyboard that has been anticipated in rumors.
 
 # sentence level graph:
-(s16i / identity-91
-    :experiencer (s16p / pruh
+(s16v / vidět
+    :manner (s16j / jasně)
+    :modal-strength full-affirmative
+    :aspect state
+    :stimulus (s16p / pruh
+        :place (s16k / klávesnice
+            :refer-number singular)
         :mod (s16ú / úzký)
         :refer-number singular
-        :MOD/POSS (s16d2 / displej
+        :part-of (s16d2 / displej
             :mod (s16d / dotykový)
             :refer-number singular)
-        :ARG1-of (s16h / have-mod-91
-            :ARG2 (s16o / očekávaný
-                :OBLIQUE (s16f2 / fáma
-                    :refer-number plural))
-            :modal-strength MS
-            :aspect state))
-    :ARG2 (s16f / fotografie
-        :OBLIQUE (s16k / klávesnice
-            :refer-number singular)
-        :refer-number singular
-        :stimulus (s16v / vidět
-            :manner (s16j / jasně)
-            :modal-strength MS-affirmative
-            :aspect ASP))
-    :modal-strength MS
-    :aspect state)
+        :undergoer-of (s16o / očekávat
+            :modal-strength full-affirmative
+            :aspect state
+            :other-role (s16f2 / fáma
+                :refer-number plural)))
+    :place (s16f / fotografie
+        :refer-number singular))
 
 # alignment:
-s16h: 0-0
-s16f: 2-2
-s16i: 3-3
-s16k: 5-5
+s16f: 1-2
+s16v: 3-3, 7-7
+s16k: 4-5
 s16j: 6-6
-s16v: 7-7
 s16ú: 8-8
 s16p: 9-9
 s16d: 10-10
-s16d2: 11-11
-s16f2: 16-16
-s16o: 17-17
+s16d2: 11-11, 13-13
+s16o: 14-14, 17-17
+s16f2: 15-16
 
 # document level annotation
 
