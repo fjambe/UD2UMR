@@ -1126,35 +1126,37 @@ Sentence (en): The AKP's Islamic conservatives have taken this refusal as justif
 
 # sentence level graph:
 (s24v / vzít
-    :experiencer (s24k / konzervativec
+    :actor (s24k / konzervativec
         :mod (s24i / islámský)
-        :mod (s24a / APK
-            :refer-number FILL)
+        :mod (s24a / political-organization
+            :name (s24n / name
+                :op1 "APK")
+            :refer-number singular)
         :refer-number plural)
-    :undergoer (s24o / odmítnutí
+    :undergoer (s24o / odmítnout
         :mod (s24t / tento)
-        :refer-number singular)
-    :stimulus (s24o2 / ospravedlnění
-        :mod (s24d / dotaz
+        :refer-number singular
+        :modal-strength full-affirmative
+        :aspect performance)
+    :other-role (s24o2 / ospravedlnit
+        :undergoer (s24d / dotaz
             :refer-number plural
-            :possessor (s24p / person
-                :refer-person FILL
-                :refer-number plural))
-        :modal-strength MS-affirmative
-        :aspect ASP)
-    :modal-strength MS-affirmative
-    :aspect ASP)
+            :possessor s24k)
+        :modal-strength full-affirmative
+        :aspect performance)
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
-s24p: 0-0
+s24n: 0-0
 s24i: 1-1
-s24k: 2-2
-s24a: 4-4
+s24k: 2-2, 11-11
+s24a: 3-4
 s24v: 5-5
 s24t: 6-6
 s24o: 7-7
-s24o2: 9-9
-s24d: 12-12
+s24o2: 8-9
+s24d: 10-10, 12-12
 
 # document level annotation
 
