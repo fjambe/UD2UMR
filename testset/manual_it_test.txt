@@ -14,8 +14,7 @@ Sentence (en): “While much of the digital transition is unprecedented in the U
             :ARG1-of (s1h / have-role-91
                 :ARG2 (s1p2 / person
                         :wiki "Q76"
-                        :name (s1n2 / name
-                                :op1 "Obama"))
+                        :name (s1n2 / name :op1 "Obama"))
                 :ARG3 (s1a / assistente
                         :mod (s1s2 / speciale)
                         :refer-number singular)))
@@ -142,6 +141,7 @@ Sentence (en): The debris formed a ring around the Earth's equator and was event
         :result (s3f2 / formare
             :actor s3d
             :undergoer (s3m / moon
+                :wiki "Q405"
                 :name (s3n / name :op1 "Luna")))
         :aspect performance
         :modal-strength full-affirmative))
@@ -201,6 +201,7 @@ Sentence (en): By the 3rd century the emperor Caracalla made a new division whic
 (s5f / fare
     :actor (s5p / person
         :name (s5n / name :op1 "Caracalla")
+        :wiki "Q1446"
         :ARG1-of (s5h / have-role-91
             :ARG3 (s5i / imperatore)
             :aspect state
@@ -415,6 +416,7 @@ Sentence (en): Dündar warned Europe about having too much understanding for Erd
             :quant (s9t / troppo)
             :topic (s9o / operare
                 :actor (s9p2 / person
+                    :wiki "Q39259"
                     :name (s9n3 / name :op1 "Erdogan"))
                 :aspect performance
                 :modal-strength full-affirmative))
@@ -537,7 +539,8 @@ Sentence (en): According to Le Figaro, this government plan could free up 42 mil
     :ARG1 (s12n / news-media
         :name (s12n2 / name
             :op1 "Le"
-            :op2 "Figaro"))
+            :op2 "Figaro")
+        :wiki "Q216047")
     :ARG2 (s12r / risparmiare
         :cause (s12p / piano
             :refer-number singular
@@ -602,7 +605,8 @@ Sentence (en): It has been emphasised that we absolutely cannot continue with th
             :ARG1-of (s13h / have-mod-91
                 :ARG2 (s13c / contro
                     :affectee (s13c2 / country
-                        :name (s13n / name :op1 "Italia")))
+                        :name (s13n / name :op1 "Italia")
+                        :wiki "Q38"))
                 :manner (s13t / totalmente)
                 :aspect state
                 :modal-strength full-affirmative))
@@ -715,12 +719,14 @@ Sentence (en): Students at LUISS University were told during the course of a mee
         :mod (s15a / academic-organization
             :name (s15n / name
                 :op1 "Università"
-                :op2 "Luiss")))
+                :op2 "Luiss")
+            :wiki "Q1122851"))
     :temporal (s15i / incontro
         :refer-number singular
         :undergoer-of (s15o / organizzare
             :place (s15c / city
-                :name (s15n2 / name :op1 "Roma"))
+                :name (s15n2 / name :op1 "Roma")
+                :wiki "Q220")
             :aspect performance
             :modal-strength full-affirmative))
     :aspect performance
@@ -839,6 +845,7 @@ Sentence (en): The early voting suggests that this time the Latin Americans will
                 :name (s18n2 / name
                     :op1 "America"
                     :op2 "latina")
+                :wiki "Q12585"
                 :quant (s18n / numero
                     :mod (s18g / gran)))
             :temporal (s18v2 / volta
@@ -947,7 +954,8 @@ Sentence (en): It contains a monument to Martin Luther King, Jr.
                 :op1 "Martin"
                 :op2 "Luther"
                 :op3 "King"
-                :op4 "Junior")))
+                :op4 "Junior")
+            :wiki "Q8027"))
     :aspect state
     :modal-strength full-affirmative)
 
@@ -971,9 +979,11 @@ Sentence (en): Weiss was honored with the literature prizes from the cities of C
 (s21o / onorare
     :actor (s21a / and
         :op1 (s21c / city
-            :name (s21n / name :op1 "Colonia"))
+            :name (s21n / name :op1 "Colonia")
+            :wiki "Q365")
         :op2 (s21c2 / city
-            :name (s21n2 / name :op1 "Brema")))
+            :name (s21n2 / name :op1 "Brema")
+            :wiki "Q24879"))
     :undergoer (s21p / person
         :name (s21n3 / name :op1 "Weiss"))
     :instrument (s21p2 / premio
@@ -1009,22 +1019,24 @@ Sentence (en): From the 9th century BC, the first Greek texts began to appear.
     :cdncd (s22t / testo
         :refer-number plural
         :ord (s22o / ordinal-entity :value 1)
-        :mod (s22n / nationality
-            :name (s22n2 / name :op1 "Grecia")))
+        :mod (s22e / ethnic-group
+            :name (s22n / name :op1 "Greci")
+            :wiki "Q25688688"))
     :temporal (s22a2 / after
         :op1 (s22d / date-entity
             :century 9
-            :era a.C.))
+            :era (s22a3 / a.C.)))
     :aspect inceptive
     :modal-strength full-affirmative)
 
 # alignment:
 s22t: 3-3
 s22o: 2-2
-s22n: 4-4
-s22n2: 0-0
+s22e: 4-4
+s22n: 0-0
 s22a: 5-7
 s22a2: 8-9
+s22a3: 0-0
 s22d: 10-12
 
 # document level annotation
@@ -1131,8 +1143,9 @@ Sentence (en): Trade was developed by establishing commercial outposts throughou
         :theme (s24a / avamposto
             :refer-number plural
             :mod (s24c / commerciale))
-        :goal (s24g / geographical-entity
+        :goal (s24s3 / sea
             :name (s24n / name :op1 "Mediterraneo")
+            :wiki "Q4918"
             :quant (s24t / tutto))
         :aspect performance
         :modal-strength full-affirmative
@@ -1156,7 +1169,7 @@ s24s2: 5-5
 s24a: 6-6
 s24c2: 7-7
 s24t: 9-9
-s24g: 11-11
+s24s3: 11-11
 s24n: 0-0
 s24i: 12-12
 s24t: 14-14
@@ -1351,7 +1364,8 @@ Sentence (en): Before the Andes were formed, the western margin of South America
         :mod (s28w / world-region
             :name (s28n2 / name
                 :op1 "Sud"
-                :op2 "America")))
+                :op2 "America")
+            :wiki "Q18"))
     :ARG2 (s28s / sito
         :mod (s28o2 / orogenesi
             :refer-number plural
@@ -1360,7 +1374,8 @@ Sentence (en): Before the Andes were formed, the western margin of South America
     :temporal (s28b / before
         :op1 (s28f / formare
             :theme (s28g / geographical-entity
-                :name (s28n / name :op1 "Ande"))
+                :name (s28n / name :op1 "Ande")
+                :wiki "Q5456")
             :aspect performance
             :modal-strength full-affirmative))
     :aspect state
@@ -1477,10 +1492,12 @@ Sentence (en): On the 1st January 49 BC, Marco Antonio read a declaration from C
     :actor (s30p / person
         :name (s30n / name
             :op1 "Marco"
-            :op2 "Antonio"))
+            :op2 "Antonio")
+        :wiki "Q51673")
     :theme (s30d2 / dichiarazione
         :actor (s30p2 / person
-            :name (s30n2 / name :op1 "Cesare"))
+            :name (s30n2 / name :op1 "Cesare")
+            :wiki "Q1048")
         :place (s30d3 / dichiarare
             :actor (s30p3 / person
                 :ARG1-of (s30h / have-role-91
@@ -1488,6 +1505,7 @@ Sentence (en): On the 1st January 49 BC, Marco Antonio read a declaration from C
                     :aspect state
                     :modal-strength full-affirmative))
             :result (s30h2 / have-rol-91
+                :ARG1 s30p3
                 :ARG2 (s30p5 / pace)
                 :ARG3 (s30a / amico)
                 :aspect state
@@ -1499,7 +1517,7 @@ Sentence (en): On the 1st January 49 BC, Marco Antonio read a declaration from C
         :day 1
         :month 1
         :year 49
-        :era d.C.)
+        :era (s30d4 / d.C.)
     :aspect performance
     :modal-strength full-affirmative)
 
@@ -1518,6 +1536,7 @@ s30a: 21-21
 s30p5: 24-24
 s30h: 0-0
 s30h2: 0-0
+s30d4: 0-0
 
 # document level annotation
 

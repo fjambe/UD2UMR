@@ -1183,7 +1183,7 @@ Sentence (en): Even if the majority of situations that arise in the workplace ca
         :theme (s26s / situazione
             :quant (s26p / parte
                 :mod (s26m / grande
-                    :degree (s26m2 / more)))
+                    :degree (s26m2 / most)))
             :theme-of (s26e / emergere
                 :place (s26c / contesto
                     :mod (s26l / lavorativo)
@@ -1925,37 +1925,32 @@ Sentence (en): Dozens of FSLN followers are already celebrating the victory in t
 
 # sentence level graph:
 (s42f / festeggiare
-    :actor (s42d / dozzina
-        :mod (s42s / seguace
-            :mod (s42t2 / type-NE
-                :name (s42n2 / name
-                    :op1 "FSLN"))
-            :refer-number plural)
-        :refer-number plural)
-    :undergoer (s42v / vittoria
-        :mod (s42i / il)
-        :refer-number singular)
-    :OBLIQUE (s42t / type-NE
+    :actor (s42s / seguace
+        :mod (s42p / political-organization
+            :name (s42n2 / name :op1 "FSLN")
+            :wiki "Q27389")
+        :quant (s42d / dozzina :refer-number plural))
+    :undergoer (s42v / vittoria :refer-number singular)
+    :place (s42c / city-square
         :name (s42n / name
             :op1 "Plaza"
             :op2 "de"
             :op3 "las"
             :op4 "Victorias"))
-    :manner (s42g / già)
-    :modal-strength MS-affirmative
-    :aspect ASP)
+    :temporal (s42g / già)
+    :modal-strength full-affirmative
+    :aspect activity)
 
 # alignment:
+s42f: 7-9
 s42v: 11-11
 s42n2: 0-0
-s42t2: 0-0
-s42f2: 0-0
 s42d: 1-1
-s42t: 0-0
 s42g: 8-8
-s42i2: 0-0
 s42n: 0-0
 s42s: 3-3
+s42p: 6-6
+s42c: 13-16
 
 # document level annotation
 
@@ -1970,35 +1965,35 @@ Sentence (en): The Islamic citizens who have settled since the beginning of the 
 # sentence level graph:
 (s43e / emigrare
     :actor (s43c / cittadino
-        :mod (s43i2 / islamico)
-        :mod (s43i / il)
+        :mod (s43r / religious-group
+            :name (s43n2 / name :op1 "Islam")
+            :wiki "Q432")
         :refer-number plural
         :actor-of (s43s / stabilire
-            :OBLIQUE (s43i3 / iniziare
-                :mod (s43a / anno
-                    :refer-number plural
-                    :mod (s43' / '60))
-                :refer-number plural)
-            :modal-strength MS-affirmative
-            :aspect ASP))
-    :OBLIQUE (s43t / type-NE
-        :name (s43n / name
-            :op1 "Turchia"))
+            :theme s43c
+            :temporal (s43i / iniziare
+                :theme (s43d / date-entity :decade 60)
+                :aspect performance
+                :modal-strength full-affirmative)
+            :modal-strength full-affirmative
+            :aspect performance))
+    :start (s43c2 / country
+        :name (s43n / name :op1 "Turchia")
+        :wiki "Q43")
     :manner (s43p / prevalentemente)
     :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
 s43p: 17-17
-s43i2: 3-3
+s43r: 3-3
+s43n2: 0-0
 s43e: 16-16
-s43i3: 10-10
-s43a: 13-13
-s43s2: 0-0
+s43c2: 20-20
+s43i: 10-10
+s43s: 6-7
 s43n: 0-0
-s43t2: 0-0
-s43i: 1-1
-s43': 14-14
+s43d: 13-14
 s43c: 2-2
 
 # document level annotation
@@ -2012,51 +2007,30 @@ Sentence: Durante le elezioni generali del 2010, il Partito Laburista fu in grad
 Sentence (en): During the 2010 general election, the Labor Party was able to win all seven voting districts.
 
 # sentence level graph:
-(s44i4 / identity-91
-    :ARG1 (s44t2 / type-NE
-        :mod (s44i2 / il)
-        :mod (s44l / Laburista)
+(s44v / vincere
+    :actor (s44p / political-organization
         :name (s44n / name
-            :op1 "Partito"))
-    :ARG2 (s44g2 / grado
-        :OBLIQUE (s44e / elezione
-            :mod (s44i / il)
-            :mod (s442 / 2010)
-            :mod (s44g / generale)
-            :refer-number plural)
-        :mod (s44v / vincere
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :actor (s44f / FILL
-                :refer-number FILL)
-            :OBLIQUE (s44d / distretto
-                :mod (s44i3 / il)
-                :mod (s44t / tutto)
-                :mod (s44v2 / votante
-                    :modal-strength MS-affirmative
-                    :aspect ASP
-                    :actor (s44f2 / FILL
-                        :refer-number plural))
-                :refer-number plural
-                :quant 7))
-        :refer-number singular)
-    :modal-strength MS
-    :aspect state)
+            :op1 "Partito"
+            :op2 "Laburista"))
+    :place (s44d / distretto
+        :quant (s44t / tutto)
+        :actor-of (s44v2 / votare
+            :modal-strength full-affirmative
+            :aspect generic)
+        :quant 7)
+    :temporal (s44e / elezione
+        :temporal (s44d2 / date-entity :year 2010)
+        :mod (s44g / generale)
+        :refer-number plural)
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
-s44f: 0-0
 s44v: 16-16
-s44i5: 0-0
-s44i3: 19-19
 s44d: 21-21
-s44f2: 0-0
-s44i4: 12-12
-s44t2: 0-0
-s44g2: 14-14
-s44i: 2-2
-s442: 7-7
+s44d2: 7-7
 s44v2: 22-22
-s44l: 11-11
+s44p: 10-11
 s44g: 4-4
 s44e: 3-3
 s44n: 0-0
@@ -2073,38 +2047,44 @@ Sentence: La Rivoluzione Industriale ebbe luogo in Gran Bretagna prima che in og
 Sentence (en): The Industrial Revolution took place in Great Britain earlier than in any other country.
 
 # sentence level graph:
-(s45a / avere
-    :actor (s45t2 / type-NE
-        :mod (s45i2 / Industriale)
-        :mod (s45i / il)
+(s45a / avere-luogo
+    :theme (s45e / event
         :name (s45n2 / name
-            :op1 "Rivoluzione"))
-    :undergoer (s45l / luogo
-        :refer-number singular)
-    :OBLIQUE (s45p2 / paese
-        :manner (s45p / prima-che)
-        :mod (s45a2 / altro)
-        :mod (s45o / ogni)
-        :refer-number singular)
-    :OBLIQUE (s45t / type-NE
+            :op1 "Rivoluzione"
+            :op2 "Industriale")
+        :wiki "Q2269")
+    :place (s45c / country
         :name (s45n / name
             :op1 "Gran"
-            :op2 "Bretagna"))
+            :op2 "Bretagna")
+        :wiki "Q145")
+    :temporal (s45p2 / prima
+        :ARG2-of (s45h / have-degree-91
+            :ARG3 (s45m / more)
+            :ARG4 (s45a3 / avere-luogo
+                :theme s45e
+                :place (s45p / paese
+                    :mod (s45a2 / altro)
+                    :quant (s45o / ogni))
+                :aspect performance
+                :modal-strength full-affirmative)
+            :aspect state
+            :modal-strength full-affirmative))
     :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
-s45i2: 3-3
-s45p2: 14-14
+s45p: 14-14
 s45a2: 13-13
 s45n2: 0-0
-s45t: 0-0
-s45p: 9-9
-s45a: 4-4
-s45t2: 0-0
+s45p2: 9-9
+s45e: 2-3
+s45a: 4-5
+s45h: 0-0
+s45m: 0-0
+s45c: 7-8
+s45a3: 0-0
 s45n: 0-0
-s45l: 5-5
-s45i: 1-1
 s45o: 12-12
 
 # document level annotation
@@ -2121,55 +2101,48 @@ Sentence (en): After the Russian Revolution in 1917, some countries, such as Fin
 (s46g / guadagnare
     :actor (s46n / nazione
         :mod (s46a / alcuno)
-        :mod (s46a2 / and
-            :op1 (s46t2 / type-NE
-                :name (s46n3 / name
-                    :op1 "Finlandia")
-                :mod (s46i2 / il))
-            :op2 (s46t3 / type-NE
-                :name (s46n4 / name
-                    :op1 "Polonia")
-                :mod (s46i3 / il))
-            :op3 (s46s / Stati
+        :example (s46a2 / and
+            :op1 (s46c / country
+                :name (s46n3 / name :op1 "Finlandia"
+                :wiki "Q33")
+            :op2 (s46c2 / country
+                :name (s46n4 / name :op1 "Polonia"
+                :wiki "Q36")
+            :op3 (s46g / geo-political-entity
                 :refer-number plural
-                :mod (s46i4 / il)
-                :mod (s46b / Baltici)))
-        :refer-number plural)
-    :undergoer (s46i6 / indipendenza
-        :mod (s46i5 / il)
+                :name (s46n5 / name
+                    :op1 "Stati"
+                    :op2 "Baltici")
+                :wiki "Q39731")))
+    :theme (s46i / indipendenza
         :refer-number singular
-        :det (s46p / proprio))
-    :OBLIQUE (s46t / type-NE
-        :mod (s46r / russo)
-        :mod (s46i / il)
-        :mod (s461 / 1917)
-        :name (s46n2 / name
-            :op1 "Rivoluzione"))
+        :poss s46n)
+    :temporal (s46a3 / after
+        :op1 (s46e / event
+            :name (s46n2 / name
+                :op1 "Rivoluzione"
+                :op2 "russa")
+            :wiki "Q8729"
+            :temporal (s46d / date-entity :year 1917)))
     :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
-s46b: 19-19
-s46r2: 0-0
-s46i: 2-2
-s46i4: 17-17
-s46i7: 0-0
-s46i6: 23-23
-s461: 7-7
-s46i5: 21-21
-s46p2: 0-0
-s46a2: 0-0
+s46a3: 1-1
+s46e: 3-4
+s46d: 7-7
+s46a2: 16-16
 s46a: 8-8
-s46s: 18-18
-s46t2: 0-0
+s46g: 12-12
 s46n: 9-9
 s46n4: 0-0
-s46i3: 14-14
 s46n3: 0-0
-s46t3: 0-0
+s46c2: 15-15
+s46g: 18-19
 s46g: 20-20
 s46n2: 0-0
-s46t: 0-0
+s46n5: 0-0
+s46i: 23-23
 
 # document level annotation
 
@@ -2183,58 +2156,62 @@ Sentence (en): One of his last means of placing pressure on Hungary was the thre
 
 # sentence level graph:
 (s47i3 / identity-91
-    :ARG1 (s47u / uno
-        :mod (s47m / mezzo
-            :mod (s47u2 / ultimo)
-            :mod (s47u3 / usare
-                :modal-strength MS-affirmative
-                :aspect ASP
-                :stimulus (s47m2 / mettere
-                    :modal-strength MS-affirmative
-                    :aspect ASP
-                    :undergoer (s47p / pressione
-                        :mod (s47t / type-NE
-                            :name (s47n / name
-                                :op1 "Ungheria"))
-                        :refer-number singular))
-                :OBLIQUE (s47f2 / FILL
-                    :refer-number singular))
-            :refer-number plural))
-    :ARG2 (s47m3 / minaccia
-        :mod (s47i / il)
-        :mod (s47i2 / imporre
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :experiencer (s47f / FILL
-                :refer-number FILL)
-            :undergoer (s47e / elezione
+    :ARG1 (s47m4 / mezzo
+        :quant 1
+        :ARG1-of (s47i / include-91
+            :aspect state
+            :modal-strength full-affirmative
+            :ARG2 (s47m / mezzo
+                :refer-number plural
+                :mod (s47u2 / ultimo)
+                :undergoer-of (s47u3 / usare
+                    :modal-strength full-affirmative
+                    :aspect performance
+                    :actor (s47p / person
+                        :refer-number singular
+                        :refer-person 3rd)
+                    :purpose (s47m2 / mettere
+                        :modal-strength full-affirmative
+                        :aspect process
+                        :actor s47p
+                        :theme (s47p2 / pressione)
+                        :recipient (s47c / country
+                            :name (s47n / name :op1 "Ungheria")
+                            :wiki "Q28"))))))
+    :ARG2 (s47m3 / minacciare
+        :aspect performance
+        :modal-strength full-affirmative
+        :actor s47p
+        :theme (s47i2 / imporre
+            :modal-strength partial-affirmative
+            :aspect activity
+            :actor s47p
+            :theme (s47e / elezione
                 :mod (s47a / and
                     :op1 (s47g / generale)
                     :op2 (s47g2 / gratuito))
-                :refer-number plural))
-        :refer-number singular)
-    :modal-strength MS
+                :refer-number plural)))
+    :modal-strength full-affirmative
     :aspect state)
 
 # alignment:
+s47m4: 1-1
+s47i 2-2
 s47u2: 4-4
-s47e2: 0-0
-s47u: 1-1
 s47a: 22-22
 s47n: 0-0
+s47p: 7-7
 s47u3: 8-8
-s47f2: 0-0
-s47f: 0-0
-s47i5: 0-0
 s47g2: 23-23
-s47i4: 0-0
-s47t: 0-0
 s47m2: 10-10
 s47g: 21-21
 s47i3: 15-15
 s47m: 5-5
 s47m3: 17-17
-s47p: 11-11
+s47p2: 11-11
+s47c: 14-14
+s47i2: 19-19
+s47c: 20-20
 
 # document level annotation
 
@@ -2248,43 +2225,33 @@ Sentence (en): The Disibodenberg cloister was disbanded and fell into ruin as a 
 
 # sentence level graph:
 (s48a / and
-    :op1 (s48s / sciolto
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :undergoer (s48t / type-NE
-            :mod (s48i / il)
-            :mod (s48t2 / type-NE
-                :name (s48n2 / name
-                    :op1 "Disibodenberg"))
-            :name (s48n / name
-                :op1 "abbazia"))
-        :OBLIQUE (s48r2 / risultato
-            :mod (s48t3 / type-NE
-                :name (s48n3 / name
-                    :op1 "Riforma"))
-            :refer-number singular))
-    :op2 (s48c / cadere
-        :modal-strength MS
+    :op1 (s48s / sciogliere
+        :modal-strength full-affirmative
         :aspect performance
-        :actor (s48f / FILL
-            :refer-number singular)
-        :OBLIQUE (s48r / rovina
-            :refer-number singular)))
+        :undergoer (s48w / worship-place
+            :name (s48n / name
+                :op1 "abbazia"
+                :op2 "di"
+                :op3 "Disibodenberg")
+            :wiki "Q565067"))
+    :op2 (s48c / cadere
+        :modal-strength full-affirmative
+        :aspect performance
+        :theme s48w
+        :goal (s48r / rovina))
+    :cause (s48e / event
+            :name (s48n2 / name :op1 "Riforma")
+            :wiki "Q12562"))
 
 # alignment:
 s48c: 8-8
-s48n3: 0-0
 s48n2: 0-0
 s48n: 0-0
-s48r2: 12-12
-s48i: 1-1
-s48s: 6-6
-s48t2: 0-0
-s48t: 0-0
-s48a2: 0-0
+s48s: 5-6
+s48w: 2-4
+s48a: 7-7
 s48r: 10-10
-s48f: 0-0
-s48t3: 0-0
+s48e: 15-15
 
 # document level annotation
 
@@ -2301,64 +2268,65 @@ Sentence (en): After these successes, he signed a contract with Team Telekom and
     :op1 (s49f / firmare
         :modal-strength full-affirmative
         :aspect performance
-        :actor (s49f2 / FILL
-            :refer-number singular)
-        :undergoer (s49c / contratto
-            :mod (s49u / uno)
-            :refer-number singular)
-        :OBLIQUE (s49t2 / type-NE
-            :mod (s49i / il)
+        :actor (s49p / person
+            :refer-number singular
+            :refer-person 3rd)
+        :undergoer (s49c / contratto :refer-number singular)
+        :companion (s49s2 / sports-organization
             :name (s49n / name
                 :op1 "Team"
-                :op2 "Telekom"))
-        :OBLIQUE (s49s / successo
-            :mod (s49q / questo)
-            :refer-number plural))
+                :op2 "Telekom")))
     :op2 (s49t / trasferire
-        :modal-strength MS
+        :modal-strength full-affirmative
         :aspect performance
-        :actor (s49f3 / FILL
-            :refer-number singular)
-        :OBLIQUE (s49t3 / type-NE
-            :mod (s49t4 / type-NE
-                :name (s49n3 / name
-                    :op1 "Südbaden"))
-            :name (s49n2 / name
-                :op1 "Merdingen")
-            :manner-of (s49v / vivere
-                :actor (s49f4 / FILL
-                    :refer-number singular)
-                :OBLIQUE (s492 / 2002)
-                :modal-strength MS
-                :aspect performance))
-        :OBLIQUE (s49r / ragazzo
-            :mod (s49i2 / il)
-            :refer-number singular
-            :det (s49s2 / suo))))
+        :actor s49p
+        :theme s49p
+        :OBLIQUE (s49c3 / city
+            :name (s49n2 / name :op1 "Merdingen")
+            :wiki "Q142169"
+            :place (s49r2 / region
+                :name (s49n3 / name :op1 "Südbaden")
+                :wiki "Q261407")
+            :ARG2-of (s49v / vivere
+                :actor s49p
+                :duration (s49u / until
+                    :op1 (s49d / date-entity :year 2002))
+                :companion (s49p2 / person
+                    :refer-number singular
+                    :refer-person 3rd
+                    :ARG1-of (s49h / have-rel-role-92
+                        :ARG2 s49p
+                        :ARG3 (s49r / ragazzo)
+                        :aspect state
+                        :modal-strength full-affirmative))
+                :modal-strength full-affirmative
+                :aspect performance)))
+    :temporal (s49a2 / after
+        :op1 (s49s / successo
+            :mod (s49q / questo)
+            :refer-number plural)))
 
 # alignment:
-s49i: 9-9
-s492: 30-30
-s49r: 18-18
-s49f3: 0-0
-s49u: 6-6
+s49d: 30-30
+s49p2: 18-18
+s49r: 0-0
+s49h: 0-0
 s49s: 3-3
-s49t4: 0-0
 s49n: 0-0
-s49f4: 0-0
-s49i2: 16-16
 s49v: 27-27
-s49a2: 0-0
+s49a2: 1-1
 s49q: 2-2
-s49s3: 0-0
 s49c: 7-7
 s49f: 5-5
-s49f2: 0-0
-s49t3: 0-0
-s49t5: 0-0
-s49t6: 0-0
 s49n3: 0-0
 s49n2: 0-0
+s49a: 12-12
+s49p: 0-0
+s49s2: 10-11
+s49t: 14-14
+s49c3: 20-20
+s49r2: 24-24
+s49u: 28-28
 
 # document level annotation
 
@@ -2372,74 +2340,60 @@ Sentence (en): The Viguier and La Conte districts contain the majority of the ci
 
 # sentence level graph:
 (s50c / contenere
-    :actor (s50d / distretto
-        :mod (s50i / il)
-        :mod (s50a / and
-            :op1 (s50t / type-NE
-                :name (s50n / name
-                    :op1 "Viguier"))
-            :op2 (s50f / FILL
-                :refer-number singular))
-        :refer-number plural)
-    :undergoer (s50p / parte
-        :mod (s50i2 / il)
-        :mod (s50s / servizio
-            :refer-number plural
-            :mod (s50c2 / città
-                :refer-number singular
-                :manner-of (s50h2 / have-mod-91
-                    :ARG1 (s50p2 / popolazione
-                        :mod (s50i3 / il)
-                        :refer-number singular)
-                    :ARG2 (s50c3 / costituire
-                        :OBLIQUE (s50o / or
-                            :op1 (s50i4 / immigrante
-                                :refer-number plural
-                                :manner (s50p3 / principalmente))
-                            :op2 (s50d2 / discendente
-                                :refer-number plural
-                                :mod (s50i5 / immigrante
-                                    :refer-number plural))))
-                    :modal-strength MS
-                    :aspect state))
-            :mod (s50e / edilizia
-                :refer-number singular
-                :mod (s50s2 / sociale)))
-        :refer-number singular
-        :ARG1-of (s50h / have-degree-91
-            :ARG2 (s50m / maggiore)
-            :ARG3 (s50m2 / most)
-            :modal-strength MS
-            :aspect state))
+    :actor (s50a / and
+            :op1 (s50c2 / country-partition
+                :name (s50n / name :op1 "Viguier"))
+            :op2 (s50c3 / country-partition
+                :name (s50n2 / name
+                    :op1 "La"
+                    :op2 "Conte")))
+    :undergoer (s50s / servizio
+        :refer-number plural
+        :mod (s50e / edilizia
+            :mod (s50s2 / sociale))
+        :mod (s50c4 / città
+            :refer-number singular
+            :place-of (s50c5 / costituire
+                :manner (s50p3 / principalmente)
+                :undergoer (s50p2 / popolazione :refer-number singular)
+                :actor (s50o / or
+                    :op1 (s50i / immigrante :refer-number plural)
+                    :op2 (s50p4 / person
+                        :refer-number plural
+                        :theme-of (s50d2 / discendere
+                            :source (s50i2 / immigrante :refer-number plural)
+                            :aspect state
+                            :modal-strength full-affirmative)))
+                :modal-strength full-affirmative
+                :aspect state))
+        :quant (s50p / parte
+            :mod (s50m / grande
+                :degree (s50m2 / most))))
     :modal-strength full-affirmative
-    :aspect ASP)
+    :aspect state)
 
 # alignment:
-s50m2: 0-0
+s50c: 9-9
+s50p4: 32-32
 s50a: 5-5
-s50d: 2-2
-s50h2: 25-25
-s50t: 0-0
-s50f: 0-0
 s50p: 12-12
-s50h: 0-0
-s50o2: 0-0
-s50i5: 34-34
-s50d3: 0-0
+s50o: 30-30
+s50i: 29-29
 s50s: 15-15
-s50c4: 0-0
+s50c4: 21-21
+s50d2: 0-0
 s50p2: 24-24
-s50c3: 26-26
-s50c2: 21-21
+s50c5: 25-26
+s50c3: 7-8
+s50c2: 2-4
 s50n: 0-0
-s50e2: 0-0
+s50n2: 0-0
+s50e: 17-17
 s50s2: 18-18
-s50i7: 0-0
-s50i6: 0-0
 s50m: 11-11
 s50p3: 27-27
-s50i2: 10-10
-s50i: 1-1
+s50m2: 0-0
+s50i2: 34-34
 
 # document level annotation
 
@@ -2452,27 +2406,24 @@ Sentence: Nei primi anni 2000, c'erano 5 dottori per 100.000 abitanti.
 Sentence (en): In the early 2000s, there were five doctors per 100,000 inhabitants.
 
 # sentence level graph:
-(s51e / essere
-    :actor (s51d / dottore
-        :refer-number plural
-        :quant 5)
-    :OBLIQUE (s51a2 / abitante
-        :refer-number plural
-        :quant 100.000)
-    :OBLIQUE (s51a / anno
-        :mod (s512 / 2000)
-        :mod (s51p / primo)
-        :refer-number plural)
+(s51e / exist-91
+    :ARG1 (s51d / dottore :quant 5)
+    :frequency (s51r/ rate-entity
+		:ARG1 100.000
+		:ARG2 (s51a / abitante))
+    :temporal (s51d2 / date-entity
+        :decade 2000
+        :mod (s51p / primo))
     :modal-strength full-affirmative
-    :aspect ASP)
+    :aspect state)
 
 # alignment:
-s512: 5-5
+s51d2: 5-5
 s51p: 3-3
 s51d: 10-10
-s51a2: 13-13
-s51a: 4-4
-s51e: 8-8
+s51a2: 0-0
+s51e: 7-8
+s51r: 11-13
 
 # document level annotation
 
@@ -2485,66 +2436,57 @@ Sentence: La scrittura era andata perduta e i manoscritti micenei dimenticati, m
 Sentence (en): Literacy had been lost and Mycenaean script forgotten, but the Greeks adopted the Phoenician alphabet, modifying it to create the Greek alphabet.
 
 # sentence level graph:
-(s52a4 / and
-    :op1 (s52a / andare
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :actor (s52s / scrittura
-            :mod (s52i / il)
-            :refer-number singular)
-        :mod (s52p / perduto
-            :modal-strength MS-affirmative
-            :aspect ASP))
-    :op2 (s52m / manoscritto
-        :refer-number plural
-        :mod (s52i2 / il)
-        :mod (s52m2 / miceneo))
-    :op3 (s52a2 / adottare
-        :refer-number plural
-        :ADVCL (s52m3 / modificare
-            :experiencer (s52f2 / FILL
-                :refer-number FILL)
-            :undergoer (s52f3 / FILL
-                :refer-number singular)
-            :stimulus (s52c / creare
-                :modal-strength MS-affirmative
-                :aspect ASP
-                :undergoer (s52f4 / FILL
-                    :mod (s52g / greco)
-                    :refer-number singular))
-            :modal-strength MS-affirmative
-            :aspect ASP)
-        :actor (s52t / type-NE
-            :mod (s52i3 / il)
-            :name (s52n / name
-                :op1 "greco"))
-        :undergoer (s52a3 / alfabeto
-            :mod (s52f / fenicio)
-            :mod (s52i4 / il)
-            :refer-number singular)))
+(s52a / and
+    :op1 (s52p / perdere
+        :modal-strength full-affirmative
+        :aspect performance
+        :theme (s52s / scrittura :refer-number singular))
+    :op2 (s52d / dimenticare
+        :theme (s52m / manoscritto
+            :refer-number plural
+            :mod (s52c2 / city
+                    :name (s52n / name :op1 "Micene")
+                    :wiki "Q132564"))
+        :aspect performance
+        :modal-strength full-affirmative)
+    :ARG1-of (s52b / but-91
+        :ARG2 (s52a2 / adottare
+            :actor (s52e / ethnic-group
+                :name (s52n2 / name :op1 "greco")
+                :wiki "Q25688688")
+            :undergoer (s52a3 / alfabeto
+                :mod (s52e2 / ethnic-group
+                    :name (s52n3 / name :op1 "fenicio")
+                    :wiki "Q1048468"))
+        :manner (s52m2 / modificare
+            :actor s52e
+            :undergoer s52a3
+            :purpose (s52c / creare
+                :modal-strength full-affirmative
+                :aspect process
+                :undergoer (s52a4 / alfabeto
+                    :mod s52e))
+            :modal-strength full-affirmative
+            :aspect process))))
 
 # alignment:
-s52i: 1-1
 s52c: 23-23
-s52p: 5-5
-s52i3: 13-13
+s52p: 4-5
 s52a2: 15-15
-s52i2: 7-7
-s52i4: 16-16
-s52a4: 6-6
-s52m2: 9-9
-s52f4: 0-0
-s52t: 0-0
-s52f: 18-18
-s52f3: 0-0
-s52g2: 0-0
+s52a: 6-6
+s52m2: 20-20
 s52a3: 17-17
 s52m: 8-8
-s52f2: 0-0
 s52s: 2-2
-s52m4: 0-0
-s52a: 4-4
 s52n: 0-0
+s52n2: 0-0
+s52n3: 0-0
+s52c2: 9-9
+s52d: 10-10
+s52b: 12-12
+s52e: 14-14
+s52e2: 18-18
+s52a4 24-24
 
 # document level annotation
 
@@ -2557,31 +2499,43 @@ Sentence: Le città stato cominciarono ad apparire intorno all'VIII secolo a.C: 
 Sentence (en): From about the 8th century BC city states began to appear: small, self-governing territories with their own political systems.
 
 # sentence level graph:
-(s53c2 / cominciare
-    :experiencer (s53c / città
-        :mod (s53s / stato
-            :refer-number singular)
-        :mod (s53i / il)
-        :refer-number plural)
-    :stimulus (s53a / apparire
-        :OBLIQUE (s53s2 / secolo
-            :OBLIQUE (s53a2 / a.C)
-            :mod (s53v / VIII)
-            :refer-number singular)
-        :modal-strength MS-affirmative
-        :aspect ASP)
+(s53a / apparire
+    :theme (s53c / città
+        :mod (s53s / stato)
+        :refer-number plural
+        :ARG1-of (s53i / identity-91
+            :ARG2 (s53t / territorio
+                :refer-number plural
+                :mod (s53p / piccolo)
+                :actor-of (s53g / governare
+                    :theme s53t
+                    :aspect generic
+                    :modal-strength full-affirmative)
+                :ARG1-of (s53h / have-91
+                    :ARG2 (s53s2 / sistema
+                        :mod (s53p2 / politico)
+                        :poss s53t)
+                    :aspect state
+                    :modal-strength full-affirmative))))
+    :temporal (s53d / date-entity
+        :century 8
+        :era (s53a2 / a.C))
     :modal-strength full-affirmative
-    :aspect performance)
+    :aspect inceptive)
 
 # alignment:
-s53a3: 0-0
-s53i: 1-1
-s53v: 9-9
-s53a: 6-6
-s53c2: 4-4
+s53a: 4-6
 s53c: 2-2
 s53s: 3-3
-s53s2: 10-10
+s53i: 0-0
+s53a2: 0-0
+s53d: 9-10
+s53p: 13-13
+s53t: 14-14
+s53g: 15-15
+s53h: 16-16
+s53s2: 20-20
+s53p2: 21-21
 
 # document level annotation
 
@@ -2598,26 +2552,24 @@ Sentence (en): This affair can be seen as the starting point for his career as a
     :undergoer (s54r / relazione
         :mod (s54q / questo)
         :refer-number singular)
-    :OBLIQUE (s54p / punto
-        :mod (s54c2 / carriera
-            :mod (s54r2 / rivoluzionario
-                :mod (s54r3 / radicale)
-                :refer-number singular)
-            :mod (s54i2 / il)
-            :refer-number singular
-            :det (s54s / suo))
-        :mod (s54i / inizio
-            :refer-number singular)
+    :result (s54p / punto
+        :temporal-of (s54i / iniziare
+            :theme (s54c2 / carriera
+                :poss (s54p2 / person
+                    :refer-number singular
+                    :refer-person 3rd)
+                :mod (s54r2 / rivoluzionario
+                    :mod (s54r3 / radicale))
+                :refer-number singular))
         :refer-number singular)
-    :modal-strength MS-affirmative
-    :aspect ASP)
+    :modal-strength neutral-affirmative
+    :aspect state)
 
 # alignment:
 s54q: 1-1
-s54c: 5-5
+s54c: 3-5
 s54p: 7-7
-s54i2: 11-11
-s54s: 12-12
+s45p2: 12-12
 s54r3: 16-16
 s54r: 2-2
 s54i: 9-9
@@ -2637,65 +2589,81 @@ Sentence (en): In the summer, Georges and his wife returned to Switzerland, acco
 # sentence level graph:
 (s55t / tornare
     :actor (s55a4 / and
-        :op1 (s55t2 / type-NE
-            :name (s55n / name
-                :op1 "Georges"))
-        :op2 (s55m / moglie
-            :refer-number singular
-            :det (s55s / suo)))
-    :OBLIQUE (s55e / estate
-        :refer-number singular)
-    :OBLIQUE (s55t3 / type-NE
-        :name (s55n2 / name
-            :op1 "Svizzera"))
+        :op1 (s55p / person
+            :name (s55n / name :op1 "Georges"))
+        :op2 (s55p2 / person
+            :ARG1-of (s55h / have-rel-role-92
+                :ARG2 s55p
+                :ARG3 (s55m / moglie)
+                :aspect state
+                :modal-strength full-affirmative)))
+    :temporal (s55e / estate)
+    :goal (s55c / country
+        :name (s55n2 / name :op1 "Svizzera")
+        :wiki "Q39")
     :modal-strength full-affirmative
     :aspect performance
-    :ADVCL (s55a / accompagnare
-        :OBLIQUE (s55t4 / type-NE
+    :manner (s55a / accompagnare
+        :OBLIQUE (s55p3 / person
+            :name (s55n3 / name :op1 "Rosane")
             :ARG1-of (s55i / identity-91
                 :ARG2 (s55r / ragazzo
-                    :mod (s55u / uno)
-                    :mod (s55a2 / anno
-                        :refer-number plural
-                        :quant 18)
-                    :mod (s55f / figlio
-                        :refer-number singular
-                        :mod (s55u2 / uno
-                            :mod (s55a3 / amico
-                                :mod (s55t5 / type-NE
-                                    :name (s55n4 / name
-                                        :op1 "Germaine"))
-                                :refer-number plural)))
+                    :age (s55t / temporal-quantity
+                        :quant 18
+                        :unit (s55a5 / anno))
                     :refer-number singular)
-                :modal-strength MS
+                :modal-strength full-affirmative
                 :aspect state)
-            :name (s55n3 / name
-                :op1 "Rosane"))
-        :modal-strength MS-affirmative
-        :aspect ASP))
+            :ARG1-of (s55h2 / have-rel-role-91
+                :ARG2 (s55p6 / person
+                            :ARG1-of (s55h4 / have-rel-role-92
+                                :modal-strength full-affirmative
+                                :aspect state
+                                :ARG3 (s55a3 / amico))
+                    :quant 1
+                    :ARG1-of (s55i2 / include-91
+                        :ARG2 (s55p4 / person
+                            :refer-number plural
+                            :ARG1-of (s55h3 / have-rel-role-92
+                                :modal-strength full-affirmative
+                                :aspect state
+                                :ARG2 (s55p5 / person :name (s55n4 / name :op1 "Germaine"))
+                                :ARG3 (s55a2 / amico)))
+                        :aspect state
+                        :modal-strength full-affirmative))
+                :ARG3 (s55f / figlio)))
+        :modal-strength full-affirmative
+        :aspect performance))
 
 # alignment:
-s55m: 7-7
-s55t3: 0-0
-s55u2: 23-23
-s55f: 21-21
-s55e: 2-2
-s55u: 16-16
+s55p: 4-4
 s55n: 0-0
-s55t: 8-8
-s55a: 12-12
-s55t2: 0-0
-s55a2: 20-20
-s55i2: 0-0
-s55a3: 26-26
-s55t5: 0-0
-s55s: 6-6
-s55r2: 0-0
-s55t4: 0-0
+s55p2: 7-7
+s55h: 0-0
+s55m: 0-0
+s55e: 2-2
 s55a4: 5-5
+s55t: 8-8
+s55c: 10-10
 s55n2: 0-0
-s55n4: 0-0
+s55a: 12-12
+s55p3: 14-14
 s55n3: 0-0
+s55i: 0-0
+s55r: 17-17
+s55t: 18-20
+s55a5: 0-0
+s55h2: 0-0
+s55f: 21-21
+s55a3: 0-0
+s55h4: 0-0
+s55p6: 23-23
+s55i2: 24-24
+s55p4: 26-26
+s55h3: 0-0
+s55p5: 28-28
+s55n4: 0-0
+s55a2: 0-0
 
 # document level annotation
 
@@ -2709,49 +2677,39 @@ Sentence (en): During the holiday, he began an extra-marital affair with the you
 
 # sentence level graph:
 (s56a / and
-    :op1 (s56i2 / iniziare
+    :op1 (s56i / iniziare
         :modal-strength full-affirmative
         :aspect performance
-        :actor (s56f / FILL
+        :actor (s56p / person
+            :refer-person 3rd
             :refer-number singular)
-        :undergoer (s56r / relazione
+        :theme (s56r / relazione
             :mod (s56r2 / ragazzo
-                :mod (s56i3 / il)
                 :mod (s56g / giovane)
                 :refer-number singular)
             :mod (s56e / extraconiugale)
-            :mod (s56u / uno)
             :refer-number singular)
-        :OBLIQUE (s56v / vacanza
-            :mod (s56i / il)
-            :refer-number singular))
+        :temporal (s56v / vacanza :refer-number singular))
     :op2 (s56c / confessare
-        :modal-strength MS
+        :modal-strength full-affirmative
         :aspect performance
-        :actor (s56f2 / FILL
-            :refer-number singular)
-        :undergoer (s56f3 / FILL
-            :refer-number singular)
-        :manner (s56d / dopo
-            :manner (s56p / poco))))
+        :actor s56p
+        :theme s56i
+        :temporal (s56d / dopo
+            :quant (s56p2 / poco))))
 
 # alignment:
 s56c: 14-14
 s56g: 10-10
 s56d: 16-16
 s56r: 6-6
-s56f3: 0-0
 s56r2: 11-11
-s56u: 5-5
 s56v: 3-3
-s56i: 2-2
-s56f2: 0-0
-s56i3: 9-9
 s56e: 7-7
 s56a: 12-12
-s56i2: 4-4
-s56f: 0-0
-s56p: 15-15
+s56i: 4-4
+s56p2: 15-15
+s56p: 0-0
 
 # document level annotation
 
@@ -2764,32 +2722,20 @@ Sentence: Inoltre è possibile l'arrivo di uragani sulle isole nel periodo estiv
 Sentence (en): Furthermore, the occurrence of hurricanes on the island is possible during the summer.
 
 # sentence level graph:
-(s57h / have-mod-91
-    :ARG1 (s57a / arrivo
-        :mod (s57i2 / il)
-        :mod (s57i3 / isola
-            :refer-number plural)
-        :mod (s57u / uragano
-            :refer-number plural)
-        :refer-number singular)
-    :ARG2 (s57p / possibile
-        :OBLIQUE (s57p2 / periodo
-            :mod (s57e / estivo)
-            :refer-number singular)
-        :manner (s57i / inoltre))
-    :modal-strength MS
-    :aspect state)
+(s57a / arrivare
+    :theme (s57u / uragano :refer-number plural)
+    :goal (s57i / isola :refer-number plural)
+    :temporal (s57p2 / periodo
+        :mod (s57e / estivo))
+    :aspect activity
+    :modal-strength neutral-affirmative)
 
 # alignment:
-s57i2: 4-4
-s57p: 3-3
 s57u: 7-7
-s57i4: 0-0
-s57i: 1-1
-s57h: 2-2
+s57i: 10-10
 s57p2: 13-13
 s57a: 5-5
-s57e2: 0-0
+s57e: 14-14
 
 # document level annotation
 
@@ -2802,46 +2748,39 @@ Sentence: Ad avvalorare quest'ipotesi ci sarebbe stato il corposo allevamento re
 Sentence (en): An element supporting this hypothesis would be the intense royal livestock of horses that took place at Villa Pelucca, in Sesto San Giovanni.
 
 # sentence level graph:
-(s58e / essere
+(s58a / avvalorare
+    :modal-strength neutral-affirmative
+    :aspect state
+    :undergoer (s58i / ipotesi
+        :mod (s58q / questo)
+        :refer-number singular)
     :actor (s58a2 / allevamento
+        :refer-number singular
         :mod (s58r / reale)
-        :mod (s58c2 / cavallo
-            :refer-number plural)
+        :mod (s58c2 / cavallo :refer-number plural)
         :mod (s58c / corposo)
-        :mod (s58t / type-NE
+        :place (s58p / place
             :name (s58n / name
                 :op1 "Villa"
-                :op2 "Pelucca"))
-        :mod (s58i2 / il)
-        :refer-number singular)
-    :stimulus (s58a / avvalorare
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :undergoer (s58i / ipotesi
-            :mod (s58q / questo)
-            :refer-number singular))
-    :OBLIQUE (s58t2 / type-NE
-        :name (s58n2 / name
-            :op1 "Sesto"
-            :op2 "San"
-            :op3 "Giovanni"))
-    :modal-strength MS-affirmative
-    :aspect ASP)
+                :op2 "Pelucca")
+            :place (s58c3 / city
+                :name (s58n2 / name
+                    :op1 "Sesto"
+                    :op2 "San"
+                    :op3 "Giovanni")))))
 
 # alignment:
-s58t: 0-0
-s58c3: 0-0
+s58c3: 20-22
+s58c: 9-9
 s58c2: 13-13
 s58a2: 10-10
 s58i: 4-4
 s58q: 3-3
 s58n: 0-0
 s58r: 11-11
-s58t2: 0-0
 s58e: 7-7
 s58n2: 0-0
-s58i2: 8-8
-s58a: 2-2
+s58a: 1-2, 5-7
 
 # document level annotation
 
@@ -2858,53 +2797,42 @@ Sentence (en): In 1976, the racecourse was no longer used; in 1990, a fire destr
     :op1 (s59c / cadere
         :modal-strength full-affirmative
         :aspect performance
-        :actor (s59i2 / ippodromo
-            :mod (s59i / il)
-            :refer-number singular)
-        :OBLIQUE (s59d / disuso
-            :refer-number singular)
-        :OBLIQUE (s591 / 1976))
+        :actor (s59i2 / ippodromo :refer-number singular)
+        :goal (s59d / disuso)
+        :temporal (s59d4 / date-entity :year 1976))
     :op2 (s59d2 / distruggere
-        :modal-strength MS
+        :modal-strength full-affirmative
         :aspect performance
-        :actor (s59i3 / incendio
-            :mod (s59u / uno)
-            :refer-number singular)
-        :undergoer (s59f / FILL
-            :refer-number singular
-            :actor-of (s59r / rimanere
-                :OBLIQUE (s59t / tribuna
-                    :mod (s59d3 / demolire
-                        :modal-strength MS-affirmative
-                        :aspect ASP
-                        :OBLIQUE (s59s2 / stalla
-                            :refer-number plural)
-                        :OBLIQUE (s59s / seguito
-                            :refer-number singular))
-                    :mod (s59l / legno
-                        :refer-number singular)
-                    :refer-number plural)
-                :modal-strength MS
-                :aspect ASP))
-        :OBLIQUE (s5912 / 1990)))
+        :force (s59i / incendio :refer-number singular)
+        :undergoer (s59t2 / thing
+            :theme-of (s59r / rimanere
+                :source (s59t / tribuna
+                    :refer-number plural
+                    :material (s59l / legno)
+                    :undergoer-of (s59d3 / demolire
+                        :modal-strength full-affirmative
+                        :aspect performance
+                        :undergoer (s59s2 / stalla :refer-number plural)
+                        :temporal (s59s / seguito)))
+                :modal-strength full-affirmative
+                :aspect state))
+        :temporal (s59d5 / date-entity :year 1990)))
 
 # alignment:
 s59c: 4-4
 s59l: 24-24
+s59a: 10-10
 s59d2: 16-16
 s59s2: 31-31
-s59f: 0-0
 s59d3: 28-28
-s59a2: 0-0
 s59i2: 8-8
 s59s: 27-27
 s59r: 19-19
-s5912: 13-13
-s59u: 14-14
+s59d5: 13-13
 s59t: 22-22
-s59i5: 0-0
-s591: 3-3
-s59i3: 15-15
+s59d4: 3-3
+s59t2: 17-17
+s59i: 15-15
 s59d: 6-6
 
 # document level annotation
@@ -2919,47 +2847,37 @@ Sentence (en): During the thirteenth century, the name Apulia was used by some a
 
 # sentence level graph:
 (s60u / utilizzare
-    :undergoer (s60n / nome
-        :mod (s60i / il)
-        :mod (s60t / type-NE
-            :name (s60n2 / name
-                :op1 "Apulia"))
-        :refer-number singular)
-    :stimulus (s60i2 / indicare
-        :modal-strength MS-affirmative
-        :aspect ASP
+    :undergoer (s60n / name
+            :name (s60n2 / name :op1 "Apulia")
+            :wiki "Q1447")
+    :purpose (s60i / indicare
+        :modal-strength full-affirmative
+        :aspect activity
         :undergoer (s60p / parte
-            :mod (s60i3 / il)
             :mod (s60m / meridionale)
-            :mod (s60p2 / penisola
-                :refer-number singular
-                :mod (s60i4 / italiano))
+            :mod (s60p2 / peninsula
+                    :name (s60n3 / name :op1 "Italia")
+                    :wiki "Q145694")
             :refer-number singular))
-    :OBLIQUE (s60s / secolo
-        :mod (s60x / XIII)
-        :refer-number singular)
-    :OBLIQUE (s60a2 / autore
-        :mod (s60a / alcuno)
+    :temporal (s60d / date-entity :century 13)
+    :actor (s60a2 / autore
+        :quant (s60a / alcuno)
         :refer-number plural)
-    :modal-strength MS-affirmative
-    :aspect ASP)
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
-s60p2: 20-20
-s60i3: 15-15
-s60i2: 14-14
+s60p2: 20-21
+s60i: 14-14
 s60m: 17-17
-s60a3: 0-0
-s60t: 0-0
-s60i4: 21-21
-s60n: 6-6
-s60u: 9-9
-s60s: 4-4
-s60i6: 0-0
-s60x: 3-3
+s60n: 6-7
+s60u: 8-9
 s60p: 16-16
+s60n3: 0-0
 s60n2: 0-0
 s60a2: 12-12
+s60d: 3-4
+s60a2: 11-11
 
 # document level annotation
 
@@ -2973,50 +2891,52 @@ Sentence (en): Historian David Crouch suggests that Stephen abandoned from the c
 
 # sentence level graph:
 (s61s2 / suggerire
-    :actor (s61s / storico
-        :mod (s61t / type-NE
-            :name (s61n / name
+    :actor (s61p / person
+        :name (s61n / name
                 :op1 "David"
-                :op2 "Crouch"))
-        :mod (s61i / il)
-        :refer-number singular)
-    :stimulus (s61r / rinunciare
-        :stimulus (s61c / concentrare
-            :OBLIQUE (s61p2 / problema
+                :op2 "Crouch"
+        :wiki "Q5232685")
+        :ARG1-of (s61h / have-role-91
+            :ARG3 (s61s / storico)
+            :aspect state
+            :modal-strength full-affirmative))
+    :theme (s61r / rinunciare
+        :theme (s61p3 / person
+            :name (s61n2 / name :op1 "Stefano"))
+        :purpose (s61c / concentrare
+            :actor s61p3
+            :theme s61p3
+            :topic (s61p2 / problema
                 :mod (s61a / altro)
                 :refer-number plural)
-            :modal-strength MS-affirmative
-            :aspect ASP)
-        :OBLIQUE (s61i2 / impresa
-            :refer-number singular)
-        :OBLIQUE (s61p / periodo
+            :modal-strength full-affirmative
+            :aspect activity)
+        :source (s61i / impresa :refer-number singular)
+        :temporal (s61p4 / periodo
             :mod (s61q / quello)
             :refer-number singular)
         :manner (s61e / effettivo)
-        :modal-strength MS
-        :aspect performance
-        :experiencer (s61t2 / type-NE
-            :name (s61n2 / name
-                :op1 "Stefano")))
+        :modal-strength full-affirmative
+        :aspect performance)
     :modal-strength full-affirmative
-    :aspect ASP)
+    :aspect activity)
 
 # alignment:
+s61p: 3-4
+s61c: 18-18
 s61e: 8-8
-s61p: 16-16
+s61p4: 16-16
 s61s2: 5-5
 s61p2: 22-22
+s61h: 0-0
 s61q: 15-15
 s61n2: 0-0
 s61n: 0-0
+s61i: 12-12
 s61r: 9-9
-s61t: 0-0
-s61a2: 0-0
-s61i: 1-1
+s61p3: 7-7
+s61a: 21-21
 s61s: 2-2
-s61t2: 0-0
-s61i3: 0-0
-s61c2: 0-0
 
 # document level annotation
 
@@ -3030,64 +2950,60 @@ Sentence (en): Although not a resolver of the conflict, the French victory at th
 
 # sentence level graph:
 (s62o / obbligare
-    :experiencer (s62v / vittoria
-        :mod (s62b / battaglia
-            :mod (s62t2 / type-NE
+    :actor (s62v / vincere
+        :temporal (s62e / event
                 :name (s62n2 / name
-                    :op1 "Marengo"))
-            :refer-number singular)
-        :mod (s62t / type-NE
-            :name (s62n / name
-                :op1 "francese"))
-        :mod (s62i / il)
-        :refer-number singular)
-    :undergoer (s62t3 / type-NE
-        :mod (s62i2 / il)
-        :name (s62n3 / name
-            :op1 "austriaco"))
-    :stimulus (s62a / abbandonare
-        :OBLIQUE (s62v2 / volta
-            :mod (s62i3 / il)
-            :mod (s62s / secondo)
-            :refer-number singular)
-        :modal-strength partial-affirmative
-        :aspect ASP
-        :undergoer (s62t4 / type-NE
-            :mod (s62i4 / il)
-            :name (s62n4 / name
-                :op1 "Italia")))
+                    :op1 "battaglia"
+                    :op2 "di"
+                    :op3 "Marengo")
+                :wiki "Q273011")
+        :actor (s62p / person
+            :refer-number plural
+            :mod (s62n5 / nationality
+                :name (s62n / name :op1 "Francia")
+                :wiki "Q142"))
+        :aspect performance
+        :modal-strength full-affirmative)
+    :undergoer (s62p2 / person
+            :refer-number plural
+            :mod (s62n3 / nationality
+                :name (s62n6 / name :op1 "Austria")
+                :wiki "Q40"))
+    :result (s62a / abbandonare
+        :actor s62p2
+        :ord (s62o2 / ordinal-entity :value 2)
+        :modal-strength full-affirmative
+        :aspect performance
+        :undergoer (s62c2 / country
+            :name (s62n4 / name :op1 "Italia"
+            :wiki "Q38")))
     :modal-strength full-affirmative
     :aspect performance
-    :concession (s62d / decisivo
-        :OBLIQUE (s62f / fine
-            :mod (s62c / conflitto
-                :refer-number singular)
-            :refer-number plural)
-        :modal-strength MS-negative
-        :aspect ASP))
+    :concession (s62h / have-mod-91
+        :ARG1 s62v
+        :ARG2 (s62d / decisivo
+            :purpose (s62c / conflitto :refer-number singular))
+        :aspect state
+        :modal-strength full-negative))
 
 # alignment:
-s62t4: 0-0
-s62f: 6-6
 s62n3: 0-0
 s62n4: 0-0
+s62n6: 0-0
+s62n: 0-0
 s62d: 3-3
+s62p: 15-15
+s62e: 18-20
 s62o: 21-21
-s62i6: 0-0
-s62t2: 0-0
 s62v: 12-12
-s62v2: 29-29
-s62t: 0-0
-s62i8: 0-0
-s62i3: 27-27
-s62a2: 0-0
 s62n2: 0-0
-s62t3: 0-0
 s62n5: 0-0
-s62b: 18-18
-s62i7: 0-0
 s62c: 9-9
-s62s: 28-28
+s62p2: 23-23
+s62a: 25-25
+s62o2: 26-29
+s62c2: 31-31
+s62h: 0-0
 
 # document level annotation
 
@@ -3102,61 +3018,45 @@ Sentence (en): With regards to religious practices, Fiorello was educated within
 # sentence level graph:
 (s63a / and
     :op1 (s63e / educare
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :ADVCL (s63r / riguardare
-            :actor (s63f2 / FILL
-                :refer-number singular)
-            :undergoer (s63p / pratica
-                :mod (s63i / il)
-                :mod (s63r2 / religioso)
-                :refer-number singular)
-            :modal-strength MS
-            :aspect ASP)
-        :undergoer (s63t2 / type-NE
-            :name (s63n / name
-                :op1 "Fiorello"))
-        :OBLIQUE (s63c / Chiesa
-            :mod (s63e2 / episcopale)
-            :refer-number singular))
+        :modal-strength full-affirmative
+        :aspect performance
+        :undergoer (s63p2 / person
+            :name (s63n / name :op1 "Fiorello"))
+        :place (s63r / religious-organization
+            :name (s63n2 / name
+                :op1 "Chiesa"
+                :op2 "episcopale")
+            :wiki "Q682443"))
     :op2 (s63r3 / rimanere
-        :modal-strength MS
-        :aspect ASP
-        :experiencer (s63f / FILL
-            :refer-number singular)
-        :stimulus (s63m / membro
-            :mod (s63v / vita
-                :mod (s63t / tutto)
-                :mod (s63i2 / il)
-                :refer-number singular)
-            :mod (s63t3 / type-NE
-                :name (s63n2 / name
-                    :op1 "Chiesa")
-                :mod (s63p2 / protestante))
-            :modal-strength MS-affirmative
-            :aspect ASP)))
+        :modal-strength full-affirmative
+        :aspect state
+        :theme s63p
+        :duration (s63v / vita
+            :quant (s63t / tutto))
+        :result (s63m / membro
+            :mod (s63r4 / religious-organization
+                :name (s63n3 / name
+                    :op1 "Chiesa"
+                    :op2 "protestante")
+                :wiki "Q346575")))
+    :topic (s63p / pratica
+        :mod (s63r2 / religioso)))
 
 # alignment:
-s63i4: 0-0
 s63r3: 16-16
-s63e2: 14-14
-s63t2: 0-0
-s63p2: 21-21
+s63p2: 8-8
 s63n: 0-0
-s63f3: 0-0
-s63f2: 0-0
-s63c: 13-13
 s63p: 5-5
-s63r: 3-3
-s63i: 4-4
 s63r2: 6-6
-s63t3: 0-0
+s63r: 13-14
 s63t: 23-23
 s63m: 17-17
 s63a: 15-15
-s63v2: 0-0
-s63e: 10-10
+s63e: 9-10
 s63n2: 0-0
+s63r4: 20-21
+s63n3: 0-0
+s63v: 25-25
 
 # document level annotation
 
@@ -3169,49 +3069,46 @@ Sentence: La tradizione vuole che il tema venne selezionato intenzionalmente a c
 Sentence (en): Tradition has it that the theme was selected intentionally because of the great number of converted Jews who lived in Palma.
 
 # sentence level graph:
-(s64v / volere
-    :experiencer (s64t / tradizione
-        :mod (s64i / il)
-        :refer-number singular)
-    :stimulus (s64s / selezionato
-        :OBLIQUE (s64n / numero
-            :mod (s64t3 / type-NE
-                :name (s64n2 / name
-                    :op1 "ebreo")
-                :actor-of (s64v2 / vivere
-                    :OBLIQUE (s64t4 / type-NE
-                        :name (s64n3 / name
-                            :op1 "Palma"))
-                    :modal-strength MS
-                    :aspect ASP)
-                :mod (s64c / convertire))
+(s64s / say-91
+    :ARG0 (s64t / tradizione :refer-number singular)
+    :ARG1 (s64s2 / selezionare
+        :reason (s64n / numero
+            :mod (s64e / ethnic-group
+                :name (s64n2 / name :op1 "ebreo")
+                :wiki "Q7325"
+                :actor-of (s64v / vivere
+                    :place (s64c2 / city
+                        :name (s64n3 / name :op1 "Palma")
+                        :wiki "Q8826")
+                    :modal-strength full-affirmative
+                    :aspect state)
+                :actor-of (s64c / convertire
+                    :theme s64e
+                    :aspect performance
+                    :modal-strength full-affirmative))
             :mod (s64g / grande)
             :refer-number singular)
-        :manner (s64i3 / intenzionalmente)
-        :modal-strength neutral-affirmative
-        :aspect ASP
-        :undergoer (s64t2 / tema
-            :mod (s64i2 / il)
-            :refer-number singular))
-    :modal-strength full-affirmative
-    :aspect ASP)
+        :manner (s64i / intenzionalmente)
+        :modal-strength full-affirmative
+        :aspect performance
+        :undergoer (s64t2 / tema :refer-number singular))
+    :aspect state
+    :modal-strength full-affirmative)
 
 # alignment:
+s64s: 3-3
 s64t: 2-2
-s64i3: 9-9
-s64i2: 5-5
-s64s: 8-8
-s64v: 3-3
+s64i: 9-9
+s64c2: 21-21
+s64s2: 8-8
 s64t2: 6-6
 s64n2: 0-0
-s64i: 1-1
-s64v3: 0-0
-s64c2: 0-0
 s64n: 14-14
-s64t3: 0-0
 s64g: 13-13
-s64t4: 0-0
+s64e: 16-16
+s64c: 17-17
 s64n3: 0-0
+s64v: 19-19
 
 # document level annotation
 
@@ -3225,59 +3122,46 @@ Sentence (en): However, the breakdown between him and Linares and the discontinu
 
 # sentence level graph:
 (s65p2 / provocare
-    :actor (s65a / and
-        :op1 (s65s / sospensione
-            :refer-number singular
-            :mod (s65i / il)
-            :mod (s65r / rapporto
-                :mod (s65t2 / type-NE
-                    :name (s65n / name
-                        :op1 "Linares"))
+    :cause (s65a / and
+        :op1 (s65s / sospendere
+            :theme (s65r / rapporto
+                :mod (s65p4 / person
+                    :name (s65n / name :op1 "Linares"))
                 :refer-number plural))
-        :op2 (s65i3 / interruzione
-            :refer-number singular
-            :mod (s65l / linea
+        :op2 (s65i / interrompere
+            :undergoer (s65l / linea
                 :mod (s65p / progressista)
-                :refer-number singular)
-            :mod (s65i2 / il)))
-    :undergoer (s65t3 / type-NE
-        :mod (s65i4 / il)
-        :mod (s65t4 / type-NE
-            :name (s65n3 / name
-                :op1 "Rivoluzione"))
+                :refer-number singular)))
+    :undergoer (s65e / event
         :name (s65n2 / name
-            :op1 "Giustificazione")
+            :op1 "Giustificazione"
+            :op2 "della"
+            :op3 "Rivoluzione")
         :actor-of (s65d / detronizzare
-            :undergoer (s65f / FILL
+            :undergoer (s65p3 / person
+                :refer-person 3rd
                 :refer-number singular)
-            :OBLIQUE (s651 / 1879)
-            :modal-strength MS
+            :temporal (s65d2 / date-entity :year 1879)
+            :modal-strength full-affirmative
             :aspect performance))
-    :manner (s65t / tuttavia)
     :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
 s65n2: 0-0
-s65l2: 0-0
-s65t4: 0-0
-s65t: 1-1
-s65i6: 0-0
 s65r: 7-7
-s65f2: 0-0
-s65i: 3-3
-s65i4: 18-18
+s65p4: 9-9
 s65s: 4-4
-s65n3: 0-0
 s65p2: 17-17
-s65i3: 12-12
-s65t2: 0-0
-s651: 28-28
+s65i: 12-12
+s65l: 15-15
 s65a: 10-10
+s65e: 19-22
 s65p: 16-16
-s65t3: 0-0
 s65n: 0-0
 s65d: 25-25
+s65p3: 24-24
+s65d2: 28-28
 
 # document level annotation
 
@@ -3292,53 +3176,43 @@ Sentence (en): The collapse of and intervention in dozens of banks lead to a fli
 # sentence level graph:
 (s66p / portare
     :actor (s66a / and
-        :op1 (s66c / collasso
-            :refer-number singular
-            :mod (s66i / il))
-        :op2 (s66i3 / intervento
-            :refer-number singular
-            :mod (s66d / dozzina
-                :refer-number plural
-                :mod (s66b / banca
-                    :refer-number plural))
-            :mod (s66i2 / il)))
-    :OBLIQUE (s66f / fuga
-        :mod (s66u / uno)
-        :mod (s66c2 / capitali
-            :refer-number plural)
-        :refer-number singular)
+        :op1 (s66c / collassare
+            :aspect performance
+            :modal-strength full-affirmative)
+        :op2 (s66i / intervenire
+            :goal (s66b / banca
+                    :quant (s66d / dozzina :refer-number plural))
+            :aspect performance
+            :modal-strength full-affirmative))
+    :result (s66f / fuggire
+        :theme (s66c2 / capitali :refer-number plural)
+        :modal-strength full-affirmative
+        :aspect performance)
     :modal-strength full-affirmative
     :aspect performance
-    :ADVCL (s66c3 / causare
-        :actor (s66f2 / FILL
-            :refer-number FILL)
-        :undergoer (s66b2 / bancarotta
-            :mod (s66b3 / business
+    :ARG2-of (s66h / have-cause-91
+        :ARG1 (s66b2 / bancarotta
+            :theme (s66b3 / business
                 :mod (s66q / questo)
                 :refer-number singular)
-            :mod (s66i4 / il)
-            :refer-number singular)
-        :modal-strength MS-affirmative
-        :aspect ASP))
+            :aspect performance
+            :modal-strength full-affirmative)
+        :modal-strength full-affirmative
+        :aspect state))
 
 # alignment:
 s66p: 10-10
 s66c2: 15-15
 s66q: 21-21
-s66i3: 5-5
 s66b3: 22-22
 s66d: 7-7
-s66u: 12-12
 s66b: 9-9
-s66i4: 18-18
 s66c: 2-2
-s66i: 1-1
-s66i2: 4-4
+s66i: 5-5
 s66b2: 19-19
 s66f: 13-13
-s66f2: 0-0
 s66a: 3-3
-s66c3: 17-17
+s66h: 17-17
 
 # document level annotation
 
@@ -3351,44 +3225,39 @@ Sentence: Fu il colpo di grazia e l'incoraggiamento di cui i coloni avevano biso
 Sentence (en): This was the coup de grâce and encouragement the settlers needed to get their independence.
 
 # sentence level graph:
-(s67a2 / and
-    :op1 (s67c / colpo
-        :refer-number singular
-        :mod (s67i / il)
-        :mod (s67g / grazia
-            :refer-number singular))
-    :op2 (s67i3 / incoraggiamento
-        :refer-number singular
-        :OBLIQUE-of (s67a / avere
-            :experiencer (s67c2 / colono
-                :mod (s67i4 / il)
-                :refer-number plural)
-            :undergoer (s67b / bisogno
-                :refer-number singular)
-            :stimulus (s67r / raggiungere
-                :modal-strength MS-affirmative
-                :aspect ASP
-                :undergoer (s67i6 / indipendenza
-                    :mod (s67i5 / il)
-                    :refer-number singular))
-            :modal-strength MS
-            :aspect ASP)
-        :mod (s67i2 / il)))
+(s67i / identity-91
+    :ARG1 (s67e / event)
+    :ARG2 (s67a2 / and
+        :op1 (s67c / colpo
+            :refer-number singular
+            :mod (s67g / grazia))
+        :op2 (s67i2 / incoraggiamento
+            :refer-number singular
+            :stimulus-of (s67a / avere-bisogno
+                :experiencer (s67c2 / colono :refer-number plural)
+                :purpose (s67r / raggiungere
+                    :actor s67c2
+                    :modal-strength full-affirmative
+                    :aspect activity
+                    :theme (s67i3 / indipendenza
+                        :refer-number singular
+                        :poss s67c2))
+                :modal-strength full-affirmative
+                :aspect state)))
+    :aspect state
+    :modal-strength full-affirmative)
 
 # alignment:
-s67c3: 0-0
-s67i2: 7-7
-s67i5: 17-17
-s67a: 13-13
+s67i: 1-1
+s67: 0-0
+s67a: 13-14
+s67i2: 8-8
 s67a2: 6-6
-s67b: 14-14
 s67g: 5-5
-s67i6: 18-18
 s67c: 3-3
-s67i: 2-2
-s67i4: 11-11
-s67i3: 8-8
+s67c2: 12-12
 s67r: 16-16
+s67i3: 18-18
 
 # document level annotation
 
@@ -3401,76 +3270,69 @@ Sentence: Tuttavia, se la legge inglese fosse stata accettata, le figlie di Luig
 Sentence (en): Nonetheless, if the English law had been accepted, the daughters of Luis X, Felipe V and Carlos IV would have had more of a claim to the throne, above their aunt Isabella of France.
 
 # sentence level graph:
-(s68a2 / avere
-    :actor (s68a3 / and
-        :op1 (s68f / figlio
-            :refer-number plural
-            :mod (s68t3 / type-NE
-                :name (s68n / name
-                    :op1 "Luigi")
-                :mod (s68x / X))
-            :mod (s68i3 / il))
-        :op2 (s68t4 / type-NE
-            :name (s68n2 / name
-                :op1 "Filippo")
-            :mod (s68v / V))
-        :op3 (s68t5 / type-NE
-            :name (s68n3 / name
-                :op1 "Carlo")
-            :mod (s68i4 / IV)))
-    :undergoer (s68p2 / pretendere
-        :manner (s68p / più)
-        :mod (s68z / zio
-            :mod (s68t6 / type-NE
-                :mod (s68t7 / type-NE
-                    :name (s68n5 / name
-                        :op1 "Francia"))
-                :name (s68n4 / name
-                    :op1 "Isabella"))
-            :refer-number singular
-            :det (s68l2 / loro))
-        :mod (s68t2 / trono
-            :refer-number singular)
-        :refer-number plural)
-    :manner (s68t / tuttavia)
-    :modal-strength MS-affirmative
-    :aspect ASP
+(s68h / have-91
+    :ARG1 (s68p / person
+        :refer-number plural
+        :ARG1-of (s68h2 / have-rel-role-92
+            :ARG3 (s68f / figlio)
+            :ARG2 (s68a3 / and
+                :op1 (s68p2 / person
+                    :name (s68n / name :op1 "Luigi" :op2 "X")
+                    :wiki "Q8384")
+                :op2 (s68p3 / person
+                    :name (s68n2 / name :op1 "Filippo" :op2 "V")
+                    :wiki "Q8433")
+                :op3 (s68p4 / person
+                    :name (s68n3 / name :op1 "Carlo" :op2 "IV")
+                    :wiki "Q174964"))
+            :aspect state
+            :modal-strength full-affirmative))
+    :ARG2 (s68p5 / pretesa
+            :mod (s68t2 / trono :refer-number singular)
+            :quant (s68m / more-than
+                :op1 (s68p6 / pretesa
+                    :poss (s68p7 / person
+                        :ARG1-of (s68h3 / have-rel-role-92
+                            :ARG2 s68p
+                            :ARG3 (s68z / zio)
+                            :aspect state
+                            :modal-strength full-affirmative)
+                        :name (s68n4 / name :op1 "Isabella" :op2 "di" :op3 "Francia")
+                        :wiki "Q228642"))))
     :condition (s68a / accettare
         :undergoer (s68l / legge
-            :mod (s68i / il)
-            :mod (s68i2 / inglese)
+            :mod (s68c / country
+                :name (s68n6 / name "Inghilterra"))
             :refer-number singular)
-        :modal-strength MS-affirmative
-        :aspect ASP))
+        :modal-strength full-negative
+        :aspect performance)
+    :aspect state
+    :modal-strength neutral-affirmative)
 
 # alignment:
-s68p2: 25-25
-s68n4: 0-0
-s68z: 32-32
-s68a2: 23-23
+s68h: 22-23
+s68p: 12-12
+s68h2: 0-0
+s68f: 0-0
+s68a3: 19-19
+s68p2: 14-15
 s68n: 0-0
-s68i2: 6-6
-s68t6: 0-0
-s68f: 12-12
-s68t4: 0-0
-s68l: 5-5
-s68n5: 0-0
-s68l3: 0-0
-s68t7: 0-0
-s68n3: 0-0
-s68t2: 28-28
-s68i: 4-4
-s68i3: 11-11
 s68n2: 0-0
-s68a: 9-9
-s68i4: 21-21
-s68p: 24-24
-s68t3: 0-0
-s68t: 1-1
-s68t5: 0-0
-s68x: 15-15
-s68v: 18-18
-s68a4: 0-0
+s68n3: 0-0
+s68p3: 17-18
+s68p4: 20-21
+s68p5: 25-25
+s68t2: 28-28
+s68m: 24-24
+s68p6: 0-0
+s68p7: 33-35
+s68h3: 0-0
+s68z: 0-0
+s68n4: 0-0
+s68a: 7-9
+s68l: 5-5
+s68c: 6-6
+s68n6
 
 # document level annotation
 
@@ -3483,70 +3345,55 @@ Sentence: I tentativi di pace terminarono nella primavera del 1415 ed Enrico dec
 Sentence (en): The attempts at making peace finally ended in spring of 1415 and Enrique decided to execute his plan: an invasion of the entire Kingdom of France.
 
 # sentence level graph:
-(s69a2 / and
+(s69a / and
     :op1 (s69t2 / terminare
         :modal-strength full-affirmative
         :aspect performance
         :actor (s69t / tentativo
-            :mod (s69p / pace
-                :refer-number singular)
-            :mod (s69i / il)
+            :mod (s69p / pace)
             :refer-number plural)
-        :OBLIQUE (s69p2 / primavera
-            :mod (s691 / 1415)
-            :refer-number singular))
+        :temporal (s69d2 / date-entity
+            :season (s69p2 / primavera)
+            :year 1415))
     :op2 (s69d / decidere
-        :modal-strength MS
+        :modal-strength full-affirmative
         :aspect performance
-        :experiencer (s69t3 / type-NE
-            :name (s69n / name
-                :op1 "Enrico"))
-        :stimulus (s69m / mettere
-            :OBLIQUE (s69a / atto
-                :refer-number singular)
-            :modal-strength MS-affirmative
-            :aspect ASP
+        :actor (s69p4 / person
+            :name (s69n / name :op1 "Enrico"))
+        :theme (s69m / mettere-in-atto
+            :modal-strength full-affirmative
+            :aspect activity
+            :actor s69p4
             :undergoer (s69p3 / piano
-                :mod (s69i2 / il)
                 :refer-number singular
-                :ARG1-of (s69i6 / identity-91
-                    :ARG2 (s69i4 / invasione
-                        :mod (s69t4 / type-NE
-                            :mod (s69t5 / type-NE
-                                :name (s69n3 / name
-                                    :op1 "Francia"))
-                            :mod (s69i5 / intero)
+                :ARG1-of (s69i / identity-91
+                    :poss s69p4
+                    :ARG2 (s69i2 / invadere
+                        :mod (s69g / geo-political-entity
+                            :mod (s69i3 / intero)
                             :name (s69n2 / name
-                                :op1 "Regno"))
-                        :mod (s69i3 / il)
-                        :refer-number singular)
-                    :modal-strength MS
-                    :aspect state)
-                :det (s69s / suo)))))
+                                :op1 "Regno"
+                                :op2 "di"
+                                :op3 "Francia")))
+                    :modal-strength full-affirmative
+                    :aspect state)))))
 
 # alignment:
-s69i6: 0-0
-s69i5: 27-27
-s69n3: 0-0
-s69i9: 0-0
-s69i4: 24-24
-s69i8: 0-0
-s69t4: 0-0
-s69m: 16-16
+s69i: 0-0
+s69i3: 0-0
+s69g: 27-30
+s69i2: 24-24
+s69m: 16-18
+s69d2: 8-11
 s69d: 14-14
-s69a: 18-18
 s69t: 2-2
-s69i: 1-1
-s691: 11-11
-s69t3: 0-0
 s69n: 0-0
 s69t2: 5-5
 s69p3: 21-21
 s69s: 20-20
-s69t5: 0-0
 s69n2: 0-0
-s69p2: 8-8
-s69a2: 12-12
+s69p2: 0-0
+s69a: 12-12
 s69p: 4-4
 
 # document level annotation
@@ -3561,47 +3408,55 @@ Sentence (en): On the 1st January 49 BC, Marco Antonio read a declaration from C
 
 # sentence level graph:
 (s70l / leggere
-    :actor (s70t / type-NE
+    :actor (s70p / person
         :name (s70n / name
             :op1 "Marco"
-            :op2 "Antonio"))
-    :undergoer (s70d / dichiarazione
-        :mod (s70t2 / type-NE
-            :name (s70n2 / name
-                :op1 "Cesare"))
-        :mod (s70u / uno)
+            :op2 "Antonio")
+        :wiki "Q51673")
+    :theme (s70d / dichiarazione
+        :actor (s70p4 / person
+            :name (s70n2 / name :op1 "Cesare")
+            :wiki "Q1048")
         :refer-number singular
-        :OBLIQUE-of (s70d2 / dichiarare
-            :experiencer (s70p / proconsole
-                :mod (s70i2 / il)
-                :refer-number singular)
-            :stimulus (s70a / amico
-                :mod (s70p2 / pace
-                    :refer-number singular)
-                :modal-strength full-affirmative
-                :aspect ASP)
-            :modal-strength MS
+        :place-of (s70d2 / dichiarare
+            :actor (s70p2 / person
+                :ARG1-of (s70h / have-role-91
+                    :ARG3 (s70p3 / proconsole)
+                :aspect state
+                :modal-strength full-affirmative))
+            :theme s70p2
+            :result (s70h2 / have-rol-91
+                :ARG1 s70p2
+                :ARG2 (s70p5 / pace)
+                :ARG3 (s70a / amico)
+                :aspect state
+                :modal-strength full-affirmative)
+            :modal-strength full-affirmative
             :aspect performance))
-    :OBLIQUE (s701 / 1
-        :mod (s70i / il))
+    :temporal (s70d3 / date-entity
+        :day 1
+        :month 1
+        :year 49)
+        :era (s70d4 / d.C.))
     :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
-s70t: 0-0
-s70i: 1-1
 s70n2: 0-0
+s70p: 7-8
 s70l: 9-9
-s70u: 10-10
-s701: 2-2
-s70a2: 0-0
 s70n: 0-0
-s70p: 18-18
+s70d: 11-11
+s70p4: 13-13
 s70d2: 20-20
-s70p2: 24-24
-s70t2: 0-0
-s70d3: 0-0
-s70i3: 0-0
+s70h: 0-0
+s70p3: 0-0
+s70p2: 18-18
+s70a: 21-21
+s70p5: 24-24
+s70d3: 2-5
+s70h2: 0-0
+s70d4: 0-0
 
 # document level annotation
 
