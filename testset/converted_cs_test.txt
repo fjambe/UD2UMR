@@ -607,43 +607,54 @@ Sentence (en): He also built and renovated five traditional markets in 2013 and 
 # sentence level graph:
 (s13a / and
     :op1 (s13v / vybudovat
-        :modal-strength MS-affirmative
+        :modal-strength full-affirmative
         :aspect performance
+        :actor (s13p / person
+            :refer-person 3rd
+            :refer-number singular)
         :undergoer (s13t3 / tržnice
             :mod (s13t2 / tradiční)
             :refer-number plural
             :quant 5)
-        :OBLIQUE (s13r / rok
-            :refer-number singular
-            :quant 2013)
+        :temporal (s13r / date-entity
+            :year 2013)
         :manner (s13t / též))
     :op2 (s13o / opravit
-        :modal-strength MS-affirmative
-        :aspect performance)
-    :op3 (s13i / identity-91
-        :modal-strength MS-affirmative
-        :aspect state
-        :ARG1 (s13t5 / tržnice
+        :modal-strength full-affirmative
+        :aspect performance
+        :actor s13p
+        :undergoer s13t3
+        :temporal s13r
+        :manner s13t)
+    :op3 (s13i / vybudovat
+        :modal-strength full-affirmative
+        :aspect performance
+        :actor s13p
+        :undergoer (s13t5 / tržnice
             :refer-number plural
             :quant 4)
-        :ARG2 (s13t4 / ten
-            :OBLIQUE (s13r2 / rok
-                :refer-number singular
-                :quant 2014)
-            :refer-number singular)))
+        :temporal (s13r2 / date-entity
+            :year 2014))
+    :op4 (s13o2 / opravit
+        :modal-strength full-affirmative
+        :aspect performance
+        :actor s13p
+        :undergoer s13t5
+        :temporal s13r2))
 
 # alignment:
-s13a: 0-0
-s13r: 2-2
+s13o2: 0-0
+s13p: 0-0
+s13r: 1-3
 s13t: 4-4
 s13v: 5-5
+s13a: 6-6
 s13o: 7-7
+s13t3: 8-8, 10-10
 s13t2: 9-9
-s13t3: 10-10
-s13r2: 13-13
-s13t4: 15-15
-s13i: 16-16
-s13t5: 18-18
+s13r2: 12-14
+s13i: 15-16
+s13t5: 17-18
 
 # document level annotation
 
