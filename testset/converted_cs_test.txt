@@ -813,27 +813,28 @@ Sentence (en): Russia announced a suspension of the contract at the beginning of
 
 # sentence level graph:
 (s17o / oznámit
-    :experiencer (s17t / type-NE
+    :actor (s17t / country
         :name (s17n / name
             :op1 "Rusko"))
-    :undergoer (s17p / pozastavení
-        :refer-number singular
-        :MOD/POSS (s17s / smlouva
+    :undergoer (s17p / pozastavit
+        :modal-strength full-affirmative
+        :aspect performance
+        :actor s17t
+        :undergoer (s17s / smlouva
             :refer-number singular))
-    :OBLIQUE (s17z / začátek
-        :refer-number singular
-        :MOD/POSS (s17ř / říjen
-            :refer-number singular))
-    :modal-strength MS-affirmative
+    :temporal (s17ř / date-entity
+            :month 10
+            :mod (s17z / začátek))
+    :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
 s17n: 0-0
-s17t: 0-0
+s17t: 1-1
 s17o: 2-2
 s17p: 3-3
 s17s: 4-4
-s17z: 6-6
+s17z: 5-6
 s17ř: 7-7
 
 # document level annotation
