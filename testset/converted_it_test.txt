@@ -598,38 +598,52 @@ Sentence (en): He also built and renovated five traditional markets in 2013 and 
 
 # sentence level graph:
 (s13a / and
-    :op1 (s13c / costruire
-        :modal-strength full-affirmative
-        :aspect performance
-        :actor (s13p / person
-            :refer-person 3rd
-            :refer-number singular)
-        :undergoer (s13a2 / and
-            :op1 (s13m / mercato
-                :quant 5
-                :mod (s13t / tradizionale)
-                :temporal (s13d / date-entity :year 2013))
-            :op2 (s13m2 / mercato
-                :quant 4
-                :mod s13t
-                :mod (s13d2 / date-entity :year 2014))))
-    :op2 (s13r / rinnovare
-        :modal-strength full-affirmative
-        :aspect performance
-        :actor s13p
-        :undergoer s13a2))
+    :op1 (s13a2 / and
+        :op1 (s13c / costruire
+            :modal-strength full-affirmative
+            :aspect performance
+            :actor (s13p / person
+                :refer-person 3rd
+                :refer-number singular)
+            :undergoer (s13m / mercato
+                    :quant 5
+                    :mod (s13t / tradizionale)))
+        :op2 (s13r / rinnovare
+            :modal-strength full-affirmative
+            :aspect performance
+            :actor s13p
+            :undergoer s13m)
+        :temporal (s13d / date-entity :year 2013))
+    :op2 (s13a3 / and
+        :op1 (s13c2 / costruire
+                :modal-strength full-affirmative
+                :aspect performance
+                :actor s13p
+                :undergoer (s13m2 / mercato
+                        :quant 4
+                        :mod (s13t2 / tradizionale))
+        :op2 (s13r2 / rinnovare
+            :modal-strength full-affirmative
+            :aspect performance
+            :actor s13p
+            :undergoer s13n2))
+            :temporal (s13d2 / date-entity :year 2014)))
 
 # alignment:
 s13c: 3-3
 s13t: 8-8
-s13a2: 12-12
-s13d: 11-11, 15-15
+s13a2: 4-4
+s13a2: 0-0
+s13d: 11-11
 s13r: 5-5
-s13a: 4-4
+s13a: 12-12
 s13m: 7-7
 s13m2: 14-14
 s13d2: 18-18
 s13p: 0-0
+s13c2: 0-0
+s13r2: 0-0
+s13t2: 15-15
 
 # document level annotation
 
@@ -1683,7 +1697,7 @@ Sentence (en): Its management, however, hasn't been devoid of criticism.
             :refer-number singular
             :refer-person 3rd))
     :ARG2 (s36p / privo
-        :other-role (s36c2 / critica :refer-number plural))
+        :theme (s36c2 / critica :refer-number plural))
     :modal-strength full-negative
     :aspect state)
 
@@ -2035,18 +2049,14 @@ Sentence (en): The Industrial Revolution took place in Great Britain earlier tha
     :place (s45c / country
         :name (s45n / name :op1 "Gran" :op2 "Bretagna")
         :wiki "Q145")
-    :temporal (s45p2 / prima
-        :ARG2-of (s45h / have-degree-91
-            :ARG3 (s45m / more)
-            :ARG4 (s45a3 / avere-luogo
+    :temporal (s45b / before
+        :op1 ((s45a3 / avere-luogo
                 :theme s45e
                 :place (s45p / paese
                     :mod (s45a2 / altro)
                     :quant (s45o / ogni))
                 :aspect performance
-                :modal-strength full-affirmative)
-            :aspect state
-            :modal-strength full-affirmative))
+                :modal-strength full-affirmative)))
     :modal-strength full-affirmative
     :aspect performance)
 
@@ -2054,11 +2064,9 @@ Sentence (en): The Industrial Revolution took place in Great Britain earlier tha
 s45p: 14-14
 s45a2: 13-13
 s45n2: 0-0
-s45p2: 9-9
+s45b: 9-9
 s45e: 2-3
 s45a: 4-5
-s45h: 0-0
-s45m: 0-0
 s45c: 7-8
 s45a3: 0-0
 s45n: 0-0
@@ -2486,9 +2494,10 @@ Sentence (en): From about the 8th century BC city states began to appear: small,
                         :poss s53t)
                     :aspect state
                     :modal-strength full-affirmative))))
-    :temporal (s53d / date-entity
-        :century 8
-        :era (s53a2 / a.C))
+    :temporal (s53a3 / approximately
+        :op1 (s53d / date-entity
+            :century 8
+            :era (s53a2 / a.C)))
     :modal-strength full-affirmative
     :aspect inceptive)
 
@@ -2497,6 +2506,7 @@ s53a: 4-6
 s53c: 2-2
 s53s: 3-3
 s53i: 0-0
+s53a3: 7-7
 s53a2: 0-0
 s53d: 9-10
 s53p: 13-13
