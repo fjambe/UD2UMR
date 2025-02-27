@@ -724,7 +724,7 @@ Sentence (en): Students at LUISS University were told during the course of a mee
     :temporal (s15i / incontro
         :refer-number singular
         :undergoer-of (s15o / organizzare
-            :place (s15c / city
+            :place (s15h / human-settlement
                 :name (s15n2 / name :op1 "Roma")
                 :wiki "Q220")
             :aspect performance
@@ -739,7 +739,7 @@ s15a: 9-10
 s15n: 0-0
 s15i: 16-16
 s15o: 17-17
-s15c: 19-19
+s15h: 19-19
 s15n2: 0-0
 
 # document level annotation
@@ -841,11 +841,10 @@ Sentence (en): The early voting suggests that this time the Latin Americans will
             :aspect performance
             :modal-strength full-affirmative)
         :theme (s18v3 / votare
-            :actor (s18s / social-group
-                :name (s18n2 / name
-                    :op1 "America"
-                    :op2 "latina")
-                :wiki "Q12585"
+            :actor (s18p / person
+                :mod (s18w / world-region
+                    :name (s18n2 / name :op1 "America" :op2 "latina")
+                    :wiki "Q12585")
                 :quant (s18n / numero
                     :mod (s18g / gran)))
             :temporal (s18v2 / volta
@@ -873,7 +872,8 @@ s18a: 3-3
 s18s: 4-4
 s18q: 6-6
 s18v2: 7-7
-s18s: 9-9
+s18p: 9-9
+s18w: 0-0
 s18n2: 0-0
 s18v3: 10-10
 s18g: 12-12
@@ -898,7 +898,7 @@ Sentence (en): In 1832, the former cloister was sold to the manufacturer Georg R
 
 # sentence level graph:
 (s19v / vendere
-    :actor (s19g / geo-political-entity
+    :actor (s19c3 / country-partition
         :name (s19n / name :op1 "Württemberg"))
     :theme (s19c / chiostro
         :refer-number singular
@@ -927,13 +927,13 @@ s19c: 7-7
 s19v2: 6-6
 s19d: 3-3
 s19n: 0-0
-s19: 12-14
 s19p: 18-19
 s19h: 0-0
 s19p2: 17-17
 s19c2: 20-20
 s19t: 24-24
 s19f: 28-28
+s19c3: 12-14
 
 # document level annotation
 
@@ -978,10 +978,10 @@ Sentence (en): Weiss was honored with the literature prizes from the cities of C
 # sentence level graph:
 (s21o / onorare
     :actor (s21a / and
-        :op1 (s21c / city
+        :op1 (s21h / human-settlement
             :name (s21n / name :op1 "Colonia")
             :wiki "Q365")
-        :op2 (s21c2 / city
+        :op2 (s21h2 / human-settlement
             :name (s21n2 / name :op1 "Brema")
             :wiki "Q24879"))
     :undergoer (s21p / person
@@ -998,9 +998,9 @@ s21n3: 0-0
 s21o: 2-3
 s21l: 8-8
 s21p2: 5-5
-s21c: 11-13
+s21h: 11-13
 s21n: 0-0
-s21c2: 15-15
+s21h2: 15-15
 s21n2: 0-0
 s21a: 14-14
 
@@ -1370,10 +1370,10 @@ Sentence (en): Before the Andes were formed, the western margin of South America
         :mod (s28o2 / orogenesi
             :refer-number plural
             :quant (s28d / diverso)))
-    :manner (s28g2 / già)
+    :manner (s28g / già)
     :temporal (s28b / before
         :op1 (s28f / formare
-            :theme (s28g / geographical-entity
+            :theme (s28m / mountain-range
                 :name (s28n / name :op1 "Ande")
                 :wiki "Q5456")
             :aspect performance
@@ -1385,13 +1385,13 @@ Sentence (en): Before the Andes were formed, the western margin of South America
 s28b: 1-1
 s28f: 3-4
 s28n: 0-0
-s28g: 6-6
+s28m: 6-6
 s28l: 9-9
 s28o: 10-10
 s28w: 13-14
 s28i: 15-15, 17-17
 s28n2: 0-0
-s28g2: 16-16
+s28g: 16-16
 s28s: 18-18
 s28d: 20-20
 s28o2: 21-21
@@ -1490,9 +1490,7 @@ Sentence (en): On the 1st January 49 BC, Marco Antonio read a declaration from C
 # sentence level graph:
 (s30l / leggere
     :actor (s30p / person
-        :name (s30n / name
-            :op1 "Marco"
-            :op2 "Antonio")
+        :name (s30n / name :op1 "Marco" :op2 "Antonio")
         :wiki "Q51673")
     :theme (s30d2 / dichiarazione
         :actor (s30p2 / person

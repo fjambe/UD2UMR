@@ -55,8 +55,7 @@ Sentence (en): He also said Klein was uncommunicative, uncooperative and unwilli
         :refer-number singular
         :refer-person 3rd)
     :theme (s2p2 / person
-        :name (s2n / name
-            :op1 "Klein"))
+        :name (s2n / name :op1 "Klein"))
     :result (s2a / and
         :op1 (s2c / comunicativo
             :manner (s2p3 / poco))
@@ -75,7 +74,7 @@ Sentence (en): He also said Klein was uncommunicative, uncooperative and unwilli
                         :modal-strength full-affirmative))
                         :purpose (s2p5 / partecipare
                             :actor s2p2
-                            :OBLIQUE (s2u / udienza
+                            :goal (s2u / udienza
                                 :refer-number singular
                                 :poss s2p2)
                             :modal-strength full-affirmative
@@ -196,12 +195,12 @@ Sentence (en): A coal-fired power station in Badarpur, south-east Delhi, will st
             :mod (s5e / elettrico)
             :refer-number singular
             :ARG1-of (s5h / have-place-91
-                :ARG2 (s5c3 / city
+                :ARG2 (s5h3 / human-settlement
                     :wiki "Q4840627"
                     :name (s5n2 / name :op1 "Badarpur"
                     :ARG1-of (s5h2 / have-place-91
                         :ARG2 (s5r / relative-position
-                            :op1 (s5c4 / city
+                            :op1 (s5h4 / human-settlement
                                 :wiki "Q1353"
                                 :name (s5n / name :op1 "Delhi"))
                             :direction (s5a3 / and
@@ -227,11 +226,11 @@ s5c: 2-2
 s5e: 3-3
 s5c2: 5-5
 s5h: 6-6
-s5c3: 7-7
+s5h3: 7-7
 s5n2: 0-0
 s5h2: 9-9
 s5n: 0-0
-s5c4: 0-0
+s5h4: 0-0
 s5e: 0-0
 s5s: 0-0
 s5a3: 0-0
@@ -361,7 +360,7 @@ Sentence (en): The multi-ethnic Achaemenid army possessed many soldiers from the
             :actor-of (s8p / provenire
                 :modal-strength full-affirmative
                 :aspect state
-                :source (s8g / geographical-entity
+                :source (s8g / geo-political-entity
                     :name (s8n / name :op1 "Balcani"))))
     :modal-strength full-affirmative
     :aspect state)
@@ -392,9 +391,7 @@ Sentence (en): In his haste to capture Kadesh, Ramesses II committed a major tac
 (s9c2 / commettere
     :actor (s9p / person
         :wiki "Q1523"
-        :name (s9n2 / name
-            :op1 "Ramsete"
-            :op2 "II"))
+        :name (s9n2 / name :op1 "Ramsete" :op2 "II"))
     :undergoer (s9e / errore
         :mod (s9c3 / considerevole)
         :mod (s9t / tattico)
@@ -404,7 +401,7 @@ Sentence (en): In his haste to capture Kadesh, Ramesses II committed a major tac
             :modal-strength neutral-affirmative
             :aspect process
             :actor s9p
-            :undergoer (s9c4 / city
+            :undergoer (s9h / human-settlement
                 :wiki "Q690035"
                 :name (s9n / name :op1 "Kadesh")))
         :refer-number singular)
@@ -420,7 +417,7 @@ s9e: 12-12
 s9c2: 10-10
 s9n2: 0-0
 s9n: 0-0
-s9c4: 6-6
+s9ch: 6-6
 s9n2: 0-0
 
 # document level annotation
@@ -464,7 +461,7 @@ Sentence (en): They had been so moved by the beauty of the Rudyard Lake area tha
         :actor (s10b / bellezza
             :mod (s10a / area
                 :refer-number singular
-                :mod (s10g / geographical-entity
+                :mod (s10l / lake
                     :wiki "Q7332702"
                     :name (s10n3 / name :op1 "Rudyard"))))
         :extent (s10t / talmente))
@@ -477,7 +474,7 @@ s10v: 21-21
 s10b: 6-6
 s10c: 1-1, 3-3
 s10t: 2-2
-s10g: 12-13
+s10l: 12-13
 s10n3: 0-0
 s10o: 19-19
 s10p: 0-0
@@ -503,9 +500,7 @@ Sentence (en): De Gaulle had instructed that there be no excessive displays of p
 (s11o / ordinare
     :experiencer (s11p2 / person
         :wiki "Q2042"
-        :name (s11n / name
-            :op1 "De"
-            :op2 "Gaulle"))
+        :name (s11n / name :op1 "De" :op2 "Gaulle"))
     :stimulus (s11a / and
         :op1 (s11m / mostrare
             :modal-strength partial-negative
@@ -654,10 +649,10 @@ Sentence (en): Pebe moved the family to Nashville, Tennessee, in 1991 after secu
     :companion (s14f / famiglia
         :poss s14p2
         :refer-number singular)
-    :goal (s14c2 / city
+    :goal (s14h / human-settlement
         :name (s14n3 / name :op1 "Nashville")
         :wiki "Q23197"
-        :place (s14c3 / country-partition
+        :place (s14c2 / country-partition
             :name (s14n4 / name :op1 "Tennessee"))
             :wiki "Q1509")
     :temporal (s14d / date-entity :year 1991)
@@ -688,8 +683,8 @@ s14n: 21-21
 s14p: 24-24
 s14n2: 0-0
 s14n4: 0-0
-s14c2: 8-8
-s14c3: 10-10
+s14h: 8-8
+s14c2: 10-10
 s14d: 14-14
 s14a3: 16-16
 
@@ -711,7 +706,7 @@ Sentence (en): With 71 goals in 137 international matches, he has shot a record 
     :undergoer (s15n / numero
         :mod (s15r / record)
         :mod (s15r2 / rete :refer-number plural)
-        :place (s15t / thing
+        :place (s15s2 / sports-organization
             :name (s15n2 / name :op1 "Bundesliga")
             :wiki "Q82595"))
     :instrument (s15g / goal
@@ -725,7 +720,7 @@ Sentence (en): With 71 goals in 137 international matches, he has shot a record 
 # alignment:
 s15n: 12-12
 s15s: 9-10
-s15t: 18-18
+s15s2: 18-18
 s15p: 0-0
 s15p2: 6-6
 s15r: 13-13
@@ -787,7 +782,7 @@ Sentence (en): Russia announced a suspension of the contract at the beginning of
 
 # sentence level graph:
 (s17a / annunciare
-    :actor (s17g / geo-political-entity
+    :actor (s17c2 / country
         :name (s17n / name :op1 "Russia")
         :wiki "Q159")
     :theme (s17s / sospendere
@@ -804,7 +799,7 @@ s17a: 3-4
 s17d: 14-14
 s17s: 6-6
 s17c: 9-9
-s17g: 2-2
+s17c2: 2-2
 s17i2: 12-12
 
 # document level annotation
@@ -881,22 +876,18 @@ Sentence (en): The husband of the current candidate for the White House, Hillary
         :ARG1-of (s20h / have-rel-role-92
             :ARG3 (s20m / marito)
             :ARG2 (s20p4 / person
-                :name (s20n3 / name
-                    :op1 "Hillary"
-                    :op2 "Clinton")
+                :name (s20n3 / name :op1 "Hillary" :op2 "Clinton")
                 :wiki "Q6294"
                 :ARG1-of (s20h2 / have-role-91
                     :ARG3 (s20c / candidare
                         :goal (s20g2 / government-organization
-                            :name (s20n2 / name
-                                :op1 "Casa")
-                                :op2 "Bianca")
+                            :name (s20n2 / name :op1 "Casa" :op2 "Bianca")
                             :wiki "Q35525")
                         :aspect performance
                         :modal-strength full-affirmative)
                     :temporal (s20a / attuale)
                     :aspect state
-                    :modal-strength full-affirmative)
+                    :modal-strength full-affirmative))
             :aspect state
             :modal-strength full-affirmative))
     :undergoer (s20p2 / pena
@@ -1385,7 +1376,7 @@ Sentence (en): As stated, the decision is the prerogative of the ECB and would a
     :op1 (s31i / identity-91
         :ARG1 (s31d / decisione :refer-number singular)
         :ARG2 (s31p / prerogativa
-            :poss (s31o / organization
+            :poss (s31i3 / international-organization
                 :name (s31n2 / name :op1 "BCE")
                 :wiki "Q8901"))
         :ARG1-of (s31r / resemble-91
@@ -1403,7 +1394,7 @@ Sentence (en): As stated, the decision is the prerogative of the ECB and would a
             :aspect activity
             :modal-strength full-affirmative
             :manner (s31n / nome
-                :poss s31o)
+                :poss s31i3)
             :manner (s31e / escludere
                 :theme (s31e2 / esaminare
                     :modal-strength neutral-affirmative
@@ -1414,14 +1405,14 @@ Sentence (en): As stated, the decision is the prerogative of the ECB and would a
                 :modal-strength full-affirmative
                 :aspect activity))
         :ARG2 (s31i2 / inopportuno)
-        :affectee (s31o2 / organization
+        :affectee (s31o / organization
             :name (s31n3 / name :op1 "Banca"))))
 
 # alignment:
 s31r: 1-1
 s31d2: 2-2
 s31d: 5-5
-s31o: 10-10
+s31i3: 10-10
 s31i: 6-6
 s31a3: 11-11
 s31n: 20-20
@@ -1434,7 +1425,7 @@ s31e2: 25-25
 s31p: 7-7
 s31a: 26-26
 s31i2: 13-13
-s31o2: 16-16
+s31o: 16-16
 s31n3: 0-0
 
 # document level annotation
@@ -1574,9 +1565,7 @@ Sentence (en): More and more tech companies are calling the shots more than ever
         :ARG1-of (s34h2 / have-quant-91
             :ARG3 (s34m2 / more)
             :ARG4 (s34r / region
-                :name (s34n2 / name
-                    :op1 "Silicon"
-                    :op2 "Valley")
+                :name (s34n2 / name :op1 "Silicon" :op2 "Valley")
                 :wiki "Q163820")
             :manner (s34a / ancora)
             :aspect state
@@ -1585,9 +1574,7 @@ Sentence (en): More and more tech companies are calling the shots more than ever
         :refer-number plural)
     :undergoer (s34i / iniziativa :refer-number singular)
     :place (s34p3 / place
-        :name (s34n / name
-            :op1 "Wall"
-            :op2 "Street")
+        :name (s34n / name :op1 "Wall" :op2 "Street")
         :wiki "Q11690")
     :modal-strength full-affirmative
     :aspect activity)
@@ -1647,7 +1634,7 @@ Sentence (en): Leaders of companies such as Spotify, Tesla, Uber and Snapchat wi
             :mod (s35s2 / segreto)
             :refer-number singular)
         :op2 (s35s / summit
-            :mod (s35c5 / city
+            :mod (s35h2 / human-settlemente
                 :name (s35n / name
                     :op1 "Mountain"
                     :op2 "View")
@@ -1677,7 +1664,7 @@ s35c4: 18-18
 s35n5: 0-0
 s35e: 22-22
 s35s2: 23-23
-s35c5: 5-6
+s35h2: 5-6
 
 # document level annotation
 
@@ -1817,9 +1804,7 @@ Sentence (en): Pedro Sánchez, like many other socialists, said in the programme
 # sentence level graph:
 (s40d / dire
     :actor (s40p / person
-        :name (s40n3 / name
-            :op1 "Pedro"
-            :op2 "Sánchez")
+        :name (s40n3 / name :op1 "Pedro" :op2 "Sánchez")
         :wiki "Q6070218")
     :theme (s40i2 / identity-91
         :ARG1 (s40c / country
@@ -1874,9 +1859,7 @@ Sentence (en): Federico Fellini once said: "The clown is to humanity as the shad
 # sentence level graph:
 (s41d / dire
     :actor (s41p / person
-        :name (s41n / name
-            :op1 "Federico"
-            :op2 "Fellini")
+        :name (s41n / name :op1 "Federico" :op2 "Fellini")
         :wiki "Q7371")
     :theme (s41s / stare
         :actor (s41c / comico)
@@ -1965,7 +1948,7 @@ Sentence (en): The Islamic citizens who have settled since the beginning of the 
 # sentence level graph:
 (s43e / emigrare
     :actor (s43c / cittadino
-        :mod (s43r / religious-group
+        :mod (s43r / religion
             :name (s43n2 / name :op1 "Islam")
             :wiki "Q432")
         :refer-number plural
@@ -2009,9 +1992,7 @@ Sentence (en): During the 2010 general election, the Labor Party was able to win
 # sentence level graph:
 (s44v / vincere
     :actor (s44p / political-organization
-        :name (s44n / name
-            :op1 "Partito"
-            :op2 "Laburista"))
+        :name (s44n / name :op1 "Partito" :op2 "Laburista"))
     :place (s44d / distretto
         :quant (s44t / tutto)
         :actor-of (s44v2 / votare
@@ -2049,14 +2030,10 @@ Sentence (en): The Industrial Revolution took place in Great Britain earlier tha
 # sentence level graph:
 (s45a / avere-luogo
     :theme (s45e / event
-        :name (s45n2 / name
-            :op1 "Rivoluzione"
-            :op2 "Industriale")
+        :name (s45n2 / name :op1 "Rivoluzione" :op2 "Industriale")
         :wiki "Q2269")
     :place (s45c / country
-        :name (s45n / name
-            :op1 "Gran"
-            :op2 "Bretagna")
+        :name (s45n / name :op1 "Gran" :op2 "Bretagna")
         :wiki "Q145")
     :temporal (s45p2 / prima
         :ARG2-of (s45h / have-degree-91
@@ -2110,18 +2087,14 @@ Sentence (en): After the Russian Revolution in 1917, some countries, such as Fin
                 :wiki "Q36")
             :op3 (s46g / geo-political-entity
                 :refer-number plural
-                :name (s46n5 / name
-                    :op1 "Stati"
-                    :op2 "Baltici")
+                :name (s46n5 / name :op1 "Stati" :op2 "Baltici")
                 :wiki "Q39731")))
     :theme (s46i / indipendenza
         :refer-number singular
         :poss s46n)
     :temporal (s46a3 / after
         :op1 (s46e / event
-            :name (s46n2 / name
-                :op1 "Rivoluzione"
-                :op2 "russa")
+            :name (s46n2 / name :op1 "Rivoluzione" :op2 "russa")
             :wiki "Q8729"
             :temporal (s46d / date-entity :year 1917)))
     :modal-strength full-affirmative
@@ -2273,15 +2246,13 @@ Sentence (en): After these successes, he signed a contract with Team Telekom and
             :refer-person 3rd)
         :undergoer (s49c / contratto :refer-number singular)
         :companion (s49s2 / sports-organization
-            :name (s49n / name
-                :op1 "Team"
-                :op2 "Telekom")))
+            :name (s49n / name :op1 "Team" :op2 "Telekom")))
     :op2 (s49t / trasferire
         :modal-strength full-affirmative
         :aspect performance
         :actor s49p
         :theme s49p
-        :OBLIQUE (s49c3 / city
+        :goal (s49h2 / human-settlement
             :name (s49n2 / name :op1 "Merdingen")
             :wiki "Q142169"
             :place (s49r2 / region
@@ -2324,7 +2295,7 @@ s49a: 12-12
 s49p: 0-0
 s49s2: 10-11
 s49t: 14-14
-s49c3: 20-20
+s49h2: 20-20
 s49r2: 24-24
 s49u: 28-28
 
@@ -2344,9 +2315,7 @@ Sentence (en): The Viguier and La Conte districts contain the majority of the ci
             :op1 (s50c2 / country-partition
                 :name (s50n / name :op1 "Viguier"))
             :op2 (s50c3 / country-partition
-                :name (s50n2 / name
-                    :op1 "La"
-                    :op2 "Conte")))
+                :name (s50n2 / name :op1 "La" :op2 "Conte")))
     :undergoer (s50s / servizio
         :refer-number plural
         :mod (s50e / edilizia
@@ -2444,7 +2413,7 @@ Sentence (en): Literacy had been lost and Mycenaean script forgotten, but the Gr
     :op2 (s52d / dimenticare
         :theme (s52m / manoscritto
             :refer-number plural
-            :mod (s52c2 / city
+            :mod (s52h / humna-settlement
                     :name (s52n / name :op1 "Micene")
                     :wiki "Q132564"))
         :aspect performance
@@ -2481,7 +2450,7 @@ s52s: 2-2
 s52n: 0-0
 s52n2: 0-0
 s52n3: 0-0
-s52c2: 9-9
+s52h: 9-9
 s52d: 10-10
 s52b: 12-12
 s52e: 14-14
@@ -2604,7 +2573,7 @@ Sentence (en): In the summer, Georges and his wife returned to Switzerland, acco
     :modal-strength full-affirmative
     :aspect performance
     :manner (s55a / accompagnare
-        :OBLIQUE (s55p3 / person
+        :actor (s55p3 / person
             :name (s55n3 / name :op1 "Rosane")
             :ARG1-of (s55i / identity-91
                 :ARG2 (s55r / ragazzo
@@ -2759,18 +2728,16 @@ Sentence (en): An element supporting this hypothesis would be the intense royal 
         :mod (s58r / reale)
         :mod (s58c2 / cavallo :refer-number plural)
         :mod (s58c / corposo)
-        :place (s58p / place
-            :name (s58n / name
-                :op1 "Villa"
-                :op2 "Pelucca")
-            :place (s58c3 / city
+        :place (s58b / building
+            :name (s58n / name :op1 "Villa" :op2 "Pelucca")
+            :place (s58h / human-settlement
                 :name (s58n2 / name
                     :op1 "Sesto"
                     :op2 "San"
                     :op3 "Giovanni")))))
 
 # alignment:
-s58c3: 20-22
+s58h: 20-22
 s58c: 9-9
 s58c2: 13-13
 s58a2: 10-10
@@ -2778,9 +2745,9 @@ s58i: 4-4
 s58q: 3-3
 s58n: 0-0
 s58r: 11-11
-s58e: 7-7
 s58n2: 0-0
 s58a: 1-2, 5-7
+s58b: 16-17
 
 # document level annotation
 
@@ -2892,9 +2859,7 @@ Sentence (en): Historian David Crouch suggests that Stephen abandoned from the c
 # sentence level graph:
 (s61s2 / suggerire
     :actor (s61p / person
-        :name (s61n / name
-                :op1 "David"
-                :op2 "Crouch"
+        :name (s61n / name :op1 "David" :op2 "Crouch"
         :wiki "Q5232685")
         :ARG1-of (s61h / have-role-91
             :ARG3 (s61s / storico)
@@ -2959,15 +2924,15 @@ Sentence (en): Although not a resolver of the conflict, the French victory at th
                 :wiki "Q273011")
         :actor (s62p / person
             :refer-number plural
-            :mod (s62n5 / nationality
+            :mod (s62c3 / country
                 :name (s62n / name :op1 "Francia")
                 :wiki "Q142"))
         :aspect performance
         :modal-strength full-affirmative)
     :undergoer (s62p2 / person
             :refer-number plural
-            :mod (s62n3 / nationality
-                :name (s62n6 / name :op1 "Austria")
+            :mod (s62c4 / country
+                :name (s62n3 / name :op1 "Austria")
                 :wiki "Q40"))
     :result (s62a / abbandonare
         :actor s62p2
@@ -2987,9 +2952,9 @@ Sentence (en): Although not a resolver of the conflict, the French victory at th
         :modal-strength full-negative))
 
 # alignment:
-s62n3: 0-0
+s62c4: 0-0
 s62n4: 0-0
-s62n6: 0-0
+s62n3: 0-0
 s62n: 0-0
 s62d: 3-3
 s62p: 15-15
@@ -2997,7 +2962,7 @@ s62e: 18-20
 s62o: 21-21
 s62v: 12-12
 s62n2: 0-0
-s62n5: 0-0
+s62c3: 0-0
 s62c: 9-9
 s62p2: 23-23
 s62a: 25-25
@@ -3023,9 +2988,7 @@ Sentence (en): With regards to religious practices, Fiorello was educated within
         :undergoer (s63p2 / person
             :name (s63n / name :op1 "Fiorello"))
         :place (s63r / religious-organization
-            :name (s63n2 / name
-                :op1 "Chiesa"
-                :op2 "episcopale")
+            :name (s63n2 / name :op1 "Chiesa" :op2 "episcopale")
             :wiki "Q682443"))
     :op2 (s63r3 / rimanere
         :modal-strength full-affirmative
@@ -3035,9 +2998,7 @@ Sentence (en): With regards to religious practices, Fiorello was educated within
             :quant (s63t / tutto))
         :result (s63m / membro
             :mod (s63r4 / religious-organization
-                :name (s63n3 / name
-                    :op1 "Chiesa"
-                    :op2 "protestante")
+                :name (s63n3 / name :op1 "Chiesa" :op2 "protestante")
                 :wiki "Q346575")))
     :topic (s63p / pratica
         :mod (s63r2 / religioso)))
@@ -3077,7 +3038,7 @@ Sentence (en): Tradition has it that the theme was selected intentionally becaus
                 :name (s64n2 / name :op1 "ebreo")
                 :wiki "Q7325"
                 :actor-of (s64v / vivere
-                    :place (s64c2 / city
+                    :place (s64h / human-settlement
                         :name (s64n3 / name :op1 "Palma")
                         :wiki "Q8826")
                     :modal-strength full-affirmative
@@ -3099,7 +3060,7 @@ Sentence (en): Tradition has it that the theme was selected intentionally becaus
 s64s: 3-3
 s64t: 2-2
 s64i: 9-9
-s64c2: 21-21
+s64h: 21-21
 s64s2: 8-8
 s64t2: 6-6
 s64n2: 0-0
@@ -3409,9 +3370,7 @@ Sentence (en): On the 1st January 49 BC, Marco Antonio read a declaration from C
 # sentence level graph:
 (s70l / leggere
     :actor (s70p / person
-        :name (s70n / name
-            :op1 "Marco"
-            :op2 "Antonio")
+        :name (s70n / name :op1 "Marco" :op2 "Antonio")
         :wiki "Q51673")
     :theme (s70d / dichiarazione
         :actor (s70p4 / person
