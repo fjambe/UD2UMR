@@ -72,11 +72,11 @@ Sentence Gloss (en): He also said Klein was uncommunicative, uncooperative and u
         :op2 (s2s / spolupracovat
             :modal-strength full-negative
             :aspect activity
-            :actor t2)
+            :actor s2t2)
         :op3 (s2h / have-mod-91
             :modal-strength full-negative
             :aspect state
-            :ARG1 t2
+            :ARG1 s2t2
             :ARG2 (s2o / ochotný
                 :refer-number singular
                 :theme (s2j / jít
