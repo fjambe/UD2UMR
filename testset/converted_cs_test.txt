@@ -1026,7 +1026,7 @@ Sentence Gloss (en): It is no surprise that the federal and state governments ha
             :temporal (s21r / date-entity
                 :year 2005)))
     :ARG2 (s21p / překvapení
-        :mod (s21z / žádný)
+        :mod (s21z2 / žádný)
         :refer-number singular)
     :modal-strength full-negative
     :aspect state)
@@ -1037,7 +1037,7 @@ s21h2: 0-0
 s21m: 0-0
 s21n2: 0-0
 s21i: 1-1
-s21z: 2-2
+s21z2: 2-2
 s21p: 3-3
 s21k: 5-5, 10-10
 s21f: 6-6
