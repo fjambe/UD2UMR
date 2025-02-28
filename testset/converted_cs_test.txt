@@ -34,7 +34,6 @@ Sentence Gloss (en): In China the hair is typically put in a chemical bath to re
 # alignment:
 s1n: 0-0
 s1n2: 0-0
-s1t3: 0-0
 s1t2: 1-2
 s1d: 3-3, 5-5
 s1t: 4-4
@@ -45,6 +44,7 @@ s1o: 11-13, 16-16
 s1k: 14-14
 s1u: 15-15
 s1v2: 18-18
+s1t3: 19-19
 
 # document level annotation:
 
