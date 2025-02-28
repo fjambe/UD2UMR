@@ -591,7 +591,7 @@ Sentence Gloss (en): The system was simple, direct, and worked well, even with p
             :aspect state
             :other-role (s12p2 / pilot
                 :refer-number plural
-                :undergoer-of (s12s / školit)))))
+                :undergoer-of (s12s3 / školit)))))
 
 # alignment:
 s12f2: 0-0
@@ -605,7 +605,7 @@ s12f: 7-7
 s12s: 8-8
 s12a2: 10-11
 s12p2: 12-12, 14-14
-s12s: 13-13
+s12s3: 13-13
 
 # document level annotation:
 
