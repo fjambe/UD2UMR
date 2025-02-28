@@ -482,7 +482,7 @@ Sentence Gloss (en): They had been so moved by the beauty of the Rudyard Lake ar
 s10h: 1-1
 s10k: 2-2
 s10k2: 3-3
-s10j: 4-5
+s10j: 4-5, 11-12
 s10n: 6-6
 s10t: 7-7
 s10p: 8-8
