@@ -448,6 +448,7 @@ Sentence Gloss (en): They had been so moved by the beauty of the Rudyard Lake ar
             :modal-strength full-affirmative
             :aspect performance)
         :modal-strength neutral-affirmative
+        :modal-predicate s10v
         :aspect state)
     :temporal (s10n / nascere
         :theme (s10f / figlio
@@ -1477,6 +1478,7 @@ Sentence Gloss (en): This is what has been written in a note to Mps after the de
                 :undergoer (s32u / uscire
                     :actor s32p2
                     :modal-strength full-affirmative
+                    :modal-predicate s32d
                     :aspect performance
                     :source (s32p3 / partita :refer-number singular)))
             :modal-strength full-affirmative
@@ -3331,8 +3333,9 @@ Sentence Gloss (en): The attempts at making peace finally ended in spring of 141
         :aspect performance
         :actor (s69p4 / person
             :name (s69n / name :op1 "Enrico"))
-        :theme (s69m / mettere-in-atto
+        :undergoer (s69m / mettere-in-atto
             :modal-strength full-affirmative
+            :modal-predicate s69d
             :aspect activity
             :actor s69p4
             :undergoer (s69p3 / piano
