@@ -356,8 +356,8 @@ Sentence Gloss (en): There is no parade and there never has been.
 # alignment:
 s7z: 1-1
 s7k: 2-2
+s7p: 3-3, 5-5
 s7t: 4-4
-s7p: 5-5
 s7a: 6-6
 s7n: 7-7
 s7p2: 8-8
@@ -418,11 +418,24 @@ Sentence Gloss (en): In his haste to capture Kadesh, Ramesses II committed a maj
         :mod (s9t / taktický)
         :mod (s9z / zásadní)
         :refer-number singular)
+    :temporal (s9s / spěchat
+        :modal-strength full-affirmative
+        :aspect activity
+        :purpose (s9u / uchvátit
+            :modal-strength partial-affirmative
+            :aspect performance
+                :undergoer (s9h / human-settlement
+                    :name (s9n2 / name
+                        :op1 "Kadeš"))))
     :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
 s9n: 0-0
+s9n2: 0-0
+s9s: 1-2
+s9u: 3-3
+s9h: 4-4
 s9d: 6-7
 s9t2: 8-10
 s9z: 11-11
