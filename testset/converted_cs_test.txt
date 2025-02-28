@@ -876,7 +876,7 @@ Sentence Gloss (en): And now he is also world champion.
 
 # alignment:
 s18f: 0-0
-s18t: 2-2
+s18t: 1-2
 s18i: 3-3
 s18t2: 4-4
 s18m: 5-5
@@ -926,6 +926,8 @@ Sentence Gloss (en): The husband of the current candidate for the White House, H
                 :op1 "Hillary"
                 :op2 "Clintonová")
             :ARG1-of (s20h / have-role-91
+                :modal-strength full-affirmative
+                :aspect state
                 :ARG3 (s20k / kandidátka
                     :mod (s20s / současný)
                     :mod (s20g / government-organization
@@ -1001,7 +1003,7 @@ Sentence Gloss (en): It is no surprise that the federal and state governments ha
                     :op2 "Natural"
                     :op3 "Heritage"))
             :ARG1-of (s21h2 / have-role-91
-                :ARG3: (s21u / úsilí
+                :ARG3 (s21u / úsilí
                     :mod (s21c / celostátní)
                     :mod (s21p2 / priorita
                         :refer-number singular
