@@ -132,7 +132,7 @@ Sentence Gloss (en): The debris formed a ring around the Earth's equator and was
   :temporal (s3p2 / before
     :op1 (s3s3 / shluknout-se
       :modal-strength full-affirmative
-      :aspect peformance
+      :aspect performance
       :actor s3s
       :cause (s3p3 / působit
         :actor (s3g / gravitace))
