@@ -708,7 +708,7 @@ Sentence Gloss (en): Pebe moved the family to Nashville, Tennessee, in 1991 afte
             :affectee s14p2
             :modal-strength full-affirmative
             :aspect performance))
-    :modal-strength MS-affirmative
+    :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
