@@ -46,7 +46,7 @@ s1k: 14-14
 s1ú: 15-15
 s1v2: 18-18
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01035030
@@ -115,7 +115,7 @@ s2s2: 16-16
 s2z: 19-22
 s2s3: 24-24
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01039018
@@ -154,7 +154,7 @@ s3p3: 7-7
 s3p: 9-9
 s3p2: 11-11
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01068038
@@ -197,7 +197,7 @@ s4p: 8-8
 s4c: 9-9, 11-11
 s4t: 10-10
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01071009
@@ -263,7 +263,7 @@ s5i: 23-23
 s5d2: 24-24
 s5g: 25-25
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01090037
@@ -328,7 +328,7 @@ s6t2: 19-19
 s6v2: 20-20
 s6z: 21-21
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01145008
@@ -362,7 +362,7 @@ s7a: 6-6
 s7n: 7-7
 s7p2: 8-8
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01005023
@@ -397,7 +397,7 @@ s8m2: 6-6
 s8m3: 7-7
 s8t: 8-9
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01051032
@@ -429,7 +429,7 @@ s9z: 11-11
 s9t: 12-12
 s9c: 13-13
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01073007
@@ -478,7 +478,7 @@ s10f: 14-14
 s10p3: 15-15
 s10d: 16-16
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01102040
@@ -545,7 +545,7 @@ s11ž2: 26-26
 s11o: 27-27
 s11v3: 28-28
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01105056
@@ -594,7 +594,7 @@ s12a2: 10-11
 s12p2: 12-12, 14-14
 s12š: 13-13
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01113046
@@ -656,7 +656,7 @@ s13r2: 12-14
 s13i: 15-16
 s13t5: 17-18
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01147010
@@ -715,7 +715,7 @@ s14r2: 18-18
 s14n2: 19-20
 s14t2: 21-22
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02007010
@@ -758,7 +758,7 @@ s15p: 10-10
 s15g2: 11-11
 s15d: 12-13
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02017008
@@ -801,7 +801,7 @@ s16d2: 11-11, 13-13
 s16o: 14-14, 17-17
 s16f2: 15-16
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02027019
@@ -837,7 +837,7 @@ s17s: 4-4
 s17z: 5-6
 s17ř: 7-7
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02043008
@@ -869,7 +869,7 @@ s18t2: 4-4
 s18m: 5-5
 s18s: 6-6
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02068010
@@ -895,7 +895,7 @@ s19p2: 1-2
 s19u: 3-4, 6-6
 s19p: 5-5
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02074009
@@ -962,7 +962,7 @@ s20m2: 22-22
 s20č: 23-23
 s20t2: 25-26
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02083054
@@ -1040,7 +1040,7 @@ s21r: 23-25
 s21s2: 26-26, 28-28
 s21k2: 27-27
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03001019
@@ -1086,7 +1086,7 @@ s22v: 12-14, 16-16
 s22r: 17-17, 19-19
 s22c: 18-18
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03001030
@@ -1114,7 +1114,7 @@ s23p: 1-2
 s23m: 3-4
 s23a: 5-8
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03003025
@@ -1158,7 +1158,7 @@ s24o: 7-7
 s24o2: 8-9
 s24d: 10-10, 12-12
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03006003
@@ -1183,7 +1183,7 @@ s25t: 0-0
 s25i: 2-2
 s25o: 3-3
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03006008
@@ -1201,7 +1201,7 @@ Sentence Gloss (en): Even if the majority of situations that arise in the workpl
 
 # alignment:
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03007009
@@ -1264,7 +1264,7 @@ s27m: 20-20
 s27d3: 22-22
 s27j2: 23-23
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03010019
@@ -1292,7 +1292,7 @@ s28m: 2-2
 s28d: 3-3
 s28p: 4-4
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04005016
@@ -1341,7 +1341,7 @@ s29l: 7-7
 s29u: 8-8
 s29o: 11-11
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04006003
@@ -1379,7 +1379,7 @@ s30b: 9-9
 s30m: 11-11
 s30n: 12-12
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04007015
@@ -1448,7 +1448,7 @@ s31m2: 23-23
 s31p: 24-24
 s31j3: 28-28
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04007018
@@ -1501,7 +1501,7 @@ s32m2: 14-14
 s32o: 15-15
 s32s: 16-16
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04009002
@@ -1568,7 +1568,7 @@ s33p2: 20-20
 s33a: 21-21
 s33ř: 22-22
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04010016
@@ -1626,7 +1626,7 @@ s34d: 16-16
 s34j: 17-17
 s34h4: 18-18
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04010021
@@ -1668,7 +1668,7 @@ s35s: 3-3
 s35n: 15-15
 s35n2: 21-21
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05002015
@@ -1696,7 +1696,7 @@ s36v: 2-2
 s36p: 4-4
 s36k: 5-5
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05002020
@@ -1726,7 +1726,7 @@ s37č: 4-4
 s37n2: 5-5
 s37v: 6-6
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05002023
@@ -1751,7 +1751,7 @@ s38d: 9-9
 s38h: 11-11
 s38b: 12-12
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05003010
@@ -1787,7 +1787,7 @@ s39u: 3-3
 s39i: 7-7
 s39c: 11-11
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05004020
@@ -1844,7 +1844,7 @@ s40i: 17-17
 s40n: 18-18
 s40n2: 19-19
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05005002
@@ -1886,7 +1886,7 @@ s41i: 8-8
 s41l: 10-10
 s41s: 12-12
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05009030
@@ -1928,7 +1928,7 @@ s42j: 4-4
 s42o: 5-5
 s42v: 6-6
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02003070
@@ -1969,7 +1969,7 @@ s43r: 9-9
 s43e: 12-12
 s43p: 13-13
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02006081
@@ -2015,7 +2015,7 @@ s44v4: 12-12
 s44v5: 14-14
 s44o: 15-15
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02013015
@@ -2060,7 +2060,7 @@ s45k2: 11-11
 s45j: 12-12
 s45z: 13-13
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02013093
@@ -2122,7 +2122,7 @@ s46z2: 9-9
 s46n2: 11-11
 s46n3: 19-19
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02014013
@@ -2176,7 +2176,7 @@ s47o: 13-13
 s47s: 15-15
 s47v: 16-16
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02015084
@@ -2209,7 +2209,7 @@ s48r: 4-4
 s48r2: 8-8
 s48c: 9-9
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02016015
@@ -2278,7 +2278,7 @@ s49j: 18-18
 s49ž: 22-22
 s49r: 25-25
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03001037
@@ -2344,7 +2344,7 @@ s50č: 18-18
 s50p2: 19-19
 s50p3: 20-20
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03002048
@@ -2388,7 +2388,7 @@ s51p: 7-7
 s51l: 8-8
 s51o: 11-11
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03005013
@@ -2448,7 +2448,7 @@ s52m2: 15-15
 s52v: 18-18
 s52ř2: 19-19
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03005016
@@ -2509,7 +2509,7 @@ s53v2: 25-25
 s53p: 26-26
 s53s4: 27-27
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03008011
@@ -2543,7 +2543,7 @@ s54k: 11-11
 s54r: 12-12
 s54r2: 13-13
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03010099
@@ -2624,7 +2624,7 @@ s55h: 17-17
 s55d2: 18-18
 s55p: 22-22
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03010100
@@ -2669,7 +2669,7 @@ s56p3: 12-12
 s56m2: 14-14
 s56d2: 15-15
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04001037
@@ -2704,7 +2704,7 @@ s57o: 7-7
 s57m: 8-8
 s57l: 10-10
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04002008
@@ -2756,7 +2756,7 @@ s58k2: 10-10
 s58i2: 13-13
 s58v: 15-15
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04002055
@@ -2824,7 +2824,7 @@ s59t: 19-19
 s59p3: 23-23
 s59z4: 24-24
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04004059
@@ -2873,7 +2873,7 @@ s60č: 12-12
 s60i: 13-13
 s60p2: 14-14
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04006023
@@ -2920,7 +2920,7 @@ s61o: 8-8
 s61s: 9-9
 s61j: 20-20
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04007021
@@ -2980,7 +2980,7 @@ s62p: 13-13
 s62v3: 15-15
 s62p2: 18-18
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04008006
@@ -3040,7 +3040,7 @@ s63z: 15-15
 s63c3: 17-17
 s63ž: 19-19
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05001045
@@ -3091,7 +3091,7 @@ s64p: 11-11
 s64k: 12-12
 s64ž2: 16-16
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05003012
@@ -3148,7 +3148,7 @@ s65p4: 12-12
 s65r2: 17-17
 s65s: 19-19
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05003119
@@ -3202,7 +3202,7 @@ s66z2: 12-12
 s66f: 15-15
 s66b2: 16-16
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05005084
@@ -3227,7 +3227,7 @@ s67r: 3-3
 s67m: 5-5
 s67p: 7-7
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05007004
@@ -3310,7 +3310,7 @@ s68v2: 24-24
 s68t: 27-27
 s68t2: 30-30
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05007080
@@ -3384,7 +3384,7 @@ s69c: 21-21
 s69k: 22-22
 s69f: 23-23
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05010027
@@ -3443,6 +3443,6 @@ s70p3: 20-20
 s70p4: 21-21
 s70p5: 23-23
 
-# document level annotation
+# document level annotation:
 
 

@@ -48,7 +48,7 @@ r: 13-13
 t5: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01035030
@@ -115,7 +115,7 @@ u3: 10-10
 n: 0-0
 u2: 8-8
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01039018
@@ -156,7 +156,7 @@ p: 0-0
 p2: 0-0
 b: 2-2
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01068038
@@ -195,7 +195,7 @@ s: 2-2
 t: 7-7
 g: 4-4
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01071009
@@ -260,7 +260,7 @@ t2: 0-0
 n: 0-0
 g: 25-25
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01090037
@@ -339,7 +339,7 @@ p2: 0-0
 t3: 0-0
 o: 29-29
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n01145008
@@ -369,7 +369,7 @@ b: 2-2
 a2: 0-0
 n: 3-3
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01005023
@@ -403,7 +403,7 @@ a: 3-3
 a2: 4-4
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01051032
@@ -452,7 +452,7 @@ t: 13-13
 h2: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01073007
@@ -525,7 +525,7 @@ f: 17-17
 p2: 0-0
 w2: 24-24
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01102040
@@ -592,7 +592,7 @@ p2: 22-22
 o: 18-18
 t3: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01105056
@@ -625,7 +625,7 @@ w2: 10-10
 d: 6-6
 a2: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01113046
@@ -671,7 +671,7 @@ b: 3-3
 t: 7-7
 2: 10-10
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w01147010
@@ -734,7 +734,7 @@ d: 17-17
 1: 11-11
 t4: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02007010
@@ -779,7 +779,7 @@ s: 11-11
 n: 14-14
 g: 3-3
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02017008
@@ -822,7 +822,7 @@ b: 9-9
 a: 16-16
 n: 6-6
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02027019
@@ -858,7 +858,7 @@ a: 2-2
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02043008
@@ -889,7 +889,7 @@ w: 6-6
 a2: 0-0
 n: 2-2
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02068010
@@ -916,7 +916,7 @@ h: 5-5
 t2: 0-0
 o: 6-6
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02074009
@@ -1005,7 +1005,7 @@ n5: 0-0
 p2: 19-19
 n6: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n02083054
@@ -1084,7 +1084,7 @@ i3: 0-0
 f: 7-7
 2: 33-33
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03001019
@@ -1139,7 +1139,7 @@ b: 5-5
 t: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03001030
@@ -1165,7 +1165,7 @@ s2: 0-0
 p2: 0-0
 p: 4-4
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03003025
@@ -1203,7 +1203,7 @@ t3: 0-0
 n: 0-0
 j: 11-11
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03006003
@@ -1243,7 +1243,7 @@ p: 14-14
 r: 11-11
 i2: 2-2
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03006008
@@ -1278,7 +1278,7 @@ r: 14-14
 s: 6-6
 a: 8-8
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03007009
@@ -1360,7 +1360,7 @@ r: 26-26
 j2: 27-27
 f4: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n03010019
@@ -1387,7 +1387,7 @@ r: 7-7
 t: 0-0
 g: 6-6
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04005016
@@ -1427,7 +1427,7 @@ s: 8-8
 g: 4-4
 o2: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04006003
@@ -1466,7 +1466,7 @@ d: 14-14
 i2: 8-8
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04007015
@@ -1539,7 +1539,7 @@ o: 31-31
 p2: 27-27
 b3: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04007018
@@ -1590,7 +1590,7 @@ w2: 0-0
 d: 14-14
 n: 9-9
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04009002
@@ -1646,7 +1646,7 @@ h2: 19-19
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04010016
@@ -1706,7 +1706,7 @@ t4: 0-0
 n: 0-0
 m3: 10-10
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n04010021
@@ -1764,7 +1764,7 @@ l: 1-1
 t7: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05002015
@@ -1794,7 +1794,7 @@ h: 4-4
 d: 9-9
 h2: 8-8
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05002020
@@ -1823,7 +1823,7 @@ n2: 5-5
 d: 2-2
 n: 3-3
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05002023
@@ -1856,7 +1856,7 @@ d: 8-8
 h2: 12-12
 g: 4-4
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05003010
@@ -1894,7 +1894,7 @@ s: 3-3
 i2: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05004020
@@ -1946,7 +1946,7 @@ i2: 16-16
 t4: 0-0
 n: 18-18
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05005002
@@ -1999,7 +1999,7 @@ t3: 0-0
 b: 9-9
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = n05009030
@@ -2037,7 +2037,7 @@ a: 6-6
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02003070
@@ -2076,7 +2076,7 @@ b: 9-9
 1: 12-12
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02006081
@@ -2119,7 +2119,7 @@ a2: 14-14
 n: 0-0
 g: 4-4
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02013015
@@ -2164,7 +2164,7 @@ a: 12-12
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02013093
@@ -2220,7 +2220,7 @@ s: 8-8
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02014013
@@ -2282,7 +2282,7 @@ i2: 11-11
 n: 0-0
 g: 16-16
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02015084
@@ -2327,7 +2327,7 @@ t3: 0-0
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w02016015
@@ -2399,7 +2399,7 @@ p2: 0-0
 2: 27-27
 t4: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03001037
@@ -2464,7 +2464,7 @@ f: 0-0
 m2: 21-21
 i: 25-25
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03002048
@@ -2493,7 +2493,7 @@ b: 7-7
 d: 9-9
 2: 4-4
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03005013
@@ -2556,7 +2556,7 @@ t4: 0-0
 n: 0-0
 l2: 4-4
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03005016
@@ -2593,7 +2593,7 @@ b: 6-6
 a: 2-2
 a2: 11-11
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03008011
@@ -2632,7 +2632,7 @@ r: 15-15
 s: 5-5
 t: 1-1
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03010099
@@ -2709,7 +2709,7 @@ r: 9-9
 t3: 0-0
 t4: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w03010100
@@ -2755,7 +2755,7 @@ a4: 0-0
 a2: 17-17
 g: 13-13
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04001037
@@ -2788,7 +2788,7 @@ o: 4-4
 s: 14-14
 h2: 10-10
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04002008
@@ -2847,7 +2847,7 @@ i2: 7-7
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04002055
@@ -2877,7 +2877,7 @@ h: 0-0
 r: 5-5
 1: 2-2
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04004059
@@ -2930,7 +2930,7 @@ a2: 0-0
 i2: 0-0
 n: 7-7
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04006023
@@ -2980,7 +2980,7 @@ a: 7-7
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04007021
@@ -3038,7 +3038,7 @@ s: 26-26
 t7: 0-0
 g: 21-21
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w04008006
@@ -3097,7 +3097,7 @@ r3: 16-16
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05001045
@@ -3147,7 +3147,7 @@ i2: 0-0
 n: 14-14
 g: 13-13
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05003012
@@ -3208,7 +3208,7 @@ t7: 0-0
 n: 0-0
 l2: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05003119
@@ -3265,7 +3265,7 @@ b: 9-9
 b3: 21-21
 g: 20-20
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05005084
@@ -3284,7 +3284,7 @@ Sentence: This was the coup de grâce and encouragement the settlers needed to g
 a2: 0-0
 e: 8-8
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05007004
@@ -3350,7 +3350,7 @@ d: 12-12
 n: 1-1
 n6: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05007080
@@ -3428,7 +3428,7 @@ p2: 18-18
 t3: 0-0
 t4: 0-0
 
-# document level annotation
+# document level annotation:
 
 
 # sent_id = w05010027
@@ -3488,6 +3488,6 @@ n3: 0-0
 t4: 0-0
 n: 0-0
 
-# document level annotation
+# document level annotation:
 
 
