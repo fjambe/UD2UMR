@@ -257,7 +257,7 @@ Sentence Gloss (en): In 1955, Mishima took up weight training and his workout re
       :mod (s6t / tréninkový)
       :actor-of (s6s2 / sestávat
         :material (s6t2 / trénink
-          :frequency (s6r3 / rate-entity
+          :frequency (s6r3 / rate-entity-91
             :ARG1 3
             :ARG2 (s6t4 / temporal-quantity
               :quant 1
