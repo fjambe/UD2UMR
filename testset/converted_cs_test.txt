@@ -90,7 +90,7 @@ Sentence Gloss (en): He also said Klein was uncommunicative, uncooperative and u
                     :purpose (s2z / zúčastnit-se
                         :affectee (s2s3 / slyšení
                             :refer-number singular
-                            :possessor t2)
+                            :possessor s2t2)
                         :modal-strength neutral-affirmative
                         :aspect performance)))))
     :manner (s2t / také)
@@ -137,7 +137,7 @@ Sentence Gloss (en): That's not what we need in our country, folks.
                 :refer-number plural)
             :place (s3z / země
                 :refer-number singular
-                :possessor p3)
+                :possessor s3p3)
             :modal-strength full-affirmative
             :aspect state))
     :vocative (s3p2 / přítel
@@ -173,7 +173,7 @@ Sentence Gloss (en): His skill in getting answers for taxpayers will be sorely m
         :mod (s4z / získávat
             :modal-strength neutral-affirmative
             :aspect activity
-            :recipient p2
+            :recipient s4p2
             :theme (s4o / odpověď
                 :mod (s4o2 / otázka
                     :refer-number plural
@@ -230,7 +230,7 @@ Sentence Gloss (en): A coal-fired power station in Badarpur, south-east Delhi, w
         :duration (s5t3 / temporal-quantity
             :quant 10
             :unit (s5d / den
-                :refer-number plural))
+                :refer-number plural)))
     :op2 (s5v / vypnout
         :modal-strength full-affirmative
         :aspect performance
