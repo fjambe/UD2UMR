@@ -266,7 +266,7 @@ Sentence Gloss (en): In 1955, Mishima took up weight training and his workout re
       :quant 15
       :unit (s6l / rok
         :mod (s6p2 / poslední)
-        :mod (s6ž / život
+        :mod (s6z / život
           :possessor s6m)))))
 
 # alignment:
@@ -287,7 +287,7 @@ s6n: 17-17
 s6p2: 18-18
 s6t6: 19-19
 s6l: 20-20
-s6ž: 22-22
+s6z: 22-22
 
 # document level annotation:
 
@@ -495,7 +495,7 @@ s12e:
 s12t2:
 s121:
 s12m3:
-s12š:
+s12s:
 s12b:
 
 # document level annotation:
@@ -514,7 +514,7 @@ Sentence Gloss (en): It has been emphasised that we absolutely cannot continue w
 # alignment:
 s13b:
 s13z:
-s13ž:
+s13z:
 s13p:
 s13n:
 s13p2:
@@ -539,15 +539,15 @@ Sentence Gloss (en): The latest figures relate to the 24th of October last year,
 
 # alignment:
 s14n:
-s14ú:
+s14u:
 s14s:
 s14v:
 s142:
-s14ř:
+s14r:
 s14l:
 s14r:
 s14a:
-s14ř2:
+s14r2:
 s14n2:
 s14n3:
 s14n4:
@@ -581,10 +581,10 @@ s15z:
 s15k:
 s15s:
 s15k2:
-s15ř:
+s15r:
 s15t:
 s15b:
-s15ř2:
+s15r2:
 s15s2:
 s15u:
 s15l:
@@ -653,7 +653,7 @@ Sentence Gloss (en): The early voting suggests that this time the Latin American
 (s18 / )
 
 # alignment:
-s18č:
+s18c:
 s18h:
 s18n:
 s18t:
@@ -761,7 +761,7 @@ Sentence Gloss (en): From the 9th century BC, the first Greek texts began to app
 
 # alignment:
 s22p:
-s22ř:
+s22r:
 s22t:
 s22s:
 s22z:
@@ -785,13 +785,13 @@ Sentence Gloss (en): Greece was divided into many small, self-governing communit
 (s23 / )
 
 # alignment:
-s23ř:
+s23r:
 s23b:
 s23v:
 s23z:
 s23m:
 s23d:
-s23ř2:
+s23r2:
 s23p:
 s23r:
 s23m2:
@@ -800,7 +800,7 @@ s23s:
 s23k:
 s23k2:
 s23o:
-s23ú:
+s23u:
 s23a:
 s23r2:
 s23j:
@@ -918,7 +918,7 @@ Sentence Gloss (en): The man told him that a war between the two universes is co
 # alignment:
 s27m:
 s27m2:
-s27ř:
+s27r:
 s27v:
 s27t:
 s27d:
@@ -1007,7 +1007,7 @@ Sentence Gloss (en): In 1976 he met with a friend who worked with his record lab
             :ARG1-of (s29i / identity-91
                 :modal-strength partial-affirmative
                 :aspect state
-                :ARG2 (s29ú / úspěch
+                :ARG2 (s29u / úspěch
                     :mod (s29d / další)
                     :mod (s29v2 / výrazný)
                     :affectee s29p))
@@ -1035,7 +1035,7 @@ s29s: 27-27, 37-37
 s29i: 28-28, 31-32
 s29d: 33-33
 s29v2: 34-34
-s29ú: 35-35
+s29u: 35-35
 s29n4: 39-45
 
 # document level annotation:

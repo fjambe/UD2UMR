@@ -23,7 +23,7 @@ Sentence Gloss (en): In China the hair is typically put in a chemical bath to re
         :purpose (s1o / odstraněný
             :undergoer (s1k / kutikula
                 :refer-number singular)
-            :manner (s1ú / úplně)
+            :manner (s1u / úplně)
             :modal-strength full-affirmative
             :aspect performance)
         :theme (s1v / vlas
@@ -43,7 +43,7 @@ s1c: 8-8
 s1l: 9-9
 s1o: 11-13, 16-16
 s1k: 14-14
-s1ú: 15-15
+s1u: 15-15
 s1v2: 18-18
 
 # document level annotation:
@@ -344,7 +344,7 @@ Sentence Gloss (en): There is no parade and there never has been.
         :modal-strength full-negative
         :aspect activity
         :undergoer (s7k / karneval
-            :mod (s7ž / žádný)
+            :mod (s7z / žádný)
             :refer-number singular)
         :place (s7t / tu))
     :op2 (s7p2 / pořádat
@@ -354,7 +354,7 @@ Sentence Gloss (en): There is no parade and there never has been.
         :temporal (s7n / nikdy)))
 
 # alignment:
-s7ž: 1-1
+s7z: 1-1
 s7k: 2-2
 s7t: 4-4
 s7p: 5-5
@@ -503,7 +503,7 @@ Sentence Gloss (en): De Gaulle had instructed that there be no excessive display
                 :aspect performance
                 :undergoer (s11n2 / náklonnost
                     :mod (s11p2 / přehnaný)
-                    :mod (s11ž / žádný)
+                    :mod (s11z / žádný)
                     :refer-number singular)
                 :affectee (s11t2 / person
                     :name (s11n4 / name
@@ -514,7 +514,7 @@ Sentence Gloss (en): De Gaulle had instructed that there be no excessive display
                 :modal-strength full-negative
                 :aspect activity
                 :undergoer (s11v3 / vyznamenání
-                    :mod (s11ž2 / žádný)
+                    :mod (s11z2 / žádný)
                     :mod (s11o / oficiální)
                     :refer-number plural)
                 :affectee s11t2
@@ -534,14 +534,14 @@ s11p: 5-5
 s11d: 7-7, 10-10, 12-13
 s11t2: 8-9, 23-23
 s11v2: 11-11
-s11ž: 14-14
+s11z: 14-14
 s11p2: 15-15
 s11n2: 16-16
 s11a: 17-17
 s11u: 18-18, 24-25
 s11s: 19-19, 22-22
 s11p3: 21-21
-s11ž2: 26-26
+s11z2: 26-26
 s11o: 27-27
 s11v3: 28-28
 
@@ -578,7 +578,7 @@ Sentence Gloss (en): The system was simple, direct, and worked well, even with p
             :aspect state
             :other-role (s12p2 / pilot
                 :refer-number plural
-                :undergoer-of (s12š / školit)))))
+                :undergoer-of (s12s / školit)))))
 
 # alignment:
 s12f2: 0-0
@@ -592,7 +592,7 @@ s12f: 7-7
 s12s: 8-8
 s12a2: 10-11
 s12p2: 12-12, 14-14
-s12š: 13-13
+s12s: 13-13
 
 # document level annotation:
 
@@ -776,7 +776,7 @@ Sentence Gloss (en): The photo clearly shows the narrow touch display bar above 
     :stimulus (s16p / pruh
         :place (s16k / klávesnice
             :refer-number singular)
-        :mod (s16ú / úzký)
+        :mod (s16u / úzký)
         :refer-number singular
         :part-of (s16d2 / displej
             :mod (s16d / dotykový)
@@ -794,7 +794,7 @@ s16f: 1-2
 s16v: 3-3, 7-7
 s16k: 4-5
 s16j: 6-6
-s16ú: 8-8
+s16u: 8-8
 s16p: 9-9
 s16d: 10-10
 s16d2: 11-11, 13-13
@@ -822,7 +822,7 @@ Sentence Gloss (en): Russia announced a suspension of the contract at the beginn
         :actor s17t
         :undergoer (s17s / smlouva
             :refer-number singular))
-    :temporal (s17ř / date-entity
+    :temporal (s17r / date-entity
             :month 10
             :mod (s17z / začátek))
     :modal-strength full-affirmative
@@ -835,7 +835,7 @@ s17o: 2-2
 s17p: 3-3
 s17s: 4-4
 s17z: 5-6
-s17ř: 7-7
+s17r: 7-7
 
 # document level annotation:
 
@@ -920,7 +920,7 @@ Sentence Gloss (en): The husband of the current candidate for the White House, H
                             :op1 "Bílý"
                             :op2 "dům")))))
         :refer-number singular)
-    :undergoer (s20č / člověk
+    :undergoer (s20c / člověk
         :refer-number plural
         :quant (s20m2 / mnoho)
         :mod (s20t2 / person
@@ -959,7 +959,7 @@ s20d: 13-13
 s20p2: 15-15
 s20l: 17-20
 s20m2: 22-22
-s20č: 23-23
+s20c: 23-23
 s20t2: 25-26
 
 # document level annotation:
@@ -988,7 +988,7 @@ Sentence Gloss (en): It is no surprise that the federal and state governments ha
                     :op2 "Natural"
                     :op3 "Heritage"))
             :ARG1-of (s21h2 / have-role-91
-                :ARG3: (s21ú / úsilí
+                :ARG3: (s21u / úsilí
                     :mod (s21c / celostátní)
                     :mod (s21p2 / priorita
                         :refer-number singular
@@ -1011,7 +1011,7 @@ Sentence Gloss (en): It is no surprise that the federal and state governments ha
             :temporal (s21r / date-entity
                 :year 2005)))
     :ARG2 (s21p / překvapení
-        :mod (s21ž / žádný)
+        :mod (s21z / žádný)
         :refer-number singular)
     :modal-strength full-negative
     :aspect state)
@@ -1022,7 +1022,7 @@ s21h2: 0-0
 s21m: 0-0
 s21n2: 0-0
 s21i: 1-1
-s21ž: 2-2
+s21z: 2-2
 s21p: 3-3
 s21k: 5-5, 10-10
 s21f: 6-6
@@ -1030,7 +1030,7 @@ s21a: 7-7
 s21s: 8-8
 s21v: 9-9
 s21n: 11-13, 22-22
-s21ú: 14-14, 16-16
+s21u: 14-14, 16-16
 s21c: 15-15
 s21p2: 17-17, 19-19
 s21v2: 18-18
@@ -1526,7 +1526,7 @@ Sentence Gloss (en): Four students at Roma Tre University have developed a motor
         :mod (s33m / motocyklový)
         :refer-number singular
         :actor-of (s33u2 / umět
-            :stimulus (s33č2 / číst
+            :stimulus (s33c2 / číst
                 :OBLIQUE (s33f2 / FILL
                     :mod (s33p / pomáhat
                         :modal-strength MS
@@ -1538,7 +1538,7 @@ Sentence Gloss (en): Four students at Roma Tre University have developed a motor
                             :aspect ASP
                             :undergoer (s33a / akce
                                 :refer-number plural
-                                :MOD/POSS (s33ř / řidič
+                                :MOD/POSS (s33r / řidič
                                     :refer-number plural))))
                     :refer-number singular)
                 :modal-strength MS-affirmative
@@ -1561,12 +1561,12 @@ s33v: 6-6
 s33m: 7-7
 s33h: 8-8
 s33u2: 11-11
-s33č2: 13-13
+s33c2: 13-13
 s33m2: 14-14
 s33p: 19-19
 s33p2: 20-20
 s33a: 21-21
-s33ř: 22-22
+s33r: 22-22
 
 # document level annotation:
 
@@ -1707,7 +1707,7 @@ Sentence: Toto oddělení nyní čelí novým výzvám.
 Sentence Gloss (en): This department now faces new challenges.
 
 # sentence level graph:
-(s37č / čelit
+(s37c / čelit
     :actor (s37o / oddělení
         :mod (s37t / tento)
         :refer-number singular)
@@ -1722,7 +1722,7 @@ Sentence Gloss (en): This department now faces new challenges.
 s37t: 1-1
 s37o: 2-2
 s37n: 3-3
-s37č: 4-4
+s37c: 4-4
 s37n2: 5-5
 s37v: 6-6
 
@@ -1798,7 +1798,7 @@ Sentence: Pedro Sánchez, stejně jako mnoho jiných socialistů, řekl v progra
 Sentence Gloss (en): Pedro Sánchez, like many other socialists, said in the programme Évole that Spain is a nation of nations.
 
 # sentence level graph:
-(s40ř / říci
+(s40r / říci
     :experiencer (s40t / type-NE
         :name (s40n3 / name
             :op1 "Pedro"
@@ -1838,7 +1838,7 @@ s40t2: 0-0
 s40m: 6-6
 s40j: 7-7
 s40s2: 8-8
-s40ř: 10-10
+s40r: 10-10
 s40é: 13-13
 s40i: 17-17
 s40n: 18-18
@@ -1855,7 +1855,7 @@ Sentence: Federico Fellini jednou řekl: „Klaun je pro lidstvo jako stín pro 
 Sentence Gloss (en): Federico Fellini once said: "The clown is to humanity as the shadow is to man".
 
 # sentence level graph:
-(s41ř / říci
+(s41r / říci
     :experiencer (s41t / type-NE
         :name (s41n / name
             :op1 "Federico"
@@ -1880,7 +1880,7 @@ Sentence Gloss (en): Federico Fellini once said: "The clown is to humanity as th
 s41n: 0-0
 s41t: 0-0
 s41j: 3-3
-s41ř: 4-4
+s41r: 4-4
 s41k: 7-7
 s41i: 8-8
 s41l: 10-10
@@ -2230,7 +2230,7 @@ Sentence Gloss (en): After these successes, he signed a contract with Team Telek
                 :MOD/POSS (s49t3 / telekom
                     :refer-number singular))
             :refer-number singular)
-        :OBLIQUE (s49ú / úspěch
+        :OBLIQUE (s49u / úspěch
             :mod (s49t / tento)
             :refer-number plural))
     :op2 (s49n / nastěhovat
@@ -2245,7 +2245,7 @@ Sentence Gloss (en): After these successes, he signed a contract with Team Telek
                     :op1 "Bádensko")
                 :mod (s49j / jižní))
             :refer-number FILL
-            :manner-of (s49ž / žít
+            :manner-of (s49z / žít
                 :OBLIQUE (s49r / rok
                     :manner (s49a / až)
                     :refer-number singular
@@ -2265,7 +2265,7 @@ s49p3: 0-0
 s49p4: 0-0
 s49t4: 0-0
 s49t: 2-2
-s49ú: 3-3
+s49u: 3-3
 s49p: 4-4
 s49s: 5-5
 s49t2: 7-7
@@ -2275,7 +2275,7 @@ s49n: 10-10
 s49p2: 14-14
 s49m: 16-16
 s49j: 18-18
-s49ž: 22-22
+s49z: 22-22
 s49r: 25-25
 
 # document level annotation:
@@ -2308,7 +2308,7 @@ Sentence Gloss (en): The Viguier and La Conte districts contain the majority of 
                     :op1 (s50p / přistěhovalec
                         :refer-number plural
                         :manner (s50h / hlavně))
-                    :op2 (s50č / člověk
+                    :op2 (s50c / člověk
                         :refer-number plural
                         :MOD/POSS (s50p3 / původ
                             :mod (s50p2 / přistěhovalecký)
@@ -2340,7 +2340,7 @@ s50t: 14-14
 s50h: 15-15
 s50p: 16-16
 s50o4: 17-17
-s50č: 18-18
+s50c: 18-18
 s50p2: 19-19
 s50p3: 20-20
 
@@ -2426,7 +2426,7 @@ Sentence Gloss (en): Literacy had been lost and Mycenaean script forgotten, but 
         :op3 (s52v / vytvořit
             :refer-number plural
             :undergoer (s52a2 / abeceda
-                :mod (s52ř2 / řecký)
+                :mod (s52r2 / řecký)
                 :refer-number singular))))
 
 # alignment:
@@ -2446,7 +2446,7 @@ s52p: 11-11
 s52f: 12-12
 s52m2: 15-15
 s52v: 18-18
-s52ř2: 19-19
+s52r2: 19-19
 
 # document level annotation:
 
@@ -2846,7 +2846,7 @@ Sentence Gloss (en): During the thirteenth century, the name Apulia was used by 
         :refer-number singular)
     :OBLIQUE (s60o / označení
         :refer-number singular
-        :MOD/POSS (s60č / část
+        :MOD/POSS (s60c / část
             :mod (s60j / jižní)
             :refer-number singular
             :MOD/POSS (s60p2 / poloostrov
@@ -2869,7 +2869,7 @@ s60a: 6-6
 s60n2: 7-7
 s60o: 10-10
 s60j: 11-11
-s60č: 12-12
+s60c: 12-12
 s60i: 13-13
 s60p2: 14-14
 
@@ -3009,13 +3009,13 @@ Sentence Gloss (en): With regards to religious practices, Fiorello was educated 
     :op2 (s63z / zůstat
         :modal-strength MS-affirmative
         :aspect ASP
-        :stimulus (s63č / člen
+        :stimulus (s63c / člen
             :modal-strength MS-affirmative
             :aspect ASP
             :MOD/POSS (s63c2 / církev
                 :mod (s63p / protestantský)
                 :refer-number singular))
-        :OBLIQUE (s63ž / život
+        :OBLIQUE (s63z / život
             :mod (s63c3 / celý)
             :refer-number singular
             :possessor (s63p2 / person
@@ -3033,12 +3033,12 @@ s63t: 3-3
 s63n: 4-4
 s63v: 8-8
 s63e: 9-9
-s63č: 12-12
+s63c: 12-12
 s63p: 13-13
 s63c2: 14-14
 s63z: 15-15
 s63c3: 17-17
-s63ž: 19-19
+s63z: 19-19
 
 # document level annotation:
 
@@ -3062,7 +3062,7 @@ Sentence Gloss (en): Tradition has it that the theme was selected intentionally 
                 :mod (s64k / konvertovaný)
                 :name (s64n / name
                     :op1 "Žid")
-                :actor-of (s64ž2 / žít
+                :actor-of (s64z2 / žít
                     :OBLIQUE (s64t4 / type-NE
                         :name (s64n2 / name
                             :op1 "Palma"))
@@ -3089,7 +3089,7 @@ s64z2: 8-8
 s64v: 10-10
 s64p: 11-11
 s64k: 12-12
-s64ž2: 16-16
+s64z2: 16-16
 
 # document level annotation:
 
@@ -3172,7 +3172,7 @@ Sentence Gloss (en): The collapse of and intervention in dozens of banks lead to
                     :MOD/POSS (s66b / banka
                         :refer-number plural)
                     :refer-number plural)))
-        :OBLIQUE (s66ú / únik
+        :OBLIQUE (s66u / únik
             :refer-number singular
             :MOD/POSS (s66k / kapitál
                 :refer-number singular)))
@@ -3195,7 +3195,7 @@ s66i: 3-3
 s66d: 4-4
 s66b: 5-5
 s66v: 6-6
-s66ú: 8-8
+s66u: 8-8
 s66k: 9-9
 s66a2: 10-10
 s66z2: 12-12
