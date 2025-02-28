@@ -349,6 +349,8 @@ Sentence Gloss (en): The smartphone generation received an app it deserved, wher
     :mod (s8z3 / získat
       :modal-strength full-affirmative
       :aspect performance
+      :manner (s8p / případ
+        :mod (s8n2 / nejlepší))
       :recipient (s8s3 / situace
         :mod (s8n / stupidní
           :degree intensifier))
@@ -359,11 +361,13 @@ Sentence Gloss (en): The smartphone generation received an app it deserved, wher
 s8g: 1-1
 s8s: 2-2
 s8z: 3-3
-s8a: 4-4, 6-6
+s8a: 4-4, 6-6, 10-11
 s8z2: 7-8
 s8z3: 12-12
 s8n: 13-14
 s8s3: 15-15
+s8p: 16-16, 18-18
+s8n2: 17-17
 s8m: 19-19
 s8p2: 20-20
 
