@@ -35,7 +35,7 @@ Sentence Gloss (en): “While much of the digital transition is unprecedented in
           :op2 "státy"))
       :undergoer (s1m2 / mnoho)
       :manner (s1p3 / poprvé)
-      :additive (s1t2 / týkat-se
+      :pure-addition (s1t2 / týkat-se
         :modal-strength full-affirmative
         :aspect state
         :manner (s1p4 / především)
