@@ -34,7 +34,7 @@ def print_structure(tree, sent_tree, sent_num, output_file):
     if sent_tree.lang != 'en':
         en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
         if en_sent:
-            print('Sentence (en):', f"{en_sent[0].lstrip(' text_en = ')}", '\n', file=output_file)
+            print('Sentence Gloss (en):', f"{en_sent[0].lstrip(' text_en = ')}", '\n', file=output_file)
         else:
             print(file=output_file)
     else:
@@ -67,7 +67,7 @@ if __name__ == "__main__":
         for tree in doc.trees:
             if tree.address() in sents:
                 sent_num += 1
-                sent_tree = UMRGraph(tree, {}, '', set(), {}, {}, {})
+                sent_tree = UMRGraph(tree, sent_num, {}, '', set(), {}, {}, {})
                 for node in tree.descendants:
                     if node.deprel not in ['aux', 'case', 'punct', 'mark']:
                         item = UMRNode(node, sent_tree, role='')
