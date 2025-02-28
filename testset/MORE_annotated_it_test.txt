@@ -3,7 +3,7 @@
 Index: 1    2     3    4    5  6      7          8    9   10       11     12 13   14    15  16 17    18        19      20   21   22  23242526 27   28      29   30 31  32   33     34   35 36     37        38    39  40  41
 Words: " Mentre gran parte di la transizione digitale è senza precedenti in gli Stati Uniti , la pacifica transizione di potere non lo è " , ha scritto lunedì in un blog Kori Schulman , l' assistente speciale di Obama .
 Sentence: "Mentre gran parte della transizione digitale è senza precedenti negli Stati Uniti, la pacifica transizione di potere non lo è", ha scritto lunedì in un blog Kori Schulman, l'assistente speciale di Obama.
-Sentence (en): “While much of the digital transition is unprecedented in the United States, the peaceful transition of power is not,” Obama special assistant Kori Schulman wrote in a blog post Monday. 
+Sentence Gloss (en): “While much of the digital transition is unprecedented in the United States, the peaceful transition of power is not,” Obama special assistant Kori Schulman wrote in a blog post Monday. 
 
 # sentence level graph:
 (s1s / scrivere
@@ -85,7 +85,7 @@ s1n2: 0-0
 Index:     1       2     3       4       5   6     7     8  9   10   11 12  13 14
 Words: Stanotte useremo gli abbaglianti per le punizioni , si legge su il post .
 Sentence: Stanotte useremo gli abbaglianti per le punizioni, si legge sul post.
-Sentence (en): "Tonight we are carrying out punishments using a high beam," the post reads. 
+Sentence Gloss (en): "Tonight we are carrying out punishments using a high beam," the post reads. 
 
 # sentence level graph:
 (s2l / leggere
@@ -125,7 +125,7 @@ s2p3: 13-13
 Index:    1     2  3  4   5    6  7    8         9      10  11   12   13 14    15    16  17       18      19 20    21    2223   24     25   26
 Words: Quest' anno , da parte di il partito democratico , gran parte di il dibattito è stato focalizzato su l' identità di i maschi bianchi .
 Sentence: Quest'anno, da parte del partito democratico, gran parte del dibattito è stato focalizzato sull'identità dei maschi bianchi.
-Sentence (en): Much of the debate, from the Democratic side this year, has been about white male identity. 
+Sentence Gloss (en): Much of the debate, from the Democratic side this year, has been about white male identity. 
 
 # sentence level graph:
 (s3f / focalizzare
@@ -169,7 +169,7 @@ b: 25-25
 Index:   1   2  3    4     5    6      7    8    9     10  11  12  13      14      15    16  17
 Words: Dopo le ho chiesto se avesse capito la ragione per cui la gente potrebbe votare Trump .
 Sentence: Dopo le ho chiesto se avesse capito la ragione per cui la gente potrebbe votare Trump.
-Sentence (en): I asked her afterwards if she understood why people might vote for Trump. 
+Sentence Gloss (en): I asked her afterwards if she understood why people might vote for Trump. 
 
 # sentence level graph:
 (s4 / chiedere
@@ -217,7 +217,7 @@ s4n: 0-0
 Index:     1    2 3      4       5    6      7        8       9    10         11       12  13     14   15  16    17   18 19   20   21 22  23   24    25         26     27
 Words: Tuttavia , i ricercatori non hanno potuto riscontrare la stessa configurazione in altri tessuti , come quelli di la vescica , che non sono esposti direttamente .
 Sentence: Tuttavia, i ricercatori non hanno potuto riscontrare la stessa configurazione in altri tessuti, come quelli della vescica, che non sono esposti direttamente.
-Sentence (en): However, they could not find this same pattern in tissues such as the bladder, which are not directly exposed. 
+Sentence Gloss (en): However, they could not find this same pattern in tissues such as the bladder, which are not directly exposed. 
 
 # sentence level graph:
 (s5r / riscontrare
@@ -258,7 +258,7 @@ s5d: 26-26
 Index:  1     2      3  4      5         6      7    8  9    10   11  12      13   14 15    16    17  18     19   20  21   22    23   24      25    26  27  28   29    30      31    32   33        34    35     36      37    38    39     40      41  42    43  4445   46      47   48
 Words: Il direttore di l' Independent Police Review di l' Ontario , Gerry McNeilly , ha stabilito i punti chiave per il riesame di questa settimana , dopo che erano state sollevate " domande allarmanti " riguardanti le modalità di interazione tra gli agenti e i nativi canadesi .
 Sentence: Il direttore dell'Independent Police Review dell'Ontario, Gerry McNeilly, ha stabilito i punti chiave per il riesame di questa settimana, dopo che erano state sollevate "domande allarmanti" riguardanti le modalità di interazione tra gli agenti e i nativi canadesi.
-Sentence (en): The Ontario Independent Police Review Director, Gerry McNeilly, set the terms for his review this week after "alarming questions" were raised about how officers interact with Indigenous peoples. 
+Sentence Gloss (en): The Ontario Independent Police Review Director, Gerry McNeilly, set the terms for his review this week after "alarming questions" were raised about how officers interact with Indigenous peoples. 
 
 # sentence level graph:
 (s6s / stabilire
@@ -340,7 +340,7 @@ s6n4: 0-0
 Index: 1     2       3     4       5     6      7     8       9          10   11 12     13     14 15   16     17    18    19    20     21     22    23     24   25  26    27    28 29    30    31   32   33    34     35  36     37     38   39  40  41
 Words: I dirigenti hanno anche ricevuto la cosiddetta " remunerazione basata su le prestazioni " per aver raggiunto o superato le aspettative , dividendo tra loro un capitale di 1,5 milioni di dollari o ricevendo in media 15.000 dollari a testa .
 Sentence: I dirigenti hanno anche ricevuto la cosiddetta "remunerazione basata sulle prestazioni" per aver raggiunto o superato le aspettative, dividendo tra loro un capitale di 1,5 milioni di dollari o ricevendo in media 15.000 dollari a testa.
-Sentence (en): The executives also received so-called "performance pay" for succeeding or surpassing expectations, sharing a pot of $1.5 million among them, or an estimated $15,000 each on average. 
+Sentence Gloss (en): The executives also received so-called "performance pay" for succeeding or surpassing expectations, sharing a pot of $1.5 million among them, or an estimated $15,000 each on average. 
 
 # sentence level graph:
 (s7r / ricevere
@@ -413,7 +413,7 @@ s7d4: 0-0
 Index: 1  2    3    4     5        6       7 8    9    10 11  12   13   14 15  16   17     18   19
 Words: È il tumore più comune riscontrato in i neonati , con una media di uno su 35.000 nascite .
 Sentence: È il tumore più comune riscontrato nei neonati, con una media di uno su 35.000 nascite.
-Sentence (en): It is the most common tumour found in babies, occurring in one of every 35,000 births. 
+Sentence Gloss (en): It is the most common tumour found in babies, occurring in one of every 35,000 births. 
 
 # sentence level graph:
 (s8h / have-degree-91
@@ -455,7 +455,7 @@ s8h2: 11-13
 Index: 1    2        3      4    5       6      7      8    9    10   11     12    13 14   15     16 17   18    19  20 21
 Words: I detriti formarono un circolo intorno all' equatore e furono poi attratti da la gravità fino a formare la Luna .
 Sentence: I detriti formarono un circolo intorno all'equatore e furono poi attratti dalla gravità fino a formare la Luna.
-Sentence (en): The debris formed a ring around the Earth's equator and was eventually drawn together by gravity to form the moon. 
+Sentence Gloss (en): The debris formed a ring around the Earth's equator and was eventually drawn together by gravity to form the moon. 
 
 # sentence level graph:
 (s9a / and
@@ -497,7 +497,7 @@ s9n: 0-0
 Index:  1   2   3       4      5       6       7    8   9   10  11  12   13  14   15 16 17   18    19  20 21 22  23     24       25    26     27     28
 Words: Ci sono più differenze che somiglianze tra Sulla e Trump , così come tra Roma e gli Stati Uniti , ma ciò non scredita comunque le somiglianze .
 Sentence: Ci sono più differenze che somiglianze tra Sulla e Trump, così come tra Roma e gli Stati Uniti, ma ciò non scredita comunque le somiglianze.
-Sentence (en): There are more differences between Sulla and Trump, Rome and the U.S., than there are similarities, but that doesn’t discredit the resemblances. 
+Sentence Gloss (en): There are more differences between Sulla and Trump, Rome and the U.S., than there are similarities, but that doesn’t discredit the resemblances. 
 
 # sentence level graph:
 (s10 / )
@@ -535,7 +535,7 @@ s6:
 Index:  1  2     3         4     5  6  7    8     9      10    11  12      13     14  15     16    1718  19   20 21   22 23 24 25    26    27  28 29
 Words: In una recente intervista , Zay e Zayion hanno ammesso di aver registrato la loro versione di " Knuck If You Back " su un portatile a casa .
 Sentence: In una recente intervista, Zay e Zayion hanno ammesso di aver registrato la loro versione di "Knuck If You Back" su un portatile a casa.
-Sentence (en): In a recent interview, Zay and Zayion described recording their version of “Knuck If You Buck” on a home laptop. 
+Sentence Gloss (en): In a recent interview, Zay and Zayion described recording their version of “Knuck If You Buck” on a home laptop. 
 
 # sentence level graph:
 (s11a / ammettere
@@ -592,7 +592,7 @@ s11c: 28-28
 Index:      1       2    3      4       5   6    7   8    9     10  11  12
 Words: Comunicando con Woods tramite e-mail , provai a svelare un etimo .
 Sentence: Comunicando con Woods tramite e-mail, provai a svelare un etimo.
-Sentence (en): Corresponding with Woods by e-mail, I tried my hand at uncovering an etym. 
+Sentence Gloss (en): Corresponding with Woods by e-mail, I tried my hand at uncovering an etym. 
 
 # sentence level graph:
 (s12p / provare
@@ -633,7 +633,7 @@ s12s: 9-9
 Index:  1    2         3      4     5     6  7    8       9     10 11     12     13  14  15  16   17    18   19 20 21
 Words: La squadra australiana , indurita da le recenti partite di il campionato di rugby , aveva una marcia in più .
 Sentence: La squadra australiana, indurita dalle recenti partite del campionato di rugby, aveva una marcia in più.
-Sentence (en): Australia, hardened by their recent games in the Rugby Championship, were in a higher gear. 
+Sentence Gloss (en): Australia, hardened by their recent games in the Rugby Championship, were in a higher gear. 
 
 # sentence level graph:
 (s13a / avere-una-marcia-in-più
@@ -673,7 +673,7 @@ a2: 16-20
 Index:  1   2   3  4     5           6       7   8     9        10    11 12   13  14    15   16   17    18 19  20    21    22  23    24     25    26   27      28        29    30
 Words: Lo zolfo è un nutriente fondamentale per la crescita salutare di le piante , tuttavia i terreni in il Regno Unito sono per natura carenti di questo minerale essenziale .
 Sentence: Lo zolfo è un nutriente fondamentale per la crescita salutare delle piante, tuttavia i terreni nel Regno Unito sono per natura carenti di questo minerale essenziale.
-Sentence (en): Sulphur is a key plant nutrient vital to healthy growth, but UK soils are naturally deficient in this essential mineral. 
+Sentence Gloss (en): Sulphur is a key plant nutrient vital to healthy growth, but UK soils are naturally deficient in this essential mineral. 
 
 # sentence level graph:
 (s14b / but-91
@@ -733,7 +733,7 @@ s14e: 29-29
 Index:  1   2     3      4     5    6       7     8
 Words: Non lo definisco una bestia con leggerezza .
 Sentence: Non lo definisco una bestia con leggerezza.
-Sentence (en): I don’t call it a beast lightly. 
+Sentence Gloss (en): I don’t call it a beast lightly. 
 
 # sentence level graph:
 (s15d / definire
@@ -763,7 +763,7 @@ s15b: 5-5
 Index:     1      2      3      4   5      6    7
 Words: Superiamo una cittadina con due minareti .
 Sentence: Superiamo una cittadina con due minareti.
-Sentence (en): A small town with two minarets glides by. 
+Sentence Gloss (en): A small town with two minarets glides by. 
 
 # sentence level graph:
 (s16s / superare
@@ -792,7 +792,7 @@ s16m: 5-6
 Index:   1    2  3  4  5     6     7    8       9     1011 12    13   14    15   16
 Words: Hong Kong , in il frattempo , sembra preparar si a un' ondata di proteste .
 Sentence: Hong Kong, nel frattempo, sembra prepararsi a un'ondata di proteste.
-Sentence (en): Hong Kong, meanwhile, appears to be bracing for a wave of protests. 
+Sentence Gloss (en): Hong Kong, meanwhile, appears to be bracing for a wave of protests. 
 
 # sentence level graph:
 (s17p / preparare
@@ -825,7 +825,7 @@ s17p2: 15-15
 Index:  1     2         3          4      5  6   7   8    9        10    11   12   13  14  15    16       17      18     19    20  21  2223  24  25  26  27   28   29   30     31        32    33     34    35   36    37   38    3940  41 42
 Words: Un rapporto autorevole pubblicato in il mese di gennaio sostiene che entro il 2050 gli oceani conterranno più plastica di pesci , a meno che il mondo non avvii un intervento radicale per bloccare lo scarico di rifiuti in i mari .
 Sentence: Un rapporto autorevole pubblicato nel mese di gennaio sostiene che entro il 2050 gli oceani conterranno più plastica di pesci, a meno che il mondo non avvii un intervento radicale per bloccare lo scarico di rifiuti nei mari.
-Sentence (en): A major report in January said oceans would contain more plastic than fish by 2050 unless the world took radical action to stop rubbish leaking into the seas. 
+Sentence Gloss (en): A major report in January said oceans would contain more plastic than fish by 2050 unless the world took radical action to stop rubbish leaking into the seas. 
 
 # sentence level graph:
 (s18s / sostenere
@@ -890,7 +890,7 @@ s18m2: 41-41
 Index:   1     2   3  4   5    6     7  8     9       10       11      12 13 14 15    16        17     18 19     20   21 22  23    24   25
 Words: Anche Isner , che ha giocato il suo miglior tennis pareggiando in un set e rendendo necessario un set decisivo , ha reso omaggio .
 Sentence: Anche Isner, che ha giocato il suo miglior tennis pareggiando in un set e rendendo necessario un set decisivo, ha reso omaggio.
-Sentence (en): Isner, who produced some of his best tennis as he leveled at one set all and forced a decider, also paid his tribute. 
+Sentence Gloss (en): Isner, who produced some of his best tennis as he leveled at one set all and forced a decider, also paid his tribute. 
 
 # sentence level graph:
 (s19o / omaggiare
@@ -945,7 +945,7 @@ s19d: 20-20
 Index:  1   2       3        4  5     6    7      8          9     10   11  12  13   14  15   16    17   18    19     20       21        22    23    24   25
 Words: Con il completamento di la ferrovia a levitazione magnetica o maglev , penso che il governo si aspetti uno sviluppo economico maggiore in Giappone .
 Sentence: Con il completamento della ferrovia a levitazione magnetica o maglev, penso che il governo si aspetti uno sviluppo economico maggiore in Giappone.
-Sentence (en): By completing this maglev line, I think the government is expecting bigger economical development in Japan. 
+Sentence Gloss (en): By completing this maglev line, I think the government is expecting bigger economical development in Japan. 
 
 # sentence level graph:
 (s20p / pensare
@@ -1005,7 +1005,7 @@ s20n: 0-0
 Index:  1  2   3   4   5   6      7     8      9     10 11  12  13   14    15   16      17    18
 Words: In il 2007 il film che riscosse più successi fu El Greco , diretto da Yannis Smaragdis .
 Sentence: Nel 2007 il film che riscosse più successi fu El Greco, diretto da Yannis Smaragdis.
-Sentence (en): In 2007 the most successful film was El Greco, directed by Yannis Smaragdis. 
+Sentence Gloss (en): In 2007 the most successful film was El Greco, directed by Yannis Smaragdis. 
 
 # sentence level graph:
 (s21r / riscuotere
@@ -1047,7 +1047,7 @@ s21n2: 0-0
 Index:  1        2            3    4  5   6    7      8      9        10        11 12  13   14  15 16
 Words: La classificazione Bergeron è la forma più accettata di classificazione di le masse d' aria .
 Sentence: La classificazione Bergeron è la forma più accettata di classificazione delle masse d'aria.
-Sentence (en): The Bergeron classification is the most widely accepted form of air mass classification. 
+Sentence Gloss (en): The Bergeron classification is the most widely accepted form of air mass classification. 
 
 # sentence level graph:
 (s22h / have-identity-91
@@ -1088,7 +1088,7 @@ s22m2: 7-7
 Index:  1    2    3  4   5        6          7      8    9   10    11     12 13 14  15   16   17  18 19    20    21 22   23   24 25    26   27
 Words: Un monsone è un vento stagionale prevalente che dura per diversi mesi , il quale dà inizio a la stagione di le piogge in una regione .
 Sentence: Un monsone è un vento stagionale prevalente che dura per diversi mesi, il quale dà inizio alla stagione delle piogge in una regione.
-Sentence (en): A monsoon is a seasonal prevailing wind which lasts for several months, ushering in a region's rainy season. 
+Sentence Gloss (en): A monsoon is a seasonal prevailing wind which lasts for several months, ushering in a region's rainy season. 
 
 # sentence level graph:
 (s23h / have-identity-91
@@ -1137,7 +1137,7 @@ s23r: 26-26
 Index:  1   2   3  4      5       6          7       8  9     10        11     12   13  14    15     16  1718   19  20    21      22        23       24 25  26   27 28      29     30
 Words: Due tra le più notevoli civiltà mediterranee di l' antichità classica erano le città stato greche e i Fenici , entrambe grandi colonizzatori di la costa di il Mediterraneo .
 Sentence: Due tra le più notevoli civiltà mediterranee dell'antichità classica erano le città stato greche e i Fenici, entrambe grandi colonizzatori della costa del Mediterraneo.
-Sentence (en): Two of the most notable Mediterranean civilisations in classical antiquity were the Greek city states and the Phoenicians, both of which extensively colonised the coastlines of the Mediterranean. 
+Sentence Gloss (en): Two of the most notable Mediterranean civilisations in classical antiquity were the Greek city states and the Phoenicians, both of which extensively colonised the coastlines of the Mediterranean. 
 
 # sentence level graph:
 (s24h / have-identity-91
@@ -1211,7 +1211,7 @@ s24c6: 26-26
 Index:  1     2     3  4   5    6   7       8     9    10   11  12 13 14     15      16  17      18      19 20    21        22     2324 25     26    27 28   29    30      31    32
 Words: Il Blindleia è un corso d' acqua protetto da scogli che ha la sua sorgente vicino a Kristiansand in la Norvegia meridionale , e che continua il suo corso oltre Lillesand .
 Sentence: Il Blindleia è un corso d'acqua protetto da scogli che ha la sua sorgente vicino a Kristiansand nella Norvegia meridionale, e che continua il suo corso oltre Lillesand.
-Sentence (en): The Blindleia is a skerry-protected waterway that starts near Kristiansand in southern Norway, and continues past Lillesand. 
+Sentence Gloss (en): The Blindleia is a skerry-protected waterway that starts near Kristiansand in southern Norway, and continues past Lillesand. 
 
 # sentence level graph:
 (s25h / have-identity-91
@@ -1270,7 +1270,7 @@ s25c4: 31-31
 Index:  1    2   3  4    5    6   7     8     9   10   11  12      13       14    15   16      17  1819 20     21           22      23 24  25 26    27     28   29       30      31 32    33      34    35    36   37
 Words: Lo Schlei e le paludi tra il Danevirke e Husum si erano congelati durante un inverno rigido , e il territorio immediatamente a sud di il Danevirke era stato conquistato da l' esercito tedesco in avanzata .
 Sentence: Lo Schlei e le paludi tra il Danevirke e Husum si erano congelati durante un inverno rigido, e il territorio immediatamente a sud del Danevirke era stato conquistato dall'esercito tedesco in avanzata.
-Sentence (en): The Schlei and the wetlands between the Danevirke and Husum had frozen solid in a hard winter, and the territory immediately south of the Danevirke had been conquered by the advancing German army. 
+Sentence Gloss (en): The Schlei and the wetlands between the Danevirke and Husum had frozen solid in a hard winter, and the territory immediately south of the Danevirke had been conquered by the advancing German army. 
 
 # sentence level graph:
 (s26a / and
@@ -1345,7 +1345,7 @@ s26a3: 35-36
 Index:  1      2       3  4     5         6       7  8   9    10  11  12   13  14 15        16             17          18     19   20     21    22 23  24  25
 Words: Si differenzia da la porzione occidentale di il paese per il fatto che le sue caratteristiche topografiche prominenti non sono parallele a la costa .
 Sentence: Si differenzia dalla porzione occidentale del paese per il fatto che le sue caratteristiche topografiche prominenti non sono parallele alla costa.
-Sentence (en): It differs from the western portion of the country in that its prominent topographic features do not parallel the coast. 
+Sentence Gloss (en): It differs from the western portion of the country in that its prominent topographic features do not parallel the coast. 
 
 # sentence level graph:
 (s27d / differenziare
@@ -1388,7 +1388,7 @@ s27c2: 24-24
 Index:  1      2       3  4    5       6         7       8       9        10 11   12 1314    15       16     17      18     19   20   21   22    2324    25   26     27     28    29   30       31       32 33  34  35
 Words: La distruzione di l' habitat aumenta enormemente la vulnerabilità di un' area a i disastri naturali come inondazioni e siccità , perdita di i raccolti , diffusione di malattie e contaminazione di le acque .
 Sentence: La distruzione dell'habitat aumenta enormemente la vulnerabilità di un'area ai disastri naturali come inondazioni e siccità, perdita dei raccolti, diffusione di malattie e contaminazione delle acque.
-Sentence (en): Habitat destruction vastly increases an area's vulnerability to natural disasters like flood and drought, crop failure, spread of disease, and water contamination. 
+Sentence Gloss (en): Habitat destruction vastly increases an area's vulnerability to natural disasters like flood and drought, crop failure, spread of disease, and water contamination. 
 
 # sentence level graph:
 (s28a / aumentare
@@ -1454,7 +1454,7 @@ s28a5: 34-34
 Index: 1    2     3  4  5     6   7  8     9     10      11    12   13          14        15 16  17  18 19 20 2122 23   24      25   2627 28  29 30  31   32   33  343536  37  38 39  40 4142 43 44  4546   47   4849  50  51 52   53    54  5556
 Words: A partire da il XVI secolo , gli europei che visitavano i Caraibi differenziarono tra " Mare di il Sud " ( l' Oceano Pacifico , a sud di l' istmo di Panama ) e " Mare di il Nord " ( il Mar di i Caraibi , a nord di lo stesso istmo ) .
 Sentence: A partire dal XVI secolo, gli europei che visitavano i Caraibi differenziarono tra "Mare del Sud" (l'Oceano Pacifico, a sud dell'istmo di Panama) e "Mare del Nord" (il Mar dei Caraibi, a nord dello stesso istmo).
-Sentence (en): From the 16th century, Europeans visiting the Caribbean region identified the "South Sea" (the Pacific Ocean, to the south of the isthmus of Panama) as opposed to the "North Sea" (the Caribbean Sea, to the north of the same isthmus). 
+Sentence Gloss (en): From the 16th century, Europeans visiting the Caribbean region identified the "South Sea" (the Pacific Ocean, to the south of the isthmus of Panama) as opposed to the "North Sea" (the Caribbean Sea, to the north of the same isthmus). 
 
 # sentence level graph:
 (s29d / differenziare
@@ -1554,7 +1554,7 @@ s29s2: 53-53
 Index:  1  2   3 4    5     6      7      8  9      10      11 12   13     14  15  16 17  18  19 20      21       22      23   24  25  26    27   28 29  30       31    32 33   34    35 36  37  38      39       40  41  42 43
 Words: Il Mar di i Caraibi fu sconosciuto a le popolazioni di l' Eurasia fino al 1492 , anno in cui Cristoforo Colombo navigò per la prima volta in le acque caraibiche a la ricerca di una via di comunicazione con l' Asia .
 Sentence: Il Mar dei Caraibi fu sconosciuto alle popolazioni dell'Eurasia fino al 1492, anno in cui Cristoforo Colombo navigò per la prima volta nelle acque caraibiche alla ricerca di una via di comunicazione con l'Asia.
-Sentence (en): The Caribbean Sea had been unknown to the populations of Eurasia until 1492, when Christopher Columbus first sailed into Caribbean waters on a quest to find a sea route to Asia. 
+Sentence Gloss (en): The Caribbean Sea had been unknown to the populations of Eurasia until 1492, when Christopher Columbus first sailed into Caribbean waters on a quest to find a sea route to Asia. 
 
 # sentence level graph:
 (s30h / have-mod-91
@@ -1610,7 +1610,7 @@ a4:
 Index: 1   2   3  4   5    6  7    8   9    10     11       12      13   14   15 16    17    18    19    20   21      22    23  24 25 26     27     28 29  30      31    32     33     34   35        36      37     38    39    40        41     42
 Words: A metà di l' anno 1962 , Brooks e Carson avevano terminato gran parte di il processo di revisione e stavano ponendo le basi a la promozione di il libro spedendo il manoscritto a persone selezionate per ottenere gli ultimi suggerimenti .
 Sentence: A metà dell'anno 1962, Brooks e Carson avevano terminato gran parte del processo di revisione e stavano ponendo le basi alla promozione del libro spedendo il manoscritto a persone selezionate per ottenere gli ultimi suggerimenti.
-Sentence (en): By mid-1962, Brooks and Carson had largely finished the editing, and were laying the groundwork for promoting the book by sending the manuscript out to select individuals for final suggestions. 
+Sentence Gloss (en): By mid-1962, Brooks and Carson had largely finished the editing, and were laying the groundwork for promoting the book by sending the manuscript out to select individuals for final suggestions. 
 
 # sentence level graph:
 (s31 / )
@@ -1655,7 +1655,7 @@ s3:
 Index:    1     2    3   4   5  6      7      8  9     10       11   12 1314  15     16   1718  19   20 21    22     23   24 25     26         27    28
 Words: Questo portò il libro a l' attenzione di l' industria chimica e di i suoi lobbisti , e anche di una grande fascia di la popolazione americana .
 Sentence: Questo portò il libro all'attenzione dell'industria chimica e dei suoi lobbisti, e anche di una grande fascia della popolazione americana.
-Sentence (en): This brought the book to the attention of the chemical industry and its lobbyists, as well as a wide swath of the American populace. 
+Sentence Gloss (en): This brought the book to the attention of the chemical industry and its lobbyists, as well as a wide swath of the American populace. 
 
 # sentence level graph:
 (s32 / )
@@ -1691,7 +1691,7 @@ a3:
 Index:   1    2     3    4   5   6     7     8   9   10   11    12        13      1415   16     17    18    19     20 2122  23  24   25   26   27     28   29 30  31 32 33    34     35      36         37   3839   40   41  42  43    44  45
 Words: Bogd Khaan disse che sia la Mongolia sia la Cina erano state amministrate da i Manchu durante la dinastia Qing e , dopo la caduta di quest' ultima in il 1911 , il contratto di sottomissione mongola a i Manchu non era più valido .
 Sentence: Bogd Khaan disse che sia la Mongolia sia la Cina erano state amministrate dai Manchu durante la dinastia Qing e, dopo la caduta di quest'ultima nel 1911, il contratto di sottomissione mongola ai Manchu non era più valido.
-Sentence (en): Bogd Khaan said that both Mongolia and China had been administered by the Manchu during the Qing, and after the fall of the Qing dynasty in 1911, the contract of Mongolian submission to the Manchu had become invalid. 
+Sentence Gloss (en): Bogd Khaan said that both Mongolia and China had been administered by the Manchu during the Qing, and after the fall of the Qing dynasty in 1911, the contract of Mongolian submission to the Manchu had become invalid. 
 
 # sentence level graph:
 (s33 / )
@@ -1739,7 +1739,7 @@ v:
 Index: 1      2       3    4         5          6      7    8   9  10  11 12 13 14  15   16   17   18    19   20   21 22    23    24  25    26  27  28  29 30    31      32       33    34
 Words: I certificati di nascita thailandesi riportano il giorno , il mese e l' ora di nascita , seguiti da giorno di la settimana , data lunare e nome di il relativo animale zodiacale .
 Sentence: I certificati di nascita thailandesi riportano il giorno, il mese e l'ora di nascita, seguiti da giorno della settimana, data lunare e nome del relativo animale zodiacale.
-Sentence (en): Thai birth certificates record the date, month and time of birth, followed by the day of the week, lunar date, and the applicable zodiac animal name. 
+Sentence Gloss (en): Thai birth certificates record the date, month and time of birth, followed by the day of the week, lunar date, and the applicable zodiac animal name. 
 
 # sentence level graph:
 (s34 / )
@@ -1779,7 +1779,7 @@ z:
 Index:   1       2     3    4    5    6        7      8
 Words: Anche Caterina di Russia era molto soddisfatta .
 Sentence: Anche Caterina di Russia era molto soddisfatta.
-Sentence (en): Catherine of Russia was also very satisfied. 
+Sentence Gloss (en): Catherine of Russia was also very satisfied. 
 
 # sentence level graph:
 (s35 / )
@@ -1800,7 +1800,7 @@ s:
 Index:  1    2     3    4   5      6       7   8     9    10    11       12     13    14   15    16     17 18   19      20     21  22     23      24   25
 Words: L' impero russo era un agglomerato di varie etnie che avevano mostrato forti segni di divisione in gli anni precedenti la prima guerra mondiale .
 Sentence: L'impero russo era un agglomerato di varie etnie che avevano mostrato forti segni di divisione negli anni precedenti la prima guerra mondiale.
-Sentence (en): The Russian Empire was an agglomeration of diverse ethnicities that had shown significant signs of disunity in the years before the First World War. 
+Sentence Gloss (en): The Russian Empire was an agglomeration of diverse ethnicities that had shown significant signs of disunity in the years before the First World War. 
 
 # sentence level graph:
 (s36 / )
@@ -1835,7 +1835,7 @@ m2:
 Index: 1     2     3    4       5      6      7      8     9        10    11   12      13     14 15 16   17 18
 Words: I problemi di salute ridussero le produzioni di Hitchcock durante l' ultimo ventennio di la sua vita .
 Sentence: I problemi di salute ridussero le produzioni di Hitchcock durante l'ultimo ventennio della sua vita.
-Sentence (en): Failing health reduced Hitchcock's output during the last two decades of his life. 
+Sentence Gloss (en): Failing health reduced Hitchcock's output during the last two decades of his life. 
 
 # sentence level graph:
 (s37 / )
@@ -1863,7 +1863,7 @@ v2:
 Index: 1   2   3     4     5   6       7     8      9      10   11       12     13 14  15     16     17  18  19  20
 Words: I film di Hitchcock a volte trattano di personaggi che hanno difficoltà in le loro relazioni con la madre .
 Sentence: I film di Hitchcock a volte trattano di personaggi che hanno difficoltà nelle loro relazioni con la madre.
-Sentence (en): Hitchcock's films sometimes feature characters struggling in their relationships with their mothers. 
+Sentence Gloss (en): Hitchcock's films sometimes feature characters struggling in their relationships with their mothers. 
 
 # sentence level graph:
 (s38 / )
@@ -1892,7 +1892,7 @@ m:
 Index:   1    2    3    4    5  6    7        8      9  10    11     12 13   14   15 16  17    18  19 20   21     22   23 24  25    26  27 28 29  30     31   32     33      34  35  36     37     38 39  40    41  42
 Words: Dopo esser si fermata a la 96esima posizione di la Billboard 200 , Thought ' Ya Knew arrivò a il 31esimo posto in il Regno Unito , ma l' album rimase in classifica solo per due settimane in il Regno Unito .
 Sentence: Dopo essersi fermata alla 96esima posizione della Billboard 200, Thought 'Ya Knew arrivò al 31esimo posto nel Regno Unito, ma l'album rimase in classifica solo per due settimane nel Regno Unito.
-Sentence (en): After its progress had stalled in the Billboard 200 at No. 96, Thought 'Ya Knew climbed to No. 31 in the UK, but the album charted for only two weeks in the UK. 
+Sentence Gloss (en): After its progress had stalled in the Billboard 200 at No. 96, Thought 'Ya Knew climbed to No. 31 in the UK, but the album charted for only two weeks in the UK. 
 
 # sentence level graph:
 (s39 / )
@@ -1936,7 +1936,7 @@ u2:
 Index:    1    2   3    4   5    6       7       8      9     10   11    12    13 14     15           16      17  18   19   20 21   22     23    24   25    26   27     28       29    30  31     32    33
 Words: Quando fu ovvio che l' Impero Ottomano avrebbe perso tutta la Macedonia e la connessione territoriale con l' Albania , le Grandi Potenze si resero conto che dovevano cambiare la loro decisione .
 Sentence: Quando fu ovvio che l'Impero Ottomano avrebbe perso tutta la Macedonia e la connessione territoriale con l'Albania, le Grandi Potenze si resero conto che dovevano cambiare la loro decisione.
-Sentence (en): After it became obvious that Ottoman Empire would lose all of Macedonia and its territorial connection with Albania, the Great Powers realized they had to change their decision. 
+Sentence Gloss (en): After it became obvious that Ottoman Empire would lose all of Macedonia and its territorial connection with Albania, the Great Powers realized they had to change their decision. 
 
 # sentence level graph:
 (s40 / )
@@ -1976,7 +1976,7 @@ d:
 Index:  1     2      3    4   5    6     7      8    9      10    11  12  13   14     15   16
 Words: Gli agenti furono in grado di reprimere il 53enne durante l' atto di sabato mattina .
 Sentence: Gli agenti furono in grado di reprimere il 53enne durante l'atto di sabato mattina.
-Sentence (en): The officers were able to subdue the 53 year old during the act on Sunday morning. 
+Sentence Gloss (en): The officers were able to subdue the 53 year old during the act on Sunday morning. 
 
 # sentence level graph:
 (s41 / )
@@ -2002,7 +2002,7 @@ m:
 Index:  1     2    3  4  5  6 7    8        9       10  11  12    13    14       15    16 17  18  1920   21       22   23   24       25        26   27
 Words: Il petrolio , l' oro e i generi alimentari come il grano sono risorse naturali in le quali , a livello mondiale , vengono investiti miliardi .
 Sentence: Il petrolio, l'oro e i generi alimentari come il grano sono risorse naturali nelle quali, a livello mondiale, vengono investiti miliardi.
-Sentence (en): Oil, gold or food products, such as wheat, are natural resources, in which investors invest billions worldwide. 
+Sentence Gloss (en): Oil, gold or food products, such as wheat, are natural resources, in which investors invest billions worldwide. 
 
 # sentence level graph:
 (s42 / )
@@ -2037,7 +2037,7 @@ m2:
 Index:  1   2   3    4 5   6   7  8   9    10   11  12 13   14    15  16   17     18     1920   21    22  23    24     2526   27   28    29   30    31    32     33     34    35   36  37  38
 Words: Con l' aiuto di i dati di le carte di debito , la polizia di Essen sta indagando su 4 persone che si trovavano in i paraggi e stettero a guardare un pensionato che moriva in banca .
 Sentence: Con l'aiuto dei dati delle carte di debito, la polizia di Essen sta indagando su 4 persone che si trovavano nei paraggi e stettero a guardare un pensionato che moriva in banca.
-Sentence (en): With the help of debit card data, the Essen police are investigating four people who stood by and watched while a retiree died in a bank. 
+Sentence Gloss (en): With the help of debit card data, the Essen police are investigating four people who stood by and watched while a retiree died in a bank. 
 
 # sentence level graph:
 (s43 / )
@@ -2078,7 +2078,7 @@ b:
 Index:  1     2      3     4     5      6       7    8     9       10        11   12
 Words: Il portavoce non escluse la possibilità che anche altri venissero indagati .
 Sentence: Il portavoce non escluse la possibilità che anche altri venissero indagati.
-Sentence (en): The spokesman did not rule out the possibility that others would also be investigated. 
+Sentence Gloss (en): The spokesman did not rule out the possibility that others would also be investigated. 
 
 # sentence level graph:
 (s44 / )
@@ -2103,7 +2103,7 @@ i2:
 Index:  1   2    3     4  5    6  7  8        9         10      11      12      13   14
 Words: Non si capisce in che modo i due drammaturghi abbiano potuto lavorare insieme .
 Sentence: Non si capisce in che modo i due drammaturghi abbiano potuto lavorare insieme.
-Sentence (en): One doesn't know in which way both dramatists would have worked together. 
+Sentence Gloss (en): One doesn't know in which way both dramatists would have worked together. 
 
 # sentence level graph:
 (s45 / )
@@ -2128,7 +2128,7 @@ i2:
 Index:  1    2    3      4      5       6       7  8     9     10 11   12   13   14   15
 Words: La Russia ha annunciato una sospensione di il contratto a gli inizi di ottobre .
 Sentence: La Russia ha annunciato una sospensione del contratto agli inizi di ottobre.
-Sentence (en): Russia announced a suspension of the contract at the beginning of October. 
+Sentence Gloss (en): Russia announced a suspension of the contract at the beginning of October. 
 
 # sentence level graph:
 (s46 / )
@@ -2153,7 +2153,7 @@ o:
 Index: 1  2     3        4    5  6  7    8    9  10    11      12   13  14  15   16    17  18
 Words: È un processo politico e io ho deciso di non essere presente , come già stato detto .
 Sentence: È un processo politico e io ho deciso di non essere presente, come già stato detto.
-Sentence (en): It is a political process and I have decided not to be present, so it was said. 
+Sentence Gloss (en): It is a political process and I have decided not to be present, so it was said. 
 
 # sentence level graph:
 (s47 / )
@@ -2181,7 +2181,7 @@ d2:
 Index:  1  2     3       4    5     6    7    8     9    10  11   12    13       14      15  16
 Words: Se un impiegato turco si licenzia , allora entra in gioco il Comitato Aziendale turco .
 Sentence: Se un impiegato turco si licenzia, allora entra in gioco il Comitato Aziendale turco.
-Sentence (en): If a Turkish employee quits, then the Turkish work councils come. 
+Sentence Gloss (en): If a Turkish employee quits, then the Turkish work councils come. 
 
 # sentence level graph:
 (s48 / )
@@ -2208,7 +2208,7 @@ t2:
 Index:  1    2     3    4   5   6  7     8        9   10 11  12       13      14 15  16  17   18    19  20  21   22 23   24    25   26   27       28    29 30     31    32 33    34       35    36  37   38        39    40
 Words: Da questo punto di vista , le strutture datate e un élite soddisfatta di sé sono le ragioni per le quali in gli Stati Uniti il sistema sanitario , l' istruzione e il commercio estero sono in cattive condizioni .
 Sentence: Da questo punto di vista, le strutture datate e un élite soddisfatta di sé sono le ragioni per le quali negli Stati Uniti il sistema sanitario, l'istruzione e il commercio estero sono in cattive condizioni.
-Sentence (en): From this point of view, stale structures and a self-satisfied elite are the reason why the health system, education and foreign trade in the USA is in such bad shape. 
+Sentence Gloss (en): From this point of view, stale structures and a self-satisfied elite are the reason why the health system, education and foreign trade in the USA is in such bad shape. 
 
 # sentence level graph:
 (s49 / )
@@ -2254,7 +2254,7 @@ c3:
 Index:   1   2    3      4     5   6   7
 Words: Kühn può solo scuotere la testa .
 Sentence: Kühn può solo scuotere la testa.
-Sentence (en): Kühn can only shake his head. 
+Sentence Gloss (en): Kühn can only shake his head. 
 
 # sentence level graph:
 (s50 / )
@@ -2274,7 +2274,7 @@ t:
 Index:  1    2        3      4    5     6 7   8     9      10    11       12           13     14
 Words: Von Beust giustificò l' aumento di i costi come mancanza di pianificazione dettagliata .
 Sentence: Von Beust giustificò l'aumento dei costi come mancanza di pianificazione dettagliata.
-Sentence (en): Von Beust justified the cost increases as lack of detailed planning. 
+Sentence Gloss (en): Von Beust justified the cost increases as lack of detailed planning. 
 
 # sentence level graph:
 (s51 / )
@@ -2299,7 +2299,7 @@ d:
 Index:  1   2  3    4     5     6    7     8    9    10      11        12   13
 Words: Era il 30 agosto 2015 quando un' armata di anatre conquistò internet .
 Sentence: Era il 30 agosto 2015 quando un'armata di anatre conquistò internet.
-Sentence (en): It was August 30, 2015, as an army of ducks conquered the internet. 
+Sentence Gloss (en): It was August 30, 2015, as an army of ducks conquered the internet. 
 
 # sentence level graph:
 (s52 / )
@@ -2324,7 +2324,7 @@ i2:
 Index: 1  2  3   4       5     6  7   8   9
 Words: E ora è anche campione di il mondo .
 Sentence: E ora è anche campione del mondo.
-Sentence (en): And now he is also world champion. 
+Sentence Gloss (en): And now he is also world champion. 
 
 # sentence level graph:
 (s53 / )
@@ -2346,7 +2346,7 @@ m:
 Index:  1    2     3  4      5      6  7   8    9     10    11 12   13  14
 Words: La ragione di la promozione di il video in Germania non è chiara .
 Sentence: La ragione della promozione del video in Germania non è chiara.
-Sentence (en): The reason for advertising the video in Germany is unclear. 
+Sentence Gloss (en): The reason for advertising the video in Germany is unclear. 
 
 # sentence level graph:
 (s54 / )
@@ -2371,7 +2371,7 @@ c:
 Index:   1     2   3      4         5     6  7     8       9   10 11     12    13   14    15   16      17    18  19  2021   22    23       24     25 26     27     28    29    30 31    32     33 34   35   36  37  38    39    40
 Words: Larry Vance , inquirente canadese su l' incidente aereo , ha raccontato a SPIEGEL di essere convinto che uno di i piloti aveva intenzione di far atterrare il velivolo su la superfice di l' oceano per far lo affondare .
 Sentence: Larry Vance, inquirente canadese sull'incidente aereo, ha raccontato a SPIEGEL di essere convinto che uno dei piloti aveva intenzione di far atterrare il velivolo sulla superfice dell'oceano per farlo affondare.
-Sentence (en): The Canadian investigator of the plane crash Larry Vance told SPIEGEL that he is convinced that one of the pilots had intended to land the machine on the ocean surface - so that it would sink. 
+Sentence Gloss (en): The Canadian investigator of the plane crash Larry Vance told SPIEGEL that he is convinced that one of the pilots had intended to land the machine on the ocean surface - so that it would sink. 
 
 # sentence level graph:
 (s55 / )
@@ -2413,7 +2413,7 @@ a4:
 Index:  1     2          3        4     5      6  7     8    9
 Words: Per Barroso probabilmente la questione non è superata .
 Sentence: Per Barroso probabilmente la questione non è superata.
-Sentence (en): The issue might not be over for Barroso. 
+Sentence Gloss (en): The issue might not be over for Barroso. 
 
 # sentence level graph:
 (s56 / )
@@ -2435,7 +2435,7 @@ s:
 Index:  1     2       3      4  5  6       7        8  9    10      11   12 13 1415 16    17       18  19
 Words: Gli arresti attuali sono " la continuazione di le bravate contro di noi , " ha affermato Dündar .
 Sentence: Gli arresti attuali sono "la continuazione delle bravate contro di noi," ha affermato Dündar.
-Sentence (en): The current arrests are "a continuation of the shenanigans against us," said Dündar. 
+Sentence Gloss (en): The current arrests are "a continuation of the shenanigans against us," said Dündar. 
 
 # sentence level graph:
 (s57 / )
@@ -2462,7 +2462,7 @@ d2:
 Index:  1   2         3       4   5    6        7             8        9   10  11
 Words: Le cifre rassicuranti in Asia hanno risollevato immediatamente le borse .
 Sentence: Le cifre rassicuranti in Asia hanno risollevato immediatamente le borse.
-Sentence (en): The good numbers in Asia promptly pushed the stock markets up. 
+Sentence Gloss (en): The good numbers in Asia promptly pushed the stock markets up. 
 
 # sentence level graph:
 (s58 / )
@@ -2485,7 +2485,7 @@ b:
 Index: 1       2       3    4      5     6    7     8       9      1011 12    13    14   15     16     17   18     19    20  21     22    23 24    25    26 27    28    29     30     31
 Words: I contaminanti non solo attaccano i polmoni non sviluppati di i più piccoli ma possono anche portare a invalidità a lungo termine in lo sviluppo di il cervello in adolescenza .
 Sentence: I contaminanti non solo attaccano i polmoni non sviluppati dei più piccoli ma possono anche portare a invalidità a lungo termine nello sviluppo del cervello in adolescenza.
-Sentence (en): The contaminants not only attack the undeveloped lungs of the little ones; they can also lead to long-term impairment in the development of the adolescent brain. 
+Sentence Gloss (en): The contaminants not only attack the undeveloped lungs of the little ones; they can also lead to long-term impairment in the development of the adolescent brain. 
 
 # sentence level graph:
 (s59 / )
@@ -2523,7 +2523,7 @@ a3:
 Index:  1      2      3  4    5        6    7    8       9          10      11     12        13       14      15  16   17    18  19      20     21   22       23   24     25     26   27    28 29  30  31 32    33     34     35    36
 Words: Non sorprende che i governi federali e statali abbiano classificato il Patrimonio Naturale Nazionale come un impegno su scala nazionale di massima priorità , documentato a partire da il 2005 in un contratto di coalizione .
 Sentence: Non sorprende che i governi federali e statali abbiano classificato il Patrimonio Naturale Nazionale come un impegno su scala nazionale di massima priorità, documentato a partire dal 2005 in un contratto di coalizione.
-Sentence (en): It is no surprise that the federal and state governments have classified the National Natural Heritage as a nation-wide endeavor of the highest priority and have documented it starting in 2005 in a coalition contract. 
+Sentence Gloss (en): It is no surprise that the federal and state governments have classified the National Natural Heritage as a nation-wide endeavor of the highest priority and have documented it starting in 2005 in a coalition contract. 
 
 # sentence level graph:
 (s60 / )
@@ -2563,7 +2563,7 @@ c3:
 Index: 1      2      3    4    5  6  7    8    9  10   11    12  13  14  15  16    17        18    19
 Words: A differenza di quella di il 28 ottobre , la lettera di Comey è stata a malapena commentata .
 Sentence: A differenza di quella del 28 ottobre, la lettera di Comey è stata a malapena commentata.
-Sentence (en): Unlike that of the 28th of October, Mr. Comey's letter has hardly been commented upon. 
+Sentence Gloss (en): Unlike that of the 28th of October, Mr. Comey's letter has hardly been commented upon. 
 
 # sentence level graph:
 (s61 / )
@@ -2589,7 +2589,7 @@ c2:
 Index:  1   2      3    4  5       6          7      8  9      10     11 12    13       14    15   16 1718
 Words: Se fosse eletto il suo oppositore Democratico , ha assicurato che " verrebbe indagata per anni " .
 Sentence: Se fosse eletto il suo oppositore Democratico, ha assicurato che "verrebbe indagata per anni".
-Sentence (en): If his Democrat opponent were to be elected, he assured that she would be 'under investigation for years'. 
+Sentence Gloss (en): If his Democrat opponent were to be elected, he assured that she would be 'under investigation for years'. 
 
 # sentence level graph:
 (s62 / )
@@ -2614,7 +2614,7 @@ a2:
 Index: 1  2   3   4     5     6    7       8    9  10  11  12  13     14      15      16   1718 19    20      21  22
 Words: " Chi non può gestire un account Twitter , non può di certo gestire codici nucleari " , ha scherzato Obama .
 Sentence: "Chi non può gestire un account Twitter, non può di certo gestire codici nucleari", ha scherzato Obama.
-Sentence (en): "If somebody can't handle a Twitter account, they can't handle the nuclear codes," Obama mocked. 
+Sentence Gloss (en): "If somebody can't handle a Twitter account, they can't handle the nuclear codes," Obama mocked. 
 
 # sentence level graph:
 (s63 / )
@@ -2642,7 +2642,7 @@ o:
 Index:    1     2     3     4    5    6  7   8   9
 Words: Secondo il programma , parlerà a le 23:45 .
 Sentence: Secondo il programma, parlerà alle 23:45.
-Sentence (en): According to the programme, she will speak at 23.45. 
+Sentence Gloss (en): According to the programme, she will speak at 23.45. 
 
 # sentence level graph:
 (s64 / )
@@ -2662,7 +2662,7 @@ l:
 Index:    1     2    3     4    5    6         7         8     9   10       11      12   13 14  15    16  17
 Words: Martedì gli Stati Uniti d' America potrebbero eleggere il primo presidente donna di la loro storia .
 Sentence: Martedì gli Stati Uniti d'America potrebbero eleggere il primo presidente donna della loro storia.
-Sentence (en): On Tuesday, the United States of America could elect the first female president in its history. 
+Sentence Gloss (en): On Tuesday, the United States of America could elect the first female president in its history. 
 
 # sentence level graph:
 (s65 / )
@@ -2690,7 +2690,7 @@ s2:
 Index:  1  2   3     4  5  6     7      8  9     10   11  12  13 14   15    16  17     18       19    20  21     22    23
 Words: Da l' altro lato , le relazioni di gli ultimi 20 anni di la Clinton con il continente lascia molto a desiderare .
 Sentence: Dall'altro lato, le relazioni degli ultimi 20 anni della Clinton con il continente lascia molto a desiderare.
-Sentence (en): On the other hand, Ms. Clinton's relations with the continent over the past twenty years leave much to be desired. 
+Sentence Gloss (en): On the other hand, Ms. Clinton's relations with the continent over the past twenty years leave much to be desired. 
 
 # sentence level graph:
 (s66 / )
@@ -2721,7 +2721,7 @@ d:
 Index: 1      2      3       4       5 6  7    8   9    10   11   12  13 14    15   16 17     18    19   20    21     22     23   24  25    26   27     28    29
 Words: È necessaria una maggioranza di i due terzi , ovvero 367 voti su 550 membri di il parlamento , mentre sono necessari 330 voti per indire il referendum .
 Sentence: È necessaria una maggioranza dei due terzi, ovvero 367 voti su 550 membri del parlamento, mentre sono necessari 330 voti per indire il referendum.
-Sentence (en): A third-party majority is needed, specifically the votes of 367 MPs (out of 550), whereas 330 votes are required in order to trigger a referendum. 
+Sentence Gloss (en): A third-party majority is needed, specifically the votes of 367 MPs (out of 550), whereas 330 votes are required in order to trigger a referendum. 
 
 # sentence level graph:
 (s67 / )
@@ -2758,7 +2758,7 @@ r:
 Index:    1    2     3    4  5    6     7   8   9    10   11 12 13   14    15 16  17    18   19 20   21   22     23     24   25    26  27   28      29    30 31  32  33 34    35      36  37
 Words: Giovedì 3 novembre , il sindaco di Saint - Gaudens ( in la regione di l' Alta Garonna ) ha deciso di sospendere l' accordo con il governo formato in il 2014 su lo sviluppo urbano .
 Sentence: Giovedì 3 novembre, il sindaco di Saint-Gaudens (nella regione dell'Alta Garonna) ha deciso di sospendere l'accordo con il governo formato nel 2014 sullo sviluppo urbano.
-Sentence (en): On Thursday, the 3rd of November, the mayor of Saint-Gaudens (in the Haute-Garonne region) decided to suspend the urban development agreement with the government formed in 2014. 
+Sentence Gloss (en): On Thursday, the 3rd of November, the mayor of Saint-Gaudens (in the Haute-Garonne region) decided to suspend the urban development agreement with the government formed in 2014. 
 
 # sentence level graph:
 (s68 / )
@@ -2797,7 +2797,7 @@ u:
 Index:   1     2  3    4    5       6        7     8      9       10 11  12      13     14 15   16      17   18
 Words: Quali sono i limiti che potrebbero inibire l' espressione di il credo religioso in le aziende private ?
 Sentence: Quali sono i limiti che potrebbero inibire l'espressione del credo religioso nelle aziende private?
-Sentence (en): What are the limits that could inhibit the expression of religious beliefs in private companies? 
+Sentence Gloss (en): What are the limits that could inhibit the expression of religious beliefs in private companies? 
 
 # sentence level graph:
 (s69 / )
@@ -2826,7 +2826,7 @@ p:
 Index: 1      2       3    4     5     6    7      8        9      10 11  12     13    14
 Words: I lavoratori hanno il permesso di tenere oggetti religiosi su le loro scrivanie ?
 Sentence: I lavoratori hanno il permesso di tenere oggetti religiosi sulle loro scrivanie?
-Sentence (en): Are workers allowed to keep religious objects on their desks? 
+Sentence Gloss (en): Are workers allowed to keep religious objects on their desks? 
 
 # sentence level graph:
 (s70 / )
@@ -2852,7 +2852,7 @@ s:
 Index:  1     2       3       4        5      6  7   8      9     10 11    12     13 14  15   16    17     18     19   2021 22  2324 25   26   27   28       29      3031 32  33   34   35   36
 Words: Il sindacato Force Ouvrière rimpiange che i suoi commenti su il contenuto di la guida non fossero stati inclusi : " Non c' è mai stata una vera consultazione " , ha detto la Gillard .
 Sentence: Il sindacato Force Ouvrière rimpiange che i suoi commenti sul contenuto della guida non fossero stati inclusi: "Non c'è mai stata una vera consultazione", ha detto la Gillard.
-Sentence (en): The Force Ouvrière union regrets that its remarks on the content of the guide were not included: "There wasn't really any consultation," said Ms. Gillard. 
+Sentence Gloss (en): The Force Ouvrière union regrets that its remarks on the content of the guide were not included: "There wasn't really any consultation," said Ms. Gillard. 
 
 # sentence level graph:
 (s71 / )
@@ -2892,7 +2892,7 @@ g2:
 Index:  1   2   3       4      5  6    7     8     9   10  11       12    13 14 15    16    17  18   19    20    2122
 Words: La guida è problematica , per prima cosa perché è stata sviluppata " in un contesto di stato di emergenza " .
 Sentence: La guida è problematica, per prima cosa perché è stata sviluppata "in un contesto di stato di emergenza".
-Sentence (en): The guide is problematic, firstly because it has been developed "in the context of a state of emergency". 
+Sentence Gloss (en): The guide is problematic, firstly because it has been developed "in the context of a state of emergency". 
 
 # sentence level graph:
 (s72 / )
@@ -2919,7 +2919,7 @@ e:
 Index:  1  2         3         4       5     6    7     8  9   10      11    12 13  14   15     16     17 18   19   20
 Words: Le due organizzazioni hanno lanciato un appello che è stato respinto da la Corte di Cassazione il 12 Ottobre .
 Sentence: Le due organizzazioni hanno lanciato un appello che è stato respinto dalla Corte di Cassazione il 12 Ottobre.
-Sentence (en): The two organisations launched an appeal which was thrown out by the Court of Cassation on the 12th of October. 
+Sentence Gloss (en): The two organisations launched an appeal which was thrown out by the Court of Cassation on the 12th of October. 
 
 # sentence level graph:
 (s73 / )
@@ -2949,7 +2949,7 @@ o2:
 Index:   1   2    3     4        5        6   7    8  9    10     11   12  13   14    15 16 17  18   19         20           21    22  23     24   25  26   27    28    29  30    31   32 33   34   35
 Words: Punta a portare in considerazione il tempo di il viaggio dopo aver lo dedotto da le ore di lavoro effettivamente completate , senza essere in grado di misurare il tempo reale di il viaggio .
 Sentence: Punta a portare in considerazione il tempo del viaggio dopo averlo dedotto dalle ore di lavoro effettivamente completate, senza essere in grado di misurare il tempo reale del viaggio.
-Sentence (en): It aims to take the journey time into account after deducting this from the working hours actually completed, without being able to measure the real journey time. 
+Sentence Gloss (en): It aims to take the journey time into account after deducting this from the working hours actually completed, without being able to measure the real journey time. 
 
 # sentence level graph:
 (s74 / )
@@ -2986,7 +2986,7 @@ v2:
 Index:  1   2    3    4       5      6    7     8    9  10 11 12  13    14  15 16   17  18
 Words: Il tempo di lavoro impiegato in questa prima ora è più o meno uguale a 45 minuti .
 Sentence: Il tempo di lavoro impiegato in questa prima ora è più o meno uguale a 45 minuti.
-Sentence (en): The working time undertaken in this first hour is more or less equal to 45 minutes. 
+Sentence Gloss (en): The working time undertaken in this first hour is more or less equal to 45 minutes. 
 
 # sentence level graph:
 (s75 / )
@@ -3015,7 +3015,7 @@ m2:
 Index: 1  2  3 4  5      6     7 8  9     10    11     12         13   14
 Words: " ETA è a gli sgoccioli " , ha rivelato un contingente francese .
 Sentence: "ETA è agli sgoccioli", ha rivelato un contingente francese.
-Sentence (en): "ETA is on its way out," the French contingent revealed. 
+Sentence Gloss (en): "ETA is on its way out," the French contingent revealed. 
 
 # sentence level graph:
 (s76 / )
@@ -3038,7 +3038,7 @@ f:
 Index:  1   2       3      4  5  6     7      8   9      10        11      12   13  14       15       16      17       18        19      2021
 Words: Ha anche rimarcato che " l' esistenza di tale documento potrebbe portare a delle conseguenze tanto probabili quanto inaccettabili " .
 Sentence: Ha anche rimarcato che "l'esistenza di tale documento potrebbe portare a delle conseguenze tanto probabili quanto inaccettabili".
-Sentence (en): He also remarked that "the existence of such a document could lead to consequences that are as likely as they are unacceptable". 
+Sentence Gloss (en): He also remarked that "the existence of such a document could lead to consequences that are as likely as they are unacceptable". 
 
 # sentence level graph:
 (s77 / )
@@ -3066,7 +3066,7 @@ i:
 Index:  1     2         3        4    5  6   7     8     9     10    11  12   13  14   15    16    17     18        19   20    21     22      23    2425
 Words: Il Consiglio Digitale Francese , che dà consigli su progetti di legge in linea con domande di tecnologia digitale , potrebbe anche esaminar lo .
 Sentence: Il Consiglio Digitale Francese, che dà consigli su progetti di legge in linea con domande di tecnologia digitale, potrebbe anche esaminarlo.
-Sentence (en): The French Digital Council, which advises on bills in line with questions of digital technology, could also scrutinise it. 
+Sentence Gloss (en): The French Digital Council, which advises on bills in line with questions of digital technology, could also scrutinise it. 
 
 # sentence level graph:
 (s78 / )
@@ -3097,7 +3097,7 @@ l3:
 Index:    1     2    3   4    5     6    7  8    9        10    11      12      13   14    15  16 17 1819  20   21   22   23  24       25    26 27    28    29
 Words: Secondo Le Figaro , questo piano di il governo potrebbe far risparmiare 42 milioni di euro , di i quali 15 milioni e mezzo andrebbero a la sicurezza .
 Sentence: Secondo Le Figaro, questo piano del governo potrebbe far risparmiare 42 milioni di euro, dei quali 15 milioni e mezzo andrebbero alla sicurezza.
-Sentence (en): According to Le Figaro, this government plan could free up 42 million euros, of which 15.5 million would go towards security. 
+Sentence Gloss (en): According to Le Figaro, this government plan could free up 42 million euros, of which 15.5 million would go towards security. 
 
 # sentence level graph:
 (s79 / )
@@ -3132,7 +3132,7 @@ s:
 Index:  1    2     3   4  5    6        7      8
 Words: La Francia non ha una buona reputazione .
 Sentence: La Francia non ha una buona reputazione.
-Sentence (en): France doesn't have a good reputation. 
+Sentence Gloss (en): France doesn't have a good reputation. 
 
 # sentence level graph:
 (s80 / )
@@ -3154,7 +3154,7 @@ r:
 Index:  1    2      3   4  5     6         7     8   9     10    1112   13   14     15      1617   18    19 20   21      22   23 24 25   26   27
 Words: Da sempre vicina a il sindacato cattolico , Tina Anselmi si è curata in particolare di i diritti di le operaie tessili e di le maestre .
 Sentence: Da sempre vicina al sindacato cattolico, Tina Anselmi si è curata in particolare dei diritti delle operaie tessili e delle maestre.
-Sentence (en): Having always been close to the Catholic Union, Tina Anselmi attended particularly to the rights of textile workers and teachers. 
+Sentence Gloss (en): Having always been close to the Catholic Union, Tina Anselmi attended particularly to the rights of textile workers and teachers. 
 
 # sentence level graph:
 (s81 / )
@@ -3187,7 +3187,7 @@ m:
 Index: 1     2        3     4   5    6     7     8       9      10      11       12   13  14
 Words: È difficile credere che l' Italia abbia meno chilometri di metropolitana di Madrid .
 Sentence: È difficile credere che l'Italia abbia meno chilometri di metropolitana di Madrid.
-Sentence (en): It is difficult to think that Italy has fewer km of underground line than Madrid. 
+Sentence Gloss (en): It is difficult to think that Italy has fewer km of underground line than Madrid. 
 
 # sentence level graph:
 (s82 / )
@@ -3212,7 +3212,7 @@ m3:
 Index:  1      2       3      4      5    6    7    8    9       10       11   12   13  14     15    16
 Words: Non possiamo andare avanti insieme a quelli che sono totalmente contro l' Italia , sottolinea .
 Sentence: Non possiamo andare avanti insieme a quelli che sono totalmente contro l'Italia, sottolinea.
-Sentence (en): It has been emphasised that we absolutely cannot continue with those who are completely against Italy. 
+Sentence Gloss (en): It has been emphasised that we absolutely cannot continue with those who are completely against Italy. 
 
 # sentence level graph:
 (s83 / )
@@ -3238,7 +3238,7 @@ s2:
 Index:      1      2 3   4       5       6    7   8    9        10    11
 Words: Valuteremo se e come proseguire anche per la tratta successiva .
 Sentence: Valuteremo se e come proseguire anche per la tratta successiva.
-Sentence (en): We will evaluate whether and how to continue onto the next section. 
+Sentence Gloss (en): We will evaluate whether and how to continue onto the next section. 
 
 # sentence level graph:
 (s84 / )
@@ -3261,7 +3261,7 @@ s:
 Index:  1    2         3     4 5     6    7  8  9      10   11
 Words: La canzone tormentone è " Geronimo " di gli Sheppard .
 Sentence: La canzone tormentone è "Geronimo" degli Sheppard.
-Sentence (en): The hit song is "Geronimo" by Sheppard. 
+Sentence Gloss (en): The hit song is "Geronimo" by Sheppard. 
 
 # sentence level graph:
 (s85 / )
@@ -3283,7 +3283,7 @@ s:
 Index: 1      2          3        4     5  6    7     8     9  10  11   12    13     14   15 16    17     18 19
 Words: I maggiorenni potranno disporre di 500 euro offerti da lo Stato da spendere entro il 31 dicembre 2017 .
 Sentence: I maggiorenni potranno disporre di 500 euro offerti dallo Stato da spendere entro il 31 dicembre 2017.
-Sentence (en): Those of age will be offered 500 euros by the state, to be spent by 31st December 2017. 
+Sentence Gloss (en): Those of age will be offered 500 euros by the state, to be spent by 31st December 2017. 
 
 # sentence level graph:
 (s86 / )
@@ -3311,7 +3311,7 @@ d2:
 Index:    1    2    3    4   5    6   7     8      9     10 11     12    13    14   15     16    17 18  19  20
 Words: Quindi si genera il buono che può essere salvato su lo smartphone o stampato e presentato a la cassa .
 Sentence: Quindi si genera il buono che può essere salvato sullo smartphone o stampato e presentato alla cassa.
-Sentence (en): A voucher is generated that can be saved on your smartphone, or presented at the till. 
+Sentence Gloss (en): A voucher is generated that can be saved on your smartphone, or presented at the till. 
 
 # sentence level graph:
 (s87 / )
@@ -3342,7 +3342,7 @@ c2:
 Index:  1  2   3      4          5         6    7    8    9
 Words: Da il primo gennaio aumenteranno benzina e gasolio .
 Sentence: Dal primo gennaio aumenteranno benzina e gasolio.
-Sentence (en): From the 1st of January there will be an increase in petrol and diesel. 
+Sentence Gloss (en): From the 1st of January there will be an increase in petrol and diesel. 
 
 # sentence level graph:
 (s88 / )
@@ -3364,7 +3364,7 @@ g2:
 Index:  1    2        3         4     5  6   7    8 9   10   11     12    13   14    15   16 17  18 19  20    21 22 23  24  25
 Words: Un valore nettamente superiore a la media di i paesi che adottano la moneta unica che è pari a 1,365 euro a il litro .
 Sentence: Un valore nettamente superiore alla media dei paesi che adottano la moneta unica che è pari a 1,365 euro al litro.
-Sentence (en): A significantly higher cost which clearly exceeds the average of the countries that adopt the single currency, which is equal to 1,365 euros per litre. 
+Sentence Gloss (en): A significantly higher cost which clearly exceeds the average of the countries that adopt the single currency, which is equal to 1,365 euros per litre. 
 
 # sentence level graph:
 (s89 / )
@@ -3399,7 +3399,7 @@ l3:
 Index:    1       2       3    4    5     6   7   8  9  10      11       12   13      14    15  16  17   18     19     2021   22      23    2425
 Words: Corrado Passera ritira l' offerta per Mps per " l' atteggiamento di totale chiusura che la Banca ha dimostrato in i nostri confronti " .
 Sentence: Corrado Passera ritira l'offerta per Mps per "l'atteggiamento di totale chiusura che la Banca ha dimostrato nei nostri confronti".
-Sentence (en): Corrado Passera withdraws the offer for Mps due to "the attitude of total closure that the Bank has shown to us". 
+Sentence Gloss (en): Corrado Passera withdraws the offer for Mps due to "the attitude of total closure that the Bank has shown to us". 
 
 # sentence level graph:
 (s90 / )
@@ -3431,7 +3431,7 @@ c4:
 Index:   1    2   3  4     5     6      7       8  9  10 11   12        13      14  15  16     17   18 19   20      21     22     23      24    25      26       27     28
 Words: Come detto , la decisione è prerogativa di la BCE e sarebbe inopportuno per la Banca parlare a suo nome escludendo la possibilità di esaminare altre alternative .
 Sentence: Come detto, la decisione è prerogativa della BCE e sarebbe inopportuno per la Banca parlare a suo nome escludendo la possibilità di esaminare altre alternative.
-Sentence (en): As stated, the decision is the prerogative of the ECB and would appear inappropriate for the Bank to speak on its behalf by excluding the possibility of looking at other alternatives. 
+Sentence Gloss (en): As stated, the decision is the prerogative of the ECB and would appear inappropriate for the Bank to speak on its behalf by excluding the possibility of looking at other alternatives. 
 
 # sentence level graph:
 (s91 / )
@@ -3467,7 +3467,7 @@ a2:
 Index: 1    2      3    4  5    6  7  8    9   10    11     12 13 14    15    16   17   18 19   20   21
 Words: È quanto scrive in una nota a Mps dopo la decisione di l' ex ministro di uscire da la partita .
 Sentence: È quanto scrive in una nota a Mps dopo la decisione dell'ex ministro di uscire dalla partita.
-Sentence (en): This is what has been written in a note to Mps after the decision of the ex-minister to leave the party. 
+Sentence Gloss (en): This is what has been written in a note to Mps after the decision of the ex-minister to leave the party. 
 
 # sentence level graph:
 (s92 / )
@@ -3496,7 +3496,7 @@ p:
 Index:    1    2  3      4       5      6     7
 Words: Passerà a le valutazioni di competenza .
 Sentence: Passerà alle valutazioni di competenza.
-Sentence (en): It will go for assessment. 
+Sentence Gloss (en): It will go for assessment. 
 
 # sentence level graph:
 (s93 / )
@@ -3515,7 +3515,7 @@ c:
 Index: 1   2     3   4  5      6     7  8      9       10   11 12  13   14 15    16        17     18  19 20
 Words: È stato detto a gli studenti di l' Università Luiss in il corso di un incontro organizzato a Roma .
 Sentence: È stato detto agli studenti dell'Università Luiss nel corso di un incontro organizzato a Roma.
-Sentence (en): Students at LUISS University were told during the course of a meeting which took place in Rome. 
+Sentence Gloss (en): Students at LUISS University were told during the course of a meeting which took place in Rome. 
 
 # sentence level graph:
 (s94 / )
@@ -3543,7 +3543,7 @@ r:
 Index:    1        2     3  4      5       6   7    8        9      10  11   12      13      14 15  16   17    18   1920  21   22     23     24   25    26 27    28    29
 Words: Quattro studenti di l' università Roma Tre hanno sviluppato un casco da motociclista che " legge il pensiero " e aiuta ad anticipare le manovre di il guidatore .
 Sentence: Quattro studenti dell'università Roma Tre hanno sviluppato un casco da motociclista che "legge il pensiero" e aiuta ad anticipare le manovre del guidatore.
-Sentence (en): Four students at Roma Tre University have developed a motorcycle helmet that can 'read thoughts' by helping to anticipate drivers' actions. 
+Sentence Gloss (en): Four students at Roma Tre University have developed a motorcycle helmet that can 'read thoughts' by helping to anticipate drivers' actions. 
 
 # sentence level graph:
 (s95 / )
@@ -3579,7 +3579,7 @@ g:
 Index:  1   2  3     4    5    6        7     8  9     10     11  12      13    14  15      16    17     18    19     20      21  22
 Words: Uno di gli esempi di ricerca applicata a la sicurezza ha anche prodotto il robot umanoide che gareggia con Valentino Rossi .
 Sentence: Uno degli esempi di ricerca applicata alla sicurezza ha anche prodotto il robot umanoide che gareggia con Valentino Rossi.
-Sentence (en): One of the examples of research applied under safety measures has also produced a humanoid robot to compete with Valentino Rossi. 
+Sentence Gloss (en): One of the examples of research applied under safety measures has also produced a humanoid robot to compete with Valentino Rossi. 
 
 # sentence level graph:
 (s96 / )
@@ -3610,7 +3610,7 @@ r3:
 Index:  1    2     3      4     5       6       7  8     9     10   11   12 13  14   15 16    17     18       19        20 21   22      23  24
 Words: In cambio Uber riceverà un investimento da un miliardo di dollari e un posto in il consiglio di amministrazione di la società cinese .
 Sentence: In cambio Uber riceverà un investimento da un miliardo di dollari e un posto nel consiglio di amministrazione della società cinese.
-Sentence (en): In return, Uber will receive a billion dollar investment and a seat on the board of directors of the Chinese company. 
+Sentence Gloss (en): In return, Uber will receive a billion dollar investment and a seat on the board of directors of the Chinese company. 
 
 # sentence level graph:
 (s97 / )
@@ -3642,7 +3642,7 @@ c3:
 Index:     1     2    3    4    5    6     7          8          9     10     11    12  13    14  15  16   17  18  19 20   21      22  23
 Words: Rispetto al passato , sempre più società tecnologiche prendono l' iniziativa a Wall Street , ancor più che in la Silicon Valley .
 Sentence: Rispetto al passato, sempre più società tecnologiche prendono l'iniziativa a Wall Street, ancor più che nella Silicon Valley.
-Sentence (en): More and more tech companies are calling the shots more than ever before on Wall Street, even more than in Silicon Valley. 
+Sentence Gloss (en): More and more tech companies are calling the shots more than ever before on Wall Street, even more than in Silicon Valley. 
 
 # sentence level graph:
 (s98 / )
@@ -3674,7 +3674,7 @@ v:
 Index:    1   2     3      4    5      6        7      8   9     10           11       12    13      14    15  16
 Words: Amazon è diventata la quarta azienda americana con la maggiore capitalizzazione , superando Exxon Mobil .
 Sentence: Amazon è diventata la quarta azienda americana con la maggiore capitalizzazione, superando Exxon Mobil.
-Sentence (en): Amazon has become the fourth American company with the largest market capitalisation, surpassing ExxonMobil. 
+Sentence Gloss (en): Amazon has become the fourth American company with the largest market capitalisation, surpassing ExxonMobil. 
 
 # sentence level graph:
 (s99 / )
@@ -3701,7 +3701,7 @@ m2:
 Index:   1    2    3    4     5      6  7    8    9    10     11    12   13  14  15  16 17    18          19      20 21   22     23   24
 Words: Oltre al summit di Mountain View i leader di aziende come Spotify , Tesla , Uber e Snapchat parteciperanno a un evento segreto .
 Sentence: Oltre al summit di Mountain View i leader di aziende come Spotify, Tesla, Uber e Snapchat parteciperanno a un evento segreto.
-Sentence (en): Leaders of companies such as Spotify, Tesla, Uber and Snapchat will attend a private event in addition to the Mountain View Summit. 
+Sentence Gloss (en): Leaders of companies such as Spotify, Tesla, Uber and Snapchat will attend a private event in addition to the Mountain View Summit. 
 
 # sentence level graph:
 (s100 / )
@@ -3732,7 +3732,7 @@ s4:
 Index:  1       2        3  4     5     6    7   8     9        10    11     12      13  14   15       16      17   18     19     20   21 22   23   24  25  26       27            28       29     30  31      32         33   34       35     36
 Words: La presidentessa di la Comunità di Madrid , Cristina Cifuentes , rappresenta la parte più conservatrice , mentre alcuni leader di il partito , come il sottosegretario settoriale Javier Maroto , rappresentano quella più progressista .
 Sentence: La presidentessa della Comunità di Madrid, Cristina Cifuentes, rappresenta la parte più conservatrice, mentre alcuni leader del partito, come il sottosegretario settoriale Javier Maroto, rappresentano quella più progressista.
-Sentence (en): The president of the Community of Madrid, Cristina Cifuentes, represents the most conservative, while leaders of the party, such as the Sectorial Under-Secretary, Javier Maroto, represent the most progressive. 
+Sentence Gloss (en): The president of the Community of Madrid, Cristina Cifuentes, represents the most conservative, while leaders of the party, such as the Sectorial Under-Secretary, Javier Maroto, represent the most progressive. 
 
 # sentence level graph:
 (s101 / )
@@ -3773,7 +3773,7 @@ p6:
 Index:   1    2  3     4     5   6      7     8     9     10
 Words: Durán fa da portavoce e Ángel Pintado da tesoriere .
 Sentence: Durán fa da portavoce e Ángel Pintado da tesoriere.
-Sentence (en): Durán acts as spokesman and Ángel Pintado as treasurer. 
+Sentence Gloss (en): Durán acts as spokesman and Ángel Pintado as treasurer. 
 
 # sentence level graph:
 (s102 / )
@@ -3796,7 +3796,7 @@ t:
 Index:  1   2   3     4    5  6     7    8    9   10  11   12       13      14  15    16   17 181920 21  22  23    24      25       26     27 28     29   30 31  32  3334
 Words: Per la prima volta in gli ultimi sei anni il tasso di disoccupazione è sceso sotto il 20 % e ci sono già 60.0000 persone impiegate in più rispetto a un anno fa .
 Sentence: Per la prima volta negli ultimi sei anni il tasso di disoccupazione è sceso sotto il 20% e ci sono già 60.0000 persone impiegate in più rispetto a un anno fa.
-Sentence (en): For the first time in the last six years the rate of unemployment has dropped below 20%, and there are already 600,000 more people employed than there were a year ago. 
+Sentence Gloss (en): For the first time in the last six years the rate of unemployment has dropped below 20%, and there are already 600,000 more people employed than there were a year ago. 
 
 # sentence level graph:
 (s103 / )
@@ -3837,7 +3837,7 @@ f:
 Index:  1  2      3    4     5    6  7  8   9     10   11    12   13
 Words: La sua gestione , comunque , non è stata priva di critiche .
 Sentence: La sua gestione, comunque, non è stata priva di critiche.
-Sentence (en): Its management, however, hasn't been devoid of criticism. 
+Sentence Gloss (en): Its management, however, hasn't been devoid of criticism. 
 
 # sentence level graph:
 (s104 / )
@@ -3860,7 +3860,7 @@ c2:
 Index: 1     2       3    4     5        6     7  8    9        10      11      12     13     14      15 16      17      18 19    20    21  22  23       24    25
 Words: I sindacati sono stati molto agguerriti e in diverse occasioni hanno richiesto l' abrogazione di la legislazione di cui Fátima Báñez è molto orgogliosa .
 Sentence: I sindacati sono stati molto agguerriti e in diverse occasioni hanno richiesto l'abrogazione della legislazione di cui Fátima Báñez è molto orgogliosa.
-Sentence (en): The unions have been very combative and on several occasions have called for the repeal of the legislation that Fátima Báñez is proudest of. 
+Sentence Gloss (en): The unions have been very combative and on several occasions have called for the repeal of the legislation that Fátima Báñez is proudest of. 
 
 # sentence level graph:
 (s105 / )
@@ -3894,7 +3894,7 @@ o2:
 Index:    1    2  3    4      5     6   7  8    9   10  11   12  13   14      15   1617
 Words: Inoltre , il Governo dovrà avere a che fare con un' altra " patata bollente " .
 Sentence: Inoltre, il Governo dovrà avere a che fare con un'altra "patata bollente".
-Sentence (en): Furthermore, the Government will have to deal with another "hot potato". 
+Sentence Gloss (en): Furthermore, the Government will have to deal with another "hot potato". 
 
 # sentence level graph:
 (s106 / )
@@ -3919,7 +3919,7 @@ b:
 Index:  1     2     3  4    5    6  7     8     9     10    11   12  13 14  15   16   17  18      19        20    21 22   23   24
 Words: Il Ministro di la Difesa le ha permesso di rimanere in carica , per il momento , come Segretario Generale di il partito .
 Sentence: Il Ministro della Difesa le ha permesso di rimanere in carica, per il momento, come Segretario Generale del partito.
-Sentence (en): The Minister of Defense has allowed her to remain General Secretary of the party for now. 
+Sentence Gloss (en): The Minister of Defense has allowed her to remain General Secretary of the party for now. 
 
 # sentence level graph:
 (s107 / )
@@ -3948,7 +3948,7 @@ p2:
 Index:  1   2        3       4     5    6  7 8  9  10    11   1213
 Words: Le fonti consultate hanno detto che è " 100 % Cospedal " .
 Sentence: Le fonti consultate hanno detto che è "100% Cospedal".
-Sentence (en): The consulted sources have said that it is "100% Cospedal". 
+Sentence Gloss (en): The consulted sources have said that it is "100% Cospedal". 
 
 # sentence level graph:
 (s108 / )
@@ -3971,7 +3971,7 @@ c2:
 Index:   1      2    3   4    5     6        7     8  9   10   11 12    13      14   15  16   17  18 19    20    21   22   23
 Words: Pedro Sánchez , come molti altri socialisti , ha detto in il programma Évole che la Spagna è una nazione di nazioni .
 Sentence: Pedro Sánchez, come molti altri socialisti, ha detto nel programma Évole che la Spagna è una nazione di nazioni.
-Sentence (en): Pedro Sánchez, like many other socialists, said in the programme Évole that Spain is a nation of nations. 
+Sentence Gloss (en): Pedro Sánchez, like many other socialists, said in the programme Évole that Spain is a nation of nations. 
 
 # sentence level graph:
 (s109 / )
@@ -4001,7 +4001,7 @@ n2:
 Index: 1 2    3       4     5 6    7    8
 Words: E i diritti storici di i partiti ?
 Sentence: E i diritti storici dei partiti?
-Sentence (en): And what about the parties in what, in historical rights? 
+Sentence Gloss (en): And what about the parties in what, in historical rights? 
 
 # sentence level graph:
 (s110 / )
@@ -4022,7 +4022,7 @@ p:
 Index:  1   2   3    4   5   6    7   8  9     10   111213 14  15 16  17    18    19   20   21   22 23 24  25    26   27    28   29
 Words: Sta in piedi da solo di fronte a il pubblico e , a la fine , deve tirare fuori il meglio di sé per far ridere il pubblico .
 Sentence: Sta in piedi da solo di fronte al pubblico e, alla fine, deve tirare fuori il meglio di sé per far ridere il pubblico.
-Sentence (en): He stands alone in front of the audience and, ultimately, he has to bring out the best of himself in order to make the audience laugh. 
+Sentence Gloss (en): He stands alone in front of the audience and, ultimately, he has to bring out the best of himself in order to make the audience laugh. 
 
 # sentence level graph:
 (s111 / )
@@ -4055,7 +4055,7 @@ p3:
 Index:  1 2   3   4    5   6    7    8  9    10     11    12    13    14 15  16  17 18  19    20    21   22   23  24
 Words: In i film di guerra o western e in quelli indiani le battaglie , le lotte e le risse erano fuori dal mondo .
 Sentence: Nei film di guerra o western e in quelli indiani le battaglie, le lotte e le risse erano fuori dal mondo.
-Sentence (en): In the war films or cowboy and Indian films the battles, fights and beatings were out of this world. 
+Sentence Gloss (en): In the war films or cowboy and Indian films the battles, fights and beatings were out of this world. 
 
 # sentence level graph:
 (s112 / )
@@ -4088,7 +4088,7 @@ m:
 Index:  1    2   3  4    5      6    7  8     9        10   11  12       13       14     15    16   17 18    19         20      2122  23    24  25 26      27      2829
 Words: L' enfasi , l' ironia sottile , le allusioni dirette e altri espedienti verbali fanno parte di l' oratoria parlamentare ma i colpi bassi o le pagliacciate no .
 Sentence: L'enfasi, l'ironia sottile, le allusioni dirette e altri espedienti verbali fanno parte dell'oratoria parlamentare ma i colpi bassi o le pagliacciate no.
-Sentence (en): Emphasis, fine irony, blunt innuendos and other well used verbal devices fit into parliamentary oratory, but flicking at each other and slapstick comedy do not. 
+Sentence Gloss (en): Emphasis, fine irony, blunt innuendos and other well used verbal devices fit into parliamentary oratory, but flicking at each other and slapstick comedy do not. 
 
 # sentence level graph:
 (s113 / )
@@ -4128,7 +4128,7 @@ n:
 Index:   1    2     3     4   5  6       7      8    9    10
 Words: Crede che nessuno che ci sta aspettando ci aspetti .
 Sentence: Crede che nessuno che ci sta aspettando ci aspetti.
-Sentence (en): He believes that nobody waiting for us waits for us. 
+Sentence Gloss (en): He believes that nobody waiting for us waits for us. 
 
 # sentence level graph:
 (s114 / )
@@ -4150,7 +4150,7 @@ a2:
 Index:   1   2  3     4    5   6     7     8    9        10    11 12    13      14   15   16    17 18  19     20    21 22   23  24     25     26 27    28   29 30  31  32
 Words: Forse è per questo che una cascata di lacrime annebbiò le sue pupille mentre la sillaba di il tempo scavava la sua pelle e consegnava la sua miseria a le acque .
 Sentence: Forse è per questo che una cascata di lacrime annebbiò le sue pupille mentre la sillaba del tempo scavava la sua pelle e consegnava la sua miseria alle acque.
-Sentence (en): Perhaps that's why a surge of tears clouds his pupils while the syllable of time unearths his crop and surrenders his mystery to the bound waters. 
+Sentence Gloss (en): Perhaps that's why a surge of tears clouds his pupils while the syllable of time unearths his crop and surrenders his mystery to the bound waters. 
 
 # sentence level graph:
 (s115 / )
@@ -4191,7 +4191,7 @@ a2:
 Index: 1    2      3      4     5   6     7       8   9  10  11   12     13      14     15    16   17       18      19    20   21    22   23
 Words: E devono essere accolti con uno spirito aperto e con una mente limpida perché formano una nuova generazione di speranza e bellezza .
 Sentence: E devono essere accolti con uno spirito aperto e con una mente limpida perché formano una nuova generazione di speranza e bellezza.
-Sentence (en): And they must be greeted with an open spirit and clear mind because they form the new generation of beauty and hope. 
+Sentence Gloss (en): And they must be greeted with an open spirit and clear mind because they form the new generation of beauty and hope. 
 
 # sentence level graph:
 (s116 / )
@@ -4223,7 +4223,7 @@ b:
 Index:  1      2      3   4    5  6   7        8       9  10  11  1213       14       15   16       17    18
 Words: Di conseguenza , Trump non è molto preoccupato di il voto di i latinoamericani a livello nazionale .
 Sentence: Di conseguenza, Trump non è molto preoccupato del voto dei latinoamericani a livello nazionale.
-Sentence (en): As a result, Trump isn't very worried about the Latin American vote at a national level. 
+Sentence Gloss (en): As a result, Trump isn't very worried about the Latin American vote at a national level. 
 
 # sentence level graph:
 (s117 / )
@@ -4250,7 +4250,7 @@ n2:
 Index:  1   2       3          4      5     6     7   8        9            10     11  12    13  14 15 16 17   18   19   20     21     22  23   24   25
 Words: Il voto anticipato suggerisce che questa volta i latinoamericani voteranno in gran numero , ma non è chiaro se questo aumento avrà un impatto .
 Sentence: Il voto anticipato suggerisce che questa volta i latinoamericani voteranno in gran numero, ma non è chiaro se questo aumento avrà un impatto.
-Sentence (en): The early voting suggests that this time the Latin Americans will come out to vote in greater numbers, but it is unclear whether the increase will have an impact. 
+Sentence Gloss (en): The early voting suggests that this time the Latin Americans will come out to vote in greater numbers, but it is unclear whether the increase will have an impact. 
 
 # sentence level graph:
 (s118 / )
@@ -4285,7 +4285,7 @@ i3:
 Index:    1     2    3     4  5   6     7    8        9       10    11    12  13   14 15     16    17
 Words: Dozzine di seguaci di il FSLN stanno già festeggiando la vittoria in Plaza de las Victorias .
 Sentence: Dozzine di seguaci del FSLN stanno già festeggiando la vittoria in Plaza de las Victorias.
-Sentence (en): Dozens of FSLN followers are already celebrating the victory in the Plaza de las Victorias. 
+Sentence Gloss (en): Dozens of FSLN followers are already celebrating the victory in the Plaza de las Victorias. 
 
 # sentence level graph:
 (s119 / )
@@ -4312,7 +4312,7 @@ v2:
 Index:  1  2   3     4       5       6     7    8     9    10 11  12   13     14        15     1617  18    19  20    21         22      23 24   25  26
 Words: La May ha ricevuto grandi critiche per aver evitato e per non aver risposto apertamente a i media dopo la decisione giudiziaria su la Brexit .
 Sentence: La May ha ricevuto grandi critiche per aver evitato e per non aver risposto apertamente ai media dopo la decisione giudiziaria sulla Brexit.
-Sentence (en): May has received great criticism for avoiding and not responding openly to the media after the judicial ruling on Brexit. 
+Sentence Gloss (en): May has received great criticism for avoiding and not responding openly to the media after the judicial ruling on Brexit. 
 
 # sentence level graph:
 (s120 / )
@@ -4344,7 +4344,7 @@ b:
 Index:    1     2  3   4    5        6       7    8   9  10   11  12 13   14   1516   17     18    19   20  21 22    23      24     25    26    27       28    29
 Words: Fondato in il 1925 come divertimento per tutti , il teatro a l' aperto su i grandi gradini di fronte a St. Michael attrae tuttora un pubblico variegato .
 Sentence: Fondato nel 1925 come divertimento per tutti, il teatro all'aperto sui grandi gradini di fronte a St. Michael attrae tuttora un pubblico variegato.
-Sentence (en): Founded in 1925 as games for everyman, the open air theater on the great steps in front of St. Michael still attracts a diverse public. 
+Sentence Gloss (en): Founded in 1925 as games for everyman, the open air theater on the great steps in front of St. Michael still attracts a diverse public. 
 
 # sentence level graph:
 (s121 / )
@@ -4380,7 +4380,7 @@ v:
 Index: 1     2         3     4   5   6      7      8    9     10   11 12   13  14 15     16           17        18 19   20   21
 Words: I cittadini islamici che si sono stabiliti fin dagli inizi di gli anni '60 , emigrarono prevalentemente da la Turchia .
 Sentence: I cittadini islamici che si sono stabiliti fin dagli inizi degli anni '60, emigrarono prevalentemente dalla Turchia.
-Sentence (en): The Islamic citizens who have settled since the beginning of the 1960s emigrated primarily from Turkey. 
+Sentence Gloss (en): The Islamic citizens who have settled since the beginning of the 1960s emigrated primarily from Turkey. 
 
 # sentence level graph:
 (s122 / )
@@ -4410,7 +4410,7 @@ t:
 Index:  1     2        3     4       5         6   7  8   9     10  11  12        13        14  15   16   1718   19    20 21
 Words: Il municipio storico di Obermarsberg risale a il XIII secolo e venne ristrutturato dopo la Guerra di i Trent' anni .
 Sentence: Il municipio storico di Obermarsberg risale al XIII secolo e venne ristrutturato dopo la Guerra dei Trent'anni.
-Sentence (en): The historical city hall in Obermarsberg originates from the 13th century and was refurbished after the Thirty Years' War. 
+Sentence Gloss (en): The historical city hall in Obermarsberg originates from the 13th century and was refurbished after the Thirty Years' War. 
 
 # sentence level graph:
 (s123 / )
@@ -4441,7 +4441,7 @@ a:
 Index:  1   2       3        4     5    6    7     8  9     10     11 12  13  14
 Words: Ci sono differenti teorie circa le ragioni di l' abbandono di il luogo .
 Sentence: Ci sono differenti teorie circa le ragioni dell'abbandono del luogo.
-Sentence (en): There are different theories about the reasons for leaving the place. 
+Sentence Gloss (en): There are different theories about the reasons for leaving the place. 
 
 # sentence level graph:
 (s124 / )
@@ -4466,7 +4466,7 @@ l3:
 Index:  1  2    3   4  5  6     7     8  9   10  11  12   13  14     15   16
 Words: Da gli anni '60 , l' economia di la città è stata in netto declino .
 Sentence: Dagli anni '60, l'economia della città è stata in netto declino.
-Sentence (en): Since the 1960s, the city's economy has been in steep decline. 
+Sentence Gloss (en): Since the 1960s, the city's economy has been in steep decline. 
 
 # sentence level graph:
 (s125 / )
@@ -4491,7 +4491,7 @@ d:
 Index:  1  2   3    4   5     6     7  8     9    10   11      12       13      14         15     16
 Words: Sia i tempi che la sequenza di gli eventi di questo incidente furono discussi animatamente .
 Sentence: Sia i tempi che la sequenza degli eventi di questo incidente furono discussi animatamente.
-Sentence (en): Both the time and the sequence of events of this incident were vigorously discussed. 
+Sentence Gloss (en): Both the time and the sequence of events of this incident were vigorously discussed. 
 
 # sentence level graph:
 (s126 / )
@@ -4519,7 +4519,7 @@ a:
 Index: 1  2    3       4    5 6  7    8     9      10   11    12    13   14   15   16   17   18   19 20 21   22 23
 Words: A l' impero Ottomano e a la Russia venne negato il permesso di tenere la flotta di guerra in il Mar Nero .
 Sentence: All'impero Ottomano e alla Russia venne negato il permesso di tenere la flotta di guerra nel Mar Nero.
-Sentence (en): The Ottoman Empire and Russia were denied permission to keep their war fleet in the Black Sea. 
+Sentence Gloss (en): The Ottoman Empire and Russia were denied permission to keep their war fleet in the Black Sea. 
 
 # sentence level graph:
 (s127 / )
@@ -4551,7 +4551,7 @@ n2:
 Index:       1        2    3     4     5     6  7  8   9  10  11 12  13 14 15   16      17     18   19   20 21  22   23
 Words: Probabilmente la persona più celebre di l' età di il rame è Ötzi , la mummia congelata che visse in il 3300 a.C.
 Sentence: Probabilmente la persona più celebre dell'età del rame è Ötzi, la mummia congelata che visse nel 3300 a.C.
-Sentence (en): Likely the most well-known person from the Copper Age is Ötzi, the frozen mummy who lived during 3300 BC. 
+Sentence Gloss (en): Likely the most well-known person from the Copper Age is Ötzi, the frozen mummy who lived during 3300 BC. 
 
 # sentence level graph:
 (s128 / )
@@ -4585,7 +4585,7 @@ a:
 Index:  1     2            3        4  5    6    7
 Words: Si trovavano principalmente su le colline .
 Sentence: Si trovavano principalmente sulle colline.
-Sentence (en): They were primarily on hills. 
+Sentence Gloss (en): They were primarily on hills. 
 
 # sentence level graph:
 (s129 / )
@@ -4605,7 +4605,7 @@ c:
 Index:  1  2  3    4        5          6       7     8  9    10 11  12        13        14     15     16    17 18   19  20
 Words: Il re non prese precauzioni speciali durante la sua fuga e venne riconosciuto diverse volte durante le sue soste .
 Sentence: Il re non prese precauzioni speciali durante la sua fuga e venne riconosciuto diverse volte durante le sue soste.
-Sentence (en): The king did not take special precautions during his escape and was recognized multiple times during his stays. 
+Sentence Gloss (en): The king did not take special precautions during his escape and was recognized multiple times during his stays. 
 
 # sentence level graph:
 (s130 / )
@@ -4637,7 +4637,7 @@ s4:
 Index:  1   2    3      4          5       6  7     8       9    10 11 12
 Words: L' inno venne accolto positivamente e il pubblico chiese il bis .
 Sentence: L'inno venne accolto positivamente e il pubblico chiese il bis.
-Sentence (en): The hymn was well received and the audience demanded an encore. 
+Sentence Gloss (en): The hymn was well received and the audience demanded an encore. 
 
 # sentence level graph:
 (s131 / )
@@ -4663,7 +4663,7 @@ b:
 Index:     1       2   3   4      5       6           7       8
 Words: Dichiaro chiusi i primi Giochi olimpici internazionali .
 Sentence: Dichiaro chiusi i primi Giochi olimpici internazionali.
-Sentence (en): I declare the first international Olympic games over. 
+Sentence Gloss (en): I declare the first international Olympic games over. 
 
 # sentence level graph:
 (s132 / )
@@ -4685,7 +4685,7 @@ i2:
 Index:  1   2      3       4      5        6      7   8       9     10 11    12        13    14
 Words: La Prima Guerra Mondiale portò cambiamenti e nuovi sviluppi in le politiche coloniali .
 Sentence: La Prima Guerra Mondiale portò cambiamenti e nuovi sviluppi nelle politiche coloniali.
-Sentence (en): The First World War brought about shifts and new developments in colonial politics. 
+Sentence Gloss (en): The First World War brought about shifts and new developments in colonial politics. 
 
 # sentence level graph:
 (s133 / )
@@ -4712,7 +4712,7 @@ c2:
 Index:  1      2           3        4    5    6   7      8      9    10  11  12   13    14  15
 Words: La Rivoluzione Industriale ebbe luogo in Gran Bretagna prima che in ogni altro paese .
 Sentence: La Rivoluzione Industriale ebbe luogo in Gran Bretagna prima che in ogni altro paese.
-Sentence (en): The Industrial Revolution took place in Great Britain earlier than in any other country. 
+Sentence Gloss (en): The Industrial Revolution took place in Great Britain earlier than in any other country. 
 
 # sentence level graph:
 (s134 / )
@@ -4739,7 +4739,7 @@ p2:
 Index:   1   2   3    4    5    6        7      8      9   10
 Words: Oggi in quel luogo si possono ammirare vaste rovine .
 Sentence: Oggi in quel luogo si possono ammirare vaste rovine.
-Sentence (en): Today, expansive ruins can be viewed there. 
+Sentence Gloss (en): Today, expansive ruins can be viewed there. 
 
 # sentence level graph:
 (s135 / )
@@ -4761,7 +4761,7 @@ r:
 Index:  1    2       3      4    5     6          7      8  9        10      11 12  13     14    15     16          17          18     19
 Words: La censura eliminò tutte le opinioni indesiderate , la partecipazione a la vita pubblica era diventata praticamente impossibile .
 Sentence: La censura eliminò tutte le opinioni indesiderate, la partecipazione alla vita pubblica era diventata praticamente impossibile.
-Sentence (en): The censorship disposed of all undesirable opinions; participation in public life had become practically impossible. 
+Sentence Gloss (en): The censorship disposed of all undesirable opinions; participation in public life had become practically impossible. 
 
 # sentence level graph:
 (s136 / )
@@ -4791,7 +4791,7 @@ i2:
 Index:  1    2    3    4    5 6    7       8     9   10      11     1213    14     15 16   17   18 19    20   21
 Words: Le tracce di sangue su i vestiti avevano la forma descritta in i notiziari di il giorno di l' omicidio .
 Sentence: Le tracce di sangue sui vestiti avevano la forma descritta nei notiziari del giorno dell'omicidio.
-Sentence (en): The traces of blood on the clothes were in the shape that they were reported to have by the news reports on the day of the murder. 
+Sentence Gloss (en): The traces of blood on the clothes were in the shape that they were reported to have by the news reports on the day of the murder. 
 
 # sentence level graph:
 (s137 / )
@@ -4821,7 +4821,7 @@ o:
 Index:   1     2      3     4    5    6   7      8       9  10  11   12   13   14  15  16
 Words: Weiss venne onorato con premi per la letteratura da le città di Colonia e Brema .
 Sentence: Weiss venne onorato con premi per la letteratura dalle città di Colonia e Brema.
-Sentence (en): Weiss was honored with the literature prizes from the cities of Cologne and Bremen. 
+Sentence Gloss (en): Weiss was honored with the literature prizes from the cities of Cologne and Bremen. 
 
 # sentence level graph:
 (s138 / )
@@ -4847,7 +4847,7 @@ b:
 Index:     1     2    3         4       5  6  7    8        9     10    11   1213 14       15        16  17   18     19   20   21    22    23     24   25
 Words: Springer si dedicò vigorosamente , sia a livello pubblico che privato , a la riconciliazione con il popolo ebraico e visitò varie volte Israele .
 Sentence: Springer si dedicò vigorosamente, sia a livello pubblico che privato, alla riconciliazione con il popolo ebraico e visitò varie volte Israele.
-Sentence (en): Privately as well as publicly, Springer vigorously pursued reconciliation with the Jewish people and took many trips to Israel. 
+Sentence Gloss (en): Privately as well as publicly, Springer vigorously pursued reconciliation with the Jewish people and took many trips to Israel. 
 
 # sentence level graph:
 (s139 / )
@@ -4881,7 +4881,7 @@ i2:
 Index:  1    2      3         4       5
 Words: Lo chalet bruciò completamente .
 Sentence: Lo chalet bruciò completamente.
-Sentence (en): The chalet burned completely down. 
+Sentence Gloss (en): The chalet burned completely down. 
 
 # sentence level graph:
 (s140 / )
@@ -4900,7 +4900,7 @@ c2:
 Index: 1     2      3    4    5  6  7   8        9      10   11     12   1314   15    16    17      18    19 20  21    22  23     24     25     26           27       28     29    30 31     32      33     34    35
 Words: I distretti di Viguier e di La Conte contengono la maggior parte di i servizi di edilizia sociale di la città dove la popolazione è costituita principalmente da immigranti o da discendenti di immigranti .
 Sentence: I distretti di Viguier e di La Conte contengono la maggior parte dei servizi di edilizia sociale della città dove la popolazione è costituita principalmente da immigranti o da discendenti di immigranti.
-Sentence (en): The Viguier and La Conte districts contain the majority of the city's social housing, where the population is mainly made up of immigrants or those of immigrant origin. 
+Sentence Gloss (en): The Viguier and La Conte districts contain the majority of the city's social housing, where the population is mainly made up of immigrants or those of immigrant origin. 
 
 # sentence level graph:
 (s141 / )
@@ -4941,7 +4941,7 @@ i4:
 Index:  1    2    3      4      5       6          7     8    9    10 11 12   13       14     15
 Words: La storia di Carcassonne è direttamente collegata a quella di la sua città fortificata .
 Sentence: La storia di Carcassonne è direttamente collegata a quella della sua città fortificata.
-Sentence (en): The history of Carcassonne is directly linked to that of its fortified city. 
+Sentence Gloss (en): The history of Carcassonne is directly linked to that of its fortified city. 
 
 # sentence level graph:
 (s142 / )
@@ -4967,7 +4967,7 @@ f:
 Index:  1 2   3     4    5  6  7   8   9    10    11    12       13   14
 Words: In i primi anni 2000 , c' erano 5 dottori per 100.000 abitanti .
 Sentence: Nei primi anni 2000, c'erano 5 dottori per 100.000 abitanti.
-Sentence (en): In the early 2000s, there were five doctors per 100,000 inhabitants. 
+Sentence Gloss (en): In the early 2000s, there were five doctors per 100,000 inhabitants. 
 
 # sentence level graph:
 (s143 / )
@@ -4992,7 +4992,7 @@ a2:
 Index:  1         2          3     4     5      6  7    8      9  10 11    12    13   14      15         16      17  18 19  20  21   22   23    24     25    26   27   28 29    30     31 32
 Words: Von Bellingshausen avvistò l' Antartide il 27 gennaio 1820 , tre giorni prima che Bransfield avvistasse terra e ben 10 mesi prima che Palmer facesse lo stesso in il novembre 1820 .
 Sentence: Von Bellingshausen avvistò l'Antartide il 27 gennaio 1820, tre giorni prima che Bransfield avvistasse terra e ben 10 mesi prima che Palmer facesse lo stesso nel novembre 1820.
-Sentence (en): Von Bellingshausen sighted Antarctica on the 27th of January 1820, three days before Bransfield sighted land, and ten months before Palmer did so in November 1820. 
+Sentence Gloss (en): Von Bellingshausen sighted Antarctica on the 27th of January 1820, three days before Bransfield sighted land, and ten months before Palmer did so in November 1820. 
 
 # sentence level graph:
 (s144 / )
@@ -5034,7 +5034,7 @@ n:
 Index:  1    2     3    4       5      6  7   8   9    10   11   12      13  14 15     16      17 18     19       20  21 22 23    24   25
 Words: La stesura di questo documento fu l' atto che sancì il diritto romano , l' istituzione di la Repubblica Romana e il mos maiorum .
 Sentence: La stesura di questo documento fu l'atto che sancì il diritto romano, l'istituzione della Repubblica Romana e il mos maiorum.
-Sentence (en): This drawing up was the founding act of Roman law, the institutions of the Roman Republic and the mos maiorum. 
+Sentence Gloss (en): This drawing up was the founding act of Roman law, the institutions of the Roman Republic and the mos maiorum. 
 
 # sentence level graph:
 (s145 / )
@@ -5070,7 +5070,7 @@ m2:
 Index:  1  2   3     4    5  6  7    8      9    10    11    1213   14   15  16     17     18   19   20 21   22      23   24
 Words: In l' VIII secolo a.C , la Grecia iniziò ad emergere da i secolo bui che seguirono la caduta di la civiltà micenea .
 Sentence: Nell'VIII secolo a.C, la Grecia iniziò ad emergere dai secolo bui che seguirono la caduta della civiltà micenea.
-Sentence (en): In the 8th century BC, Greece began to emerge from the Dark Ages which followed the fall of the Mycenaean civilization. 
+Sentence Gloss (en): In the 8th century BC, Greece began to emerge from the Dark Ages which followed the fall of the Mycenaean civilization. 
 
 # sentence level graph:
 (s146 / )
@@ -5103,7 +5103,7 @@ m:
 Index:  1     2      3     4      5    6 7      8         9         10     11 1213  14       15     16    17      18   19     20      21 22    23     24    25  26
 Words: La scrittura era andata perduta e i manoscritti micenei dimenticati , ma i greci adottarono l' alfabeto fenicio , modificando lo per creare quello greco .
 Sentence: La scrittura era andata perduta e i manoscritti micenei dimenticati, ma i greci adottarono l'alfabeto fenicio, modificandolo per creare quello greco.
-Sentence (en): Literacy had been lost and Mycenaean script forgotten, but the Greeks adopted the Phoenician alphabet, modifying it to create the Greek alphabet. 
+Sentence Gloss (en): Literacy had been lost and Mycenaean script forgotten, but the Greeks adopted the Phoenician alphabet, modifying it to create the Greek alphabet. 
 
 # sentence level graph:
 (s147 / )
@@ -5139,7 +5139,7 @@ g2:
 Index: 1   2     3     4         5       6     7     8  9  10   11    12
 Words: I primi testi greci cominciarono ad apparire da il IX secolo a.C.
 Sentence: I primi testi greci cominciarono ad apparire dal IX secolo a.C.
-Sentence (en): From the 9th century BC, the first Greek texts began to appear. 
+Sentence Gloss (en): From the 9th century BC, the first Greek texts began to appear. 
 
 # sentence level graph:
 (s148 / )
@@ -5164,7 +5164,7 @@ a2:
 Index:  1    2    3     4    5   6      7        8          9       10 11   12        13       14    15 16    17      18  19  20   21  22  23  24   25   26    27    2829   30     31   32 33  34 35 36 37   38      39   40
 Words: La Grecia era divisa in molte piccole comunità autogovernate , un modello largamente dettato da la geografia greca : ogni isola , valle e pianura è separata da i luoghi vicini da il mare o da le catene montuose .
 Sentence: La Grecia era divisa in molte piccole comunità autogovernate, un modello largamente dettato dalla geografia greca: ogni isola, valle e pianura è separata dai luoghi vicini dal mare o dalle catene montuose.
-Sentence (en): Greece was divided into many small, self-governing communities, a pattern largely dictated by Greek geography: every island, valley and plain is cut off from its neighbours by the sea or mountain ranges. 
+Sentence Gloss (en): Greece was divided into many small, self-governing communities, a pattern largely dictated by Greek geography: every island, valley and plain is cut off from its neighbours by the sea or mountain ranges. 
 
 # sentence level graph:
 (s149 / )
@@ -5210,7 +5210,7 @@ m4:
 Index:  1   2     3         4       5     6       7      8    9     10   11 12   13       14          15       16  17  18    19      20       21   22
 Words: Le città stato cominciarono ad apparire intorno all' VIII secolo a.C : piccoli territori autogovernati con il loro proprio sistema politico .
 Sentence: Le città stato cominciarono ad apparire intorno all'VIII secolo a.C: piccoli territori autogovernati con il loro proprio sistema politico.
-Sentence (en): From about the 8th century BC city states began to appear: small, self-governing territories with their own political systems. 
+Sentence Gloss (en): From about the 8th century BC city states began to appear: small, self-governing territories with their own political systems. 
 
 # sentence level graph:
 (s150 / )
@@ -5242,7 +5242,7 @@ p3:
 Index:  1  2     3    4  5    6      7    8 9     10     11   12     13   14 15   16   17 18   19      20    21  22
 Words: In il Medioevo , la maggior parte di i cristiani non aveva accesso a la Bibbia in la propria lingua madre .
 Sentence: Nel Medioevo, la maggior parte dei cristiani non aveva accesso alla Bibbia nella propria lingua madre.
-Sentence (en): In the Middle Ages, most Christians did not have access to the Bible in their mother tongue. 
+Sentence Gloss (en): In the Middle Ages, most Christians did not have access to the Bible in their mother tongue. 
 
 # sentence level graph:
 (s151 / )
@@ -5273,7 +5273,7 @@ m3:
 Index:     1    2  3   4     5        6    7   8       9         10       11     12      13     14  15 16
 Words: Tuttavia , non si espansero finché le navi diventarono grandi abbastanza da attraversare i mari .
 Sentence: Tuttavia, non si espansero finché le navi diventarono grandi abbastanza da attraversare i mari.
-Sentence (en): However, they did not expand until ships big enough to cross seas were built. 
+Sentence Gloss (en): However, they did not expand until ships big enough to cross seas were built. 
 
 # sentence level graph:
 (s152 / )
@@ -5300,7 +5300,7 @@ m:
 Index:    1       2      3     4        5        6    7    8    9    10  11 12     13    14       15          16   17
 Words: Questa relazione può essere considerata come punto di inizio per la sua carriera di rivoluzionario radicale .
 Sentence: Questa relazione può essere considerata come punto di inizio per la sua carriera di rivoluzionario radicale.
-Sentence (en): This affair can be seen as the starting point for his career as a radical revolutionary. 
+Sentence Gloss (en): This affair can be seen as the starting point for his career as a radical revolutionary. 
 
 # sentence level graph:
 (s153 / )
@@ -5326,7 +5326,7 @@ r3:
 Index:  1  2    3     4  5   6     7  8    9    10    11     12 1314    15     16    17     18 19   20   21   22    23     24   25     26   27    28   29
 Words: In il Piovoso di il terzo anno ( gennaio - febbraio 1794 ) , smorzando la pressione di il Terrore , adottò varie misure per liberare i sospetti .
 Sentence: Nel Piovoso del terzo anno (gennaio-febbraio 1794), smorzando la pressione del Terrore, adottò varie misure per liberare i sospetti.
-Sentence (en): In Pluviose year III (January-February 1794), easing off the pressure of the Reign of Terror, he took various measures to liberate the suspects. 
+Sentence Gloss (en): In Pluviose year III (January-February 1794), easing off the pressure of the Reign of Terror, he took various measures to liberate the suspects. 
 
 # sentence level graph:
 (s154 / )
@@ -5360,7 +5360,7 @@ s2:
 Index:      1          2       3   4    5    6    7      8   9    10     11     12      13   14 15  16    17      18        19    20
 Words: Finanziate interamente con il denaro di Bernard Tapie , queste scuole vennero chiuse in il 1994 quando dichiarò bancarotta .
 Sentence: Finanziate interamente con il denaro di Bernard Tapie, queste scuole vennero chiuse nel 1994 quando dichiarò bancarotta.
-Sentence (en): Financed entirely with Bernard Tapie's own money, these schools were closed in 1994 when he was declared bankrupt. 
+Sentence Gloss (en): Financed entirely with Bernard Tapie's own money, these schools were closed in 1994 when he was declared bankrupt. 
 
 # sentence level graph:
 (s155 / )
@@ -5389,7 +5389,7 @@ b2:
 Index:  1       2      3  4   5      6   7 8   9   10     11      12    13    14  15   16     17   18 19   20    21 22
 Words: Per allontanar si da tutto questo , i Remi si stabilirono in Svizzera per la maggior parte di l' estate 1947 .
 Sentence: Per allontanarsi da tutto questo, i Remi si stabilirono in Svizzera per la maggior parte dell'estate 1947.
-Sentence (en): To get away from it all, the Remis resided in Switzerland for most of summer 1947. 
+Sentence Gloss (en): To get away from it all, the Remis resided in Switzerland for most of summer 1947. 
 
 # sentence level graph:
 (s156 / )
@@ -5419,7 +5419,7 @@ e:
 Index:    1     2   3     4    5       6        7   8   9    10   11 12    13   14   15    16     17    18 19   20    21    22   23
 Words: Durante il loro ritorno , considerarono l' idea di vivere in Sud America , lontano dai problemi di il Belgio post bellico .
 Sentence: Durante il loro ritorno, considerarono l'idea di vivere in Sud America, lontano dai problemi del Belgio post bellico.
-Sentence (en): On their return, they entertained the idea of living in South America, far away from the problems of postwar Belgium. 
+Sentence Gloss (en): On their return, they entertained the idea of living in South America, far away from the problems of postwar Belgium. 
 
 # sentence level graph:
 (s157 / )
@@ -5449,7 +5449,7 @@ b2:
 Index:  1  2     3      4  5   6  7  8  9     10    11    12      13   14  15   16  17 18   19     20     21    22    23   24  25    26      27       28   29 30     31   32
 Words: In la primavera di il 1948 , in la speranza di adattare Tintin per il cinema , l' artista belga scrisse una lettera a Walt Disney chiedendo invano il suo supporto .
 Sentence: Nella primavera del 1948, nella speranza di adattare Tintin per il cinema, l'artista belga scrisse una lettera a Walt Disney chiedendo invano il suo supporto.
-Sentence (en): In spring 1948, in hopes of adapting Tintin for the cinema, the Belgian artist wrote a letter to Walt Disney, asking in vain for his support. 
+Sentence Gloss (en): In spring 1948, in hopes of adapting Tintin for the cinema, the Belgian artist wrote a letter to Walt Disney, asking in vain for his support. 
 
 # sentence level graph:
 (s158 / )
@@ -5487,7 +5487,7 @@ s4:
 Index:  1    2   3    4    5  6     7       8      9     10   11      12      13   14  15 16    17    18 19  20    21   22 23  24 25   26   27    28   29
 Words: In estate , Georges e sua moglie tornarono in Svizzera , accompagnati da Rosane , una ragazza di 18 anni figlia di uno di gli amici di Germaine .
 Sentence: In estate, Georges e sua moglie tornarono in Svizzera, accompagnati da Rosane, una ragazza di 18 anni figlia di uno degli amici di Germaine.
-Sentence (en): In the summer, Georges and his wife returned to Switzerland, accompanied by Rosane, an 18 year old who was the daughter of one of Germaine's friends. 
+Sentence Gloss (en): In the summer, Georges and his wife returned to Switzerland, accompanied by Rosane, an 18 year old who was the daughter of one of Germaine's friends. 
 
 # sentence level graph:
 (s159 / )
@@ -5520,7 +5520,7 @@ g3:
 Index:    1     2    3       4    5      6            7        8   9    10      11   12 13    14     15   16 17
 Words: Durante la vacanza iniziò una relazione extraconiugale con la giovane ragazza e lo confessò poco dopo .
 Sentence: Durante la vacanza iniziò una relazione extraconiugale con la giovane ragazza e lo confessò poco dopo.
-Sentence (en): During the holiday, he began an extra-marital affair with the young girl, which he admitted shortly after. 
+Sentence Gloss (en): During the holiday, he began an extra-marital affair with the young girl, which he admitted shortly after. 
 
 # sentence level graph:
 (s160 / )
@@ -5549,7 +5549,7 @@ d:
 Index:  1  2   3       4      5   6   7    8        9      10 11  12  13       14       15  16   17 18     19    20   21    22   23  24  25      26    27
 Words: In la parte inferiore ci sono tre palme affacciate su il mare che rappresentano l' amore di gli abitanti di queste isole per il loro territorio .
 Sentence: Nella parte inferiore ci sono tre palme affacciate sul mare che rappresentano l'amore degli abitanti di queste isole per il loro territorio.
-Sentence (en): In the lower part, there are three palm trees overlooking the sea, which represent the love that the people of this Island have for their land. 
+Sentence Gloss (en): In the lower part, there are three palm trees overlooking the sea, which represent the love that the people of this Island have for their land. 
 
 # sentence level graph:
 (s161 / )
@@ -5585,7 +5585,7 @@ t2:
 Index:    1    2     3      4    5    6    7     8  9   10   11 12   13      14  15
 Words: Inoltre è possibile l' arrivo di uragani su le isole in il periodo estivo .
 Sentence: Inoltre è possibile l'arrivo di uragani sulle isole nel periodo estivo.
-Sentence (en): Furthermore, the occurrence of hurricanes on the island is possible during the summer. 
+Sentence Gloss (en): Furthermore, the occurrence of hurricanes on the island is possible during the summer. 
 
 # sentence level graph:
 (s162 / )
@@ -5611,7 +5611,7 @@ e:
 Index:  1      2        3      4     5    6      7    8    9         10       11   12   13   14 15  16     17   1819  20   21     22   23
 Words: Ad avvalorare quest' ipotesi ci sarebbe stato il corposo allevamento reale di cavalli a la Villa Pelucca , a Sesto San Giovanni .
 Sentence: Ad avvalorare quest'ipotesi ci sarebbe stato il corposo allevamento reale di cavalli alla Villa Pelucca, a Sesto San Giovanni.
-Sentence (en): An element supporting this hypothesis would be the intense royal livestock of horses that took place at Villa Pelucca, in Sesto San Giovanni. 
+Sentence Gloss (en): An element supporting this hypothesis would be the intense royal livestock of horses that took place at Villa Pelucca, in Sesto San Giovanni. 
 
 # sentence level graph:
 (s163 / )
@@ -5642,7 +5642,7 @@ g:
 Index:  1  2   3   4      5      6   7    8   9  10 11 12   13  14 15   16   17 18  19        20       21 22  23  2425   26  27 28    29    30
 Words: In il 1928 fu realizzato il campo da golf , in un' area di 90 ettari in la zona nord-orientale di il parco , a fianco a l' autodromo .
 Sentence: Nel 1928 fu realizzato il campo da golf, in un'area di 90 ettari nella zona nord-orientale del parco, a fianco all'autodromo.
-Sentence (en): In 1928, a 90-hectare golf course was built in the north-eastern part of the park, next to the racetrack. 
+Sentence Gloss (en): In 1928, a 90-hectare golf course was built in the north-eastern part of the park, next to the racetrack. 
 
 # sentence level graph:
 (s164 / )
@@ -5676,7 +5676,7 @@ a2:
 Index:  1  2   3    4    5    6    7     8     9 10 11 12  13  14    15       16     17  18     19    20 21   22    23  24  25 26   27       28      29     30    31  32
 Words: In il 1976 cadde in disuso l' ippodromo , e in il 1990 un incendio distrusse ciò che rimaneva di le tribune in legno , in seguito demolite insieme alle stalle .
 Sentence: Nel 1976 cadde in disuso l'ippodromo, e nel 1990 un incendio distrusse ciò che rimaneva delle tribune in legno, in seguito demolite insieme alle stalle.
-Sentence (en): In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables. 
+Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables. 
 
 # sentence level graph:
 (s165 / )
@@ -5713,7 +5713,7 @@ s2:
 Index:  1  2    3    4  5   6  7   8    9    10   11    12  13  14  15   16 17    18       19   20    21     22 23     24      25  26
 Words: In l' agosto di il 1969 , papa Paolo VI rimosse la pena di morte da gli statuti vaticani , abrogando la per qualsiasi reato .
 Sentence: Nell'agosto del 1969, papa Paolo VI rimosse la pena di morte dagli statuti vaticani, abrogandola per qualsiasi reato.
-Sentence (en): In August 1969, Pope Paul VI removed the death penalty from the Vatican law and revoked it from all offences. 
+Sentence Gloss (en): In August 1969, Pope Paul VI removed the death penalty from the Vatican law and revoked it from all offences. 
 
 # sentence level graph:
 (s166 / )
@@ -5746,7 +5746,7 @@ r2:
 Index:  1     2      3    4     5       6            7             8      9 10  11     12         13     14   15     16   1718      19      20
 Words: Le emissioni di moneta hanno carattere prevalentemente numismatico , e sono destinate soprattutto a essere vendute a i collezionisti .
 Sentence: Le emissioni di moneta hanno carattere prevalentemente numismatico, e sono destinate soprattutto a essere vendute ai collezionisti.
-Sentence (en): The issuing of coinage is predominantly numismatic in nature, with the intention of being sold mainly to collectors. 
+Sentence Gloss (en): The issuing of coinage is predominantly numismatic in nature, with the intention of being sold mainly to collectors. 
 
 # sentence level graph:
 (s167 / )
@@ -5776,7 +5776,7 @@ c2:
 Index:  1    2     3  4    5    6       7      8     9     10  11      12        13      14  15   16 17 18  19  20
 Words: L' interno di la regione è pianeggiante e collinoso , senza evidente distinzione tra una zona e l' altra .
 Sentence: L'interno della regione è pianeggiante e collinoso, senza evidente distinzione tra una zona e l'altra.
-Sentence (en): The inner part of the region is flat and hilly, with no clear distinction between one area to the next. 
+Sentence Gloss (en): The inner part of the region is flat and hilly, with no clear distinction between one area to the next. 
 
 # sentence level graph:
 (s168 / )
@@ -5806,7 +5806,7 @@ a:
 Index:     1      2  3    4     5   6        7      8  9  10  11     12      13  14   15  16
 Words: Numerosi sono i reperti di epoca preistorica , tra i quali diversi menhir e dolmen .
 Sentence: Numerosi sono i reperti di epoca preistorica, tra i quali diversi menhir e dolmen.
-Sentence (en): There are many prehistoric artifacts, including several different menhirs and dolmens. 
+Sentence Gloss (en): There are many prehistoric artifacts, including several different menhirs and dolmens. 
 
 # sentence level graph:
 (s169 / )
@@ -5833,7 +5833,7 @@ d2:
 Index:   1      2       3      4   5    6    7    8     9    10 11     12      13   14   15  16 17   18   19 20   21      22  23 24     25        26    27
 Words: Venne quindi istituita la Regio II Apulia et Calabria , che includeva anche il Sannio , una parte di l' attuale Molise e la Basilicata orientale .
 Sentence: Venne quindi istituita la Regio II Apulia et Calabria, che includeva anche il Sannio, una parte dell'attuale Molise e la Basilicata orientale.
-Sentence (en): The second Apulian and Calabrian Royal Region was then established, also including Samnium, parts of Molise and the oriental Basilicata. 
+Sentence Gloss (en): The second Apulian and Calabrian Royal Region was then established, also including Samnium, parts of Molise and the oriental Basilicata. 
 
 # sentence level graph:
 (s170 / )
@@ -5871,7 +5871,7 @@ o:
 Index:  1  2   3     4    5   6     7    8      9      10   11     12   13     14    15  16       17      18 19    20       21   22
 Words: In il XIII secolo il nome Apulia fu utilizzato da alcuni autori per indicare la parte meridionale di la penisola italiana .
 Sentence: Nel XIII secolo il nome Apulia fu utilizzato da alcuni autori per indicare la parte meridionale della penisola italiana.
-Sentence (en): During the thirteenth century, the name Apulia was used by some authors to signify the southern part of the Italian peninsula. 
+Sentence Gloss (en): During the thirteenth century, the name Apulia was used by some authors to signify the southern part of the Italian peninsula. 
 
 # sentence level graph:
 (s171 / )
@@ -5903,7 +5903,7 @@ i4:
 Index:  1    2      3      4        5      6     7           8           9    10 11   12      13   14  15    16    17      18     19 20  21      22   23
 Words: Lo storico David Crouch suggerisce che Stefano effettivamente rinunciò a l' impresa attorno a quel periodo per concentrar si su altri problemi .
 Sentence: Lo storico David Crouch suggerisce che Stefano effettivamente rinunciò all'impresa attorno a quel periodo per concentrarsi su altri problemi.
-Sentence (en): Historian David Crouch suggests that Stephen abandoned from the challenge around this time to focus on other issues. 
+Sentence Gloss (en): Historian David Crouch suggests that Stephen abandoned from the challenge around this time to focus on other issues. 
 
 # sentence level graph:
 (s172 / )
@@ -5935,7 +5935,7 @@ p2:
 Index:   1   2     3       4    5   6  7    8   9      10      11     12  1314   15    16   17  18   19       20    21
 Words: Solo uno sparuto numero di esse ( contee ) esistevano sotto Enrico I e queste erano in gran parte simboliche .
 Sentence: Solo uno sparuto numero di esse (contee) esistevano sotto Enrico I e queste erano in gran parte simboliche.
-Sentence (en): Only a handful of them (earldoms) had existed under Henry I and these had been largely symbolic. 
+Sentence Gloss (en): Only a handful of them (earldoms) had existed under Henry I and these had been largely symbolic. 
 
 # sentence level graph:
 (s173 / )
@@ -5965,7 +5965,7 @@ s3:
 Index:    1     2    3    4  5   6        7     8  9   10      11      12  13  14   15       16     17     18      19   20     21   22  23  24 25    26          27          28   29    30        31    32
 Words: Durante la guerra di la prima coalizione , si mise rapidamente in luce un giovane ufficiale d' artiglieria di origine corsa in forza a l' esercito rivoluzionario francese : Napoleone Bonaparte .
 Sentence: Durante la guerra della prima coalizione, si mise rapidamente in luce un giovane ufficiale d'artiglieria di origine corsa in forza all'esercito rivoluzionario francese: Napoleone Bonaparte.
-Sentence (en): During the War of the First Coalition, light quickly began to be shed upon a young Corsican artillery officer, following the French Revolution: Napoleon Bonaparte. 
+Sentence Gloss (en): During the War of the First Coalition, light quickly began to be shed upon a young Corsican artillery officer, following the French Revolution: Napoleon Bonaparte. 
 
 # sentence level graph:
 (s174 / )
@@ -6002,7 +6002,7 @@ b:
 Index:  1    2    3  4    5    6      7         8     9     10     11 12  13   14    15     16 17  18       19     20  21     22    23      24      25      26    27   28 29     30    31
 Words: Il blocco di la flotta di Villeneuve comportò l' abbandono di il piano di invasione di le isole britanniche , anche perché nuovi sviluppi stavano avendo luogo su il continente .
 Sentence: Il blocco della flotta di Villeneuve comportò l'abbandono del piano di invasione delle isole britanniche, anche perché nuovi sviluppi stavano avendo luogo sul continente.
-Sentence (en): The blockage of Villeneuve's fleet resulted in giving up the invasion plan of the British Isles, also because new developments were taking place in the continent. 
+Sentence Gloss (en): The blockage of Villeneuve's fleet resulted in giving up the invasion plan of the British Isles, also because new developments were taking place in the continent. 
 
 # sentence level graph:
 (s175 / )
@@ -6038,7 +6038,7 @@ c2:
 Index:  1   2   3    4   5  6  7    8    9     10   11 12 13     14   15  16  17 18   19     20       21   2223 24 25 26    27     28   29    30  31   32    33  34  35 36     37     38   39   40
 Words: L' uomo gli dice che è in arrivo una guerra tra i due universi , come lui e Walter avevano predetto , e che è per questo motivo che Olivia , insieme ad altri , fu addestrata da bambina .
 Sentence: L'uomo gli dice che è in arrivo una guerra tra i due universi, come lui e Walter avevano predetto, e che è per questo motivo che Olivia, insieme ad altri, fu addestrata da bambina.
-Sentence (en): The man told him that a war between the two universes is coming, as he and Walter had predicted; it is for this reason that Olivia, among others, was trained as a child. 
+Sentence Gloss (en): The man told him that a war between the two universes is coming, as he and Walter had predicted; it is for this reason that Olivia, among others, was trained as a child. 
 
 # sentence level graph:
 (s176 / )
@@ -6078,7 +6078,7 @@ b:
 Index:  1    2    3    4   5       6          7       8  9     10    11   12  13   14 15
 Words: Tra loro nasce un lungo rapporto professionale e di amicizia che dura per anni .
 Sentence: Tra loro nasce un lungo rapporto professionale e di amicizia che dura per anni.
-Sentence (en): Between them bloomed a long professional and amicable relationship that lasted for years. 
+Sentence Gloss (en): Between them bloomed a long professional and amicable relationship that lasted for years. 
 
 # sentence level graph:
 (s177 / )
@@ -6104,7 +6104,7 @@ a2:
 Index:    1        2     3    4       5       6    7     8       9    10   11   12 13  14 15   16   17 18  19     20   21   22     23 24
 Words: Nicolai collabora a diverse colonne sonore di Morricone come Metti una sera a cena , alcune di le quali scritte a quattro mani .
 Sentence: Nicolai collabora a diverse colonne sonore di Morricone come Metti una sera a cena, alcune delle quali scritte a quattro mani.
-Sentence (en): Nicolai collaborates on various cinematic scores by Morricone as Metti, one night at dinner; some of them were written by both together. 
+Sentence Gloss (en): Nicolai collaborates on various cinematic scores by Morricone as Metti, one night at dinner; some of them were written by both together. 
 
 # sentence level graph:
 (s178 / )
@@ -6135,7 +6135,7 @@ m3:
 Index:     1     2     3     4  5  6   7    8    9   10   11   12         13       14     15     16   17     18         19        20  21
 Words: Tuttavia l' amicizia tra i due s' incrina a causa di alcune collaborazioni non ufficiali che fanno nascere controversie legali .
 Sentence: Tuttavia l'amicizia tra i due s'incrina a causa di alcune collaborazioni non ufficiali che fanno nascere controversie legali.
-Sentence (en): However, the friendship has fallen apart due to unofficial collaborations between the two, which has given rise to legal disputes. 
+Sentence Gloss (en): However, the friendship has fallen apart due to unofficial collaborations between the two, which has given rise to legal disputes. 
 
 # sentence level graph:
 (s179 / )
@@ -6168,7 +6168,7 @@ l2:
 Index:  1  2   3    4  5      6            7       8  9  10  11   12  1314 15   16     17    18      19         20      21 22       23       24  25   26     27         28       29  30   31    32    33    34   35
 Words: In il corso di le molteplici collaborazioni , non è certo chi di i due abbia ideato certe soluzioni stilistiche in gli arrangiamenti che in seguito hanno caratterizzato lo stile di entrambi gli artisti .
 Sentence: Nel corso delle molteplici collaborazioni, non è certo chi dei due abbia ideato certe soluzioni stilistiche negli arrangiamenti che in seguito hanno caratterizzato lo stile di entrambi gli artisti.
-Sentence (en): During their various collaborations, it is not clear who between the two conceived of some stylistic solutions in the arrangements that later on characterised both artists' style. 
+Sentence Gloss (en): During their various collaborations, it is not clear who between the two conceived of some stylistic solutions in the arrangements that later on characterised both artists' style. 
 
 # sentence level graph:
 (s180 / )
@@ -6208,7 +6208,7 @@ a2:
 Index:  1  2  3    4   5  6   7   8  9  10  11 12   13     14    15   16         17        18   19  20  21 22
 Words: In il XX secolo , tra il 1904 e il 1914 , Antonio Gaudí attuò una ristrutturazione che durò 10 anni .
 Sentence: Nel XX secolo, tra il 1904 e il 1914, Antonio Gaudí attuò una ristrutturazione che durò 10 anni.
-Sentence (en): In the 20th century, between 1904 and 1914, Antonio Gaudí brought about a reform that lasted ten years. 
+Sentence Gloss (en): In the 20th century, between 1904 and 1914, Antonio Gaudí brought about a reform that lasted ten years. 
 
 # sentence level graph:
 (s181 / )
@@ -6240,7 +6240,7 @@ a3:
 Index:  1  2      3        4     5  6    7   8     9        10       11    12 13      14     15
 Words: Ha tre cappelle parallele a l' abside e svariate cappelle laterali tra i contrafforti .
 Sentence: Ha tre cappelle parallele all'abside e svariate cappelle laterali tra i contrafforti.
-Sentence (en): It has three parallel chapels at the apse and many lateral chapels between the buttresses. 
+Sentence Gloss (en): It has three parallel chapels at the apse and many lateral chapels between the buttresses. 
 
 # sentence level graph:
 (s182 / )
@@ -6267,7 +6267,7 @@ c3:
 Index:  1      2       3    4   5   6    7        8              9        10  11   12    13     14   15  16       17     18     19   20  21  22
 Words: La tradizione vuole che il tema venne selezionato intenzionalmente a causa del grande numero di ebrei convertiti che vivevano a Palma .
 Sentence: La tradizione vuole che il tema venne selezionato intenzionalmente a causa del grande numero di ebrei convertiti che vivevano a Palma.
-Sentence (en): Tradition has it that the theme was selected intentionally because of the great number of converted Jews who lived in Palma. 
+Sentence Gloss (en): Tradition has it that the theme was selected intentionally because of the great number of converted Jews who lived in Palma. 
 
 # sentence level graph:
 (s183 / )
@@ -6299,7 +6299,7 @@ p:
 Index:   1    2   3      4      5   6  7  8    9        10      11 12 13    14    15  16   17    18  19   20       21    22
 Words: Prima che si formassero le Ande , il limite occidentale di il Sud America era già stato sito di diverse orogenesi .
 Sentence: Prima che si formassero le Ande, il limite occidentale del Sud America era già stato sito di diverse orogenesi.
-Sentence (en): Before the Andes were formed, the western margin of South America had already been the site of several orogenies. 
+Sentence Gloss (en): Before the Andes were formed, the western margin of South America had already been the site of several orogenies. 
 
 # sentence level graph:
 (s184 / )
@@ -6330,7 +6330,7 @@ o2:
 Index:  1   2      3         4     5  6      7     8   9   10  11    12  13 14  15    16     17 18     19     20 21   22      23   24
 Words: Le Ande centrali appartengo a le cosiddette ' Ande di tipo andino ' che si formarono da la subduzione di la crosta oceanica .
 Sentence: Le Ande centrali appartengo alle cosiddette 'Ande di tipo andino' che si formarono dalla subduzione della crosta oceanica.
-Sentence (en): The central Andes belong to the so-called 'Andes de tipo andino' which were formed by the subduction of the oceanic crust. 
+Sentence Gloss (en): The central Andes belong to the so-called 'Andes de tipo andino' which were formed by the subduction of the oceanic crust. 
 
 # sentence level graph:
 (s185 / )
@@ -6362,7 +6362,7 @@ o:
 Index:     1    2  3      4       5 6     7     8     9    10 11      12      13 14  15        16          17      18       19        20 21     22      23  24     25     26 27  28 29
 Words: Tuttavia , la sospensione di i rapporti con Linares e l' interruzione di la linea progressista provocarono la Giustificazione di la Rivoluzione che lo detronizzò in il 1879 .
 Sentence: Tuttavia, la sospensione dei rapporti con Linares e l'interruzione della linea progressista provocarono la Giustificazione della Rivoluzione che lo detronizzò nel 1879.
-Sentence (en): However, the breakdown between him and Linares and the discontinuation of the progressive line provoked the Revolution of Vindication which overthrew him in 1879. 
+Sentence Gloss (en): However, the breakdown between him and Linares and the discontinuation of the progressive line provoked the Revolution of Vindication which overthrew him in 1879. 
 
 # sentence level graph:
 (s186 / )
@@ -6399,7 +6399,7 @@ i3:
 Index:    1     2  3         4          5       6      7    8     9   10 11 12  13  1415   16       17      18        19     20  21   22     23      24       25     26   27   28     29         30      31       32   33
 Words: Durante la sua amministrazione venne approvato il diritto di voto a le donne , i partiti politici vennero legalizzati , tutti gli esiliati furono autorizzati a tornare e prigionieri politici vennero liberati .
 Sentence: Durante la sua amministrazione venne approvato il diritto di voto alle donne, i partiti politici vennero legalizzati, tutti gli esiliati furono autorizzati a tornare e prigionieri politici vennero liberati.
-Sentence (en): Under his administration, the female vote was approved, political parties were legalised, all of the exiled were allowed to return and the remaining political prisoners were freed. 
+Sentence Gloss (en): Under his administration, the female vote was approved, political parties were legalised, all of the exiled were allowed to return and the remaining political prisoners were freed. 
 
 # sentence level graph:
 (s187 / )
@@ -6440,7 +6440,7 @@ l4:
 Index:  1     2    3  4      5      6    7     8    9     10  11 12   13  14    15   16    17    18     19     20   21      22   23
 Words: Il collasso e l' intervento in dozzine di banche portò a una fuga di capitali , causando la bancarotta di questo business .
 Sentence: Il collasso e l'intervento in dozzine di banche portò a una fuga di capitali, causando la bancarotta di questo business.
-Sentence (en): The collapse of and intervention in dozens of banks lead to a flight of capital, causing businesses to go bankrupt. 
+Sentence Gloss (en): The collapse of and intervention in dozens of banks lead to a flight of capital, causing businesses to go bankrupt. 
 
 # sentence level graph:
 (s188 / )
@@ -6471,7 +6471,7 @@ b3:
 Index:  1   2       3     4     5     6  7    8      9     10   11  12     13   14  15   16   17    18 19    20     21     22    23    24   25    26   27 28 29  30         31       32 33  34   35 36   37 38
 Words: Le cose iniziarono a cambiare in l' ottobre 1777 quando le forze inglesi , sotto il comando di il Generale John Burgoyne si arresero a Saratoga , in la parte settentrionale di lo stato di New York .
 Sentence: Le cose iniziarono a cambiare nell'ottobre 1777 quando le forze inglesi, sotto il comando del Generale John Burgoyne si arresero a Saratoga, nella parte settentrionale dello stato di New York.
-Sentence (en): Things started to change in October 1777 when British forces under the command of General John Burgoyne surrendered in Saratoga in the north of the state of New York. 
+Sentence Gloss (en): Things started to change in October 1777 when British forces under the command of General John Burgoyne surrendered in Saratoga in the north of the state of New York. 
 
 # sentence level graph:
 (s189 / )
@@ -6512,7 +6512,7 @@ y:
 Index:  1  2   3    4    5   6  7        8         9  10 11   12     13      14    15      16      17      18     19
 Words: Fu il colpo di grazia e l' incoraggiamento di cui i coloni avevano bisogno per raggiungere l' indipendenza .
 Sentence: Fu il colpo di grazia e l'incoraggiamento di cui i coloni avevano bisogno per raggiungere l'indipendenza.
-Sentence (en): This was the coup de grâce and encouragement the settlers needed to get their independence. 
+Sentence Gloss (en): This was the coup de grâce and encouragement the settlers needed to get their independence. 
 
 # sentence level graph:
 (s190 / )
@@ -6542,7 +6542,7 @@ i4:
 Index:  1     2         3      4  5    6   7    8     9    10    11  12      13      14    15      16  17      18         19         20        21   22   23   24 25  26   27  28
 Words: Gli indiani arrivarono da il Canada , guidati da Joseph Brant ; supportarono gli inglesi perché i colonizzatori stavano espropriando sempre più parti di le loro terre .
 Sentence: Gli indiani arrivarono dal Canada, guidati da Joseph Brant; supportarono gli inglesi perché i colonizzatori stavano espropriando sempre più parti delle loro terre.
-Sentence (en): Indians arrived from Canada, led by Joseph Brant; they supported the British because the colonists were expropriating more and more of their lands. 
+Sentence Gloss (en): Indians arrived from Canada, led by Joseph Brant; they supported the British because the colonists were expropriating more and more of their lands. 
 
 # sentence level graph:
 (s191 / )
@@ -6577,7 +6577,7 @@ t:
 Index:  1      2       3      4     5  6     7       8       9     10   11       12     13     14        15  16
 Words: La spedizione venne guidata da il Generale Joseph Burgoyne che aveva intenzione di raggiungere Albany .
 Sentence: La spedizione venne guidata dal Generale Joseph Burgoyne che aveva intenzione di raggiungere Albany.
-Sentence (en): The expedition was led by General Joseph Burgoyne who intended to reach Albany. 
+Sentence Gloss (en): The expedition was led by General Joseph Burgoyne who intended to reach Albany. 
 
 # sentence level graph:
 (s192 / )
@@ -6605,7 +6605,7 @@ a2:
 Index:     1    2    3        4    5     6          7     8    9    10   11   12  13     14  15
 Words: Tuttavia , vennero bloccati e dovettero combattere a Freeman , vicino al fiume Hudson .
 Sentence: Tuttavia, vennero bloccati e dovettero combattere a Freeman, vicino al fiume Hudson.
-Sentence (en): However, they were intercepted and had to do battle in Freeman, close to the Hudson River. 
+Sentence Gloss (en): However, they were intercepted and had to do battle in Freeman, close to the Hudson River. 
 
 # sentence level graph:
 (s193 / )
@@ -6629,7 +6629,7 @@ h:
 Index:  1     2     3  4    5    6  7  8     9     10 11  12   13    14   15 16     17        18      19      20      21     22      23 24    25        26    27   28     29   30
 Words: Lo spagnolo di il secolo d' oro o spagnolo di la prima età moderna è una variante linguistica che costituisce la transizione da lo spagnolo medioevale a quello moderno .
 Sentence: Lo spagnolo del secolo d'oro o spagnolo della prima età moderna è una variante linguistica che costituisce la transizione dallo spagnolo medioevale a quello moderno.
-Sentence (en): Golden Age Spanish or Early Modern Spanish is the variant of the language that constitutes the transition from Medieval Spanish to Modern Spanish. 
+Sentence Gloss (en): Golden Age Spanish or Early Modern Spanish is the variant of the language that constitutes the transition from Medieval Spanish to Modern Spanish. 
 
 # sentence level graph:
 (s194 / )
@@ -6668,7 +6668,7 @@ m3:
 Index:  1   2     3   4   5      6         7          8      9  10   11   12 13      14    1516 17  18       19          20   2122 23 24    25    26 27   28  29
 Words: D' altra parte , fonti esterne contengono riferimenti a la storia di gli ispanofoni , a le loro vicissitudini storiche e a l' uso sociale di la lingua .
 Sentence: D'altra parte, fonti esterne contengono riferimenti alla storia degli ispanofoni, alle loro vicissitudini storiche e all'uso sociale della lingua.
-Sentence (en): On the other hand, external history contains references to the history of Spanish speakers, their historical vicissitudes and the social use of the language. 
+Sentence Gloss (en): On the other hand, external history contains references to the history of Spanish speakers, their historical vicissitudes and the social use of the language. 
 
 # sentence level graph:
 (s195 / )
@@ -6703,7 +6703,7 @@ l6:
 Index:  1   2       3     4         5         6  7   8    9    10    11  12 13     14     15 16   17       18     19 20   21   22  23      24   25
 Words: Ha anche discusso la federalizzazione di la città di Buenos Aires , l' estensione di un codice commerciale e la nomina di nuovi generali .
 Sentence: Ha anche discusso la federalizzazione della città di Buenos Aires, l'estensione di un codice commerciale e la nomina di nuovi generali.
-Sentence (en): He also discussed the federalization of the City of Buenos Aires, the extension of the commercial code and the appointment of new generals to the army. 
+Sentence Gloss (en): He also discussed the federalization of the City of Buenos Aires, the extension of the commercial code and the appointment of new generals to the army. 
 
 # sentence level graph:
 (s196 / )
@@ -6736,7 +6736,7 @@ g:
 Index:  1  2   3  4  5     6     7    8   9  10 11  12   13     14    15  16 17     18          19      20    21     22     23   24 25      26       27   28    29     30   31  32      33     34   35  36 3738  39 40 41    42    43  44  4546
 Words: In il 1976 , si incontrò con Kiki Dee , un amico che lavorava con la sua etichetta discografica The Rocket Record Company , per registrare quello che sarebbe stato un altro successo degno di nota : " Don' t go Breaking My Heart " .
 Sentence: Nel 1976, si incontrò con Kiki Dee, un amico che lavorava con la sua etichetta discografica The Rocket Record Company, per registrare quello che sarebbe stato un altro successo degno di nota: "Don't go Breaking My Heart".
-Sentence (en): In 1976 he met with a friend who worked with his record label The Rocket Record Company, Kiki Dee, to record what would be another remarkable success for him: "Don't Go Breaking My Heart". 
+Sentence Gloss (en): In 1976 he met with a friend who worked with his record label The Rocket Record Company, Kiki Dee, to record what would be another remarkable success for him: "Don't Go Breaking My Heart". 
 
 # sentence level graph:
 (s197 / )
@@ -6784,7 +6784,7 @@ h:
 Index:    1     2       3           4        5  6    7    8    9    10  11  12 13 14  15   16    17     18   19 20    21   22
 Words: Cesare venne informato personalmente di le azioni di Pompeo da Curio , che a quel tempo aveva finito il suo mandato .
 Sentence: Cesare venne informato personalmente delle azioni di Pompeo da Curio, che a quel tempo aveva finito il suo mandato.
-Sentence (en): César was personally informed of Pompey's actions by Curio, who at that time had finished his term in office. 
+Sentence Gloss (en): César was personally informed of Pompey's actions by Curio, who at that time had finished his term in office. 
 
 # sentence level graph:
 (s198 / )
@@ -6814,7 +6814,7 @@ m:
 Index:  1  2     3     4  5  6    7    8  9    10     11      12    13  14     15   16 17    18    19    20      21 22    23   24
 Words: In il frattempo , il suo posto in il Tribuno venne occupato da Marco Antonio , che rivestì la posizione fino a Dicembre .
 Sentence: Nel frattempo, il suo posto nel Tribuno venne occupato da Marco Antonio, che rivestì la posizione fino a Dicembre.
-Sentence (en): Meanwhile, his place in tribune was occupied by Marco Antonio, who held the position until December. 
+Sentence Gloss (en): Meanwhile, his place in tribune was occupied by Marco Antonio, who held the position until December. 
 
 # sentence level graph:
 (s199 / )
@@ -6846,7 +6846,7 @@ d:
 Index:  1    2    3    4    5     6           7            8      9   10    11     12  13    14    15  16   17  18   19    20    21    22   23  24 25    26       27      28   29  30  31 32    33         34        35     36  37 38   39        40        41     42 43  44  4546  47    48      49   50
 Words: Ma quando il Senato gli rispose definitivamente proibendo gli di competere per il consolato e dando gli l' opzione di ritirare le truppe o di diventare nemico pubblico , capì che , qualsiasi alternativa avesse scelto , si sarebbe consegnato disarmato in le mani di i suoi nemici politici .
 Sentence: Ma quando il Senato gli rispose definitivamente proibendogli di competere per il consolato e dandogli l'opzione di ritirare le truppe o di diventare nemico pubblico, capì che, qualsiasi alternativa avesse scelto, si sarebbe consegnato disarmato nelle mani dei suoi nemici politici.
-Sentence (en): But when the Senate answered him definitively by prohibiting him from competing at the consolate and giving him the option of either withdrawing his troops or becoming a public enemy, he understood that, whatever alternative he chose, he would surrender unarmed into the hands of his political enemies. 
+Sentence Gloss (en): But when the Senate answered him definitively by prohibiting him from competing at the consolate and giving him the option of either withdrawing his troops or becoming a public enemy, he understood that, whatever alternative he chose, he would surrender unarmed into the hands of his political enemies. 
 
 # sentence level graph:
 (s200 / )
