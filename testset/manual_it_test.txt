@@ -1,5 +1,5 @@
 # sent_id = n01001011
-# :: snt 1
+# :: snt1
 Index: 1    2     3    4    5  6      7          8    9   10       11     12 13   14    15  16 17    18        19      20   21   22  23242526 27   28      29   30 31  32   33     34   35 36     37        38    39  40  41
 Words: " Mentre gran parte di la transizione digitale è senza precedenti in gli Stati Uniti , la pacifica transizione di potere non lo è " , ha scritto lunedì in un blog Kori Schulman , l' assistente speciale di Obama .
 Sentence: "Mentre gran parte della transizione digitale è senza precedenti negli Stati Uniti, la pacifica transizione di potere non lo è", ha scritto lunedì in un blog Kori Schulman, l'assistente speciale di Obama.
@@ -80,7 +80,7 @@ s1n2: 0-0
 
 
 # sent_id = n01026004
-# :: snt 2
+# :: snt2
 Index:     1       2     3       4       5   6     7     8  9   10   11 12  13 14
 Words: Stanotte useremo gli abbaglianti per le punizioni , si legge su il post .
 Sentence: Stanotte useremo gli abbaglianti per le punizioni, si legge sul post.
@@ -120,7 +120,7 @@ s2p3: 13-13
 
 
 # sent_id = n01057014
-# :: snt 3
+# :: snt3
 Index: 1    2        3      4    5       6      7      8    9    10   11     12    13 14   15     16 17   18    19  20 21
 Words: I detriti formarono un circolo intorno all' equatore e furono poi attratti da la gravità fino a formare la Luna .
 Sentence: I detriti formarono un circolo intorno all'equatore e furono poi attratti dalla gravità fino a formare la Luna.
@@ -164,7 +164,7 @@ s3n: 0-0
 
 
 # sent_id = w01071036
-# :: snt 4
+# :: snt4
 Index:  1  2       3     4    5   6  7    8   9
 Words: La sua importanza è dovuta a due fatti .
 Sentence: La sua importanza è dovuta a due fatti.
@@ -191,7 +191,7 @@ s4f: 7-8
 
 
 # sent_id = w01072079
-# :: snt 5
+# :: snt5
 Index:   1    2  3     4   5  6      7         8       9   10     11        12     13   14   15  16   17   18  19
 Words: Entro il III secolo , l' imperatore Caracalla fece un' ulteriore divisione che durò solo per poco tempo .
 Sentence: Entro il III secolo, l'imperatore Caracalla fece un'ulteriore divisione che durò solo per poco tempo.
@@ -239,7 +239,7 @@ s5d3: 14-14
 
 
 # sent_id = w01134062
-# :: snt 6
+# :: snt6
 Index:  1  2   3  4    5       6   7   8        9        10 11    12    13 14    15   16     17      18 19     20    21     22     23   24   25    26   27  28  29 30 31   32 33
 Words: In il 1955 , Mishima iniziò a fare sollevamento pesi e continuò il suo regime di allenamento di tre sessioni per settimana per tutti gli ultimi 15 anni di la sua vita .
 Sentence: Nel 1955, Mishima iniziò a fare sollevamento pesi e continuò il suo regime di allenamento di tre sessioni per settimana per tutti gli ultimi 15 anni della sua vita.
@@ -305,7 +305,7 @@ s6r2: 22-22
 
 
 # sent_id = n02036018
-# :: snt 7
+# :: snt7
 Index:  1    2        3      4    5     6 7   8     9      10    11       12           13     14
 Words: Von Beust giustificò l' aumento di i costi come mancanza di pianificazione dettagliata .
 Sentence: Von Beust giustificò l'aumento dei costi come mancanza di pianificazione dettagliata.
@@ -349,7 +349,7 @@ s7d: 13-13
 
 
 # sent_id = n02042026
-# :: snt 8
+# :: snt8
 Index:  1      2       3  4       5      6     7     8  9   10  11   12    13 14 15 16   17     18     19    20 21     22     23    24    25  26   27    28    29   30    31   32   33
 Words: La generazione di gli smartphone ha ricevuto l' app che si merita dove , in il miglior caso possibile , la situazione più stupida ha avuto un pubblico di milioni di persone .
 Sentence: La generazione degli smartphone ha ricevuto l'app che si merita dove, nel miglior caso possibile, la situazione più stupida ha avuto un pubblico di milioni di persone.
@@ -398,7 +398,7 @@ s8p: 32-32
 
 
 # sent_id = n02075020
-# :: snt 9
+# :: snt9
 Index:    1     2   3    4     5    6    7  8   9      10        11       12   13   14    15   16   17
 Words: Dündar mise in guardia l' Europa da l' avere troppa comprensione circa l' operato di Erdogan .
 Sentence: Dündar mise in guardia l'Europa dall'avere troppa comprensione circa l'operato di Erdogan.
@@ -442,7 +442,7 @@ s9n2: 0-0
 
 
 # sent_id = n03001030
-# :: snt 10
+# :: snt10
 Index:    1     2     3     4    5    6  7   8   9
 Words: Secondo il programma , parlerà a le 23:45 .
 Sentence: Secondo il programma, parlerà alle 23:45.
@@ -473,7 +473,7 @@ s10d: 8-8
 
 
 # sent_id = n03009006
-# :: snt 11
+# :: snt11
 Index:  1   2       3      4  5  6     7      8   9      10        11      12   13  14       15       16      17       18        19      2021
 Words: Ha anche rimarcato che " l' esistenza di tale documento potrebbe portare a delle conseguenze tanto probabili quanto inaccettabili " .
 Sentence: Ha anche rimarcato che "l'esistenza di tale documento potrebbe portare a delle conseguenze tanto probabili quanto inaccettabili".
@@ -528,7 +528,7 @@ s11a 19-19
 
 
 # sent_id = n03010012
-# :: snt 12
+# :: snt12
 Index:    1     2    3   4    5     6    7  8    9        10    11      12      13   14    15  16 17 1819  20   21   22   23  24       25    26 27    28    29
 Words: Secondo Le Figaro , questo piano di il governo potrebbe far risparmiare 42 milioni di euro , di i quali 15 milioni e mezzo andrebbero a la sicurezza .
 Sentence: Secondo Le Figaro, questo piano del governo potrebbe far risparmiare 42 milioni di euro, dei quali 15 milioni e mezzo andrebbero alla sicurezza.
@@ -584,7 +584,7 @@ s12s2: 28-28
 
 
 # sent_id = n04002027
-# :: snt 13
+# :: snt13
 Index:  1      2       3      4      5    6    7    8    9       10       11   12   13  14     15    16
 Words: Non possiamo andare avanti insieme a quelli che sono totalmente contro l' Italia , sottolinea .
 Sentence: Non possiamo andare avanti insieme a quelli che sono totalmente contro l'Italia, sottolinea.
@@ -632,7 +632,7 @@ s13n: 0-0
 
 
 # sent_id = n04006014
-# :: snt 14
+# :: snt14
 Index:  1     2     3      4    5  6  7    8       9    10   11   12  13 14  15   16     17    18    19 20 21  22  23   24   25   26   27 28    29    30  31    32 33
 Words: Gli ultimi dati riferiti a il 24 ottobre scorso ci dicono che da noi il gasolio costa 1,335 euro a il litro , contro una media di l' eurozona di 1,165 euro .
 Sentence: Gli ultimi dati riferiti al 24 ottobre scorso ci dicono che da noi il gasolio costa 1,335 euro al litro, contro una media dell'eurozona di 1,165 euro.
@@ -706,7 +706,7 @@ s14e3: 29-29
 
 
 # sent_id = n04008007
-# :: snt 15
+# :: snt15
 Index: 1   2     3   4  5      6     7  8      9       10   11 12  13   14 15    16        17     18  19 20
 Words: È stato detto a gli studenti di l' Università Luiss in il corso di un incontro organizzato a Roma .
 Sentence: È stato detto agli studenti dell'Università Luiss nel corso di un incontro organizzato a Roma.
@@ -746,7 +746,7 @@ s15n2: 0-0
 
 
 # sent_id = n05002015
-# :: snt 16
+# :: snt16
 Index:  1  2      3    4     5    6  7  8   9     10   11    12   13
 Words: La sua gestione , comunque , non è stata priva di critiche .
 Sentence: La sua gestione, comunque, non è stata priva di critiche.
@@ -777,7 +777,7 @@ s16c: 10-12
 
 
 # sent_id = n05007025
-# :: snt 17
+# :: snt17
 Index: 1    2      3      4     5   6     7       8   9  10  11   12     13      14     15    16   17       18      19    20   21    22   23
 Words: E devono essere accolti con uno spirito aperto e con una mente limpida perché formano una nuova generazione di speranza e bellezza .
 Sentence: E devono essere accolti con uno spirito aperto e con una mente limpida perché formano una nuova generazione di speranza e bellezza.
@@ -827,7 +827,7 @@ s17b: 22-22
 
 
 # sent_id = n05008018
-# :: snt 18
+# :: snt18
 Index:  1   2       3          4      5     6     7   8        9            10     11  12    13  14 15 16 17   18   19   20     21     22  23   24   25
 Words: Il voto anticipato suggerisce che questa volta i latinoamericani voteranno in gran numero , ma non è chiaro se questo aumento avrà un impatto .
 Sentence: Il voto anticipato suggerisce che questa volta i latinoamericani voteranno in gran numero, ma non è chiaro se questo aumento avrà un impatto.
@@ -890,7 +890,7 @@ s18i: 24-24
 
 
 # sent_id = w02003037
-# :: snt 19
+# :: snt19
 Index:  1  2   3  4  5    6        7      8      9     10 11  12   13     14     15 16     17      18       19      20  21     22     23     24     25 26 27     28    29   30  31
 Words: In il 1832 , il vecchio chiostro venne venduto da lo stato di Württemberg a il produttore Georg Reichenbach con la condizione di trasformar lo in una fabbrica di cotone .
 Sentence: Nel 1832, il vecchio chiostro venne venduto dallo stato di Württemberg al produttore Georg Reichenbach con la condizione di trasformarlo in una fabbrica di cotone.
@@ -939,7 +939,7 @@ s19c3: 12-14
 
 
 # sent_id = w02005029
-# :: snt 20
+# :: snt20
 Index:     1     2     3     4    5      6     7     8   9
 Words: Contiene un monumento a Martin Luther King Junior .
 Sentence: Contiene un monumento a Martin Luther King Junior.
@@ -969,7 +969,7 @@ s20n: 0-0
 
 
 # sent_id = w02018030
-# :: snt 21
+# :: snt21
 Index:   1     2      3     4    5    6   7      8       9  10  11   12   13   14  15  16
 Words: Weiss venne onorato con premi per la letteratura da le città di Colonia e Brema .
 Sentence: Weiss venne onorato con premi per la letteratura dalle città di Colonia e Brema.
@@ -1008,7 +1008,7 @@ s21a: 14-14
 
 
 # sent_id = w03005014
-# :: snt 22
+# :: snt22
 Index: 1   2     3     4         5       6     7     8  9  10   11    12
 Words: I primi testi greci cominciarono ad apparire da il IX secolo a.C.
 Sentence: I primi testi greci cominciarono ad apparire dal IX secolo a.C.
@@ -1043,7 +1043,7 @@ s22d: 10-12
 
 
 # sent_id = w03005015
-# :: snt 23
+# :: snt23
 Index:  1    2    3     4    5   6      7        8          9       10 11   12        13       14    15 16    17      18  19  20   21  22  23  24   25   26    27    2829   30     31   32 33  34 35 36 37   38      39   40
 Words: La Grecia era divisa in molte piccole comunità autogovernate , un modello largamente dettato da la geografia greca : ogni isola , valle e pianura è separata da i luoghi vicini da il mare o da le catene montuose .
 Sentence: La Grecia era divisa in molte piccole comunità autogovernate, un modello largamente dettato dalla geografia greca: ogni isola, valle e pianura è separata dai luoghi vicini dal mare o dalle catene montuose.
@@ -1130,7 +1130,7 @@ s23m3: 39-39
 
 
 # sent_id = w03007039
-# :: snt 24
+# :: snt24
 Index:  1     2       3        4          5         6          7       8   9    10      11     12 13    14    15  16  17   18    19    20  21   22  23
 Words: Il commercio venne sviluppato stabilendo avamposti commerciali in tutto il Mediterraneo , una tecnica che non era stata usata fino ad allora .
 Sentence: Il commercio venne sviluppato stabilendo avamposti commerciali in tutto il Mediterraneo, una tecnica che non era stata usata fino ad allora.
@@ -1181,7 +1181,7 @@ s24a2: 22-22
 
 
 # sent_id = w04002055
-# :: snt 25
+# :: snt25
 Index:  1  2   3    4    5    6    7     8     9 10 11 12  13  14    15       16     17  18     19    20 21   22    23  24  25 26   27       28      29     30    31  32
 Words: In il 1976 cadde in disuso l' ippodromo , e in il 1990 un incendio distrusse ciò che rimaneva di le tribune in legno , in seguito demolite insieme alle stalle .
 Sentence: Nel 1976 cadde in disuso l'ippodromo, e nel 1990 un incendio distrusse ciò che rimaneva delle tribune in legno, in seguito demolite insieme alle stalle.
@@ -1232,7 +1232,7 @@ s25s2: 31-31
 
 
 # sent_id = w04003054
-# :: snt 26
+# :: snt26
 Index:  1     2      3    4     5       6            7             8      9 10  11     12         13     14   15     16   1718      19      20
 Words: Le emissioni di moneta hanno carattere prevalentemente numismatico , e sono destinate soprattutto a essere vendute a i collezionisti .
 Sentence: Le emissioni di moneta hanno carattere prevalentemente numismatico, e sono destinate soprattutto a essere vendute ai collezionisti.
@@ -1276,7 +1276,7 @@ s26c: 19-19
 
 
 # sent_id = w04009042
-# :: snt 27
+# :: snt27
 Index:  1   2   3    4   5  6  7    8    9     10   11 12 13     14   15  16  17 18   19     20       21   2223 24 25 26    27     28   29    30  31   32    33  34  35 36     37     38   39   40
 Words: L' uomo gli dice che è in arrivo una guerra tra i due universi , come lui e Walter avevano predetto , e che è per questo motivo che Olivia , insieme ad altri , fu addestrata da bambina .
 Sentence: L'uomo gli dice che è in arrivo una guerra tra i due universi, come lui e Walter avevano predetto, e che è per questo motivo che Olivia, insieme ad altri, fu addestrata da bambina.
@@ -1351,7 +1351,7 @@ s27b: 39-39
 
 
 # sent_id = w05002014
-# :: snt 28
+# :: snt28
 Index:   1    2   3      4      5   6  7  8    9        10      11 12 13    14    15  16   17    18  19   20       21    22
 Words: Prima che si formassero le Ande , il limite occidentale di il Sud America era già stato sito di diverse orogenesi .
 Sentence: Prima che si formassero le Ande, il limite occidentale del Sud America era già stato sito di diverse orogenesi.
@@ -1400,7 +1400,7 @@ s28o2: 21-21
 
 
 # sent_id = w05009044
-# :: snt 29
+# :: snt29
 Index:  1  2   3  4  5     6     7    8   9  10 11  12   13     14    15  16 17     18          19      20    21     22     23   24 25      26       27   28    29     30   31  32      33     34   35  36 3738  39 40 41    42    43  44  4546
 Words: In il 1976 , si incontrò con Kiki Dee , un amico che lavorava con la sua etichetta discografica The Rocket Record Company , per registrare quello che sarebbe stato un altro successo degno di nota : " Don' t go Breaking My Heart " .
 Sentence: Nel 1976, si incontrò con Kiki Dee, un amico che lavorava con la sua etichetta discografica The Rocket Record Company, per registrare quello che sarebbe stato un altro successo degno di nota: "Don't go Breaking My Heart".
@@ -1481,7 +1481,7 @@ s29n4: 36-36
 
 
 # sent_id = w05010027
-# :: snt 30
+# :: snt30
 Index:  1 2    3     4   5  6   7      8      9    10       11       12   13   14 15  16   17     18     19    20     21   22 23  24 25
 Words: Il 1 gennaio 49 d.C. , Marco Antonio lesse una dichiarazione di Cesare in la quale il proconsole si dichiarò amico di la pace .
 Sentence: Il 1 gennaio 49 d.C., Marco Antonio lesse una dichiarazione di Cesare nella quale il proconsole si dichiarò amico della pace.

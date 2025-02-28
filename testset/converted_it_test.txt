@@ -1,5 +1,5 @@
 # sent_id = n01025040
-# :: snt 1
+# :: snt1
 Index:  1   2  3 4    5       6         7           8     9  10  11     12   13 14  15  16    17          18       19    20   21   22    23  24
 Words: In Cina , i capelli vengono solitamente sottoposti a un bagno chimico a il fine di rimuovere completamente le cuticole , spiega Tarlo .
 Sentence: In Cina, i capelli vengono solitamente sottoposti a un bagno chimico al fine di rimuovere completamente le cuticole, spiega Tarlo.
@@ -43,7 +43,7 @@ s1s2: 22-22
 
 
 # sent_id = n01035030
-# :: snt 2
+# :: snt2
 Index:  1    2        3       4     5    6        7      8   9        10      11  12   13    14  15    16    17  18       19     20 21    22     23      24     25 26 27    28   29
 Words: Ha inoltre descritto Klein come poco comunicativo e poco collaborativo , oltre che restio a lasciare le celle sottostanti a il tribunale per partecipare a la sua udienza .
 Sentence: Ha inoltre descritto Klein come poco comunicativo e poco collaborativo, oltre che restio a lasciare le celle sottostanti al tribunale per partecipare alla sua udienza.
@@ -107,7 +107,7 @@ s23c: 18-18
 
 
 # sent_id = n01039018
-# :: snt 3
+# :: snt3
 Index:   1   2    3    4  5  6   7  8     9       10    11 12   13    14  15
 Words: Amici , questo non è ciò di cui abbiamo bisogno in il nostro paese .
 Sentence: Amici, questo non è ciò di cui abbiamo bisogno nel nostro paese.
@@ -144,7 +144,7 @@ s3p2: 0-0
 
 
 # sent_id = n01068038
-# :: snt 4
+# :: snt4
 Index:  1  2     3     4  5   6       7     8  9       10       11    12  13   14   15
 Words: La sua abilità in l' avere risposte per i contribuenti verrà molto a mancare .
 Sentence: La sua abilità nell'avere risposte per i contribuenti verrà molto a mancare.
@@ -181,7 +181,7 @@ s4m2: 12-12
 
 
 # sent_id = n01071009
-# :: snt 5
+# :: snt5
 Index:  1      2        3     4    5    6     7    8 9  10 11 12  13  14  15   16    17 18     19    20  21   22  23  24   25 26     27       28   29 30  31  32
 Words: Una centrale elettrica a carbone a Badarpur , a sud - est di Delhi , cesserà la sua attività per 10 giorni , così come i generatori diesel di la città .
 Sentence: Una centrale elettrica a carbone a Badarpur, a sud-est di Delhi, cesserà la sua attività per 10 giorni, così come i generatori diesel della città.
@@ -244,7 +244,7 @@ s5c3: 31-31
 
 
 # sent_id = n01090037
-# :: snt 6
+# :: snt6
 Index:  1     2    3 4   5     6   7  8    9     10  11    12     13  14     15           16         17     18      19       20   21  22   23 24
 Words: Amo giocar ci e sono sempre a la ricerca di muse adatte perché è decisamente interessante preparare una collezione quando ne trovo una .
 Sentence: Amo giocarci e sono sempre alla ricerca di muse adatte perché è decisamente interessante preparare una collezione quando ne trovo una.
@@ -310,7 +310,7 @@ s6d: 15-15
 
 
 # sent_id = n01145008
-# :: snt 7
+# :: snt7
 Index:  1   2 3    4       5    6  7   8 9  10   11  12
 Words: Non c' è nessuna sfilata e non c' è mai stata .
 Sentence: Non c'è nessuna sfilata e non c'è mai stata.
@@ -342,7 +342,7 @@ s7e2: 8-9
 
 
 # sent_id = w01005023
-# :: snt 8
+# :: snt8
 Index:  1     2         3           4      5      6     7   8      9         10      1112   13   14
 Words: L' esercito multietnico achemenide era composto da molti soldati provenienti da i Balcani .
 Sentence: L'esercito multietnico achemenide era composto da molti soldati provenienti dai Balcani.
@@ -381,7 +381,7 @@ s8e2: 4-4
 
 
 # sent_id = w01051032
-# :: snt 9
+# :: snt9
 Index:  1  2    3    4      5         6   7    8     9    10    11   12     13         14      15
 Words: In la fretta di conquistare Kadesh , Ramsete II commise un errore tattico considerevole .
 Sentence: Nella fretta di conquistare Kadesh, Ramsete II commise un errore tattico considerevole.
@@ -424,7 +424,7 @@ s9n2: 0-0
 
 
 # sent_id = w01073007
-# :: snt 10
+# :: snt10
 Index:    1       2        3     4  5     6     7  8   9   10 11  12    13    14    15     16   17  18   19     20     21       22    23  24   25    26     27   28 29
 Words: Furono talmente commossi da la bellezza di l' area di il lago Rudyard che quando nacque il loro primo figlio vollero ricordar lo dando gli proprio quel nome .
 Sentence: Furono talmente commossi dalla bellezza dell'area del lago Rudyard che quando nacque il loro primo figlio vollero ricordarlo dandogli proprio quel nome.
@@ -490,7 +490,7 @@ s10r: 22-22
 
 
 # sent_id = w01102040
-# :: snt 11
+# :: snt11
 Index:  1    2     3       4     5   6     7     8     9        10       11        12     13      14    15 16  17     18      19        20          21      22   23 24     25   26
 Words: De Gaulle aveva ordinato che in pubblico non venisse mostrata eccessiva simpatia verso Churchill e che non venissero dati riconoscimenti ufficiali senza il suo consenso .
 Sentence: De Gaulle aveva ordinato che in pubblico non venisse mostrata eccessiva simpatia verso Churchill e che non venissero dati riconoscimenti ufficiali senza il suo consenso.
@@ -545,7 +545,7 @@ s11s: 12-12
 
 
 # sent_id = w01105056
-# :: snt 12
+# :: snt12
 Index:  1    2     3      4    5    6    7      8       9  10  11   12    13   14      15    16
 Words: Il sistema era semplice , diretto e funzionava bene , anche con piloti non addestrati .
 Sentence: Il sistema era semplice, diretto e funzionava bene, anche con piloti non addestrati.
@@ -590,7 +590,7 @@ s12a2: 14-15
 
 
 # sent_id = w01113046
-# :: snt 13
+# :: snt13
 Index:    1    2    3    4    5       6      7          8       9  10  11 12   13      14         15      16 17  18 19
 Words: Inoltre , costruì e rinnovò cinque mercati tradizionali in il 2013 e quattro mercati tradizionali in il 2014 .
 Sentence: Inoltre, costruì e rinnovò cinque mercati tradizionali nel 2013 e quattro mercati tradizionali nel 2014.
@@ -649,7 +649,7 @@ s13t2: 15-15
 
 
 # sent_id = w01147010
-# :: snt 14
+# :: snt14
 Index:   1   2     3     4   5     6    7     8     9     10    11 12 13  14 15  16   17   18     19     20  21     22    23      24       25  26 27    28   29
 Words: Pebe si trasferì con la famiglia a Nashville , Tennessee , in il 1991 , dopo esser si assicurata un nuovo accordo di pubblicazione per le sue canzoni .
 Sentence: Pebe si trasferì con la famiglia a Nashville, Tennessee, nel 1991, dopo essersi assicurata un nuovo accordo di pubblicazione per le sue canzoni.
@@ -706,7 +706,7 @@ s14a3: 16-16
 
 
 # sent_id = n02007010
-# :: snt 15
+# :: snt15
 Index:  1   2   3   4  5     6           7       8  9    10    11   12     13   14  15  16 17     18    19
 Words: Con 71 goal in 137 partite internazionali , ha segnato un numero record di reti in la Bundesliga .
 Sentence: Con 71 goal in 137 partite internazionali, ha segnato un numero record di reti nella Bundesliga.
@@ -747,7 +747,7 @@ s15i: 7-7
 
 
 # sent_id = n02017008
-# :: snt 16
+# :: snt16
 Index:  1   2     3        4       5    6      7     8     9    10    11   12  13      14     1516  17  18
 Words: La foto mostra chiaramente la sottile barra touch sopra la tastiera , come anticipato da i rumor .
 Sentence: La foto mostra chiaramente la sottile barra touch sopra la tastiera, come anticipato dai rumor.
@@ -788,7 +788,7 @@ s16r2: 0-0
 
 
 # sent_id = n02027019
-# :: snt 17
+# :: snt17
 Index:  1    2    3      4      5       6       7  8     9     10 11   12   13   14   15
 Words: La Russia ha annunciato una sospensione di il contratto a gli inizi di ottobre .
 Sentence: La Russia ha annunciato una sospensione del contratto agli inizi di ottobre.
@@ -820,7 +820,7 @@ s17i2: 12-12
 
 
 # sent_id = n02043008
-# :: snt 18
+# :: snt18
 Index: 1  2  3   4       5     6  7   8   9
 Words: E ora è anche campione di il mondo .
 Sentence: E ora è anche campione del mondo.
@@ -850,7 +850,7 @@ s18p: 0-0
 
 
 # sent_id = n02068010
-# :: snt 19
+# :: snt19
 Index:  1     2          3        4     5      6  7     8    9
 Words: Per Barroso probabilmente la questione non è superata .
 Sentence: Per Barroso probabilmente la questione non è superata.
@@ -878,7 +878,7 @@ s19q: 5-5
 
 
 # sent_id = n02074009
-# :: snt 20
+# :: snt20
 Index:  1    2    3  4    5        6     7  8   9     10     11      12   13 14 15   16     17   18 19 20      21    22 23 24   25     26 27 28    29     30  31  32   33      34    35  36   37 38
 Words: Il marito di l' attuale candidata a la Casa Bianca Hillary Clinton , in l' ultimo giorno di la sua presidenza , il 20 gennaio 2001 , ha condonato la pena di diverse persone tra cui Rich .
 Sentence: Il marito dell'attuale candidata alla Casa Bianca Hillary Clinton, nell'ultimo giorno della sua presidenza, il 20 gennaio 2001, ha condonato la pena di diverse persone tra cui Rich.
@@ -956,7 +956,7 @@ s20d2: 24-26
 
 
 # sent_id = n02083054
-# :: snt 21
+# :: snt21
 Index:  1      2      3  4    5        6    7    8       9          10      11     12        13       14      15  16   17    18  19      20     21   22       23   24     25     26   27    28 29  30  31 32    33     34     35    36
 Words: Non sorprende che i governi federali e statali abbiano classificato il Patrimonio Naturale Nazionale come un impegno su scala nazionale di massima priorità , documentato a partire da il 2005 in un contratto di coalizione .
 Sentence: Non sorprende che i governi federali e statali abbiano classificato il Patrimonio Naturale Nazionale come un impegno su scala nazionale di massima priorità, documentato a partire dal 2005 in un contratto di coalizione.
@@ -1023,7 +1023,7 @@ s21a3: 26-28
 
 
 # sent_id = n03001019
-# :: snt 22
+# :: snt22
 Index:  1   2      3    4  5       6          7      8  9      10     11 12    13       14    15   16 1718
 Words: Se fosse eletto il suo oppositore Democratico , ha assicurato che " verrebbe indagata per anni " .
 Sentence: Se fosse eletto il suo oppositore Democratico, ha assicurato che "verrebbe indagata per anni".
@@ -1068,7 +1068,7 @@ s22a: 10-10
 
 
 # sent_id = n03001030
-# :: snt 23
+# :: snt23
 Index:    1     2     3     4    5    6  7   8   9
 Words: Secondo il programma , parlerà a le 23:45 .
 Sentence: Secondo il programma, parlerà alle 23:45.
@@ -1098,7 +1098,7 @@ s23p: 3-3
 
 
 # sent_id = n03003025
-# :: snt 24
+# :: snt24
 Index: 1       2          3     4  5  6    7     8      9      10     11        12        13  14       15      16
 Words: I conservatori islamici di l' AKP hanno preso questo rifiuto come giustificazione per gli interrogatori .
 Sentence: I conservatori islamici dell'AKP hanno preso questo rifiuto come giustificazione per gli interrogatori.
@@ -1136,7 +1136,7 @@ s24p2: 6-6
 
 
 # sent_id = n03006003
-# :: snt 25
+# :: snt25
 Index:   1     2  3    4    5       6        7     8      9       10 11  12      13     14 15   16      17   18
 Words: Quali sono i limiti che potrebbero inibire l' espressione di il credo religioso in le aziende private ?
 Sentence: Quali sono i limiti che potrebbero inibire l'espressione del credo religioso nelle aziende private?
@@ -1175,7 +1175,7 @@ s25u: 1-1
 
 
 # sent_id = n03006008
-# :: snt 26
+# :: snt26
 Index:   1    2  3    4      5    6  7      8      9     10   1112    13        14     15    16     17     18      19    20
 Words: Anche se la maggior parte di le situazioni che emerge in i contesti lavorativi può essere risolta senza conflitti .
 Sentence: Anche se la maggior parte delle situazioni che emerge nei contesti lavorativi può essere risolta senza conflitti.
@@ -1220,7 +1220,7 @@ s26e: 10-10
 
 
 # sent_id = n03007009
-# :: snt 27
+# :: snt27
 Index:   1   2    3     4        5        6   7    8  9    10     11   12  13   14    15 16 17  18   19         20           21    22  23     24   25  26   27    28    29  30    31   32 33   34   35
 Words: Punta a portare in considerazione il tempo di il viaggio dopo aver lo dedotto da le ore di lavoro effettivamente completate , senza essere in grado di misurare il tempo reale di il viaggio .
 Sentence: Punta a portare in considerazione il tempo del viaggio dopo averlo dedotto dalle ore di lavoro effettivamente completate, senza essere in grado di misurare il tempo reale del viaggio.
@@ -1283,7 +1283,7 @@ s27v: 10-10
 
 
 # sent_id = n03010019
-# :: snt 28
+# :: snt28
 Index:  1    2     3   4  5    6        7      8
 Words: La Francia non ha una buona reputazione .
 Sentence: La Francia non ha una buona reputazione.
@@ -1310,7 +1310,7 @@ s28b: 6-6
 
 
 # sent_id = n04005016
-# :: snt 29
+# :: snt29
 Index:    1    2    3    4   5    6   7     8      9     10 11     12    13    14   15     16    17 18  19  20
 Words: Quindi si genera il buono che può essere salvato su lo smartphone o stampato e presentato a la cassa .
 Sentence: Quindi si genera il buono che può essere salvato sullo smartphone o stampato e presentato alla cassa.
@@ -1351,7 +1351,7 @@ s29s3: 14-14
 
 
 # sent_id = n04006003
-# :: snt 30
+# :: snt30
 Index:  1  2   3      4          5         6    7    8    9
 Words: Da il primo gennaio aumenteranno benzina e gasolio .
 Sentence: Dal primo gennaio aumenteranno benzina e gasolio.
@@ -1379,7 +1379,7 @@ s30b: 6-6
 
 
 # sent_id = n04007015
-# :: snt 31
+# :: snt31
 Index:   1    2   3  4     5     6      7       8  9  10 11   12        13      14  15  16     17   18 19   20      21     22     23      24    25      26       27     28
 Words: Come detto , la decisione è prerogativa di la BCE e sarebbe inopportuno per la Banca parlare a suo nome escludendo la possibilità di esaminare altre alternative .
 Sentence: Come detto, la decisione è prerogativa della BCE e sarebbe inopportuno per la Banca parlare a suo nome escludendo la possibilità di esaminare altre alternative.
@@ -1446,7 +1446,7 @@ s31n3: 0-0
 
 
 # sent_id = n04007018
-# :: snt 32
+# :: snt32
 Index: 1    2      3    4  5    6  7  8    9   10    11     12 13 14    15    16   17   18 19   20   21
 Words: È quanto scrive in una nota a Mps dopo la decisione di l' ex ministro di uscire da la partita .
 Sentence: È quanto scrive in una nota a Mps dopo la decisione dell'ex ministro di uscire dalla partita.
@@ -1505,7 +1505,7 @@ s32e: 0-0
 
 
 # sent_id = n04009002
-# :: snt 33
+# :: snt33
 Index:    1        2     3  4      5       6   7    8        9      10  11   12      13      14 15  16   17    18   1920  21   22     23     24   25    26 27    28    29
 Words: Quattro studenti di l' università Roma Tre hanno sviluppato un casco da motociclista che " legge il pensiero " e aiuta ad anticipare le manovre di il guidatore .
 Sentence: Quattro studenti dell'università Roma Tre hanno sviluppato un casco da motociclista che "legge il pensiero" e aiuta ad anticipare le manovre del guidatore.
@@ -1561,7 +1561,7 @@ s33s2: 8-9
 
 
 # sent_id = n04010016
-# :: snt 34
+# :: snt34
 Index:     1     2    3    4    5    6     7          8          9     10     11    12  13    14  15  16   17  18  19 20   21      22  23
 Words: Rispetto al passato , sempre più società tecnologiche prendono l' iniziativa a Wall Street , ancor più che in la Silicon Valley .
 Sentence: Rispetto al passato, sempre più società tecnologiche prendono l'iniziativa a Wall Street, ancor più che nella Silicon Valley.
@@ -1614,7 +1614,7 @@ s34p2: 9-9
 
 
 # sent_id = n04010021
-# :: snt 35
+# :: snt35
 Index:   1    2    3    4     5      6  7    8    9    10     11    12   13  14  15  16 17    18          19      20 21   22     23   24
 Words: Oltre al summit di Mountain View i leader di aziende come Spotify , Tesla , Uber e Snapchat parteciperanno a un evento segreto .
 Sentence: Oltre al summit di Mountain View i leader di aziende come Spotify, Tesla, Uber e Snapchat parteciperanno a un evento segreto.
@@ -1684,7 +1684,7 @@ s35h2: 5-6
 
 
 # sent_id = n05002015
-# :: snt 36
+# :: snt36
 Index:  1  2      3    4     5    6  7  8   9     10   11    12   13
 Words: La sua gestione , comunque , non è stata priva di critiche .
 Sentence: La sua gestione, comunque, non è stata priva di critiche.
@@ -1712,7 +1712,7 @@ s36p2: 2-2
 
 
 # sent_id = n05002020
-# :: snt 37
+# :: snt37
 Index:    1         2       3      4      5     6   7
 Words: Questo dipartimento ora affronta nuove sfide .
 Sentence: Questo dipartimento ora affronta nuove sfide.
@@ -1742,7 +1742,7 @@ s37d: 2-2
 
 
 # sent_id = n05002023
-# :: snt 38
+# :: snt38
 Index:    1    2  3    4      5     6   7  8    9   10  11   12  13   14      15   1617
 Words: Inoltre , il Governo dovrà avere a che fare con un' altra " patata bollente " .
 Sentence: Inoltre, il Governo dovrà avere a che fare con un'altra "patata bollente".
@@ -1771,7 +1771,7 @@ s38b: 15-15
 
 
 # sent_id = n05003010
-# :: snt 39
+# :: snt39
 Index:  1   2        3       4     5    6  7 8  9  10    11   1213
 Words: Le fonti consultate hanno detto che è " 100 % Cospedal " .
 Sentence: Le fonti consultate hanno detto che è "100% Cospedal".
@@ -1809,7 +1809,7 @@ s39p2: 9-10
 
 
 # sent_id = n05004020
-# :: snt 40
+# :: snt40
 Index:   1      2    3   4    5     6        7     8  9   10   11 12    13      14   15  16   17  18 19    20    21   22   23
 Words: Pedro Sánchez , come molti altri socialisti , ha detto in il programma Évole che la Spagna è una nazione di nazioni .
 Sentence: Pedro Sánchez, come molti altri socialisti, ha detto nel programma Évole che la Spagna è una nazione di nazioni.
@@ -1864,7 +1864,7 @@ s40b 13-14
 
 
 # sent_id = n05005002
-# :: snt 41
+# :: snt41
 Index:     1       2     3    4    5   6   7 8  9    10   11 12 13   14     15  16  17   18 19 20  21 2223
 Words: Federico Fellini una volta ha detto . " Il comico sta a l' umanità come l' ombra sta a l' uomo " .
 Sentence: Federico Fellini una volta ha detto. "Il comico sta all'umanità come l'ombra sta all'uomo".
@@ -1914,7 +1914,7 @@ s41u3: 21-21
 
 
 # sent_id = n05009030
-# :: snt 42
+# :: snt42
 Index:    1     2    3     4  5   6     7    8        9       10    11    12  13   14 15     16    17
 Words: Dozzine di seguaci di il FSLN stanno già festeggiando la vittoria in Plaza de las Victorias .
 Sentence: Dozzine di seguaci del FSLN stanno già festeggiando la vittoria in Plaza de las Victorias.
@@ -1953,7 +1953,7 @@ s42c: 13-16
 
 
 # sent_id = w02003070
-# :: snt 43
+# :: snt43
 Index: 1     2         3     4   5   6      7      8    9     10   11 12   13  14 15     16           17        18 19   20   21
 Words: I cittadini islamici che si sono stabiliti fin dagli inizi di gli anni '60 , emigrarono prevalentemente da la Turchia .
 Sentence: I cittadini islamici che si sono stabiliti fin dagli inizi degli anni '60, emigrarono prevalentemente dalla Turchia.
@@ -1997,7 +1997,7 @@ s43c: 2-2
 
 
 # sent_id = w02006081
-# :: snt 44
+# :: snt44
 Index:    1     2     3        4     5  6   7  8  9    10       11     12 13  14   15   16    17  18  1920    21       22   23
 Words: Durante le elezioni generali di il 2010 , il Partito Laburista fu in grado di vincere in tutti i 7 distretti votanti .
 Sentence: Durante le elezioni generali del 2010, il Partito Laburista fu in grado di vincere in tutti i 7 distretti votanti.
@@ -2035,7 +2035,7 @@ s44t: 18-18
 
 
 # sent_id = w02013015
-# :: snt 45
+# :: snt45
 Index:  1      2           3        4    5    6   7      8      9    10  11  12   13    14  15
 Words: La Rivoluzione Industriale ebbe luogo in Gran Bretagna prima che in ogni altro paese .
 Sentence: La Rivoluzione Industriale ebbe luogo in Gran Bretagna prima che in ogni altro paese.
@@ -2076,7 +2076,7 @@ s45o: 12-12
 
 
 # sent_id = w02013093
-# :: snt 46
+# :: snt46
 Index:   1   2      3        4    5  6   7     8      9      10  11    12    13 14   15   16 17   18     19         20      21   22         23     24
 Words: Dopo la Rivoluzione russa di il 1917 alcune nazioni come la Finlandia , la Polonia e gli Stati Baltici guadagnarono la propria indipendenza .
 Sentence: Dopo la Rivoluzione russa del 1917 alcune nazioni come la Finlandia, la Polonia e gli Stati Baltici guadagnarono la propria indipendenza.
@@ -2129,7 +2129,7 @@ s46i: 23-23
 
 
 # sent_id = w02014013
-# :: snt 47
+# :: snt47
 Index:  1   2  3     4     5    6  7    8    9     10       11    12 13    14    15 16    17    18   19       20       21   22    23   24
 Words: Uno di gli ultimi mezzi da lui usati per mettere pressione a l' Ungheria fu la minaccia di imporre elezioni generali e gratuite .
 Sentence: Uno degli ultimi mezzi da lui usati per mettere pressione all'Ungheria fu la minaccia di imporre elezioni generali e gratuite.
@@ -2198,7 +2198,7 @@ s47c: 20-20
 
 
 # sent_id = w02015084
-# :: snt 48
+# :: snt48
 Index:  1    2     3       4         5      6    7   8    9    10    11     12     13 14   15   16
 Words: L' abbazia di Disibodenberg venne sciolta e cadde in rovina come risultato di la Riforma .
 Sentence: L'abbazia di Disibodenberg venne sciolta e cadde in rovina come risultato della Riforma.
@@ -2238,7 +2238,7 @@ s48e: 15-15
 
 
 # sent_id = w02016015
-# :: snt 49
+# :: snt49
 Index:   1     2       3    4   5    6     7      8   9   10    11   12 13    14    15  16 17    18   19    20    21 22 23    24   25  26   27    28  29  30 31
 Words: Dopo questi successi , firmò un contratto con il Team Telekom e si trasferì con la sua ragazza a Merdingen , in il Südbaden , dove visse fino al 2002 .
 Sentence: Dopo questi successi, firmò un contratto con il Team Telekom e si trasferì con la sua ragazza a Merdingen, nel Südbaden, dove visse fino al 2002.
@@ -2311,7 +2311,7 @@ s49u: 28-28
 
 
 # sent_id = w03001037
-# :: snt 50
+# :: snt50
 Index: 1     2      3    4    5  6  7   8        9      10   11     12   1314   15    16    17      18    19 20  21    22  23     24     25     26           27       28     29    30 31     32      33     34    35
 Words: I distretti di Viguier e di La Conte contengono la maggior parte di i servizi di edilizia sociale di la città dove la popolazione è costituita principalmente da immigranti o da discendenti di immigranti .
 Sentence: I distretti di Viguier e di La Conte contengono la maggior parte dei servizi di edilizia sociale della città dove la popolazione è costituita principalmente da immigranti o da discendenti di immigranti.
@@ -2376,7 +2376,7 @@ s50i2: 34-34
 
 
 # sent_id = w03002048
-# :: snt 51
+# :: snt51
 Index:  1 2   3     4    5  6  7   8   9    10    11    12       13   14
 Words: In i primi anni 2000 , c' erano 5 dottori per 100.000 abitanti .
 Sentence: Nei primi anni 2000, c'erano 5 dottori per 100.000 abitanti.
@@ -2406,7 +2406,7 @@ s51r: 11-13
 
 
 # sent_id = w03005013
-# :: snt 52
+# :: snt52
 Index:  1     2      3     4      5    6 7      8         9         10     11 1213  14       15     16    17      18   19     20      21 22    23     24    25  26
 Words: La scrittura era andata perduta e i manoscritti micenei dimenticati , ma i greci adottarono l' alfabeto fenicio , modificando lo per creare quello greco .
 Sentence: La scrittura era andata perduta e i manoscritti micenei dimenticati, ma i greci adottarono l'alfabeto fenicio, modificandolo per creare quello greco.
@@ -2469,7 +2469,7 @@ s52a4 24-24
 
 
 # sent_id = w03005016
-# :: snt 53
+# :: snt53
 Index:  1   2     3         4       5     6       7      8    9     10   11 12   13       14          15       16  17  18    19      20       21   22
 Words: Le città stato cominciarono ad apparire intorno all' VIII secolo a.C : piccoli territori autogovernati con il loro proprio sistema politico .
 Sentence: Le città stato cominciarono ad apparire intorno all'VIII secolo a.C: piccoli territori autogovernati con il loro proprio sistema politico.
@@ -2520,7 +2520,7 @@ s53p2: 21-21
 
 
 # sent_id = w03008011
-# :: snt 54
+# :: snt54
 Index:    1       2      3     4        5        6    7    8    9    10  11 12     13    14       15          16   17
 Words: Questa relazione può essere considerata come punto di inizio per la sua carriera di rivoluzionario radicale .
 Sentence: Questa relazione può essere considerata come punto di inizio per la sua carriera di rivoluzionario radicale.
@@ -2559,7 +2559,7 @@ s54r2: 15-15
 
 
 # sent_id = w03010099
-# :: snt 55
+# :: snt55
 Index:  1    2   3    4    5  6     7       8      9     10   11      12      13   14  15 16    17    18 19  20    21   22 23  24 25   26   27    28   29
 Words: In estate , Georges e sua moglie tornarono in Svizzera , accompagnati da Rosane , una ragazza di 18 anni figlia di uno di gli amici di Germaine .
 Sentence: In estate, Georges e sua moglie tornarono in Svizzera, accompagnati da Rosane, una ragazza di 18 anni figlia di uno degli amici di Germaine.
@@ -2648,7 +2648,7 @@ s55a2: 0-0
 
 
 # sent_id = w03010100
-# :: snt 56
+# :: snt56
 Index:    1     2    3       4    5      6            7        8   9    10      11   12 13    14     15   16 17
 Words: Durante la vacanza iniziò una relazione extraconiugale con la giovane ragazza e lo confessò poco dopo .
 Sentence: Durante la vacanza iniziò una relazione extraconiugale con la giovane ragazza e lo confessò poco dopo.
@@ -2694,7 +2694,7 @@ s56p: 0-0
 
 
 # sent_id = w04001037
-# :: snt 57
+# :: snt57
 Index:    1    2     3      4    5    6    7     8  9   10   11 12   13      14  15
 Words: Inoltre è possibile l' arrivo di uragani su le isole in il periodo estivo .
 Sentence: Inoltre è possibile l'arrivo di uragani sulle isole nel periodo estivo.
@@ -2720,7 +2720,7 @@ s57e: 14-14
 
 
 # sent_id = w04002008
-# :: snt 58
+# :: snt58
 Index:  1      2        3      4     5    6      7    8    9         10       11   12   13   14 15  16     17   1819  20   21     22   23
 Words: Ad avvalorare quest' ipotesi ci sarebbe stato il corposo allevamento reale di cavalli a la Villa Pelucca , a Sesto San Giovanni .
 Sentence: Ad avvalorare quest'ipotesi ci sarebbe stato il corposo allevamento reale di cavalli alla Villa Pelucca, a Sesto San Giovanni.
@@ -2763,7 +2763,7 @@ s58b: 16-17
 
 
 # sent_id = w04002055
-# :: snt 59
+# :: snt59
 Index:  1  2   3    4    5    6    7     8     9 10 11 12  13  14    15       16     17  18     19    20 21   22    23  24  25 26   27       28      29     30    31  32
 Words: In il 1976 cadde in disuso l' ippodromo , e in il 1990 un incendio distrusse ciò che rimaneva di le tribune in legno , in seguito demolite insieme alle stalle .
 Sentence: Nel 1976 cadde in disuso l'ippodromo, e nel 1990 un incendio distrusse ciò che rimaneva delle tribune in legno, in seguito demolite insieme alle stalle.
@@ -2816,7 +2816,7 @@ s59d: 6-6
 
 
 # sent_id = w04004059
-# :: snt 60
+# :: snt60
 Index:  1  2   3     4    5   6     7    8      9      10   11     12   13     14    15  16       17      18 19    20       21   22
 Words: In il XIII secolo il nome Apulia fu utilizzato da alcuni autori per indicare la parte meridionale di la penisola italiana .
 Sentence: Nel XIII secolo il nome Apulia fu utilizzato da alcuni autori per indicare la parte meridionale della penisola italiana.
@@ -2860,7 +2860,7 @@ s60a2: 11-11
 
 
 # sent_id = w04006023
-# :: snt 61
+# :: snt61
 Index:  1    2      3      4        5      6     7           8           9    10 11   12      13   14  15    16    17      18     19 20  21      22   23
 Words: Lo storico David Crouch suggerisce che Stefano effettivamente rinunciò a l' impresa attorno a quel periodo per concentrar si su altri problemi .
 Sentence: Lo storico David Crouch suggerisce che Stefano effettivamente rinunciò all'impresa attorno a quel periodo per concentrarsi su altri problemi.
@@ -2917,7 +2917,7 @@ s61s: 2-2
 
 
 # sent_id = w04007021
-# :: snt 62
+# :: snt62
 Index:    1     2      3    4 5   6   7  8     9     10 11    12    1314    15    16 17    18     19   20      21    22     23     24     25      26  27   28     29   30   31  32
 Words: Sebbene non decisiva a i fini di il conflitto , la vittoria di i francesi in la battaglia di Marengo obbligò gli austriaci ad abbandonare per la seconda volta l' Italia .
 Sentence: Sebbene non decisiva ai fini del conflitto, la vittoria dei francesi nella battaglia di Marengo obbligò gli austriaci ad abbandonare per la seconda volta l'Italia.
@@ -2984,7 +2984,7 @@ s62h: 0-0
 
 
 # sent_id = w04008006
-# :: snt 63
+# :: snt63
 Index:  1     2       3     4    5        6     7     8      9      10    11 12   13       14    15   16      17   18 19   20       21      22   23   24  25 26
 Words: Per quanto riguarda la pratica religiosa , Fiorello viene educato in la Chiesa episcopale e rimarrà membro di la Chiesa protestante per tutta la vita .
 Sentence: Per quanto riguarda la pratica religiosa, Fiorello viene educato nella Chiesa episcopale e rimarrà membro della Chiesa protestante per tutta la vita.
@@ -3033,7 +3033,7 @@ s63v: 25-25
 
 
 # sent_id = w05001045
-# :: snt 64
+# :: snt64
 Index:  1      2       3    4   5   6    7        8              9        10  11   12    13     14   15  16       17     18     19   20  21  22
 Words: La tradizione vuole che il tema venne selezionato intenzionalmente a causa del grande numero di ebrei convertiti che vivevano a Palma .
 Sentence: La tradizione vuole che il tema venne selezionato intenzionalmente a causa del grande numero di ebrei convertiti che vivevano a Palma.
@@ -3085,7 +3085,7 @@ s64v: 19-19
 
 
 # sent_id = w05003012
-# :: snt 65
+# :: snt65
 Index:     1    2  3      4       5 6     7     8     9    10 11      12      13 14  15        16          17      18       19        20 21     22      23  24     25     26 27  28 29
 Words: Tuttavia , la sospensione di i rapporti con Linares e l' interruzione di la linea progressista provocarono la Giustificazione di la Rivoluzione che lo detronizzò in il 1879 .
 Sentence: Tuttavia, la sospensione dei rapporti con Linares e l'interruzione della linea progressista provocarono la Giustificazione della Rivoluzione che lo detronizzò nel 1879.
@@ -3138,7 +3138,7 @@ s65d2: 28-28
 
 
 # sent_id = w05003119
-# :: snt 66
+# :: snt66
 Index:  1     2    3  4      5      6    7     8    9     10  11 12   13  14    15   16    17    18     19     20   21      22   23
 Words: Il collasso e l' intervento in dozzine di banche portò a una fuga di capitali , causando la bancarotta di questo business .
 Sentence: Il collasso e l'intervento in dozzine di banche portò a una fuga di capitali, causando la bancarotta di questo business.
@@ -3189,7 +3189,7 @@ s66h: 17-17
 
 
 # sent_id = w05005084
-# :: snt 67
+# :: snt67
 Index:  1  2   3    4    5   6  7        8         9  10 11   12     13      14    15      16      17      18     19
 Words: Fu il colpo di grazia e l' incoraggiamento di cui i coloni avevano bisogno per raggiungere l' indipendenza .
 Sentence: Fu il colpo di grazia e l'incoraggiamento di cui i coloni avevano bisogno per raggiungere l'indipendenza.
@@ -3234,7 +3234,7 @@ s67i3: 18-18
 
 
 # sent_id = w05007004
-# :: snt 68
+# :: snt68
 Index:     1    2  3  4   5      6      7     8       9     10 11   12   13  14  1516   17   1819  20   21    22      23   24    25   26 27  28      29   30  31  32     33    34   35   36
 Words: Tuttavia , se la legge inglese fosse stata accettata , le figlie di Luigi X , Filippo V e Carlo IV avrebbero avuto più pretese a il trono rispetto a loro zia Isabella di Francia .
 Sentence: Tuttavia, se la legge inglese fosse stata accettata, le figlie di Luigi X, Filippo V e Carlo IV avrebbero avuto più pretese al trono rispetto a loro zia Isabella di Francia.
@@ -3309,7 +3309,7 @@ s68n6
 
 
 # sent_id = w05007080
-# :: snt 69
+# :: snt69
 Index: 1     2      3   4       5       6  7     8      9  10  11  12   13     14   15   16    17  18  19 20   21  22 23    24     25 26   27    28   29   30   31
 Words: I tentativi di pace terminarono in la primavera di il 1415 ed Enrico decise di mettere in atto il suo piano : l' invasione di l' intero Regno di Francia .
 Sentence: I tentativi di pace terminarono nella primavera del 1415 ed Enrico decise di mettere in atto il suo piano: l'invasione dell'intero Regno di Francia.
@@ -3371,7 +3371,7 @@ s69p: 4-4
 
 
 # sent_id = w05010027
-# :: snt 70
+# :: snt70
 Index:  1 2    3     4   5  6   7      8      9    10       11       12   13   14 15  16   17     18     19    20     21   22 23  24 25
 Words: Il 1 gennaio 49 d.C. , Marco Antonio lesse una dichiarazione di Cesare in la quale il proconsole si dichiarò amico di la pace .
 Sentence: Il 1 gennaio 49 d.C., Marco Antonio lesse una dichiarazione di Cesare nella quale il proconsole si dichiarò amico della pace.

@@ -1,5 +1,5 @@
 # sent_id = n01001011
-# :: snt 1
+# :: snt1
 Index: 1   2     3   4  5     6         7      8       9        10 11    12     13  14 15     16        17     18  19   20 21 2223  24     25       26      27     28     29   3031  32   33    34  35
 Words: “ While much of the digital transition is unprecedented in the United States , the peaceful transition of power is not , ” Obama special assistant Kori Schulman wrote in a blog post Monday .
 Sentence: “While much of the digital transition is unprecedented in the United States, the peaceful transition of power is not,” Obama special assistant Kori Schulman wrote in a blog post Monday.
@@ -38,7 +38,7 @@ s1m2:
 
 
 # sent_id = n01026004
-# :: snt 2
+# :: snt2
 Index: 1    2     3  4      5     6       7        8   9   10   11 1213 14   15   16  17
 Words: " Tonight we are carrying out punishments using a high beam , " the post reads .
 Sentence: "Tonight we are carrying out punishments using a high beam," the post reads.
@@ -64,7 +64,7 @@ s2r:
 
 
 # sent_id = n01057014
-# :: snt 3
+# :: snt3
 Index:  1     2      3   4   5     6    7    8    9    10    11  12      13      14      15    16   17    18  19  20   21 22
 Words: The debris formed a ring around the Earth 's equator and was eventually drawn together by gravity to form the moon .
 Sentence: The debris formed a ring around the Earth's equator and was eventually drawn together by gravity to form the moon.
@@ -95,7 +95,7 @@ s3m:
 
 
 # sent_id = w01071036
-# :: snt 4
+# :: snt4
 Index:  1       2        3     4  5    6   7
 Words: Its importance resides in two facts .
 Sentence: Its importance resides in two facts.
@@ -114,7 +114,7 @@ s4f:
 
 
 # sent_id = w01072079
-# :: snt 5
+# :: snt5
 Index:  1  2   3     4     5     6        7       8  9  10     11     12     13    14 15  16    17 18
 Words: By the 3rd century the emperor Caracalla made a new division which lasted only a short time .
 Sentence: By the 3rd century the emperor Caracalla made a new division which lasted only a short time.
@@ -144,7 +144,7 @@ s5t3:
 
 
 # sent_id = w01134062
-# :: snt 6
+# :: snt6
 Index:  1   2  3    4      5   6    7       8     9   10    11      12    13  14      15    16   17  18  19     20     21  22   23   24  25   26 27   28 29
 Words: In 1955 , Mishima took up weight training and his workout regimen of three sessions per week was not disrupted for the final 15 years of his life .
 Sentence: In 1955, Mishima took up weight training and his workout regimen of three sessions per week was not disrupted for the final 15 years of his life.
@@ -180,7 +180,7 @@ s6l:
 
 
 # sent_id = n02036018
-# :: snt 7
+# :: snt7
 Index:  1    2       3      4    5      6      7   8   9     10       11   12
 Words: Von Beust justified the cost increases as lack of detailed planning .
 Sentence: Von Beust justified the cost increases as lack of detailed planning.
@@ -203,7 +203,7 @@ s7p:
 
 
 # sent_id = n02042026
-# :: snt 8
+# :: snt8
 Index:  1       2          3         4     5  6   7     8    9   10  11 12 13   14   15     16   17 18   19    20       21        22    23    24    25    26   27
 Words: The smartphone generation received an app it deserved , where , in the best case scenario , the most idiotic situation received an audience of millions .
 Sentence: The smartphone generation received an app it deserved, where, in the best case scenario, the most idiotic situation received an audience of millions.
@@ -238,7 +238,7 @@ s8m2:
 
 
 # sent_id = n02075020
-# :: snt 9
+# :: snt9
 Index:    1      2      3     4      5    6    7        8        9     10    11   12  13
 Words: Dündar warned Europe about having too much understanding for Erdogan 's course .
 Sentence: Dündar warned Europe about having too much understanding for Erdogan's course.
@@ -261,7 +261,7 @@ s9c:
 
 
 # sent_id = n03001030
-# :: snt 10
+# :: snt10
 Index:     1      2  3      4     5  6    7    8    9   10  11
 Words: According to the programme , she will speak at 23.45 .
 Sentence: According to the programme, she will speak at 23.45.
@@ -280,7 +280,7 @@ s102:
 
 
 # sent_id = n03009006
-# :: snt 11
+# :: snt11
 Index:  1   2      3      4  5  6      7      8   9  10    11     12    13  14      15       16  17  18   19   20  21  22       23     2425
 Words: He also remarked that " the existence of such a document could lead to consequences that are as likely as they are unacceptable " .
 Sentence: He also remarked that "the existence of such a document could lead to consequences that are as likely as they are unacceptable".
@@ -311,7 +311,7 @@ s11u:
 
 
 # sent_id = n03010012
-# :: snt 12
+# :: snt12
 Index:     1      2  3    4   5   6       7       8    9     10  11 12   13     14  15 16  17    18    19     20   21   22       23   24
 Words: According to Le Figaro , this government plan could free up 42 million euros , of which 15.5 million would go towards security .
 Sentence: According to Le Figaro, this government plan could free up 42 million euros, of which 15.5 million would go towards security.
@@ -340,7 +340,7 @@ s12s:
 
 
 # sent_id = n04002027
-# :: snt 13
+# :: snt13
 Index:  1  2    3       4       5   6      7      8   9      10     11   12   13  14      15       16     17  18
 Words: It has been emphasised that we absolutely can not continue with those who are completely against Italy .
 Sentence: It has been emphasised that we absolutely cannot continue with those who are completely against Italy.
@@ -366,7 +366,7 @@ s13i2:
 
 
 # sent_id = n04006014
-# :: snt 14
+# :: snt14
 Index:  1     2      3       4    5  6    7   8    9      10   11 12 13   14  15  16  17    18    19    20    21   22   23  24    25     26  27     28      29    30  31    32  33
 Words: The latest figures relate to the 24th of October last year , and tell us that our diesel costs 1,335 euros per litre , compared with the eurozone average of 1,165 euros .
 Sentence: The latest figures relate to the 24th of October last year, and tell us that our diesel costs 1,335 euros per litre, compared with the eurozone average of 1,165 euros.
@@ -403,7 +403,7 @@ s14e3:
 
 
 # sent_id = n04008007
-# :: snt 15
+# :: snt15
 Index:     1     2   3        4       5    6     7    8     9    1011   12     13    14   15   16  17 18
 Words: Students at LUISS University were told during the course of a meeting which took place in Rome .
 Sentence: Students at LUISS University were told during the course of a meeting which took place in Rome.
@@ -430,7 +430,7 @@ s15r:
 
 
 # sent_id = n05002015
-# :: snt 16
+# :: snt16
 Index:  1       2     3    4    5  6   7    8     9    10    11    12
 Words: Its management , however , has n't been devoid of criticism .
 Sentence: Its management, however, hasn't been devoid of criticism.
@@ -451,7 +451,7 @@ s16c:
 
 
 # sent_id = n05007025
-# :: snt 17
+# :: snt17
 Index:  1    2    3   4    5      6   7   8     9    10   11    12    13     14   15  16  17      18     19   20   21   22 23
 Words: And they must be greeted with an open spirit and clear mind because they form the new generation of beauty and hope .
 Sentence: And they must be greeted with an open spirit and clear mind because they form the new generation of beauty and hope.
@@ -483,7 +483,7 @@ s17h:
 
 
 # sent_id = n05008018
-# :: snt 18
+# :: snt18
 Index:  1    2      3       4      5    6    7   8    9       10      11   12  13  14  15  16   17      18   19 20  21 22   23      24    25     26     27   28  29   30  31
 Words: The early voting suggests that this time the Latin Americans will come out to vote in greater numbers , but it is unclear whether the increase will have an impact .
 Sentence: The early voting suggests that this time the Latin Americans will come out to vote in greater numbers, but it is unclear whether the increase will have an impact.
@@ -520,7 +520,7 @@ s18i4:
 
 
 # sent_id = w02003037
-# :: snt 19
+# :: snt19
 Index:  1   2  3  4     5       6     7    8   9  10       11       12       13      14 15   16   17     18       19  20      21      22    23    24   25     26     27  28
 Words: In 1832 , the former cloister was sold to the manufacturer Georg Reichenbach by the state of Württemberg with the stipulation to establish a cotton factory there .
 Sentence: In 1832, the former cloister was sold to the manufacturer Georg Reichenbach by the state of Württemberg with the stipulation to establish a cotton factory there.
@@ -554,7 +554,7 @@ s19t5:
 
 
 # sent_id = w02005029
-# :: snt 20
+# :: snt20
 Index:  1     2    3     4     5    6      7     8  9  10
 Words: It contains a monument to Martin Luther King , Jr.
 Sentence: It contains a monument to Martin Luther King, Jr.
@@ -576,7 +576,7 @@ s20j:
 
 
 # sent_id = w02018030
-# :: snt 21
+# :: snt21
 Index:   1    2     3      4   5       6        7     8   9     10   11   12    13    14  15
 Words: Weiss was honored with the literature prizes from the cities of Cologne and Bremen .
 Sentence: Weiss was honored with the literature prizes from the cities of Cologne and Bremen.
@@ -601,7 +601,7 @@ s21b:
 
 
 # sent_id = w03005014
-# :: snt 22
+# :: snt22
 Index:   1   2   3     4     5 6  7    8     9     10    11   12   13  14
 Words: From the 9th century BC , the first Greek texts began to appear .
 Sentence: From the 9th century BC, the first Greek texts began to appear.
@@ -625,7 +625,7 @@ s22a:
 
 
 # sent_id = w03005015
-# :: snt 23
+# :: snt23
 Index:    1    2     3      4    5    6   7   8  9     10         11     1213   14      15       16    17  18      19    20  21     22  23   24   25   26   27 28  29   30  31      32     33 34  35  36    37      38  39
 Words: Greece was divided into many small , self - governing communities , a pattern largely dictated by Greek geography : every island , valley and plain is cut off from its neighbours by the sea or mountain ranges .
 Sentence: Greece was divided into many small, self-governing communities, a pattern largely dictated by Greek geography: every island, valley and plain is cut off from its neighbours by the sea or mountain ranges.
@@ -668,7 +668,7 @@ s23r:
 
 
 # sent_id = w03007039
-# :: snt 24
+# :: snt24
 Index:   1    2      3      4       5           6         7         8      9        10      1112    13      14  15  16   17   18   19    20 21
 Words: Trade was developed by establishing commercial outposts throughout the Mediterranean , a technique that had not been used until then .
 Sentence: Trade was developed by establishing commercial outposts throughout the Mediterranean, a technique that had not been used until then.
@@ -697,7 +697,7 @@ s24t5:
 
 
 # sent_id = w04002055
-# :: snt 25
+# :: snt25
 Index:  1   2  3  4       5      6   7    8     9  10 11  12 1314  15     16      17     18    19 20    21       22     23  24    25   26       27      28    29  30    31   32
 Words: In 1976 , the racecourse was no longer used ; in 1990 , a fire destroyed what remained of the wooden grandstands , which were later demolished along with the stables .
 Sentence: In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables.
@@ -733,7 +733,7 @@ s25s:
 
 
 # sent_id = w04003054
-# :: snt 26
+# :: snt26
 Index:  1     2     3    4     5       6            7      8    9   10  11  12     13     14  15    16    17   18     19    20
 Words: The issuing of coinage is predominantly numismatic in nature , with the intention of being sold mainly to collectors .
 Sentence: The issuing of coinage is predominantly numismatic in nature, with the intention of being sold mainly to collectors.
@@ -760,7 +760,7 @@ s26c2:
 
 
 # sent_id = w04009042
-# :: snt 27
+# :: snt27
 Index:  1   2    3   4    5  6  7     8     9   10     11     12   13  14 15 16 17    18   19     20    21 22 23 24   25    26    27    28  29  30     31  32 33    34    3536  37  38
 Words: The man told him that a war between the two universes is coming , as he and Walter had predicted ; it is for this reason that Olivia , among others , was trained as a child .
 Sentence: The man told him that a war between the two universes is coming, as he and Walter had predicted; it is for this reason that Olivia, among others, was trained as a child.
@@ -798,7 +798,7 @@ s27c2:
 
 
 # sent_id = w05002014
-# :: snt 28
+# :: snt28
 Index:    1    2    3     4     5   6  7     8       9    10  11     12    13    14     15  16   17  18   19       20    21
 Words: Before the Andes were formed , the western margin of South America had already been the site of several orogenies .
 Sentence: Before the Andes were formed, the western margin of South America had already been the site of several orogenies.
@@ -827,7 +827,7 @@ s28o:
 
 
 # sent_id = w05009044
-# :: snt 29
+# :: snt29
 Index:  1   2   3  4    5  6    7    8     9     10  11    12    13   14    15     16     17   18  19  20 21 22   23    24   25   26   27        28       29    30  31 3233 34 35  36    37    38  39  4041
 Words: In 1976 he met with a friend who worked with his record label The Rocket Record Company , Kiki Dee , to record what would be another remarkable success for him : " Do n't Go Breaking My Heart " .
 Sentence: In 1976 he met with a friend who worked with his record label The Rocket Record Company, Kiki Dee, to record what would be another remarkable success for him: "Don't Go Breaking My Heart".
@@ -869,7 +869,7 @@ s29h4:
 
 
 # sent_id = w05010027
-# :: snt 30
+# :: snt30
 Index:  1  2   3     4     5  6 7   8      9      10 11     12       13    14   15  16   17     18        19      20   21   22   23  24  25
 Words: On the 1st January 49 BC , Marco Antonio read a declaration from Caesar in which the proconsul declared himself a friend of peace .
 Sentence: On the 1st January 49 BC, Marco Antonio read a declaration from Caesar in which the proconsul declared himself a friend of peace.

@@ -1,5 +1,5 @@
 # sent_id = n01001011
-# :: snt 1
+# :: snt1
 Index: 1 2 3     4       5         6    7  8  9         10      11    12   13     14 15  16 17   18        19          20         21 22    23         24        25   26 27       28 29 30      31      32       33         34   35       36 37      38 39   40    41
 Words: „ V tomto procesu předávání moci se ve Spojených Státech mnoho děje poprvé ,  což se týká především digitálních prostředků ,  ovšem poklidnost předávání moci je tradiční ,  “  napsala Obamova zvláštní asistentka Kori Schulman v  pondělí ve svém blogu .
 Sentence: „V tomto procesu předávání moci se ve Spojených Státech mnoho děje poprvé, což se týká především digitálních prostředků, ovšem poklidnost předávání moci je tradiční,“ napsala Obamova zvláštní asistentka Kori Schulman v pondělí ve svém blogu.
@@ -83,7 +83,7 @@ s1b: 38-38, 40-40
 
 
 # sent_id = n01026004
-# :: snt 2
+# :: snt2
 Index: 1 2    3         4        5      6       7 8 9     10 11        12
 Words: „ Dnes provádíme trestání pomocí kladiny , “ stojí v  příspěvku .
 Sentence: „Dnes provádíme trestání pomocí kladiny,“ stojí v příspěvku.
@@ -113,7 +113,7 @@ s2p2: 10-11
 
 
 # sent_id = n01057014
-# :: snt 3
+# :: snt3
 Index: 1   2         3     4        5       6        7 8       9  10      11        12        13 14   15 16 17 18    19
 Words: Suť vytvořila kolem zemského rovníku prstenec , posléze se shlukla působením gravitace a  stal se z  ní měsíc .
 Sentence: Suť vytvořila kolem zemského rovníku prstenec, posléze se shlukla působením gravitace a stal se z ní měsíc.
@@ -159,7 +159,7 @@ s3m: 18-18
 
 
 # sent_id = w01071036
-# :: snt 4
+# :: snt4
 Index: 1    2      3       4  5    6       7
 Words: Jeho význam spočívá ve dvou faktech .
 Sentence: Jeho význam spočívá ve dvou faktech.
@@ -186,7 +186,7 @@ s4f: 4-6
 
 
 # sent_id = w01072079
-# :: snt 5
+# :: snt5
 Index: 1  2       3       4     5         6       7     8         9 10  11 12       13    14         15
 Words: Od třetího století císař Caracalla provedl další rozdělení , ale to vydrželo jenom krátkodobě .
 Sentence: Od třetího století císař Caracalla provedl další rozdělení, ale to vydrželo jenom krátkodobě.
@@ -227,7 +227,7 @@ s5k: 14-14
 
 
 # sent_id = w01134062
-# :: snt 6
+# :: snt6
 Index: 1 2    3    4     5      6 7           8 9    10         11    12          13 14  15       16    17         18         19 20  21    22     23
 Words: V roce 1955 začal Mišima s posilováním a svůj tréninkový režim sestávající ze tří tréninků týdně nepřerušil posledních 15 let svého života .
 Sentence: V roce 1955 začal Mišima s posilováním a svůj tréninkový režim sestávající ze tří tréninků týdně nepřerušil posledních 15 let svého života.
@@ -291,7 +291,7 @@ s6ž: 22-22
 
 
 # sent_id = n02036018
-# :: snt 7
+# :: snt7
 Index: 1   2     3              4         5       6           7          8         9
 Words: Von Beust ospravedlňoval zvyšování nákladů nedostatkem detailního plánování .
 Sentence: Von Beust ospravedlňoval zvyšování nákladů nedostatkem detailního plánování.
@@ -326,7 +326,7 @@ s7p: 8-8
 
 
 # sent_id = n02042026
-# :: snt 8
+# :: snt8
 Index: 1        2          3       4        5 6      7  8        9 10 11    12      13 14             15      16 17        18      19        20       21
 Words: Generace smartphonů získala aplikaci , kterou si zaslouží , ve které získala ta nejstupidnější situace v  nejlepším případě milionové publikum .
 Sentence: Generace smartphonů získala aplikaci, kterou si zaslouží, ve které získala ta nejstupidnější situace v nejlepším případě milionové publikum.
@@ -369,7 +369,7 @@ s8p2: 20-20
 
 
 # sent_id = n02075020
-# :: snt 9
+# :: snt9
 Index: 1      2       3      4 5   6  7      8      9     10        11  12         13       14
 Words: Dündar varoval Evropu , aby by neměla příliš mnoho pochopení pro Erdoganovu politiku .
 Sentence: Dündar varoval Evropu, aby neměla příliš mnoho pochopení pro Erdoganovu politiku.
@@ -413,7 +413,7 @@ s9e2: 12-12
 
 
 # sent_id = n03001030
-# :: snt 10
+# :: snt10
 Index: 1     2        3    4      5  6  7 8  9
 Words: Podle programu bude mluvit ve 23 : 45 .
 Sentence: Podle programu bude mluvit ve 23:45.
@@ -440,7 +440,7 @@ s10d: 5-8
 
 
 # sent_id = n03009006
-# :: snt 11
+# :: snt11
 Index: 1  2    3          4 5  6 7         8        9         10 11    12   13 14        15 16    17   18     19            20 21   22   23           24 25
 Words: On také poznamenal , že „ existence takového dokumentu by mohla vést k  důsledkům ,  které jsou stejně pravděpodobné ,  jako jsou nepřijatelné “  .
 Sentence: On také poznamenal, že „existence takového dokumentu by mohla vést k důsledkům, které jsou stejně pravděpodobné, jako jsou nepřijatelné“.
@@ -470,7 +470,7 @@ s11n:
 
 
 # sent_id = n03010012
-# :: snt 12
+# :: snt12
 Index: 1     2  3      4  5     6      7    8    9       10 11      12  13 14 15   16   17      18 19  20 21         22
 Words: Podle Le Figaro by tento vládní plán mohl uvolnit 42 milionů eur ,  z  toho 15,5 milionů by šlo na bezpečnost .
 Sentence: Podle Le Figaro by tento vládní plán mohl uvolnit 42 milionů eur, z toho 15,5 milionů by šlo na bezpečnost.
@@ -500,7 +500,7 @@ s12b:
 
 
 # sent_id = n04002027
-# :: snt 13
+# :: snt13
 Index: 1    2          3 4  5 6      7       8        9          10 11   12 13    14   15    16    17     18
 Words: Bylo zdůrazněno , že v žádném případě nemůžeme pokračovat s  těmi ,  kteří jsou zcela proti Itálii .
 Sentence: Bylo zdůrazněno, že v žádném případě nemůžeme pokračovat s těmi, kteří jsou zcela proti Itálii.
@@ -526,7 +526,7 @@ s13i:
 
 
 # sent_id = n04006014
-# :: snt 14
+# :: snt14
 Index: 1          2     3  4        5 6  7 8     9        10   11 12     13  14 15 16   17    18    19    20  21 22   23 24 25       26 27       28       29    30  31
 Words: Nejnovější údaje se vztahují k 24 . říjnu loňského roku a  říkají nám ,  že naše nafta stojí 1,335 eur na litr ,  ve srovnání s  průměrem eurozóny 1,165 eur .
 Sentence: Nejnovější údaje se vztahují k 24. říjnu loňského roku a říkají nám, že naše nafta stojí 1,335 eur na litr, ve srovnání s průměrem eurozóny 1,165 eur.
@@ -564,7 +564,7 @@ s14e3:
 
 
 # sent_id = n04008007
-# :: snt 15
+# :: snt15
 Index: 1 2       3        4 5     6  7      8 9    10 11 12   13     14        15         16    17
 Words: V průběhu zasedání , které se konalo v Římě ,  to bylo řečeno studentům univerzity LUISS .
 Sentence: V průběhu zasedání, které se konalo v Římě, to bylo řečeno studentům univerzity LUISS.
@@ -591,7 +591,7 @@ s15l:
 
 
 # sent_id = n05002015
-# :: snt 16
+# :: snt16
 Index: 1      2      3    4            5       6
 Words: Jejich vedení však nepostrádalo kritiku .
 Sentence: Jejich vedení však nepostrádalo kritiku.
@@ -611,7 +611,7 @@ s16k:
 
 
 # sent_id = n05007025
-# :: snt 17
+# :: snt17
 Index: 1 2    3   4      5 6         7    8 9      10    11 12      13    14    15       16    17 18     19
 Words: A musí být vítáni s otevřenou duší a jasnou myslí ,  protože tvoří novou generaci krásy a  naděje .
 Sentence: A musí být vítáni s otevřenou duší a jasnou myslí, protože tvoří novou generaci krásy a naděje.
@@ -641,7 +641,7 @@ s17n2:
 
 
 # sent_id = n05008018
-# :: snt 18
+# :: snt18
 Index: 1     2         3         4 5  6         7               8      9        10 11     12    13 14  15   16    17 18  19     20   21  22   23
 Words: Časné hlasování naznačuje , že tentokrát Latinoameričané vyjdou hlasovat ve větším počtu ,  ale není jasné ,  zda nárůst bude mít vliv .
 Sentence: Časné hlasování naznačuje, že tentokrát Latinoameričané vyjdou hlasovat ve větším počtu, ale není jasné, zda nárůst bude mít vliv.
@@ -671,7 +671,7 @@ s18v3:
 
 
 # sent_id = w02003037
-# :: snt 19
+# :: snt19
 Index: 1 2    3    4   5      6       7      8       9      10             11     12          13 14        15   16     17    18 19     20
 Words: V roce 1832 byl bývalý klášter prodán výrobci Georgu Reichenbachovi státem Württemberg s  podmínkou tady zřídit závod na bavlnu .
 Sentence: V roce 1832 byl bývalý klášter prodán výrobci Georgu Reichenbachovi státem Württemberg s podmínkou tady zřídit závod na bavlnu.
@@ -702,7 +702,7 @@ s19b3:
 
 
 # sent_id = w02005029
-# :: snt 20
+# :: snt20
 Index: 1        2      3       4       5     6 7  8
 Words: Obsahuje pomník Martina Luthera Kinga , Jr .
 Sentence: Obsahuje pomník Martina Luthera Kinga, Jr.
@@ -723,7 +723,7 @@ s20j:
 
 
 # sent_id = w02018030
-# :: snt 21
+# :: snt21
 Index: 1     2   3     4     5   6     7 8     9      10     11 12         13
 Words: Weiss byl městy Kolín nad Rýnem a Brémy poctěn cenami za literaturu .
 Sentence: Weiss byl městy Kolín nad Rýnem a Brémy poctěn cenami za literaturu.
@@ -748,7 +748,7 @@ s21l:
 
 
 # sent_id = w03005014
-# :: snt 22
+# :: snt22
 Index: 1     2     3     4  5      6         7  8 9 10      11 12 13 14 15 16
 Words: První řecké texty se začaly objevovat od 9 . století př .  n  .  l  .
 Sentence: První řecké texty se začaly objevovat od 9. století př. n.l.
@@ -773,7 +773,7 @@ s22l:
 
 
 # sent_id = w03005015
-# :: snt 23
+# :: snt23
 Index: 1     2    3  4     5  6      7    8          9      10      11        12 13    14     15            16      17 18    19     20 21    22 23     24 25        26 27    28      29    30   31      32
 Words: Řecko bylo po vzoru do značné míry diktovaném řeckou polohou rozděleno do mnoha malých samosprávných komunit :  každý ostrov ,  údolí a  rovina je odříznuta od svých sousedů mořem nebo pohořím .
 Sentence: Řecko bylo po vzoru do značné míry diktovaném řeckou polohou rozděleno do mnoha malých samosprávných komunit: každý ostrov, údolí a rovina je odříznuta od svých sousedů mořem nebo pohořím.
@@ -813,7 +813,7 @@ s23p2:
 
 
 # sent_id = w03007039
-# :: snt 24
+# :: snt24
 Index: 1      2  3        4  5      6          7        8  9          10 11  12  13     14 15    16 17 18 19   20         21
 Words: Obchod se rozvíjel za pomoci obchodních základen ve Středomoří ,  což byl postup ,  který se do té doby nepoužíval .
 Sentence: Obchod se rozvíjel za pomoci obchodních základen ve Středomoří, což byl postup, který se do té doby nepoužíval.
@@ -843,7 +843,7 @@ s24n:
 
 
 # sent_id = w04002055
-# :: snt 25
+# :: snt25
 Index: 1 2    3    4  5         6  7           8 9 10   11   12    13     14 15 16    17 18        19     20 21    22   23      24       25    26 27      28
 Words: V roce 1976 se závodiště už nepoužívalo ; v roce 1990 požár zničil ,  co zbylo z  dřevěných tribun ,  které byly později zbourány spolu se stájemi .
 Sentence: V roce 1976 se závodiště už nepoužívalo; v roce 1990 požár zničil, co zbylo z dřevěných tribun, které byly později zbourány spolu se stájemi.
@@ -878,7 +878,7 @@ s25s3:
 
 
 # sent_id = w04003054
-# :: snt 26
+# :: snt26
 Index: 1        2     3  4        5            6          7 8     9        10 11        12         13
 Words: Vydávání mincí je převážně numismatická záležitost s cílem prodávat je především sběratelům .
 Sentence: Vydávání mincí je převážně numismatická záležitost s cílem prodávat je především sběratelům.
@@ -904,7 +904,7 @@ s26s:
 
 
 # sent_id = w04009042
-# :: snt 27
+# :: snt27
 Index: 1   2  3    4 5  6     7    8      9     10    11 12 13    14 15  16 17 18     19           20 21 22 23 24     25     26 27 28     29 30   31   32 33   34        35   36   37
 Words: Muž mu řekl , že válka mezi těmito dvěma světy je na cestě ,  jak on a  Walter předpovídali ;  je to z  tohoto důvodu ,  že Olivia ,  mimo jiné ,  byla trénovaná jako dítě .
 Sentence: Muž mu řekl, že válka mezi těmito dvěma světy je na cestě, jak on a Walter předpovídali; je to z tohoto důvodu, že Olivia, mimo jiné, byla trénovaná jako dítě.
@@ -942,7 +942,7 @@ s27d3:
 
 
 # sent_id = w05002014
-# :: snt 28
+# :: snt28
 Index: 1       2 3   4    5          6    7 8   9       10    11    12      13 14      15       16        17
 Words: Předtím , než byly zformovány Andy , byl západní okraj Jižní Ameriky už oblastí několika orogenezí .
 Sentence: Předtím, než byly zformovány Andy, byl západní okraj Jižní Ameriky už oblastí několika orogenezí.
@@ -970,7 +970,7 @@ s28o3:
 
 
 # sent_id = w05009044
-# :: snt 29
+# :: snt29
 Index: 1 2    3    4  5      6 7        8    9     10 11    12       13 14   15       16            17 18  19     20      21 22 23  24 25     26 27 28 29  30   31    32  33     34       35       36 37      38 39  40 41 42 43       44 45    46 47
 Words: V roce 1976 se setkal s přítelem Kiki Deeem ,  který pracoval v  jeho hudebním vydavatelství „  The Record Company “  ,  aby by nahrál ,  co by pro něho mohlo být dalším výrazným úspěchem :  skladbu „  Don '  t  Go Breaking My Heart “  .
 Sentence: V roce 1976 se setkal s přítelem Kiki Deeem, který pracoval v jeho hudebním vydavatelství „The Record Company“, aby nahrál, co by pro něho mohlo být dalším výrazným úspěchem: skladbu „Don't Go Breaking My Heart“.
@@ -1040,7 +1040,7 @@ s29n4: 39-45
 
 
 # sent_id = w05010027
-# :: snt 30
+# :: snt30
 Index: 1 2 3     4  5  6 7 8 9 10 11      12     13       14       15         16 17 18     19 20        21        22 23      24   25
 Words: 1 . ledna 49 př . n . l .  přečetl Marcus Antonius Césarovo prohlášení ,  ve kterém se prokonzul prohlásil za přítele míru .
 Sentence: 1. ledna 49 př. n. l. přečetl Marcus Antonius Césarovo prohlášení, ve kterém se prokonzul prohlásil za přítele míru.
