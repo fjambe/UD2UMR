@@ -137,10 +137,12 @@ Sentence Gloss (en): The debris formed a ring around the Earth's equator and was
         :aspect performance
         :modal-strength full-affirmative)
     :op2 (s3a2 / attrarre
-        :cause (s3g / gravità :refer-number singular))
+        :cause (s3g / gravità :refer-number singular)
         :theme s3d
         :temporal (s3p / poi)
         :result (s3f2 / formare
+            :aspect performance
+            :modal-strength full-affirmative
             :actor s3d
             :undergoer (s3m / moon
                 :wiki "Q405"
@@ -175,7 +177,7 @@ Sentence Gloss (en): Its importance resides in two facts.
 (s4h / have-reason-91
     :ARG1 (s4i / importanza
         :refer-number singular
-        :poss (s4t / thing
+        :possessor (s4t / thing
             :refer-number singular))
     :ARG2 (s4f / fatto
         :quant 2)
@@ -231,7 +233,7 @@ s5d: 12-12
 s5u: 11-11
 s5b: 1-1
 s5d2: 3-4
-s5s2:  15-15
+s5s: 15-15
 s5p2: 17-17
 s5t: 18-18
 s5d3: 14-14
@@ -263,8 +265,8 @@ Sentence Gloss (en): In 1955, Mishima took up weight training and his workout re
         :actor s6p
         :theme (s6r / regime
             :refer-number singular
-            :poss s6p
-            :mod (s6s / sessione
+            :possessor s6p
+            :mod (s6s3 / sessione
                 :quant 3
                 :frequency (s6r2 / rate-entity-91
                     :ARG4 (s6s2 / settimana)))
@@ -278,7 +280,7 @@ Sentence Gloss (en): In 1955, Mishima took up weight training and his workout re
             :mod (s6u / ultimo)
             :unit (s6y / year)
             :mod (s6v / vita
-                :poss s6p))
+                :possessor s6p))
         :aspect performance
         :modal-strength full-affirmative))
 
@@ -293,12 +295,12 @@ s6p2: 10-10
 s6c: 12-12
 s6r: 15-15
 s6a2: 17-17
-s6t: 22-32
+s6t: 23-32
 s6u: 0-0
 s6t2: 0-0
 s6y: 0-0
 s6v: 0-0
-s6s: 19-20
+s6s3: 19-20
 s6s2: 0-0
 s6r2: 22-22
 
@@ -324,14 +326,14 @@ Sentence Gloss (en): Von Beust justified the cost increases as lack of detailed 
         :modal-strength full-affirmative
         :ARG1-of (s7h / have-cause-91
             :ARG2 (s7m / mancare
-                :theme (s7p / pianificare
+                :theme (s7p2 / pianificare
                     :manner (s7d / dettagliatamente)
                     :aspect process
                     :modal-strength full-affirmative)
                 :aspect state
                 :modal-strength full-affirmative)
             :aspect state
-            :modal-strength))
+            :modal-strength full-affirmative))
     :aspect performance
     :modal-strength full-affirmative)
 
@@ -343,7 +345,7 @@ s7a: 5-5
 s7c: 8-8
 s7h: 0-0
 s7m: 10-10
-s7p: 12-12
+s7p2: 12-12
 s7d: 13-13
 
 # document level annotation:
@@ -367,8 +369,8 @@ Sentence Gloss (en): The smartphone generation received an app it deserved, wher
             :experiencer s8g
             :aspect state
             :modal-strength full-affirmative)
-        :place-of (s8a / avere
-            :recipient (s8s / situazione
+        :place-of (s8a2 / avere
+            :recipient (s8s3 / situazione
                 :refer-number singular
                 :mod (s8s2 / stupida
                     :degree (s8m2 / most)))
@@ -388,12 +390,12 @@ s8r: 6-7
 s8a: 9-9
 s8m: 12-12
 s8m2: 23-23
-s8s: 22-22
+s8s3: 22-22
 s8s2: 24-24
-s8a: 25-26
+s8a2: 25-26
 s8p: 28-28
 s8m3: 30-30
-s8p: 32-32
+s8p2: 32-32
 
 # document level annotation:
 
@@ -437,7 +439,7 @@ s9c: 11-11
 s9t: 10-10
 s9o: 14-14
 s9p2: 16-16
-s9n2: 0-0
+s9n3: 0-0
 
 # document level annotation:
 
@@ -490,7 +492,9 @@ Sentence Gloss (en): He also remarked that "the existence of such a document cou
         :cause (s11e / exist-91
             :ARG1 (s11d / documento
                 :refer-number singular
-                :mod (s11t / tale)))
+                :mod (s11t / tale))
+            :aspect state
+            :modal-strength full-affirmative)
         :goal (s11c / conseguenza
             :refer-number plural
             :mod (s11p3 / probabile
@@ -499,11 +503,13 @@ Sentence Gloss (en): He also remarked that "the existence of such a document cou
                     :ARG3 (s11e2 / equal)
                     :ARG4 (s11h2 / have-mod-91
                         :ARG1 s11c
-                        :ARG2 (s11a / accettare
+                        :ARG2 (s11a2 / accettare
                             :aspect process
                             :modal-strength neutral-negative)
                         :aspect state
-                        :modal-strength full-affirmative))))
+                        :modal-strength full-affirmative)
+                    :aspect state
+                    :modal-strength full-affirmative)))
         :quote s11r
         :aspect process
         :modal-strength neutral-affirmative)
@@ -523,7 +529,7 @@ s11p3: 17-17
 s11h: 16-16, 18-18
 s11e2: 0-0
 s11h2: 0-0
-s11a: 19-19
+s11a2: 19-19
 
 # document level annotation:
 
@@ -546,13 +552,13 @@ Sentence Gloss (en): According to Le Figaro, this government plan could free up 
         :cause (s12p / piano
             :refer-number singular
             :mod (s12q / questo)
-            :poss (s12g / governo :refer-number singular))
+            :possessor (s12g / governo :refer-number singular))
         :undergoer (s12m / monetary-quantity
-                :quant 42,000,000
+                :quant 42000000
                 :unit (s12e / euro)
                 :ARG2-of (s12i / include-91
                     :ARG1 (s12m2 / monetary-quantity
-                        :quant 15,500,000
+                        :quant 15500000
                         :unit (s12e2 / euro)
                         :theme-of (s12a / andare
                             :goal (s12s2 / sicurezza)
@@ -575,7 +581,7 @@ s12g: 9-9
 s12r: 11-12
 s12m: 13-16
 s12e: 0-0
-s12i: 18-29
+s12i: 18-18
 s12m2: 21-24
 s12e2: 0-0
 s12a: 25-25
@@ -599,7 +605,7 @@ Sentence Gloss (en): It has been emphasised that we absolutely cannot continue w
     :theme (s13a / andare
         :actor (s13p2 / person
             :refer-number plural
-            :refer-person 1sr)
+            :refer-person 1st)
         :direction (s13a2 / avanti)
         :companion (s13p3 / person
             :refer-number plural
@@ -655,7 +661,7 @@ Sentence Gloss (en): The latest figures relate to the 24th of October last year,
         :ARG1 (s14c / costare
             :theme (s14g / gasolio :refer-number singular)
             :other-role (s14m / monetary-quantity
-                :quant 1,335
+                :quant 1.335
                 :unit (s14e / euro)
                 :frequency (s14v / volume-quantity
                     :quant 1
@@ -665,7 +671,7 @@ Sentence Gloss (en): The latest figures relate to the 24th of October last year,
         :ARG2 (s14c3 / costare
             :theme s14g
             :other-role (s14m2 / monetary-quantity
-                :quant 1,165
+                :quant 1.165
                 :unit (s14e2 / euro)
                 :frequency (s14v2 / volume-quantity
                     :quant 1
@@ -837,7 +843,7 @@ Sentence Gloss (en): The early voting suggests that this time the Latin American
 # sentence level graph:
 (s18b / but-91
     :ARG1 (s18s / suggerire
-        :casue (s18v / votare
+        :cause (s18v / votare
             :manner (s18a / anticipo)
             :aspect performance
             :modal-strength full-affirmative)
@@ -909,11 +915,13 @@ Sentence Gloss (en): In 1832, the former cloister was sold to the manufacturer G
             :op1 "Georg"
             :op2 "Reichenbach")
         :ARG1-of (s19h / have-role-91
-            :ARG3 (s19p2 / produttore)))
+            :ARG3 (s19p2 / produttore)
+            :aspect state
+            :modal-strength full-affirmative))
     :temporal (s19d / date-entity :year 1832)
     :condition (s19t / trasformare
         :actor s19p
-        :theme s19g
+        :theme s19c
         :goal (s19f / fabbrica
             :refer-number singular
             :mod (s19c2 / cotone)
@@ -935,6 +943,7 @@ s19c2: 20-20
 s19t: 24-24
 s19f: 28-28
 s19c3: 12-14
+s19n2: 0-0
 
 # document level annotation:
 
@@ -1017,7 +1026,7 @@ Sentence Gloss (en): From the 9th century BC, the first Greek texts began to app
 
 # sentence level graph:
 (s22a / apparire
-    :cdncd (s22t / testo
+    :theme (s22t / testo
         :refer-number plural
         :ord (s22o / ordinal-entity :value 1)
         :mod (s22e / ethnic-group
@@ -1085,7 +1094,7 @@ Sentence Gloss (en): Greece was divided into many small, self-governing communit
                                         :op1 (s23m2 / mare :refer-number singular)
                                         :op2 (s23c3 / catena
                                             :refer-number plural
-                                            :mod (s23m3 / montuoso)))
+                                            :mod (s23m4 / montuoso)))
                                 :aspect state
                                 :modal-strength full-affirmative)
                             :aspect state
@@ -1113,8 +1122,8 @@ s23h: 14-14
 s23g2: 17-17
 s23i2: 19-19
 s23o: 20-20
-s23o2: 20-20
-s23o3: 20-20
+s23o2: 0-0
+s23o3: 0-0
 s23i3: 21-21
 s23v: 23-23
 s23a: 24-24
@@ -1125,7 +1134,7 @@ s23v2: 31-31
 s23m2: 34-34
 s23o4: 35-35
 s23c3: 38-38
-s23m3: 39-39
+s23m4: 39-39
 
 # document level annotation:
 
@@ -1143,7 +1152,7 @@ Sentence Gloss (en): Trade was developed by establishing commercial outposts thr
     :manner (s24s2 / stabilire
         :theme (s24a / avamposto
             :refer-number plural
-            :mod (s24c / commerciale))
+            :mod (s24c2 / commerciale))
         :goal (s24s3 / sea
             :name (s24n / name :op1 "Mediterraneo")
             :wiki "Q4918"
@@ -1151,7 +1160,7 @@ Sentence Gloss (en): Trade was developed by establishing commercial outposts thr
         :aspect performance
         :modal-strength full-affirmative
         :ARG1-of (s24i / identity-91
-            :ARG2 (s24t / tecnica
+            :ARG2 (s24t2 / tecnica
                 :refer-number singular
                 :undergoer-of (s24u / usare
                     :temporal (s24u2 / until
@@ -1173,7 +1182,7 @@ s24t: 9-9
 s24s3: 11-11
 s24n: 0-0
 s24i: 12-12
-s24t: 14-14
+s24t2: 14-14
 s24u: 16-19
 s24u2: 20-21
 s24a2: 22-22
@@ -1189,7 +1198,7 @@ Sentence: Nel 1976 cadde in disuso l'ippodromo, e nel 1990 un incendio distrusse
 Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables.
 
 # sentence level graph:
-(s25a / and
+(s25c / consecutive
     :op1 (s25u / usare
         :undergoer (s25i / ippodromo :refer-number singular)
         :temporal (s25d / date-entity :year 1976)
@@ -1202,23 +1211,26 @@ Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire
             :theme-of (s25r / rimanere
                 :source (s25t2 / tribuna
                     :refer-number plural
-                    :material (s25l / legno)
-                    :undergoer-of (s25d3 / demolire
-                        :temporal (s25s / seguito)
-                        :undergoer (s25s2 / stalla :refer-number singular)
-                        :aspect performance
-                        :modal-strength full-affirmative))
+                    :material (s25l / legno))
                 :aspect state
                 :modal-strength full-affirmative))
+        :aspect performance
+        :modal-strength full-affirmative)
+    :op3 (s25d3 / demolire
+        :temporal (s25s / seguito)
+        :undergoer (s25a / and
+            :op1 s25t2
+            :op2 (s25s2 / stalla :refer-number singular))
         :aspect performance
         :modal-strength full-affirmative))
 
 # alignment:
 s25u: 4-6
 s25i: 8-8
-s24d: 3-3
-s25a: 10-10
-s25s4: 13-13
+s25d: 3-3
+s25c: 10-10
+s25a: 29-29
+s25d4: 13-13
 s25i2: 15-15
 s25d2: 16-16
 s25t: 17-17
@@ -1254,7 +1266,7 @@ Sentence Gloss (en): The issuing of coinage is predominantly numismatic in natur
         :ARG1 s26e
         :ARG2 (s26v / vendere
             :theme s26e
-            :recipient (s26c / collezionista :Refer-number plural)
+            :recipient (s26c / collezionista :refer-number plural)
             :aspect performance
             :modal-strength full-affirmative)
         :manner (s26s / soprattutto)
@@ -1323,7 +1335,7 @@ Sentence Gloss (en): The man told him that a war between the two universes is co
             :ARG2 s27a
             :aspect state
             :modal-strength full-affirmative))
-    :aspect
+    :aspect activity
     :modal-strength full-affirmative)
 
 # alignment:
@@ -1417,18 +1429,19 @@ Sentence Gloss (en): In 1976 he met with a friend who worked with his record lab
         :ARG1-of (s29i2 / identity-91
             :ARG2 (s29a / amico
                 :actor-of (s29l / lavorare
-                    :companion (s29e / etichetta
-                        :refer-number singular
-                        :mod (s29d2 / discografico)
-                        :poss s29p
-                        :ARG1-of (s29h / have-name-91
-                            :ARG2 (s29n2 / name
-                                :op1 "The"
-                                :op2 "Rocket"
-                                :op3 "Record"
-                                :op4 "Company")
+                    :companion (s29c / company
+                        :ARG1-of (s29h / have-role-91
                             :aspect state
-                            :modal-strength full-affirmative))
+                            :modal-strength full-affirmative
+                            :ARG2 s29p
+                            :ARG3 (s29e / etichetta
+                                :refer-number singular
+                                :mod (s29d2 / discografico)))
+                        :name (s29n2 / name
+                            :op1 "The"
+                            :op2 "Rocket"
+                            :op3 "Record"
+                            :op4 "Company"))
                     :purpose (s29r / registrare
                         :actor s29p
                         :undergoer (s29m / music
@@ -1467,8 +1480,9 @@ s29a: 12-12
 s29l: 14-14
 s29e: 18-18
 s29d2: 19-19
+s29c: 20-23
 s29n2: 0-0
-s29h: 20-23
+s29h: 0-0
 s29r: 26-26
 s29m: 27-27, 39-44
 s29n3: 0-0
