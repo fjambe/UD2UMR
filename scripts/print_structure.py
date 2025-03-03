@@ -50,9 +50,8 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
         if sent_tree.lang != 'en':
             en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
             if en_sent:
-                print('Sentence Gloss (en):', f"{en_sent[0].lstrip(' text_en = ')}", '\n', file=destination)
-            else:
-                print(file=destination)
+                print('Sentence Gloss (en):', f"{en_sent[0].lstrip(' text_en = ')}", file=destination)
+            print(file=destination)
         else:
             print(file=destination)
         print('# sentence level graph:', file=destination)
@@ -69,7 +68,8 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
         if sent_tree.lang != 'en':
             en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
             if en_sent:
-                print('Sentence Gloss (en):', f"{en_sent[0].lstrip(' text_en = ')}", '\n', file=destination)
+                print('Sentence Gloss (en):', f"{en_sent[0].lstrip(' text_en = ')}", file=destination)
+                print(file=destination)
         print(f'Root: {sent_tree.root_var}', file=destination)
         print('Triples:', file=destination)
         for n in reorder_triples(sent_tree.triples):
