@@ -63,8 +63,8 @@ Sentence Gloss (en): He also said Klein was uncommunicative, uncooperative and u
             :manner (s2p4 / poco))
         :op3 (s2r / restio
             :other-role (s2l / lasciare
-                :modal-strength MS-affirmative
-                :aspect full-affirmative
+                :modal-strength full-affirmative
+                :aspect activity
                 :source (s2c3 / cella
                     :refer-number plural
                     :ARG1-of (s2h / have-place-91
@@ -76,7 +76,7 @@ Sentence Gloss (en): He also said Klein was uncommunicative, uncooperative and u
                             :actor s2p2
                             :goal (s2u / udienza
                                 :refer-number singular
-                                :poss s2p2)
+                                :possessor s2p2)
                             :modal-strength full-affirmative
                             :aspect activity))))
     :manner (s2i / inoltre)
@@ -101,7 +101,7 @@ s2s: 0-0
 s2u: 28-28
 s2p5: 24-24
 s2t: 22-22
-s23c: 18-18
+s2c3: 18-18
 
 # document level annotation:
 
@@ -124,7 +124,7 @@ Sentence Gloss (en): That's not what we need in our country, folks.
                 :refer-number plural)
             :place (s3p / paese
                 :refer-number singular
-                :poss s3p2)
+                :possessor s3p2)
             :modal-strength full-affirmative
             :aspect state)
         :vocative (s3a / amico :refer-number plural))
@@ -136,8 +136,8 @@ s3t: 3-3
 s3t2: 6-6
 s3p: 14-14
 s3a: 1-1
-s3b: 10-10
 s3a2: 9-10
+s3i: 5-5
 s3p2: 0-0
 
 # document level annotation:
@@ -154,13 +154,13 @@ Sentence Gloss (en): His skill in getting answers for taxpayers will be sorely m
 (s4m / mancare
     :theme (s4a / abilità
         :refer-number singular
-        :poss (s3p / person
+        :possessor (s4p / person
             :refer-number singular
             :refer-person 3rd)
         :mod (s4h / have-91
             :modal-strength full-affirmative
-            :aspect aspect
-            :ARG1 s3p
+            :aspect state
+            :ARG1 s4p
             :ARG2 (s4r / risposta
                 :recipient (s4c / contribuente :refer-number plural)
                 :refer-number plural)))
@@ -197,7 +197,7 @@ Sentence Gloss (en): A coal-fired power station in Badarpur, south-east Delhi, w
             :ARG1-of (s5h / have-place-91
                 :ARG2 (s5h3 / human-settlement
                     :wiki "Q4840627"
-                    :name (s5n2 / name :op1 "Badarpur"
+                    :name (s5n2 / name :op1 "Badarpur")
                     :ARG1-of (s5h2 / have-place-91
                         :ARG2 (s5r / relative-position
                             :op1 (s5h4 / human-settlement
@@ -205,9 +205,9 @@ Sentence Gloss (en): A coal-fired power station in Badarpur, south-east Delhi, w
                                 :name (s5n / name :op1 "Delhi"))
                             :direction (s5a3 / and
                                 :op1 (s5s / sud)
-                                :op2 (s5e / est)))
+                                :op2 (s5e2 / est)))
                         :aspect state
-                        :modal-strength full-affirmative)))
+                        :modal-strength full-affirmative))
                 :aspect state
                 :modal-strength full-affirmative))
         :op2 (s5g2 / generatore
@@ -217,7 +217,6 @@ Sentence Gloss (en): A coal-fired power station in Badarpur, south-east Delhi, w
     :duration (s5g / giorno :quant 10)
     :aspect endeavor
     :modal-strength full-affirmative)
-
 
 # alignment:
 s5f: 19-19
@@ -231,7 +230,7 @@ s5n2: 0-0
 s5h2: 9-9
 s5n: 0-0
 s5h4: 0-0
-s5e: 0-0
+s5e2: 0-0
 s5s: 0-0
 s5a3: 0-0
 s5r: 10-14
@@ -417,8 +416,8 @@ s9e: 12-12
 s9c2: 10-10
 s9n2: 0-0
 s9n: 0-0
-s9ch: 6-6
-s9n2: 0-0
+s9h: 6-6
+s9p: 8-9
 
 # document level annotation:
 
@@ -435,9 +434,25 @@ Sentence Gloss (en): They had been so moved by the beauty of the Rudyard Lake ar
     :experiencer (s10p / person
         :refer-number plural
         :refer-person 3rd)
+    :cause (s10c / commuovere
+        :theme s10p
+        :actor (s10b / bellezza
+            :mod (s10a / area
+                :refer-number singular
+                :mod (s10l / lake
+                    :wiki "Q7332702"
+                    :name (s10n3 / name :op1 "Rudyard"))))
+        :extent (s10t / talmente))
+    :temporal (s10n / nascere
+        :theme (s10f / figlio
+            :ord (s10o/ ordinal-entity :value 1)
+            :refer-number singular
+            :possessor s10p)
+        :modal-strength full-affirmative
+        :aspect performance)
     :stimulus (s10r / ricordare
         :experiencer s10p
-        :stimulus s10g
+        :stimulus s10l
         :manner (s10d / dare
             :actor s10p
             :theme (s10n2 / nome
@@ -450,22 +465,6 @@ Sentence Gloss (en): They had been so moved by the beauty of the Rudyard Lake ar
         :modal-strength neutral-affirmative
         :modal-predicate s10v
         :aspect state)
-    :temporal (s10n / nascere
-        :theme (s10f / figlio
-            :ord (s10o/ ordinal-entity :value 1)
-            :refer-number singular
-            :poss s10p)
-        :modal-strength full-affirmative
-        :aspect performance)
-    :cause (s10c / commuovere
-        :theme s10p
-        :actor (s10b / bellezza
-            :mod (s10a / area
-                :refer-number singular
-                :mod (s10l / lake
-                    :wiki "Q7332702"
-                    :name (s10n3 / name :op1 "Rudyard"))))
-        :extent (s10t / talmente))
     :modal-strength full-affirmative
     :aspect performance)
 
@@ -511,7 +510,7 @@ Sentence Gloss (en): De Gaulle had instructed that there be no excessive display
                 :refer-number singular)
             :affectee (s11p3 / person
                 :name (s11n2 / name :op1 "Churchill")
-                :wiki "Q8016)")
+                :wiki "Q8016")
             :place (s11p / pubblico))
         :op2 (s11d2 / dare
             :modal-strength partial-negative
@@ -521,7 +520,7 @@ Sentence Gloss (en): De Gaulle had instructed that there be no excessive display
                 :refer-number plural)
             :manner (s11c / consenso
                 :refer-number singular
-                :poss s11p2
+                :possessor s11p2
                 :polarity -)))
     :modal-strength full-affirmative
     :aspect performance)
@@ -622,19 +621,19 @@ Sentence Gloss (en): He also built and renovated five traditional markets in 201
                 :actor s13p
                 :undergoer (s13m2 / mercato
                         :quant 4
-                        :mod (s13t2 / tradizionale))
+                        :mod (s13t2 / tradizionale)))
         :op2 (s13r2 / rinnovare
             :modal-strength full-affirmative
             :aspect performance
             :actor s13p
-            :undergoer s13n2))
+            :undergoer s13m2
             :temporal (s13d2 / date-entity :year 2014)))
 
 # alignment:
 s13c: 3-3
 s13t: 8-8
 s13a2: 4-4
-s13a2: 0-0
+s13a3: 0-0
 s13d: 11-11
 s13r: 5-5
 s13a: 12-12
@@ -662,14 +661,14 @@ Sentence Gloss (en): Pebe moved the family to Nashville, Tennessee, in 1991 afte
         :name (s14n2 / name :op1 "Pebe"))
     :theme s14p2
     :companion (s14f / famiglia
-        :poss s14p2
+        :possessor s14p2
         :refer-number singular)
     :goal (s14h / human-settlement
         :name (s14n3 / name :op1 "Nashville")
         :wiki "Q23197"
         :place (s14c2 / country-partition
-            :name (s14n4 / name :op1 "Tennessee"))
-            :wiki "Q1509")
+            :name (s14n4 / name :op1 "Tennessee")
+            :wiki "Q1509"))
     :temporal (s14d / date-entity :year 1991)
     :temporal (s14a3 / after
         :op1 (s14a / assicurare
@@ -679,7 +678,7 @@ Sentence Gloss (en): Pebe moved the family to Nashville, Tennessee, in 1991 afte
                 :mod (s14p / pubblicazione)
                 :mod (s14c / canzone
                     :refer-number plural
-                    :poss s14p2)
+                    :possessor s14p2)
                 :refer-number singular)
             :modal-strength full-affirmative
             :aspect performance))
@@ -763,11 +762,11 @@ Sentence Gloss (en): The photo clearly shows the narrow touch display bar above 
         :refer-number singular
         :place (s16r2 / relative-position
                 :op1 (s16t2 / tastiera :refer-number singular)
-                :direction (s16s2 / sopra))
+                :direction (s16s2 / sopra)))
     :manner (s16c / chiaro)
     :modal-strength full-affirmative
     :aspect activity
-    :ADVCL (s16a / anticipare
+    :theme-of (s16a / anticipare
         :actor (s16r / rumor :refer-number plural)
         :modal-strength full-affirmative
         :aspect performance))
@@ -801,7 +800,7 @@ Sentence Gloss (en): Russia announced a suspension of the contract at the beginn
         :name (s17n / name :op1 "Russia")
         :wiki "Q159")
     :theme (s17s / sospendere
-        :actor s17g
+        :actor s17c2
         :undergoer (s17c / contratto)
         :temporal (s17i2 / iniziare
             :theme (s17d / date-entity :month 10)))
@@ -830,7 +829,7 @@ Sentence Gloss (en): And now he is also world champion.
 # sentence level graph:
 (s18i / identity-91
     :ARG1 (s18p / person
-        :refer-number 3rd
+        :refer-person 3rd
         :refer-number singular)
     :ARG2 (s18c / campione
         :mod (s18a / anche)
@@ -871,7 +870,7 @@ Sentence Gloss (en): The issue might not be over for Barroso.
 # alignment:
 s19s: 1-1
 s19p: 2-2
-s19n2: 0-0
+s19n: 0-0
 s19s2: 3-3, 6-8
 s19q: 5-5
 
@@ -906,7 +905,7 @@ Sentence Gloss (en): The husband of the current candidate for the White House, H
             :aspect state
             :modal-strength full-affirmative))
     :undergoer (s20p2 / pena
-        :poss (s20p3 / persona
+        :possessor (s20p3 / persona
             :quant (s20d / diverso)
             :ARG2-of (s20i / include-91
                 :ARG1 (s20p6 / person
@@ -1047,7 +1046,9 @@ Sentence Gloss (en): If his Democrat opponent were to be elected, he assured tha
                 :ARG2 s22p
                 :ARG3 (s22o / oppositore
                     :mod (s22d / Democratico)
-                    :refer-number singular)))
+                    :refer-number singular)
+                :aspect state
+                :modal-strength full-affirmative))
         :modal-strength full-affirmative
         :aspect performance)
     :modal-strength full-affirmative
@@ -1063,7 +1064,6 @@ s22h: 0-0
 s22p2: 6-7
 s22o: 0-0
 s22a: 10-10
-
 
 # document level annotation:
 
@@ -1190,7 +1190,7 @@ Sentence Gloss (en): Even if the majority of situations that arise in the workpl
             :quant (s26p / parte
                 :mod (s26m / grande
                     :degree (s26m2 / most)))
-            :theme-of (s26e / emergere
+            :theme-of (s26e2 / emergere
                 :place (s26c / contesto
                     :mod (s26l / lavorativo)
                     :refer-number plural)
@@ -1200,9 +1200,7 @@ Sentence Gloss (en): Even if the majority of situations that arise in the workpl
             :refer-number plural
             :polarity -)
         :modal-strength neutral-affirmative
-        :aspect process)
-    :aspect state
-    :modal-strength full-affirmative)
+        :aspect process))
 
 # alignment:
 s26h: 1-2
@@ -1215,7 +1213,7 @@ s26l: 14-14
 s26c2: 19-19
 s26p: 5-5
 s26r: 15-17
-s26e: 10-10
+s26e2: 10-10
 
 # document level annotation:
 
@@ -1250,7 +1248,7 @@ Sentence Gloss (en): It aims to take the journey time into account after deducti
                 :source (s27o / ora
                     :refer-number plural
                     :mod (s27l / lavoro)
-                    undergoer-of (s27c2 / completare
+                    :undergoer-of (s27c2 / completare
                         :actor s27p3
                         :modal-strength full-affirmative
                         :aspect performance
@@ -1362,7 +1360,7 @@ Sentence Gloss (en): From the 1st of January there will be an increase in petrol
 (s30a / aumentare
     :theme (s30a2 / and
         :op1 (s30b / benzina :refer-number singular)
-        :op2 (s30g2 / gasolio :refer-number singular))
+        :op2 (s30g / gasolio :refer-number singular))
     :temporal (s30a3 / after
         :op1 (s30d / date-entity :day 1 :month 1))
     :modal-strength full-affirmative
@@ -1391,7 +1389,7 @@ Sentence Gloss (en): As stated, the decision is the prerogative of the ECB and w
     :op1 (s31i / identity-91
         :ARG1 (s31d / decisione :refer-number singular)
         :ARG2 (s31p / prerogativa
-            :poss (s31i3 / international-organization
+            :possessor (s31i3 / international-organization
                 :name (s31n2 / name :op1 "BCE")
                 :wiki "Q8901"))
         :ARG1-of (s31r / resemble-91
@@ -1409,7 +1407,7 @@ Sentence Gloss (en): As stated, the decision is the prerogative of the ECB and w
             :aspect activity
             :modal-strength full-affirmative
             :manner (s31n / nome
-                :poss s31i3)
+                :possessor s31i3)
             :manner (s31e / escludere
                 :theme (s31e2 / esaminare
                     :modal-strength neutral-affirmative
@@ -1642,7 +1640,7 @@ Sentence Gloss (en): Leaders of companies such as Spotify, Tesla, Uber and Snapc
                     :op4 (s35c4 / company
                         :name (s35n5 / name :op1 "Snapchat")
                         :wiki "Q333618")))
-            ARG3 (s35l / leader)
+            :ARG3 (s35l / leader)
             :aspect state
             :modal-strength full-affirmative))
     :other-role (s35a3 / and
@@ -1667,9 +1665,8 @@ s35n3: 0-0
 s35n4: 0-0
 s35n2: 0-0
 s35p: 19-19
-s35p: 8-8
+s35p2: 8-8
 s35l: 0-0
-s35n5: 0-0
 s35a: 10-10
 s35a2: 17-17
 s35a3: 1-1
@@ -1857,10 +1854,10 @@ s40a: 6-6
 s40c: 17-17
 s40n3: 0-0
 s40r: 4-4
-S40d2: 0-0
+s40d2: 0-0
 s40s: 7-7
 s40m: 5-5
-s40b 13-14
+s40b: 13-14
 
 # document level annotation:
 
@@ -1941,7 +1938,7 @@ Sentence Gloss (en): Dozens of FSLN followers are already celebrating the victor
     :aspect activity)
 
 # alignment:
-s42f: 7-9
+s42f: 7-7, 9-9
 s42v: 11-11
 s42n2: 0-0
 s42d: 1-1
@@ -2052,13 +2049,13 @@ Sentence Gloss (en): The Industrial Revolution took place in Great Britain earli
         :name (s45n / name :op1 "Gran" :op2 "Bretagna")
         :wiki "Q145")
     :temporal (s45b / before
-        :op1 ((s45a3 / avere-luogo
+        :op1 (s45a3 / avere-luogo
                 :theme s45e
                 :place (s45p / paese
                     :mod (s45a2 / altro)
                     :quant (s45o / ogni))
                 :aspect performance
-                :modal-strength full-affirmative)))
+                :modal-strength full-affirmative))
     :modal-strength full-affirmative
     :aspect performance)
 
@@ -2090,18 +2087,18 @@ Sentence Gloss (en): After the Russian Revolution in 1917, some countries, such 
         :mod (s46a / alcuno)
         :example (s46a2 / and
             :op1 (s46c / country
-                :name (s46n3 / name :op1 "Finlandia"
+                :name (s46n3 / name :op1 "Finlandia")
                 :wiki "Q33")
             :op2 (s46c2 / country
-                :name (s46n4 / name :op1 "Polonia"
+                :name (s46n4 / name :op1 "Polonia")
                 :wiki "Q36")
-            :op3 (s46g / geo-political-entity
+            :op3 (s46g2 / geo-political-entity
                 :refer-number plural
                 :name (s46n5 / name :op1 "Stati" :op2 "Baltici")
                 :wiki "Q39731")))
     :theme (s46i / indipendenza
         :refer-number singular
-        :poss s46n)
+        :possessor s46n)
     :temporal (s46a3 / after
         :op1 (s46e / event
             :name (s46n2 / name :op1 "Rivoluzione" :op2 "russa")
@@ -2116,12 +2113,12 @@ s46e: 3-4
 s46d: 7-7
 s46a2: 16-16
 s46a: 8-8
-s46g: 12-12
+s46c: 12-12
 s46n: 9-9
 s46n4: 0-0
 s46n3: 0-0
 s46c2: 15-15
-s46g: 18-19
+s46g2: 18-19
 s46g: 20-20
 s46n2: 0-0
 s46n5: 0-0
@@ -2179,7 +2176,7 @@ Sentence Gloss (en): One of his last means of placing pressure on Hungary was th
 
 # alignment:
 s47m4: 1-1
-s47i 2-2
+s47i: 2-2
 s47u2: 4-4
 s47a: 22-22
 s47n: 0-0
@@ -2194,7 +2191,7 @@ s47m3: 17-17
 s47p2: 11-11
 s47c: 14-14
 s47i2: 19-19
-s47c: 20-20
+s47e: 20-20
 
 # document level annotation:
 
@@ -2387,7 +2384,7 @@ Sentence Gloss (en): In the early 2000s, there were five doctors per 100,000 inh
 # sentence level graph:
 (s51e / exist-91
     :ARG1 (s51d / dottore :quant 5)
-    :frequency (s51r/ rate-entity
+    :frequency (s51r / rate-entity-91
 		:ARG1 100.000
 		:ARG2 (s51a / abitante))
     :temporal (s51d2 / date-entity
@@ -2400,7 +2397,7 @@ Sentence Gloss (en): In the early 2000s, there were five doctors per 100,000 inh
 s51d2: 5-5
 s51p: 3-3
 s51d: 10-10
-s51a2: 0-0
+s51a: 0-0
 s51e: 7-8
 s51r: 11-13
 
@@ -2465,7 +2462,7 @@ s52d: 10-10
 s52b: 12-12
 s52e: 14-14
 s52e2: 18-18
-s52a4 24-24
+s52a4: 24-24
 
 # document level annotation:
 
@@ -2493,9 +2490,11 @@ Sentence Gloss (en): From about the 8th century BC city states began to appear: 
                 :ARG1-of (s53h / have-91
                     :ARG2 (s53s2 / sistema
                         :mod (s53p2 / politico)
-                        :poss s53t)
+                        :possessor s53t)
                     :aspect state
-                    :modal-strength full-affirmative))))
+                    :modal-strength full-affirmative))
+                :aspect state
+                :modal-strength full-affirmative))
     :temporal (s53a3 / approximately
         :op1 (s53d / date-entity
             :century 8
@@ -2536,7 +2535,7 @@ Sentence Gloss (en): This affair can be seen as the starting point for his caree
     :result (s54p / punto
         :temporal-of (s54i / iniziare
             :theme (s54c2 / carriera
-                :poss (s54p2 / person
+                :possessor (s54p2 / person
                     :refer-number singular
                     :refer-person 3rd)
                 :mod (s54r2 / rivoluzionario
@@ -2550,7 +2549,7 @@ Sentence Gloss (en): This affair can be seen as the starting point for his caree
 s54q: 1-1
 s54c: 3-5
 s54p: 7-7
-s45p2: 12-12
+s54p2: 12-12
 s54r3: 16-16
 s54r: 2-2
 s54i: 9-9
@@ -2589,7 +2588,7 @@ Sentence Gloss (en): In the summer, Georges and his wife returned to Switzerland
             :name (s55n3 / name :op1 "Rosane")
             :ARG1-of (s55i / identity-91
                 :ARG2 (s55r / ragazzo
-                    :age (s55t / temporal-quantity
+                    :age (s55t2 / temporal-quantity
                         :quant 18
                         :unit (s55a5 / anno))
                     :refer-number singular)
@@ -2612,7 +2611,9 @@ Sentence Gloss (en): In the summer, Georges and his wife returned to Switzerland
                                 :ARG3 (s55a2 / amico)))
                         :aspect state
                         :modal-strength full-affirmative))
-                :ARG3 (s55f / figlio)))
+                :ARG3 (s55f / figlio)
+                :aspect state
+                :modal-strength full-affirmative))
         :modal-strength full-affirmative
         :aspect performance))
 
@@ -2632,7 +2633,7 @@ s55p3: 14-14
 s55n3: 0-0
 s55i: 0-0
 s55r: 17-17
-s55t: 18-20
+s55t2: 18-20
 s55a5: 0-0
 s55h2: 0-0
 s55f: 21-21
@@ -2772,35 +2773,38 @@ Sentence: Nel 1976 cadde in disuso l'ippodromo, e nel 1990 un incendio distrusse
 Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables.
 
 # sentence level graph:
-(s59a / and
-    :op1 (s59c / cadere
+(s59c / consecutive
+    :op1 (s59c2 / cadere
         :modal-strength full-affirmative
         :aspect performance
         :actor (s59i2 / ippodromo :refer-number singular)
         :goal (s59d / disuso)
         :temporal (s59d4 / date-entity :year 1976))
     :op2 (s59d2 / distruggere
+        :temporal (s59d5 / date-entity :year 1990)
         :modal-strength full-affirmative
         :aspect performance
         :force (s59i / incendio :refer-number singular)
         :undergoer (s59t2 / thing
             :theme-of (s59r / rimanere
+                :modal-strength full-affirmative
+                :aspect state
                 :source (s59t / tribuna
                     :refer-number plural
-                    :material (s59l / legno)
-                    :undergoer-of (s59d3 / demolire
-                        :modal-strength full-affirmative
-                        :aspect performance
-                        :undergoer (s59s2 / stalla :refer-number plural)
-                        :temporal (s59s / seguito)))
-                :modal-strength full-affirmative
-                :aspect state))
-        :temporal (s59d5 / date-entity :year 1990)))
+                    :material (s59l / legno)))))
+    :op3 (s59d3 / demolire
+            :modal-strength full-affirmative
+            :aspect performance
+            :undergoer (s59a / and
+                :op1 s59t
+                :op2 (s59s2 / stalla :refer-number plural))
+            :temporal (s59s / seguito)))
 
 # alignment:
-s59c: 4-4
+s59c2: 4-4
+s59a: 29-29
 s59l: 24-24
-s59a: 10-10
+s59c: 10-10
 s59d2: 16-16
 s59s2: 31-31
 s59d3: 28-28
@@ -2856,7 +2860,7 @@ s60n3: 0-0
 s60n2: 0-0
 s60a2: 12-12
 s60d: 3-4
-s60a2: 11-11
+s60a: 11-11
 
 # document level annotation:
 
@@ -2871,8 +2875,8 @@ Sentence Gloss (en): Historian David Crouch suggests that Stephen abandoned from
 # sentence level graph:
 (s61s2 / suggerire
     :actor (s61p / person
-        :name (s61n / name :op1 "David" :op2 "Crouch"
-        :wiki "Q5232685")
+        :name (s61n / name :op1 "David" :op2 "Crouch")
+        :wiki "Q5232685"
         :ARG1-of (s61h / have-role-91
             :ARG3 (s61s / storico)
             :aspect state
@@ -2952,8 +2956,8 @@ Sentence Gloss (en): Although not a resolver of the conflict, the French victory
         :modal-strength full-affirmative
         :aspect performance
         :undergoer (s62c2 / country
-            :name (s62n4 / name :op1 "Italia"
-            :wiki "Q38")))
+            :name (s62n4 / name :op1 "Italia")
+            :wiki "Q38"))
     :modal-strength full-affirmative
     :aspect performance
     :concession (s62h / have-mod-91
@@ -3005,7 +3009,7 @@ Sentence Gloss (en): With regards to religious practices, Fiorello was educated 
     :op2 (s63r3 / rimanere
         :modal-strength full-affirmative
         :aspect state
-        :theme s63p
+        :theme s63p2
         :duration (s63v / vita
             :quant (s63t / tutto))
         :result (s63m / membro
@@ -3214,7 +3218,7 @@ Sentence Gloss (en): This was the coup de grâce and encouragement the settlers 
                     :aspect activity
                     :theme (s67i3 / indipendenza
                         :refer-number singular
-                        :poss s67c2))
+                        :possessor s67c2))
                 :modal-strength full-affirmative
                 :aspect state)))
     :aspect state
@@ -3222,7 +3226,7 @@ Sentence Gloss (en): This was the coup de grâce and encouragement the settlers 
 
 # alignment:
 s67i: 1-1
-s67: 0-0
+s67e: 0-0
 s67a: 13-14
 s67i2: 8-8
 s67a2: 6-6
@@ -3264,7 +3268,7 @@ Sentence Gloss (en): Nonetheless, if the English law had been accepted, the daug
             :mod (s68t2 / trono :refer-number singular)
             :quant (s68m / more-than
                 :op1 (s68p6 / pretesa
-                    :poss (s68p7 / person
+                    :possessor (s68p7 / person
                         :ARG1-of (s68h3 / have-rel-role-92
                             :ARG2 s68p
                             :ARG3 (s68z / zio)
@@ -3275,7 +3279,7 @@ Sentence Gloss (en): Nonetheless, if the English law had been accepted, the daug
     :condition (s68a / accettare
         :undergoer (s68l / legge
             :mod (s68c / country
-                :name (s68n6 / name "Inghilterra"))
+                :name (s68n6 / name :op1 "Inghilterra"))
             :refer-number singular)
         :modal-strength full-negative
         :aspect performance)
@@ -3305,7 +3309,7 @@ s68n4: 0-0
 s68a: 7-9
 s68l: 5-5
 s68c: 6-6
-s68n6
+s68n6: 0-0
 
 # document level annotation:
 
@@ -3341,7 +3345,7 @@ Sentence Gloss (en): The attempts at making peace finally ended in spring of 141
             :undergoer (s69p3 / piano
                 :refer-number singular
                 :ARG1-of (s69i / identity-91
-                    :poss s69p4
+                    :possessor s69p4
                     :ARG2 (s69i2 / invadere
                         :mod (s69g / geo-political-entity
                             :mod (s69i3 / intero)
@@ -3364,11 +3368,11 @@ s69t: 2-2
 s69n: 0-0
 s69t2: 5-5
 s69p3: 21-21
-s69s: 20-20
 s69n2: 0-0
 s69p2: 0-0
 s69a: 12-12
 s69p: 4-4
+s69p4: 13-13
 
 # document level annotation:
 
@@ -3408,7 +3412,7 @@ Sentence Gloss (en): On the 1st January 49 BC, Marco Antonio read a declaration 
     :temporal (s70d3 / date-entity
         :day 1
         :month 1
-        :year 49)
+        :year 49
         :era (s70d4 / d.C.))
     :modal-strength full-affirmative
     :aspect performance)
