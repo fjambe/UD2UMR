@@ -276,7 +276,7 @@ class UMRGraph:
             corrected_triples, root = self.correct_variable_name()
             triples = reorder_triples(corrected_triples)
             g = penman.Graph(triples)
-            return penman.encode(g, top=root, indent=4)
+            return g, root
 
         except LayoutError as e:
             for n in reorder_triples(self.triples):
@@ -307,7 +307,7 @@ class UMRGraph:
 
     def find_in_triples(self, variable, position):
         """
-        Check if there is at least one triple in triples where the third element is equal to the given variable.
+        Check if there is at least one triple in triples where the given variable is found at the given position.
 
         Args:
             variable: the value to compare against the n element of each triple.
@@ -379,20 +379,20 @@ class UMRGraph:
 
         self.triples = [triple for triple in self.triples if triple not in to_remove]
 
-    def alignments(self, output_file=None):
+    def alignments(self, umr, output_file=None):
         """
         Computes alignment block based on UD tokens.
         Raises a warning if there are two UMR nodes aligned to the same token.
         """
         destination = output_file if output_file else sys.stdout
 
-        variables = {triple[0] for triple in self.triples if triple[1] == 'instance'}
         alignments = {}
 
-        for v in variables:
+        for v in umr.variables():
             node = UMRNode.find_by_var_name(self, v)
             num_token = node.ord if node else 0
             alignments[v] = num_token
+
             print(f'{v}: {num_token}-{num_token}', file=destination)
 
         # Check that two variables are not aligned to a same UD token

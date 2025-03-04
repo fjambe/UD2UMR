@@ -1,4 +1,5 @@
 import sys
+import penman
 from umr_graph import reorder_triples
 
 def numbered_line_with_alignment(tree, output_file=None):
@@ -36,7 +37,7 @@ def numbered_line_with_alignment(tree, output_file=None):
     print(f'Words: {word_line}', file=destination)
 
 
-def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_file=False):
+def print_structure(tree, sent_tree, umr, root, sent_num, output_file=None, print_in_file=False):
     """
     Prints a structured UMR representation, including the sentence id, text, sentence-level graph, and alignments.
     Takes in input:
@@ -47,8 +48,9 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
     """
 
     destination = output_file if print_in_file else sys.stdout
+    umr_string = penman.encode(umr, top=root, indent=4)
 
-    if umr and len(umr) > 2:
+    if umr_string and len(umr_string) > 2:
         print(f'# sent_id = {tree.address()}', file=destination)
         print(f'# :: snt {sent_num}', file=destination)
         numbered_line_with_alignment(tree, destination)
@@ -61,9 +63,9 @@ def print_structure(tree, sent_tree, umr, sent_num, output_file=None, print_in_f
         else:
             print(file=destination)
         print('# sentence level graph:', file=destination)
-        print(umr, '\n', file=destination)
+        print(umr_string, '\n', file=destination)
         print('# alignment:', file=destination)
-        sent_tree.alignments(output_file)
+        sent_tree.alignments(umr, output_file)
         print(file=destination)
         print('# document level annotation', file=destination)
         print('\n', file=destination)

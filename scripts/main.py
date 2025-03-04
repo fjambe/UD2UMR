@@ -65,10 +65,10 @@ if __name__ == "__main__":
                 for n in sent_tree.nodes:
                     n.replace_entities()
 
-                umr = sent_tree.to_penman()
+                umr, root = sent_tree.to_penman()
 
                 # Print out the UMR structure
-                print_structure(tree, sent_tree, umr, sent_num, output, print_in_file=True)
+                print_structure(tree, sent_tree, umr, root, sent_num, output, print_in_file=True)
 
                 # break
 
