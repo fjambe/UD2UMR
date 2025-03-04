@@ -53,7 +53,8 @@ if __name__ == "__main__":
 
                 # Second pass: assign initial parents after all nodes have been created.
                 for n in sent_tree.nodes:
-                    n.parent = n.find_by_ud_node(sent_tree, n.ud_node.parent)
+                    parent = n.find_by_ud_node(sent_tree, n.ud_node.parent)
+                    n.parent = parent[0] if parent else None
 
                 # Third pass: create relations between variables and build the UMR structure.
                 for n in sent_tree.nodes:

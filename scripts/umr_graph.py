@@ -208,6 +208,20 @@ class UMRGraph:
         self.triples = [tup for tup in self.triples if tup[1] and tup[1] not in ['other', 'root']]
         self.triples = [tup for tup in self.triples if tup[0]]
 
+    def remove_invalid_variables(self):
+        """ Iterates over the list of triples and checks if every variable has also an instance triple. """
+        var_pattern = r's\d+[a-zA-Z]\d*'
+
+        for tup in self.triples:
+            if tup[1].startswith('op') and not re.fullmatch(var_pattern, tup[2]) or tup[1] in ['refer-person', 'refer-number', 'aspect', 'modal-strength', 'instance', 'quant', 'polarity', 'mode']:
+                continue
+            else:
+                var = tup[2]
+
+                # Check if there exists an instance triple for the given variable
+                if not any(t for t in self.triples if t[0] == var and t[1] == 'instance'):
+                    self.triples.remove(tup)
+
     def postprocessing_checks(self):
         """
         Checks if 'check_needed' is True for all nodes in the graph.
@@ -270,6 +284,7 @@ class UMRGraph:
         self.remove_non_inverted_triples_if_duplicated()
         self.postprocessing_checks()
         self.remove_invalid_triples()
+        self.remove_invalid_variables()
         self.avoid_disconnection()
 
         try:

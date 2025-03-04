@@ -77,10 +77,25 @@ class UMRNode:
         Returns:
             UMRNode: The UMRNode instance with the matching ud_node, or None if not found.
         """
+        # for node in umr_graph.nodes:
+        #     if node.ud_node == ud_node:
+        #         return node
+        # return None
+        """
+        Retrieve all UMRNode instances based on the given ud_node.
+
+        Args:
+            umr_graph (UMRGraph): The UMRGraph instance to search within.
+            ud_node: The UD node to search for.
+
+        Returns:
+            List[UMRNode]: A list of UMRNode instances with the matching ud_node, or an empty list if not found.
+        """
+        matching_nodes = []
         for node in umr_graph.nodes:
             if node.ud_node == ud_node:
-                return node
-        return None
+                matching_nodes.append(node)
+        return matching_nodes
 
     @classmethod
     def find_by_var_name(cls, umr_graph, var_name):
@@ -202,19 +217,25 @@ class UMRNode:
             self.umr_graph.root_var = concept.var_name
 
         nsubj = next((s for s in self.ud_node.parent.children if s.udeprel in ['nsubj', 'csubj']), None)
+        nsubj_node = None
         if nsubj:
             if overt:
-                nsubj_node = UMRNode.find_by_ud_node(self.umr_graph, nsubj)
+                nsubj_nodes = UMRNode.find_by_ud_node(self.umr_graph, nsubj)
+                if len(nsubj_nodes) > 1:
+                    for nn in nsubj_nodes:
+                        if not nn.entity:  # entity already converted into NE
+                            nsubj_node = nn
+                else:
+                    nsubj_node = nsubj_nodes[0]
                 self.umr_graph.find_and_remove_from_triples(self.var_name, 2)
                 concept.ud_node = self.ud_node
                 concept.ud_node.deprel = self.ud_node.parent.deprel
+
             else:
                 nsubj_node = self
                 concept.ud_node = None
             nsubj_node.extra_level = True
             nsubj_node.parent = concept
-        else:
-            nsubj_node = None
 
         for i, tup in enumerate(self.umr_graph.triples):
             if tup[2] == self.parent.var_name:
@@ -237,7 +258,7 @@ class UMRNode:
                     if self.parent.ud_node.upos == 'NOUN':
                         self.parent.get_number_person('number')
                 else:
-                    parent = UMRNode.find_by_ud_node(self.umr_graph, nsubj.parent)
+                    parent = UMRNode.find_by_ud_node(self.umr_graph, nsubj.parent)[0]
                     check = [tup for tup in self.umr_graph.triples if tup[1] == 'undergoer']
                     if check:
                         for tup in check:
@@ -397,8 +418,9 @@ class UMRNode:
                             rel_pron = next((d for d in self.ud_node.descendants if d.upos == 'ADV'), None)
 
                 if rel_pron:
-                    rel_pron_node = UMRNode.find_by_ud_node(self.umr_graph, rel_pron)
-                    if rel_pron_node:
+                    rel_pron_nodes = UMRNode.find_by_ud_node(self.umr_graph, rel_pron)
+                    if rel_pron_nodes:
+                        rel_pron_node = rel_pron_nodes[0]
                         self.relative_clauses(rel_pron_node)
                         rel_pron_node.already_added = True
 
@@ -800,7 +822,7 @@ class UMRNode:
                 name.add_node(name.role, def_parent=entity.var_name)
 
                 names = [c for c in self.ud_node.children if c.udeprel == 'flat']
-                names = [self] + [UMRNode.find_by_ud_node(self.umr_graph, n) for n in names]
+                names = [self] + [UMRNode.find_by_ud_node(self.umr_graph, n)[0] for n in names]
 
                 for i, n in enumerate(names, start=1):
                     self.umr_graph.triples.append((name.var_name, f'op{i}', f'"{n.ud_node.lemma}"'))
@@ -845,13 +867,16 @@ class UMRNode:
             if first_conj:
                 first_conj.parent, second_conj.parent = conj, conj
 
-                parent_parent = UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)
+                if UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent):
+                    parent_parent = UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)[0]
+                else:
+                    parent_parent = None
                 if (self.ud_node.parent.parent.is_root() or
                         (parent_parent.replace and parent_parent.ud_node.parent.is_root())):
                     root_var = conj.var_name
                     parent = None
                 else:
-                    parent = UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)
+                    parent = UMRNode.find_by_ud_node(self.umr_graph, self.ud_node.parent.parent)[0]
                     conj.parent = parent
 
                 for tup in self.umr_graph.triples:  # avoid clashes of abstract concepts and coordination
@@ -877,7 +902,7 @@ class UMRNode:
 
                 # attach additional conjuncts, if any
                 for i, oc in enumerate((s for s in self.ud_node.siblings if s.deprel == 'conj'), start=3):
-                    oc_node = UMRNode.find_by_ud_node(self.umr_graph, oc)
+                    oc_node = UMRNode.find_by_ud_node(self.umr_graph, oc)[0]
                     if not oc_node.already_added:
                         oc_node.role = f'op{i}'
                         oc_node.parent = conj
@@ -1034,7 +1059,7 @@ class UMRNode:
                 xcomp = [c for c in self.ud_node.children if c.deprel == 'xcomp']
                 if xcomp:
                     self.role = role
-                    xcomp = UMRNode.find_by_ud_node(self.umr_graph, xcomp[0])
+                    xcomp = UMRNode.find_by_ud_node(self.umr_graph, xcomp[0])[0]
                     xcomp.add_node(self.role, def_parent=self.parent.var_name)
                     self.already_added = True
                     xcomp.aspect()
@@ -1061,7 +1086,7 @@ class UMRNode:
 
         number = self.ud_node.form
         components = [c for c in self.ud_node.children if c.deprel in ['flat', 'compound'] and c.upos == 'NUM']
-        components = [UMRNode.find_by_ud_node(self.umr_graph, c) for c in components]
+        components = [UMRNode.find_by_ud_node(self.umr_graph, c)[0] for c in components]
         if components:
             for c in components:
                 if c.ud_node.deprel == 'flat':
@@ -1120,7 +1145,7 @@ class UMRNode:
             elif head:
                 cop = [c for c in self.ud_node.children if c.deprel == 'cop']
                 if cop:
-                    cop_node = UMRNode.find_by_ud_node(self.umr_graph, cop[0])
+                    cop_node = UMRNode.find_by_ud_node(self.umr_graph, cop[0])[0]
                     have_degree = cop_node.replace_with_abstract_roleset('have-degree-91', relaxed=True)
                     degree_node = self.create_node(umr_degree, 'ARG3')
                     self.umr_graph.triples.append((have_degree.var_name, degree_node.role, degree_node.var_name))
@@ -1140,7 +1165,7 @@ class UMRNode:
             if any([modifier, adverb, head, rebuild]):
                 cmp = [c for c in self.ud_node.children if c.deprel == 'obl:cmp']
                 if cmp:
-                    cmp_node = UMRNode.find_by_ud_node(self.umr_graph, cmp[0])
+                    cmp_node = UMRNode.find_by_ud_node(self.umr_graph, cmp[0])[0]
                     cmp_node.role = 'ARG4'
                     cmp_node.add_node(cmp_node.role)
                     if cmp_node.ud_node.upos in ['NOUN', 'ADJ']:

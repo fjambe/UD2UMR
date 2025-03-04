@@ -88,6 +88,22 @@ they are not overt).
 C.f., e.g., _Puerum basiavi frugalissimum, **non** propter formal, sed quia frugi est_ (from Perseus_test).
 I could also implement an additional check for UPOS (= only VERB), but maybe it would be too restraining.
 
+## Improvement in the converter after first eval phase
+
+### Fixed:
+- Variable identifiers were missing the sentence id prefix (e.g. "s6").
+- Better index/token alignment, now to the left margin and always with a whitespace between two indices.
+- Now checking that there are no non-existent alignments listed in the alignment block.
+- Alignments are now ordered deterministically based on the word index.
+- All variables found in the sentence graph should now be in the alignment block too.
+- I replaced `experiencer` and `stimulus` with `actor` and `theme` respectively, because their use turned out to be
+confusing - syntactic criteria are not solid enough to detect this.
+- In English, there was an issue with coordination because the conjunction lemma _and_ and the abstract concept `and`
+are identical.
+- `det` was used for many possessives, now correctly `possessor`.
+
+### To fix:
+- 
 
 ## QUESTIONS:
 - [Julia, not asked] Is there something like `foreign-entity`, `foreign...`? I recall something but not much. Otherwise,
