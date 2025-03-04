@@ -834,7 +834,8 @@ class UMRNode:
             if not cord:  # coordination without conjunction/comma
                 cord = 'and'
             if cc:
-                self.umr_graph.find_and_remove_from_triples(cc.lemma, 2)
+                if not (self.umr_graph.lang == 'en' and cc.lemma in ['and', 'or']):
+                    self.umr_graph.find_and_remove_from_triples(cc.lemma, 2)
 
             conj = UMRNode(cord, self.umr_graph, already_added=True)
             conj.ud_node = cc
