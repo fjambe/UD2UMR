@@ -11,8 +11,7 @@ def get_deprels(ud_tree) -> dict:
         'root': lambda d: d.deprel == 'root',  # All children are included for 'root'
         'actor': lambda d: d.deprel in ['nsubj', 'csubj', 'obl:agent'],
         'undergoer': lambda d: d.deprel in ['obj', 'nsubj:pass', 'csubj:pass'],
-        'theme': lambda d: d.deprel == 'ccomp:reported',
-        'stimulus': lambda d: d.deprel in ['xcomp', 'ccomp'],
+        'theme': lambda d: d.udeprel in ['xcomp', 'ccomp'],
         'mod': lambda d: d.deprel == 'amod' or (d.udeprel == 'nmod' and d.sdeprel != 'poss' and d.feats.get('Case') != 'Gen'),
         'OBLIQUE': lambda d: d.udeprel == 'obl' and d.sdeprel != 'arg', # and d.feats.get('Case') != 'Dat',
         'det': lambda d: d.udeprel == 'det',

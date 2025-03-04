@@ -337,14 +337,6 @@ class UMRNode:
                 if not self.umr_graph.root_var:
                     self.umr_graph.root_var = self.var_name
 
-            # replace 'actor' based on more conditions
-            if self.role == 'actor':
-                if self.umr_graph.modals:
-                    if[el for el in self.umr_graph.modals["lexical"]
-                       if el["lemma"] == self.ud_node.parent.lemma and el["replace"] in ["no", None]]:
-                        dependent = next((s for s in self.ud_node.siblings if s.deprel == 'ccomp:reported'), None)
-                        self.role = 'experiencer' if not dependent else self.role
-
             ########## check by UPOS ##########
             if self.ud_node.upos == 'PRON':
                 self.entity = True
@@ -358,13 +350,8 @@ class UMRNode:
                     if self.ud_node.feats['Voice'] != 'Pass' and self.ud_node.feats['VerbForm'] != 'Part':
                         arg_type = 'person' if self.ud_node.feats['Person'] in ['1', '2'] else 'FILL'
                         new_node = self.create_node(arg_type)
+                        self.umr_graph.triples.append((self.var_name, 'actor', new_node.var_name))
 
-                        if self.umr_graph.modals and ([el for el in self.umr_graph.modals["lexical"] if
-                            el["lemma"] == self.ud_node.lemma and el["replace"] in ["no", None]]
-                                and self.ud_node.deprel != 'ccomp:reported'):
-                            self.umr_graph.triples.append((self.var_name, 'experiencer', new_node.var_name))
-                        else:
-                            self.umr_graph.triples.append((self.var_name, 'actor', new_node.var_name))
                 self.modality()
                 self.aspect()
                 self.mode()
@@ -1064,17 +1051,6 @@ class UMRNode:
         """ Handle clausal subjects and complements (csubj and ccomp). """
         if self.ud_node.deprel == 'ccomp:reported':
             self.umr_graph.triples.append((self.var_name, 'quote', self.parent.var_name))
-        elif self.ud_node.udeprel == 'xcomp':
-            if self.parent and not isinstance(self.parent.ud_node, str):
-                nsubj = next((c for c in self.parent.ud_node.children if c.deprel == 'nsubj'), None)
-                actor = [tup for tup in self.umr_graph.triples if tup[1] == 'actor' and tup[0] == self.parent.var_name]
-                if nsubj:
-                    nsubj_node = UMRNode.find_by_ud_node(self.umr_graph, nsubj)
-                    self.umr_graph.find_and_replace_in_triples(nsubj_node.var_name, 2, 'experiencer', 1)
-                elif actor:
-                    triple = actor[0]
-                    index = self.umr_graph.triples.index(triple)
-                    self.umr_graph.triples[index] = (triple[0], 'experiencer', triple[2])
 
         self.aspect()
         self.modality()
