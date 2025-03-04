@@ -3,26 +3,32 @@ from umr_graph import reorder_triples
 
 def numbered_line_with_alignment(tree, output_file=None):
     """
-    Prints a line of words with progressive numbering centered above each word for visual alignment. It takes in input
-    a Udapi tree (tree), and prints out two lines:
-      - `Words`: A single line with the words separated by spaces.
-      - `Index`: A single line with indexes aligned to appear centered below each word.
+    Prints a line of words with progressive numbering aligned to the left of each word.
+    It takes in input a Udapi tree (tree) and prints out two lines:
+      - `Index`: A single line with indexes aligned to appear above each token, aligned to the left.
+      - `Words`: A single line with the tokens separated by spaces.
     """
     destination = output_file if output_file else sys.stdout
     words = [t.form for t in tree.descendants]
 
-    word_line = ' '.join(words)
+    word_line = ''.join(
+        word + (' ' * 2 if len(word) == 1 and i > 9 else ' ')
+        for i, word in enumerate(words, start=1)
+    ).strip()
 
     index_line_parts = []
     current_pos = 0
 
     for i, word in enumerate(words, start=1):
-        word_length = len(word)
-        word_center = word_length // 2
-        index_position = current_pos + word_center
-        index_line_parts.append(' ' * (index_position - len(''.join(index_line_parts))) + str(i))
+        index_str = str(i)
 
-        current_pos += word_length + 1
+        # Ensure the index starts at the correct position
+        while len(''.join(index_line_parts)) < current_pos:
+            index_line_parts.append(' ')  # Fill spaces until alignment is correct
+
+        index_line_parts.append(index_str)
+        min_spacing = 1 if (len(word) > 1 or (len(word) == 1 and len(index_str) == 1)) else 2
+        current_pos += len(word) + min_spacing  # Adjust position for the next word
 
     index_line = ''.join(index_line_parts)
 
