@@ -469,8 +469,11 @@ class UMRNode:
             for t in triples:
                 if t[1] and (t[1].endswith('-of') or t[1] != 'instance'):
                     self.umr_graph.triples.append(t)
-            self.umr_graph.find_and_replace_in_triples(self.var_name, 2, new_node.var_name, 2)
             self.umr_graph.find_and_replace_in_triples(self.var_name, 0, new_node.var_name, 0)
+            if new_node.role == self.role:
+                self.umr_graph.find_and_replace_in_triples(self.var_name, 2, new_node.var_name, 2)
+            else:
+                self.umr_graph.find_and_remove_from_triples(self.var_name, 2)
 
         if category == 'person':
             self.get_number_person('person', new_node.var_name)
@@ -714,11 +717,12 @@ class UMRNode:
         numbers = {'Sing': 'singular', 'Plur': 'plural'}
 
         if not self.replaced:
-            if self.ud_node.upos == 'DET' and self.ud_node.feats['PronType'] == 'Prs':
+            if ((self.ud_node.upos == 'DET' and self.ud_node.feats['PronType'] == 'Prs') or
+                    (self.ud_node.upos == 'PRON' and self.ud_node.sdeprel == 'poss')):
 
                 cop = [c for c in self.ud_node.children if c.deprel == 'cop']
                 is_adj_noun = self.ud_node.parent.upos in ['ADJ', 'NOUN', 'PROPN'] or len(cop) > 0
-                is_reflexive = self.ud_node.lemma == 'suus'
+                is_reflexive = self.ud_node.lemma in ['suus', 'svůj']  # la, cs
 
                 category = 'person' if is_adj_noun else ('thing' if self.ud_node.parent.upos == 'VERB'
                                                                     and self.ud_node.feats['Gender'] == 'Neut'
@@ -729,6 +733,8 @@ class UMRNode:
                     poss = self.create_node(category, role=role, replace=True, reflex=is_reflexive)
                     poss.ud_node = self.ud_node
                     poss.parent = self.parent
+                    if self.role != poss.role:
+                        poss.add_node(poss.role)
                     if is_reflexive:
                         refer_number = numbers.get(
                             self.ud_node.feats['Number'] if not is_adj_noun else self.ud_node.parent.parent.feats['Number'])
