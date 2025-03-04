@@ -393,7 +393,9 @@ class UMRGraph:
             num_token = node.ord if node else 0
             alignments[v] = num_token
 
-            print(f'{v}: {num_token}-{num_token}', file=destination)
+        sorted_alignments = dict(sorted(alignments.items(), key=lambda item: item[1]))
+        for var, al in sorted_alignments.items():
+            print(f'{var}: {al}-{al}', file=destination)
 
         # Check that two variables are not aligned to a same UD token
         non_zero_values = [value for value in alignments.values() if value != 0]
