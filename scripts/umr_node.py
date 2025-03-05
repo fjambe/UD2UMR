@@ -544,8 +544,9 @@ class UMRNode:
 
         if hasattr(self.ud_node, 'children'):
             negation = [c for c in self.ud_node.children if c.deprel == 'advmod:neg']
-            neg_element = [c for c in self.ud_node.children if c.feats['Polarity'] == 'Neg']
-            return len(negation) > 0 or len(neg_element) > 0
+            neg_element = [c for c in self.ud_node.children if c.feats['Polarity'] == 'Neg' and c.upos != 'VERB']
+            neg_token = self.ud_node.feats['Polarity'] == 'Neg'
+            return len(negation) > 0 or len(neg_element) > 0 or neg_token
 
     def invert_polarity(self, value):
         """ Invert the modal polarity if the node is negated. """
@@ -639,7 +640,7 @@ class UMRNode:
                     value = self.invert_polarity('MS-affirmative')
                 # otherwise, assign a default placeholder for modal-strength.
                 else:
-                    value = 'MS'
+                    value = 'MS-negative' if self.is_negated() else 'MS-affirmative'
 
             self.umr_graph.triples.append((self.var_name, 'modal-strength', value))
 

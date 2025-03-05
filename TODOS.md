@@ -106,6 +106,9 @@ are identical.
 concept (_smát-se_), in the same way as English phrasal verbs.
 - Passive participles (ADJ in Czech UD), are converted back to verbs. They are recognized by `VerbForm=Part|Voice=Pass`.
 The verbal lemma is extracted from the `LDeriv` attribute in MISC. Since they are passive, the subject is `:undergoer`.
+- Fixed bug in handling negation: (e.g., snt10 in cs-PDT): now excluding children with `Polarity=Neg`+ UPOS = `VERB`
+from the list of elements that determine negative modality. Moreover, `Polarity=Neg` among the FEATS of a VERB now
+implies `(full)-negative` UMR modality.
 
 ### To fix:
 - The Americans do not seem to use non-English letters in the variable identifiers ("s18č").
@@ -114,7 +117,6 @@ A possible fancier approach would be to convert 'č' --> 'c', 'á' --> 'a' etc. 
 
 - Alignment: include prepositions in the alignment of the noun they belong to. Also include auxiliary verbs and SCONJ
 marks in the alignment of the main verb [think about it because it's not like that in the eval data].
-- snt 10: `full-negative` ended up in the first clause of the coordination, but it belongs to the second clause.
 
 ## QUESTIONS:
 - [Julia, not asked] Is there something like `foreign-entity`, `foreign...`? I recall something but not much. Otherwise,
