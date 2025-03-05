@@ -453,24 +453,49 @@ Sentence: On také poznamenal, že „existence takového dokumentu by mohla vé
 Sentence Gloss (en): He also remarked that "the existence of such a document could lead to consequences that are as likely as they are unacceptable".
 
 # sentence level graph:
-(s11 / )
+(s11p / poznamenat-004
+        :aspect performance
+        :modal-strength full-affirmative
+        :actor (s11p1 / person
+                      :refer-person 3rd
+                      :refer-number singular)
+        :theme (s11v / vést-001
+                     :aspect activity
+                     :modal-strength neutral-affirmative
+                     :quote s11p
+                     :undergoer (s11e / exist-91
+                                  :aspect state
+                                  :modal-strength neutral-affirmative
+                                  :ARG2 (s11d / dokument
+                                                :wiki "Q49848"
+                                                :refer-number singular
+                                                :mod (s11t2 / takový)))
+                     :goal (s11d2 / důsledek
+                                   :wiki "Q926230"
+                                   :refer-number plural
+                                   :ARG1-of (s11h / have-degree-91
+                                                    :aspect state
+                                                    :modal-strength neutral-affirmative
+                                                    :ARG2 (s11p2 / pravděpodobný)
+                                                    :ARG3 (s11s / stejně)
+                                                    :ARG4 (s11p3 / přijmout-003
+                                                                  :polarity -
+                                                                  :aspect state
+                                                                  :modal-strength neutral-affirmative
+                                                                  :stimulus s11d2)))))
 
 # alignment:
-s11o:
-s11t:
-s11p:
-s11e:
-s11t2:
-s11d:
-s11m:
-s11v:
-s11d2:
-s11k:
-s11j:
-s11s:
-s11p2:
-s11j2:
-s11n:
+s11p1: 1-1
+s11p:  2-3
+s11e:  7-7
+s11t2: 8-8
+s11d:  9-9
+s11v: 5-5, 10-12
+s11d2: 13-14, 16-16
+s11h:  17-17, 21-22
+s11s:  18-18
+s11p2: 19-19
+s11p3: 23-23
 
 # document level annotation:
 
@@ -483,24 +508,53 @@ Sentence: Podle Le Figaro by tento vládní plán mohl uvolnit 42 milionů eur, 
 Sentence Gloss (en): According to Le Figaro, this government plan could free up 42 million euros, of which 15.5 million would go towards security.
 
 # sentence level graph:
-(s12 / )
+(s12s / say-91
+        :aspect performance
+        :modal-strength full-affirmative
+        :ARG0 (s12n1 / news-media
+                      :wiki "Q216047"
+                      :name (s12n2 / name :op1 "Le" :op2 "Figaro"))
+        :ARG1 (s12u / uvolnit-002
+                    :aspect performance
+                    :modal-strength neutral-affirmative
+                    :quote s12s
+                    :force (s12p / plán
+                                 :wiki "Q1371819"
+                                 :refer-number singular
+                                 :mod (s12t / tento)
+                                 :actor-of (s12v / vláda
+                                                   :refer-number singular
+                                                   :wiki "Q7188"))
+                    :theme (s12m / monetary-quantity
+                                 :quant 42
+                                 :unit (s12e/ eur)
+                                 :ARG2-of(s12i / include-91
+                                                 :aspect state
+                                                 :modal-strength neutral-affirmative
+                                                 :ARG1 (s12m1 / monetary-quantity
+                                                                 :quant 15.5
+                                                                 :unit (s12e2 / eur)
+                                                                 :undergoer-of (s12j / jít-024
+                                                                                 :aspect activity
+                                                                                 :modal-strength neutral-affirmative
+                                                                                 :goal (s12b / bezpečnost
+                                                                                               :wiki "Q2526135")))))))
 
 # alignment:
-s12l:
-s12f:
-s12t:
-s12v:
-s12p:
-s12m:
-s12u:
-s124:
-s12m2:
-s12e:
-s12t2:
-s121:
-s12m3:
-s12s:
-s12b:
+s12s: 1-1
+s12n1: 2-3
+s12n2: 0-0
+s12t: 5-5
+s12v: 6-6
+s12p: 7-7
+s12u: 4-4, 8-9
+s12m: 10-12, 14-15
+s12i: 0-0
+s12e: 0-0
+s12m1: 16-17
+s12j:  18-19
+s12b:  20-21
+s12e2: 0-0
 
 # document level annotation:
 
@@ -513,20 +567,42 @@ Sentence: Bylo zdůrazněno, že v žádném případě nemůžeme pokračovat s
 Sentence Gloss (en): It has been emphasised that we absolutely cannot continue with those who are completely against Italy.
 
 # sentence level graph:
-(s13 / )
+(s13z / zdůraznit-001
+        :aspect performance
+        :modal-strength full-affirmative
+        :theme (s13p2 / pokračovat-001
+                      :polarity -
+                      :aspect activity
+                      :modal-strength full-negative
+                      :quote s13z
+                      :actor (s13p3 / person
+                                    :refer-person 1st
+                                    :refer-number plural)
+                      :affectee (s13p4 / person
+                                    :refer-person 3rd
+                                    :refer-number plural
+                                    :ARG1-of (s13b / být-proti-91
+                                                 :aspect state
+                                                 :modal-strength full-affirmative
+                                                 :degree (s13z2 / zcela)
+                                                 :theme (s13c / country
+                                                                :wiki "Q38"
+                                                                :name (s13n/ name :op1 "Itálie"))))
+                      :condition (s13p5 / případ
+                                          :refer-number singular
+                                          :mod (s13z3 / žádný))))
 
 # alignment:
-s13b:
-s13z:
-s13z:
-s13p:
-s13n:
-s13p2:
-s13t:
-s13k:
-s13j:
-s13z2:
-s13i:
+s13z: 1-2
+s13p2: 4-4, 8-9
+s13p5: 5-5, 7-7
+s13z3: 6-6
+s13p3: 0-0
+s13p4: 10-11, 13-13
+s13b: 14-14,16-16
+s13z2: 15-15
+s13c: 17-17
+s13n: 0-0
 
 # document level annotation:
 
@@ -539,32 +615,74 @@ Sentence: Nejnovější údaje se vztahují k 24. říjnu loňského roku a ří
 Sentence Gloss (en): The latest figures relate to the 24th of October last year, and tell us that our diesel costs 1,335 euros per litre, compared with the eurozone average of 1,165 euros.
 
 # sentence level graph:
-(s14 / )
+(s14a / and
+        :op1 (s14v / vztahovat-se-001
+                     :aspect state
+                     :modal-strength full-affirmative
+                     :undergoer (s14u / údaj
+                                    :wiki "Q11028"
+                                    :refer-number plural
+                                    :mod (s14n / nový
+                                                 :degree (s14m / most)))
+                     :temporal (s14d / date-entity
+                                       :day 24
+                                       :month 10)
+                     :temporal (s14l / loni))
+        :op2 (s14r2 / říkat-007
+                      :aspect state
+                      :modal-strength full-affirmative
+                      :actor s14u
+                      :recipient (s14p / person
+                                    :refer-person 1st
+                                    :refer-number plural)
+                      :theme (s14s2 / stát-014
+                                      :aspect state
+                                      :modal-strength full-affirmative
+                                      :quote s14r2
+                                      :theme (s14n4 / nafta
+                                                      :wiki "Q38423"
+                                                      :possessor s14p)
+                                      :extent (s14h / have-degree-91
+                                                      :aspect state
+                                                      :modal-strength full-affirmative
+                                                      :ARG1 (s14m2 / monetary-quantity
+                                                                     :quant 1335
+                                                                     :unit (s14e / eur)
+                                                                     :frequency (s14r1 / rate-entity-91
+                                                                                       :ARG2 (s14l2 / litr)))
+                                                      :ARG4 (s14p2 / průměr
+                                                                     :wiki "Q37221"
+                                                                     :mod (s14e2 / eurozóna
+                                                                                   :wiki "Q8268")
+                                                                     :ARG1-of (s14i / identity-91
+                                                                                     :aspect state
+                                                                                     :modal-strength full-affirmative
+                                                                    :ARG2 (s14m3 / monetary-quantity
+                                                                                   :quant 1165
+                                                                                   :unit (s14e3 / eur))))))))
 
 # alignment:
-s14n:
-s14u:
-s14s:
-s14v:
-s142:
-s14r:
-s14l:
-s14r:
-s14a:
-s14r2:
-s14n2:
-s14n3:
-s14n4:
-s14s2:
-s141:
-s14e:
-s14l2:
-s14s3:
-s14s4:
-s14p:
-s14e2:
-s1412:
-s14e3:
+s14n: 1-1
+s14m: 0-0
+s14u: 2-2
+s14v: 3-4
+s14d: 5-8
+s14l: 9-10
+s14a: 11-11
+s14r2: 12-12
+s14p: 13-13, 16-16
+s14n4: 17-17
+s14s2: 15-15, 18-18
+s14h: 24-25
+s14m2: 19-20
+s14e: 0-0
+s14r1: 0-0
+s14l2: 21-22
+s14i: 0-0
+s14p2: 26-27
+s14e2: 28-28
+s14m3: 29-30
+s14e3: 0-0
 
 # document level annotation:
 
@@ -577,21 +695,36 @@ Sentence: V průběhu zasedání, které se konalo v Římě, to bylo řečeno s
 Sentence Gloss (en): Students at LUISS University were told during the course of a meeting which took place in Rome.
 
 # sentence level graph:
-(s15 / )
+(s15r / říci-008
+        :aspect performance
+        :modal-strength full-affirmative
+        :theme (s15t / thing)
+        :recipient (s15s2 / student
+                            :wiki "Q48282"
+                            :refer-number plural
+                            :mod (s15u / univerzita
+                                         :name (s15n / name :op1 "LUISS")))
+        :temporal (s15p / probíhat
+                          :aspect activity
+                          :modal-strength full-affirmative
+                          :undergoer (s15z / zasedání
+                                             :wiki "Q2761147"
+                                             :undergoer-of (s15k / konat-se-001
+                                                                  :place (s15h / human-settlement
+                                                                                 :wiki "Q220"
+                                                                                 :name (s15n1 / name :op1 "Řím"))))))
 
 # alignment:
-s15p:
-s15z:
-s15k:
-s15s:
-s15k2:
-s15r:
-s15t:
-s15b:
-s15r2:
-s15s2:
-s15u:
-s15l:
+s15p: 1-2
+s15z: 3-3,5-5
+s15k: 6-7
+s15h: 8-9
+s15n1: 0-0
+s15t: 11-11
+s15r: 12-13
+s15s2: 14-14
+s15u: 15-15
+s15n: 16-16
 
 # document level annotation:
 
@@ -604,14 +737,18 @@ Sentence: Jejich vedení však nepostrádalo kritiku.
 Sentence Gloss (en): Its management, however, hasn't been devoid of criticism.
 
 # sentence level graph:
-(s16 / )
+(s16k / kritizovat-001
+        :aspect activity
+        :modal-strength full-affirmative
+        :theme (s16v / vést-006
+                :actor (s16p / person
+                               :refer-person 3rd
+                               :refer-number plural)))
 
 # alignment:
-s16j:
-s16v:
-s16v2:
-s16n:
-s16k:
+s16p: 1-1
+s16v: 2-2
+s16k: 3-5
 
 # document level annotation:
 
@@ -624,24 +761,44 @@ Sentence: A musí být vítáni s otevřenou duší a jasnou myslí, protože tv
 Sentence Gloss (en): And they must be greeted with an open spirit and clear mind because they form the new generation of beauty and hope.
 
 # sentence level graph:
-(s17 / )
+(s17v / vítat-003
+        :aspect activity
+        :modal-strength full-affirmative
+        :recipient (s17p / person
+                           :refer-person 3rd
+                           :refer-number plural)
+        :manner (s17a2 / and
+                         :op1  (s17d / duše
+                                       :wiki "Q331769"
+                                       :mod (s17o / otevřený))
+                         :op2 (s17m2 / mysl
+                                       :wiki "Q450"
+                                       :mod (s17j / jasný)))
+        :purpose (s17t / tvořit-001
+                         :aspect activity
+                         :modal-strength full-affirmative
+                         :undergoer (s17g / generace
+                                            :wiki "Q213381"
+                                            :refer-number plural
+                                            :mod (s17n / nový)
+                                            :mod (s17a3/ and
+                                                         :op1 (s17k / krása)
+                                                         :op2 (s17n2 / naděje)))))
 
 # alignment:
-s17a:
-s17m:
-s17b:
-s17v:
-s17o:
-s17d:
-s17a2:
-s17j:
-s17m2:
-s17t:
-s17n:
-s17g:
-s17k:
-s17a3:
-s17n2:
+s17v: 1-4
+s17p: 0-0
+s17o: 6-6
+s17d: 5-5, 7-7
+s17a2: 8-8
+s17j: 9-9
+s17m2: 10-10
+s17t: 12-13
+s17n: 14-14
+s17g: 15-15
+s17k: 16-16
+s17a3: 17-17
+s17n2: 18-18
 
 # document level annotation:
 
@@ -654,24 +811,55 @@ Sentence: Časné hlasování naznačuje, že tentokrát Latinoameričané vyjdo
 Sentence Gloss (en): The early voting suggests that this time the Latin Americans will come out to vote in greater numbers, but it is unclear whether the increase will have an impact.
 
 # sentence level graph:
-(s18 / )
+(s18b / but-91
+        :ARG1 (s18n / naznačovat-002
+             :aspect activity
+             :modal-strength full-affirmative
+             :stimulus (s18h / hlasovat-003
+                               :aspect activity
+                               :modal-strength full-affirmative
+                               :actor (s18l / Latinoameričané
+                                             :wiki "Q16799549")
+                               :temporal (s18c / časné))
+             :theme (s18v / vyjít-12
+                              :aspect performance
+                              :modal-strength full-affirmative
+                              :quote s18n
+                              :actor s18l
+                              :theme (s18h2 / hlasovat-003
+                                              :aspect activity
+                                              :modal-strength full-affirmative
+                                              :actor s18l)
+                              :temporal (s18t / tentokrát)
+                              :manner (s18p / počet
+                                              :mod (s18v2/ velký
+                                                          :degree (s18m / more)))))
+        :ARG2 (s18h3 / have-mod-91
+                       :aspect state
+                       :modal-strength full-negative
+                       :ARG1 (s18o / ovlivnit
+                                     :aspect state
+                                     :modal-strength neutral-affirmative
+                                     :polarity umr-unknown
+                                     :force (s18n3 / nárůst))
+                       :ARG2 (s18j / jasný)))
 
 # alignment:
-s18c:
-s18h:
-s18n:
-s18t:
-s18l:
-s18v:
-s18h2:
-s18v2:
-s18p:
-s18a:
-s18n2:
-s18j:
-s18n3:
-s18m:
-s18v3:
+s18c: 1-1
+s18h: 2-2
+s18n: 3-3
+s18t: 6-6
+s18l: 7-7
+s18v: 5-5, 8-8
+s18h2: 9-9
+s18v2: 11-11
+s18m: 0-0
+s18p: 10-10, 12-12
+s18b: 14-14
+s18h3: 15-15
+s18j: 16-16
+s18n3: 19-19
+s18o: 18-18, 20-22
 
 # document level annotation:
 
@@ -684,25 +872,54 @@ Sentence: V roce 1832 byl bývalý klášter prodán výrobci Georgu Reichenbach
 Sentence Gloss (en): In 1832, the former cloister was sold to the manufacturer Georg Reichenbach by the state of Württemberg with the stipulation to establish a cotton factory there.
 
 # sentence level graph:
-(s19 / )
+(s19p / prodat-001
+        :aspect performance
+        :modal-strength full-affirmative
+        :theme (s19k / klášter
+                       :wiki "Q44613"
+                       :mod (s19b / bývalý))
+        :temporal (s19d / date-entity
+                          :year 1832)
+        :recipient (s19p3 / person
+                            :wiki "Q88376658"
+                            :name (s19n / name :op1 "Georg" :op2 "Reichenbach")
+                            :ARG1-of (s19h / have-org-role-92
+                                             :aspect state
+                                             :modal-strength full-affirmative
+                                             :ARG4 (s19v / výrobce
+                                                           :wiki "Q42855995")))
+        :actor (s19s / state
+                       :wiki "Q159626"
+                       :name (s19n2 / name :op1 "Württemberg"))
+        :condition (s19z / zřídit-001
+                           :aspect performance
+                           :modal-strength neutral-affirmative
+                           :actor s19p3
+                           :undergoer (s19z2 / závod
+                                               :wiki "Q83405"
+                                               :actor-of (s19z3 / zpracovávat
+                                                                  :aspect activity
+                                                                  :modal-strength neutral-affirmative
+                                                                  :theme (s19b3 / bavlna
+                                                                  :wiki "Q11457")))
+                           :place (s19t / tady)))
 
 # alignment:
-s19r:
-s191:
-s19b:
-s19b2:
-s19k:
-s19p:
-s19v:
-s19g:
-s19r2:
-s19s:
-s19w:
-s19p2:
-s19t:
-s19z:
-s19z2:
-s19b3:
+s19d: 1-3
+s19b: 5-5
+s19k: 6-6
+s19p: 4-4, 7-7
+s19p3: 9-10
+s19n: 0-0
+s19h: 0-0
+s19v: 8-8
+s19s: 11-12
+s19n2: 0-0
+s19t: 15-15
+s19z: 13-14, 16-16
+s19z2: 17-17
+s19z3: 0-0
+s19b3: 18-19
 
 # document level annotation:
 
@@ -715,15 +932,20 @@ Sentence: Obsahuje pomník Martina Luthera Kinga, Jr.
 Sentence Gloss (en): It contains a monument to Martin Luther King, Jr.
 
 # sentence level graph:
-(s20 / )
+(s20o / obsahovat
+       :aspect state
+       :modal-strength full-affirmative
+       :undergoer (s20p / pomník
+                          :wiki "Q4989906"
+                          :mod (s20p1 / person
+                                        :wiki "Q8027"
+                                        :name (s20n / name :op1 "Martin" :op2 "Luther" :op3 "King," :op4 "Jr."))))
 
 # alignment:
-s20o:
-s20p:
-s20m:
-s20l:
-s20k:
-s20j:
+s20o: 1-1
+s20p: 2-2
+s20p1: 3-7
+s20n: 0-0
 
 # document level annotation:
 
