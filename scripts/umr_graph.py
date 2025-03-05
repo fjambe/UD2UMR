@@ -137,6 +137,8 @@ class UMRGraph:
             str: A unique variable name.
         """
         first_letter = form.lemma[0].lower() if hasattr(form, 'lemma') else form[0].lower()
+        if not first_letter.isalpha():
+            first_letter = 'x'
         first_letter = 's' + str(self.sent_num) + first_letter
         count = 2
 

@@ -96,6 +96,7 @@ I could also implement an additional check for UPOS (= only VERB), but maybe it 
 - Now checking that there are no non-existent alignments listed in the alignment block.
 - Alignments are now ordered deterministically based on the word index.
 - All variables found in the sentence graph should now be in the alignment block too.
+- All variables now start with a letter; "x" is used for anything that is not alphabetical (e.g. years)
 - I replaced `experiencer` and `stimulus` with `actor` and `theme` respectively, because their use turned out to be
 confusing - syntactic criteria are not solid enough to detect this.
 - In English, there was an issue with coordination because the conjunction lemma _and_ and the abstract concept `and`
@@ -105,8 +106,7 @@ are identical.
 ### To fix:
 - The Americans do not seem to use non-English letters in the variable identifiers ("s18č").
 The simplest solution would be to use "x" instead of anything that does not fall in [a-z].
-A possible fancier approach would be to convert 'č' --> 'c', 'á' --> 'a' etc.
---> definitely replace digits, ask Boulder about the rest.
+A possible fancier approach would be to convert 'č' --> 'c', 'á' --> 'a' etc. --> ask Boulder.
 - Passive participles are ADJ in Czech UD; ideally, they should be converted back to verbs. They can be recognized by
 `VerbForm=Part|Voice=Pass` in FEATS. The verbal lemma (infinitive) should be available in the `LDeriv` attribute in MISC.
 Since they are passive, the subject is likely to be `:undergoer` (rather than `:actor`).
