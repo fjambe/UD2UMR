@@ -398,32 +398,57 @@ class UMRGraph:
 
     def alignments(self, umr, output_file=None):
         """
-        Computes alignment block based on UD tokens.
+        Computes the alignment block based on UD tokens.
         Raises a warning if there are two UMR nodes aligned to the same token.
         """
         destination = output_file if output_file else sys.stdout
-
         alignments = {}
+
+        def format_range(index_list):
+            """ Formats a list of integers into a compact range representation of alignments. """
+            index_list.sort()
+            a_range = []
+            start = index_list[0]
+            end = start
+
+            for num in index_list[1:]:
+                if num == end + 1:
+                    end = num
+                else:
+                    a_range.append(f"{start}-{end}" if start != end else f"{start}-{start}")
+                    start = end = num
+
+            a_range.append(f"{start}-{end}" if start != end else f"{start}-{start}")
+            return ", ".join(a_range)
 
         for v in umr.variables():
             node = UMRNode.find_by_var_name(self, v)
             num_token = node.ord if node else 0
-            alignments[v] = num_token
+            aligned = [num_token]
 
-        sorted_alignments = dict(sorted(alignments.items(), key=lambda item: item[1]))
+            if not isinstance(node.ud_node, str) and node.ud_node:
+                auxs = [c for c in node.ud_node.children if c.udeprel == 'aux']
+                aligned.extend([a.ord for a in auxs])
+
+            alignments[v] = format_range(aligned)
+
+        sorted_alignments = dict(sorted(alignments.items(), key=lambda item: int(item[1].split('-')[0])))
         for var, al in sorted_alignments.items():
-            print(f'{var}: {al}-{al}', file=destination)
+            print(f'{var}: {al}', file=destination)
 
         # Check that two variables are not aligned to a same UD token
-        non_zero_values = [value for value in alignments.values() if value != 0]
+        non_zero_values = [value for value in alignments.values() if value != '0-0']
         seen_values = set()
         for value in non_zero_values:
-            if value in seen_values:
-                dup = [v for v in alignments if alignments[v] == value]
-                warning_message = (
-                    f"[Warning] Two variables aligned to the same token: {dup} in sentence {self.ud_tree.address()}"
-                )
-                warnings.warn(warning_message)
-            seen_values.add(value)
+            numbers = set([num for v in value.split(', ') for num in v.split('-')])
+            for num in numbers:
+                if num in seen_values:
+                    result = [int(num) for v in alignments.values() for part in alignments[v].split(',') for num in part.split('-')]
+                    dup = [v for v in alignments if num in result]
+                    warning_message = (
+                        f"[Warning] Two variables aligned to the same token: {dup} in sentence {self.ud_tree.address()}"
+                    )
+                    warnings.warn(warning_message)
+                seen_values.add(num)
 
 
