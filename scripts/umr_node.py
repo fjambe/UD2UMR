@@ -365,6 +365,9 @@ class UMRNode:
             elif self.ud_node.upos == 'DET':
                 self.determiners_initial()
 
+            elif self.ud_node.upos == 'ADJ':
+                self.hidden_event()
+
             elif self.ud_node.upos == 'VERB':
                 # elided subjects to be restored
                 if not any(d.udeprel in {'nsubj', 'csubj'} for d in self.ud_node.children) and self.ud_node.deprel != 'xcomp':
@@ -394,6 +397,12 @@ class UMRNode:
 
             elif self.ud_node.udeprel in ['csubj', 'ccomp', 'xcomp']:
                 self.clauses()
+
+            elif self.ud_node.deprel == 'nmod':
+                if self.ud_node.parent.feats['VerbForm'] == 'Part':
+                    self.add_node('OBLIQUE')
+                else:
+                    self.add_node(self.role)
 
             elif self.ud_node.deprel == 'appos':
                 _ = self.introduce_abstract_roleset(self.role)
@@ -545,7 +554,7 @@ class UMRNode:
             value = value.split('-')[0] + '-' + polarity
         return value
 
-    def modality(self):
+    def modality(self, value=None):
         """
         Assign modal-strength attribute.
         If a file with modality values for specific verbs is provided, it is used here to assign modal-strength and
@@ -553,7 +562,6 @@ class UMRNode:
         """
 
         already = [tup for tup in self.umr_graph.triples if tup[0] == self.var_name and tup[1] == 'modal-strength']
-        value = None
 
         # if modal-strength has not been assigned yet
         if not already:
@@ -1213,3 +1221,22 @@ class UMRNode:
                     self.umr_graph.triples[i] = (tup[0], tup[1], self.parent.ud_node.lemma + '-' + self.ud_node.lemma)
             self.already_added = True
 
+    def hidden_event(self):
+        """
+        Checks if ADJs are passive participles. If they are, they are treated as events, i.e.:
+            - modal-strength and aspect are assigned;
+            - the verbal lemma is assigned as concept;
+            - modifiers are considered ':OBLIQUE' instead of ':mod'
+        """
+        if self.ud_node.feats['VerbForm'] == 'Part' and self.ud_node.feats['Voice'] == 'Pass':
+            self.add_node('undergoer', invert=True)
+            self.modality('full-affirmative')
+            self.aspect('performance')
+
+            for i, tup in enumerate(self.umr_graph.triples):
+                # Replace adjectival concept with verbal concept
+                if tup[0] == self.var_name and tup[1] == 'instance':
+                    self.umr_graph.triples[i] = (tup[0], tup[1], self.ud_node.misc['LDeriv'])
+                # Dependents are not assigned a 'mod' relation but an 'OBLIQUE' one.
+                if tup[0] == self.var_name and tup[1] == 'mod':
+                    self.umr_graph.triples[i] = (tup[0], 'OBLIQUE', tup[2])

@@ -104,14 +104,14 @@ are identical.
 - `det` was used for many possessives, now correctly `possessor`.
 - Czech reflexiva tantum (_se_/_si_ attached to a verb as `expl:pv`) now have the reflexive marker as part of the
 concept (_smát-se_), in the same way as English phrasal verbs.
+- Passive participles (ADJ in Czech UD), are converted back to verbs. They are recognized by `VerbForm=Part|Voice=Pass`.
+The verbal lemma is extracted from the `LDeriv` attribute in MISC. Since they are passive, the subject is `:undergoer`.
 
 ### To fix:
 - The Americans do not seem to use non-English letters in the variable identifiers ("s18č").
 The simplest solution would be to use "x" instead of anything that does not fall in [a-z].
 A possible fancier approach would be to convert 'č' --> 'c', 'á' --> 'a' etc. --> ask Boulder.
-- Passive participles are ADJ in Czech UD; ideally, they should be converted back to verbs. They can be recognized by
-`VerbForm=Part|Voice=Pass` in FEATS. The verbal lemma (infinitive) should be available in the `LDeriv` attribute in MISC.
-Since they are passive, the subject is likely to be `:undergoer` (rather than `:actor`).
+
 - Alignment: include prepositions in the alignment of the noun they belong to. Also include auxiliary verbs and SCONJ
 marks in the alignment of the main verb [think about it because it's not like that in the eval data].
 - snt 10: `full-negative` ended up in the first clause of the coordination, but it belongs to the second clause.

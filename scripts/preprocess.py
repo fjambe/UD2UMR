@@ -8,7 +8,7 @@ def get_deprels(ud_tree) -> dict:
     """ Map UD deprels to UMR roles, mostly based on UD deprels. """
 
     mapping_conditions = {
-        'root': lambda d: d.deprel == 'root',  # All children are included for 'root'
+        'root': lambda d: d.deprel == 'root',
         'actor': lambda d: d.deprel in ['nsubj', 'csubj', 'obl:agent'],
         'undergoer': lambda d: d.deprel in ['obj', 'nsubj:pass', 'csubj:pass'],
         'theme': lambda d: d.udeprel in ['xcomp', 'ccomp'],
@@ -21,7 +21,7 @@ def get_deprels(ud_tree) -> dict:
         'quant': lambda d: d.deprel == 'nummod' or d.sdeprel in ['nummod', 'numgov'],
         'vocative': lambda d: d.deprel == 'vocative',
         'affectee': lambda d: d.deprel in ['iobj', 'obl:arg'] or (d.deprel == 'obl' and d.feats.get('Case') == 'Dat'),
-        'MOD/POSS': lambda d: d.deprel == 'nmod' and d.feats.get('Case') == 'Gen',
+        'MOD/POSS': lambda d: d.udeprel == 'nmod' and d.feats.get('Case') == 'Gen',
         'possessor': lambda d: d.sdeprel == 'poss',
         'identity-91': lambda d: d.deprel == 'appos',
         'COPULA': lambda d: d.deprel == 'cop',
