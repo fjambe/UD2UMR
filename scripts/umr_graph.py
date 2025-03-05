@@ -427,8 +427,17 @@ class UMRGraph:
             aligned = [num_token]
 
             if not isinstance(node.ud_node, str) and node.ud_node:
-                auxs = [c for c in node.ud_node.children if c.udeprel == 'aux']
-                aligned.extend([a.ord for a in auxs])
+                # Alignment of auxiliary verbs to the main verb
+                auxs = [c.ord for c in node.ud_node.children if c.udeprel == 'aux']
+                # Alignment of SCONJ marks to the main verb -- comment out next line not to align SCONJs
+                sconjs = [c.ord for c in node.ud_node.children if c.udeprel == 'mark' and c.upos == 'SCONJ']
+                # Alignment of adpositions and articles to the parent noun; # comment out next line not to align them
+                adps = [c.ord for c in node.ud_node.children if c.udeprel == 'case' or
+                        (c.feats['PronType'] == 'Art' and c.udeprel == 'det')]
+
+                aligned.extend(auxs + sconjs + adps)
+                if num_token == '0-0':
+                    aligned.remove(num_token)
 
             alignments[v] = format_range(aligned)
 

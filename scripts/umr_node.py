@@ -711,6 +711,8 @@ class UMRNode:
             category = 'thing' if self.ud_node.feats['Gender'] == 'Neut' else 'person' if self.ud_node.feats['PronType'] == 'Prs' else 'FILL'
             entity = self.create_node(category, self.role, replace=True)
             entity.ud_node = self.ud_node
+            entity.ord = self.ord
+            self.ord = 0
             entity.parent = self.parent
             self.replaced = True
 
@@ -822,6 +824,7 @@ class UMRNode:
             if self.ud_node.upos == 'PROPN' or (self.ud_node.upos in ['NOUN', 'X'] and names):
 
                 entity = self.create_node('type-NE', self.role, replace=True)
+                entity.ord = self.ord
                 entity.ud_node = self.ud_node
                 entity.parent = self.parent
                 entity.extra_level = self.extra_level

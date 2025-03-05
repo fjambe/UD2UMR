@@ -97,7 +97,8 @@ I could also implement an additional check for UPOS (= only VERB), but maybe it 
 - Alignments are now ordered deterministically based on the word index.
 - All variables found in the sentence graph should now be in the alignment block too.
 - All variables now start with a letter; "x" is used for anything that is not alphabetical (e.g. years)
-- Auxiliaries are now included in the alignment of the main verb (i.e. the parent node).
+- Auxiliaries and `SCONJ` marks are now included in the alignment of the main verb (i.e. the parent node).
+Adpositions and articles (if annotated with `PronType=Art`, e.g. not in Italian) are aligned to the noun they belong to.
 - I replaced `experiencer` and `stimulus` with `actor` and `theme` respectively, because their use turned out to be
 confusing - syntactic criteria are not solid enough to detect this.
 - In English, there was an issue with coordination because the conjunction lemma _and_ and the abstract concept `and`
@@ -115,9 +116,6 @@ implies `(full)-negative` UMR modality.
 - The Americans do not seem to use non-English letters in the variable identifiers ("s18č").
 The simplest solution would be to use "x" instead of anything that does not fall in [a-z].
 A possible fancier approach would be to convert 'č' --> 'c', 'á' --> 'a' etc. --> ask Boulder.
-
-- Alignment: include prepositions in the alignment of the noun they belong to. Also include SCONJ marks in the alignment
-of the main verb [think about it because it's not like that in the eval data].
 
 ## QUESTIONS:
 - [Julia, not asked] Is there something like `foreign-entity`, `foreign...`? I recall something but not much. Otherwise,
