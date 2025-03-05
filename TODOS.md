@@ -102,6 +102,8 @@ confusing - syntactic criteria are not solid enough to detect this.
 - In English, there was an issue with coordination because the conjunction lemma _and_ and the abstract concept `and`
 are identical.
 - `det` was used for many possessives, now correctly `possessor`.
+- Czech reflexiva tantum (_se_/_si_ attached to a verb as `expl:pv`) now have the reflexive marker as part of the
+concept (_smát-se_), in the same way as English phrasal verbs.
 
 ### To fix:
 - The Americans do not seem to use non-English letters in the variable identifiers ("s18č").
@@ -112,7 +114,6 @@ A possible fancier approach would be to convert 'č' --> 'c', 'á' --> 'a' etc. 
 Since they are passive, the subject is likely to be `:undergoer` (rather than `:actor`).
 - Alignment: include prepositions in the alignment of the noun they belong to. Also include auxiliary verbs and SCONJ
 marks in the alignment of the main verb [think about it because it's not like that in the eval data].
-- Reflexiva tantum (_se_/_si_ attached to verb as `expl:pv`) should have the reflexive marker as part of the concept (_smát-se_). 
 - snt 10: `full-negative` ended up in the first clause of the coordination, but it belongs to the second clause.
 
 ## QUESTIONS:

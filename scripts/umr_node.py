@@ -430,7 +430,7 @@ class UMRNode:
             elif self.ud_node.udeprel == 'advcl':
                 self.adverbial_clauses()
 
-            elif self.ud_node.udeprel == 'compound':
+            elif self.ud_node.udeprel in ['compound', 'expl']:
                 self.compound()
 
             elif self.ud_node.udeprel == 'fixed':
@@ -1185,7 +1185,8 @@ class UMRNode:
         """ Handle constructions with the 'compound' deprel. """
         # NUMs are already handled in quantifiers()
 
-        if self.ud_node.sdeprel == 'prt' or self.parent.ud_node.upos in ['VERB', 'ADJ', 'ADV']:
+        # E.g., for English phrasal verbs or Czech reflexives
+        if self.ud_node.sdeprel in ['prt', 'pv'] or self.parent.ud_node.upos in ['VERB', 'ADJ', 'ADV']:
             for i, tup in enumerate(self.umr_graph.triples):
                 if tup[0] == self.parent.var_name and tup[1] == 'instance':
                     if self.parent.ud_node.upos == 'ADJ':
