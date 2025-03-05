@@ -58,24 +58,24 @@ s1d: 29-29
 s1h: 0-0
 s1l: 0-0
 s1h2: 22-22, 24-24
-s1c2: 14-15
+s1c2: 12-15
 s1n3: 0-0
 s1p6: 4-4
 s1g: 3-3
-s1t2: 7-7
+s1t2: 5-7
 s1d2: 8-8
 s1h3: 9-9
 s1p5: 10-11, 23-23
-s1p3: 19-19
-s1t: 18-18
+s1p3: 18-18
+s1t: 17-17, 19-19
 s1p4: 20-21
-s1b: 32-32
+s1b: 30-32
 s1c: 2-2
 s1p: 33-34
 s1n: 0-0
-s1a: 37-37
+s1a: 36-37
 s1s2: 38-38
-s1p2: 40-40
+s1p2: 39-40
 s1n2: 0-0
 
 # document level annotation:
@@ -112,11 +112,11 @@ Sentence Gloss (en): "Tonight we are carrying out punishments using a high beam,
 # alignment:
 s2l: 9-10
 s2u: 2-2
-s2a: 4-4
+s2a: 3-4
 s2p: 0-0
 s2s: 1-1
 s2p2: 5-7
-s2p3: 13-13
+s2p3: 11-13
 
 # document level annotation:
 
@@ -152,15 +152,15 @@ Sentence Gloss (en): The debris formed a ring around the Earth's equator and was
 
 # alignment:
 s3a: 9-9
-s3d: 2-2
+s3d: 1-2
 s3f: 3-3
-s3c: 5-5
-s3e: 8-8
+s3c: 4-5
+s3e: 6-8
 s3a2: 10-10, 12-12
 s3p: 11-11
-s3g: 15-15
-s3f2: 18-18
-s3m: 20-20
+s3g: 13-15
+s3f2: 16-18
+s3m: 19-20
 s3n: 0-0
 
 # document level annotation:
@@ -186,9 +186,9 @@ Sentence Gloss (en): Its importance resides in two facts.
 
 # alignment:
 s4t: 2-2
-s4i: 3-3
+s4i: 1-1, 3-3
 s4h: 4-5
-s4f: 7-8
+s4f: 6-8
 
 # document level annotation:
 
@@ -224,18 +224,18 @@ Sentence Gloss (en): By the 3rd century the emperor Caracalla made a new divisio
     :modal-strength full-affirmative)
 
 # alignment:
-s5i: 7-7
+s5i: 6-7
 s5h: 0-0
 s5n: 0-0
 s5p: 8-8
 s5f: 9-9
-s5d: 12-12
+s5d: 10-10, 12-12
 s5u: 11-11
 s5b: 1-1
-s5d2: 3-4
+s5d2: 2-4
 s5s: 15-15
 s5p2: 17-17
-s5t: 18-18
+s5t: 16-16, 18-18
 s5d3: 14-14
 
 # document level annotation:
@@ -286,23 +286,23 @@ Sentence Gloss (en): In 1955, Mishima took up weight training and his workout re
 
 # alignment:
 s6a: 11-11
-s6d: 3-3
+s6d: 1-3
 s6i: 6-6
 s6p: 5-5
 s6n: 0-0
-s6s: 8-9
+s6s: 7-9
 s6p2: 10-10
 s6c: 12-12
-s6r: 15-15
-s6a2: 17-17
+s6r: 13-13, 15-15
+s6a2: 16-17
 s6t: 23-32
 s6u: 0-0
 s6t2: 0-0
 s6y: 0-0
 s6v: 0-0
-s6s3: 19-20
+s6s3: 18-20
 s6s2: 0-0
-s6r2: 22-22
+s6r2: 21-22
 
 # document level annotation:
 
@@ -341,11 +341,11 @@ Sentence Gloss (en): Von Beust justified the cost increases as lack of detailed 
 s7p: 1-2
 s7n: 0-0
 s7g: 3-3
-s7a: 5-5
-s7c: 8-8
+s7a: 4-5
+s7c: 6-8
 s7h: 0-0
-s7m: 10-10
-s7p2: 12-12
+s7m: 9-10
+s7p2: 11-12
 s7d: 13-13
 
 # document level annotation:
@@ -378,24 +378,37 @@ Sentence Gloss (en): The smartphone generation received an app it deserved, wher
                 :quant (s8m3 / milione
                     :refer-number plural
                     :unit (s8p2 / persona)))
+            :ARG1-of (s8i / identity-91
+                :ARG2 (s8c / caso
+                    :refer-number singular
+                    :mod (s8b / buono :degree (s8m4 / most))
+                    :ARG1-of (s8h / have-modal-strength-91
+                        :ARG2 neutral-affirmative
+                        :aspect state
+                        :modal-strength full-affirmative)))
             :aspect performance
             :modal-strength full-affirmative))
     :aspect performance
     :modal-strength full-affirmative)
 
 # alignment:
-s8g: 2-2
-s8s: 5-5
+s8g: 1-2
+s8s: 3-5
 s8r: 6-7
-s8a: 9-9
+s8a: 8-9
 s8m: 12-12
+s8c: 15-16, 18-18
+s8b: 7-7
+s8m4: 0-0
+s8i: 0-0
+s8h: 19-19
 s8m2: 23-23
-s8s3: 22-22
+s8s3: 21-22
 s8s2: 24-24
 s8a2: 25-26
-s8p: 28-28
-s8m3: 30-30
-s8p2: 32-32
+s8p: 27-28
+s8m3: 29-30
+s8p2: 31-32
 
 # document level annotation:
 
@@ -432,13 +445,13 @@ Sentence Gloss (en): Dündar warned Europe about having too much understanding f
 s9p: 1-1
 s9a: 2-4
 s9n: 0-0
-s9g: 6-6
+s9g: 5-6
 s9n2: 0-0
-s9h: 9-9
+s9h: 7-9
 s9c: 11-11
 s9t: 10-10
-s9o: 14-14
-s9p2: 16-16
+s9o: 12-14
+s9p2: 15-16
 s9n3: 0-0
 
 # document level annotation:
@@ -467,10 +480,10 @@ Sentence Gloss (en): According to the programme, she will speak at 23.45.
 
 # alignment:
 s10s: 1-1
-s10p: 3-3
+s10p: 2-3
 s10p2: 5-5
 s10p3: 0-0
-s10d: 8-8
+s10d: 6-8
 
 # document level annotation:
 
@@ -520,11 +533,11 @@ Sentence Gloss (en): He also remarked that "the existence of such a document cou
 s11a: 2-2
 s11r: 1-1, 3-3
 s11p: 0-0
-s11e: 7-7
+s11e: 6-7
 s11t: 9-9
-s11d: 10-10
-s11p2: 11-12
-s11c: 15-15
+s11d: 8-8, 10-10
+s11p2: 4-4, 11-12
+s11c: 13-15
 s11p3: 17-17
 s11h: 16-16, 18-18
 s11e2: 0-0
@@ -577,15 +590,15 @@ s12n: 2-3
 s12n2: 0-0
 s12q: 5-5
 s12p: 6-6
-s12g: 9-9
-s12r: 11-12
+s12g: 7-9
+s12r: 10-12
 s12m: 13-16
 s12e: 0-0
-s12i: 18-18
+s12i: 18-20
 s12m2: 21-24
 s12e2: 0-0
 s12a: 25-25
-s12s2: 28-28
+s12s2: 26-28
 
 # document level annotation:
 
@@ -628,11 +641,11 @@ s13p: 0-0
 s13a: 1-3
 s13p2: 0-0
 s13a2: 4-4
-s13p3: 7-7
+s13p3: 5-7
 s13h: 9-9
 s13t: 10-10
 s13c: 11-11
-s13c2: 13-13
+s13c2: 12-13
 s13n: 0-0
 
 # document level annotation:
@@ -657,9 +670,13 @@ Sentence Gloss (en): The latest figures relate to the 24th of October last year,
                 :mod (s14s / scorso))
             :aspect performance
             :modal-strength full-affirmative))
+    :recipient (s14p / person
+        :refer-number plural
+        :refer-person 1st)
     :theme (s14c2 / contrast-91
         :ARG1 (s14c / costare
             :theme (s14g / gasolio :refer-number singular)
+            :place s14p
             :other-role (s14m / monetary-quantity
                 :quant 1.335
                 :unit (s14e / euro)
@@ -680,34 +697,31 @@ Sentence Gloss (en): The latest figures relate to the 24th of October last year,
             :manner (s14m3 / media)
             :aspect state
             :modal-strength full-affirmative))
-    :recipient (s14p / person
-        :refer-number plural
-        :refer-person 1st)
-    :aspect performance
+    :aspect activity
     :modal-strength full-affirmative)
 
 # alignment:
 s14u: 2-2
 s14d: 11-11
 s14r: 4-4
-s14d3: 7-8
+s14d3: 5-8
 s14s: 9-9
 s14p: 10-10
-s14d2: 3-3
-s14g: 16-16
-s14c: 17-17
+s14d2: 1-1, 3-3
+s14g: 15-16
+s14c: 12-12, 17-17
 s14c2: 24-24
 s14e: 0-0
 s14m: 18-19
-s14v: 22-22
+s14v: 20-22
 s14l: 0-0
 s14m2: 31-32
-s14m3: 26-26
+s14m3: 25-26
 s14c3: 0-0
 s14l2: 0-0
 s14v2: 0-0
 s14e2: 0-0
-s14e3: 29-29
+s14e3: 27-29
 
 # document level annotation:
 
@@ -741,12 +755,12 @@ Sentence Gloss (en): Students at LUISS University were told during the course of
 
 # alignment:
 s15d: 1-3
-s15s: 6-6
-s15a: 9-10
+s15s: 4-6
+s15a: 7-10
 s15n: 0-0
-s15i: 16-16
+s15i: 11-16
 s15o: 17-17
-s15h: 19-19
+s15h: 18-19
 s15n2: 0-0
 
 # document level annotation:
@@ -776,7 +790,7 @@ Sentence Gloss (en): Its management, however, hasn't been devoid of criticism.
 
 # alignment:
 s16h: 7-9
-s16g: 3-3
+s16g: 1-1, 3-3
 s16p: 2-2
 s16c: 10-12
 
@@ -816,17 +830,17 @@ Sentence Gloss (en): And they must be greeted with an open spirit and clear mind
     :modal-strength partial-affirmative)
 
 # alignment:
-s17a:2-4
+s17a: 2-4
 s17p: 0-0
 s17a2: 9-9
-s17s: 7-7
+s17s: 5-7
 s17a3: 8-8
-s17m: 12-12
+s17m: 10-12
 s17l: 13-13
-s17f: 15-15
+s17f: 14-15
 s17n: 17-17
-s17g: 18-18
-s17s2: 20-20
+s17g: 16-16, 18-18
+s17s2: 19-20
 s17a4: 21-21
 s17b: 22-22
 
@@ -874,24 +888,24 @@ Sentence Gloss (en): The early voting suggests that this time the Latin American
         :modal-strength full-negative))
 
 # alignment:
-s18v: 2-2
+s18v: 1-2
 s18a: 3-3
 s18s: 4-4
 s18q: 6-6
 s18v2: 7-7
-s18p: 9-9
+s18p: 8-9
 s18w: 0-0
 s18n2: 0-0
-s18v3: 10-10
+s18v3: 5-5, 10-10
 s18g: 12-12
-s18n: 13-13
+s18n: 11-11, 13-13
 s18b: 15-15
-s18h: 17-17
+s18h: 16-17
 s18c: 18-18
 s18q2: 20-20
 s18a2: 21-21
-s18h2: 22-22
-s18i: 24-24
+s18h2: 19-19, 22-22
+s18i: 23-24
 
 # document level annotation:
 
@@ -932,17 +946,17 @@ Sentence Gloss (en): In 1832, the former cloister was sold to the manufacturer G
 
 # alignment:
 s19v: 8-9
-s19c: 7-7
+s19c: 5-5, 7-7
 s19v2: 6-6
-s19d: 3-3
+s19d: 1-3
 s19n: 0-0
 s19p: 18-19
 s19h: 0-0
-s19p2: 17-17
-s19c2: 20-20
-s19t: 24-24
-s19f: 28-28
-s19c3: 12-14
+s19p2: 15-17
+s19c2: 29-30
+s19t: 20-24
+s19f: 26-28
+s19c3: 10-14
 s19n2: 0-0
 
 # document level annotation:
@@ -971,8 +985,8 @@ Sentence Gloss (en): It contains a monument to Martin Luther King, Jr.
 
 # alignment:
 s20c: 1-1
-s20m: 3-3
-s20p: 5-8
+s20m: 2-3
+s20p: 4-8
 s20n: 0-0
 
 # document level annotation:
@@ -1006,9 +1020,9 @@ Sentence Gloss (en): Weiss was honored with the literature prizes from the citie
 s21p: 1-1
 s21n3: 0-0
 s21o: 2-3
-s21l: 8-8
-s21p2: 5-5
-s21h: 11-13
+s21l: 6-8
+s21p2: 4-5
+s21h: 9-13
 s21n: 0-0
 s21h2: 15-15
 s21n2: 0-0
@@ -1040,7 +1054,7 @@ Sentence Gloss (en): From the 9th century BC, the first Greek texts began to app
     :modal-strength full-affirmative)
 
 # alignment:
-s22t: 3-3
+s22t: 1-1, 3-3
 s22o: 2-2
 s22e: 4-4
 s22n: 0-0
@@ -1109,17 +1123,17 @@ Sentence Gloss (en): Greece was divided into many small, self-governing communit
 
 # alignment:
 s23d: 3-4
-s23c: 2-2
+s23c: 1-2
 s23n: 0-0
 s23m3: 6-6
 s23p: 7-7
-s23c2: 8-8
+s23c2: 5-5, 8-8
 s23g: 9-9
 s23i: 10-10
-s23m: 11-11
+s23m: 11-12
 s23l: 13-13
 s23h: 14-14
-s23g2: 17-17
+s23g2: 15-17
 s23i2: 19-19
 s23o: 20-20
 s23o2: 0-0
@@ -1129,11 +1143,11 @@ s23v: 23-23
 s23a: 24-24
 s23p2: 25-25
 s23s: 26-27
-s23l2: 30-30
+s23l2: 28-30
 s23v2: 31-31
-s23m2: 34-34
+s23m2: 32-34
 s23o4: 35-35
-s23c3: 38-38
+s23c3: 36-38
 s23m4: 39-39
 
 # document level annotation:
@@ -1173,16 +1187,16 @@ Sentence Gloss (en): Trade was developed by establishing commercial outposts thr
     :modal-strength full-affirmative)
 
 # alignment:
-s24c: 2-2
+s24c: 1-2
 s24s: 3-4
 s24s2: 5-5
 s24a: 6-6
 s24c2: 7-7
 s24t: 9-9
-s24s3: 11-11
+s24s3: 8-8, 10-11
 s24n: 0-0
 s24i: 12-12
-s24t2: 14-14
+s24t2: 13-14
 s24u: 16-19
 s24u2: 20-21
 s24a2: 22-22
@@ -1226,20 +1240,20 @@ Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire
 
 # alignment:
 s25u: 4-6
-s25i: 8-8
-s25d: 3-3
+s25i: 7-8
+s25d: 1-3
 s25c: 10-10
 s25a: 29-29
-s25d4: 13-13
-s25i2: 15-15
+s25d4: 11-13
+s25i2: 14-15
 s25d2: 16-16
 s25t: 17-17
 s25r: 19-19
-s25t2: 22-22
-s25l: 24-24
+s25t2: 20-22
+s25l: 23-24
 s25s: 26-27
 s25d3: 28-28
-s25s2: 31-31
+s25s2: 30-31
 
 # document level annotation:
 
@@ -1274,16 +1288,16 @@ Sentence Gloss (en): The issuing of coinage is predominantly numismatic in natur
         :modal-strength full-affirmative))
 
 # alignment:
-s26e: 2-2
-s26m: 4-4
+s26e: 1-2
+s26m: 3-4
 s26h: 5-6
 s26p: 7-7
 s26n: 8-8
 s26a: 10-10
 s26h2: 11-12
 s26s: 13-13
-s26v: 15-16
-s26c: 19-19
+s26v: 14-16
+s26c: 17-19
 
 # document level annotation:
 
@@ -1324,7 +1338,9 @@ Sentence Gloss (en): The man told him that a war between the two universes is co
                 :undergoer (s27a5 / and
                     :op1 (s27p4 / person
                         :name (s27n2 / name :op1 "Olivia"))
-                    :op2 (s27a6 / altro :refer-number plural))
+                    :op2 (s27p5 / person
+                        :refer-number plural
+                        :mod (s27a6 / altro)))
                 :temporal (s27i / identity-91
                     :ARG1 s27p4
                     :ARG2 (s27b / bambino)
@@ -1339,23 +1355,24 @@ Sentence Gloss (en): The man told him that a war between the two universes is co
     :modal-strength full-affirmative)
 
 # alignment:
-s27u: 2-2
+s27u: 1-2
 s27p: 3-3
 s27d: 4-4
-s27a: 6-8
-s27c: 10-10
-s27u2: 12-13
+s27a: 5-8
+s27c: 9-10
+s27u2: 11-13
 s27r: 16-16
 s27a2: 18-18
 s27n: 0-0
 s27p3: 19-19
 s27p2: 20-21
 s27a3: 23-23
-s27h: 25-28
+s27h: 24-28
 s27p4: 30-30
 s27n2: 0-0
 s27a5: 32-33
-s27a6: 34-34
+s27p5: 34-34
+s27a6: 0-0
 s27a4: 36-37
 s27i: 38-38
 s27b: 39-39
@@ -1395,19 +1412,19 @@ Sentence Gloss (en): Before the Andes were formed, the western margin of South A
     :modal-strength full-affirmative)
 
 # alignment:
-s28b: 1-1
+s28b: 1-2
 s28f: 3-4
 s28n: 0-0
-s28m: 6-6
-s28l: 9-9
+s28m: 5-6
+s28l: 8-9
 s28o: 10-10
-s28w: 13-14
+s28w: 11-14
 s28i: 15-15, 17-17
 s28n2: 0-0
 s28g: 16-16
 s28s: 18-18
 s28d: 20-20
-s28o2: 21-21
+s28o2: 19-19, 21-21
 
 # document level annotation:
 
@@ -1471,26 +1488,26 @@ Sentence Gloss (en): In 1976 he met with a friend who worked with his record lab
 
 # alignment:
 s29i: 5-6
-s29d: 3-3
+s29d: 1-3
 s29p: 0-0
-s29p2: 8-9
+s29p2: 7-9
 s29n: 0-0
 s29i2: 0-0
-s29a: 12-12
+s29a: 11-12
 s29l: 14-14
 s29e: 18-18
 s29d2: 19-19
-s29c: 20-23
+s29c: 15-15, 20-23
 s29n2: 0-0
 s29h: 0-0
-s29r: 26-26
+s29r: 25-26
 s29m: 27-27, 39-44
 s29n3: 0-0
 s29i3: 29-30
 s29a2: 32-32
-s29s: 33-33
+s29s: 31-31, 33-33
 s29d3: 34-34
-s29n4: 36-36
+s29n4: 35-36
 
 # document level annotation:
 
@@ -1535,18 +1552,18 @@ Sentence Gloss (en): On the 1st January 49 BC, Marco Antonio read a declaration 
     :modal-strength full-affirmative)
 
 # alignment:
-s30d: 2-5
+s30d: 1-5
 s30n: 0-0
 s30p: 7-8
 s30l: 9-9
-s30d2: 11-11
+s30d2: 10-11
 s30n2: 0-0
-s30p2: 13-13
+s30p2: 12-13
 s30p3: 0-0
-s30p4: 18-18
+s30p4: 17-18
 s30d3: 20-20
 s30a: 21-21
-s30p5: 24-24
+s30p5: 22-24
 s30h: 0-0
 s30h2: 0-0
 s30d4: 0-0
