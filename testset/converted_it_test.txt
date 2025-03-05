@@ -28,14 +28,14 @@ Sentence Gloss (en): In China the hair is typically put in a chemical bath to re
 # alignment:
 s1n: 0-0
 s1n2: 0-0
-s1c5: 2-2
-s1c: 5-5
+s1c5: 1-2
+s1c: 4-5
 s1c3: 18-18
 s1s: 7-7
-s1r: 17-17
-s1b: 6-6, 8-8
+s1r: 13-17
+s1b: 6-6, 8-11
 s1c2: 12-12
-s1c4: 20-20
+s1c4: 19-20
 s1p: 23-23
 s1s2: 22-22
 
@@ -85,23 +85,23 @@ Sentence Gloss (en): He also said Klein was uncommunicative, uncooperative and u
 
 # alignment:
 s2p: 0-0
-s2d: 3-3
+s2d: 1-1, 3-3
 s2p2: 4-4
 s2n: 0-0
 s2i: 2-2
-s2a: 8-8
+s2a: 8-8, 12-13
 s2p3: 6-6
-s2c: 7-7
+s2c: 5-5, 7-7
 s2p4: 9-9
 s2c2: 10-10
 s2r: 14-14
-s2l: 16-16
+s2l: 15-16
 s2h: 19-19
 s2s: 0-0
-s2u: 28-28
-s2p5: 24-24
-s2t: 22-22
-s2c3: 18-18
+s2u: 25-26, 28-28
+s2p5: 23-24
+s2t: 20-22
+s2c3: 17-18
 
 # document level annotation:
 
@@ -134,10 +134,10 @@ Sentence Gloss (en): That's not what we need in our country, folks.
 # alignment:
 s3t: 3-3
 s3t2: 6-6
-s3p: 14-14
+s3p: 11-12, 14-14
 s3a: 1-1
 s3a2: 9-10
-s3i: 5-5
+s3i: 4-5
 s3p2: 0-0
 
 # document level annotation:
@@ -169,12 +169,12 @@ Sentence Gloss (en): His skill in getting answers for taxpayers will be sorely m
     :aspect state)
 
 # alignment:
-s4c: 10-10
+s4c: 8-10
 s4r: 7-7
-s4h: 6-6
+s4h: 5-6
 s4m: 11-11, 13-14
 s4p: 2-2
-s4a: 3-3
+s4a: 1-1, 3-3
 s4m2: 12-12
 
 # document level annotation:
@@ -219,11 +219,11 @@ Sentence Gloss (en): A coal-fired power station in Badarpur, south-east Delhi, w
     :modal-strength full-affirmative)
 
 # alignment:
-s5f: 19-19
+s5f: 16-19
 s5a: 24-25
-s5c: 2-2
+s5c: 1-2
 s5e: 3-3
-s5c2: 5-5
+s5c2: 4-5
 s5h: 6-6
 s5h3: 7-7
 s5n2: 0-0
@@ -235,9 +235,9 @@ s5s: 0-0
 s5a3: 0-0
 s5r: 10-14
 s5g: 20-22
-s5g2: 27-27
+s5g2: 26-27
 s5d: 28-28
-s5c3: 31-31
+s5c3: 29-31
 
 # document level annotation:
 
@@ -296,13 +296,13 @@ s6p2: 0-0
 s6a3: 4-4
 s6s: 6-6
 s6r: 5-5, 7-9
-s6m: 11-11
+s6m: 10-11
 s6a2: 12-12
 s6p: 17-17
-s6c: 19-19
+s6c: 18-19
 s6i: 16-16
-s6t2: 22-22
-s6h: 14-14
+s6t2: 20-20, 22-22
+s6h: 13-14
 s6d: 15-15
 
 # document level annotation:
@@ -333,9 +333,9 @@ Sentence Gloss (en): There is no parade and there never has been.
 s7s: 5-5
 s7m: 10-10
 s7n: 4-4
-s7e: 2-3
+s7e: 1-3
 s7a: 6-6
-s7e2: 8-9
+s7e2: 7-9, 11-11
 
 # document level annotation:
 
@@ -365,14 +365,14 @@ Sentence Gloss (en): The multi-ethnic Achaemenid army possessed many soldiers fr
     :aspect state)
 
 # alignment:
-s8e: 2-2
+s8e: 1-2
 s8m: 3-3
 s8c: 5-6
 s8m2: 8-8
-s8s: 9-9
+s8s: 7-7, 9-9
 s8p: 10-10
 s8n: 0-0
-s8g: 13-13
+s8g: 11-13
 s8n2: 0-0
 s8e2: 4-4
 
@@ -408,11 +408,11 @@ Sentence Gloss (en): In his haste to capture Kadesh, Ramesses II committed a maj
     :aspect performance)
 
 # alignment:
-s9f: 3-3
-s9c: 5-5
+s9f: 1-3
+s9c: 4-5
 s9c3: 14-14
 s9t: 13-13
-s9e: 12-12
+s9e: 11-12
 s9c2: 10-10
 s9n2: 0-0
 s9n: 0-0
@@ -471,19 +471,19 @@ Sentence Gloss (en): They had been so moved by the beauty of the Rudyard Lake ar
 # alignment:
 s10n2: 28-28
 s10v: 21-21
-s10b: 6-6
+s10b: 4-6
 s10c: 1-1, 3-3
 s10t: 2-2
-s10l: 12-13
+s10l: 10-13
 s10n3: 0-0
-s10o: 19-19
+s10o: 17-17, 19-19
 s10p: 0-0
 s10p2: 26-26
-s10n: 16-16
+s10n: 15-16
 s10d: 24-24
 s10q: 27-27
 s10f: 20-20
-s10a: 9-9
+s10a: 7-9
 s10r: 22-22
 
 # document level annotation:
@@ -527,18 +527,18 @@ Sentence Gloss (en): De Gaulle had instructed that there be no excessive display
 
 # alignment:
 s11u: 21-21
-s11p: 7-7
+s11p: 6-7
 s11p2: 1-2
 s11n: 0-0
 s11n2: 0-0
-s11p3: 14-14
+s11p3: 13-14
 s11e: 11-11
 s11r: 20-20
-s11d2: 17-19
+s11d2: 16-19
 s11a: 15-15
-s11m: 8-10
+s11m: 5-5, 8-10
 s11o: 3-4
-s11c: 25-25
+s11c: 22-23, 25-25
 s11s: 12-12
 
 # document level annotation:
@@ -575,14 +575,14 @@ Sentence Gloss (en): The system was simple, direct, and worked well, even with p
 
 # alignment:
 s12f: 8-8
-s12p: 13-13
+s12p: 12-13
 s12a3: 7-7
 s12h: 3-3
 s12h2: 0-0
 s12a: 11-11
 s12b: 9-9
 s12d: 6-6
-s12s2: 2-2
+s12s2: 1-2
 s12s: 4-4
 s12a2: 14-15
 
@@ -634,12 +634,12 @@ s13c: 3-3
 s13t: 8-8
 s13a2: 4-4
 s13a3: 0-0
-s13d: 11-11
+s13d: 9-11
 s13r: 5-5
 s13a: 12-12
-s13m: 7-7
-s13m2: 14-14
-s13d2: 18-18
+s13m: 6-7
+s13m2: 13-14
+s13d2: 16-18
 s13p: 0-0
 s13c2: 0-0
 s13r2: 0-0
@@ -688,18 +688,18 @@ Sentence Gloss (en): Pebe moved the family to Nashville, Tennessee, in 1991 afte
 # alignment:
 s14n3: 0-0
 s14p2: 1-1
-s14c: 28-28
-s14f: 6-6
+s14c: 25-26, 28-28
+s14f: 4-6
 s14t: 3-3
-s14a2: 22-22
-s14a: 19-19
+s14a2: 20-20, 22-22
+s14a: 17-19
 s14n: 21-21
-s14p: 24-24
+s14p: 23-24
 s14n2: 0-0
 s14n4: 0-0
-s14h: 8-8
+s14h: 7-8
 s14c2: 10-10
-s14d: 14-14
+s14d: 12-14
 s14a3: 16-16
 
 # document level annotation:
@@ -732,14 +732,14 @@ Sentence Gloss (en): With 71 goals in 137 international matches, he has shot a r
     :aspect performance)
 
 # alignment:
-s15n: 12-12
+s15n: 11-12
 s15s: 9-10
-s15s2: 18-18
+s15s2: 16-18
 s15p: 0-0
-s15p2: 6-6
+s15p2: 4-6
 s15r: 13-13
-s15r2: 15-15
-s15g: 3-3
+s15r2: 14-15
+s15g: 1-3
 s15n2: 0-0
 s15i: 7-7
 
@@ -772,15 +772,15 @@ Sentence Gloss (en): The photo clearly shows the narrow touch display bar above 
         :aspect performance))
 
 # alignment:
-s16r: 17-17
+s16r: 15-17
 s16s: 6-6
-s16t2: 11-11
-s16b: 7-7
+s16t2: 10-11
+s16b: 5-5, 7-7
 s16t: 8-8
 s16a: 14-14
 s16c: 4-4
 s16m: 3-3
-s16f: 2-2
+s16f: 1-2
 s16s2: 9-9
 s16r2: 0-0
 
@@ -810,11 +810,11 @@ Sentence Gloss (en): Russia announced a suspension of the contract at the beginn
 # alignment:
 s17n: 0-0
 s17a: 3-4
-s17d: 14-14
-s17s: 6-6
-s17c: 9-9
-s17c2: 2-2
-s17i2: 12-12
+s17d: 13-14
+s17s: 5-6
+s17c: 7-9
+s17c2: 1-2
+s17i2: 10-12
 
 # document level annotation:
 
@@ -841,7 +841,7 @@ Sentence Gloss (en): And now he is also world champion.
 # alignment:
 s18a: 4-4
 s18o: 2-2
-s18m: 8-8
+s18m: 6-8
 s18i: 3-3
 s18c: 5-5
 s18p: 0-0
@@ -872,7 +872,7 @@ s19s: 1-1
 s19p: 2-2
 s19n: 0-0
 s19s2: 3-3, 6-8
-s19q: 5-5
+s19q: 4-5
 
 # document level annotation:
 
@@ -930,27 +930,27 @@ Sentence Gloss (en): The husband of the current candidate for the White House, H
 
 # alignment:
 s20c2: 28-29
-s20p5: 2-2
+s20p5: 1-2
 s20h: 0-0
 s20h2: 0-0
 s20m: 0-0
 s20p4: 11-12
 s20n3: 0-0
-s20c: 6-6
-s20g2: 9-10
+s20c: 3-4, 6-6
+s20g2: 7-10
 s20n2: 0-0
 s20a: 5-5
-s20p2: 31-31
-s20p3: 34-34
+s20p2: 30-31
+s20p3: 32-32, 34-34
 s20d: 33-33
 s20i: 35-36
 s20i2: 0-0
 s20p6: 37-37
 s20n4: 0-0
-s20g: 17-17
+s20g: 14-15, 17-17
 s20u: 16-16
-s20p: 21-21
-s20d2: 24-26
+s20p: 18-19, 21-21
+s20d2: 23-26
 
 # document level annotation:
 
@@ -998,23 +998,23 @@ Sentence Gloss (en): It is no surprise that the federal and state governments ha
     :aspect state)
 
 # alignment:
-s21i: 17-17
-s21g: 5-5
+s21i: 15-17
+s21g: 4-5
 s21f: 6-6
 s21s2: 8-8
 s21a: 7-7
 s21n2: 20-20
 s21d: 25-25
-s21c2: 33-33
-s21c: 9-10
+s21c2: 31-33
+s21c: 3-3, 9-10
 s21p: 23-23
-s21d2: 30-30
+s21d2: 29-30
 s21s: 1-2
-s21c3: 35-35
-s21s3: 19-19
+s21c3: 34-35
+s21s3: 18-19
 s21n: 0-0
 s21m: 0-0
-s21t: 12-14
+s21t: 11-14
 s21a2: 0-0
 s21h: 21-22
 s21a3: 26-28
@@ -1056,14 +1056,14 @@ Sentence Gloss (en): If his Democrat opponent were to be elected, he assured tha
 
 # alignment:
 s22p: 0-0
-s22a2: 16-16
-s22e: 2-3
-s22i: 14-14
+s22a2: 15-16
+s22e: 1-3
+s22i: 11-11, 13-14
 s22d: 0-0
 s22h: 0-0
-s22p2: 6-7
+s22p2: 4-4, 6-7
 s22o: 0-0
-s22a: 10-10
+s22a: 9-10
 
 # document level annotation:
 
@@ -1090,10 +1090,10 @@ Sentence Gloss (en): According to the programme, she will speak at 23.45.
 
 # alignment:
 s23s: 1-1
-s23d: 8-8
+s23d: 6-8
 s23p3: 0-0
 s23p2: 5-5
-s23p: 3-3
+s23p: 2-3
 
 # document level annotation:
 
@@ -1123,15 +1123,15 @@ Sentence Gloss (en): The AKP's Islamic conservatives have taken this refusal as 
     :aspect performance)
 
 # alignment:
-s24p: 8-8
-s24i2: 15-15
-s24g: 12-12
+s24p: 7-8
+s24i2: 13-15
+s24g: 11-12
 s24i: 3-3
 s24n: 0-0
 s24q: 9-9
 s24r: 10-10
-s24c: 2-2
-s24p2: 6-6
+s24c: 1-2
+s24p2: 4-6
 
 # document level annotation:
 
@@ -1162,14 +1162,14 @@ Sentence Gloss (en): What are the limits that could inhibit the expression of re
     :mode interrogative)
 
 # alignment:
-s25l: 4-4
+s25l: 3-4
 s25i: 2-2
 s25p: 17-17
-s25i2: 7-7
-s25c: 12-12
+s25i2: 6-7
+s25c: 10-12
 s25r: 13-13
-s25a: 16-16
-s25e: 9-9
+s25a: 14-16
+s25e: 8-9
 s25u: 1-1
 
 # document level annotation:
@@ -1205,12 +1205,12 @@ Sentence Gloss (en): Even if the majority of situations that arise in the workpl
 # alignment:
 s26h: 1-2
 s26e: 0-0
-s26m: 4-4
+s26m: 3-4
 s26m2: 0-0
-s26s: 8-8
-s26c: 13-13
+s26s: 6-8
+s26c: 11-13
 s26l: 14-14
-s26c2: 19-19
+s26c2: 18-19
 s26p: 5-5
 s26r: 15-17
 s26e2: 10-10
@@ -1263,20 +1263,20 @@ Sentence Gloss (en): It aims to take the journey time into account after deducti
 # alignment:
 s27p3: 0-0
 s27p: 1-1
-s27t: 7-7
+s27t: 6-7
 s27r: 31-31
 s27a: 11-11
-s27o: 17-17
+s27o: 15-17
 s27e: 20-20
 s27c2: 21-21
-s27l: 19-19
-s27m: 28-28
-s27p2: 3-3
-s27c: 5-5
-s27v2: 34-34
-s27d: 14-14
-s27t2: 30-30
-s27v: 10-10
+s27l: 18-19
+s27m: 23-28
+s27p2: 2-3
+s27c: 4-5
+s27v2: 32-34
+s27d: 12-12, 14-14
+s27t2: 29-30
+s27v: 8-10
 
 # document level annotation:
 
@@ -1299,11 +1299,11 @@ Sentence Gloss (en): France doesn't have a good reputation.
     :aspect state)
 
 # alignment:
-s28c: 2-2
+s28c: 1-2
 s28r: 7-7
 s28h: 3-4
 s28n: 0-0
-s28b: 6-6
+s28b: 5-6
 
 # document level annotation:
 
@@ -1336,14 +1336,14 @@ Sentence Gloss (en): A voucher is generated that can be saved on your smartphone
     :aspect performance)
 
 # alignment:
-s29s2: 12-12
+s29s2: 10-12
 s29a: 15-15
 s29o: 13-13
 s29s: 7-9
-s29b: 5-5
+s29b: 4-5
 s29p: 16-16
 s29g: 2-3
-s29c: 19-19
+s29c: 17-19
 s29s3: 14-14
 
 # document level annotation:
@@ -1367,7 +1367,7 @@ Sentence Gloss (en): From the 1st of January there will be an increase in petrol
     :aspect process)
 
 # alignment:
-s30d: 3-4
+s30d: 2-4
 s30a3: 1-1
 s30a2: 7-7
 s30g: 8-8
@@ -1424,21 +1424,21 @@ Sentence Gloss (en): As stated, the decision is the prerogative of the ECB and w
 # alignment:
 s31r: 1-1
 s31d2: 2-2
-s31d: 5-5
-s31i3: 10-10
+s31d: 4-5
+s31i3: 8-10
 s31i: 6-6
 s31a3: 11-11
-s31n: 20-20
+s31n: 18-18, 20-20
 s31h: 12-12
 s31n2: 0-0
 s31p2: 17-17
 s31a2: 27-27
 s31e: 21-21
-s31e2: 25-25
+s31e2: 22-25
 s31p: 7-7
 s31a: 26-26
 s31i2: 13-13
-s31o: 16-16
+s31o: 14-16
 s31n3: 0-0
 
 # document level annotation:
@@ -1463,22 +1463,23 @@ Sentence Gloss (en): This is what has been written in a note to Mps after the de
                 :recipient (s32o / organization
                     :name (s32n2 / name :op1 "Mps"))
                     :refer-number singular)
-            :temporal (s32d / decidere
-                :aspect performance
-                :modal-strength full-affirmative
-                :actor (s32p2 / person
-                    :refer-number singular
-                    :ARG1-of (s32h / have-org-role-91
-                        :ARG3 (s32m / ministro
-                            :mod (s32e / ex))
-                        :aspect state
-                        :modal-strength full-affirmative))
-                :undergoer (s32u / uscire
-                    :actor s32p2
-                    :modal-strength full-affirmative
-                    :modal-predicate s32d
+            :temporal (s32a / after
+                :op1 (s32d / decidere
                     :aspect performance
-                    :source (s32p3 / partita :refer-number singular)))
+                    :modal-strength full-affirmative
+                    :actor (s32p2 / person
+                        :refer-number singular
+                        :ARG1-of (s32h / have-org-role-91
+                            :ARG3 (s32m / ministro
+                                :mod (s32e / ex))
+                            :aspect state
+                            :modal-strength full-affirmative))
+                    :undergoer (s32u / uscire
+                        :actor s32p2
+                        :modal-strength full-affirmative
+                        :modal-predicate s32d
+                        :aspect performance
+                        :source (s32p3 / partita :refer-number singular))))
             :modal-strength full-affirmative
             :aspect process))
     :modal-strength full-affirmative
@@ -1490,14 +1491,15 @@ s32t2: 2-2
 s32s: 3-3
 s32p: 0-0
 s32m: 0-0
-s32p3: 20-20
-s32p2: 14-15
+s32p3: 18-20
+s32p2: 12-15
 s32h: 0-0
-s32d: 11-11
+s32d: 10-11
 s32i: 1-1
-s32u: 17-17
-s32n: 6-6
-s32o: 8-8
+s32u: 16-17
+s32n: 4-6
+s32o: 7-8
+s32a: 9-9
 s32n2: 0-0
 s32e: 0-0
 
@@ -1543,15 +1545,15 @@ Sentence Gloss (en): Four students at Roma Tre University have developed a motor
     :aspect performance)
 
 # alignment:
-s33p: 18-18
-s33a4: 5-7
-s33c: 11-11
-s33m2: 25-25
-s33m: 13-13
-s33g: 28-28
+s33p: 17-18
+s33a4: 3-7
+s33c: 10-11
+s33m2: 24-25
+s33m: 12-13
+s33g: 26-28
 s33a: 21-21
 s33n: 0-0
-s33a2: 23-23
+s33a2: 22-23
 s33a3: 20-20
 s33s: 1-2
 s33l: 16-16
@@ -1594,15 +1596,15 @@ Sentence Gloss (en): More and more tech companies are calling the shots more tha
     :aspect activity)
 
 # alignment:
-s34p: 3-3
+s34p: 1-3
 s34n2: 0-0
 s34h: 0-0
 s34h2: 0-0
-s34r: 21-22
+s34r: 18-22
 s34t: 8-8
 s34n: 0-0
-s34i: 11-11
-s34p3: 13-14
+s34i: 10-11
+s34p3: 12-14
 s34s2: 7-7
 s34m2: 17-17
 s34a: 16-16
@@ -1660,24 +1662,24 @@ Sentence Gloss (en): Leaders of companies such as Spotify, Tesla, Uber and Snapc
 # alignment:
 s35n: 0-0
 s35h: 0-0
-s35s: 3-3
+s35s: 2-3
 s35n3: 0-0
 s35n4: 0-0
 s35n2: 0-0
 s35p: 19-19
-s35p2: 8-8
+s35p2: 7-8
 s35l: 0-0
-s35a: 10-10
+s35a: 9-10
 s35a2: 17-17
 s35a3: 1-1
-s35c: 12-12
+s35c: 11-12
 s35c2: 14-14
 s35c3: 16-16
 s35c4: 18-18
 s35n5: 0-0
-s35e: 22-22
+s35e: 20-22
 s35s2: 23-23
-s35h2: 5-6
+s35h2: 4-6
 
 # document level annotation:
 
@@ -1703,8 +1705,8 @@ Sentence Gloss (en): Its management, however, hasn't been devoid of criticism.
 # alignment:
 s36h: 7-9
 s36p: 10-10
-s36g: 3-3
-s36c2: 12-12
+s36g: 1-1, 3-3
+s36c2: 11-12
 s36p2: 2-2
 
 # document level annotation:
@@ -1761,8 +1763,8 @@ Sentence Gloss (en): Furthermore, the Government will have to deal with another 
 # alignment:
 s38o: 5-9
 s38a2: 12-12
-s38p: 14-14
-s38g: 4-4
+s38p: 10-11, 14-14
+s38g: 3-4
 s38n: 0-0
 s38b: 15-15
 
@@ -1796,11 +1798,11 @@ Sentence Gloss (en): The consulted sources have said that it is "100% Cospedal".
 
 # alignment:
 s39n: 0-0
-s39f: 2-2
+s39f: 1-2
 s39d: 4-5
 s39c: 3-3
 s39t: 0-0
-s39i2: 7-7
+s39i2: 6-7
 s39p: 11-11
 s39p2: 9-10
 
@@ -1846,18 +1848,18 @@ Sentence Gloss (en): Pedro Sánchez, like many other socialists, said in the pro
 s40p: 1-2
 s40n: 20-20
 s40n4: 0-0
-s40n2: 22-22
-s40i2: 18-18
+s40n2: 21-22
+s40i2: 15-15, 18-18
 s40d: 9-10
 s40n5: 0-0
 s40a: 6-6
-s40c: 17-17
+s40c: 16-17
 s40n3: 0-0
 s40r: 4-4
 s40d2: 0-0
 s40s: 7-7
 s40m: 5-5
-s40b: 13-14
+s40b: 11-14
 
 # document level annotation:
 
@@ -1889,25 +1891,23 @@ Sentence Gloss (en): Federico Fellini once said: "The clown is to humanity as th
         :aspect generic
         :modal-strength full-affirmative)
     :temporal (s41v / volta
-        :mod (s41u / uno)
         :refer-number singular)
     :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
 s41p: 1-2
-s41v: 4-4
+s41v: 3-4
 s41n: 0-0
-s41u: 3-3
 s41d: 5-6
-s41c: 10-10
-s41u2: 14-14
+s41c: 9-10
+s41u2: 12-14
 s41s: 11-11
 s41h: 15-15
 s41e: 0-0
 s41s2: 18-18
-s41o: 17-17
-s41u3: 21-21
+s41o: 16-17
+s41u3: 19-21
 
 # document level annotation:
 
@@ -1939,14 +1939,14 @@ Sentence Gloss (en): Dozens of FSLN followers are already celebrating the victor
 
 # alignment:
 s42f: 7-7, 9-9
-s42v: 11-11
+s42v: 10-11
 s42n2: 0-0
 s42d: 1-1
 s42g: 8-8
 s42n: 0-0
-s42s: 3-3
-s42p: 6-6
-s42c: 13-16
+s42s: 2-3
+s42p: 4-6
+s42c: 12-16
 
 # document level annotation:
 
@@ -1985,12 +1985,12 @@ s43p: 17-17
 s43r: 3-3
 s43n2: 0-0
 s43e: 16-16
-s43c2: 20-20
-s43i: 10-10
+s43c2: 18-20
+s43i: 8-10
 s43s: 6-7
 s43n: 0-0
-s43d: 13-14
-s43c: 2-2
+s43d: 11-14
+s43c: 1-2
 
 # document level annotation:
 
@@ -2020,13 +2020,13 @@ Sentence Gloss (en): During the 2010 general election, the Labor Party was able 
     :aspect performance)
 
 # alignment:
-s44v: 16-16
-s44d: 21-21
-s44d2: 7-7
+s44v: 12-16
+s44d: 17-17, 20-21
+s44d2: 5-7
 s44v2: 22-22
-s44p: 10-11
+s44p: 9-11
 s44g: 4-4
-s44e: 3-3
+s44e: 1-3
 s44n: 0-0
 s44t: 18-18
 
@@ -2060,13 +2060,13 @@ Sentence Gloss (en): The Industrial Revolution took place in Great Britain earli
     :aspect performance)
 
 # alignment:
-s45p: 14-14
+s45p: 11-11, 14-14
 s45a2: 13-13
 s45n2: 0-0
-s45b: 9-9
-s45e: 2-3
+s45b: 9-10
+s45e: 1-3
 s45a: 4-5
-s45c: 7-8
+s45c: 6-8
 s45a3: 0-0
 s45n: 0-0
 s45o: 12-12
@@ -2109,20 +2109,20 @@ Sentence Gloss (en): After the Russian Revolution in 1917, some countries, such 
 
 # alignment:
 s46a3: 1-1
-s46e: 3-4
-s46d: 7-7
-s46a2: 16-16
+s46e: 2-4
+s46d: 5-7
+s46a2: 10-10, 16-16
 s46a: 8-8
-s46c: 12-12
+s46c: 11-12
 s46n: 9-9
 s46n4: 0-0
 s46n3: 0-0
-s46c2: 15-15
-s46g2: 18-19
+s46c2: 14-15
+s46g2: 17-19
 s46g: 20-20
 s46n2: 0-0
 s46n5: 0-0
-s46i: 23-23
+s46i: 21-21, 23-23
 
 # document level annotation:
 
@@ -2180,17 +2180,17 @@ s47i: 2-2
 s47u2: 4-4
 s47a: 22-22
 s47n: 0-0
-s47p: 7-7
+s47p: 6-7
 s47u3: 8-8
 s47g2: 23-23
-s47m2: 10-10
+s47m2: 9-10
 s47g: 21-21
 s47i3: 15-15
-s47m: 5-5
-s47m3: 17-17
+s47m: 3-3, 5-5
+s47m3: 16-17
 s47p2: 11-11
-s47c: 14-14
-s47i2: 19-19
+s47c: 12-14
+s47i2: 18-19
 s47e: 20-20
 
 # document level annotation:
@@ -2228,10 +2228,10 @@ s48c: 8-8
 s48n2: 0-0
 s48n: 0-0
 s48s: 5-6
-s48w: 2-4
+s48w: 1-4
 s48a: 7-7
-s48r: 10-10
-s48e: 15-15
+s48r: 9-10
+s48e: 11-15
 
 # document level annotation:
 
@@ -2285,8 +2285,8 @@ Sentence Gloss (en): After these successes, he signed a contract with Team Telek
             :refer-number plural)))
 
 # alignment:
-s49d: 30-30
-s49p2: 18-18
+s49d: 29-30
+s49p2: 15-16, 18-18
 s49r: 0-0
 s49h: 0-0
 s49s: 3-3
@@ -2294,16 +2294,16 @@ s49n: 0-0
 s49v: 27-27
 s49a2: 1-1
 s49q: 2-2
-s49c: 7-7
+s49c: 6-7
 s49f: 5-5
 s49n3: 0-0
 s49n2: 0-0
 s49a: 12-12
 s49p: 0-0
-s49s2: 10-11
+s49s2: 8-11
 s49t: 14-14
-s49h2: 20-20
-s49r2: 24-24
+s49h2: 19-20
+s49r2: 22-24
 s49u: 28-28
 
 # document level annotation:
@@ -2350,26 +2350,26 @@ Sentence Gloss (en): The Viguier and La Conte districts contain the majority of 
 
 # alignment:
 s50c: 9-9
-s50p4: 32-32
+s50p4: 31-32
 s50a: 5-5
-s50p: 12-12
+s50p: 10-10, 12-12
 s50o: 30-30
-s50i: 29-29
-s50s: 15-15
-s50c4: 21-21
+s50i: 28-29
+s50s: 13-15
+s50c4: 19-21
 s50d2: 0-0
-s50p2: 24-24
+s50p2: 23-24
 s50c5: 25-26
-s50c3: 7-8
-s50c2: 2-4
+s50c3: 6-8
+s50c2: 1-4
 s50n: 0-0
 s50n2: 0-0
-s50e: 17-17
+s50e: 16-17
 s50s2: 18-18
 s50m: 11-11
 s50p3: 27-27
 s50m2: 0-0
-s50i2: 34-34
+s50i2: 33-34
 
 # document level annotation:
 
@@ -2394,9 +2394,9 @@ Sentence Gloss (en): In the early 2000s, there were five doctors per 100,000 inh
     :aspect state)
 
 # alignment:
-s51d2: 5-5
+s51d2: 1-2, 4-5
 s51p: 3-3
-s51d: 10-10
+s51d: 9-10
 s51a: 0-0
 s51e: 7-8
 s51r: 11-13
@@ -2446,21 +2446,21 @@ Sentence Gloss (en): Literacy had been lost and Mycenaean script forgotten, but 
             :aspect process))))
 
 # alignment:
-s52c: 23-23
-s52p: 4-5
+s52c: 22-23
+s52p: 3-5
 s52a2: 15-15
 s52a: 6-6
 s52m2: 20-20
-s52a3: 17-17
-s52m: 8-8
-s52s: 2-2
+s52a3: 16-17
+s52m: 7-8
+s52s: 1-2
 s52n: 0-0
 s52n2: 0-0
 s52n3: 0-0
 s52h: 9-9
 s52d: 10-10
 s52b: 12-12
-s52e: 14-14
+s52e: 13-14
 s52e2: 18-18
 s52a4: 24-24
 
@@ -2504,17 +2504,17 @@ Sentence Gloss (en): From about the 8th century BC city states began to appear: 
 
 # alignment:
 s53a: 4-6
-s53c: 2-2
+s53c: 1-2
 s53s: 3-3
 s53i: 0-0
 s53a3: 7-7
 s53a2: 0-0
-s53d: 9-10
+s53d: 8-11
 s53p: 13-13
 s53t: 14-14
 s53g: 15-15
 s53h: 16-16
-s53s2: 20-20
+s53s2: 17-17, 20-20
 s53p2: 21-21
 
 # document level annotation:
@@ -2548,13 +2548,13 @@ Sentence Gloss (en): This affair can be seen as the starting point for his caree
 # alignment:
 s54q: 1-1
 s54c: 3-5
-s54p: 7-7
+s54p: 6-7
 s54p2: 12-12
 s54r3: 16-16
 s54r: 2-2
-s54i: 9-9
-s54c2: 13-13
-s54r2: 15-15
+s54i: 8-9
+s54c2: 10-11, 13-13
+s54r2: 14-15
 
 # document level annotation:
 
@@ -2623,27 +2623,27 @@ s55n: 0-0
 s55p2: 7-7
 s55h: 0-0
 s55m: 0-0
-s55e: 2-2
+s55e: 1-2
 s55a4: 5-5
 s55t: 8-8
-s55c: 10-10
+s55c: 9-10
 s55n2: 0-0
 s55a: 12-12
-s55p3: 14-14
+s55p3: 13-14
 s55n3: 0-0
 s55i: 0-0
-s55r: 17-17
+s55r: 16-17
 s55t2: 18-20
 s55a5: 0-0
 s55h2: 0-0
 s55f: 21-21
 s55a3: 0-0
 s55h4: 0-0
-s55p6: 23-23
+s55p6: 22-23
 s55i2: 24-24
-s55p4: 26-26
+s55p4: 25-26
 s55h3: 0-0
-s55p5: 28-28
+s55p5: 27-28
 s55n4: 0-0
 s55a2: 0-0
 
@@ -2682,11 +2682,11 @@ Sentence Gloss (en): During the holiday, he began an extra-marital affair with t
 
 # alignment:
 s56c: 14-14
-s56g: 10-10
+s56g: 8-10
 s56d: 16-16
-s56r: 6-6
+s56r: 5-6
 s56r2: 11-11
-s56v: 3-3
+s56v: 1-3
 s56e: 7-7
 s56a: 12-12
 s56i: 4-4
@@ -2713,10 +2713,10 @@ Sentence Gloss (en): Furthermore, the occurrence of hurricanes on the island is 
     :modal-strength neutral-affirmative)
 
 # alignment:
-s57u: 7-7
-s57i: 10-10
-s57p2: 13-13
-s57a: 5-5
+s57u: 6-7
+s57i: 8-10
+s57p2: 11-13
+s57a: 2-5
 s57e: 14-14
 
 # document level annotation:
@@ -2750,9 +2750,9 @@ Sentence Gloss (en): An element supporting this hypothesis would be the intense 
                     :op3 "Giovanni")))))
 
 # alignment:
-s58h: 20-22
-s58c: 9-9
-s58c2: 13-13
+s58h: 19-22
+s58c: 8-9
+s58c2: 12-13
 s58a2: 10-10
 s58i: 4-4
 s58q: 3-3
@@ -2760,7 +2760,7 @@ s58n: 0-0
 s58r: 11-11
 s58n2: 0-0
 s58a: 1-2, 5-7
-s58b: 16-17
+s58b: 14-17
 
 # document level annotation:
 
@@ -2803,20 +2803,20 @@ Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire
 # alignment:
 s59c2: 4-4
 s59a: 29-29
-s59l: 24-24
+s59l: 23-24
 s59c: 10-10
 s59d2: 16-16
-s59s2: 31-31
+s59s2: 30-31
 s59d3: 28-28
-s59i2: 8-8
-s59s: 27-27
+s59i2: 7-8
+s59s: 26-27
 s59r: 19-19
-s59d5: 13-13
-s59t: 22-22
-s59d4: 3-3
+s59d5: 11-13
+s59t: 20-22
+s59d4: 1-3
 s59t2: 17-17
-s59i: 15-15
-s59d: 6-6
+s59i: 14-15
+s59d: 5-6
 
 # document level annotation:
 
@@ -2850,16 +2850,16 @@ Sentence Gloss (en): During the thirteenth century, the name Apulia was used by 
     :aspect performance)
 
 # alignment:
-s60p2: 20-21
-s60i: 14-14
+s60p2: 18-21
+s60i: 13-14
 s60m: 17-17
-s60n: 6-7
+s60n: 5-7
 s60u: 8-9
-s60p: 16-16
+s60p: 15-16
 s60n3: 0-0
 s60n2: 0-0
-s60a2: 12-12
-s60d: 3-4
+s60a2: 10-10, 12-12
+s60d: 1-4
 s60a: 11-11
 
 # document level annotation:
@@ -2904,20 +2904,20 @@ Sentence Gloss (en): Historian David Crouch suggests that Stephen abandoned from
 
 # alignment:
 s61p: 3-4
-s61c: 18-18
+s61c: 17-18
 s61e: 8-8
-s61p4: 16-16
+s61p4: 13-14, 16-16
 s61s2: 5-5
-s61p2: 22-22
+s61p2: 20-22, 22-22
 s61h: 0-0
 s61q: 15-15
 s61n2: 0-0
 s61n: 0-0
-s61i: 12-12
-s61r: 9-9
+s61i: 10-12
+s61r: 6-6, 9-9
 s61p3: 7-7
 s61a: 21-21
-s61s: 2-2
+s61s: 1-2
 
 # document level annotation:
 
@@ -2973,18 +2973,18 @@ s62n4: 0-0
 s62n3: 0-0
 s62n: 0-0
 s62d: 3-3
-s62p: 15-15
-s62e: 18-20
+s62p: 13-15
+s62e: 16-20
 s62o: 21-21
-s62v: 12-12
+s62v: 11-12
 s62n2: 0-0
 s62c3: 0-0
-s62c: 9-9
-s62p2: 23-23
-s62a: 25-25
+s62c: 4-9
+s62p2: 22-23
+s62a: 24-25
 s62o2: 26-29
-s62c2: 31-31
-s62h: 0-0
+s62c2: 30-31
+s62h: 1-2
 
 # document level annotation:
 
@@ -3023,17 +3023,17 @@ Sentence Gloss (en): With regards to religious practices, Fiorello was educated 
 s63r3: 16-16
 s63p2: 8-8
 s63n: 0-0
-s63p: 5-5
+s63p: 1-5
 s63r2: 6-6
-s63r: 13-14
+s63r: 11-14
 s63t: 23-23
 s63m: 17-17
 s63a: 15-15
 s63e: 9-10
 s63n2: 0-0
-s63r4: 20-21
+s63r4: 18-21
 s63n3: 0-0
-s63v: 25-25
+s63v: 22-22, 24-25
 
 # document level annotation:
 
@@ -3074,15 +3074,15 @@ Sentence Gloss (en): Tradition has it that the theme was selected intentionally 
 
 # alignment:
 s64s: 3-3
-s64t: 2-2
+s64t: 1-2
 s64i: 9-9
-s64h: 21-21
-s64s2: 8-8
-s64t2: 6-6
+s64h: 20-21
+s64s2: 4-4, 7-8
+s64t2: 5-6
 s64n2: 0-0
-s64n: 14-14
+s64n: 10-12, 14-14
 s64g: 13-13
-s64e: 16-16
+s64e: 15-16
 s64c: 17-17
 s64n3: 0-0
 s64v: 19-19
@@ -3126,19 +3126,19 @@ Sentence Gloss (en): However, the breakdown between him and Linares and the disc
 
 # alignment:
 s65n2: 0-0
-s65r: 7-7
-s65p4: 9-9
-s65s: 4-4
+s65r: 5-7
+s65p4: 8-9
+s65s: 3-4
 s65p2: 17-17
-s65i: 12-12
-s65l: 15-15
+s65i: 11-12
+s65l: 13-15
 s65a: 10-10
-s65e: 19-22
+s65e: 18-22
 s65p: 16-16
 s65n: 0-0
 s65d: 25-25
 s65p3: 24-24
-s65d2: 28-28
+s65d2: 26-28
 
 # document level annotation:
 
@@ -3179,15 +3179,15 @@ Sentence Gloss (en): The collapse of and intervention in dozens of banks lead to
 
 # alignment:
 s66p: 10-10
-s66c2: 15-15
+s66c2: 14-15
 s66q: 21-21
-s66b3: 22-22
-s66d: 7-7
-s66b: 9-9
-s66c: 2-2
-s66i: 5-5
-s66b2: 19-19
-s66f: 13-13
+s66b3: 20-20, 22-22
+s66d: 6-7
+s66b: 8-9
+s66c: 1-2
+s66i: 4-5
+s66b2: 18-19
+s66f: 11-13
 s66a: 3-3
 s66h: 17-17
 
@@ -3228,13 +3228,13 @@ Sentence Gloss (en): This was the coup de grâce and encouragement the settlers 
 s67i: 1-1
 s67e: 0-0
 s67a: 13-14
-s67i2: 8-8
+s67i2: 7-8
 s67a2: 6-6
 s67g: 5-5
-s67c: 3-3
-s67c2: 12-12
-s67r: 16-16
-s67i3: 18-18
+s67c: 2-3
+s67c2: 11-12
+s67r: 15-16
+s67i3: 17-18
 
 # document level annotation:
 
@@ -3288,10 +3288,10 @@ Sentence Gloss (en): Nonetheless, if the English law had been accepted, the daug
 
 # alignment:
 s68h: 22-23
-s68p: 12-12
+s68p: 11-12
 s68h2: 0-0
 s68f: 0-0
-s68a3: 19-19
+s68a3: 13-13, 19-19
 s68p2: 14-15
 s68n: 0-0
 s68n2: 0-0
@@ -3299,15 +3299,15 @@ s68n3: 0-0
 s68p3: 17-18
 s68p4: 20-21
 s68p5: 25-25
-s68t2: 28-28
+s68t2: 26-28
 s68m: 24-24
 s68p6: 0-0
 s68p7: 33-35
 s68h3: 0-0
 s68z: 0-0
 s68n4: 0-0
-s68a: 7-9
-s68l: 5-5
+s68a: 3-3, 7-9
+s68l: 4-5
 s68c: 6-6
 s68n6: 0-0
 
@@ -3359,19 +3359,19 @@ Sentence Gloss (en): The attempts at making peace finally ended in spring of 141
 # alignment:
 s69i: 0-0
 s69i3: 0-0
-s69g: 27-30
-s69i2: 24-24
-s69m: 16-18
-s69d2: 8-11
+s69g: 25-30
+s69i2: 23-24
+s69m: 15-18
+s69d2: 6-11
 s69d: 14-14
-s69t: 2-2
+s69t: 1-2
 s69n: 0-0
 s69t2: 5-5
-s69p3: 21-21
+s69p3: 19-19, 21-21
 s69n2: 0-0
 s69p2: 0-0
 s69a: 12-12
-s69p: 4-4
+s69p: 3-4
 s69p4: 13-13
 
 # document level annotation:
@@ -3422,15 +3422,15 @@ s70n2: 0-0
 s70p: 7-8
 s70l: 9-9
 s70n: 0-0
-s70d: 11-11
-s70p4: 13-13
+s70d: 10-11
+s70p4: 12-13
 s70d2: 20-20
 s70h: 0-0
 s70p3: 0-0
-s70p2: 18-18
+s70p2: 17-18
 s70a: 21-21
-s70p5: 24-24
-s70d3: 2-5
+s70p5: 22-24
+s70d3: 1-5
 s70h2: 0-0
 s70d4: 0-0
 
