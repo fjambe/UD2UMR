@@ -2657,7 +2657,7 @@ Sentence Gloss (en): According to the programme, she will speak at 23.45.
         :actor (s53p3 / person
             :refer-number singular
             :refer-person 3rd)
-        :temporal (s53d / date-entity :time 23:45)
+        :temporal (s53d / date-entity :time 23.45)
         :modal-strength full-affirmative
         :aspect activity)
     :aspect state

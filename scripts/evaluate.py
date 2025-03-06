@@ -14,9 +14,10 @@ from ancast.src.sentence import Sentence
 
 import tests
 
+# params
 Cneighbor = 1
 
-# adapted from ancast
+# adapted from AnCast
 class UMRSentence(Sentence):
     def __init__(self, sent, semantic_text, alignment, sent_num, penman_graph, matched_alignment=None):
         super().__init__(sent, semantic_text, alignment, sent_num, format="umr")
@@ -30,7 +31,7 @@ class UMRDocument(DocumentMatch):
         super().__init__(*args)
         self.sents = []
 
-    # adapted from ancast
+    # adapted from AnCast
     def read_document(self, file, output_csv=None):
 
         if isinstance(file, list):
@@ -75,22 +76,24 @@ class UMRDocument(DocumentMatch):
                 t_graph = t_buff[0].strip()
                 g_graph = g_buff[0].strip()
 
-                t_buff = t_buff[1].strip().split("# document level annotation:")
-                g_buff = g_buff[1].strip().split("# document level annotation:")
+                # t_buff = t_buff[1].strip().split("# document level annotation:")
+                # g_buff = g_buff[1].strip().split("# document level annotation:")
 
-                t_alignment = t_buff[0].strip()
-                g_alignment = g_buff[0].strip()
+                # t_alignment = t_buff[0].strip()
+                # g_alignment = g_buff[0].strip()
 
-                t_alignment = parse_alignment(t_alignment)
-                g_alignment = parse_alignment(g_alignment)
+                # t_alignment = parse_alignment(t_alignment)
+                # g_alignment = parse_alignment(g_alignment)
 
                 t_pm_graph = penman.loads(''.join(t_graph))
                 g_pm_graph = penman.loads(''.join(g_graph))
 
-                tumr = UMRSentence(sent=t_sent, semantic_text=t_graph, alignment=t_alignment, sent_num=name,
-                                   penman_graph=t_pm_graph)
-                gumr = UMRSentence(sent=g_sent, semantic_text=g_graph, alignment=g_alignment, sent_num=name,
-                                   penman_graph=g_pm_graph)
+                tumr = UMRSentence(sent=t_sent, semantic_text=t_graph, alignment={}, sent_num=name,
+                                   penman_graph=t_pm_graph)  # alignment=t_alignment
+                gumr = UMRSentence(sent=g_sent, semantic_text=g_graph, alignment={}, sent_num=name,
+                                   penman_graph=g_pm_graph)  # alignment=g_alignment
+
+                # print(gumr.penman_graph[0].triples)
 
                 if tumr.invalid or gumr.invalid:
                     print(f"Error encountered, skipping sentence {name}")
@@ -119,9 +122,6 @@ class UMRDocument(DocumentMatch):
 
         predicted = [s[0] for s in self.sents]
         gold = [s[1] for s in self.sents]
-
-        # predicted = [g[0][0] for g in self.graphs]
-        # gold = [g[1][0] for g in self.graphs]
 
         assert len(predicted) == len(gold), (
             f"Number of gold graphs ({len(predicted)}) and converted graphs ({len(gold)}) do not match."
