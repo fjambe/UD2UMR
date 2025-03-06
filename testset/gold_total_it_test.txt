@@ -1,7 +1,7 @@
 # sent_id = n01001011
 # :: snt1
-Index: 1 2      3    4     5  6  7           8        9 10    11         12 13  14    15    16 17 18       19          20 21     22  23 24 25 26 27 28      29     30 31 32   33   34       35 36 37         38       39 40    41
-Words: " Mentre gran parte di la transizione digitale è senza precedenti in gli Stati Uniti ,  la pacifica transizione di potere non lo è  "  ,  ha scritto lunedì in un blog Kori Schulman ,  l' assistente speciale di Obama .
+Index: 1    2     3    4    5  6      7          8    9   10       11     12 13   14    15  16 17    18        19      20   21   22  23242526 27   28      29   30 31  32   33     34   35 36     37        38    39  40  41
+Words: " Mentre gran parte di la transizione digitale è senza precedenti in gli Stati Uniti , la pacifica transizione di potere non lo è " , ha scritto lunedì in un blog Kori Schulman , l' assistente speciale di Obama .
 Sentence: "Mentre gran parte della transizione digitale è senza precedenti negli Stati Uniti, la pacifica transizione di potere non lo è", ha scritto lunedì in un blog Kori Schulman, l'assistente speciale di Obama.
 Sentence Gloss (en): “While much of the digital transition is unprecedented in the United States, the peaceful transition of power is not,” Obama special assistant Kori Schulman wrote in a blog post Monday.
 
@@ -83,7 +83,7 @@ s1n2: 0-0
 
 # sent_id = n01026004
 # :: snt2
-Index: 1        2       3   4           5   6  7         8 9  10    11 12 13   14
+Index:     1       2     3       4       5   6     7     8  9   10   11 12  13 14
 Words: Stanotte useremo gli abbaglianti per le punizioni , si legge su il post .
 Sentence: Stanotte useremo gli abbaglianti per le punizioni, si legge sul post.
 Sentence Gloss (en): "Tonight we are carrying out punishments using a high beam," the post reads.
@@ -123,8 +123,8 @@ s2p3: 11-13
 
 # sent_id = n01057014
 # :: snt3
-Index: 1 2       3         4  5       6       7    8        9 10     11  12       13 14 15      16   17 18      19 20   21
-Words: I detriti formarono un circolo intorno all' equatore e furono poi attratti da la gravità fino a  formare la Luna .
+Index: 1    2        3      4    5       6      7      8    9    10   11     12    13 14   15     16 17   18    19  20 21
+Words: I detriti formarono un circolo intorno all' equatore e furono poi attratti da la gravità fino a formare la Luna .
 Sentence: I detriti formarono un circolo intorno all'equatore e furono poi attratti dalla gravità fino a formare la Luna.
 Sentence Gloss (en): The debris formed a ring around the Earth's equator and was eventually drawn together by gravity to form the moon.
 
@@ -168,7 +168,7 @@ s3n: 0-0
 
 # sent_id = w01071036
 # :: snt4
-Index: 1  2   3          4 5      6 7   8     9
+Index:  1  2       3     4    5   6  7    8   9
 Words: La sua importanza è dovuta a due fatti .
 Sentence: La sua importanza è dovuta a due fatti.
 Sentence Gloss (en): Its importance resides in two facts.
@@ -195,7 +195,7 @@ s4f: 6-8
 
 # sent_id = w01072079
 # :: snt5
-Index: 1     2  3   4      5 6  7          8         9    10  11        12        13  14   15   16  17   18    19
+Index:   1    2  3     4   5  6      7         8       9   10     11        12     13   14   15  16   17   18  19
 Words: Entro il III secolo , l' imperatore Caracalla fece un' ulteriore divisione che durò solo per poco tempo .
 Sentence: Entro il III secolo, l'imperatore Caracalla fece un'ulteriore divisione che durò solo per poco tempo.
 Sentence Gloss (en): By the 3rd century the emperor Caracalla made a new division which lasted only a short time.
@@ -243,8 +243,8 @@ s5d3: 14-14
 
 # sent_id = w01134062
 # :: snt6
-Index: 1  2  3    4 5       6      7 8    9            10   11 12       13 14  15     16 17          18 19  20       21  22        23  24    25  26     27 28   29 30 31  32   33
-Words: In il 1955 , Mishima iniziò a fare sollevamento pesi e  continuò il suo regime di allenamento di tre sessioni per settimana per tutti gli ultimi 15 anni di la sua vita .
+Index:  1  2   3  4    5       6   7   8        9        10 11    12    13 14    15   16     17      18 19     20    21     22     23   24   25    26   27  28  29 30 31   32 33
+Words: In il 1955 , Mishima iniziò a fare sollevamento pesi e continuò il suo regime di allenamento di tre sessioni per settimana per tutti gli ultimi 15 anni di la sua vita .
 Sentence: Nel 1955, Mishima iniziò a fare sollevamento pesi e continuò il suo regime di allenamento di tre sessioni per settimana per tutti gli ultimi 15 anni della sua vita.
 Sentence Gloss (en): In 1955, Mishima took up weight training and his workout regimen of three sessions per week was not disrupted for the final 15 years of his life.
 
@@ -309,7 +309,7 @@ s6r2: 21-22
 
 # sent_id = n02036018
 # :: snt7
-Index: 1   2     3          4  5       6  7 8     9    10       11 12             13          14
+Index:  1    2        3      4    5     6 7   8     9      10    11       12           13     14
 Words: Von Beust giustificò l' aumento di i costi come mancanza di pianificazione dettagliata .
 Sentence: Von Beust giustificò l'aumento dei costi come mancanza di pianificazione dettagliata.
 Sentence Gloss (en): Von Beust justified the cost increases as lack of detailed planning.
@@ -353,8 +353,8 @@ s7d: 13-13
 
 # sent_id = n02042026
 # :: snt8
-Index: 1  2           3  4   5          6  7        8  9   10  11 12     13   14 15 16 17      18   19        20 21 22         23  24      25 26    27 28       29 30      31 32      33
-Words: La generazione di gli smartphone ha ricevuto l' app che si merita dove ,  in il miglior caso possibile ,  la situazione più stupida ha avuto un pubblico di milioni di persone .
+Index:  1      2       3  4       5      6     7     8  9   10  11   12    13 14 15 16   17     18     19    20 21     22     23    24    25  26   27    28    29   30    31   32   33
+Words: La generazione di gli smartphone ha ricevuto l' app che si merita dove , in il miglior caso possibile , la situazione più stupida ha avuto un pubblico di milioni di persone .
 Sentence: La generazione degli smartphone ha ricevuto l'app che si merita dove, nel miglior caso possibile, la situazione più stupida ha avuto un pubblico di milioni di persone.
 Sentence Gloss (en): The smartphone generation received an app it deserved, where, in the best case scenario, the most idiotic situation received an audience of millions.
 
@@ -417,7 +417,7 @@ s8p2: 31-32
 
 # sent_id = n02075020
 # :: snt9
-Index: 1      2    3  4       5  6      7  8  9     10     11           12    13 14      15 16      17
+Index:    1     2   3    4     5    6    7  8   9      10        11       12   13   14    15   16   17
 Words: Dündar mise in guardia l' Europa da l' avere troppa comprensione circa l' operato di Erdogan .
 Sentence: Dündar mise in guardia l'Europa dall'avere troppa comprensione circa l'operato di Erdogan.
 Sentence Gloss (en): Dündar warned Europe about having too much understanding for Erdogan's course.
@@ -461,7 +461,7 @@ s9n3: 0-0
 
 # sent_id = n03001030
 # :: snt10
-Index: 1       2  3         4 5       6 7  8     9
+Index:    1     2     3     4    5    6  7   8   9
 Words: Secondo il programma , parlerà a le 23:45 .
 Sentence: Secondo il programma, parlerà alle 23:45.
 Sentence Gloss (en): According to the programme, she will speak at 23.45.
@@ -492,8 +492,8 @@ s10d: 6-8
 
 # sent_id = n03009006
 # :: snt11
-Index: 1  2     3         4   5 6  7         8  9    10        11       12      13 14    15          16    17        18     19            20 21
-Words: Ha anche rimarcato che " l' esistenza di tale documento potrebbe portare a  delle conseguenze tanto probabili quanto inaccettabili "  .
+Index:  1   2       3      4  5  6     7      8   9      10        11      12   13  14       15       16      17       18        19      2021
+Words: Ha anche rimarcato che " l' esistenza di tale documento potrebbe portare a delle conseguenze tanto probabili quanto inaccettabili " .
 Sentence: Ha anche rimarcato che "l'esistenza di tale documento potrebbe portare a delle conseguenze tanto probabili quanto inaccettabili".
 Sentence Gloss (en): He also remarked that "the existence of such a document could lead to consequences that are as likely as they are unacceptable".
 
@@ -551,8 +551,8 @@ s11a2: 19-19
 
 # sent_id = n03010012
 # :: snt12
-Index: 1       2  3      4 5      6     7  8  9       10       11  12          13 14      15 16   17 18 19 20    21 22      23 24    25         26 27 28        29
-Words: Secondo Le Figaro , questo piano di il governo potrebbe far risparmiare 42 milioni di euro ,  di i  quali 15 milioni e  mezzo andrebbero a  la sicurezza .
+Index:    1     2    3   4    5     6    7  8    9        10    11      12      13   14    15  16 17 1819  20   21   22   23  24       25    26 27    28    29
+Words: Secondo Le Figaro , questo piano di il governo potrebbe far risparmiare 42 milioni di euro , di i quali 15 milioni e mezzo andrebbero a la sicurezza .
 Sentence: Secondo Le Figaro, questo piano del governo potrebbe far risparmiare 42 milioni di euro, dei quali 15 milioni e mezzo andrebbero alla sicurezza.
 Sentence Gloss (en): According to Le Figaro, this government plan could free up 42 million euros, of which 15.5 million would go towards security.
 
@@ -607,8 +607,8 @@ s12s2: 26-28
 
 # sent_id = n04002027
 # :: snt13
-Index: 1   2        3      4      5       6 7      8   9    10         11     12 13     14 15         16
-Words: Non possiamo andare avanti insieme a quelli che sono totalmente contro l' Italia ,  sottolinea .
+Index:  1      2       3      4      5    6    7    8    9       10       11   12   13  14     15    16
+Words: Non possiamo andare avanti insieme a quelli che sono totalmente contro l' Italia , sottolinea .
 Sentence: Non possiamo andare avanti insieme a quelli che sono totalmente contro l'Italia, sottolinea.
 Sentence Gloss (en): It has been emphasised that we absolutely cannot continue with those who are completely against Italy.
 
@@ -655,8 +655,8 @@ s13n: 0-0
 
 # sent_id = n04006014
 # :: snt14
-Index: 1   2      3    4        5 6  7  8       9      10 11     12  13 14  15 16      17    18    19   20 21 22    23 24     25  26    27 28 29       30 31    32   33
-Words: Gli ultimi dati riferiti a il 24 ottobre scorso ci dicono che da noi il gasolio costa 1,335 euro a  il litro ,  contro una media di l' eurozona di 1,165 euro .
+Index:  1     2     3      4    5  6  7    8       9    10   11   12  13 14  15   16     17    18    19 20 21  22  23   24   25   26   27 28    29    30  31    32 33
+Words: Gli ultimi dati riferiti a il 24 ottobre scorso ci dicono che da noi il gasolio costa 1,335 euro a il litro , contro una media di l' eurozona di 1,165 euro .
 Sentence: Gli ultimi dati riferiti al 24 ottobre scorso ci dicono che da noi il gasolio costa 1,335 euro al litro, contro una media dell'eurozona di 1,165 euro.
 Sentence Gloss (en): The latest figures relate to the 24th of October last year, and tell us that our diesel costs 1,335 euros per litre, compared with the eurozone average of 1,165 euros.
 
@@ -730,8 +730,8 @@ s14e3: 27-29
 
 # sent_id = n04008007
 # :: snt15
-Index: 1 2     3     4 5   6        7  8  9          10    11 12 13    14 15 16       17          18 19   20
-Words: È stato detto a gli studenti di l' Università Luiss in il corso di un incontro organizzato a  Roma .
+Index: 1   2     3   4  5      6     7  8      9       10   11 12  13   14 15    16        17     18  19 20
+Words: È stato detto a gli studenti di l' Università Luiss in il corso di un incontro organizzato a Roma .
 Sentence: È stato detto agli studenti dell'Università Luiss nel corso di un incontro organizzato a Roma.
 Sentence Gloss (en): Students at LUISS University were told during the course of a meeting which took place in Rome.
 
@@ -770,7 +770,7 @@ s15n2: 0-0
 
 # sent_id = n05002015
 # :: snt16
-Index: 1  2   3        4 5        6 7   8 9     10    11 12       13
+Index:  1  2      3    4     5    6  7  8   9     10   11    12   13
 Words: La sua gestione , comunque , non è stata priva di critiche .
 Sentence: La sua gestione, comunque, non è stata priva di critiche.
 Sentence Gloss (en): Its management, however, hasn't been devoid of criticism.
@@ -801,8 +801,8 @@ s16c: 10-12
 
 # sent_id = n05007025
 # :: snt17
-Index: 1 2      3      4       5   6   7       8      9 10  11  12    13      14     15      16  17    18          19 20       21 22       23
-Words: E devono essere accolti con uno spirito aperto e con una mente limpida perché formano una nuova generazione di speranza e  bellezza .
+Index: 1    2      3      4     5   6     7       8   9  10  11   12     13      14     15    16   17       18      19    20   21    22   23
+Words: E devono essere accolti con uno spirito aperto e con una mente limpida perché formano una nuova generazione di speranza e bellezza .
 Sentence: E devono essere accolti con uno spirito aperto e con una mente limpida perché formano una nuova generazione di speranza e bellezza.
 Sentence Gloss (en): And they must be greeted with an open spirit and clear mind because they form the new generation of beauty and hope.
 
@@ -851,8 +851,8 @@ s17b: 22-22
 
 # sent_id = n05008018
 # :: snt18
-Index: 1  2    3          4          5   6      7     8 9               10        11 12   13     14 15 16  17 18     19 20     21      22   23 24      25
-Words: Il voto anticipato suggerisce che questa volta i latinoamericani voteranno in gran numero ,  ma non è  chiaro se questo aumento avrà un impatto .
+Index:  1   2       3          4      5     6     7   8        9            10     11  12    13  14 15 16 17   18   19   20     21     22  23   24   25
+Words: Il voto anticipato suggerisce che questa volta i latinoamericani voteranno in gran numero , ma non è chiaro se questo aumento avrà un impatto .
 Sentence: Il voto anticipato suggerisce che questa volta i latinoamericani voteranno in gran numero, ma non è chiaro se questo aumento avrà un impatto.
 Sentence Gloss (en): The early voting suggests that this time the Latin Americans will come out to vote in greater numbers, but it is unclear whether the increase will have an impact.
 
@@ -914,8 +914,8 @@ s18i: 23-24
 
 # sent_id = w02003037
 # :: snt19
-Index: 1  2  3    4 5  6       7        8     9       10 11 12    13 14          15 16 17         18    19          20  21 22         23 24         25 26 27  28       29 30     31
-Words: In il 1832 , il vecchio chiostro venne venduto da lo stato di Württemberg a  il produttore Georg Reichenbach con la condizione di trasformar lo in una fabbrica di cotone .
+Index:  1  2   3  4  5    6        7      8      9     10 11  12   13     14     15 16     17      18       19      20  21     22     23     24     25 26 27     28    29   30  31
+Words: In il 1832 , il vecchio chiostro venne venduto da lo stato di Württemberg a il produttore Georg Reichenbach con la condizione di trasformar lo in una fabbrica di cotone .
 Sentence: Nel 1832, il vecchio chiostro venne venduto dallo stato di Württemberg al produttore Georg Reichenbach con la condizione di trasformarlo in una fabbrica di cotone.
 Sentence Gloss (en): In 1832, the former cloister was sold to the manufacturer Georg Reichenbach by the state of Württemberg with the stipulation to establish a cotton factory there.
 
@@ -966,7 +966,7 @@ s19n2: 0-0
 
 # sent_id = w02005029
 # :: snt20
-Index: 1        2  3         4 5      6      7    8      9
+Index:     1     2     3     4    5      6     7     8   9
 Words: Contiene un monumento a Martin Luther King Junior .
 Sentence: Contiene un monumento a Martin Luther King Junior.
 Sentence Gloss (en): It contains a monument to Martin Luther King, Jr.
@@ -996,8 +996,8 @@ s20n: 0-0
 
 # sent_id = w02018030
 # :: snt21
-Index: 1     2     3       4   5     6   7  8           9  10 11    12 13      14 15    16
-Words: Weiss venne onorato con premi per la letteratura da le città di Colonia e  Brema .
+Index:   1     2      3     4    5    6   7      8       9  10  11   12   13   14  15  16
+Words: Weiss venne onorato con premi per la letteratura da le città di Colonia e Brema .
 Sentence: Weiss venne onorato con premi per la letteratura dalle città di Colonia e Brema.
 Sentence Gloss (en): Weiss was honored with the literature prizes from the cities of Cologne and Bremen.
 
@@ -1035,7 +1035,7 @@ s21a: 14-14
 
 # sent_id = w03005014
 # :: snt22
-Index: 1 2     3     4     5            6  7        8  9  10 11     12
+Index: 1   2     3     4         5       6     7     8  9  10   11    12
 Words: I primi testi greci cominciarono ad apparire da il IX secolo a.C.
 Sentence: I primi testi greci cominciarono ad apparire dal IX secolo a.C.
 Sentence Gloss (en): From the 9th century BC, the first Greek texts began to appear.
@@ -1070,8 +1070,8 @@ s22d: 10-12
 
 # sent_id = w03005015
 # :: snt23
-Index: 1  2      3   4      5  6     7       8        9             10 11 12      13         14      15 16 17        18    19 20   21    22 23    24 25      26 27       28 29 30     31     32 33 34   35 36 37 38     39       40
-Words: La Grecia era divisa in molte piccole comunità autogovernate ,  un modello largamente dettato da la geografia greca :  ogni isola ,  valle e  pianura è  separata da i  luoghi vicini da il mare o  da le catene montuose .
+Index:  1    2    3     4    5   6      7        8          9       10 11   12        13       14    15 16    17      18  19  20   21  22  23  24   25   26    27    2829   30     31   32 33  34 35 36 37   38      39   40
+Words: La Grecia era divisa in molte piccole comunità autogovernate , un modello largamente dettato da la geografia greca : ogni isola , valle e pianura è separata da i luoghi vicini da il mare o da le catene montuose .
 Sentence: La Grecia era divisa in molte piccole comunità autogovernate, un modello largamente dettato dalla geografia greca: ogni isola, valle e pianura è separata dai luoghi vicini dal mare o dalle catene montuose.
 Sentence Gloss (en): Greece was divided into many small, self-governing communities, a pattern largely dictated by Greek geography: every island, valley and plain is cut off from its neighbours by the sea or mountain ranges.
 
@@ -1157,8 +1157,8 @@ s23m4: 39-39
 
 # sent_id = w03007039
 # :: snt24
-Index: 1  2         3     4          5          6         7           8  9     10 11           12 13  14      15  16  17  18    19    20   21 22     23
-Words: Il commercio venne sviluppato stabilendo avamposti commerciali in tutto il Mediterraneo ,  una tecnica che non era stata usata fino ad allora .
+Index:  1     2       3        4          5         6          7       8   9    10      11     12 13    14    15  16  17   18    19    20  21   22  23
+Words: Il commercio venne sviluppato stabilendo avamposti commerciali in tutto il Mediterraneo , una tecnica che non era stata usata fino ad allora .
 Sentence: Il commercio venne sviluppato stabilendo avamposti commerciali in tutto il Mediterraneo, una tecnica che non era stata usata fino ad allora.
 Sentence Gloss (en): Trade was developed by establishing commercial outposts throughout the Mediterranean, a technique that had not been used until then.
 
@@ -1208,8 +1208,8 @@ s24a2: 22-22
 
 # sent_id = w04002055
 # :: snt25
-Index: 1  2  3    4     5  6      7  8         9 10 11 12 13   14 15       16        17  18  19       20 21 22      23 24    25 26 27      28       29      30   31     32
-Words: In il 1976 cadde in disuso l' ippodromo , e  in il 1990 un incendio distrusse ciò che rimaneva di le tribune in legno ,  in seguito demolite insieme alle stalle .
+Index:  1  2   3    4    5    6    7     8     9 10 11 12  13  14    15       16     17  18     19    20 21   22    23  24  25 26   27       28      29     30    31  32
+Words: In il 1976 cadde in disuso l' ippodromo , e in il 1990 un incendio distrusse ciò che rimaneva di le tribune in legno , in seguito demolite insieme alle stalle .
 Sentence: Nel 1976 cadde in disuso l'ippodromo, e nel 1990 un incendio distrusse ciò che rimaneva delle tribune in legno, in seguito demolite insieme alle stalle.
 Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables.
 
@@ -1262,8 +1262,8 @@ s25s2: 30-31
 
 # sent_id = w04003054
 # :: snt26
-Index: 1  2         3  4      5     6         7               8           9 10 11   12        13          14 15     16      17 18 19            20
-Words: Le emissioni di moneta hanno carattere prevalentemente numismatico , e  sono destinate soprattutto a  essere vendute a  i  collezionisti .
+Index:  1     2      3    4     5       6            7             8      9 10  11     12         13     14   15     16   1718      19      20
+Words: Le emissioni di moneta hanno carattere prevalentemente numismatico , e sono destinate soprattutto a essere vendute a i collezionisti .
 Sentence: Le emissioni di moneta hanno carattere prevalentemente numismatico, e sono destinate soprattutto a essere vendute ai collezionisti.
 Sentence Gloss (en): The issuing of coinage is predominantly numismatic in nature, with the intention of being sold mainly to collectors.
 
@@ -1306,8 +1306,8 @@ s26c: 17-19
 
 # sent_id = w04009042
 # :: snt27
-Index: 1  2    3   4    5   6 7  8      9   10     11  12 13  14       15 16   17  18 19     20      21       22 23 24  25 26  27     28     29  30     31 32      33 34    35 36 37         38 39      40
-Words: L' uomo gli dice che è in arrivo una guerra tra i  due universi ,  come lui e  Walter avevano predetto ,  e  che è  per questo motivo che Olivia ,  insieme ad altri ,  fu addestrata da bambina .
+Index:  1   2   3    4   5  6  7    8    9     10   11 12 13     14   15  16  17 18   19     20       21   2223 24 25 26    27     28   29    30  31   32    33  34  35 36     37     38   39   40
+Words: L' uomo gli dice che è in arrivo una guerra tra i due universi , come lui e Walter avevano predetto , e che è per questo motivo che Olivia , insieme ad altri , fu addestrata da bambina .
 Sentence: L'uomo gli dice che è in arrivo una guerra tra i due universi, come lui e Walter avevano predetto, e che è per questo motivo che Olivia, insieme ad altri, fu addestrata da bambina.
 Sentence Gloss (en): The man told him that a war between the two universes is coming, as he and Walter had predicted; it is for this reason that Olivia, among others, was trained as a child.
 
@@ -1384,7 +1384,7 @@ s27b: 39-39
 
 # sent_id = w05002014
 # :: snt28
-Index: 1     2   3  4          5  6    7 8  9      10          11 12 13  14      15  16  17    18   19 20      21        22
+Index:   1    2   3      4      5   6  7  8    9        10      11 12 13    14    15  16   17    18  19   20       21    22
 Words: Prima che si formassero le Ande , il limite occidentale di il Sud America era già stato sito di diverse orogenesi .
 Sentence: Prima che si formassero le Ande, il limite occidentale del Sud America era già stato sito di diverse orogenesi.
 Sentence Gloss (en): Before the Andes were formed, the western margin of South America had already been the site of several orogenies.
@@ -1433,8 +1433,8 @@ s28o2: 19-19, 21-21
 
 # sent_id = w05009044
 # :: snt29
-Index: 1  2  3    4 5  6        7   8    9   10 11 12    13  14       15  16 17  18        19           20  21     22     23      24 25  26         27     28  29      30    31 32    33       34    35 36   37 38 39   40 41 42       43 44    45 46
-Words: In il 1976 , si incontrò con Kiki Dee ,  un amico che lavorava con la sua etichetta discografica The Rocket Record Company ,  per registrare quello che sarebbe stato un altro successo degno di nota :  "  Don' t  go Breaking My Heart "  .
+Index:  1  2   3  4  5     6     7    8   9  10 11  12   13     14    15  16 17     18          19      20    21     22     23   24 25      26       27   28    29     30   31  32      33     34   35  36 3738  39 40 41    42    43  44  4546
+Words: In il 1976 , si incontrò con Kiki Dee , un amico che lavorava con la sua etichetta discografica The Rocket Record Company , per registrare quello che sarebbe stato un altro successo degno di nota : " Don' t go Breaking My Heart " .
 Sentence: Nel 1976, si incontrò con Kiki Dee, un amico che lavorava con la sua etichetta discografica The Rocket Record Company, per registrare quello che sarebbe stato un altro successo degno di nota: "Don't go Breaking My Heart".
 Sentence Gloss (en): In 1976 he met with a friend who worked with his record label The Rocket Record Company, Kiki Dee, to record what would be another remarkable success for him: "Don't Go Breaking My Heart".
 
@@ -1516,7 +1516,7 @@ s29n4: 35-36
 
 # sent_id = w05010027
 # :: snt30
-Index: 1  2 3       4  5    6 7     8       9     10  11            12 13     14 15 16    17 18         19 20       21    22 23 24   25
+Index:  1 2    3     4   5  6   7      8      9    10       11       12   13   14 15  16   17     18     19    20     21   22 23  24 25
 Words: Il 1 gennaio 49 d.C. , Marco Antonio lesse una dichiarazione di Cesare in la quale il proconsole si dichiarò amico di la pace .
 Sentence: Il 1 gennaio 49 d.C., Marco Antonio lesse una dichiarazione di Cesare nella quale il proconsole si dichiarò amico della pace.
 Sentence Gloss (en): On the 1st January 49 BC, Marco Antonio read a declaration from Caesar in which the proconsul declared himself a friend of peace.
@@ -1575,8 +1575,8 @@ s30d4: 0-0
 
 # sent_id = n01025040
 # :: snt31
-Index: 1  2    3 4 5       6       7           8          9 10 11    12      13 14 15   16 17        18            19 20       21 22     23    24
-Words: In Cina , i capelli vengono solitamente sottoposti a un bagno chimico a  il fine di rimuovere completamente le cuticole ,  spiega Tarlo .
+Index:  1   2  3 4    5       6         7           8     9  10  11     12   13 14  15  16    17          18       19    20   21   22    23  24
+Words: In Cina , i capelli vengono solitamente sottoposti a un bagno chimico a il fine di rimuovere completamente le cuticole , spiega Tarlo .
 Sentence: In Cina, i capelli vengono solitamente sottoposti a un bagno chimico al fine di rimuovere completamente le cuticole, spiega Tarlo.
 Sentence Gloss (en): In China the hair is typically put in a chemical bath to remove the cuticle completely, Tarlo explains.
 
@@ -1619,8 +1619,8 @@ s31s2: 22-22
 
 # sent_id = n01035030
 # :: snt32
-Index: 1  2       3         4     5    6    7            8 9    10            11 12    13  14     15 16       17 18    19          20 21 22        23  24          25 26 27  28      29
-Words: Ha inoltre descritto Klein come poco comunicativo e poco collaborativo ,  oltre che restio a  lasciare le celle sottostanti a  il tribunale per partecipare a  la sua udienza .
+Index:  1    2        3       4     5    6        7      8   9        10      11  12   13    14  15    16    17  18       19     20 21    22     23      24     25 26 27    28   29
+Words: Ha inoltre descritto Klein come poco comunicativo e poco collaborativo , oltre che restio a lasciare le celle sottostanti a il tribunale per partecipare a la sua udienza .
 Sentence: Ha inoltre descritto Klein come poco comunicativo e poco collaborativo, oltre che restio a lasciare le celle sottostanti al tribunale per partecipare alla sua udienza.
 Sentence Gloss (en): He also said Klein was uncommunicative, uncooperative and unwilling to walk up from cells under the courthouse to attend his hearing.
 
@@ -1683,7 +1683,7 @@ s32c3: 17-18
 
 # sent_id = n01039018
 # :: snt33
-Index: 1     2 3      4   5 6   7  8   9       10      11 12 13     14    15
+Index:   1   2    3    4  5  6   7  8     9       10    11 12   13    14  15
 Words: Amici , questo non è ciò di cui abbiamo bisogno in il nostro paese .
 Sentence: Amici, questo non è ciò di cui abbiamo bisogno nel nostro paese.
 Sentence Gloss (en): That's not what we need in our country, folks.
@@ -1720,8 +1720,8 @@ s33p2: 0-0
 
 # sent_id = n01068038
 # :: snt34
-Index: 1  2   3       4  5  6     7        8   9 10           11    12    13 14      15
-Words: La sua abilità in l' avere risposte per i contribuenti verrà molto a  mancare .
+Index:  1  2     3     4  5   6       7     8  9       10       11    12  13   14   15
+Words: La sua abilità in l' avere risposte per i contribuenti verrà molto a mancare .
 Sentence: La sua abilità nell'avere risposte per i contribuenti verrà molto a mancare.
 Sentence Gloss (en): His skill in getting answers for taxpayers will be sorely missed.
 
@@ -1757,8 +1757,8 @@ s34m2: 12-12
 
 # sent_id = n01071009
 # :: snt35
-Index: 1   2        3         4 5       6 7        8 9 10  11 12  13 14    15 16      17 18  19       20  21 22     23 24   25   26 27         28     29 30 31    32
-Words: Una centrale elettrica a carbone a Badarpur , a sud -  est di Delhi ,  cesserà la sua attività per 10 giorni ,  così come i  generatori diesel di la città .
+Index:  1      2        3     4    5    6     7    8 9  10 11 12  13  14  15   16    17 18     19    20  21   22  23  24   25 26     27       28   29 30  31  32
+Words: Una centrale elettrica a carbone a Badarpur , a sud - est di Delhi , cesserà la sua attività per 10 giorni , così come i generatori diesel di la città .
 Sentence: Una centrale elettrica a carbone a Badarpur, a sud-est di Delhi, cesserà la sua attività per 10 giorni, così come i generatori diesel della città.
 Sentence Gloss (en): A coal-fired power station in Badarpur, south-east Delhi, will stop operating for 10 days, along with diesel generators in the city.
 
@@ -1819,8 +1819,8 @@ s35c3: 29-31
 
 # sent_id = n01090037
 # :: snt36
-Index: 1   2      3  4 5    6      7 8  9       10 11   12     13     14 15          16           17        18  19         20     21 22    23  24
-Words: Amo giocar ci e sono sempre a la ricerca di muse adatte perché è  decisamente interessante preparare una collezione quando ne trovo una .
+Index:  1     2    3 4   5     6   7  8    9     10  11    12     13  14     15           16         17     18      19       20   21  22   23 24
+Words: Amo giocar ci e sono sempre a la ricerca di muse adatte perché è decisamente interessante preparare una collezione quando ne trovo una .
 Sentence: Amo giocarci e sono sempre alla ricerca di muse adatte perché è decisamente interessante preparare una collezione quando ne trovo una.
 Sentence Gloss (en): I love to play with that and I am always looking for muses that fit that bill because it is so interesting making a collection when I find one.
 
@@ -1885,7 +1885,7 @@ s36d: 15-15
 
 # sent_id = n01145008
 # :: snt37
-Index: 1   2  3 4       5       6 7   8  9 10  11    12
+Index:  1   2 3    4       5    6  7   8 9  10   11  12
 Words: Non c' è nessuna sfilata e non c' è mai stata .
 Sentence: Non c'è nessuna sfilata e non c'è mai stata.
 Sentence Gloss (en): There is no parade and there never has been.
@@ -1917,8 +1917,8 @@ s37e2: 7-9, 11-11
 
 # sent_id = w01005023
 # :: snt38
-Index: 1  2        3           4          5   6        7  8     9       10          11 12 13      14
-Words: L' esercito multietnico achemenide era composto da molti soldati provenienti da i  Balcani .
+Index:  1     2         3           4      5      6     7   8      9         10      1112   13   14
+Words: L' esercito multietnico achemenide era composto da molti soldati provenienti da i Balcani .
 Sentence: L'esercito multietnico achemenide era composto da molti soldati provenienti dai Balcani.
 Sentence Gloss (en): The multi-ethnic Achaemenid army possessed many soldiers from the Balkans.
 
@@ -1956,7 +1956,7 @@ s38e2: 4-4
 
 # sent_id = w01051032
 # :: snt39
-Index: 1  2  3      4  5           6      7 8       9  10      11 12     13      14            15
+Index:  1  2    3    4      5         6   7    8     9    10    11   12     13         14      15
 Words: In la fretta di conquistare Kadesh , Ramsete II commise un errore tattico considerevole .
 Sentence: Nella fretta di conquistare Kadesh, Ramsete II commise un errore tattico considerevole.
 Sentence Gloss (en): In his haste to capture Kadesh, Ramesses II committed a major tactical error.
@@ -1999,7 +1999,7 @@ s39p: 8-9
 
 # sent_id = w01073007
 # :: snt40
-Index: 1      2        3        4  5  6        7  8  9    10 11 12   13      14  15     16     17 18   19    20     21      22       23 24    25  26      27   28   29
+Index:    1       2        3     4  5     6     7  8   9   10 11  12    13    14    15     16   17  18   19     20     21       22    23  24   25    26     27   28 29
 Words: Furono talmente commossi da la bellezza di l' area di il lago Rudyard che quando nacque il loro primo figlio vollero ricordar lo dando gli proprio quel nome .
 Sentence: Furono talmente commossi dalla bellezza dell'area del lago Rudyard che quando nacque il loro primo figlio vollero ricordarlo dandogli proprio quel nome.
 Sentence Gloss (en): They had been so moved by the beauty of the Rudyard Lake area that when their first child was born they referenced it when naming him.
@@ -2066,8 +2066,8 @@ s40r: 22-22
 
 # sent_id = w01102040
 # :: snt41
-Index: 1  2      3     4        5   6  7        8   9       10       11        12       13    14        15 16  17  18        19   20             21        22    23 24  25       26
-Words: De Gaulle aveva ordinato che in pubblico non venisse mostrata eccessiva simpatia verso Churchill e  che non venissero dati riconoscimenti ufficiali senza il suo consenso .
+Index:  1    2     3       4     5   6     7     8     9        10       11        12     13      14    15 16  17     18      19        20          21      22   23 24     25   26
+Words: De Gaulle aveva ordinato che in pubblico non venisse mostrata eccessiva simpatia verso Churchill e che non venissero dati riconoscimenti ufficiali senza il suo consenso .
 Sentence: De Gaulle aveva ordinato che in pubblico non venisse mostrata eccessiva simpatia verso Churchill e che non venissero dati riconoscimenti ufficiali senza il suo consenso.
 Sentence Gloss (en): De Gaulle had instructed that there be no excessive displays of public affection towards Churchill and no official awards without his prior agreement.
 
@@ -2121,8 +2121,8 @@ s41s: 12-12
 
 # sent_id = w01105056
 # :: snt42
-Index: 1  2       3   4        5 6       7 8          9    10 11    12  13     14  15         16
-Words: Il sistema era semplice , diretto e funzionava bene ,  anche con piloti non addestrati .
+Index:  1    2     3      4    5    6    7      8       9  10  11   12    13   14      15    16
+Words: Il sistema era semplice , diretto e funzionava bene , anche con piloti non addestrati .
 Sentence: Il sistema era semplice, diretto e funzionava bene, anche con piloti non addestrati.
 Sentence Gloss (en): The system was simple, direct, and worked well, even with previously untrained pilots.
 
@@ -2166,8 +2166,8 @@ s42a2: 14-15
 
 # sent_id = w01113046
 # :: snt43
-Index: 1       2 3       4 5       6      7       8            9  10 11   12 13      14      15           16 17 18   19
-Words: Inoltre , costruì e rinnovò cinque mercati tradizionali in il 2013 e  quattro mercati tradizionali in il 2014 .
+Index:    1    2    3    4    5       6      7          8       9  10  11 12   13      14         15      16 17  18 19
+Words: Inoltre , costruì e rinnovò cinque mercati tradizionali in il 2013 e quattro mercati tradizionali in il 2014 .
 Sentence: Inoltre, costruì e rinnovò cinque mercati tradizionali nel 2013 e quattro mercati tradizionali nel 2014.
 Sentence Gloss (en): He also built and renovated five traditional markets in 2013 and four traditional markets in 2014.
 
@@ -2225,8 +2225,8 @@ s43t2: 15-15
 
 # sent_id = w01147010
 # :: snt44
-Index: 1    2  3        4   5  6        7 8         9 10        11 12 13 14   15 16   17    18 19         20 21    22      23 24            25  26 27  28      29
-Words: Pebe si trasferì con la famiglia a Nashville , Tennessee ,  in il 1991 ,  dopo esser si assicurata un nuovo accordo di pubblicazione per le sue canzoni .
+Index:   1   2     3     4   5     6    7     8     9     10    11 12 13  14 15  16   17   18     19     20  21     22    23      24       25  26 27    28   29
+Words: Pebe si trasferì con la famiglia a Nashville , Tennessee , in il 1991 , dopo esser si assicurata un nuovo accordo di pubblicazione per le sue canzoni .
 Sentence: Pebe si trasferì con la famiglia a Nashville, Tennessee, nel 1991, dopo essersi assicurata un nuovo accordo di pubblicazione per le sue canzoni.
 Sentence Gloss (en): Pebe moved the family to Nashville, Tennessee, in 1991 after securing a new publishing deal for her songwriting.
 
@@ -2282,7 +2282,7 @@ s44a3: 16-16
 
 # sent_id = n02007010
 # :: snt45
-Index: 1   2  3    4  5   6       7              8 9  10      11 12     13     14 15   16 17 18         19
+Index:  1   2   3   4  5     6           7       8  9    10    11   12     13   14  15  16 17     18    19
 Words: Con 71 goal in 137 partite internazionali , ha segnato un numero record di reti in la Bundesliga .
 Sentence: Con 71 goal in 137 partite internazionali, ha segnato un numero record di reti nella Bundesliga.
 Sentence Gloss (en): With 71 goals in 137 international matches, he has shot a record number of goals for the DFB.
@@ -2323,8 +2323,8 @@ s45i: 7-7
 
 # sent_id = n02017008
 # :: snt46
-Index: 1  2    3      4           5  6       7     8     9     10 11       12 13   14         15 16 17    18
-Words: La foto mostra chiaramente la sottile barra touch sopra la tastiera ,  come anticipato da i  rumor .
+Index:  1   2     3        4       5    6      7     8     9    10    11   12  13      14     1516  17  18
+Words: La foto mostra chiaramente la sottile barra touch sopra la tastiera , come anticipato da i rumor .
 Sentence: La foto mostra chiaramente la sottile barra touch sopra la tastiera, come anticipato dai rumor.
 Sentence Gloss (en): The photo clearly shows the narrow touch display bar above the keyboard that has been anticipated in rumors.
 
@@ -2364,8 +2364,8 @@ s46r2: 0-0
 
 # sent_id = n02027019
 # :: snt47
-Index: 1  2      3  4          5   6           7  8  9         10 11  12    13 14      15
-Words: La Russia ha annunciato una sospensione di il contratto a  gli inizi di ottobre .
+Index:  1    2    3      4      5       6       7  8     9     10 11   12   13   14   15
+Words: La Russia ha annunciato una sospensione di il contratto a gli inizi di ottobre .
 Sentence: La Russia ha annunciato una sospensione del contratto agli inizi di ottobre.
 Sentence Gloss (en): Russia announced a suspension of the contract at the beginning of October.
 
@@ -2396,7 +2396,7 @@ s47i2: 10-12
 
 # sent_id = n02043008
 # :: snt48
-Index: 1 2   3 4     5        6  7  8     9
+Index: 1  2  3   4       5     6  7   8   9
 Words: E ora è anche campione di il mondo .
 Sentence: E ora è anche campione del mondo.
 Sentence Gloss (en): And now he is also world champion.
@@ -2426,7 +2426,7 @@ s48p: 0-0
 
 # sent_id = n02068010
 # :: snt49
-Index: 1   2       3             4  5         6   7 8        9
+Index:  1     2          3        4     5      6  7     8    9
 Words: Per Barroso probabilmente la questione non è superata .
 Sentence: Per Barroso probabilmente la questione non è superata.
 Sentence Gloss (en): The issue might not be over for Barroso.
@@ -2454,8 +2454,8 @@ s49q: 4-5
 
 # sent_id = n02074009
 # :: snt50
-Index: 1  2      3  4  5       6         7 8  9    10     11      12      13 14 15 16     17     18 19 20  21         22 23 24 25      26   27 28 29        30 31   32 33      34      35  36  37   38
-Words: Il marito di l' attuale candidata a la Casa Bianca Hillary Clinton ,  in l' ultimo giorno di la sua presidenza ,  il 20 gennaio 2001 ,  ha condonato la pena di diverse persone tra cui Rich .
+Index:  1    2    3  4    5        6     7  8   9     10     11      12   13 14 15   16     17   18 19 20      21    22 23 24   25     26 27 28    29     30  31  32   33      34    35  36   37 38
+Words: Il marito di l' attuale candidata a la Casa Bianca Hillary Clinton , in l' ultimo giorno di la sua presidenza , il 20 gennaio 2001 , ha condonato la pena di diverse persone tra cui Rich .
 Sentence: Il marito dell'attuale candidata alla Casa Bianca Hillary Clinton, nell'ultimo giorno della sua presidenza, il 20 gennaio 2001, ha condonato la pena di diverse persone tra cui Rich.
 Sentence Gloss (en): The husband of the current candidate for the White House, Hillary Clinton, pardoned a number of people, also including Rich, on the last day of his presidency, January 20, 2001.
 
@@ -2532,8 +2532,8 @@ s50d2: 23-26
 
 # sent_id = n02083054
 # :: snt51
-Index: 1   2         3   4 5       6        7 8       9       10           11 12         13       14        15   16 17      18 19    20        21 22      23       24 25          26 27      28 29 30   31 32 33        34 35         36
-Words: Non sorprende che i governi federali e statali abbiano classificato il Patrimonio Naturale Nazionale come un impegno su scala nazionale di massima priorità ,  documentato a  partire da il 2005 in un contratto di coalizione .
+Index:  1      2      3  4    5        6    7    8       9          10      11     12        13       14      15  16   17    18  19      20     21   22       23   24     25     26   27    28 29  30  31 32    33     34     35    36
+Words: Non sorprende che i governi federali e statali abbiano classificato il Patrimonio Naturale Nazionale come un impegno su scala nazionale di massima priorità , documentato a partire da il 2005 in un contratto di coalizione .
 Sentence: Non sorprende che i governi federali e statali abbiano classificato il Patrimonio Naturale Nazionale come un impegno su scala nazionale di massima priorità, documentato a partire dal 2005 in un contratto di coalizione.
 Sentence Gloss (en): It is no surprise that the federal and state governments have classified the National Natural Heritage as a nation-wide endeavor of the highest priority and have documented it starting in 2005 in a coalition contract.
 
@@ -2599,8 +2599,8 @@ s51a3: 26-28
 
 # sent_id = n03001019
 # :: snt52
-Index: 1  2     3      4  5   6          7           8 9  10         11  12 13       14       15  16   17 18
-Words: Se fosse eletto il suo oppositore Democratico , ha assicurato che "  verrebbe indagata per anni "  .
+Index:  1   2      3    4  5       6          7      8  9      10     11 12    13       14    15   16 1718
+Words: Se fosse eletto il suo oppositore Democratico , ha assicurato che " verrebbe indagata per anni " .
 Sentence: Se fosse eletto il suo oppositore Democratico, ha assicurato che "verrebbe indagata per anni".
 Sentence Gloss (en): If his Democrat opponent were to be elected, he assured that she would be 'under investigation for years'.
 
@@ -2645,7 +2645,7 @@ s52a: 9-10
 
 # sent_id = n03001030
 # :: snt53
-Index: 1       2  3         4 5       6 7  8     9
+Index:    1     2     3     4    5    6  7   8   9
 Words: Secondo il programma , parlerà a le 23:45 .
 Sentence: Secondo il programma, parlerà alle 23:45.
 Sentence Gloss (en): According to the programme, she will speak at 23.45.
@@ -2675,7 +2675,7 @@ s53p: 2-3
 
 # sent_id = n03003025
 # :: snt54
-Index: 1 2            3        4  5  6   7     8     9      10      11   12              13  14  15            16
+Index: 1       2          3     4  5  6    7     8      9      10     11        12        13  14       15      16
 Words: I conservatori islamici di l' AKP hanno preso questo rifiuto come giustificazione per gli interrogatori .
 Sentence: I conservatori islamici dell'AKP hanno preso questo rifiuto come giustificazione per gli interrogatori.
 Sentence Gloss (en): The AKP's Islamic conservatives have taken this refusal as justification for the questionings.
@@ -2713,7 +2713,7 @@ s54p2: 4-6
 
 # sent_id = n03006003
 # :: snt55
-Index: 1     2    3 4      5   6          7       8  9           10 11 12    13        14 15 16      17      18
+Index:   1     2  3    4    5       6        7     8      9       10 11  12      13     14 15   16      17   18
 Words: Quali sono i limiti che potrebbero inibire l' espressione di il credo religioso in le aziende private ?
 Sentence: Quali sono i limiti che potrebbero inibire l'espressione del credo religioso nelle aziende private?
 Sentence Gloss (en): What are the limits that could inhibit the expression of religious beliefs in private companies?
@@ -2752,8 +2752,8 @@ s55u: 1-1
 
 # sent_id = n03006008
 # :: snt56
-Index: 1     2  3  4       5     6  7  8          9   10     11 12 13       14         15  16     17      18    19        20
-Words: Anche se la maggior parte di le situazioni che emerge in i  contesti lavorativi può essere risolta senza conflitti .
+Index:   1    2  3    4      5    6  7      8      9     10   1112    13        14     15    16     17     18      19    20
+Words: Anche se la maggior parte di le situazioni che emerge in i contesti lavorativi può essere risolta senza conflitti .
 Sentence: Anche se la maggior parte delle situazioni che emerge nei contesti lavorativi può essere risolta senza conflitti.
 Sentence Gloss (en): Even if the majority of situations that arise in the workplace can be resolved without conflict.
 
@@ -2795,8 +2795,8 @@ s56e2: 10-10
 
 # sent_id = n03007009
 # :: snt57
-Index: 1     2 3       4  5              6  7     8  9  10      11   12   13 14      15 16 17  18 19     20             21         22 23    24     25 26    27 28       29 30    31    32 33 34      35
-Words: Punta a portare in considerazione il tempo di il viaggio dopo aver lo dedotto da le ore di lavoro effettivamente completate ,  senza essere in grado di misurare il tempo reale di il viaggio .
+Index:   1   2    3     4        5        6   7    8  9    10     11   12  13   14    15 16 17  18   19         20           21    22  23     24   25  26   27    28    29  30    31   32 33   34   35
+Words: Punta a portare in considerazione il tempo di il viaggio dopo aver lo dedotto da le ore di lavoro effettivamente completate , senza essere in grado di misurare il tempo reale di il viaggio .
 Sentence: Punta a portare in considerazione il tempo del viaggio dopo averlo dedotto dalle ore di lavoro effettivamente completate, senza essere in grado di misurare il tempo reale del viaggio.
 Sentence Gloss (en): It aims to take the journey time into account after deducting this from the working hours actually completed, without being able to measure the real journey time.
 
@@ -2858,7 +2858,7 @@ s57v: 8-10
 
 # sent_id = n03010019
 # :: snt58
-Index: 1  2       3   4  5   6     7           8
+Index:  1    2     3   4  5    6        7      8
 Words: La Francia non ha una buona reputazione .
 Sentence: La Francia non ha una buona reputazione.
 Sentence Gloss (en): France doesn't have a good reputation.
@@ -2885,8 +2885,8 @@ s58b: 5-6
 
 # sent_id = n04005016
 # :: snt59
-Index: 1      2  3      4  5     6   7   8      9       10 11 12         13 14       15 16         17 18 19    20
-Words: Quindi si genera il buono che può essere salvato su lo smartphone o  stampato e  presentato a  la cassa .
+Index:    1    2    3    4   5    6   7     8      9     10 11     12    13    14   15     16    17 18  19  20
+Words: Quindi si genera il buono che può essere salvato su lo smartphone o stampato e presentato a la cassa .
 Sentence: Quindi si genera il buono che può essere salvato sullo smartphone o stampato e presentato alla cassa.
 Sentence Gloss (en): A voucher is generated that can be saved on your smartphone, or presented at the till.
 
@@ -2926,7 +2926,7 @@ s59s3: 14-14
 
 # sent_id = n04006003
 # :: snt60
-Index: 1  2  3     4       5            6       7 8       9
+Index:  1  2   3      4          5         6    7    8    9
 Words: Da il primo gennaio aumenteranno benzina e gasolio .
 Sentence: Dal primo gennaio aumenteranno benzina e gasolio.
 Sentence Gloss (en): From the 1st of January there will be an increase in petrol and diesel.
@@ -2954,8 +2954,8 @@ s60b: 6-6
 
 # sent_id = n04007015
 # :: snt61
-Index: 1    2     3 4  5         6 7           8  9  10  11 12      13          14  15 16    17      18 19  20   21         22 23          24 25        26    27          28
-Words: Come detto , la decisione è prerogativa di la BCE e  sarebbe inopportuno per la Banca parlare a  suo nome escludendo la possibilità di esaminare altre alternative .
+Index:   1    2   3  4     5     6      7       8  9  10 11   12        13      14  15  16     17   18 19   20      21     22     23      24    25      26       27     28
+Words: Come detto , la decisione è prerogativa di la BCE e sarebbe inopportuno per la Banca parlare a suo nome escludendo la possibilità di esaminare altre alternative .
 Sentence: Come detto, la decisione è prerogativa della BCE e sarebbe inopportuno per la Banca parlare a suo nome escludendo la possibilità di esaminare altre alternative.
 Sentence Gloss (en): As stated, the decision is the prerogative of the ECB and would appear inappropriate for the Bank to speak on its behalf by excluding the possibility of looking at other alternatives.
 
@@ -3021,7 +3021,7 @@ s61n3: 0-0
 
 # sent_id = n04007018
 # :: snt62
-Index: 1 2      3      4  5   6    7 8   9    10 11        12 13 14 15       16 17     18 19 20      21
+Index: 1    2      3    4  5    6  7  8    9   10    11     12 13 14    15    16   17   18 19   20   21
 Words: È quanto scrive in una nota a Mps dopo la decisione di l' ex ministro di uscire da la partita .
 Sentence: È quanto scrive in una nota a Mps dopo la decisione dell'ex ministro di uscire dalla partita.
 Sentence Gloss (en): This is what has been written in a note to Mps after the decision of the ex-minister to leave the party.
@@ -3083,8 +3083,8 @@ s62e: 0-0
 
 # sent_id = n04009002
 # :: snt63
-Index: 1       2        3  4  5          6    7   8     9          10 11    12 13           14  15 16    17 18       19 20 21    22 23         24 25      26 27 28        29
-Words: Quattro studenti di l' università Roma Tre hanno sviluppato un casco da motociclista che "  legge il pensiero "  e  aiuta ad anticipare le manovre di il guidatore .
+Index:    1        2     3  4      5       6   7    8        9      10  11   12      13      14 15  16   17    18   1920  21   22     23     24   25    26 27    28    29
+Words: Quattro studenti di l' università Roma Tre hanno sviluppato un casco da motociclista che " legge il pensiero " e aiuta ad anticipare le manovre di il guidatore .
 Sentence: Quattro studenti dell'università Roma Tre hanno sviluppato un casco da motociclista che "legge il pensiero" e aiuta ad anticipare le manovre del guidatore.
 Sentence Gloss (en): Four students at Roma Tre University have developed a motorcycle helmet that can 'read thoughts' by helping to anticipate drivers' actions.
 
@@ -3139,8 +3139,8 @@ s63s2: 8-9
 
 # sent_id = n04010016
 # :: snt64
-Index: 1        2  3       4 5      6   7       8            9        10 11         12 13   14     15 16    17  18  19 20 21      22     23
-Words: Rispetto al passato , sempre più società tecnologiche prendono l' iniziativa a  Wall Street ,  ancor più che in la Silicon Valley .
+Index:     1     2    3    4    5    6     7          8          9     10     11    12  13    14  15  16   17  18  19 20   21      22  23
+Words: Rispetto al passato , sempre più società tecnologiche prendono l' iniziativa a Wall Street , ancor più che in la Silicon Valley .
 Sentence: Rispetto al passato, sempre più società tecnologiche prendono l'iniziativa a Wall Street, ancor più che nella Silicon Valley.
 Sentence Gloss (en): More and more tech companies are calling the shots more than ever before on Wall Street, even more than in Silicon Valley.
 
@@ -3192,8 +3192,8 @@ s64p2: 9-9
 
 # sent_id = n04010021
 # :: snt65
-Index: 1     2  3      4  5        6    7 8      9  10      11   12      13 14    15 16   17 18       19             20 21 22     23      24
-Words: Oltre al summit di Mountain View i leader di aziende come Spotify ,  Tesla ,  Uber e  Snapchat parteciperanno a  un evento segreto .
+Index:   1    2    3    4     5      6  7    8    9    10     11    12   13  14  15  16 17    18          19      20 21   22     23   24
+Words: Oltre al summit di Mountain View i leader di aziende come Spotify , Tesla , Uber e Snapchat parteciperanno a un evento segreto .
 Sentence: Oltre al summit di Mountain View i leader di aziende come Spotify, Tesla, Uber e Snapchat parteciperanno a un evento segreto.
 Sentence Gloss (en): Leaders of companies such as Spotify, Tesla, Uber and Snapchat will attend a private event in addition to the Mountain View Summit.
 
@@ -3261,7 +3261,7 @@ s65h2: 4-6
 
 # sent_id = n05002015
 # :: snt66
-Index: 1  2   3        4 5        6 7   8 9     10    11 12       13
+Index:  1  2      3    4     5    6  7  8   9     10   11    12   13
 Words: La sua gestione , comunque , non è stata priva di critiche .
 Sentence: La sua gestione, comunque, non è stata priva di critiche.
 Sentence Gloss (en): Its management, however, hasn't been devoid of criticism.
@@ -3289,7 +3289,7 @@ s66p2: 2-2
 
 # sent_id = n05002020
 # :: snt67
-Index: 1      2            3   4        5     6     7
+Index:    1         2       3      4      5     6   7
 Words: Questo dipartimento ora affronta nuove sfide .
 Sentence: Questo dipartimento ora affronta nuove sfide.
 Sentence Gloss (en): This department now faces new challenges.
@@ -3319,8 +3319,8 @@ s67d: 2-2
 
 # sent_id = n05002023
 # :: snt68
-Index: 1       2 3  4       5     6     7 8   9    10  11  12    13 14     15       16 17
-Words: Inoltre , il Governo dovrà avere a che fare con un' altra "  patata bollente "  .
+Index:    1    2  3    4      5     6   7  8    9   10  11   12  13   14      15   1617
+Words: Inoltre , il Governo dovrà avere a che fare con un' altra " patata bollente " .
 Sentence: Inoltre, il Governo dovrà avere a che fare con un'altra "patata bollente".
 Sentence Gloss (en): Furthermore, the Government will have to deal with another "hot potato".
 
@@ -3348,8 +3348,8 @@ s68b: 15-15
 
 # sent_id = n05003010
 # :: snt69
-Index: 1  2     3          4     5     6   7 8 9   10 11       12 13
-Words: Le fonti consultate hanno detto che è " 100 %  Cospedal "  .
+Index:  1   2        3       4     5    6  7 8  9  10    11   1213
+Words: Le fonti consultate hanno detto che è " 100 % Cospedal " .
 Sentence: Le fonti consultate hanno detto che è "100% Cospedal".
 Sentence Gloss (en): The consulted sources have said that it is "100% Cospedal".
 
@@ -3386,8 +3386,8 @@ s69p2: 9-10
 
 # sent_id = n05004020
 # :: snt70
-Index: 1     2       3 4    5     6     7          8 9  10    11 12 13        14    15  16 17     18 19  20      21 22      23
-Words: Pedro Sánchez , come molti altri socialisti , ha detto in il programma Évole che la Spagna è  una nazione di nazioni .
+Index:   1      2    3   4    5     6        7     8  9   10   11 12    13      14   15  16   17  18 19    20    21   22   23
+Words: Pedro Sánchez , come molti altri socialisti , ha detto in il programma Évole che la Spagna è una nazione di nazioni .
 Sentence: Pedro Sánchez, come molti altri socialisti, ha detto nel programma Évole che la Spagna è una nazione di nazioni.
 Sentence Gloss (en): Pedro Sánchez, like many other socialists, said in the programme Évole that Spain is a nation of nations.
 
@@ -3441,8 +3441,8 @@ s70b: 11-14
 
 # sent_id = n05005002
 # :: snt71
-Index: 1        2       3   4     5  6     7 8 9  10     11  12 13 14      15   16 17    18  19 20 21   22 23
-Words: Federico Fellini una volta ha detto . " Il comico sta a  l' umanità come l' ombra sta a  l' uomo "  .
+Index:     1       2     3    4    5   6   7 8  9    10   11 12 13   14     15  16  17   18 19 20  21 2223
+Words: Federico Fellini una volta ha detto . " Il comico sta a l' umanità come l' ombra sta a l' uomo " .
 Sentence: Federico Fellini una volta ha detto. "Il comico sta all'umanità come l'ombra sta all'uomo".
 Sentence Gloss (en): Federico Fellini once said: "The clown is to humanity as the shadow is to man".
 
@@ -3489,7 +3489,7 @@ s71u3: 19-21
 
 # sent_id = n05009030
 # :: snt72
-Index: 1       2  3       4  5  6    7      8   9            10 11       12 13    14 15  16        17
+Index:    1     2    3     4  5   6     7    8        9       10    11    12  13   14 15     16    17
 Words: Dozzine di seguaci di il FSLN stanno già festeggiando la vittoria in Plaza de las Victorias .
 Sentence: Dozzine di seguaci del FSLN stanno già festeggiando la vittoria in Plaza de las Victorias.
 Sentence Gloss (en): Dozens of FSLN followers are already celebrating the victory in the Plaza de las Victorias.
@@ -3528,8 +3528,8 @@ s72c: 12-16
 
 # sent_id = w02003070
 # :: snt73
-Index: 1 2         3        4   5  6    7         8   9     10    11 12  13   14  15 16         17              18 19 20      21
-Words: I cittadini islamici che si sono stabiliti fin dagli inizi di gli anni '60 ,  emigrarono prevalentemente da la Turchia .
+Index: 1     2         3     4   5   6      7      8    9     10   11 12   13  14 15     16           17        18 19   20   21
+Words: I cittadini islamici che si sono stabiliti fin dagli inizi di gli anni '60 , emigrarono prevalentemente da la Turchia .
 Sentence: I cittadini islamici che si sono stabiliti fin dagli inizi degli anni '60, emigrarono prevalentemente dalla Turchia.
 Sentence Gloss (en): The Islamic citizens who have settled since the beginning of the 1960s emigrated primarily from Turkey.
 
@@ -3572,8 +3572,8 @@ s73c: 1-2
 
 # sent_id = w02006081
 # :: snt74
-Index: 1       2  3        4        5  6  7    8 9  10      11        12 13 14    15 16      17 18    19 20 21        22      23
-Words: Durante le elezioni generali di il 2010 , il Partito Laburista fu in grado di vincere in tutti i  7  distretti votanti .
+Index:    1     2     3        4     5  6   7  8  9    10       11     12 13  14   15   16    17  18  1920    21       22   23
+Words: Durante le elezioni generali di il 2010 , il Partito Laburista fu in grado di vincere in tutti i 7 distretti votanti .
 Sentence: Durante le elezioni generali del 2010, il Partito Laburista fu in grado di vincere in tutti i 7 distretti votanti.
 Sentence Gloss (en): During the 2010 general election, the Labor Party was able to win all seven voting districts.
 
@@ -3610,7 +3610,7 @@ s74t: 18-18
 
 # sent_id = w02013015
 # :: snt75
-Index: 1  2           3           4    5     6  7    8        9     10  11 12   13    14    15
+Index:  1      2           3        4    5    6   7      8      9    10  11  12   13    14  15
 Words: La Rivoluzione Industriale ebbe luogo in Gran Bretagna prima che in ogni altro paese .
 Sentence: La Rivoluzione Industriale ebbe luogo in Gran Bretagna prima che in ogni altro paese.
 Sentence Gloss (en): The Industrial Revolution took place in Great Britain earlier than in any other country.
@@ -3651,8 +3651,8 @@ s75o: 12-12
 
 # sent_id = w02013093
 # :: snt76
-Index: 1    2  3           4     5  6  7    8      9       10   11 12        13 14 15      16 17  18    19      20           21 22      23           24
-Words: Dopo la Rivoluzione russa di il 1917 alcune nazioni come la Finlandia ,  la Polonia e  gli Stati Baltici guadagnarono la propria indipendenza .
+Index:   1   2      3        4    5  6   7     8      9      10  11    12    13 14   15   16 17   18     19         20      21   22         23     24
+Words: Dopo la Rivoluzione russa di il 1917 alcune nazioni come la Finlandia , la Polonia e gli Stati Baltici guadagnarono la propria indipendenza .
 Sentence: Dopo la Rivoluzione russa del 1917 alcune nazioni come la Finlandia, la Polonia e gli Stati Baltici guadagnarono la propria indipendenza.
 Sentence Gloss (en): After the Russian Revolution in 1917, some countries, such as Finland, Poland and the Baltic States, won their independence.
 
@@ -3704,8 +3704,8 @@ s76i: 21-21, 23-23
 
 # sent_id = w02014013
 # :: snt77
-Index: 1   2  3   4      5     6  7   8     9   10      11        12 13 14       15 16 17       18 19      20       21       22 23       24
-Words: Uno di gli ultimi mezzi da lui usati per mettere pressione a  l' Ungheria fu la minaccia di imporre elezioni generali e  gratuite .
+Index:  1   2  3     4     5    6  7    8    9     10       11    12 13    14    15 16    17    18   19       20       21   22    23   24
+Words: Uno di gli ultimi mezzi da lui usati per mettere pressione a l' Ungheria fu la minaccia di imporre elezioni generali e gratuite .
 Sentence: Uno degli ultimi mezzi da lui usati per mettere pressione all'Ungheria fu la minaccia di imporre elezioni generali e gratuite.
 Sentence Gloss (en): One of his last means of placing pressure on Hungary was the threat of imposing general and free elections.
 
@@ -3773,7 +3773,7 @@ s77e: 20-20
 
 # sent_id = w02015084
 # :: snt78
-Index: 1  2       3  4             5     6       7 8     9  10     11   12        13 14 15      16
+Index:  1    2     3       4         5      6    7   8    9    10    11     12     13 14   15   16
 Words: L' abbazia di Disibodenberg venne sciolta e cadde in rovina come risultato di la Riforma .
 Sentence: L'abbazia di Disibodenberg venne sciolta e cadde in rovina come risultato della Riforma.
 Sentence Gloss (en): The Disibodenberg cloister was disbanded and fell into ruin as a result of the Reformation.
@@ -3813,8 +3813,8 @@ s78e: 11-15
 
 # sent_id = w02016015
 # :: snt79
-Index: 1    2      3        4 5     6  7         8   9  10   11      12 13 14       15  16 17  18      19 20        21 22 23 24       25 26   27    28   29 30   31
-Words: Dopo questi successi , firmò un contratto con il Team Telekom e  si trasferì con la sua ragazza a  Merdingen ,  in il Südbaden ,  dove visse fino al 2002 .
+Index:   1     2       3    4   5    6     7      8   9   10    11   12 13    14    15  16 17    18   19    20    21 22 23    24   25  26   27    28  29  30 31
+Words: Dopo questi successi , firmò un contratto con il Team Telekom e si trasferì con la sua ragazza a Merdingen , in il Südbaden , dove visse fino al 2002 .
 Sentence: Dopo questi successi, firmò un contratto con il Team Telekom e si trasferì con la sua ragazza a Merdingen, nel Südbaden, dove visse fino al 2002.
 Sentence Gloss (en): After these successes, he signed a contract with Team Telekom and moved in with his girlfriend in Merdingen in Südbaden, where he lived until 2002.
 
@@ -3886,8 +3886,8 @@ s79u: 28-28
 
 # sent_id = w03001037
 # :: snt80
-Index: 1 2         3  4       5 6  7  8     9          10 11      12    13 14 15      16 17       18      19 20 21    22   23 24          25 26         27             28 29         30 31 32          33 34         35
-Words: I distretti di Viguier e di La Conte contengono la maggior parte di i  servizi di edilizia sociale di la città dove la popolazione è  costituita principalmente da immigranti o  da discendenti di immigranti .
+Index: 1     2      3    4    5  6  7   8        9      10   11     12   1314   15    16    17      18    19 20  21    22  23     24     25     26           27       28     29    30 31     32      33     34    35
+Words: I distretti di Viguier e di La Conte contengono la maggior parte di i servizi di edilizia sociale di la città dove la popolazione è costituita principalmente da immigranti o da discendenti di immigranti .
 Sentence: I distretti di Viguier e di La Conte contengono la maggior parte dei servizi di edilizia sociale della città dove la popolazione è costituita principalmente da immigranti o da discendenti di immigranti.
 Sentence Gloss (en): The Viguier and La Conte districts contain the majority of the city's social housing, where the population is mainly made up of immigrants or those of immigrant origin.
 
@@ -3951,7 +3951,7 @@ s80i2: 33-34
 
 # sent_id = w03002048
 # :: snt81
-Index: 1  2 3     4    5    6 7  8     9 10      11  12      13       14
+Index:  1 2   3     4    5  6  7   8   9    10    11    12       13   14
 Words: In i primi anni 2000 , c' erano 5 dottori per 100.000 abitanti .
 Sentence: Nei primi anni 2000, c'erano 5 dottori per 100.000 abitanti.
 Sentence Gloss (en): In the early 2000s, there were five doctors per 100,000 inhabitants.
@@ -3981,8 +3981,8 @@ s81r: 11-13
 
 # sent_id = w03005013
 # :: snt82
-Index: 1  2         3   4      5       6 7 8           9       10          11 12 13 14    15         16 17       18      19 20          21 22  23     24     25    26
-Words: La scrittura era andata perduta e i manoscritti micenei dimenticati ,  ma i  greci adottarono l' alfabeto fenicio ,  modificando lo per creare quello greco .
+Index:  1     2      3     4      5    6 7      8         9         10     11 1213  14       15     16    17      18   19     20      21 22    23     24    25  26
+Words: La scrittura era andata perduta e i manoscritti micenei dimenticati , ma i greci adottarono l' alfabeto fenicio , modificando lo per creare quello greco .
 Sentence: La scrittura era andata perduta e i manoscritti micenei dimenticati, ma i greci adottarono l'alfabeto fenicio, modificandolo per creare quello greco.
 Sentence Gloss (en): Literacy had been lost and Mycenaean script forgotten, but the Greeks adopted the Phoenician alphabet, modifying it to create the Greek alphabet.
 
@@ -4044,8 +4044,8 @@ s82a4: 24-24
 
 # sent_id = w03005016
 # :: snt83
-Index: 1  2     3     4            5  6        7       8    9    10     11  12 13      14        15            16  17 18   19      20      21       22
-Words: Le città stato cominciarono ad apparire intorno all' VIII secolo a.C :  piccoli territori autogovernati con il loro proprio sistema politico .
+Index:  1   2     3         4       5     6       7      8    9     10   11 12   13       14          15       16  17  18    19      20       21   22
+Words: Le città stato cominciarono ad apparire intorno all' VIII secolo a.C : piccoli territori autogovernati con il loro proprio sistema politico .
 Sentence: Le città stato cominciarono ad apparire intorno all'VIII secolo a.C: piccoli territori autogovernati con il loro proprio sistema politico.
 Sentence Gloss (en): From about the 8th century BC city states began to appear: small, self-governing territories with their own political systems.
 
@@ -4097,7 +4097,7 @@ s83p2: 21-21
 
 # sent_id = w03008011
 # :: snt84
-Index: 1      2         3   4      5           6    7     8  9      10  11 12  13       14 15             16       17
+Index:    1       2      3     4        5        6    7    8    9    10  11 12     13    14       15          16   17
 Words: Questa relazione può essere considerata come punto di inizio per la sua carriera di rivoluzionario radicale .
 Sentence: Questa relazione può essere considerata come punto di inizio per la sua carriera di rivoluzionario radicale.
 Sentence Gloss (en): This affair can be seen as the starting point for his career as a radical revolutionary.
@@ -4136,8 +4136,8 @@ s84r2: 14-15
 
 # sent_id = w03010099
 # :: snt85
-Index: 1  2      3 4       5 6   7      8         9  10       11 12           13 14     15 16  17      18 19 20   21     22 23  24 25  26    27 28       29
-Words: In estate , Georges e sua moglie tornarono in Svizzera ,  accompagnati da Rosane ,  una ragazza di 18 anni figlia di uno di gli amici di Germaine .
+Index:  1    2   3    4    5  6     7       8      9     10   11      12      13   14  15 16    17    18 19  20    21   22 23  24 25   26   27    28   29
+Words: In estate , Georges e sua moglie tornarono in Svizzera , accompagnati da Rosane , una ragazza di 18 anni figlia di uno di gli amici di Germaine .
 Sentence: In estate, Georges e sua moglie tornarono in Svizzera, accompagnati da Rosane, una ragazza di 18 anni figlia di uno degli amici di Germaine.
 Sentence Gloss (en): In the summer, Georges and his wife returned to Switzerland, accompanied by Rosane, an 18 year old who was the daughter of one of Germaine's friends.
 
@@ -4227,8 +4227,8 @@ s85a2: 0-0
 
 # sent_id = w03010100
 # :: snt86
-Index: 1       2  3       4      5   6         7              8   9  10      11      12 13 14       15   16   17
-Words: Durante la vacanza iniziò una relazione extraconiugale con la giovane ragazza e  lo confessò poco dopo .
+Index:    1     2    3       4    5      6            7        8   9    10      11   12 13    14     15   16 17
+Words: Durante la vacanza iniziò una relazione extraconiugale con la giovane ragazza e lo confessò poco dopo .
 Sentence: Durante la vacanza iniziò una relazione extraconiugale con la giovane ragazza e lo confessò poco dopo.
 Sentence Gloss (en): During the holiday, he began an extra-marital affair with the young girl, which he admitted shortly after.
 
@@ -4273,7 +4273,7 @@ s86p: 0-0
 
 # sent_id = w04001037
 # :: snt87
-Index: 1       2 3         4  5      6  7       8  9  10    11 12 13      14     15
+Index:    1    2     3      4    5    6    7     8  9   10   11 12   13      14  15
 Words: Inoltre è possibile l' arrivo di uragani su le isole in il periodo estivo .
 Sentence: Inoltre è possibile l'arrivo di uragani sulle isole nel periodo estivo.
 Sentence Gloss (en): Furthermore, the occurrence of hurricanes on the island is possible during the summer.
@@ -4299,8 +4299,8 @@ s87e: 14-14
 
 # sent_id = w04002008
 # :: snt88
-Index: 1  2          3      4       5  6       7     8  9       10          11    12 13      14 15 16    17      18 19 20    21  22       23
-Words: Ad avvalorare quest' ipotesi ci sarebbe stato il corposo allevamento reale di cavalli a  la Villa Pelucca ,  a  Sesto San Giovanni .
+Index:  1      2        3      4     5    6      7    8    9         10       11   12   13   14 15  16     17   1819  20   21     22   23
+Words: Ad avvalorare quest' ipotesi ci sarebbe stato il corposo allevamento reale di cavalli a la Villa Pelucca , a Sesto San Giovanni .
 Sentence: Ad avvalorare quest'ipotesi ci sarebbe stato il corposo allevamento reale di cavalli alla Villa Pelucca, a Sesto San Giovanni.
 Sentence Gloss (en): An element supporting this hypothesis would be the intense royal livestock of horses that took place at Villa Pelucca, in Sesto San Giovanni.
 
@@ -4342,8 +4342,8 @@ s88b: 14-17
 
 # sent_id = w04002055
 # :: snt89
-Index: 1  2  3    4     5  6      7  8         9 10 11 12 13   14 15       16        17  18  19       20 21 22      23 24    25 26 27      28       29      30   31     32
-Words: In il 1976 cadde in disuso l' ippodromo , e  in il 1990 un incendio distrusse ciò che rimaneva di le tribune in legno ,  in seguito demolite insieme alle stalle .
+Index:  1  2   3    4    5    6    7     8     9 10 11 12  13  14    15       16     17  18     19    20 21   22    23  24  25 26   27       28      29     30    31  32
+Words: In il 1976 cadde in disuso l' ippodromo , e in il 1990 un incendio distrusse ciò che rimaneva di le tribune in legno , in seguito demolite insieme alle stalle .
 Sentence: Nel 1976 cadde in disuso l'ippodromo, e nel 1990 un incendio distrusse ciò che rimaneva delle tribune in legno, in seguito demolite insieme alle stalle.
 Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables.
 
@@ -4398,7 +4398,7 @@ s89d: 5-6
 
 # sent_id = w04004059
 # :: snt90
-Index: 1  2  3    4      5  6    7      8  9          10 11     12     13  14       15 16    17          18 19 20       21       22
+Index:  1  2   3     4    5   6     7    8      9      10   11     12   13     14    15  16       17      18 19    20       21   22
 Words: In il XIII secolo il nome Apulia fu utilizzato da alcuni autori per indicare la parte meridionale di la penisola italiana .
 Sentence: Nel XIII secolo il nome Apulia fu utilizzato da alcuni autori per indicare la parte meridionale della penisola italiana.
 Sentence Gloss (en): During the thirteenth century, the name Apulia was used by some authors to signify the southern part of the Italian peninsula.
@@ -4442,8 +4442,8 @@ s90a: 11-11
 
 # sent_id = w04006023
 # :: snt91
-Index: 1  2       3     4      5          6   7       8              9        10 11 12      13      14 15   16      17  18         19 20 21    22       23
-Words: Lo storico David Crouch suggerisce che Stefano effettivamente rinunciò a  l' impresa attorno a  quel periodo per concentrar si su altri problemi .
+Index:  1    2      3      4        5      6     7           8           9    10 11   12      13   14  15    16    17      18     19 20  21      22   23
+Words: Lo storico David Crouch suggerisce che Stefano effettivamente rinunciò a l' impresa attorno a quel periodo per concentrar si su altri problemi .
 Sentence: Lo storico David Crouch suggerisce che Stefano effettivamente rinunciò all'impresa attorno a quel periodo per concentrarsi su altri problemi.
 Sentence Gloss (en): Historian David Crouch suggests that Stephen abandoned from the challenge around this time to focus on other issues.
 
@@ -4483,7 +4483,7 @@ s91c: 17-18
 s91e: 8-8
 s91p4: 13-14, 16-16
 s91s2: 5-5
-s91p2: 20-22
+s91p2: 20-22, 22-22
 s91h: 0-0
 s91q: 15-15
 s91n2: 0-0
@@ -4499,8 +4499,8 @@ s91s: 1-2
 
 # sent_id = w04007021
 # :: snt92
-Index: 1       2   3        4 5 6    7  8  9         10 11 12       13 14 15       16 17 18        19 20      21      22  23        24 25          26  27 28      29    30 31     32
-Words: Sebbene non decisiva a i fini di il conflitto ,  la vittoria di i  francesi in la battaglia di Marengo obbligò gli austriaci ad abbandonare per la seconda volta l' Italia .
+Index:    1     2      3    4 5   6   7  8     9     10 11    12    1314    15    16 17    18     19   20      21    22     23     24     25      26  27   28     29   30   31  32
+Words: Sebbene non decisiva a i fini di il conflitto , la vittoria di i francesi in la battaglia di Marengo obbligò gli austriaci ad abbandonare per la seconda volta l' Italia .
 Sentence: Sebbene non decisiva ai fini del conflitto, la vittoria dei francesi nella battaglia di Marengo obbligò gli austriaci ad abbandonare per la seconda volta l'Italia.
 Sentence Gloss (en): Although not a resolver of the conflict, the French victory at the Battle of Marengo forced the Austrians to give Italy up for the second time.
 
@@ -4566,8 +4566,8 @@ s92h: 1-2
 
 # sent_id = w04008006
 # :: snt93
-Index: 1   2      3        4  5       6         7 8        9     10      11 12 13     14         15 16      17     18 19 20     21          22  23    24 25   26
-Words: Per quanto riguarda la pratica religiosa , Fiorello viene educato in la Chiesa episcopale e  rimarrà membro di la Chiesa protestante per tutta la vita .
+Index:  1     2       3     4    5        6     7     8      9      10    11 12   13       14    15   16      17   18 19   20       21      22   23   24  25 26
+Words: Per quanto riguarda la pratica religiosa , Fiorello viene educato in la Chiesa episcopale e rimarrà membro di la Chiesa protestante per tutta la vita .
 Sentence: Per quanto riguarda la pratica religiosa, Fiorello viene educato nella Chiesa episcopale e rimarrà membro della Chiesa protestante per tutta la vita.
 Sentence Gloss (en): With regards to religious practices, Fiorello was educated within the Episcopal Church, and remained a member of the Protestant Church throughout his life.
 
@@ -4615,8 +4615,8 @@ s93v: 22-22, 24-25
 
 # sent_id = w05001045
 # :: snt94
-Index: 1  2          3     4   5  6    7     8           9                10 11    12  13     14     15 16    17         18  19       20 21    22
-Words: La tradizione vuole che il tema venne selezionato intenzionalmente a  causa del grande numero di ebrei convertiti che vivevano a  Palma .
+Index:  1      2       3    4   5   6    7        8              9        10  11   12    13     14   15  16       17     18     19   20  21  22
+Words: La tradizione vuole che il tema venne selezionato intenzionalmente a causa del grande numero di ebrei convertiti che vivevano a Palma .
 Sentence: La tradizione vuole che il tema venne selezionato intenzionalmente a causa del grande numero di ebrei convertiti che vivevano a Palma.
 Sentence Gloss (en): Tradition has it that the theme was selected intentionally because of the great number of converted Jews who lived in Palma.
 
@@ -4667,8 +4667,8 @@ s94v: 19-19
 
 # sent_id = w05003012
 # :: snt95
-Index: 1        2 3  4           5  6 7        8   9       10 11 12           13 14 15    16           17          18 19              20 21 22          23  24 25         26 27 28   29
-Words: Tuttavia , la sospensione di i rapporti con Linares e  l' interruzione di la linea progressista provocarono la Giustificazione di la Rivoluzione che lo detronizzò in il 1879 .
+Index:     1    2  3      4       5 6     7     8     9    10 11      12      13 14  15        16          17      18       19        20 21     22      23  24     25     26 27  28 29
+Words: Tuttavia , la sospensione di i rapporti con Linares e l' interruzione di la linea progressista provocarono la Giustificazione di la Rivoluzione che lo detronizzò in il 1879 .
 Sentence: Tuttavia, la sospensione dei rapporti con Linares e l'interruzione della linea progressista provocarono la Giustificazione della Rivoluzione che lo detronizzò nel 1879.
 Sentence Gloss (en): However, the breakdown between him and Linares and the discontinuation of the progressive line provoked the Revolution of Vindication which overthrew him in 1879.
 
@@ -4720,8 +4720,8 @@ s95d2: 26-28
 
 # sent_id = w05003119
 # :: snt96
-Index: 1  2        3 4  5          6  7       8  9      10    11 12  13   14 15       16 17       18 19         20 21     22       23
-Words: Il collasso e l' intervento in dozzine di banche portò a  una fuga di capitali ,  causando la bancarotta di questo business .
+Index:  1     2    3  4      5      6    7     8    9     10  11 12   13  14    15   16    17    18     19     20   21      22   23
+Words: Il collasso e l' intervento in dozzine di banche portò a una fuga di capitali , causando la bancarotta di questo business .
 Sentence: Il collasso e l'intervento in dozzine di banche portò a una fuga di capitali, causando la bancarotta di questo business.
 Sentence Gloss (en): The collapse of and intervention in dozens of banks lead to a flight of capital, causing businesses to go bankrupt.
 
@@ -4771,8 +4771,8 @@ s96h: 17-17
 
 # sent_id = w05005084
 # :: snt97
-Index: 1  2  3     4  5      6 7  8               9  10  11 12     13      14      15  16          17 18           19
-Words: Fu il colpo di grazia e l' incoraggiamento di cui i  coloni avevano bisogno per raggiungere l' indipendenza .
+Index:  1  2   3    4    5   6  7        8         9  10 11   12     13      14    15      16      17      18     19
+Words: Fu il colpo di grazia e l' incoraggiamento di cui i coloni avevano bisogno per raggiungere l' indipendenza .
 Sentence: Fu il colpo di grazia e l'incoraggiamento di cui i coloni avevano bisogno per raggiungere l'indipendenza.
 Sentence Gloss (en): This was the coup de grâce and encouragement the settlers needed to get their independence.
 
@@ -4816,8 +4816,8 @@ s97i3: 17-18
 
 # sent_id = w05007004
 # :: snt98
-Index: 1        2 3  4  5     6       7     8     9         10 11 12     13 14    15 16 17      18 19 20    21 22        23    24  25      26 27 28    29       30 31   32  33       34 35      36
-Words: Tuttavia , se la legge inglese fosse stata accettata ,  le figlie di Luigi X  ,  Filippo V  e  Carlo IV avrebbero avuto più pretese a  il trono rispetto a  loro zia Isabella di Francia .
+Index:     1    2  3  4   5      6      7     8       9     10 11   12   13  14  1516   17   1819  20   21    22      23   24    25   26 27  28      29   30  31  32     33    34   35   36
+Words: Tuttavia , se la legge inglese fosse stata accettata , le figlie di Luigi X , Filippo V e Carlo IV avrebbero avuto più pretese a il trono rispetto a loro zia Isabella di Francia .
 Sentence: Tuttavia, se la legge inglese fosse stata accettata, le figlie di Luigi X, Filippo V e Carlo IV avrebbero avuto più pretese al trono rispetto a loro zia Isabella di Francia.
 Sentence Gloss (en): Nonetheless, if the English law had been accepted, the daughters of Luis X, Felipe V and Carlos IV would have had more of a claim to the throne, above their aunt Isabella of France.
 
@@ -4891,8 +4891,8 @@ s98n6: 0-0
 
 # sent_id = w05007080
 # :: snt99
-Index: 1 2         3  4    5           6  7  8         9  10 11   12 13     14     15 16      17 18   19 20  21    22 23 24        25 26 27     28    29 30      31
-Words: I tentativi di pace terminarono in la primavera di il 1415 ed Enrico decise di mettere in atto il suo piano :  l' invasione di l' intero Regno di Francia .
+Index: 1     2      3   4       5       6  7     8      9  10  11  12   13     14   15   16    17  18  19 20   21  22 23    24     25 26   27    28   29   30   31
+Words: I tentativi di pace terminarono in la primavera di il 1415 ed Enrico decise di mettere in atto il suo piano : l' invasione di l' intero Regno di Francia .
 Sentence: I tentativi di pace terminarono nella primavera del 1415 ed Enrico decise di mettere in atto il suo piano: l'invasione dell'intero Regno di Francia.
 Sentence Gloss (en): The attempts at making peace finally ended in spring of 1415 and Enrique decided to execute his plan: an invasion of the entire Kingdom of France.
 
@@ -4954,7 +4954,7 @@ s99p4: 13-13
 
 # sent_id = w05010027
 # :: snt100
-Index: 1  2 3       4  5    6 7     8       9     10  11            12 13     14 15 16    17 18         19 20       21    22 23 24   25
+Index:  1 2    3     4   5  6   7      8      9    10       11       12   13   14 15  16   17     18     19    20     21   22 23  24 25
 Words: Il 1 gennaio 49 d.C. , Marco Antonio lesse una dichiarazione di Cesare in la quale il proconsole si dichiarò amico di la pace .
 Sentence: Il 1 gennaio 49 d.C., Marco Antonio lesse una dichiarazione di Cesare nella quale il proconsole si dichiarò amico della pace.
 Sentence Gloss (en): On the 1st January 49 BC, Marco Antonio read a declaration from Caesar in which the proconsul declared himself a friend of peace.
