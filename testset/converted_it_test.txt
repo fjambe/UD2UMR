@@ -627,7 +627,7 @@ Sentence Gloss (en): He also built and renovated five traditional markets in 201
             :aspect performance
             :actor s13p
             :undergoer s13m2
-            :temporal (s13d2 / date-entity :year 2014)))
+            :temporal (s13d2 / date-entity :year 2014))))
 
 # alignment:
 s13c: 3-3
