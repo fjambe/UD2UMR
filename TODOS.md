@@ -2,8 +2,8 @@
 
 - [coding] Consider implementing adverbs that affect `modal-strength` (already available for Czech, see PDT conversion).
 - [coding] Check how negation in coordination is handled.
-- [deployment] Ask somebody else to run the converter, and see if they encounter new issues. Most probably, first finish
-the evaluation, so that it can be tested as well.
+- [deployment] Ask somebody else to run the converter, and see if they encounter new issues. [First finish
+the evaluation, so that it can be tested as well?]
 
 ## General
 - I think it could be useful to have functions specific to UPOS. E.g., for NOUNs I check `refer-number`, etc.
@@ -88,7 +88,7 @@ they are not overt).
 C.f., e.g., _Puerum basiavi frugalissimum, **non** propter formal, sed quia frugi est_ (from Perseus_test).
 I could also implement an additional check for UPOS (= only VERB), but maybe it would be too restraining.
 
-## Improvement in the converter after first eval phase
+## Improvements in the converter after first eval phase
 
 ### Fixed:
 - Variable identifiers were missing the sentence id prefix (e.g. "s6").
@@ -112,17 +112,9 @@ The verbal lemma is extracted from the `LDeriv` attribute in MISC. Since they ar
 from the list of elements that determine negative modality. Moreover, `Polarity=Neg` among the FEATS of a VERB now
 implies `(full)-negative` UMR modality.
 
-### To fix:
-- The Americans do not seem to use non-English letters in the variable identifiers ("s18č").
-The simplest solution would be to use "x" instead of anything that does not fall in [a-z].
-A possible fancier approach would be to convert 'č' --> 'c', 'á' --> 'a' etc. --> ask Boulder.
+## QUESTIONS
 
-## QUESTIONS:
-- [Julia, not asked] Is there something like `foreign-entity`, `foreign...`? I recall something but not much. Otherwise,
-how do I include a foreign expression/word in a graph? Don't have a real example because all those I have are actually
-supposed to be named entities.
-
-## For Dan:
+### For Dan:
 - What to do with _nec_ split as _ne_ + _c_? do I merge them in Perseus or handle them in UMR?
 Sent tlg0031.tlg027.perseus-lat1.tb.xml@88 in Perseus test.
 All other _nec_ s are not split in two as a MWE.
@@ -202,6 +194,22 @@ for languages other than Latin.
     - At some point, some manual evaluation needs to be done (for the thesis).
     - For the paper, it is fine having 2 languages.
 
+
+- [My notes (06.03.2025)]
+  - To obtain the **PRED** test set to evaluate the converter:
+    1. run the converter on the 30 sentences selected for manual
+    annotation;
+    2. run the converter on the 70 sentences selected for graph correction, by changing the `sent_num` to 31;
+    3. merge the two files into a single test set by running
+    `cat testset/converter-output_30_{lang}_test.txt testset/converter-output_70_{lang}_test.txt > testset/converter-output_total_{lang}_test.txt`.
+
+  - To obtain the **GOLD** test set to evaluate the converter:
+    1. take `manual_{lang}_test.txt`;
+    2. take `converted_{lang}_test.txt`;
+    3. merge the two files into a single test set by running
+    `cat testset/manual_{lang}_test.txt testset/converted_{lang}_test.txt > testset/temp_gold_total_{lang}_test.txt`;
+    4. change sentence numbers in `temp_gold_total_{lang}_test.txt` by running `python3 renumber_sentences.py`
+    (as of now, the language is hardcoded in the code and needs to be updated there).
 
 # PAPER
 - [Alexis (10.12.2024) + other] \

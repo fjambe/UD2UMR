@@ -29,12 +29,14 @@ if __name__ == "__main__":
     modals = pr.load_external_files('modality.json', args.lang)
     conjunctions = pr.load_external_files('conj.json', args.lang)
 
-    # with open("testset/converted_70_test_sent_ids.txt", "r", encoding="utf8") as for_test_file:  # to produce the test set only
+    # with open("testset/converted_70_test_sent_ids.txt", "r", encoding="utf8") as for_test_file:  # to produce the test set
+    # with open("testset/manual_30_test_sent_ids.txt", "r", encoding="utf8") as for_test_file:  # to produce the test set
     #     test = for_test_file.read().splitlines()
 
     os.makedirs(args.output_dir, exist_ok=True)
     with open(os.path.join(args.output_dir, f"{args.treebank.split('.')[0]}.umr"), "w",  encoding="utf-8") as output:
-    # with open(f"testset/converted_{args.lang}_test.txt", "w", encoding="utf-8") as output:  # to produce the test set only
+    # with open(f"testset/converted_{args.lang}_test.txt", "w", encoding="utf-8") as output:  # to produce the test set for annotation
+    # with open(f"testset/converter-output_30_{args.lang}_test.txt", "w", encoding="utf-8") as output:  # to produce the merged test set
 
         for tree in doc.trees:
 

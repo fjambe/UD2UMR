@@ -22,7 +22,7 @@ def select_sentences(dataset):
     return selected
 
 
-with open("../data/en_pud-ud-test.conllu") as file:
+with open("../../data/en_pud-ud-test.conllu") as file:
     sent_ids = []
     for line in file:
         if line.startswith("# sent_id"):
@@ -31,6 +31,6 @@ with open("../data/en_pud-ud-test.conllu") as file:
 
 selected_sentences = sorted(select_sentences(sent_ids))
 
-with open("converted_70_test_sent_ids.txt", "w") as output:
+with open("../converted_70_test_sent_ids.txt", "w") as output:
     for s in selected_sentences:
         output.write(s + '\n')

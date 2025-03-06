@@ -379,6 +379,8 @@ Sentence Gloss (en): The smartphone generation received an app it deserved, wher
                     :refer-number plural
                     :unit (s8p2 / persona)))
             :ARG1-of (s8i / identity-91
+                :aspect state
+                :modal-strength full-affirmative
                 :ARG2 (s8c / caso
                     :refer-number singular
                     :mod (s8b / buono :degree (s8m4 / most))
