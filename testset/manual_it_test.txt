@@ -1549,7 +1549,7 @@ Sentence Gloss (en): On the 1st January 49 BC, Marco Antonio read a declaration 
         :day 1
         :month 1
         :year 49
-        :era (s30d4 / d.C.)
+        :era (s30d4 / d.C.))
     :aspect performance
     :modal-strength full-affirmative)
 
