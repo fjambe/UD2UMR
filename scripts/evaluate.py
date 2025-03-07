@@ -127,20 +127,22 @@ class UMRDocument(DocumentMatch):
             f"Number of gold graphs ({len(predicted)}) and converted graphs ({len(gold)}) do not match."
         )
 
+        abstract_results = tests.abstract(predicted, gold)
+
         data = [
-            ("modal-strength", "strength", "accuracy", tests.modal_strength(predicted, gold)[0]),
-            ("modal-strength", "polarity", "accuracy", tests.modal_strength(predicted, gold)[1]),
-            ("abstract predicates", "predicate", "accuracy", tests.abstract(predicted, gold)[0]),
-            ("abstract predicates", "dependent ARGs", "recall", tests.abstract(predicted, gold)[1]),
-            ("abstract predicates", "ARGs nodes", "accuracy", tests.abstract(predicted, gold)[2]),
-            ("refer-number (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[0]),
-            ("refer-person (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[1]),
-            ("inverted relations", "parent", "accuracy", tests.inverted_relations(predicted, gold)[0]),
-            ("inverted relations", "edge", "accuracy", tests.inverted_relations(predicted, gold)[1]),
+            ("Modal-strength", "strength", "accuracy", tests.modal_strength(predicted, gold)[0]),
+            ("Modal-strength", "polarity", "accuracy", tests.modal_strength(predicted, gold)[1]),
+            ("Abstract predicates", "predicate", abstract_results[0], abstract_results[1], abstract_results[2]),
+            ("Abstract predicates", "dependents (UAS)", abstract_results[3], abstract_results[4], abstract_results[5]),
+            ("Abstract predicates", "ARGs nodes", abstract_results[6], abstract_results[7], abstract_results[8]),
+            ("Refer-number (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[0]),
+            ("Refer-person (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[1]),
+            ("Inverted relations", "parent", "accuracy", tests.inverted_relations(predicted, gold)[0]),
+            ("Inverted relations", "edge", "accuracy", tests.inverted_relations(predicted, gold)[1]),
             # ("coordination", "opX", "accuracy", tests.coordination(predicted, gold, args.lang))
         ]
 
-        df = pd.DataFrame(data, columns=["Type", "Sub-type", "Metric", "Score"])
+        df = pd.DataFrame(data, columns=["Type", "Sub-type", "Precision", "Recall", "F-score"])
         print(df.to_string(index=False))
 
 
