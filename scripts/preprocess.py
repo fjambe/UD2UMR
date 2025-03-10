@@ -20,14 +20,14 @@ def get_deprels(ud_tree) -> dict:
         'location': lambda d: d.deprel == 'advmod:lmod',
         'quant': lambda d: d.deprel == 'nummod' or d.sdeprel in ['nummod', 'numgov'],
         'vocative': lambda d: d.deprel == 'vocative',
-        'affectee': lambda d: d.udeprel in ['iobj', 'obl'] and d.feats.get('Case') == 'Dat',
+        'recipient': lambda d: d.udeprel in ['iobj', 'obl'] and d.feats.get('Case') == 'Dat',
         'MOD/POSS': lambda d: d.udeprel == 'nmod' and d.feats.get('Case') == 'Gen',
         'possessor': lambda d: d.sdeprel == 'poss',
         'identity-91': lambda d: d.deprel == 'appos',
         'COPULA': lambda d: d.deprel == 'cop',
         'conj': lambda d: d.deprel == 'conj',
         'other': lambda d: d.udeprel in ['advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'xcomp', 'dislocated', 'aux',
-                                         'discourse', 'acl', 'case', 'compound', 'parataxis', 'dep', 'orphan', 'expl']
+                                         'discourse', 'acl', 'case', 'compound', 'parataxis', 'dep', 'orphan', 'expl:pv']
     }
 
     deprels = {rel: [d for d in ud_tree.descendants if condition(d)] for rel, condition in mapping_conditions.items()}

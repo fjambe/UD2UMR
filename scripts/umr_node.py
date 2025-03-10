@@ -439,7 +439,7 @@ class UMRNode:
             elif self.ud_node.udeprel == 'advcl':
                 self.adverbial_clauses()
 
-            elif self.ud_node.udeprel in ['compound', 'expl']:
+            elif self.ud_node.udeprel == 'compound' or self.ud_node.deprel == 'expl:pv':
                 self.compound()
 
             elif self.ud_node.udeprel == 'fixed':
@@ -871,7 +871,13 @@ class UMRNode:
             arg_type = 'op' if not cord.endswith('-91') else 'ARG'
 
             if not self.extra_level:
-                first_conj = self.parent
+                if self.parent and not self.parent.extra_level:
+                    first_conj = self.parent
+                else:
+                    if self.parent and self.parent.parent:
+                        first_conj = self.parent.parent
+                    else:
+                        first_conj = self.parent
                 second_conj = self
             else:
                 first_conj = self.parent.parent if self.parent.parent else None
@@ -948,14 +954,15 @@ class UMRNode:
                 concept = 'have-identity-91'
 
         elif self.ud_node.parent.upos == 'ADJ':
-            if parent_case in {'Nom', 'Acc', ''}:
+            if parent_case in {'Nom', 'Acc', ''} and not any(s.upos == 'ADP' for s in self.ud_node.siblings):
+                print(self.umr_graph.sent_num)
                 concept = 'have-mod-91'
 
         elif self.ud_node.parent.upos == 'DET':
             concept = 'belong-91' if parent_feats['PronType'] == 'Prs' else 'identity-91'
 
         elif self.ud_node.parent.upos in {'PRON', 'NOUN', 'PROPN'}:
-            if parent_case in {'Nom', 'Acc', ''}:
+            if parent_case in {'Nom', 'Acc', ''} and not any(s.upos == 'ADP' for s in self.ud_node.siblings):
                 concept = 'identity-91'
             elif parent_case == 'Gen':
                 concept = 'belong-91'
@@ -966,12 +973,6 @@ class UMRNode:
             elif parent_case == 'Loc':
                 concept = 'have-place-91'
             elif (
-                    self.ud_node.parent.upos == 'PROPN'
-                    and parent_case not in {'Gen', 'Dat'}
-                    or not any(c.upos == 'ADP' for c in self.ud_node.children)
-            ):
-                concept = 'identity-91'
-            elif (
                     self.ud_node.parent.upos == 'NOUN'
                     and self.umr_graph.rel_roles
                     and self.ud_node.parent.lemma in self.umr_graph.rel_roles
@@ -979,7 +980,7 @@ class UMRNode:
                 concept = 'have-rel-role-92'
                 replace_arg = 'ARG3'
             else:
-                concept = 'COPULAR-CONSTRUCTION' if self.ud_node.parent.upos == 'PRON' else 'identity-91'
+                concept = 'COPULAR-CONSTRUCTION'
 
         else:
             concept = 'COPULAR-CONSTRUCTION'
