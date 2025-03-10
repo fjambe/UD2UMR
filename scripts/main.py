@@ -75,3 +75,4 @@ if __name__ == "__main__":
 
                 # break
 
+    print('UD2UMR conversion completed!')
