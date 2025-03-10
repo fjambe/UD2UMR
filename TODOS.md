@@ -111,6 +111,24 @@ The verbal lemma is extracted from the `LDeriv` attribute in MISC. Since they ar
 - Fixed bug in handling negation: (e.g., snt10 in cs-PDT): now excluding children with `Polarity=Neg`+ UPOS = `VERB`
 from the list of elements that determine negative modality. Moreover, `Polarity=Neg` among the FEATS of a VERB now
 implies `(full)-negative` UMR modality.
+- Copula with `Case=Loc` now converted to `have-place-91`.
+- It is possible that the converter generates two of the same argument (e.g., two `affectee`s) for the same verb. I
+considered having a rule against that, but I inspected the data and it seems to happen only for relations for which it
+is allowed (`manner`, `mod`, `OBLIQUE`) - therefore, I didn't implement any rule. I fixed an issue with how `obl:arg`
+was handled, that was causing this issue of double `affectee` in sentence `cmpr9410-010-p5s1`. Code to check this:
+```
+def check_duplicate_edges(triples):
+    """ Checks for duplicate (parent, edge) pairs in a list of triples and prints a warning if found. """
+    edge_map = defaultdict(set)  # Maps (parent, edge) to a set of children
+
+    for parent, edge, child in triples:
+        edge_key = (parent, edge)
+        if edge_key in edge_map:
+            print(
+                f"Warning: Multiple children for parent '{parent}' and edge '{edge}': {edge_map[edge_key] | {child} }")
+
+        edge_map[edge_key].add(child)
+```
 
 ## QUESTIONS
 

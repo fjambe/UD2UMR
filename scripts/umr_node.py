@@ -933,62 +933,53 @@ class UMRNode:
         """
         replace_arg, concept = None, None
 
-        if self.ud_node.parent.feats['Degree'] and self.ud_node.parent.feats['Degree'] != 'Pos':
+        parent_feats = self.ud_node.parent.feats
+        parent_case = parent_feats.get('Case', '')
+
+        if parent_feats['Degree'] and parent_feats['Degree'] != 'Pos':
             self.parent.have_degree()
             return None
 
-        elif self.ud_node.parent.feats['NumType'] == 'Card':
+        elif parent_feats['NumType'] == 'Card':
             concept = 'have-quant-91'
 
         if self.ud_node.parent.upos == 'VERB':
-            if self.ud_node.parent.feats['VerbForm'] == 'Inf':
+            if parent_feats['VerbForm'] == 'Inf':
                 concept = 'have-identity-91'
 
         elif self.ud_node.parent.upos == 'ADJ':
-            if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or not self.ud_node.parent.feats['Case']:
+            if parent_case in {'Nom', 'Acc', ''}:
                 concept = 'have-mod-91'
 
         elif self.ud_node.parent.upos == 'DET':
-            if self.ud_node.parent.feats['PronType'] == 'Prs':
-                concept = 'belong-91'
-            else:
-                concept = 'identity-91'
+            concept = 'belong-91' if parent_feats['PronType'] == 'Prs' else 'identity-91'
 
-        elif self.ud_node.parent.upos == 'PRON':
-            if self.ud_node.parent.feats['Case'] in ['Nom', 'Acc'] or not self.ud_node.parent.feats['Case']:
+        elif self.ud_node.parent.upos in {'PRON', 'NOUN', 'PROPN'}:
+            if parent_case in {'Nom', 'Acc', ''}:
                 concept = 'identity-91'
-            elif self.ud_node.parent.feats['Case'] == 'Gen':
+            elif parent_case == 'Gen':
                 concept = 'belong-91'
-            elif self.ud_node.parent.feats['Case'] == 'Dat':
-                # double dative if ref_dative else dative of possession
-                ref_dative = [s for s in self.ud_node.siblings if
-                              s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
+            elif parent_case == 'Dat':
+                # Check for double dative
+                ref_dative = [s for s in self.ud_node.siblings if s.feats.get('Case') == 'Dat' and s.deprel == 'obl:arg']
                 concept = 'have-purpose-91' if ref_dative else 'belong-91'
-            else:
-                concept = 'copular-construction'
-
-        elif self.ud_node.parent.upos == 'NOUN':
-            if self.ud_node.parent.feats['Case'] == 'Gen':
-                concept = 'belong-91'
-            elif self.ud_node.parent.feats['Case'] == 'Dat':
-                # double dative if ref_dative else dative of possession
-                ref_dative = [s for s in self.ud_node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
-                concept = 'have-purpose-91' if ref_dative else 'belong-91'
-            elif self.umr_graph.rel_roles and self.ud_node.parent.lemma in self.umr_graph.rel_roles:
+            elif parent_case == 'Loc':
+                concept = 'have-place-91'
+            elif (
+                    self.ud_node.parent.upos == 'PROPN'
+                    and parent_case not in {'Gen', 'Dat'}
+                    or not any(c.upos == 'ADP' for c in self.ud_node.children)
+            ):
+                concept = 'identity-91'
+            elif (
+                    self.ud_node.parent.upos == 'NOUN'
+                    and self.umr_graph.rel_roles
+                    and self.ud_node.parent.lemma in self.umr_graph.rel_roles
+            ):
                 concept = 'have-rel-role-92'
                 replace_arg = 'ARG3'
             else:
-                concept = 'identity-91'
-
-        elif self.ud_node.parent.upos == 'PROPN':
-            if self.ud_node.parent.feats['Case'] == 'Gen':
-                concept = 'belong-91'
-            elif self.ud_node.parent.feats['Case'] == 'Dat':
-                # double dative if ref_dative else dative of possession
-                ref_dative = [s for s in self.ud_node.siblings if s.feats['Case'] == 'Dat' and s.deprel == 'obl:arg']
-                concept = 'have-purpose-91' if ref_dative else 'belong-91'
-            elif self.ud_node.parent.feats['Case'] not in ['Gen', 'Dat'] or not [c for c in self.ud_node.children if c.upos == 'ADP']:
-                concept = 'identity-91'
+                concept = 'COPULAR-CONSTRUCTION' if self.ud_node.parent.upos == 'PRON' else 'identity-91'
 
         else:
             concept = 'COPULAR-CONSTRUCTION'
