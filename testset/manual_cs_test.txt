@@ -958,19 +958,40 @@ Sentence: Weiss byl městy Kolín nad Rýnem a Brémy poctěn cenami za literatu
 Sentence Gloss (en): Weiss was honored with the literature prizes from the cities of Cologne and Bremen.
 
 # sentence level graph:
-(s21 / )
+(s21p / poctít
+	:actor (s21a / and
+		:op1 (s21h / human-settlement
+			:name (s21n / name
+				:op1 "Kolín"
+				:op2 "nad"
+				:op3 "Rýnem")
+			:refer-number singular)
+		:op2 (s21h2 / human-settlement
+			:name (s21n2 / name
+				:op1 "Brémy")
+			:refer-number plural))
+	:undergoer (s21p2 / person
+		:name (s21n3 / name
+			:op1 "Weiss")
+		:refer-number singular)
+	:instrument (s21c / cena
+		:mod (s21l / literatura
+			:refer-number singular)
+		:refer-number plural)
+	:modal-strength full-affirmative
+	:aspect performance)
 
 # alignment:
-s21w:
-s21b:
-s21m:
-s21k:
-s21r:
-s21a:
-s21b2:
-s21p:
-s21c:
-s21l:
+s21p: 9-9
+s21a: 7-7
+s21n: 0-0
+s21h: 4-6
+s21h2: 8-8
+s21n2: 0-0
+s21p2: 1-1
+s21c: 10-10
+s21l: 12-12
+s21n3: 0-0
 
 # document level annotation:
 
@@ -983,19 +1004,26 @@ Sentence: První řecké texty se začaly objevovat od 9. století př. n.l.
 Sentence Gloss (en): From the 9th century BC, the first Greek texts began to appear.
 
 # sentence level graph:
-(s22 / )
+(s22o / objevovat-se
+	:modal-strength full-affirmative
+	:aspect activity
+	:stimulus (s22t / text
+		:refer-number plural
+		:mod (s22ř / řecký)
+		:ord (s22o2 / ordinal-entity
+                	:value 1))
+        :temporal (s22f3 / from
+                    :op1 (s22d / date-entity
+                	:century 9
+                	:era BC)))
 
 # alignment:
-s22p:
-s22r:
-s22t:
-s22s:
-s22z:
-s22o:
-s229:
-s22s2:
-s22n:
-s22l:
+s22o: 4-4, 6-6
+s22ř: 2-2
+s22t: 3-3
+s22o2: 1-1
+s22f3: 7-7
+s22d: 8-16
 
 # document level annotation:
 
@@ -1008,34 +1036,68 @@ Sentence: Řecko bylo po vzoru do značné míry diktovaném řeckou polohou roz
 Sentence Gloss (en): Greece was divided into many small, self-governing communities, a pattern largely dictated by Greek geography: every island, valley and plain is cut off from its neighbours by the sea or mountain ranges.
 
 # sentence level graph:
-(s23 / )
+(s23i / identity-91
+	:modal-strength full-affirmative
+	:aspect state
+	:ARG1 (s23r / rozdělit
+		:modal-strength full-affirmative
+		:aspect perfomance
+		:undergoer (s23c / country
+			:name (s23n / name
+				:op1 "Řecko"))
+		:manner (s23v / vzor
+			:refer-number singular
+			:undergoer-of (s23d / diktovat
+				:cause (s23p / poloha
+					:refer-number singular
+					:possessor s23c)
+				:degree (s23z / značný)
+				:modal-strength full-affirmative
+				:aspect activity))
+		:result (s23k / komunita
+			:quant (s23m / mnoho)
+			:mod (s23m2 / malý)
+			:mod (s23s / samosprávný)))
+	:ARG2 (s23o / odříznout
+		:modal-strength full-affirmative
+		:aspect perfomance
+		:undergoer (s23a / and
+			:op1 (s23o2 / ostrov)
+			:op2 (s23ú / údolí)
+			:op3 (s23r2 / rovina)
+			:quant (s23k2 / každý))
+		:source (s23s / soused
+			:possessor s23a
+			:refer-number plural)
+		:cause (s23o3 / or
+			:op1 (s23m3 / moře
+				:refer-number singular)
+			:op2 (s23p2 / pohoří
+				:refer-number singular))))
 
 # alignment:
-s23r:
-s23b:
-s23v:
-s23z:
-s23m:
-s23d:
-s23r2:
-s23p:
-s23r:
-s23m2:
-s23m3:
-s23s:
-s23k:
-s23k2:
-s23o:
-s23u:
-s23a:
-s23r2:
-s23j:
-s23o2:
-s23s2:
-s23s3:
-s23m4:
-s23n:
-s23p2:
+s23i: 0-0
+s23r: 11-11
+s23c: 1-1
+s23n: 0-0
+s23v: 28-28
+s23d: 31-31
+s23p: 10-10
+s23z: 29-29
+s23k: 16-16
+s23m: 13-13
+s23m2: 14-14
+s23s: 15-15
+s23o: 24-25
+s23a: 22-22
+s23o2: 19-19
+s23ú: 21-21
+s23r2: 23-23
+s23k2: 18-18
+s23s: 28-28
+s23o3: 30-30
+s23m3: 29-29
+s23p2: 31-31
 
 # document level annotation:
 
@@ -1048,24 +1110,44 @@ Sentence: Obchod se rozvíjel za pomoci obchodních základen ve Středomoří, 
 Sentence Gloss (en): Trade was developed by establishing commercial outposts throughout the Mediterranean, a technique that had not been used until then.
 
 # sentence level graph:
-(s24 / )
+(s24r / rozvíjet-se
+	:undergoer (s24o / obchodovat
+		:modal-strength full-affirmative
+		:aspect process)
+	:instrument (s24z / základna
+		:refer-number plural
+		:mod (s24o2 / obchodní)
+		:place (s24w / world-region
+			:refer-number plural
+			:name (s24n / name
+				:op1 "Středomoří")))
+	:ARG1-of (s24i / identity-91
+		:modal-strength full-affirmative
+		:aspect state
+		:ARG2 (s24p / postupovat
+			:modal-strength full-affirmative
+			:aspect process
+			:undergoer-of (s24p2 / používat
+				:modal-strength full-negative
+				:aspect activity
+				:temporal (s24u / until
+					:op1 (s24d2 / doba
+						:mod (s24t / ten)
+						:refer-number singular))))))
 
 # alignment:
-s24o:
-s24s:
-s24r:
-s24p:
-s24o2:
-s24z:
-s24s2:
-s24c:
-s24b:
-s24p2:
-s24k:
-s24s3:
-s24t:
-s24d:
-s24n:
+s24r: 2-3
+s24o: 1-1
+s24z: 7-7
+s24o2: 6-6
+s24w: 9-9
+s24n: 0-0
+s24i: 0-0
+s24p: 13-13
+s24p2: 20-20
+s24u: 17-17
+s24d2: 19-19
+s24t: 18-18
 
 # document level annotation:
 
@@ -1113,20 +1195,39 @@ Sentence: Vydávání mincí je převážně numismatická záležitost s cílem
 Sentence Gloss (en): The issuing of coinage is predominantly numismatic in nature, with the intention of being sold mainly to collectors.
 
 # sentence level graph:
-(s26 / )
+(s26h / have-role-91
+	:ARG1 (s26v / vydávat
+		:modal-strength full-affirmative
+		:aspect activity
+		:undergoer (s26m / mince
+			:refer-number plural))
+	:ARG2 (s26z / záležitost
+		:mod (s26n / numismatický)
+		:refer-number singular
+		:purpose (s26p2 / prodávat
+			:modal-strength full-affirmative
+			:aspect activity
+			:theme s26m
+			:recipient (s26p4 / person
+				:actor-of (s26s / sbírat
+					:modal-strength full-affirmative
+					:aspect process)
+				:mod (s26p3 / především))))
+	:manner (s26p / převážně)
+	:modal-strength full-affirmative
+	:aspect state)
 
 # alignment:
-s26v:
-s26m:
-s26j:
-s26p:
-s26n:
-s26z:
-s26c:
-s26p2:
-s26j2:
-s26p3:
-s26s:
+s26h: 0-0
+s26v: 1-1
+s26m: 2-2
+s26z: 6-6
+s26n: 5-5
+s26p2: 9-9
+s26p4: 0-0
+s26s: 12-12
+s26p3: 11-11
+s26p: 4-4
 
 # document level annotation:
 
@@ -1139,32 +1240,63 @@ Sentence: Muž mu řekl, že válka mezi těmito dvěma světy je na cestě, jak
 Sentence Gloss (en): The man told him that a war between the two universes is coming, as he and Walter had predicted; it is for this reason that Olivia, among others, was trained as a child.
 
 # sentence level graph:
-(s27 / )
+(s27ř / říci
+	:modal-strength full-affirmative
+	:aspect performance
+	:actor (s27m / muž
+		:refer-number singular)
+	:recipient (s27p / person
+		:refer-number 3
+		:refer-person singular)
+	:theme (s27v / válčit
+		:actor (s27s / svět
+			:refer-number plural
+			:quant 2
+			:mod (s27t / tento))
+		:undergoer s27s
+		:theme-of (s27b / být-na-cestě
+			:modal-strength full-affirmative
+			:aspect state
+			:theme-of (s27p2 / předpovídat
+				:modal-strength full-affirmative
+				:aspect activity
+				:actor (s27a / and
+					:op1 s27m
+					:op2 (s27p3 / person
+						:name (s27n / name
+							:op1 "Walter")
+						:refer-number singular)))
+			:cause (s27t2 / trénovat
+				:modal-strength full-affirmative
+				:aspect activity
+				:undergoer (s27p4 / person
+					:name (s27n2 / name
+						:op1 "Olivia")
+					:refer-number singular)
+				:temporal (s27h / have-role-91
+					:ARG1 s27p4
+					:ARG2 (s27d / dítě
+						:refer-number singulat)
+					:modal-strength full-affirmative
+					:aspect state)))))
 
 # alignment:
-s27m:
-s27m2:
-s27r:
-s27v:
-s27t:
-s27d:
-s27s:
-s27j:
-s27c:
-s27j2:
-s27o:
-s27a:
-s27w:
-s27p:
-s27j3:
-s27t2:
-s27t3:
-s27d2:
-s27o2:
-s27j4:
-s27b:
-s27t4:
-s27d3:
+s27ř: 3-3
+s27m: 1-1
+s27p: 2-2
+s27v: 6-6
+s27s: 10-10
+s27t: 8-8
+s27b: 11-13
+s27p2: 19-19
+s27a: 17-17
+s27p3: 18-18
+s27n: 0-0
+s27t2: 34-34
+s27p4: 28-28
+s27n2: 0-0
+s27h: 0-0
+s27d: 36-36
 
 # document level annotation:
 
@@ -1177,22 +1309,40 @@ Sentence: Předtím, než byly zformovány Andy, byl západní okraj Jižní Ame
 Sentence Gloss (en): Before the Andes were formed, the western margin of South America had already been the site of several orogenies.
 
 # sentence level graph:
-(s28 / )
+(s28e / exist-91
+	:modal-strength full-affirmative
+	:aspect state
+	:ARG1 (s28o / orogeneze
+		:quant (s28n / několik))
+	:ARG2 (s28o2 / okraj
+		:refer-number singular
+		:place (s28z / západní)
+		:possessor (s28c / continent
+			:name (s28n2 / name
+				:op1 "Jižní"
+				:op2 "Amerika")
+			:refer-number singular))
+	:temporal (s28b / before
+		:op1 (s28z2 / zformovat
+			:modal-strength full-affirmative
+			:aspect performance
+			:result (s28m / mountains
+				:name (s28n3 / name
+					:op1 "Andy")
+				:refer-number plural))))
 
 # alignment:
-s28p:
-s28b:
-s28z:
-s28a:
-s28b2:
-s28z2:
-s28o:
-s28j:
-s28a2:
-s28u:
-s28o2:
-s28n:
-s28o3:
+s28e: 0-0
+s28o: 16-16
+s28n: 15-15
+s28o2: 10-10
+s28z: 9-9
+s28c: 11-12
+s28n2: 0-0
+s28b: 1-1
+s28z2: 5-5
+s28m: 6-6
+s28n3: 0-0
 
 # document level annotation:
 
@@ -1229,7 +1379,7 @@ Sentence Gloss (en): In 1976 he met with a friend who worked with his record lab
         :modal-strength full-affirmative
         :aspect performance
         :actor s29p
-        :undergoer (s29s / skladba
+        :undergoer (s29s2 / skladba
             :ARG1-of (s29i / identity-91
                 :modal-strength partial-affirmative
                 :aspect state
@@ -1257,7 +1407,7 @@ s29p: 14-14, 29-30
 s29h: 15-15
 s29n: 18-20
 s29n2: 23-25
-s29s: 27-27, 37-37
+s29s2: 27-27, 37-37
 s29i: 28-28, 31-32
 s29d: 33-33
 s29v2: 34-34
