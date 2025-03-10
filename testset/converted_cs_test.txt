@@ -2291,26 +2291,27 @@ Sentence Gloss (en): The Disibodenberg cloister was disbanded and fell into ruin
 
 # sentence level graph:
 (s48a / and
-    :op1 (s48r / rozpuštěný
-        :undergoer (s48k / klášter
-            :mod (s48t / type-NE
-                :name (s48n / name
-                    :op1 "Disibodenberg"))
-            :refer-number singular))
+    :op1 (s48r / rozpustit
+        :undergoer (s48w / worship-place
+            :name (s48n / name
+            	:op1 "Disibodenberg")
+            :refer-number singular)
+        :aspect performance
+        :modal-strength full-affirmative)
     :op2 (s48c / chátrat
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :OBLIQUE (s48r2 / reformace
-            :refer-number singular)))
+        :undergoer s48w
+        :modal-strength full-affirmative
+        :aspect activity
+        :cause (s48r2 / reformovat
+            :aspect process)))
 
 # alignment:
-s48a: 0-0
-s48n: 0-0
-s48t: 0-0
-s48k: 1-1
 s48r: 4-4
-s48r2: 8-8
 s48c: 9-9
+s48n: 0-0
+s48a: 5-5
+s48w: 1-2
+s48r2: 8-8
 
 # document level annotation:
 
@@ -2323,63 +2324,69 @@ Sentence: Po těchto úspěších podepsal smlouvu s týmem Telekomu a nastěhov
 Sentence Gloss (en): After these successes, he signed a contract with Team Telekom and moved in with his girlfriend in Merdingen in Südbaden, where he lived until 2002.
 
 # sentence level graph:
-(s49a2 / and
+(s49a / and
     :op1 (s49p / podepsat
-        :modal-strength MS-affirmative
-        :aspect ASP
+        :modal-strength full-affirmative
+        :aspect performance
+        :actor (s49p2 / person
+            :refer-number singular
+            :refer-person 3rd)
         :undergoer (s49s / smlouva
-            :mod (s49t2 / tým
+            :possessor (s49t / tým
                 :refer-number singular
-                :MOD/POSS (s49t3 / telekom
+                :possessor (s49c / company
+                    :name (s49n / name
+                    	:op1 "Telekom")
                     :refer-number singular))
             :refer-number singular)
-        :OBLIQUE (s49u / úspěch
-            :mod (s49t / tento)
-            :refer-number plural))
-    :op2 (s49n / nastěhovat
-        :modal-strength MS-affirmative
+        :temporal (s49a3 / after
+            :op1 (s49u / uspět
+                :actor s49p2
+                :modal-strength full-affirmative
+            	:aspect process))
+    :op2 (s49n2 / nastěhovat
+        :modal-strength full-affirmative
         :aspect performance
-        :undergoer (s49p3 / person
-            :refer-person FILL
-            :refer-number FILL)
-        :OBLIQUE (s49m / Merdingen
-            :mod (s49t4 / type-NE
-                :name (s49n2 / name
-                    :op1 "Bádensko")
-                :mod (s49j / jižní))
-            :refer-number FILL
-            :manner-of (s49z / žít
-                :OBLIQUE (s49r / rok
-                    :manner (s49a / až)
-                    :refer-number singular
-                    :quant 2002)
-                :modal-strength MS-affirmative
-                :aspect ASP))
-        :OBLIQUE (s49p2 / přítelkyně
+        :actor s49p2
+        :goal (s49h / human-settlement
+            :name (s49n3 / name
+            	:op1 "Merdingen")
             :refer-number singular
-            :possessor (s49p4 / person
-                :refer-person FILL
-                :refer-number singular))))
+            :place t2 / territory
+                :name (s49n4 / name
+                	:op1 "Bádensko")
+                :mod (s49j / jižní))
+                :refer-number singular
+            :place-of (s49ž / žít
+                :actor s49p2
+                :temporal (u/ until
+                    :op1 (d/ date-entity
+                	:year 2002)
+                :modal-strength full-affirmative
+                :aspect action))
+        :companion (s49p3 / přítelkyně
+            :refer-number singular
+            :possessor s49p2
 
 # alignment:
-s49a: 0-0
-s49n2: 0-0
-s49p3: 0-0
-s49p4: 0-0
-s49t4: 0-0
-s49t: 2-2
-s49u: 3-3
+s49a: 9-9
 s49p: 4-4
+s49p2: 0-0
 s49s: 5-5
-s49t2: 7-7
-s49t3: 8-8
-s49a2: 9-9
-s49n: 10-10
-s49p2: 14-14
-s49m: 16-16
+s49t: 7-7
+s49c: 8-8
+s49n: 0-0
+s49a3: 1-1
+s49ú: 3-3
+s49n2: 10-10
+s49c2: 16-16
+s49n3: 0-0
+s49t2: 19-19
+s49n4: 0-0
 s49j: 18-18
-s49z: 22-22
-s49r: 25-25
+s49u: 23-24
+s49d: 25-26
+s49p3: 14-14
 
 # document level annotation:
 
@@ -2392,60 +2399,61 @@ Sentence: Okresy Viguier a La Conte obsahují většinu městského sociálního
 Sentence Gloss (en): The Viguier and La Conte districts contain the majority of the city's social housing, where the population is mainly made up of immigrants or those of immigrant origin.
 
 # sentence level graph:
-(s50o2 / obsahovat
-    :actor (s50a / and
-        :op1 (s50o / okres
-            :refer-number plural
-            :mod (s50t3 / type-NE
-                :name (s50n2 / name
-                    :op1 "Viguier")))
-        :op2 (s50t2 / type-NE
+(s50e / exist-91
+    :ARG1 (s50a / and
+        :op1 (s50c / country-region
+            :refer-number singular
             :name (s50n / name
-                :op1 "Le"
-                :op2 "Conte")))
-    :undergoer (s50v / většina
+            	:op1 "Viguier"))
+        :op2 (s50c2 / country-region
+            :refer-number singular
+            :name (s50n2 / name
+            	:op1 "La"
+            	:op2 "Conte"))
+    :ARG2 (s50b / bydlení
         :refer-number singular
-        :MOD/POSS (s50b / bydlení
-            :det-of (s50t / tvořit
-                :actor (s50o4 / or
-                    :op1 (s50p / přistěhovalec
+        :quant (s50v / většina)
+        :mod (s50m / městské)
+        :mod (s50s / sociální)
+        :poss-of (s50o / obyvatelstvo
+             :refer-number singular
+             :ARG1-of (s50i / identity-91
+                :ARG2 (s50o2 / or
+                    :op1 (s50p / person
                         :refer-number plural
-                        :manner (s50h / hlavně))
-                    :op2 (s50c / člověk
+                        :refer-person 3rd
+                        :actor-of (s50p2 / přistěhovat-se))
+                    :op2 (s50č / člověk
                         :refer-number plural
-                        :MOD/POSS (s50p3 / původ
-                            :mod (s50p2 / přistěhovalecký)
+                        :mod (s50p3 / původ
+                            :mod (s50p4 / přistěhovalecký)
                             :refer-number singular)))
-                :undergoer (s50o3 / obyvatelstvo
-                    :refer-number singular)
-                :modal-strength MS-affirmative
-                :aspect ASP)
-            :mod (s50s / sociální)
-            :mod (s50m / městský)
-            :refer-number singular))
+                :manner (s50h / hlavně)
+                :modal-strength full-affirmative
+                :aspect state)
     :modal-strength full-affirmative
-    :aspect ASP)
+    :aspect state)
 
 # alignment:
-s50a: 0-0
+s50e: 6-6
+s50a: 3-3
+s50c: 1-2
+s50c2: 4-5
 s50n: 0-0
 s50n2: 0-0
-s50t2: 0-0
-s50t3: 0-0
-s50v: 0-0
-s50o: 1-1
-s50o2: 6-6
+s50b: 10-10
+s50v: 7-7
 s50m: 8-8
 s50s: 9-9
-s50b: 10-10
-s50o3: 13-13
-s50t: 14-14
-s50h: 15-15
+s50o: 13-13
+s50i: 14-14
+s50o2: 17-17
 s50p: 16-16
-s50o4: 17-17
-s50c: 18-18
-s50p2: 19-19
-s50p3: 20-20
+s50p2: 0-0
+s50č: 18-18
+s50p3: 19-19
+s50p4: 20-20
+s50h: 15-15
 
 # document level annotation:
 
@@ -2458,38 +2466,30 @@ Sentence: V letech začínajících rokem 2000 bylo pět lékařů na 100 000 ob
 Sentence Gloss (en): In the early 2000s, there were five doctors per 100,000 inhabitants.
 
 # sentence level graph:
-(s51c / COPULAR-CONSTRUCTION
+(s51e / exist-91
+    :aspect state
+    :modal-strength full-affirmative
+    :duration (s51r / rok
+    	:refer-number plural
+    	:theme-of (s51z / začínat
+    		:aspect state
+    		:modal-strength full-affirmative
+    		:temporal (s51d / date-entity
+           		:year 2000)))
     :ARG1 (s51l / lékař
-        :refer-number plural)
-    :ARG2 (s51p / pět
-        :OBLIQUE (s51r / rok
-            :mod (s51z / začínající
-                :mod (s51r2 / rok
-                    :refer-number singular
-                    :quant 2000))
-            :refer-number plural)
-        :MOD/POSS (s51o / obyvatel
-            :quant (1 / 100 000)
-            :refer-number plural))
-    :modal-strength MS-affirmative
-    :aspect state)
+        :quant 5)
+    	:recipient (s51p / person
+    	    :actor-of (s51o / obývat)
+            :quant 100000))
 
 # alignment:
-s51l: 0-0
-s51o: 0-0
-s51p: 0-0
-s51r2: 0-0
-s51z: 0-0
-s51r: 2-2
-s51c: 6-6
-1: 10-10
+s51e: 6-6
 s51r: 2-2
 s51z: 3-3
-s51r2: 4-4
-s51c: 6-6
-s51p: 7-7
+s51d: 4-5
 s51l: 8-8
-s51o: 11-11
+s51p: 11-11
+s51o: 0-0
 
 # document level annotation:
 
@@ -2502,54 +2502,66 @@ Sentence: Gramotnost byla ztracená a Mykénské texty zapomenuty, ale Řekové 
 Sentence Gloss (en): Literacy had been lost and Mycenaean script forgotten, but the Greeks adopted the Phoenician alphabet, modifying it to create the Greek alphabet.
 
 # sentence level graph:
-(s52a3 / and
-    :op1 (s52z / ztracený)
-    :op2 (s52h / have-mod-91
-        :modal-strength MS
-        :aspect state
-        :ARG1 (s52t / text
-            :mod (s52m / mykénský)
-            :refer-number plural)
-        :ARG2 (s52z2 / zapomenutý))
-    :op3 (s52a4 / and
+(s52b / but-91
+    :ARG1 (s52a / and
+    	:op1 (s52z / ztratit
+        	:undergoer (s52g / gramotnost
+        		:refer-number singular)
+       		:modal-strength full-affirmative
+        	:aspect performance)
+    	:op2 (s52z2 / zapomenout
+        	:undergoer (s52t / text
+            	:source (s52h / human-settlement
+            		:refer-number plural
+            		:name (s52n / name
+            			:op1 "Mykény"))
+           	:refer-number plural)
+        	:modal-strength full-affirmative
+        	:aspect performance))
+    :ARG2 (s52a2 / and
         :op1 (s52p / přijmout
-            :refer-number plural
-            :actor (s52t2 / type-NE
-                :name (s52n / name
-                    :op1 "Řek"))
-            :undergoer (s52a / abeceda
-                :mod (s52f / fénický)
-                :refer-number singular))
+        	:actor (s52n4 / nationality
+                	:name (s52n2 / name
+                		:op1 "Řek"))
+            	:undergoer (s52a3 / abeceda
+                	:source (s52n3 / nationality
+                		:name (s52n5 / name
+                			:op1 "Féničan"))
+                	:refer-number singular)
+            	:modal-strength full-affirmative
+            	:aspect performance)
         :op2 (s52m2 / modifikovat
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :undergoer (s52p2 / person
-                :refer-person 3rd
-                :refer-number singular))
+            	:actor s52n4
+            	:undergoer s52a3
+            	:modal-strength full-affirmative
+            	:aspect performance)
         :op3 (s52v / vytvořit
-            :refer-number plural
-            :undergoer (s52a2 / abeceda
-                :mod (s52r2 / řecký)
-                :refer-number singular))))
+            	:actor s52n4
+           	:undergoer (s52a4 / abeceda
+                	:source s52n4
+                	:refer-number singular)
+                :modal-strength full-affirmative
+                :aspect performance)))
 
 # alignment:
-s52a: 0-0
-s52a2: 0-0
-s52a4: 0-0
-s52h: 0-0
-s52n: 0-0
-s52p2: 0-0
-s52t2: 0-0
+s52b: 9-9
+s52a: 4-4
 s52z: 3-3
-s52a3: 4-4
-s52m: 5-5
-s52t: 6-6
+s52g: 1-1
 s52z2: 7-7
+s52t: 6-6
+s52h: 5-5
+s52a2: 17-17
 s52p: 11-11
-s52f: 12-12
+s52n: 0-0
+s52n4: 10-10, 19-19
+s52a3: 13-13, 16-16
+s52n3: 12-12
+s52n5: 0-0
 s52m2: 15-15
 s52v: 18-18
-s52r2: 19-19
+s52a4: 20-20
+s52n2: 0-0
 
 # document level annotation:
 
@@ -2562,55 +2574,46 @@ Sentence: Asi od 8. století př. n. l. se začaly objevovat městské státy: m
 Sentence Gloss (en): From about the 8th century BC city states began to appear: small, self-governing territories with their own political systems.
 
 # sentence level graph:
-(s53z / začít
-    :actor (s53s2 / stát
-        :mod (s53m / městský)
+(s53o / objevovat-se
+    :undergoer (s53m / městský-stát
         :refer-number plural
         :ARG1-of (s53i / identity-91
             :ARG2 (s53c / celek
                 :mod (s53m2 / malý)
-                :mod (s53a / and
-                    :op1 (s53s3 / samospráva
+                :part (s53a / and
+                    :op1 (s53s / samospráva
                         :refer-number singular
                         :mod (s53v / vlastní))
-                    :op2 (s53s4 / systém
+                    :op2 (s53s2 / systém
                         :refer-number plural
                         :mod (s53v2 / vlastní)
                         :mod (s53p / politický)))
                 :refer-number plural)
-            :modal-strength MS
+            :modal-strength full-affirmative
             :aspect state))
-    :stimulus (s53o / objevovat
-        :modal-strength MS-affirmative
-        :aspect ASP)
-    :OBLIQUE (s53s / století
-        :mod (s53l / letopočet
-            :refer-number singular
-            :possessor (s53p2 / person
-                :refer-person 1st
-                :refer-number plural))
-        :refer-number singular
-        :quant 8)
-    :modal-strength MS-affirmative
-    :aspect ASP)
+    :temporal (s53f / from
+            :op1 (s53d / date-entity
+                :century 8
+                :era (s53b / BC)
+            :modal-strength neutral-affirmative)
+    :modal-strength full-affirmative
+    :aspect inceptive)
 
 # alignment:
-s53a: 0-0
-s53i: 0-0
-s53m: 0-0
-s53p2: 0-0
-s53s2: 0-0
-s53s: 5-5
-s53l: 10-10
-s53z: 13-13
 s53o: 14-14
-s53m2: 18-18
+s53m: 15-16
+s53i: 0-0
 s53c: 19-19
+s53m2: 18-18
+s53a: 23-23
+s53s: 22-22
 s53v: 21-21
-s53s3: 22-22
+s53s2: 27-27
 s53v2: 25-25
 s53p: 26-26
-s53s4: 27-27
+s53f: 2-2
+s53d: 2-11
+s53b: 6-10
 
 # document level annotation:
 
@@ -2623,28 +2626,36 @@ Sentence: Tato záležitost může být považována za výchozí bod pro jeho k
 Sentence Gloss (en): This affair can be seen as the starting point for his career as a radical revolutionary.
 
 # sentence level graph:
-(s54p / považovaný
-    :affectee (s54b / bod
-        :mod (s54k / kariéra
-            :refer-number singular
-            :MOD/POSS (s54r2 / revolucionář
-                :mod (s54r / radikální)
+(s54p / považovat
+    :stimulus (s54i / identity-91
+    	:ARG1 (s54z / záležitost
+    		:refer-number singular)
+    	:ARG2 (s54b / bod
+    		:mod (s54v / výchozí)
+    		:possessor (s54k / kariéra
+            		:refer-number singular
+            		:possessor (s54p2 / person
+            			:refer-number singular
+            			:refer-person 3rd)
+            		:mod (s54r / revolucionář
+            			:refer-number singular
+            			:mod (s54r2 / radikální)))
                 :refer-number singular)
-            :possessor (s54p2 / person
-                :refer-person 3rd
-                :refer-number singular))
-        :mod (s54v / výchozí)
-        :refer-number singular)
+        :aspect state
+        :modal-strength full-affirmative)
+    :aspect activity
     :modal-strength neutral-affirmative)
 
 # alignment:
-s54b: 0-0
-s54p2: 0-0
 s54p: 5-5
+s54i: 0-0
+s54z: 2-2
+s54b: 8-8
 s54v: 7-7
 s54k: 11-11
-s54r: 12-12
-s54r2: 13-13
+s54p2: 10-10
+s54r: 13-13
+s54r2: 12-12
 
 # document level annotation:
 
@@ -2659,73 +2670,69 @@ Sentence Gloss (en): In the summer, Georges and his wife returned to Switzerland
 # sentence level graph:
 (s55v / vrátit
     :actor (s55a / and
-        :op1 (s55t / type-NE
+        :op1 (s55p / person
             :name (s55n / name
                 :op1 "Georg"))
-        :op2 (s55m / manželka
+        :op2 (s55p2 / person
             :refer-number singular
-            :possessor (s55p2 / person
-                :refer-person 3rd
-                :refer-number singular)))
-    :OBLIQUE (s55t2 / type-NE
+            :ARG1-of (s55h / have-rel-role-92
+            	:aspect state
+            	:modal-strength full-affirmative
+            	:ARG2 s55p
+            	:ARG3 (s55m / manželka))))
+    :goal (s55c / country
         :name (s55n2 / name
             :op1 "Švýcarsko"))
-    :OBLIQUE (s55l / léto
+    :temporal (s55l / léto
         :refer-number singular)
-    :OBLIQUE (s55d / doprovod
-        :refer-number singular
-        :MOD/POSS (s55t3 / type-NE
-            :ARG1-of (s55h / have-rel-role-92
-                :ARG3 (s55d2 / dcera
-                    :refer-number singular
-                    :MOD/POSS (s55j / jeden
-                        :MOD/POSS (s55p / přítel
-                            :mod (s55g / Germainin)
-                            :refer-number plural)))
-                :modal-strength MS-affirmative
-                :aspect state)
-            :name (s55n3 / name
-                :op1 "Rosana")
-            :mod (1 / 18letý)))
-    :modal-strength MS-affirmative
+    :companion (s55p3 / person
+    	    :name (s55n3 / name
+    	    	:op1 "Rosana")
+    	    :age (s55t / temporal-quantity
+                :quant 18
+                :unit (s55y / year))
+            :ARG1-of (s55h2 / have-rel-role-92
+                :ARG2 (s55p4 / person
+	                :refer-person 3rd
+	                :quant 1
+                	:ARG1-of (s55i / include-91
+                		:aspect state
+                		:modal-strength full-affirmative
+                        	:ARG2 (s55p5 / přítel
+                                	:refer-number plural
+                            		:possessor (s55p6 / person
+                            			:name (s55n4 / name
+                            				:op1 "Germaine")
+                            			:refer-number singular))))
+                :ARG3 (s55d / dcera
+                	:refer-number singular)
+                :modal-strength full-affirmative
+                :aspect state))
+    :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
-s55a: 0-0
-s55d: 0-0
-s55d2: 0-0
-s55g: 0-0
+s55v: 8-8
+s55a: 5-5
+s55p: 4-4, 6-6
+s55n: 0-0
+s55p2: 0-0
 s55h: 0-0
-s55j: 0-0
-s55l: 0-0
-s55m: 0-0
-s55n: 0-0
-s55n2: 0-0
-s55n3: 0-0
-s55p: 0-0
-s55p2: 0-0
-s55t: 0-0
-s55t2: 0-0
-s55t3: 0-0
-s55v: 8-8
-1: 13-13
-s55a: 0-0
-s55g: 0-0
-s55j: 0-0
-s55n: 0-0
-s55n2: 0-0
-s55n3: 0-0
-s55p2: 0-0
-s55t: 0-0
-s55t2: 0-0
-s55t3: 0-0
-s55l: 2-2
 s55m: 7-7
-s55v: 8-8
-s55d: 12-12
-s55h: 17-17
-s55d2: 18-18
-s55p: 22-22
+s55c: 10-10
+s55n2: 0-0
+s55l: 2-2
+s55p3: 14-14
+s55n3: 0-0
+s55t: 13-13
+s55y: 0-0
+s55h2: 0-0
+s55p4: 0-0
+s55i: 0-0
+s55p5: 22-22
+s55p6: 21-21
+s55n4: 0-0
+s55d: 18-18
 
 # document level annotation:
 
@@ -2738,39 +2745,38 @@ Sentence: Během dovolené, jak krátce poté připustil, si začal mimomanžels
 Sentence Gloss (en): During the holiday, he began an extra-marital affair with the young girl, which he admitted shortly after.
 
 # sentence level graph:
-(s56z / začít
-    :undergoer (s56p3 / poměr
-        :mod (s56m / mimomanželský)
-        :mod (s56d2 / dívka
-            :refer-number singular
-            :mod (s56m2 / mladý))
-        :refer-number singular)
-    :OBLIQUE (s56p4 / person
-        :refer-person FILL
-        :refer-number FILL)
-    :OBLIQUE (s56d / dovolená
-        :refer-number singular)
-    :modal-strength MS-affirmative
-    :aspect ASP
-    :ADVCL (s56p2 / připustit
-        :manner (s56p / poté
-            :manner (s56k / krátce))
-        :manner (s56j / jak)
-        :modal-strength MS-affirmative
-        :aspect performance))
+(s56p / připustit
+    :actor (s56p2 / person
+    	:refer-number singular
+    	:refer-person 3rd)
+    :theme (s56z / začít-si
+    	:actor s56p2
+    	:result (s56p3 / poměr
+        	:mod (s56m / mimomanželský)
+        	:companion (s56d / dívka
+            		:refer-number singular
+            		:mod (s56m2 / mladý))
+        	:refer-number singular)
+    	:temporal (s56d2 / dovolená
+        	:refer-number singular)
+        :modal-strength full-affirmative
+    	:aspect performance)
+    :temporal (s56a / after
+    	:mod (s56k / krátce))
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
-s56p4: 0-0
-s56d: 2-2
-s56j: 4-4
-s56k: 5-5
-s56p: 6-6
-s56p2: 7-7
+s56p: 7-7
+s56p2: 0-0
 s56z: 10-10
-s56m: 11-11
 s56p3: 12-12
+s56m: 11-11
+s56d: 15-15
 s56m2: 14-14
-s56d2: 15-15
+s56d2: 2-2
+s56a: 6-6
+s56k: 5-5
 
 # document level annotation:
 
@@ -2783,28 +2789,24 @@ Sentence: Kromě toho je výskyt hurikánů na ostrově možný v létě.
 Sentence Gloss (en): Furthermore, the occurrence of hurricanes on the island is possible during the summer.
 
 # sentence level graph:
-(s57h2 / have-mod-91
-    :ARG1 (s57v / výskyt
-        :mod (s57o / ostrov
-            :refer-number singular)
-        :refer-number singular
-        :MOD/POSS (s57h / hurikán
-            :refer-number plural))
-    :ARG2 (s57m / možný
-        :OBLIQUE (s57l / léto
-            :refer-number singular)
-        :OBLIQUE (s57f / FILL
-            :refer-number singular))
-    :modal-strength MS
-    :aspect state)
+(s57a / and
+    :op1 (s57e2 / event)
+    :op2 (s57e / exist-91
+    	:ARG1 (s57h / hurikán
+    		:refer-number plural)
+    	:ARG2 (s57o / ostrov
+        	:refer-number singular)
+    	:temporal (s57l / léto
+        	:refer-number singular)
+   	:modal-strength neutral-affirmative
+    	:aspect process))
 
 # alignment:
-s57f: 0-0
-s57h2: 3-3
-s57v: 4-4
-s57h: 5-5
+s57a: 1-2
+s57e: 4-4
+s57e2: 0-0
 s57o: 7-7
-s57m: 8-8
+s57h: 5-5
 s57l: 10-10
 
 # document level annotation:
@@ -2818,46 +2820,50 @@ Sentence: Prvkem podporujícím tuto hypotézu by bylo mohutné stádo královsk
 Sentence Gloss (en): An element supporting this hypothesis would be the intense royal livestock of horses that took place at Villa Pelucca, in Sesto San Giovanni.
 
 # sentence level graph:
-(s58i / identity-91
-    :ARG1 (s58s / stádo
-        :mod (s58m / mohutný)
-        :refer-number singular
-        :ARG1-of (s58i2 / identity-91
-            :ARG2 (s58v / villa
-                :mod (s58t2 / type-NE
-                    :name (s58n / name
-                        :op1 "Sesto"
-                        :op2 "San"
-                        :op3 "Giovanni"))
-                :refer-number FILL)
-            :modal-strength MS-affirmative
-            :aspect state)
-        :MOD/POSS (s58k2 / kůň
-            :mod (s58k / královský)
-            :refer-number plural))
+(s58h / have-role-91
     :ARG2 (s58p / prvek
-        :mod (s58p2 / podporující
-            :mod (s58h / hypotéza
-                :mod (s58t / tento)
-                :refer-number singular))
-        :refer-number singular)
-    :modal-strength MS-affirmative
+    	:refer-number singular
+    	:actor-of (s58p2 / podporovat
+    	    :undergoer (s58h2 / hypotéza
+    		:refer-number singular)
+    	    :aspect activity
+    	    :modal-strength full-affirmative))
+    :ARG1 (s58k2 / kůň
+        :mod (s58k / královský)
+        :quant 1
+        :unit (s58s / stádo
+            :mod (s58m / mohutný))
+        :ARG1-of (s58h3 / have-place-91
+            :ARG2 (s58b / building
+                :name (s58n / name
+                	:op1 "Villa"
+                	:op2 "Pelucca")
+                :refer-number singular
+                :place (s58h4 / human-settlement
+                	:name (s58n2 / name
+                        	:op1 "Sesto"
+                        	:op2 "San"
+                        	:op3 "Giovanni")
+                        :refer-number singular))
+            :modal-strength full-affirmative
+            :aspect state))
+    :modal-strength neutral-affirmative
     :aspect state)
 
 # alignment:
-s58n: 0-0
-s58t2: 0-0
+s58h: 5-6
 s58p: 1-1
 s58p2: 2-2
-s58t: 3-3
-s58h: 4-4
-s58i: 6-6
-s58m: 7-7
-s58s: 8-8
-s58k: 9-9
+s58h2: 4-4
 s58k2: 10-10
-s58i2: 13-13
-s58v: 15-15
+s58k: 9-9
+s58s: 8-8
+s58m: 7-7
+s58h3: 13-13
+s58b: 15-16
+s58n: 0-0
+s58h4: 18-20
+s58n2: 0-0
 
 # document level annotation:
 
@@ -2872,60 +2878,54 @@ Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire
 # sentence level graph:
 (s59a / and
     :op1 (s59p / používat
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :actor (s59z / závodiště
+        :modal-strength full-negative
+        :aspect activity
+        :undergoer (s59z / závodiště
             :refer-number singular)
-        :OBLIQUE (s59r / rok
-            :refer-number singular
-            :quant 1976)
-        :manner (s59u / už))
+        :temporal (s59d / date-entity
+                :year 1976))
     :op2 (s59z2 / zničit
-        :modal-strength MS-affirmative
+        :modal-strength full-affirmative
         :aspect performance
-        :actor (s59p2 / požár
+        :cause (s59p2 / požár
             :refer-number singular)
-        :stimulus (s59z3 / zbýt
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :actor (s59f / FILL
-                :refer-number FILL
-                :MOD/POSS (s59t / tribuna
-                    :mod (s59z4 / zbouraný
-                        :undergoer (s59f2 / FILL
-                            :refer-number plural)
-                        :OBLIQUE (s59s / stáj
-                            :refer-number plural)
-                        :manner (s59p3 / pozdě
-                            :ARG2-of (s59h / have-degree-91
-                                :ARG3 (s59m / more)
-                                :modal-strength MS
-                                :aspect state)))
-                    :mod (s59d / dřevěný)
-                    :refer-number plural)))
-        :OBLIQUE (s59r2 / rok
+        :undergoer (s59t / thing
             :refer-number singular
-            :quant 1990)))
+            :theme-of (s59z3 / zbýt
+            	:modal-strength full-affirmative
+            	:aspect performance
+            	:source (s59t2 / tribuna
+                	:refer-number plural
+                	:material (s59d2 / dřevěný)
+        :temporal (s59d3 / date-entity
+                :year 1990)))
+    :op3 (s59z4 / zbourat
+    	:undergoer (s59a2 / and
+    		:op1 s59t
+    		:op2 (s59s / stáje
+    			:refer-number plural))
+        :temporal (s59p3 / pozdě
+                :degree (s59m / more)
+                :modal-strength full-affirmative
+            	:aspect performance)))))
 
 # alignment:
 s59a: 0-0
-s59f: 0-0
-s59f2: 0-0
-s59h: 0-0
-s59m: 0-0
-s59s: 0-0
-s59r: 2-2
-s59z: 5-5
-s59u: 6-6
 s59p: 7-7
-s59r2: 10-10
-s59p2: 12-12
+s59z: 5-5
+s59d: 2-3
 s59z2: 13-13
-s59z3: 16-16
-s59d: 18-18
-s59t: 19-19
-s59p3: 23-23
+s59p2: 12-12
+s59t: 0-0
+s59z3: 16-15
+s59t2: 19-19
+s59d2: 18-18
+s59a2: 0-0
+s59s: 27-27
 s59z4: 24-24
+s59p3: 23-23
+s59m: 0-0
+s59d3: 10-11
 
 # document level annotation:
 
@@ -2940,41 +2940,37 @@ Sentence Gloss (en): During the thirteenth century, the name Apulia was used by 
 # sentence level graph:
 (s60p / používat
     :actor (s60a / autor
-        :mod (s60n / některý)
+        :quant (s60n / některý)
         :refer-number plural)
-    :undergoer (s60n2 / název
-        :mod (s60t2 / type-NE
-            :name (s60n3 / name
-                :op1 "Apulie"))
+    :undergoer (s60n2 / name
+        :name (s60n3 / name :op1 "Apulie")
         :refer-number singular)
-    :OBLIQUE (s60o / označení
-        :refer-number singular
-        :MOD/POSS (s60c / část
+    :purpose (s60o / označit
+    	:actor s60a
+        :undergoer (s60č / část
             :mod (s60j / jižní)
             :refer-number singular
-            :MOD/POSS (s60p2 / poloostrov
+            :part (s60p2 / poloostrov
                 :mod (s60i / italský)
                 :refer-number singular)))
-    :OBLIQUE (s60s / století
-        :mod (s60t / třináctý)
-        :refer-number singular)
-    :modal-strength MS-affirmative
-    :aspect ASP)
+    :duration (s60d / date-entity
+        :century 13)
+    :modal-strength full-affirmative
+    :aspect activity)
 
 # alignment:
-s60n3: 0-0
-s60t2: 0-0
-s60t: 2-2
-s60s: 3-3
 s60p: 4-4
-s60n: 5-5
 s60a: 6-6
+s60n: 5-5
 s60n2: 7-7
+s60n3: 0-0
+s60a2: 8-8
 s60o: 10-10
+s60č: 12-12
 s60j: 11-11
-s60c: 12-12
-s60i: 13-13
 s60p2: 14-14
+s60i: 13-13
+s60d: 2-3
 
 # document level annotation:
 
@@ -2988,40 +2984,52 @@ Sentence Gloss (en): Historian David Crouch suggests that Stephen abandoned from
 
 # sentence level graph:
 (s61n / naznačovat
-    :actor (s61t / type-NE
-        :mod (s61h / historik
-            :refer-number singular)
+    :modal-strength full-affirmative
+    :aspect activity
+    :actor (s61p / person
+    	:ARG1-of (s61h / have-role-91
+    	    :aspect state
+    	    :modal-strength full-affirmative
+    	    :ARG2 (s61h2 / historik
+    	    	:refer-number singular))
+        :refer-number singular
         :name (s61n2 / name
             :op1 "David"
             :op2 "Crouch"))
-    :stimulus (s61o / opustit
-        :modal-strength MS-affirmative
+    :theme (s61o / opustit
+        :modal-strength full-affirmative
         :aspect performance
-        :purpose (s61s2 / soustředit
-            :affectee (s61o2 / otázka
-                :mod (s61j / jiný)
-                :refer-number plural)
-            :modal-strength neutral-affirmative)
-        :actor (s61t2 / type-NE
+        :actor (s61p2 / person
             :name (s61n3 / name
                 :op1 "Štěpán"))
-        :undergoer (s61s / soutěž
-            :refer-number singular))
-    :modal-strength full-affirmative
-    :aspect ASP)
+        :source (s61s / soutěžit
+            :aspect process
+            :modal-strength full-affirmative)
+        :purpose (s61s2 / soustředit-se
+            :experiencer s61p2
+            :stimulus (s61o2 / otázka
+                :mod (s61j / jiný)
+                :refer-number plural)
+            :temporal (s61o3 / období
+            	:mod (s61t / tento))
+            :modal-strength full-affirmative
+            :aspect activity)))
 
 # alignment:
-s61n2: 0-0
-s61n3: 0-0
-s61o2: 0-0
-s61s2: 0-0
-s61t: 0-0
-s61t2: 0-0
-s61h: 1-1
 s61n: 4-4
+s61p: 2-3
+s61h: 0-0
+s61h2: 1-1
+s61n2: 0-0
 s61o: 8-8
+s61p2: 7-7
+s61n3: 0-0
 s61s: 9-9
+s61s2: 18-18
+s61o2: 21-21
 s61j: 20-20
+s61o3: 16-16
+s61t: 15-15
 
 # document level annotation:
 
@@ -3034,54 +3042,61 @@ Sentence: Ačkoli to neznamenalo vyřešení konfliktu, francouzské vítězstv�
 Sentence Gloss (en): Although not a resolver of the conflict, the French victory at the Battle of Marengo forced the Austrians to give Italy up for the second time.
 
 # sentence level graph:
-(s62p / přinutit
-    :experiencer (s62v2 / vítězství
-        :mod (s62b / bitva
-            :refer-number singular
-            :MOD/POSS (s62t2 / type-NE
-                :name (s62n / name
-                    :op1 "Marengo")))
-        :mod (s62f / francouzský)
-        :refer-number singular)
-    :undergoer (s62t3 / type-NE
+(s62v / vzdát-se
+    :actor (s62n / nationality
         :name (s62n2 / name
-            :op1 "Rakušan"))
-    :stimulus (s62v3 / vzdát
-        :affectee (s62t4 / type-NE
-            :name (s62n3 / name
-                :op1 "Itálie"))
-        :manner (s62p2 / podruhé)
-        :modal-strength MS-affirmative
-        :aspect ASP)
-    :modal-strength MS-negative
+            :op1 "Rakušan")
+        :refer-number plural)
+    :theme (s62c / country
+        :name (s62n3 / name
+           :op1 "Itálie")
+        :refer-number singular)
+    :ord (s62o / ordinal-entity
+        :value 2)
+    :cause (s62z / zvítězit
+    	:actor (s62n6 / nationality
+            :name (s62n4 / name
+            	:op1 "Francouz"))
+        :place (s62b / bít-se
+            :actor (s62a / and
+            	:op1 s62n
+            	:op2 s62n6)
+            :aspect process
+            :modal-strength full-affirmative
+            :place (s62h / human-settlement
+                :name (s62n5 / name
+                    :op1 "Marengo")))
+        :modal-strength full-affirmative
+        :aspect process)
+    :modal-strength full-affirmative
     :aspect performance
-    :concession (s62z / znamenat
-        :actor (s62t / thing
-            :refer-number singular)
-        :undergoer (s62v / vyřešení
-            :refer-number singular
-            :MOD/POSS (s62k / konflikt
-                :refer-number singular))
-        :modal-strength MS-affirmative
-        :aspect ASP))
+    :concession (s62i / identity-91
+        :ARG1 s62v
+        :ARG2 (s62v2 / vyřešit
+            :undergoer (s62k / konflikt
+                :refer-number singular)
+            :aspect performance
+            :modal-strength full-affirmative)
+        :modal-strength full-negative
+        :aspect state))
 
 # alignment:
-s62n: 0-0
+s62v: 15-16
+s62n: 14-14
 s62n2: 0-0
+s62c: 17-17
+s62o: 18-18
+s62z: 8-8
 s62n3: 0-0
-s62t: 0-0
-s62t2: 0-0
-s62t3: 0-0
-s62t4: 0-0
-s62z: 3-3
-s62v: 4-4
-s62k: 5-5
-s62f: 7-7
-s62v2: 8-8
+s62n6: 7-7
+s62n4: 0-0
 s62b: 10-10
-s62p: 13-13
-s62v3: 15-15
-s62p2: 18-18
+s62a: 0-0
+s62h: 12-12
+s62n5: 0-0
+s62i: 3-3
+s62v2: 4-4
+s62k: 5-5
 
 # document level annotation:
 
@@ -3095,53 +3110,45 @@ Sentence Gloss (en): With regards to religious practices, Fiorello was educated 
 
 # sentence level graph:
 (s63a / and
-    :op1 (s63v / vychovávaný
-        :ADVCL (s63t / týkat
-            :actor (s63f / FILL
-                :refer-number FILL)
-            :affectee (s63n / náboženství
-                :refer-number singular)
-            :modal-strength MS
-            :aspect ASP)
+    :op1 (s63v / vychovávat
         :actor (s63c / církev
             :mod (s63e / episkopální)
             :refer-number singular)
-        :undergoer (s63t2 / type-NE
-            :name (s63n2 / name
-                :op1 "Fiorello")))
-    :op2 (s63z / zůstat
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :stimulus (s63c / člen
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :MOD/POSS (s63c2 / církev
-                :mod (s63p / protestantský)
-                :refer-number singular))
-        :OBLIQUE (s63z / život
-            :mod (s63c3 / celý)
+        :undergoer (s63p / person
+            :name (s63n / name
+                :op1 "Fiorello"))
+        :aspect activity
+        :modal-strength full-affirmative)
+    :op2 (s63h / have-org-role-91
+        :modal-strength full-affirmative
+        :aspect state
+        :ARG1 s63p
+        :ARG3 (s63č / člen
+            :refer-number singular)
+        :ARG2 (s63c2 / církev
+            :mod (s63p2 / protestantský)
+            :refer-number singular)
+        :duration (s63ž / život
+            :extent (s63c3 / celý)
             :refer-number singular
-            :possessor (s63p2 / person
-                :refer-person FILL
-                :refer-number singular))))
+            :possessor s63p))
+    :regard (s63n2 / náboženství
+        :refer-number singular))
 
 # alignment:
-s63a: 0-0
-s63c: 0-0
-s63f: 0-0
-s63n2: 0-0
-s63p2: 0-0
-s63t2: 0-0
-s63t: 3-3
-s63n: 4-4
+s63a: 11-11
 s63v: 8-8
+s63c: 10-10
 s63e: 9-9
-s63c: 12-12
-s63p: 13-13
+s63p: 6-6
+s63n: 0-0
+s63h: 0-0
+s63č: 12-12
 s63c2: 14-14
-s63z: 15-15
+s63p2: 13-13
+s63ž: 19-19
 s63c3: 17-17
-s63z: 19-19
+s63n2: 4-4
 
 # document level annotation:
 
@@ -3155,44 +3162,36 @@ Sentence Gloss (en): Tradition has it that the theme was selected intentionally 
 
 # sentence level graph:
 (s64t / tradovat
-    :actor (s64f / FILL
-        :refer-number singular)
-    :stimulus (s64z / zvolený
-        :OBLIQUE (s64p / počet
-            :mod (s64v / velký)
-            :refer-number singular
-            :MOD/POSS (s64t3 / type-NE
-                :mod (s64k / konvertovaný)
-                :name (s64n / name
-                    :op1 "Žid")
-                :actor-of (s64z2 / žít
-                    :OBLIQUE (s64t4 / type-NE
-                        :name (s64n2 / name
-                            :op1 "Palma"))
-                    :modal-strength MS-affirmative
-                    :aspect ASP)))
+    :theme (s64z / zvolit
+    	:undergoer (s64t2 / téma
+            :refer-number singular)
         :manner (s64z2 / záměrně)
-        :modal-strength MS-affirmative
+        :modal-strength full-affirmative
         :aspect performance
-        :undergoer (s64t2 / téma
-            :refer-number singular))
+        :reason (s64r / religious-group
+            :name (s64n / name
+                    :op1 "Žid")
+            :quant (s64v / velký-počet)
+            :actor-of (s64ž / žít
+              :place (s64h / human-settlement
+                    :name (s64n2 / name
+                    	:op1 "Palma"))
+              :modal-strength full-affirmative
+              :aspect action)))
     :modal-strength full-affirmative
-    :aspect ASP)
+    :aspect activity)
 
 # alignment:
-s64f: 0-0
-s64n: 0-0
-s64n2: 0-0
-s64t3: 0-0
-s64t4: 0-0
 s64t: 1-1
-s64t2: 5-5
 s64z: 7-7
+s64t2: 5-5
 s64z2: 8-8
-s64v: 10-10
-s64p: 11-11
-s64k: 12-12
-s64z2: 16-16
+s64r: 13-13
+s64n: 0-0
+s64v: 10-11
+s64ž: 16-16
+s64h: 18-18
+s64n2: 0-0
 
 # document level annotation:
 
@@ -3205,51 +3204,50 @@ Sentence: Nicméně jeho rozchod s Linaresem a přerušení pokrokové linie vyv
 Sentence Gloss (en): However, the breakdown between him and Linares and the discontinuation of the progressive line provoked the Revolution of Vindication which overthrew him in 1879.
 
 # sentence level graph:
-(s65v / vyvolat
-    :actor (s65a / and
-        :op1 (s65r / rozchod
-            :refer-number singular
-            :possessor (s65p5 / person
+(s65p / povstat
+    :cause (s65a / and
+        :op1 (s65r / rozejít-se
+            :actor (s65p2 / person
                 :refer-person 3rd
                 :refer-number singular)
-            :mod (s65t / type-NE
+            :undergoer (s65p3 / person
                 :name (s65n / name
-                    :op1 "Linares")))
-        :op2 (s65p / přerušení
-            :refer-number singular
-            :MOD/POSS (s65l / linie
-                :mod (s65p2 / pokrokový)
-                :refer-number singular)))
-    :undergoer (s65p4 / povstání
-        :mod (s65p3 / proguzmánovský)
-        :refer-number singular
-        :actor-of (s65s / svrhnout
-            :undergoer (s65p6 / person
-                :refer-person 3rd
+                    :op1 "Linares")
                 :refer-number singular)
-            :OBLIQUE (s65r2 / rok
-                :refer-number singular
-                :quant 1879)
-            :modal-strength MS-affirmative
+            :modal-strength full-affirmative
+            :aspect performance)
+        :op2 (s65p4 / přerušit
+            :undergoer (s65l / linie
+                :mod (s65p5 / pokrokový)
+                :refer-number singular)
+            :modal-strength full-affirmative
             :aspect performance))
-    :modal-strength MS-affirmative
+    :affectee (s65p6 / person
+    	 	:name (s65n2 / name
+    	 	    :op1 "Guzmán"))
+    :cause-of (s65s / svrhnout
+            :undergoer s65p
+            :temporal (s65d / date-entity
+                :year 1879)
+            :modal-strength full-affirmative
+            :aspect performance)
+    :modal-strength full-affirmative
     :aspect performance)
 
 # alignment:
-s65a: 0-0
-s65l: 0-0
-s65n: 0-0
-s65p5: 0-0
-s65p6: 0-0
-s65t: 0-0
+s65p: 12-12
+s65a: 6-6
 s65r: 3-3
-s65p: 7-7
-s65p2: 8-8
-s65v: 10-10
-s65p3: 11-11
-s65p4: 12-12
-s65r2: 17-17
+s65p2: 2-2, 15-15
+s65p3: 5-5
+s65p4: 7-7
+s65p5: 8-8
+s65p6: 11-11
 s65s: 19-19
+s65d: 17-18
+s65l: 9-9
+s65n: 0-0
+s65n2: 0-0
 
 # document level annotation:
 
@@ -3262,48 +3260,38 @@ Sentence: Zhroucení a intervence desítek bank vedly k úniku kapitálu, což z
 Sentence Gloss (en): The collapse of and intervention in dozens of banks lead to a flight of capital, causing businesses to go bankrupt.
 
 # sentence level graph:
-(s66a2 / and
-    :op1 (s66v / vést
-        :modal-strength MS-affirmative
-        :aspect ASP
-        :actor (s66a / and
-            :op1 (s66z / zhroucení
+(s66b2 / bankrotovat
+        :modal-strength full-affirmative
+        :aspect activity
+        :actor (s66f / firma
+            :refer-number plural)
+	:cause (s66u / unikat
+	    :theme (s66k / kapitál
                 :refer-number singular)
-            :op2 (s66i / intervence
-                :refer-number singular
-                :MOD/POSS (s66d / desítka
-                    :MOD/POSS (s66b / banka
-                        :refer-number plural)
-                    :refer-number plural)))
-        :OBLIQUE (s66u / únik
-            :refer-number singular
-            :MOD/POSS (s66k / kapitál
-                :refer-number singular)))
-    :op2 (s66z2 / způsobit
-        :modal-strength MS-affirmative
-        :aspect performance
-        :actor (s66f2 / FILL
-            :refer-number FILL)
-        :stimulus (s66b2 / bankrotovat
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :actor (s66f / firma
-                :refer-number plural))))
+            :modal-strength full-affirmative
+            :aspect process)
+            :cause (s66a / and
+            	:op1 (s66z / zhroutit-se
+            		:undergoer (s66b / banka
+            			:quant (s66d / desítka
+            				:refer-number plural))
+            		:modal-strength full-affirmative
+            		:aspect performance)
+                :op2 (s66i / intervenovat
+                	:actor s66b
+                	:modal-strength full-affirmative
+            		:aspect activity)
 
 # alignment:
-s66a: 0-0
-s66f2: 0-0
-s66z: 1-1
-s66i: 3-3
-s66d: 4-4
-s66b: 5-5
-s66v: 6-6
+s66b2: 16-16
+s66f: 15-15
 s66u: 8-8
 s66k: 9-9
-s66a2: 10-10
-s66z2: 12-12
-s66f: 15-15
-s66b2: 16-16
+s66a: 2-2
+s66z: 1-1
+s66b: 5-5
+s66d: 4-4
+s66i: 3-3
 
 # document level annotation:
 
@@ -3316,19 +3304,41 @@ Sentence: To byla rána z milosti a podnět, osadníci potřebovali získat svou
 Sentence Gloss (en): This was the coup de grâce and encouragement the settlers needed to get their independence.
 
 # sentence level graph:
-(s67a / and
-    :op1 (s67r / rána
-        :refer-number singular
-        :MOD/POSS (s67m / milost
-            :refer-number singular))
-    :op2 (s67p / podnět
-        :refer-number singular))
+(s67i / identity-91
+    :ARG1 (s67t / to
+    	:refer-number singular)
+    :ARG2 (s67a / and
+    	:op1 (s67r / rána
+        	:refer-number singular
+        	:reason (s67m / milost
+            		:refer-number singular))
+    	:op2 (s67p / podnět
+        	:refer-number singular))
+    :reason (s67p2 / potřebovat
+    	:experiencer (s67o / osadníci
+    		:refer-number plural)
+    	:stimulus (s67z / získat
+    		:theme (s67n / nezávislý
+    			:actor s67o)
+    		:actor s67o
+    		:modal-strength full-affirmative
+    		:aspect performance)
+    	:modal-strength full-affirmative
+    	:aspect state)
+    :modal-strength full-affirmative
+    :aspect state)
 
 # alignment:
-s67a: 0-0
+s67i: 0-0
+s67t: 1-1
+s67a: 6-6
 s67r: 3-3
 s67m: 5-5
 s67p: 7-7
+s67p2: 10-10
+s67o: 9-9
+s67z: 11-11
+s67n: 13-13
 
 # document level annotation:
 
@@ -3341,77 +3351,68 @@ Sentence: Nicméně pokud by bylo přijato anglické právo, dcery Ludvíka X., 
 Sentence Gloss (en): Nonetheless, if the English law had been accepted, the daughters of Luis X, Felipe V and Carlos IV would have had more of a claim to the throne, above their aunt Isabella of France.
 
 # sentence level graph:
-(s68m / mít
-    :actor (s68d / dcera
+(s68m / mít-nárok
+    :actor (s68p / person
         :refer-number plural
-        :MOD/POSS (s68a2 / and
-            :op1 (s68t3 / type-NE
-                :name (s68n2 / name
-                    :op1 "Ludvík")
-                :quant (s68x / X))
-            :op2 (s68t4 / type-NE
-                :name (s68n3 / name
-                    :op1 "Filip")
-                :quant (s68v / V))
-            :op3 (s68t5 / type-NE
-                :name (s68n4 / name
-                    :op1 "Karel")
-                :quant (s68i / IV))))
-    :undergoer (s68n / nárok
-        :mod (s68t / trůn
+        :ARG1-of (s68h / have-rel-role-92
+        	:aspect state
+        	:modal-strength full-affirmative
+            	:ARG3 (s68d / dcera)
+            	:ARG2 (s68a / and
+            		:op1 (s68p2 / person
+                		:name (s68n / name
+                    			:op1 "Ludvík")
+                			:op2 "X.")
+            		:op2 (s68p3 / person
+               			:name (s68n2 / name
+                    			:op1 "Filip"
+                			:op2 "V."))
+            		:op3 (s68p4 / person
+                		:name (s68n3 / name
+                    			:op1 "Karel"
+                			:op2 "IV.")))))
+    :undergoer (s68t / trůn
             :refer-number singular)
-        :refer-number singular
-        :ARG1-of (s68h / have-degree-91
-            :ARG2 (s68v2 / velký
-                :manner (s68m2 / mnohem)
-                :mod (s68t6 / type-NE
-                    :name (s68n5 / name
-                        :op1 "Izabela")
-                    :mod (s68t2 / teta
-                        :refer-number singular
-                        :possessor (s68p3 / person
-                            :refer-person 3rd
-                            :refer-number plural))
-                    :mod (s68f / francouzský)))
-            :ARG3 (s68m3 / more)
-            :modal-strength MS
-            :aspect state))
-    :modal-strength MS-affirmative
-    :aspect ASP
-    :condition (s68p / přijatý
-        :undergoer (s68p2 / právo
-            :mod (s68a / anglický)
+    :degree (s68m2 / more-than
+    	:op1 (s68p5 / person
+    	    :ARG1-of (s68h2 / have-rel-role-92
+    	    	:aspect state
+        	:modal-strength full-affirmative
+            	:ARG3 (s68t2 / teta)
+            	:ARG2 s68p
+            :name (s68n4 / name
+            	:op1 "Izabela"
+            	:op2 "Francouzská"))))
+    :condition (s68p6 / přijmout
+        :undergoer (s68p7 / právo
+            :mod (s68a2 / anglický)
             :refer-number singular)
-        :modal-strength MS-affirmative
-        :aspect ASP))
+        :modal-strength full-affirmative
+        :aspect performance)
+    :modal-strength full-affirmative
+    :aspect state)
 
 # alignment:
-s68a2: 0-0
-s68f: 0-0
+s68m: 22-22, 25-25
+s68p: 0-0
 s68h: 0-0
-s68m3: 0-0
+s68a: 17-17
+s68p2: 10-11
 s68n: 0-0
+s68p3: 14-15
 s68n2: 0-0
+s68p4: 18-19
 s68n3: 0-0
-s68n4: 0-0
-s68n5: 0-0
-s68p3: 0-0
-s68t3: 0-0
-s68t4: 0-0
-s68t5: 0-0
-s68t6: 0-0
-s68p: 5-5
-s68a: 6-6
-s68p2: 7-7
-s68d: 9-9
-s68x: 11-11
-s68v: 15-15
-s68i: 19-19
-s68m: 22-22
-s68m2: 23-23
-s68v2: 24-24
 s68t: 27-27
+s68m2: 24-25
+s68p5: 31-32
 s68t2: 30-30
+s68h2: 0-0
+s68n4: 0-0
+s68p6: 5-5
+s68p7: 7-7
+s68a2: 6-6
+s68d: 9-9
 
 # document level annotation:
 
@@ -3426,66 +3427,66 @@ Sentence Gloss (en): The attempts at making peace finally ended in spring of 141
 # sentence level graph:
 (s69a / and
     :op1 (s69s / skončit
-        :modal-strength MS-affirmative
+        :modal-strength full-affirmative
         :aspect performance
-        :actor (s69p / pokus
-            :mod (s69t / tento)
-            :mod (s69n / nastolení
-                :refer-number singular
-                :MOD/POSS (s69m / mír
-                    :refer-number singular))
-            :refer-number plural)
-        :OBLIQUE (s69j / jaro
+        :undergoer (s69p / pokusit-se
+            :result (s69n / nastolit
+                :result (s69m / mír
+                    :refer-number singular)
+                :modal-strength full-affirmative
+        	:aspect performance)
+            :modal-strength full-affirmative
+            :aspect process)
+        :temporal (s69j / jaro
             :refer-number singular
-            :MOD/POSS (s69r / rok
-                :refer-number singular
-                :quant 1415))
+            :temporal (s69d / date-entity
+                :year 1415))
         :manner (s69n2 / nakonec))
-    :op2 (s69r2 / rozhodnout
-        :modal-strength MS-affirmative
+    :op2 (s69r / rozhodnout-se
+        :modal-strength full-affirmative
         :aspect performance
-        :experiencer (s69t2 / type-NE
-            :name (s69n4 / name
+        :experiencer (s69p2 / person
+            :name (s69n3 / name
                 :op1 "Jindřich"))
-        :stimulus (s69p2 / provést
-            :modal-strength MS-affirmative
-            :aspect ASP
-            :undergoer (s69p3 / plán
+        :stimulus (s69p3 / provést
+            :modal-strength full-affirmative
+            :aspect performance
+            :undergoer (s69p4 / plán
+            	:possessor s69p2
                 :refer-number singular
                 :ARG1-of (s69i / identity-91
-                    :ARG2 (s69n3 / napadení
-                        :refer-number singular
-                        :MOD/POSS (s69k / království
-                            :mod (s69c / celý)
-                            :mod (s69f / francouzský)
-                            :refer-number singular))
-                    :modal-strength MS
-                    :aspect state)
-                :possessor (s69p4 / person
-                    :refer-person FILL
-                    :refer-number singular)))))
+                    :ARG2 (s69n5 / napadnout
+                    	:actor s69p2
+                        :undergoer (s69s2 / state
+                            :name (s69n4 / name
+                            	:op1 "království"
+                            	:op2 "Francouzské")
+                            :extent (s69c / celý)
+                            :refer-number singular)
+                        :modal-strength full-affirmative
+                    	:aspect performance)
+                    :modal-strength full-affirmative
+                    :aspect state)))))
 
 # alignment:
-s69a: 0-0
-s69i: 0-0
-s69n4: 0-0
-s69p4: 0-0
-s69t2: 0-0
-s69t: 1-1
+s69a: 12-12
+s69s: 7-7
 s69p: 2-2
 s69n: 4-4
 s69m: 5-5
-s69n2: 6-6
-s69s: 7-7
 s69j: 9-9
-s69r: 10-10
-s69r2: 15-15
-s69p2: 16-16
-s69p3: 18-18
-s69n3: 20-20
+s69d: 10-11
+s69n2: 6-6
+s69r: 14-15
+s69p2: 13-13
+s69n3: 0-0
+s69p3: 16-16
+s69p4: 18-18
+s69i: 0-0
+s69n5: 20-20
+s69s2: 22-23
+s69n4: 0-0
 s69c: 21-21
-s69k: 22-22
-s69f: 23-23
 
 # document level annotation:
 
@@ -3499,52 +3500,52 @@ Sentence Gloss (en): On the 1st January 49 BC, Marco Antonio read a declaration 
 
 # sentence level graph:
 (s70p / přečíst
-    :actor (s70t / type-NE
+    :temporal (s70d / date-entity
+        :year 49
+        :era (s70b / BC)
+        :month 1
+        :day 1)
+    :actor (s70p2 / person
+    	:refer-number singular
         :name (s70n / name
             :op1 "Marcus"
             :op2 "Antonius"))
-    :undergoer (s70p2 / prohlášení
-        :mod (s70c / Césarův)
+    :undergoer (s70p3 / prohlášení
+        :possessor (s70p4 / person
+        	:name (s70n2 / name
+            		:op1 "César")
+            	:refer-number singular)
         :refer-number singular
-        :OBLIQUE-of (s70p4 / prohlásit
-            :experiencer (s70p3 / prokonzul
+        :place-of (s70p5 / prohlásit
+            :actor (s70p6 / prokonzul
                 :refer-number singular)
-            :undergoer (s70p7 / person
-                :refer-person FILL
-                :refer-number FILL)
-            :stimulus (s70p5 / přítel
+            :theme (s70h / have-role-91
+                :ARG1 s70p6
+                :ARG2 (s70p7 / přítel
+                	:mod (s70m / mír
+                		:refer-number singular)
+                    	:refer-number singular)
                 :modal-strength full-affirmative
-                :aspect ASP
-                :MOD/POSS (s70m / mír
-                    :refer-number singular))
-            :modal-strength MS-affirmative
+            	:aspect state)
+            :modal-strength full-affirmative
             :aspect performance))
-    :OBLIQUE (s70l / leden
-        :mod (s70l2 / letopočet
-            :refer-number singular
-            :possessor (s70p6 / person
-                :refer-person 1st
-                :refer-number plural))
-        :refer-number singular
-        :quant 49
-        :quant 1)
-    :modal-strength MS-affirmative
-    :aspect ASP)
+    :modal-strength full-affirmative
+    :aspect performance)
 
 # alignment:
-s70m: 0-0
-s70n: 0-0
-s70p6: 0-0
-s70p7: 0-0
-s70t: 0-0
-s70l: 3-3
-s70l2: 9-9
 s70p: 11-11
-s70c: 14-14
-s70p2: 15-15
-s70p3: 20-20
-s70p4: 21-21
-s70p5: 23-23
+s70d: 1-10
+s70p2: 12-13
+s70n: 0-0
+s70p3: 15-15
+s70p4: 14-14
+s70n2: 0-0
+s70p5: 21-21
+s70p6: 20-20
+s70p7: 23-23
+s70m: 24-24
+s70h: 0-0
+s70b: 5-9
 
 # document level annotation:
 
