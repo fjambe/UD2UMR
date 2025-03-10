@@ -1446,12 +1446,13 @@ Sentence Gloss (en): On the 1st January 49 BC, Marco Antonio read a declaration 
      :day 1
      :month 1
      :year 49
-     :era "BCE"))
+     :era (s30b / BCE)))
 
 # alignment:
 s30n2: 0-0
 s30n3: 0-0
 s30t: 0-0
+s30b: 0-0
 s30d: 1-10
 s30p: 11-11
 s30p7: 12-13
