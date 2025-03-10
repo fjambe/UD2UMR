@@ -1,5 +1,7 @@
 import sys
 import penman
+from penman.exceptions import LayoutError
+
 from umr_graph import reorder_triples
 
 def numbered_line_with_alignment(tree, output_file=None):
@@ -48,7 +50,15 @@ def print_structure(tree, sent_tree, umr, root, sent_num, output_file=None, prin
     """
 
     destination = output_file if print_in_file else sys.stdout
-    umr_string = penman.encode(umr, top=root, indent=4)
+
+    umr_string = None
+    if umr:
+        try:
+            umr_string = penman.encode(umr, top=root, indent=4)
+        except LayoutError as e:
+            for n in reorder_triples(sent_tree.triples):
+                print(n)
+            print(f"Skipping sentence due to LayoutError: {e}")
 
     if umr_string and len(umr_string) > 2:
         print(f'# sent_id = {tree.address()}', file=destination)

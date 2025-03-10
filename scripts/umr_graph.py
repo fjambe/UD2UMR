@@ -289,16 +289,10 @@ class UMRGraph:
         self.remove_invalid_variables()
         self.avoid_disconnection()
 
-        try:
-            corrected_triples, root = self.correct_variable_name()
-            triples = reorder_triples(corrected_triples)
-            g = penman.Graph(triples)
-            return g, root
-
-        except LayoutError as e:
-            for n in reorder_triples(self.triples):
-                print(n)
-            print(f"Skipping sentence due to LayoutError: {e}")
+        corrected_triples, root = self.correct_variable_name()
+        triples = reorder_triples(corrected_triples)
+        g = penman.Graph(triples)
+        return g, root
 
     def remove_orphans(self, parent, stored_dependencies, visited=None):
         """

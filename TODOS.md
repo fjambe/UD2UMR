@@ -111,7 +111,6 @@ The verbal lemma is extracted from the `LDeriv` attribute in MISC. Since they ar
 - Fixed bug in handling negation: (e.g., snt10 in cs-PDT): now excluding children with `Polarity=Neg`+ UPOS = `VERB`
 from the list of elements that determine negative modality. Moreover, `Polarity=Neg` among the FEATS of a VERB now
 implies `(full)-negative` UMR modality.
-- Copula with `Case=Loc` now converted to `have-place-91`.
 - It is possible that the converter generates two of the same argument (e.g., two `affectee`s) for the same verb. I
 considered having a rule against that, but I inspected the data and it seems to happen only for relations for which it
 is allowed (`manner`, `mod`, `OBLIQUE`) - therefore, I didn't implement any rule. I fixed an issue with how `obl:arg`
@@ -129,6 +128,10 @@ def check_duplicate_edges(triples):
 
         edge_map[edge_key].add(child)
 ```
+- Copula with `Case=Loc` now converted to `have-place-91`.
+- Restricted assignment of `identity-91` for copular constructions: if an adposition (UPOS == `ADP`) is found among the
+siblings of the copula, the placeholder for abstract predicate (`COPULAR-CONSTRUCTION`) is assigned instead of
+`identity-91`.
 
 ## QUESTIONS
 

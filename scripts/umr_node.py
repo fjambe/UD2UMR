@@ -955,7 +955,6 @@ class UMRNode:
 
         elif self.ud_node.parent.upos == 'ADJ':
             if parent_case in {'Nom', 'Acc', ''} and not any(s.upos == 'ADP' for s in self.ud_node.siblings):
-                print(self.umr_graph.sent_num)
                 concept = 'have-mod-91'
 
         elif self.ud_node.parent.upos == 'DET':
