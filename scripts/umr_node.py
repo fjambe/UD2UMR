@@ -574,7 +574,7 @@ class UMRNode:
                         self.already_added = True
                         return
 
-                if self.parent and hasattr(self.parent.ud_node, 'lemma') and hasattr(self.ud_node, 'deprel') and self.ud_node.deprel in ['ccomp', 'xcomp']:
+                if self.parent and hasattr(self.parent.ud_node, 'lemma') and hasattr(self.ud_node, 'deprel') and self.ud_node.deprel in ['csubj', 'ccomp', 'xcomp']:
                     # first, checking external file for modality - lexical check based on lemma.
                     value, replace = next(
                         ((el["modal-strength"], el["replace"]) for el in self.umr_graph.modals["lexical"]

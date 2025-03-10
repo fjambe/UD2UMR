@@ -2,6 +2,7 @@
   "lexical": [
     {"lemma": "moci", "modal-strength": "neutral-affirmative", "replace": "yes", "constraint": null},
     {"lemma": "muset", "modal-strength": "partial-affirmative", "replace": "yes", "constraint": null},
+    {"lemma": "lze", "modal-strength": "neutral-affirmative", "replace": "yes", "constraint": null},
     {"lemma": "chtít", "modal-strength": "neutral-affirmative", "replace": "no", "constraint": null},
     {"lemma": "myslet", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
     {"lemma": "myslit", "modal-strength": "full-affirmative", "replace": "no", "constraint": null},
