@@ -53,6 +53,9 @@ Each language has its own subdirectory, where the files are named `advcl.csv`, `
 `conj.json`. Language-specific material for additional languages should be stored in the same way.
 It is not required to include all three files; you may include as many as available. In any case, the converter works
 even without any lexical files.
+* The `testset/` folder contains materials used for evaluating the converter. Namely, the `prepare_scripts` subdirectory
+contains scripts used to prepare the annotation templates, while `final_files` contains the actual files used for
+evaluation. Work-in-progress files are also included in `testset`.
 
 ```
 UD2UMR
@@ -82,7 +85,11 @@ UD2UMR
 │ │ ├── advcl.csv
 │ │ ├── conj.json
 │ │ ├── have-rel-role.txt
-│ │ ├── modality.json   
+│ │ ├── modality.json
+├── testsets                                # materials for evaluation
+│ ├── final_files
+│ ├── scripts_prepare
+│ ├── ... .txt
 ├── README.md         
 ```
 
