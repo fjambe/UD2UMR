@@ -4,6 +4,39 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from preprocess import load_external_files
 
 
+def esklearnone(gold, pred):
+    tp, fp, fn = 0, 0, 0
+
+    for p, g in zip(pred, gold):
+        if p == "NULL":
+            fn += 1  # Missed prediction (false negative)
+        elif p == g:
+            tp += 1  # Correct prediction (true positive)
+        else:
+            fp += 1  # Incorrect prediction (false positive)
+
+    precision = tp / (tp + fp) if (tp + fp) > 0 else 0
+    recall = tp / (tp + fn) if (tp + fn) > 0 else 0
+    f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+    return precision, recall, f1
+
+
+# def into_binary_labels(predictions, golds):
+#     # True labels: 1 if correct, 0 if incorrect
+#     y_true = [1] * len(golds)  # Every gold label must be predicted
+#     y_pred = [1 if pred == golds[i] else 0 for i, pred in enumerate(predictions)]
+#     return y_true, y_pred
+
+
+def pad_predictions(pred, gold, original, removal, dictio=False):
+    """ Pad predictions with a placeholder ("NULL") if some gold labels were not predicted. """
+    remaining = {g: v for g, v in original.items() if g not in removal} if dictio else\
+        [x for x in original if x not in removal]
+    pred.extend(['NULL'] * (len(remaining)))
+    gold.extend([v for v in remaining.values()] if dictio else [r[2] for r in remaining])
+    assert len(pred) == len(gold)
+
+
 def coordination(predicted, gold, lang):
     """ Evaluates the accuracy of coordination relations. """
     conjunctions = load_external_files('conj.json', lang)
@@ -15,22 +48,6 @@ def coordination(predicted, gold, lang):
             [t for t in g_graph.penman_graph[0].instances() if t[2] == 'and']
 
         pass
-
-
-def into_binary_labels(predictions, golds):
-    # True labels: 1 if correct, 0 if incorrect
-    y_true = [1] * len(golds)  # Every gold label must be predicted
-    y_pred = [1 if pred == golds[i] else 0 for i, pred in enumerate(predictions)]
-    return y_true, y_pred
-
-
-def pad_predictions(pred, gold, original, removal, dictio=False):
-    """ Pad predictions with a placeholder ("NULL") if some gold labels were not predicted. """
-    remaining = {g: v for g, v in original.items() if g not in removal} if dictio else\
-        [x for x in original if x not in removal]
-    pred.extend(['NULL'] * (len(remaining)))
-    gold.extend([v for v in remaining.values()] if dictio else [r[2] for r in remaining])
-    assert len(pred) == len(gold)
 
 
 def abstract(predicted, gold):
@@ -124,14 +141,22 @@ def abstract(predicted, gold):
 
             # Test 3: Are correct ARGs assigned to the correct nodes?
             compare_sorted_lists([c for c in children_pred if 'ARG' in c[1]], [c for c in children_gold if 'ARG' in c[1]])
+    #
+    pp = ['have-mod-91', 'NULL', 'NULL', 'identity-91', 'have-mod-91', 'NULL', 'have-place-91', 'identity-91', 'have-role-91', 'have-rol-92']
+    gg = ['have-mod-91', 'say-91', 'have-cause-91', 'identity-91', 'have-91', 'have-rel-role-92', 'have-rel-role-92', 'identity-91', 'have-role-91', 'have-rol-91']
+    # # gg = [p for p in predicate_gold][-10:]
+    for p, g in zip(pp, gg):
+        print(p,g, p==g)
 
-    y_true, y_pred = into_binary_labels(predicate_pred, predicate_gold)
-    predicate_prec, predicate_recall, predicate_f1, _ = precision_recall_fscore_support(y_true, y_pred, zero_division=0, average="macro")
-    # y_true, y_pred = into_binary_labels(children_list_pred, children_list_gold)
-    # children_prec, children_recall, children_f1, _ = precision_recall_fscore_support(y_true, y_pred, zero_division=0, average="macro")
-    children_prec, children_recall, children_f1, _ = precision_recall_fscore_support(children_list_gold, children_list_pred, zero_division=0, average="macro")
-    # TODO: very different results with and without conversion to binary format. Figure out why and which one is correct.
-    args_prec, args_recall, args_f1, _ = precision_recall_fscore_support(args_gold, args_pred, zero_division=0, average="macro")
+    predicate_prec, predicate_recall, predicate_f1, _ = precision_recall_fscore_support(gg, pp, zero_division=0, average="macro", labels=[l for l in set(gg)])
+    # predicate_prec, predicate_recall, predicate_f1 = esklearnone(predicate_gold, predicate_pred)
+    # predicate_prec, predicate_recall, predicate_f1 = esklearnone(gg, pp)
+
+    # children_prec, children_recall, children_f1, _ = precision_recall_fscore_support(children_list_gold, children_list_pred, zero_division=0, average="macro", labels=[l for l in set(children_list_gold)]])
+    children_prec, children_recall, children_f1 = esklearnone(children_list_gold, children_list_pred)
+
+    # args_prec, args_recall, args_f1, _ = precision_recall_fscore_support(args_gold, args_pred, zero_division=0, average="macro")
+    args_prec, args_recall, args_f1 = esklearnone(args_gold, args_pred)
 
     return (f"{predicate_prec:.2f}", f"{predicate_recall:.2f}", f"{predicate_f1:.2f}",
             f"{children_prec:.2f}", f"{children_recall:.2f}", f"{children_f1:.2f}",
@@ -149,20 +174,26 @@ def modal_strength(predicted, gold):
         for m in t_modals:
             t_strength, t_polarity = m[2].split('-')
             g_node = t_graph.matched_alignment.get(m[0], None)  # gold var aligned to pred var
-            if t_strength != 'MS':
-                g_strength, g_polarity = g_modals.get(g_node, ('', ''))
-            else:
-                _, g_polarity = g_modals.get(g_node, ('', ''))
-                g_strength = None
-
-            if g_strength:
+            if t_strength != 'MS':  # consider only those that I have tried to predict
+                # in this setting, recall is useless (no NULL in pred, only in gold)
+                # does this set of metrics make sense?
+                g_strength, g_polarity = g_modals.get(g_node, ('NULL', 'NULL'))
                 strength_gold.append(g_strength)
                 strength_pred.append(t_strength)
+            else:
+                _, g_polarity = g_modals.get(g_node, ('NULL', 'NULL'))
             polarity_gold.append(g_polarity)
             polarity_pred.append(t_polarity)
 
-    return (f"{accuracy_score(strength_gold, strength_pred):.2f}" if strength_gold else "-",
-            f"{accuracy_score(polarity_gold, polarity_pred):.2f}" if polarity_gold else "-")
+    # TODO: if I want recall to make sense, I need to also iterate over gold
+
+    strength_prec, strength_recall, strength_f1 = esklearnone(strength_gold, strength_pred)
+    polarity_prec, polarity_recall, polarity_f1 = esklearnone(polarity_gold, polarity_pred)
+
+    return (f"{strength_prec:.2f}", f"{strength_recall:.2f}", f"{strength_f1:.2f}",
+            f"{polarity_prec:.2f}", f"{polarity_recall:.2f}", f"{polarity_f1:.2f}")
+    # return (f"{accuracy_score(strength_gold, strength_pred):.2f}" if strength_gold else "-",
+    #         f"{accuracy_score(polarity_gold, polarity_pred):.2f}" if polarity_gold else "-")
 
 
 def pronouns(predicted, gold):
@@ -193,8 +224,15 @@ def pronouns(predicted, gold):
                 gold = t_graph.matched_alignment.get(tper, '')
                 person_gold.append(g_person_dict.get(gold, ''))
 
-    return (f"{accuracy_score(number_gold, number_pred):.2f}" if number_gold else "-",
-            f"{accuracy_score(person_gold, person_pred):.2f}" if person_gold else "-")
+    # TODO: if I want recall to make sense, I need to also iterate over gold
+
+    number_prec, number_recall, number_f1 = esklearnone(number_gold, number_pred)
+    person_prec, person_recall, person_f1 = esklearnone(person_gold, person_pred)
+
+    return (f"{number_prec:.2f}", f"{number_recall:.2f}", f"{number_f1:.2f}",
+            f"{person_prec:.2f}", f"{person_recall:.2f}", f"{person_f1:.2f}")
+    # return (f"{accuracy_score(number_gold, number_pred):.2f}" if number_gold else "-",
+    #         f"{accuracy_score(person_gold, person_pred):.2f}" if person_gold else "-")
 
 
 def inverted_relations(predicted, gold):
@@ -224,5 +262,83 @@ def inverted_relations(predicted, gold):
                 edge_gold.append(g_graph.matched_alignment.get(g_edge, g_edge))  # t_edge aligned with g_edge, else g_edge
                 edge_pred.append(t[1])
 
-    return (f"{accuracy_score(parent_gold, parent_pred):.2f}" if parent_gold else "-",
-            f"{accuracy_score(edge_gold, edge_pred):.2f}" if edge_gold else "-")
+        # TODO: if I want recall to make sense, I need to also iterate over gold
+
+    parent_prec, parent_recall, parent_f1 = esklearnone(parent_gold, parent_pred)
+    edge_prec, edge_recall, edge_f1 = esklearnone(edge_gold, edge_pred)
+
+    return (f"{parent_prec:.2f}", f"{parent_recall:.2f}", f"{parent_f1:.2f}",
+            f"{edge_prec:.2f}", f"{edge_recall:.2f}", f"{edge_f1:.2f}")
+    # return (f"{accuracy_score(parent_gold, parent_pred):.2f}" if parent_gold else "-",
+    #         f"{accuracy_score(edge_gold, edge_pred):.2f}" if edge_gold else "-")
+
+
+### OVERVIEW ###
+
+# For edge and parent recall, compare only Edge triples.
+
+def parent_uas_las(predicted, gold):
+
+    total_score = 0
+    correct_uas, correct_las = 0, 0
+    unaligned_nodes = 0
+
+    for t_graph, g_graph in zip(predicted, gold):
+
+        t_edges = t_graph.penman_graph[0].edges()
+        g_edges = g_graph.penman_graph[0].edges()
+
+        for t in t_edges:
+            total_score += 1
+            gold = t_graph.matched_alignment.get(t[2], '')  # gold aligned node for t[2]
+            if not gold.startswith('NULL'):  # unaligned nodes anyway  # ripensare se ha senso
+                for g in g_edges:
+                    if g[2] == gold:
+                        if t_graph.matched_alignment.get(t[0], '') == g[0]:  # gold_parent
+                            correct_uas += 1
+                            if g[1] == t[1]:
+                                correct_las += 1
+            else:
+                unaligned_nodes += 1  # it wasn't possible to get any parent anyway
+
+        # mi interessa che il nodo non andasse creato?
+        for g in g_edges:
+            pass
+
+    effective_total = total_score - unaligned_nodes
+
+    print(f"Correctly retrieved parent: {correct_uas} out of {total_score} (eff. {effective_total}).\n"
+          f"Correctly retrieved parent + edge: {correct_las} out of {total_score} (eff. {effective_total}).\n"
+          f"UAS: {(correct_uas / total_score):.2f}, LAS: {(correct_las / total_score):.2f}\n"
+          f"Refined scores: UAS {(correct_uas / effective_total):.2f}, LAS {(correct_las / effective_total):.2f}")
+
+
+def node_recall(predicted, gold):
+
+    total_score = 0
+    recalled_nodes = 0
+
+    for t_graph, g_graph in zip(predicted, gold):
+
+        t_vars = [i[0] for i in t_graph.penman_graph[0].instances()]
+        g_vars = [i[0] for i in g_graph.penman_graph[0].instances()]
+
+        for g in g_vars:
+            total_score += 1
+            t_aligned = g_graph.matched_alignment.get(g, '')
+            if t_aligned in t_vars:  # ovvio che sarà in t_vars, because it has been aligned
+                print(g, t_aligned)
+                recalled_nodes += 1
+
+    # maybe I simply need to count the number of Instance triples?
+    # doesn't seem to be the case, because my converter generates some more. So how do I do this?
+    # actually, there seems to be no way to verify this, because I would need to rely on manual alignments.
+    # Otherwise, I really cannot: all the available nodes are somehow aligned by Ancast, until there's at least a free
+    # node in the other (gold or pred) list of triples.
+    # POINTLESS.
+
+    print(f"Recalled nodes: {recalled_nodes} out of {total_score}, i.e. {(recalled_nodes / total_score):.2f}")
+
+
+# TODO: UAS for specific categories
+

@@ -232,6 +232,10 @@ for languages other than Latin.
     4. change sentence numbers in `temp_gold_total_{lang}_test.txt` by running `python3 renumber_sentences.py`
     (as of now, the language is hardcoded in the code and needs to be updated there).
 
+- [Abishek (11.03.2025)]
+  - Add a coefficient to penalize `NULL` elements (maybe in the gold)? Like a weighted average, where the weight element
+  can be the `NULL`.
+
 # PAPER
 - [Alexis (10.12.2024) + other] \
   Possible venues could be:

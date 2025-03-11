@@ -128,18 +128,24 @@ class UMRDocument(DocumentMatch):
         )
 
         abstract_results = tests.abstract(predicted, gold)
+        modality_results = tests.modal_strength(predicted, gold)
+        refer_results = tests.pronouns(predicted, gold)
+        inverted = tests.inverted_relations(predicted, gold)
+
+        tests.parent_uas_las(predicted, gold)
+        tests.node_recall(predicted, gold)
 
         data = [
-            ("Modal-strength", "strength", "accuracy", tests.modal_strength(predicted, gold)[0]),
-            ("Modal-strength", "polarity", "accuracy", tests.modal_strength(predicted, gold)[1]),
+            ("Modal-strength", "strength", modality_results[0], modality_results[1], modality_results[2]),
+            ("Modal-strength", "polarity", modality_results[3], modality_results[4], modality_results[5]),
             ("Abstract predicates", "predicate", abstract_results[0], abstract_results[1], abstract_results[2]),
             ("Abstract predicates", "dependents (UAS)", abstract_results[3], abstract_results[4], abstract_results[5]),
             ("Abstract predicates", "ARGs nodes", abstract_results[6], abstract_results[7], abstract_results[8]),
-            ("Refer-number (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[0]),
-            ("Refer-person (entities)", "-", "accuracy", tests.pronouns(predicted, gold)[1]),
-            ("Inverted relations", "parent", "accuracy", tests.inverted_relations(predicted, gold)[0]),
-            ("Inverted relations", "edge", "accuracy", tests.inverted_relations(predicted, gold)[1]),
-            # ("coordination", "opX", "accuracy", tests.coordination(predicted, gold, args.lang))
+            ("Refer-number (entities)", "-", refer_results[0], refer_results[1], refer_results[2]),
+            ("Refer-person (entities)", "-", refer_results[3], refer_results[4], refer_results[5]),
+            ("Inverted relations", "parent", inverted[0], inverted[1], inverted[2]),
+            ("Inverted relations", "edge", inverted[3], inverted[4], inverted[5]),
+            # ("coordination", "opX", tests.coordination(predicted, gold, args.lang))
         ]
 
         df = pd.DataFrame(data, columns=["Type", "Sub-type", "Precision", "Recall", "F-score"])
