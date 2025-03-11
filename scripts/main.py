@@ -29,8 +29,8 @@ if __name__ == "__main__":
     modals = pr.load_external_files('modality.json', args.lang)
     conjunctions = pr.load_external_files('conj.json', args.lang)
 
-    # with open("testset/converted_70_test_sent_ids.txt", "r", encoding="utf8") as for_test_file:  # to produce the test set
-    # with open("testset/manual_30_test_sent_ids.txt", "r", encoding="utf8") as for_test_file:  # to produce the test set
+    # with open("testset/sent-ids_converted_70_test.txt", "r", encoding="utf8") as for_test_file:  # to produce the test set
+    # with open("testset/sent-ids_manual_30_test.txt", "r", encoding="utf8") as for_test_file:  # to produce the test set
     #     test = for_test_file.read().splitlines()
 
     os.makedirs(args.output_dir, exist_ok=True)

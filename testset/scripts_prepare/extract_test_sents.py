@@ -31,6 +31,6 @@ with open("../../data/en_pud-ud-test.conllu") as file:
 
 selected_sentences = sorted(select_sentences(sent_ids))
 
-with open("../converted_70_test_sent_ids.txt", "w") as output:
+with open("../sent-ids_converted_70_test.txt", "w") as output:
     for s in selected_sentences:
         output.write(s + '\n')
