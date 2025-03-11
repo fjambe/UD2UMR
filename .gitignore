@@ -1,4 +1,4 @@
 *.conllu
 *.umr
 ancast
-old
+/testset/old/
