@@ -12,7 +12,7 @@ from ancast.src.document import DocumentMatch, Match_resolution
 from ancast.src.param_fun import parse_alignment, protected_divide
 from ancast.src.sentence import Sentence
 
-import tests
+import tests_ancast
 
 # params
 Cneighbor = 1
@@ -93,8 +93,6 @@ class UMRDocument(DocumentMatch):
                 gumr = UMRSentence(sent=g_sent, semantic_text=g_graph, alignment={}, sent_num=name,
                                    penman_graph=g_pm_graph)  # alignment=g_alignment
 
-                # print(gumr.penman_graph[0].triples)
-
                 if tumr.invalid or gumr.invalid:
                     print(f"Error encountered, skipping sentence {name}")
                     continue
@@ -124,7 +122,7 @@ class UMRDocument(DocumentMatch):
         gold = [s[1] for s in self.sents]
 
         assert len(predicted) == len(gold), (
-            f"Number of gold graphs ({len(predicted)}) and converted graphs ({len(gold)}) do not match."
+            f"Number of gold graphs ({len(gold)}) and converted graphs ({len(predicted)}) do not match."
         )
 
         abstract_results = tests.abstract(predicted, gold)
@@ -133,7 +131,12 @@ class UMRDocument(DocumentMatch):
         inverted = tests.inverted_relations(predicted, gold)
 
         tests.parent_uas_las(predicted, gold)
+        tests.parent_uas_las(predicted, gold, category='arguments')
+        tests.parent_uas_las(predicted, gold, category='participants')
+        tests.parent_uas_las(predicted, gold, category='operands')
+        tests.parent_uas_las(predicted, gold, category='non-participants')
         tests.node_recall(predicted, gold)
+        tests.lds_per_label(predicted, gold)
 
         data = [
             ("Modal-strength", "strength", modality_results[0], modality_results[1], modality_results[2]),

@@ -1,5 +1,5 @@
 from penman import layout
-from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+from sklearn.metrics import precision_recall_fscore_support
 
 from preprocess import load_external_files
 
@@ -145,8 +145,8 @@ def abstract(predicted, gold):
     pp = ['have-mod-91', 'NULL', 'NULL', 'identity-91', 'have-mod-91', 'NULL', 'have-place-91', 'identity-91', 'have-role-91', 'have-rol-92']
     gg = ['have-mod-91', 'say-91', 'have-cause-91', 'identity-91', 'have-91', 'have-rel-role-92', 'have-rel-role-92', 'identity-91', 'have-role-91', 'have-rol-91']
     # # gg = [p for p in predicate_gold][-10:]
-    for p, g in zip(pp, gg):
-        print(p,g, p==g)
+    # for p, g in zip(pp, gg):
+    #     print(p,g, p==g)
 
     predicate_prec, predicate_recall, predicate_f1, _ = precision_recall_fscore_support(gg, pp, zero_division=0, average="macro", labels=[l for l in set(gg)])
     # predicate_prec, predicate_recall, predicate_f1 = esklearnone(predicate_gold, predicate_pred)
@@ -275,29 +275,45 @@ def inverted_relations(predicted, gold):
 
 ### OVERVIEW ###
 
-# For edge and parent recall, compare only Edge triples.
+# issue: the alignment strategy seems wild and unreliable
 
-def parent_uas_las(predicted, gold):
+def parent_uas_las(predicted, gold, category=None):
 
     total_score = 0
     correct_uas, correct_las = 0, 0
     unaligned_nodes = 0
 
-    for t_graph, g_graph in zip(predicted, gold):
+    category_rels = {
+        'arguments': {':ARG0', ':ARG1', ':ARG2', ':ARG3', ':ARG4'},
+        'operands': {':op1', ':op2', ':op3', ':op4', ':op5'},
+        'participants': {':actor', ':undergoer', ':theme', ':recipient', ':affectee'},
+        'non-participants': {':mod', ':manner', ':OBLIQUE', ':temporal', ':ADVCL', ':name', ':possessor',
+                             ':condition', ':vocative', ':concession'}
+    }
 
+    rels = category_rels.get(category)  # None if category not in dictionary
+
+    for t_graph, g_graph in zip(predicted, gold):
         t_edges = t_graph.penman_graph[0].edges()
         g_edges = g_graph.penman_graph[0].edges()
+
+        if rels is not None:  # Filter only relevant edges if a category is specified
+            t_edges = [t for t in t_edges if t[1] in rels]
+            g_edges = [g for g in g_edges if g[1] in rels]
 
         for t in t_edges:
             total_score += 1
             gold = t_graph.matched_alignment.get(t[2], '')  # gold aligned node for t[2]
             if not gold.startswith('NULL'):  # unaligned nodes anyway  # ripensare se ha senso
                 for g in g_edges:
-                    if g[2] == gold:
+                    if g[2] == gold:  # this g is the triple I'll compare
                         if t_graph.matched_alignment.get(t[0], '') == g[0]:  # gold_parent
                             correct_uas += 1
+                            # print(f't: {t}, g: {g}')
                             if g[1] == t[1]:
                                 correct_las += 1
+                                break
+                            break
             else:
                 unaligned_nodes += 1  # it wasn't possible to get any parent anyway
 
@@ -307,10 +323,12 @@ def parent_uas_las(predicted, gold):
 
     effective_total = total_score - unaligned_nodes
 
+    print(f"Category: {category and category.upper()}")
     print(f"Correctly retrieved parent: {correct_uas} out of {total_score} (eff. {effective_total}).\n"
           f"Correctly retrieved parent + edge: {correct_las} out of {total_score} (eff. {effective_total}).\n"
           f"UAS: {(correct_uas / total_score):.2f}, LAS: {(correct_las / total_score):.2f}\n"
           f"Refined scores: UAS {(correct_uas / effective_total):.2f}, LAS {(correct_las / effective_total):.2f}")
+    print()
 
 
 def node_recall(predicted, gold):
@@ -327,7 +345,7 @@ def node_recall(predicted, gold):
             total_score += 1
             t_aligned = g_graph.matched_alignment.get(g, '')
             if t_aligned in t_vars:  # ovvio che sarà in t_vars, because it has been aligned
-                print(g, t_aligned)
+                # print(g, t_aligned)
                 recalled_nodes += 1
 
     # maybe I simply need to count the number of Instance triples?
@@ -340,5 +358,59 @@ def node_recall(predicted, gold):
     print(f"Recalled nodes: {recalled_nodes} out of {total_score}, i.e. {(recalled_nodes / total_score):.2f}")
 
 
-# TODO: UAS for specific categories
-
+# def lds_per_label(predicted, gold):
+#     """
+#     TODO: LAS for each UMR label.
+#     E.g. is every :quant supposed to be a :quant? But what does that even mean?
+#     It means at least that t[1] is :quant, okay, Then? I guess I need the same child, otherwise what am I doing,
+#     comparing random triples that just happen to have the same edge? Nonsense.
+#     Then, I need t[1] == REL, t[2] == g[2]. But I also need t[1] == g[1], otherwise it's the far west.
+#     SO, the only thing I don't care about is t[0] and g[0], aka the PARENT.
+#
+#     --> In other words, it's like a reverse UAS: not Unlabeled Attachment Score, but Labeled Disattachment score.
+#     Sounds weird.
+#     """
+#
+#     category_rels = {
+#         'arguments': {':ARG0', ':ARG1', ':ARG2', ':ARG3', ':ARG4'},
+#         'operands': {':op1', ':op2', ':op3', ':op4', ':op5'},
+#         'participants': {':actor', ':undergoer', ':theme', ':recipient', ':affectee'},
+#         'non-participants': {':mod', ':manner', ':OBLIQUE', ':temporal', ':ADVCL', ':name', ':possessor',
+#                              ':condition', ':vocative', ':concession'}
+#     }
+#
+#     all_rels = [r for rs in category_rels.values() for r in rs]
+#
+#     print("------------------------- SCORES PER LABEL -------------------------")
+#     print()
+#
+#     for rel in all_rels:
+#
+#         print(rel)
+#
+#         total = 0
+#         correct = 0
+#
+#         for t_graph, g_graph in zip(predicted, gold):
+#
+#             print('hic', t_graph, g_graph)
+#
+#             t_edges = [t for t in t_graph.penman_graph[0].edges() if t[1] == rel]
+#             g_edges = [g for g in g_graph.penman_graph[0].edges() if g[1] == rel]
+#
+#             if t_edges:
+#                 for t in t_edges:
+#                     total += 1
+#                     gold = t_graph.matched_alignment.get(t[2], '')  # gold aligned node for t[2]
+#                     for g in g_edges:
+#                         if g[2] == gold:  # this g is the triple I'll compare
+#                             if g[1] == t[1]:
+#                                 correct += 1
+#
+#         if total:
+#             print(f"Category: {rel.upper()}, {total}")
+#             print(f"Correctly retrieved edge: {correct} out of {total}.\n",
+#                   f"LDS: {(correct / total):.2f}\n")
+#             print()
+#         else:
+#             print('zero category', rel)
