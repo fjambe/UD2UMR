@@ -125,33 +125,49 @@ class UMRDocument(DocumentMatch):
             f"Number of gold graphs ({len(gold)}) and converted graphs ({len(predicted)}) do not match."
         )
 
-        abstract_results = tests.abstract(predicted, gold)
-        modality_results = tests.modal_strength(predicted, gold)
-        refer_results = tests.pronouns(predicted, gold)
-        inverted = tests.inverted_relations(predicted, gold)
+        tests_ancast.las(predicted, gold)
+        tests_ancast.uas(predicted, gold)
+        tests_ancast.child_label(predicted, gold)
+        tests_ancast.parent_label(predicted, gold)
 
-        tests.parent_uas_las(predicted, gold)
-        tests.parent_uas_las(predicted, gold, category='arguments')
-        tests.parent_uas_las(predicted, gold, category='participants')
-        tests.parent_uas_las(predicted, gold, category='operands')
-        tests.parent_uas_las(predicted, gold, category='non-participants')
-        tests.node_recall(predicted, gold)
-        tests.lds_per_label(predicted, gold)
+        tests_ancast.pronouns(predicted, gold)
 
         data = [
-            ("Modal-strength", "strength", modality_results[0], modality_results[1], modality_results[2]),
-            ("Modal-strength", "polarity", modality_results[3], modality_results[4], modality_results[5]),
-            ("Abstract predicates", "predicate", abstract_results[0], abstract_results[1], abstract_results[2]),
-            ("Abstract predicates", "dependents (UAS)", abstract_results[3], abstract_results[4], abstract_results[5]),
-            ("Abstract predicates", "ARGs nodes", abstract_results[6], abstract_results[7], abstract_results[8]),
-            ("Refer-number (entities)", "-", refer_results[0], refer_results[1], refer_results[2]),
-            ("Refer-person (entities)", "-", refer_results[3], refer_results[4], refer_results[5]),
-            ("Inverted relations", "parent", inverted[0], inverted[1], inverted[2]),
-            ("Inverted relations", "edge", inverted[3], inverted[4], inverted[5]),
-            # ("coordination", "opX", tests.coordination(predicted, gold, args.lang))
+            tests_ancast.las(predicted, gold),
+            tests_ancast.uas(predicted, gold),
+            tests_ancast.child_label(predicted, gold),
+            tests_ancast.parent_label(predicted, gold),
+            (tests_ancast.pronouns(predicted, gold)[0:4]),
+            (tests_ancast.pronouns(predicted, gold)[4:8])
         ]
 
-        df = pd.DataFrame(data, columns=["Type", "Sub-type", "Precision", "Recall", "F-score"])
+        # abstract_results = tests_ancast.abstract(predicted, gold)
+        # modality_results = tests_ancast.modal_strength(predicted, gold)
+        # refer_results = tests_ancast.pronouns(predicted, gold)
+        # inverted = tests_ancast.inverted_relations(predicted, gold)
+
+        # tests_ancast.parent_uas_las(predicted, gold)
+        # tests_ancast.parent_uas_las(predicted, gold, category='arguments')
+        # tests_ancast.parent_uas_las(predicted, gold, category='participants')
+        # tests_ancast.parent_uas_las(predicted, gold, category='operands')
+        # tests_ancast.parent_uas_las(predicted, gold, category='non-participants')
+        # tests_ancast.lds_per_label(predicted, gold)
+
+
+        # data = [
+        #     ("Modal-strength", "strength", modality_results[0], modality_results[1], modality_results[2]),
+        #     ("Modal-strength", "polarity", modality_results[3], modality_results[4], modality_results[5]),
+        #     ("Abstract predicates", "predicate", abstract_results[0], abstract_results[1], abstract_results[2]),
+        #     ("Abstract predicates", "dependents (UAS)", abstract_results[3], abstract_results[4], abstract_results[5]),
+        #     ("Abstract predicates", "ARGs nodes", abstract_results[6], abstract_results[7], abstract_results[8]),
+        #     ("Refer-number (entities)", "-", refer_results[0], refer_results[1], refer_results[2]),
+        #     ("Refer-person (entities)", "-", refer_results[3], refer_results[4], refer_results[5]),
+        #     ("Inverted relations", "parent", inverted[0], inverted[1], inverted[2]),
+        #     ("Inverted relations", "edge", inverted[3], inverted[4], inverted[5]),
+        #     # ("coordination", "opX", tests.coordination(predicted, gold, args.lang))
+        # ]
+
+        df = pd.DataFrame(data, columns=["", "Precision", "Recall", "F-score"])
         print(df.to_string(index=False))
 
 
@@ -166,4 +182,5 @@ if __name__ == "__main__":
 
     D = UMRDocument("umr")
     D.read_document(args.files[:2])
+    # D.read_document(['/home/federica/gold.txt', '/home/federica/pred.txt'])
     D.run_tests()
