@@ -1,32 +1,13 @@
 from penman import layout
-
 from preprocess import load_external_files
 
 
-def esklearnone(gold, pred):
-    tp, fp, fn = 0, 0, 0
+def metrics(correct, pred_total, gold_total):
+    precision = correct / pred_total
+    recall = correct / gold_total
+    fscore = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
 
-    for p, g in zip(pred, gold):
-        if p == "NULL":
-            fn += 1  # Missed prediction (false negative)
-        elif p == g:
-            tp += 1  # Correct prediction (true positive)
-        else:
-            fp += 1  # Incorrect prediction (false positive)
-
-    precision = tp / (tp + fp) if (tp + fp) > 0 else 0
-    recall = tp / (tp + fn) if (tp + fn) > 0 else 0
-    f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-    return precision, recall, f1
-
-def pad_predictions(pred, gold, original, removal, dictio=False):
-    """ Pad predictions with a placeholder ("NULL") if some gold labels were not predicted. """
-    remaining = {g: v for g, v in original.items() if g not in removal} if dictio else\
-        [x for x in original if x not in removal]
-    pred.extend(['NULL'] * (len(remaining)))
-    gold.extend([v for v in remaining.values()] if dictio else [r[2] for r in remaining])
-    assert len(pred) == len(gold)
-
+    return precision, recall, fscore
 
 def coordination(predicted, gold, lang):
     """ Evaluates the accuracy of coordination relations. """
@@ -38,8 +19,6 @@ def coordination(predicted, gold, lang):
         g_coord = [t for t in g_graph.penman_graph[0].instances() if t[2] in conjunctions] if conjunctions else\
             [t for t in g_graph.penman_graph[0].instances() if t[2] == 'and']
 
-        pass
-
 
 def abstract(predicted, gold):
     """
@@ -48,138 +27,89 @@ def abstract(predicted, gold):
     - how many correct relations having the abstract predicate as parent have been retrieved;
     - if ARG relations are assigned to the correct nodes.
     """
-    predicate_pred, predicate_gold = [], []
-    children_list_pred, children_list_gold = [], []
-    args_pred, args_gold = [], []
-
-    def compare_sorted_lists(list1, list2):
-        """ Compares two lists of graph tuples by their second element (edge). """
-        sorted_list1 = sorted(list1)
-        sorted_list2 = sorted(list2)
-
-        i, j = 0, 0  # Pointers for both lists
-
-        while i < len(sorted_list1) and j < len(sorted_list2):
-            tr_p, tr_g = sorted_list1[i], sorted_list2[j]
-
-            if tr_p[1] == tr_g[1]:  # edges
-                args_pred.append(tr_p[2])
-                corresponding_child = t_graph.matched_alignment.get(tr_g[2], 'NULL')
-                args_gold.append(corresponding_child)
-                i += 1
-                j += 1  # Move both pointers
-            elif tr_p[1] < tr_g[1]:  # `edge_p` comes first, so it's missing from `list2`
-                i += 1  # Move pointer for `list1`
-            else:  # `edge_g` comes first, so it's missing from `list1`
-                j += 1  # Move pointer for `list2`
-
-        # Handle any remaining elements
-        while i < len(sorted_list1):  # sorted_list1[i][1] has no match
-            args_pred.append(sorted_list1[i][2])
-            args_gold.append('NULL')
-            i += 1
-        while j < len(sorted_list2):  # sorted_list2[j][1] has no match
-            args_pred.append('NULL')
-            args_gold.append(sorted_list2[j][2])
-            j += 1
-
-        assert len(args_gold) == len(args_pred)
+    correct_concept, correct_children, correct_args = 0, 0, 0
+    t_concept_total, g_concept_total = 0, 0
+    t_children_total, g_children_total = 0, 0
+    t_args_total, g_args_total = 0, 0
 
     for t_graph, g_graph in zip(predicted, gold):
 
         t_abstract = {t[0]: t[2] for t in t_graph.penman_graph[0].instances() if t[2].endswith(("-91", "-92")) and t[2] != 'but-91'}
         g_abstract = {t[0]: t[2] for t in g_graph.penman_graph[0].instances() if t[2].endswith(("-91", "-92")) and t[2] != 'but-91'}
 
-        to_remove_predicate_g = set()
-
         # Test 1: Is the abstract predicate correct?
         for ab in t_abstract:
             gold = t_graph.matched_alignment.get(ab, '')  # corresponding (i.e. aligned) abstract predicate
+            correct_concept += t_abstract.get(ab) == g_abstract.get(gold, '')
 
-            predicate_pred.append(t_abstract.get(ab))
-            predicate_gold.append(g_abstract.get(gold, 'NULL'))
-            to_remove_predicate_g.add(gold)
-
-        pad_predictions(predicate_pred, predicate_gold, g_abstract, to_remove_predicate_g, dictio=True)
-
-        # Test 2 and 3
-        for ab in t_abstract:
+            # Test 2: How many of the abstract predicate's dependents have been correctly retrieved (UAS)?
             children_pred = t_graph.penman_graph[0].edges(source=ab)
             children_gold = g_graph.penman_graph[0].edges(source=gold)
 
-            # Test 2: How many of the abstract predicate's dependents have been correctly retrieved (UAS)?
-            to_remove_children_g = set()
+            t_children_total += len(children_pred)
+            g_children_total += len(children_gold)
 
-            for triple_p in children_pred[:]:  # Iterate over a copy to avoid modification issues
+            t_args_total += len([c for c in children_pred if c[1].startswith(':ARG')])
+            g_args_total += len([c for c in children_gold if c[1].startswith(':ARG')])
+
+            for triple_p in children_pred:
                 cp = triple_p[2]
                 cg = t_graph.matched_alignment.get(cp, '')
-
                 for triple_g in children_gold:
-                    if triple_g in to_remove_children_g:  # Skip already matched gold elements
-                        continue
+                    correct_children += cg == triple_g[2]
+                    # Test 3: Are correct ARGs assigned to the correct nodes?
+                    if triple_p[1].startswith(':ARG'):
+                        correct_args += triple_p[1] == triple_g[1] and cg == triple_g[2]
 
-                    if cg == triple_g[2]:
-                        children_list_pred.append(cp)
-                        children_list_gold.append(cp)
-                        to_remove_children_g.add(triple_g)
-                        break
+        t_concept_total += len(t_abstract)
+        g_concept_total += len(g_abstract)
 
-                else:  # Runs only if no match was found (loop completed without`break`)
-                    children_list_pred.append(cp)
-                    children_list_gold.append('NULL')
+    concept_precision, concept_recall, concept_fscore = metrics(correct_concept, t_concept_total, g_concept_total)
+    children_precision, children_recall, children_fscore = metrics(correct_children, t_children_total, g_children_total)
+    args_precision, args_recall, args_fscore = metrics(correct_args, t_args_total, g_args_total)
 
-            pad_predictions(children_list_pred, children_list_gold, children_gold, to_remove_children_g)
-
-            # Test 3: Are correct ARGs assigned to the correct nodes?
-            compare_sorted_lists([c for c in children_pred if 'ARG' in c[1]], [c for c in children_gold if 'ARG' in c[1]])
-
-    predicate_prec, predicate_recall, predicate_f1 = esklearnone(predicate_gold, predicate_pred)
-
-    children_prec, children_recall, children_f1 = esklearnone(children_list_gold, children_list_pred)
-
-    args_prec, args_recall, args_f1 = esklearnone(args_gold, args_pred)
-
-    return (f"{predicate_prec:.2f}", f"{predicate_recall:.2f}", f"{predicate_f1:.2f}",
-            f"{children_prec:.2f}", f"{children_recall:.2f}", f"{children_f1:.2f}",
-            f"{args_prec:.2f}", f"{args_recall:.2f}", f"{args_f1:.2f}")
-
+    return ("Abstract predicates", "concept", f"{concept_precision:.3f}", f"{concept_recall:.3f}", f"{concept_fscore:.3f}",
+            "Abstract predicates", "dependents (UAS)", f"{children_precision:.3f}", f"{children_recall:.3f}", f"{children_fscore:.3f}",
+            "Abstract predicates", "ARG nodes", f"{args_precision:.3f}", f"{args_recall:.3f}", f"{args_fscore:.3f}")
 
 def modal_strength(predicted, gold):
     """ Evaluates the accuracy for both the strength and polarity components of `modal-strength` attributes. """
-    correct_mod_total, correct_strength_total = 0, 0
-    t_mod_total, g_mod_total = 0, 0
+    correct_polarity, correct_strength = 0, 0
+    t_polarity_total, g_polarity_total = 0, 0
     t_strength_total, g_strength_total = 0, 0
 
-
     for t_graph, g_graph in zip(predicted, gold):
-            t_modals = [t for t in t_graph.penman_graph[0].attributes(role=":modal-strength") if t[2] != 'MS']
-            g_modals = {t[0]: t[2].split('-') for t in g_graph.penman_graph[0].attributes(role=":modal-strength")}
 
-            for m in t_modals:
-                t_strength, t_polarity = m[2].split('-')
-                g_node = t_graph.matched_alignment.get(m[0], '')  # gold var aligned to pred var
-                if t_strength != 'MS':  # consider only those that I have tried to predict
-                    g_strength, g_polarity = g_modals.get(g_node, ('NULL', 'NULL'))
+        t_modals = {t[0]: t[2] for t in t_graph.penman_graph[0].attributes(role=":modal-strength")}
+        g_modals = {t[0]: t[2].split('-') for t in g_graph.penman_graph[0].attributes(role=":modal-strength")}
 
-                else:
-                    _, g_polarity = g_modals.get(g_node, ('NULL', 'NULL'))
+        for tm_var, tm_modstr in t_modals.items():
+            if '-' in tm_modstr:  # if not, it's not going to be correct anyway
+                t_strength, t_polarity = tm_modstr.split('-')
+                g_node = t_graph.matched_alignment.get(tm_var, '')  # gold var aligned to pred var
+                g_strength, g_polarity = g_modals.get(g_node, ('', ''))
+                correct_polarity += t_polarity == g_polarity
+                correct_strength += t_strength == g_strength
 
+        t_polarity_total += len(t_modals)
+        g_polarity_total += len(g_modals)
+        t_strength_total += len(t_modals)
+        g_strength_total += len(g_modals)
 
-    return ("modality", f"{number_precision:.3f}", f"{number_recall:.3f}",
-            f"{2 * (number_precision * number_recall) / (number_precision + number_recall) if (number_precision + number_recall) > 0 else 0:.3f}",
-            "strength", f"{person_precision:.3f}", f"{person_recall:.3f}",
-            f"{2 * (person_precision * person_recall) / (person_precision + person_recall) if (person_precision + person_recall) > 0 else 0:.3f}")
+    polarity_precision, polarity_recall, polarity_fscore = metrics(correct_polarity, t_polarity_total, g_polarity_total)
+    strength_precision, strength_recall, strength_fscore = metrics(correct_strength, t_strength_total, g_strength_total)
+
+    return ("Modal-strength", "polarity", f"{polarity_precision:.3f}", f"{polarity_recall:.3f}", f"{polarity_fscore:.3f}",
+            "Modal-strength", "strength", f"{strength_precision:.3f}", f"{strength_recall:.3f}", f"{strength_fscore:.3f}")
 
 
 def pronouns(predicted, gold):
     """ Evaluates the accuracy of `refer-number` and `refer-person` annotations for entity nodes (`person`/`thing`). """
-    correct_pers_total, correct_num_total = 0, 0
+    correct_person, correct_number = 0, 0
     t_pers_total, g_pers_total = 0, 0
     t_num_total, g_num_total = 0, 0
 
     for t_graph, g_graph in zip(predicted, gold):
-
-        correct_pers, correct_num = 0, 0
 
         t_number_dict = {t[0]: t[2] for t in g_graph.penman_graph[0].attributes(role=":refer-number")}
         t_person_dict = {t[0]: t[2] for t in g_graph.penman_graph[0].attributes(role=":refer-person")}
@@ -194,125 +124,62 @@ def pronouns(predicted, gold):
         for tnum in t_number_dict:
             if tnum in t_instances:
                 gold = t_graph.matched_alignment.get(tnum, '')
-                correct_num += t_number_dict[tnum] == g_number_dict.get(gold, '')
+                correct_number += t_number_dict[tnum] == g_number_dict.get(gold, '')
 
         # `:refer-person`
         for tper in t_person_dict:
             if tper in t_instances:
                 gold = t_graph.matched_alignment.get(tper, '')
-                correct_pers += t_person_dict[tper] == g_person_dict.get(gold, '')
+                correct_person += t_person_dict[tper] == g_person_dict.get(gold, '')
 
-        correct_pers_total += correct_pers
-        correct_num_total += correct_num
         t_pers_total += len([t for t in t_person_dict if t in t_instances])
         g_pers_total += len([g for g in g_person_dict if g in g_instances])
         t_num_total += len([t for t in t_number_dict if t in t_instances])
         g_num_total += len([g for g in g_number_dict if g in g_instances])
 
-    number_precision = correct_num_total / t_num_total
-    number_recall = correct_num_total / g_num_total
+    person_precision, person_recall, person_fscore = metrics(correct_person, t_pers_total, g_pers_total)
+    number_precision, number_recall, number_fscore = metrics(correct_number, t_num_total, g_num_total)
 
-    person_precision = correct_pers_total / t_pers_total
-    person_recall = correct_pers_total / g_pers_total
-
-    return ("refer-number", f"{number_precision:.3f}", f"{number_recall:.3f}",
-            f"{2 * (number_precision * number_recall) / (number_precision + number_recall) if (number_precision + number_recall) > 0 else 0:.3f}",
-            "refer-person", f"{person_precision:.3f}", f"{person_recall:.3f}",
-            f"{2 * (person_precision * person_recall) / (person_precision + person_recall) if (person_precision + person_recall) > 0 else 0:.3f}")
+    return ("refer-number (entities)", "", f"{number_precision:.3f}", f"{number_recall:.3f}", f"{number_fscore:.3f}",
+            "refer-person (entities)", "", f"{person_precision:.3f}", f"{person_recall:.3f}", f"{person_fscore:.3f}")
 
 
 def inverted_relations(predicted, gold):
     """ Evaluates the accuracy of inverted relations in the predicted UMR graphs. """
-    parent_pred, parent_gold, edge_pred, edge_gold = [], [], [], []
+    correct_edge, correct_parent = 0, 0
+    t_inverted_total, g_inverted_total = 0, 0
 
     for t_graph, g_graph in zip(predicted, gold):
-        inverted_pred = [t for t in t_graph.penman_graph[0].triples if layout.appears_inverted(t_graph.penman_graph[0], t)]
+
         edge_gold_dict, parent_gold_dict = {}, {}
-        for t in g_graph.penman_graph[0].triples:
-            if layout.appears_inverted(g_graph.penman_graph[0], t):
+
+        for g in g_graph.penman_graph[0].edges():
+            if layout.appears_inverted(g_graph.penman_graph[0], g):
+                child = g[2]
+                parent_gold_dict[child] = g[0]
+                edge_gold_dict[child] = g[1]
+
+        for t in t_graph.penman_graph[0].edges():
+            if layout.appears_inverted(t_graph.penman_graph[0], t):
                 child = t[2]
-                parent_gold_dict[child] = t[0]
-                edge_gold_dict[child] = t[1]
+                # Is the parent correct, i.e. the same as in the gold triple with the same child?
+                matched_child = t_graph.matched_alignment.get(child, '')
+                if matched_child in parent_gold_dict:
+                    g_parent = parent_gold_dict[matched_child]
+                    correct_parent += t[0] == g_graph.matched_alignment.get(g_parent, '')
+                # Is the inverted edge correct, i.e. the same as in the gold triple with the same child?
+                if matched_child in edge_gold_dict:
+                    g_edge = edge_gold_dict[matched_child]
+                    correct_edge += t[1] == g_edge
 
-        for t in inverted_pred:
-            child = t[2]
-            # Is the parent correct, i.e. the same as in the gold triple with the same child?
-            corresponding_child = t_graph.matched_alignment.get(child, None)
-            if corresponding_child in parent_gold_dict:
-                g_parent = parent_gold_dict[corresponding_child]
-                parent_gold.append(g_graph.matched_alignment.get(g_parent, g_parent))  # t_node aligned with g_parent, else g_parent
-                parent_pred.append(t[0])
-            # Is the inverted edge correct, i.e. the same as in the gold triple with the same child?
-            if corresponding_child in edge_gold_dict:
-                g_edge = edge_gold_dict[corresponding_child]
-                edge_gold.append(g_graph.matched_alignment.get(g_edge, g_edge))  # t_edge aligned with g_edge, else g_edge
-                edge_pred.append(t[1])
+        t_inverted_total += len([t for t in t_graph.penman_graph[0].edges() if layout.appears_inverted(t_graph.penman_graph[0], t)])
+        g_inverted_total += len([g for g in g_graph.penman_graph[0].edges() if layout.appears_inverted(g_graph.penman_graph[0], g)])
 
-        # TODO: if I want recall to make sense, I need to also iterate over gold
+    parent_precision, parent_recall, parent_fscore = metrics(correct_parent, t_inverted_total, g_inverted_total)
+    edge_precision, edge_recall, edge_fscore = metrics(correct_edge, t_inverted_total, g_inverted_total)
 
-    parent_prec, parent_recall, parent_f1 = esklearnone(parent_gold, parent_pred)
-    edge_prec, edge_recall, edge_f1 = esklearnone(edge_gold, edge_pred)
-
-    return (f"{parent_prec:.2f}", f"{parent_recall:.2f}", f"{parent_f1:.2f}",
-            f"{edge_prec:.2f}", f"{edge_recall:.2f}", f"{edge_f1:.2f}")
-
-
-### OVERVIEW ###
-
-# issue: the alignment strategy seems wild and unreliable
-
-def parent_uas_las(predicted, gold, category=None):
-
-    total_score = 0
-    correct_uas, correct_las = 0, 0
-    unaligned_nodes = 0
-
-    category_rels = {
-        'arguments': {':ARG0', ':ARG1', ':ARG2', ':ARG3', ':ARG4'},
-        'operands': {':op1', ':op2', ':op3', ':op4', ':op5'},
-        'participants': {':actor', ':undergoer', ':theme', ':recipient', ':affectee'},
-        'non-participants': {':mod', ':manner', ':OBLIQUE', ':temporal', ':ADVCL', ':name', ':possessor',
-                             ':condition', ':vocative', ':concession'}
-    }
-
-    rels = category_rels.get(category)  # None if category not in dictionary
-
-    for t_graph, g_graph in zip(predicted, gold):
-        t_edges = t_graph.penman_graph[0].edges()
-        g_edges = g_graph.penman_graph[0].edges()
-
-        if rels is not None:  # Filter only relevant edges if a category is specified
-            t_edges = [t for t in t_edges if t[1] in rels]
-            g_edges = [g for g in g_edges if g[1] in rels]
-
-        for t in t_edges:
-            total_score += 1
-            gold = t_graph.matched_alignment.get(t[2], '')  # gold aligned node for t[2]
-            if not gold.startswith('NULL'):  # unaligned nodes anyway  # ripensare se ha senso
-                for g in g_edges:
-                    if g[2] == gold:  # this g is the triple I'll compare
-                        if t_graph.matched_alignment.get(t[0], '') == g[0]:  # gold_parent
-                            correct_uas += 1
-                            # print(f't: {t}, g: {g}')
-                            if g[1] == t[1]:
-                                correct_las += 1
-                                break
-                            break
-            else:
-                unaligned_nodes += 1  # it wasn't possible to get any parent anyway
-
-        # mi interessa che il nodo non andasse creato?
-        for g in g_edges:
-            pass
-
-    effective_total = total_score - unaligned_nodes
-
-    print(f"Category: {category and category.upper()}")
-    print(f"Correctly retrieved parent: {correct_uas} out of {total_score} (eff. {effective_total}).\n"
-          f"Correctly retrieved parent + edge: {correct_las} out of {total_score} (eff. {effective_total}).\n"
-          f"UAS: {(correct_uas / total_score):.2f}, LAS: {(correct_las / total_score):.2f}\n"
-          f"Refined scores: UAS {(correct_uas / effective_total):.2f}, LAS {(correct_las / effective_total):.2f}")
-    print()
+    return ("Inverted relations", "parent", f"{parent_precision:.3f}", f"{parent_recall:.3f}", f"{parent_fscore:.3f}",
+            "Inverted relations", "edge", f"{edge_precision:.3f}", f"{edge_recall:.3f}", f"{edge_fscore:.3f}")
 
 
 # def lds_per_label(predicted, gold):
@@ -339,7 +206,6 @@ def parent_uas_las(predicted, gold, category=None):
 #     all_rels = [r for rs in category_rels.values() for r in rs]
 #
 #     print("------------------------- SCORES PER LABEL -------------------------")
-#     print()
 #
 #     for rel in all_rels:
 #
@@ -361,133 +227,132 @@ def parent_uas_las(predicted, gold, category=None):
 #                     gold = t_graph.matched_alignment.get(t[2], '')  # gold aligned node for t[2]
 #                     for g in g_edges:
 #                         if g[2] == gold:  # this g is the triple I'll compare
-#                             if g[1] == t[1]:
-#                                 correct += 1
+#                             correct += g[1] == t[1]
 #
 #         if total:
 #             print(f"Category: {rel.upper()}, {total}")
 #             print(f"Correctly retrieved edge: {correct} out of {total}.\n",
 #                   f"LDS: {(correct / total):.2f}\n")
-#             print()
 #         else:
 #             print('zero category', rel)
 
-##### NEW #####
+def las(predicted, gold, category=None):
 
-def las(predicted, gold):  # or LAS?
+    category_rels = {
+        'arguments': {':ARG0', ':ARG1', ':ARG2', ':ARG3', ':ARG4'},
+        'operands': {':op1', ':op2', ':op3', ':op4', ':op5'},
+        'participants': {':actor', ':undergoer', ':theme', ':recipient', ':affectee'},
+        'non-participants': {':mod', ':manner', ':OBLIQUE', ':temporal', ':ADVCL', ':name', ':possessor',
+                             ':condition', ':vocative', ':concession'}
+    }
 
-    correct_total = 0
+    rels = category_rels.get(category)  # None if category not in dictionary
+
+    correct = 0
     t_total, g_total = 0, 0
 
     for t_graph, g_graph in zip(predicted, gold):
 
-        correct = 0
-        g_triples, t_triples = 0, 0
+        if category and rels:  # Filter only relevant edges if a category is specified
+            t_edges = [t for t in  t_graph.penman_graph[0].edges() if t[1] in rels]
+            g_edges = [g for g in g_graph.penman_graph[0].edges() if g[1] in rels]
+        else:
+            t_edges = t_graph.penman_graph[0].edges()
+            g_edges = g_graph.penman_graph[0].edges()
 
-        for g in g_graph.penman_graph[0].triples:
+        for g in g_edges:  # or triples?
             if g[0] in g_graph.matched_alignment:
-                if g[2] in g_graph.penman_graph[0].variables():
-                    g_triples += g[2] in g_graph.matched_alignment
-                else:
-                    g_triples += 1
+                # if g[2] in g_graph.penman_graph[0].variables():
+                g_total += g[2] in g_graph.matched_alignment
+                # else:
+                #     g_total += 1
 
-        for t in t_graph.penman_graph[0].triples:
+        for t in t_edges:  # or triples?
             if t[0] in t_graph.matched_alignment:
-                if t[2] in t_graph.penman_graph[0].variables():
-                    t_triples += t[2] in t_graph.matched_alignment
-                else:
-                    t_triples += 1
+                # if t[2] in t_graph.penman_graph[0].variables():
+                t_total += t[2] in t_graph.matched_alignment
+                # else:
+                #     t_total += 1
 
-        for t in t_graph.penman_graph[0].triples:
             t_parent, t_edge, t_child = t
-            for g in g_graph.penman_graph[0].triples:
+            for g in g_edges:  # or triples?
                 g_parent = t_graph.matched_alignment.get(t_parent, '')
                 if t_child in t_graph.penman_graph[0].variables():
                     g_child = t_graph.matched_alignment.get(t_child, '')
                 else:
                     g_child = t_child
                 if g_parent and g_child:
-                    if g_parent == g[0] and t_edge == g[1] and g_child == g[2]:
-                        correct += 1
+                    correct += g_parent == g[0] and t_edge == g[1] and g_child == g[2]
 
-        correct_total += correct
-        t_total += t_triples
-        g_total += g_triples
+    precision, recall, fscore = metrics(correct, t_total, g_total)
 
-        # print('correct', correct)
-        # print('pred', correct / t_total)
-
-    precision = correct_total / t_total
-    recall = correct_total / g_total
-
-    return ("LAS", f"{precision:.3f}", f"{recall:.3f}",
-            f"{2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0:.3f}")
+    return "LAS", f"{category if category else ''}", f"{precision:.3f}", f"{recall:.3f}", f"{fscore:.3f}"
 
 
-def uas(predicted, gold):
+def uas(predicted, gold, category=None):
 
-    correct_total = 0
+    category_rels = {
+        'arguments': {':ARG0', ':ARG1', ':ARG2', ':ARG3', ':ARG4'},
+        'operands': {':op1', ':op2', ':op3', ':op4', ':op5'},
+        'participants': {':actor', ':undergoer', ':theme', ':recipient', ':affectee'},
+        'non-participants': {':mod', ':manner', ':OBLIQUE', ':temporal', ':ADVCL', ':name', ':possessor',
+                             ':condition', ':vocative', ':concession'}
+    }
+
+    rels = category_rels.get(category)  # None if category not in dictionary
+
+    correct = 0
     t_total, g_total = 0, 0
 
     for t_graph, g_graph in zip(predicted, gold):
 
-        correct = 0
-        g_triples, t_triples = 0, 0
+        if category and rels:  # Filter only relevant edges if a category is specified
+            t_edges = [t for t in  t_graph.penman_graph[0].edges() if t[1] in rels]
+            g_edges = [g for g in g_graph.penman_graph[0].edges() if g[1] in rels]
+        else:
+            t_edges = t_graph.penman_graph[0].edges()
+            g_edges = g_graph.penman_graph[0].edges()
 
-        for g in g_graph.penman_graph[0].edges():
+        for g in g_edges:
             if g[0] in g_graph.matched_alignment:
-                g_triples += g[2] in g_graph.matched_alignment
+                g_total += g[2] in g_graph.matched_alignment
 
-        for t in t_graph.penman_graph[0].edges():
+        for t in t_edges:
             if t[0] in t_graph.matched_alignment:
-                t_triples += t[2] in t_graph.matched_alignment
+                t_total += t[2] in t_graph.matched_alignment
 
-        for t in t_graph.penman_graph[0].edges():
+        for t in t_edges:
             t_parent, t_edge, t_child = t
-            for g in g_graph.penman_graph[0].edges():
+            for g in g_edges:
                 g_parent = t_graph.matched_alignment.get(t_parent, '')
                 g_child = t_graph.matched_alignment.get(t_child, '')
                 if g_parent and g_child:
-                    if g_parent == g[0] and g_child == g[2]:
-                        correct += 1
+                    correct += g_parent == g[0] and g_child == g[2]
 
-        correct_total += correct
-        t_total += t_triples
-        g_total += g_triples
+    precision, recall, fscore = metrics(correct, t_total, g_total)
 
-        # print('correct', correct)
-        # print('pred', correct / t_total)
+    return "UAS", f"{category if category else ''}", f"{precision:.3f}", f"{recall:.3f}", f"{fscore:.3f}"
 
-    precision = correct_total / t_total
-    recall = correct_total / g_total
-
-    return ("UAS", f"{precision:.3f}", f"{recall:.3f}",
-            f"{2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0:.3f}")
 
 def child_label(predicted, gold):
 
-    # Here I need to exclude attributes and instances, where the edge is always correct
-
-    correct_total = 0
+    correct = 0
     t_total, g_total = 0, 0
 
     for t_graph, g_graph in zip(predicted, gold):
-
-        correct = 0
-        g_triples, t_triples = 0, 0
 
         gold_already_checked = set()  # because of re-entrancies
         # e.g., both the following would be counted as correct
         # Edge(source='s2c', role=':actor', target='s2p2') Edge(source='s2c', role=':actor', target='s2p2')
         # Edge(source='s2c', role=':actor', target='s2p2') Edge(source='s2p3', role=':actor', target='s2p2')
 
-        for g in g_graph.penman_graph[0].edges():
+        for g in g_graph.penman_graph[0].edges():  # Excluding attributes and instances because the edge is always correct
             if g[0] in g_graph.matched_alignment:
-                g_triples += g[2] in g_graph.matched_alignment
+                g_total += g[2] in g_graph.matched_alignment
 
         for t in t_graph.penman_graph[0].edges():
             if t[0] in t_graph.matched_alignment:
-                t_triples += t[2] in t_graph.matched_alignment
+                t_total += t[2] in t_graph.matched_alignment
 
         for t in t_graph.penman_graph[0].edges():
             t_parent, t_edge, t_child = t
@@ -499,64 +364,52 @@ def child_label(predicted, gold):
                         correct += 1
                         gold_already_checked.add(g)
 
-        correct_total += correct
-        t_total += t_triples
-        g_total += g_triples
+    precision, recall, fscore = metrics(correct, t_total, g_total)
 
-        # print('correct', correct)
-        # print('pred', correct / t_total)
+    return "Child-label", "", f"{precision:.3f}", f"{recall:.3f}", f"{fscore:.3f}"
 
-    precision = correct_total / t_total
-    recall = correct_total / g_total
-
-    return ("Child-label", f"{precision:.3f}", f"{recall:.3f}",
-            f"{2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0:.3f}")
 
 def parent_label(predicted, gold):
 
-    correct_total = 0
+    correct = 0
     t_total, g_total = 0, 0
 
     for t_graph, g_graph in zip(predicted, gold):
 
-        correct = 0
-        g_triples, t_triples = 0, 0
+        g_triples = g_graph.penman_graph[0].triples
+        t_triples = t_graph.penman_graph[0].triples
 
-        for g in g_graph.penman_graph[0].triples:
-            if g[0] in g_graph.matched_alignment:
-                if g[2] in g_graph.penman_graph[0].variables():
-                    g_triples += g[2] in g_graph.matched_alignment
-                else:
-                    g_triples += 1
+        # for g in g_triples:
+            # if g[0] in g_graph.matched_alignment:
+                # if g[2] in g_graph.penman_graph[0].variables():
+                    # g_total += g[2] in g_graph.matched_alignment
+                # else:
+                    # g_total += 1
 
-        for t in t_graph.penman_graph[0].triples:
-            if t[0] in t_graph.matched_alignment:
-                if t[2] in t_graph.penman_graph[0].variables():
-                    t_triples += t[2] in t_graph.matched_alignment
-                else:
-                    t_triples += 1
+        # for t in t_triples:
+            # if t[0] in t_graph.matched_alignment:
+            #     if t[2] in t_graph.penman_graph[0].variables():
+            #         t_total += t[2] in t_graph.matched_alignment
+            #     else:
+            #         t_total += 1
 
-        for t in t_graph.penman_graph[0].triples:
-            t_parent, t_edge, t_child = t
-            for g in g_graph.penman_graph[0].triples:
+        for t_parent, t_edge, t_child in t_triples:
+            for g in g_triples:
                 g_parent = t_graph.matched_alignment.get(t_parent, '')
-                if t_child in t_graph.penman_graph[0].variables():
-                    g_child = t_graph.matched_alignment.get(t_child, '')
-                else:
-                    g_child = t_child
+                g_child = t_graph.matched_alignment.get(t_child, '') if t_child in t_graph.penman_graph[0].variables() else t_child
                 if g_parent and g_child:
-                    if g_parent == g[0] and t_edge == g[1]:
-                        correct += 1
+                    correct += g_parent == g[0] and t_edge == g[1]
 
-        correct_total += correct
-        t_total += t_triples
-        g_total += g_triples
+        g_total += sum(
+            g[2] in g_graph.matched_alignment if g[2] in g_graph.penman_graph[0].variables() else 1
+            for g in g_triples if g[0] in g_graph.matched_alignment
+        )
 
-        # print('correct', correct)
-        # print('pred', correct / t_total)
+        t_total += sum(
+            t[2] in t_graph.matched_alignment if t[2] in t_graph.penman_graph[0].variables() else 1
+            for t in t_triples if t[0] in t_graph.matched_alignment
+        )
 
-    precision = correct_total / t_total
-    recall = correct_total / g_total
+    precision, recall, fscore = metrics(correct, t_total, g_total)
 
-    return ("Parent-label", f"{precision:.3f}", f"{recall:.3f}",
-            f"{2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0:.3f}")
+    return "Parent-label", "", f"{precision:.3f}", f"{recall:.3f}", f"{fscore:.3f}"
