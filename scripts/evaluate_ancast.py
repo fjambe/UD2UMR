@@ -139,14 +139,14 @@ class UMRDocument(DocumentMatch):
             (tests_ancast.abstract(predicted, gold)[0:5]),
             (tests_ancast.abstract(predicted, gold)[5:10]),
             (tests_ancast.abstract(predicted, gold)[10:15]),
-            tests_ancast.uas(predicted, gold, category='arguments'),
-            tests_ancast.uas(predicted, gold, category='participants'),
-            tests_ancast.uas(predicted, gold, category='non-participants'),
-            tests_ancast.uas(predicted, gold, category='operands'),
             tests_ancast.las(predicted, gold, category='arguments'),
             tests_ancast.las(predicted, gold, category='participants'),
             tests_ancast.las(predicted, gold, category='non-participants'),
-            tests_ancast.las(predicted, gold, category='operands')
+            tests_ancast.las(predicted, gold, category='operands'),
+            tests_ancast.uas(predicted, gold, category='arguments'),
+            tests_ancast.uas(predicted, gold, category='participants'),
+            tests_ancast.uas(predicted, gold, category='non-participants'),
+            tests_ancast.uas(predicted, gold, category='operands')
         ]
 
         # tests_ancast.lds_per_label(predicted, gold)
