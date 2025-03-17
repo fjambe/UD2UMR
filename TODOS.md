@@ -62,7 +62,7 @@ Matt said he faced the same issue and there's no straightforward strategy in Pen
 Now I have a function that kinda does it, although not perfectly - but it's at least way less confusing.
 
 - [discussed, agreed for now] Let's have the `aspect` attribute in the sentence, although without any value (just the
-string `:aspect` ready for the annotator to fill in the value), everytime I have a predicate. Given that I cannot
+string `:aspect` ready for the annotator to fill in the value), every time I have a predicate. Given that I cannot
 extract automatically the aspect value.
 To me, it feels like it depends on what the goal is: make annotators' job easier or claim to get UMRs automatically?
 After discussing it with Alexis, we came to the conclusion that it would definitely be beneficial for annotators.
@@ -157,7 +157,7 @@ All other _nec_ s are not split in two as a MWE.
   2. UMR evaluation on single graphs. Gold UMRs needed here.
     I can use some of the Latin ones from Sallust, plus annotate some more, ideally for other languages.
     They don't need to be that many, I guess.
-- In any case, before the final evaluation, got through converted UMRS with Dan / UMR team  + refine external resources
+- In any case, before the final evaluation, got through converted UMRs with Dan / UMR team  + refine external resources
 for languages other than Latin.
 
 
@@ -180,9 +180,9 @@ for languages other than Latin.
   - _AnCast_ paper: 2 methods to find anchor pairs. If manual alignment between a graph and the word tokens exist, the
   alignment between a pair of concepts can be inferred from it (a pair of concepts aligned to the same word tokens can be
   considered to be an initial anchor pair). If graphs are not manually aligned to word tokens, the alternative is to
-  extract a subset of highly similar pairs from a pair of graphs for the same sentence (FG: not doable).
-  - The issue is that then they update the initial anchor matrix in the iterative anchor broadcast step -> FG: not doable.
-  - It could be nice if I could use their alignment system, and then just do my evaluation. Seems to be working!
+  extract a subset of highly similar pairs from a pair of graphs for the same sentence. They then update the initial
+  anchor matrix in the iterative anchor broadcast step.
+  - It could be nice if I could use their alignment system, and then just do my evaluation.
   - "Micro F1 is calculated by averaging all triple-pair scores across the whole dataset."
   - An interesting feature is that it provides precision, recall, F1 scores, which could be an interesting measure (recall)
   of how much information I am losing to avoid graph disconnection.
@@ -204,7 +204,7 @@ for languages other than Latin.
 
   - TEST SET:
     - Come up with an ordered list of sentences to annotate from scratch (and from converted graphs).
-    - In PUD, 2 genres (Wikipedia - w, and news - n) + original langauge of the data (5). E.g., _n01_: English news.
+    - In PUD, 2 genres (Wikipedia - w, and news - n) + original language of the data (5). E.g., _n01_: English news.
     Cf. "The first 750 sentences are originally English (01). The remaining 250 sentences are originally German (02),
     French (03), Italian (04) or Spanish (05) and they were translated to other languages via English"
     - Manual annotation/correction of converted graphs?
@@ -242,6 +242,11 @@ for languages other than Latin.
   - _6th International Workshop on Designing Meaning Representation_ (4-5 Aug, Prague, deadline: 21 Apr; dual submission allowed).
   - _TLT_ -> _SyntaxFest_ (26-29 Aug 2025, deadline: 15 Apr).
   - _19th Linguistic Annotation Workshop (LAW-XIX)_ (Jul/Aug, ACL, Vienna, deadline via ARR: 25 Mar, direct submission: 04 Apr).
-  - _16th International Conference on Computational Semantics (IWCS)_ (22-24 Sep, Heinrich Heine University Düsseldorf, deadline: 06 Jun; dual submission allowed).
+  From CfP: "Authors of papers that have been or will be submitted to other meetings or publications must provide this
+  information to the workshop co-chairs (law2025workshop@gmail.com). Authors of accepted papers must notify the program
+  chairs within 10 days of acceptance if the paper is withdrawn for any reason."
+  - _16th International Conference on Computational Semantics (IWCS)_ (22-24 Sep, Heinrich Heine University Düsseldorf,
+  deadline: 06 Jun; dual submission allowed).
+  - _*SEM2025: The 14th Joint Conference on Lexical and Computational Semantics_ (Suzhou, China, co-located with EMNLP, deadline: May 30).
 
     
