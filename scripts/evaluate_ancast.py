@@ -78,20 +78,32 @@ class UMRDocument(DocumentMatch):
 
                 # t_buff = t_buff[1].strip().split("# document level annotation:")
                 # g_buff = g_buff[1].strip().split("# document level annotation:")
-
+                #
                 # t_alignment = t_buff[0].strip()
                 # g_alignment = g_buff[0].strip()
-
+                #
                 # t_alignment = parse_alignment(t_alignment)
                 # g_alignment = parse_alignment(g_alignment)
+                #
+                # for ga, gv in g_alignment.items():
+                #     if ',' in gv:
+                #         gv = gv.split(',')
+                #         g_alignment[ga] = gv[1]
+                # for ta, tv in t_alignment.items():
+                #     if ',' in tv:
+                #         tv = tv.split(',')
+                #         t_alignment[ta] = tv[1]
+                # print(g_alignment)
 
                 t_pm_graph = penman.loads(''.join(t_graph))
                 g_pm_graph = penman.loads(''.join(g_graph))
 
+                # tumr = UMRSentence(sent=t_sent, semantic_text=t_graph, alignment=t_alignment, sent_num=name,
                 tumr = UMRSentence(sent=t_sent, semantic_text=t_graph, alignment={}, sent_num=name,
-                                   penman_graph=t_pm_graph)  # alignment=t_alignment
+                                   penman_graph=t_pm_graph)  # alignment=t_alignment,{}
+                # gumr = UMRSentence(sent=g_sent, semantic_text=g_graph, alignment=g_alignment, sent_num=name,
                 gumr = UMRSentence(sent=g_sent, semantic_text=g_graph, alignment={}, sent_num=name,
-                                   penman_graph=g_pm_graph)  # alignment=g_alignment
+                                   penman_graph=g_pm_graph)  # alignment=g_alignment,{}
 
                 if tumr.invalid or gumr.invalid:
                     print(f"Error encountered, skipping sentence {name}")

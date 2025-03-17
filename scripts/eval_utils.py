@@ -107,80 +107,80 @@ def run_tests(gold, predicted):
         f"Number of gold graphs ({len(gold)}) and converted graphs ({len(predicted)}) do not match."
     )
 
-    g_total, p_total, correct = 0, 0, 0
+    g_total, p_total, correct_total = 0, 0, 0
     # g_total_uas, p_total_uas, correct_uas = 0, 0, 0
-    # g_total_las, p_total_las, correct_las = 0, 0, 0
-    # g_total_lds, p_total_lds, correct_lds = 0, 0, 0
+
+    def process_matching_triples(p, parents, children, triples_matched, correctly_retrieved, pumrs, e):
+        """ Helper function to check and update matching gold triples. """
+        memory = []
+        for g in gumr.graph.triples:
+            if g not in triples_matched:
+                if g[0] in parents and g[1] == p[1] and g[2] in children:
+                    pumrs += 1
+                    memory.append(g)
+                    # print('g', g)
+
+        if len(memory) == 1:
+            triples_matched.add(memory[0])
+            correctly_retrieved += 1
+        elif len(memory) > 1:  # wrong
+            for x in memory:
+                triples_matched.add(x)
+                correctly_retrieved += e
+
+        return correctly_retrieved, pumrs
 
     for gumr, pumr in zip(gold, predicted):
+
+        correct = 0
 
         assert gumr.sent_num == pumr.sent_num, f"Sentence number mismatch: {gumr.sent_num}, {pumr.sent_num}"
 
         g_to_p_matches, zero_aligned, = gumr.compare_alignments(pumr)
-        # p_to_g_matches = {p: (g if isinstance(g, list) else [g]) for g, p_list in g_to_p_matches.items() for p in p_list}
-
-        print(g_to_p_matches)
 
         number_g = sum(1 for g in gumr.graph.triples if gumr.aligned(g[0], zero_aligned, "gold") and gumr.aligned(g[2], zero_aligned, "gold"))
         number_p = sum(1 for p in pumr.graph.triples if pumr.aligned(p[0], zero_aligned, "pred") and pumr.aligned(p[2], zero_aligned, "pred"))
 
-        g_total += (len(gumr.graph.triples) - number_g)
-        p_total += (len(pumr.graph.triples) - number_p)
+        g_total += number_g
+        p_total += number_p
 
         pumrs = 0
-        totale = [t for t in pumr.graph.triples if t[0] not in zero_aligned['pred'] and t[2] not in zero_aligned['pred']]
-        print('TOTALE TRIPLE:', len(totale))
-        # ins = [t for t in pumr.graph.instances() if t[0] not in zero_aligned['pred']]
-        # att = [t for t in pumr.graph.attributes() if t[0] not in zero_aligned['pred']]
-        # print(len([p for p in pumr.graph.edges() if p[0] not in zero_aligned['pred'] and p[2] not in zero_aligned['pred']]))
+        print('TOTALE TRIPLE:', number_p)
+
+        ins = [t for t in pumr.graph.instances() if t[0] not in zero_aligned['pred']]
+        att = [t for t in pumr.graph.attributes() if t[0] not in zero_aligned['pred']]
+        # print('NON-EDGES', len(ins) + len(att))
+        # print('EDGES', len([p for p in pumr.graph.edges() if p[0] not in zero_aligned['pred'] and p[2] not in zero_aligned['pred']]))
+        print('EDGES', len([p for p in pumr.graph.edges() if pumr.aligned(p[0], zero_aligned, "pred") and pumr.aligned(p[2], zero_aligned, "pred")]))
 
         gold_triples_matched = set()
-        for p in pumr.graph.triples:  # then also distinguish gumr.graph.edges, attributes, instances
+
+        for p in pumr.graph.triples:
             p_parent, p_edge, p_child = p
-            if p_child:  # this check is only due to the 23:45 issue, so it's temporary
-                if p in pumr.graph.edges():
-                    if pumr.aligned(p_parent, zero_aligned, "pred") and pumr.aligned(p_child, zero_aligned, "pred"):
-                        print('aaa', p)
-                        # g_parents = p_to_g_matches.get(p_parent, [])
-                        g_parents = [key for key, p_list in g_to_p_matches.items() if p_parent in p_list]
-                        # g_children = p_to_g_matches.get(p_child, [])
-                        g_children = [key for key, p_list in g_to_p_matches.items() if p_child in p_list]
-                        epsilon = 1 / max(1, len(g_parents))
-                        for g in gumr.graph.triples:
-                            if g not in gold_triples_matched:
-                                # if any(p_parent == g_parent and p_edge == g[1] and p_child == g_child for g_parent in
-                                #        g_parents for g_child in g_children):
-                                for g_parent in g_parents:
-                                    for g_child in g_children:
-                                        # Check if the predicted triple matches any gold triple combination
-                                        if g_parent == g[0] and p_edge == g[1] and g_child == g[2]:
-                                            pumrs += 1
-                                            gold_triples_matched.add(g)
-                                            correct += epsilon
-                                            print(epsilon)
-                                            print('correct', p, g)
+            if not p_child:  # Temporary check based on 23:45 issue
+                continue
 
-                else:  # child is attribute or instance
-                    if pumr.aligned(p_parent, zero_aligned, "pred"):
-                        # g_parents = p_to_g_matches.get(p_parent, [])
-                        g_parents = [key for key, p_list in g_to_p_matches.items() if p_parent in p_list]
-                        epsilon = 1 / max(1, len(g_parents))
-                        for g in gumr.graph.triples:
-                            if g not in gold_triples_matched:
-                                # if any(p_parent == g_parent and p_edge == g[1] and p_child == g[2] for g_parent in
-                                #        g_parents):
-                                for g_parent in g_parents:
-                                    if g_parent == g[0] and p_edge == g[1] and p_child == g[2]:
-                                        pumrs += 1
-                                        gold_triples_matched.add(g)
-                                        correct += epsilon
+            g_parents = [key for key, p_list in g_to_p_matches.items() if p_parent in p_list]
+            epsilon = 1 / max(1, len(g_parents))
 
-        print('Triples retrieved:', pumrs)
-        print(correct / len(totale))
+            if p in pumr.graph.edges():  # Edges
+                if pumr.aligned(p_parent, zero_aligned, "pred") and pumr.aligned(p_child, zero_aligned, "pred"):
+                    g_children = [key for key, p_list in g_to_p_matches.items() if p_child in p_list]
+                    correct, pumrs = process_matching_triples(p, g_parents, g_children, gold_triples_matched, correct, pumrs, epsilon)
 
-        quit()
+            else:  # Attributes and instances
+                if pumr.aligned(p_parent, zero_aligned, "pred"):
+                    correct, pumrs = process_matching_triples(p, g_parents, [p_child], gold_triples_matched, correct, pumrs, epsilon)
 
-    print(correct / g_total)
+        correct_total += correct
+
+        # print('Triples retrieved:', pumrs)
+        print('correct', correct)
+        print('perce', correct / number_g)
+
+        # quit()
+
+    print(correct_total / g_total)
 
     data = []
 

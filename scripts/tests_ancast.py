@@ -33,6 +33,8 @@ def abstract(predicted, gold):
 
     for t_graph, g_graph in zip(predicted, gold):
 
+        print(g_graph.matched_alignment)
+
         t_abstract = {t[0]: t[2] for t in t_graph.penman_graph[0].instances() if t[2].endswith(("-91", "-92")) and t[2] != 'but-91'}
         g_abstract = {t[0]: t[2] for t in g_graph.penman_graph[0].instances() if t[2].endswith(("-91", "-92")) and t[2] != 'but-91'}
 
