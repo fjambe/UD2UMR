@@ -2220,7 +2220,7 @@ Sentence: One of his last means of placing pressure on Hungary was the threat of
         :refer-number plural
         :ord (s47l / ordinal-entity :value "-1")
         :manner-of (s47p / pressure
-            :actor(s47p3 / person
+            :actor (s47p3 / person
                 :refer-person 3rd
                 :refer-number singular)
             :undergoer (s47t2 / country

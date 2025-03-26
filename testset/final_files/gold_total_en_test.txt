@@ -346,7 +346,7 @@ Sentence: The smartphone generation received an app it deserved, where, in the b
             :other-role s8g
             :aspect state
             :modal-strength full-affirmative)
-        :place-of (s8r2 / receieve-01
+        :place-of (s8r2 / receive-01
             :goal (s8s2 / situation
                 :ARG1-of (s8h / have-degree-91
                     :ARG2 (s8i / idiotic)
@@ -445,7 +445,7 @@ Sentence: According to the programme, she will speak at 23.45.
             :refer-person 3rd
             :refer-number singular)
         :temporal (s10d / date-entity
-            :time 23:45)
+            :time 23.45)
         :aspect performance
         :modal-strength full-affirmative
         :quote s10s))
@@ -2571,7 +2571,7 @@ Sentence: According to the programme, she will speak at 23.45.
             :refer-person 3rd
             :refer-number singular)
         :temporal (s53d / date-entity
-            :time 23:45)
+            :time 23.45)
         :modal-strength full-affirmative
         :aspect performance
         :quote s53s2)
@@ -3681,7 +3681,7 @@ Sentence: One of his last means of placing pressure on Hungary was the threat of
         :refer-number plural
         :ord (s77l / ordinal-entity :value "-1")
         :manner-of (s77p / pressure
-            :actor(s77p3 / person
+            :actor (s77p3 / person
                 :refer-person 3rd
                 :refer-number singular)
             :undergoer (s77t2 / country
