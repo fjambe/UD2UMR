@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-# Copyright © 2024 Federica Gamba <gamba@ufal.mff.cuni.cz>
+# Copyright © 2025 Federica Gamba <gamba@ufal.mff.cuni.cz>
 
 import sys, os
-import re
+import regex as re
 import argparse
 import penman
 import pandas as pd
@@ -11,19 +11,182 @@ sys.path.append(os.path.abspath('scripts/ancast/src'))
 from ancast.src.document import DocumentMatch, Match_resolution
 from ancast.src.param_fun import parse_alignment, protected_divide
 from ancast.src.sentence import Sentence
+from ancast.src.word import *
 
 import tests_ancast
 
 # params
 Cneighbor = 1
 
-# adapted from AnCast
+# adapted from Ancast
 class UMRSentence(Sentence):
+
     def __init__(self, sent, semantic_text, alignment, sent_num, penman_graph, matched_alignment=None):
         super().__init__(sent, semantic_text, alignment, sent_num, format="umr")
 
         self.penman_graph = penman_graph
         self.matched_alignment = matched_alignment
+
+    # @timer_decorator
+    def parse(self, semantic_text, format):
+
+        void_var = defaultdict(list)
+        var2node = {}
+
+        sense_re = re.compile(r"-[0-9]{2}")
+
+        def parse_brackets(text, i):
+            result = []
+
+            bracket_match = False
+
+            while i < len(text):
+                if text[i] == '(':
+                    cur_node, i = parse_var_content(text, i + 1)
+                    result.append(cur_node)
+                elif text[i] == ')':
+                    i += 1
+                    bracket_match = True
+                    break
+                else:
+                    i += 1
+            try:
+                assert len(result) == 1, f"Multiple heads identified in semantic graph in sentence {self.sent_num}!"
+            except AssertionError as error:
+                print(f"Format Error: {error.args[0]}")
+                raise
+            try:
+                assert bracket_match, f"Brackets aren't matched, please check the format in semantic graph in {self.sent_num}!"
+            except AssertionError as error:
+                print(f"Format Error: {error.args[0]}")
+                raise
+
+            return cur_node, i
+
+        # @timer_decorator
+        def parse_var_content(text, i):
+
+            head = re.search(r'([\w0-9_\-]+\s*\/\s*[^)\s]+)', text[i:]).group(1)  # FG: include non-English characters
+            var, txt = head.split("/")
+            var = var.strip()
+            txt = txt.strip()
+
+            sense_pos_match = sense_re.search(txt)
+
+            if sense_pos_match:
+                pos = sense_pos_match.span()
+                sense_id = int(txt[pos[0] + 1:pos[1]])
+                real_name = txt[:pos[0]]
+            else:
+
+                sense_id = 0
+                real_name = txt
+
+            i += len(head)
+
+            this_node = Word(raw_name=real_name, var=var, sense_id=sense_id)
+
+            try:
+                assert var not in var2node, "Duplicated variable declaration, ignoring new declaration."
+                var2node[var] = this_node
+            except AssertionError as e:
+                warnings.warn(str(e), category=RuntimeWarning)
+
+            # early-reentrancy
+            if var in void_var.keys():
+                for node, rel in void_var[var]:
+                    node[(rel, self.parse_tags.copy())] = this_node
+                del void_var[var]
+
+            while (i < len(text)) and (text[i] != ')'):
+                if text[i] == ':':
+                    voided_var = False
+
+                    space_1 = text.find(' ', i)
+                    tab_1 = text.find('\t', i)
+
+                    end = space_1 if space_1 != -1 else tab_1
+                    relation = text[i + 1:end]
+                    i = end
+
+                    while (text[i] == ' ') or (text[i] == '\t'):
+                        i += 1
+
+                    if text[i] == '(':
+                        sub_node, end = parse_brackets(text, i)
+
+
+                    elif text[i] == '"':
+
+                        end = text.find('"', i + 1)
+                        text_part = text[i + 1:end]
+
+                        # this is an ill-formed scene where variables are quoted
+
+                        if text_part in var2node.keys():
+                            sub_node = var2node[text_part]
+                            print(f"Quoted reentrancy handled in sentence {self.sent_num}")
+                        else:
+                            sub_node = Attribute(text_part, quoted=True)
+                    else:
+
+                        firstspace = text.find(' ', i)
+                        firstspace = 1e10 if firstspace == -1 else firstspace
+                        firsttab = text.find('\t', i)
+                        firsttab = 1e10 if firsttab == -1 else firsttab
+                        firstline = text.find('\n', i)
+                        firstline = 1e10 if firstline == -1 else firstline
+
+                        next_space = min(firstline, firsttab, firstspace)
+                        next_right_bracket = text.find(')', i)
+
+                        if next_right_bracket == -1:
+                            next_right_bracket = 1e10
+
+                        end = min(next_space, next_right_bracket)
+
+                        tt = text[i:end].strip()
+
+                        if tt in var2node.keys():
+
+                            # if it is a valid re-entrancy
+
+                            sub_node = var2node[tt]
+
+                        elif (re.fullmatch(r"s[0-9]+\w+[0-9]*", tt) and (format == "umr")) or \
+                               ((format == "amr") and (tt not in {"imperative", "expressive"}) and (
+                               not re.fullmatch(r"^[0-9.:+-]+$", tt))):  # FG: include non-English characters
+
+                            # handling of early reentrancy, where the variable is not declared yet
+
+                            void_var[tt].append((this_node, relation))
+                            voided_var = True
+
+                        else:
+                            # attributes are not quoted.
+                            sub_node = Attribute(tt)
+
+                    i = end
+
+                    if not voided_var:
+                        this_node[(relation, self.parse_tags.copy())] = sub_node
+
+                else:
+                    if text[i].isalnum(): # FG: include non-English characters
+                        print(text[i - 5:i + 5])
+                        raise RuntimeError(f"a colon is missing in {self.sent_num}.")
+
+                    i += 1
+
+            return this_node, i
+
+        if len(void_var) > 0:
+            for v in void_var.keys():
+                print(v + " is not specified!")
+
+                # Leave the unspecified variable out for now
+
+        return parse_brackets(semantic_text, 0)[0], var2node  # [1] is "i"
 
 
 class UMRDocument(DocumentMatch):
@@ -98,10 +261,8 @@ class UMRDocument(DocumentMatch):
                 t_pm_graph = penman.loads(''.join(t_graph))
                 g_pm_graph = penman.loads(''.join(g_graph))
 
-                # tumr = UMRSentence(sent=t_sent, semantic_text=t_graph, alignment=t_alignment, sent_num=name,
                 tumr = UMRSentence(sent=t_sent, semantic_text=t_graph, alignment={}, sent_num=name,
                                    penman_graph=t_pm_graph)  # alignment=t_alignment,{}
-                # gumr = UMRSentence(sent=g_sent, semantic_text=g_graph, alignment=g_alignment, sent_num=name,
                 gumr = UMRSentence(sent=g_sent, semantic_text=g_graph, alignment={}, sent_num=name,
                                    penman_graph=g_pm_graph)  # alignment=g_alignment,{}
 
@@ -152,16 +313,14 @@ class UMRDocument(DocumentMatch):
             (tests_ancast.abstract(predicted, gold)[5:10]),
             (tests_ancast.abstract(predicted, gold)[10:15]),
             tests_ancast.las(predicted, gold, category='arguments'),
-            tests_ancast.las(predicted, gold, category='participants'),
-            tests_ancast.las(predicted, gold, category='non-participants'),
-            tests_ancast.las(predicted, gold, category='operands'),
             tests_ancast.uas(predicted, gold, category='arguments'),
+            tests_ancast.las(predicted, gold, category='participants'),
             tests_ancast.uas(predicted, gold, category='participants'),
+            tests_ancast.las(predicted, gold, category='non-participants'),
             tests_ancast.uas(predicted, gold, category='non-participants'),
+            tests_ancast.las(predicted, gold, category='operands'),
             tests_ancast.uas(predicted, gold, category='operands')
         ]
-
-        # tests_ancast.lds_per_label(predicted, gold)
 
         df = pd.DataFrame(data, columns=["Type", "Subtype", "Precision", "Recall", "F-score"])
         print(df.to_string(index=False))

@@ -8,15 +8,15 @@ def metrics(correct, pred_total, gold_total):
     fscore = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
     return precision, recall, fscore
 
-def coordination(predicted, gold, lang):
-    """ Evaluates the accuracy of coordination relations. """
-    conjunctions = load_external_files('conj.json', lang)
-    for t_graph, g_graph in zip(predicted, gold):
-        t_coord = [t for t in t_graph.penman_graph[0].instances() if t[2] in conjunctions] if conjunctions else \
-            [t for t in t_graph.penman_graph[0].instances() if t[2] == 'and']
-
-        g_coord = [t for t in g_graph.penman_graph[0].instances() if t[2] in conjunctions] if conjunctions else\
-            [t for t in g_graph.penman_graph[0].instances() if t[2] == 'and']
+# def coordination(predicted, gold, lang):
+#     """ Evaluates the accuracy of coordination relations. """
+#     conjunctions = load_external_files('conj.json', lang)
+#     for t_graph, g_graph in zip(predicted, gold):
+#         t_coord = [t for t in t_graph.penman_graph[0].instances() if t[2] in conjunctions] if conjunctions else \
+#             [t for t in t_graph.penman_graph[0].instances() if t[2] == 'and']
+#
+#         g_coord = [t for t in g_graph.penman_graph[0].instances() if t[2] in conjunctions] if conjunctions else\
+#             [t for t in g_graph.penman_graph[0].instances() if t[2] == 'and']
 
 
 def abstract(predicted, gold):
@@ -33,41 +33,39 @@ def abstract(predicted, gold):
 
     for t_graph, g_graph in zip(predicted, gold):
 
-        print(g_graph.matched_alignment)
+        non_verbal_function = ['have-91', 'belong-91', 'exist-91', 'have-place-91', 'have-mod-91', 'have-role-91',
+                               'have-org-role-92', 'have-rel-role-92', 'identity-91']
 
-        t_abstract = {t[0]: t[2] for t in t_graph.penman_graph[0].instances() if t[2].endswith(("-91", "-92")) and t[2] != 'but-91'}
-        g_abstract = {t[0]: t[2] for t in g_graph.penman_graph[0].instances() if t[2].endswith(("-91", "-92")) and t[2] != 'but-91'}
+        t_abstract = {t[0]: t[2] for t in t_graph.penman_graph[0].instances() if t[2] in non_verbal_function}
+        g_abstract = {t[0]: t[2] for t in g_graph.penman_graph[0].instances() if t[2] in non_verbal_function}
 
         t_concept_total += len(t_abstract)
         g_concept_total += len(g_abstract)
 
         for ab, t_label in t_abstract.items():
             gold = t_graph.matched_alignment.get(ab, '')
-                        # Test 1: Is the abstract predicate correct?
-            g_label = g_abstract.get(gold, '')
-            correct_concept += (t_label == g_label)
-
             children_pred = t_graph.penman_graph[0].edges(source=ab)
             children_gold = g_graph.penman_graph[0].edges(source=gold)
-
-            t_children_total += len(children_pred)
-            g_children_total += len(children_gold)
-
             pred_args = {c[1]: c[2] for c in children_pred if c[1].startswith(":ARG")}
             gold_args = {c[1]: c[2] for c in children_gold if c[1].startswith(":ARG")}
 
-            t_args_total += len(pred_args)
-            g_args_total += len(gold_args)
+            # Test 1: Is the abstract predicate correct?
+            g_label = g_abstract.get(gold, '')
+            correct_concept += (t_label == g_label)
 
             # Test 2: How many of the abstract predicate's dependents have been correctly retrieved (UAS)?
             matched_children = {t_graph.matched_alignment.get(c[2], '') for c in children_pred}
             correct_children += sum(1 for c in children_gold if c[2] in matched_children)
+            t_children_total += len(children_pred)
+            g_children_total += len(children_gold)
 
             # Test 3: Are correct ARGs assigned to the correct nodes?
             for role, t_target in pred_args.items():
-                g_target = gold_args.get(role, None)
+                g_target = gold_args.get(role, '')
                 if g_target and t_graph.matched_alignment.get(t_target, '') == g_target:
                     correct_args += 1
+            t_args_total += len(pred_args)
+            g_args_total += len(gold_args)
 
     concept_precision, concept_recall, concept_fscore = metrics(correct_concept, t_concept_total, g_concept_total)
     children_precision, children_recall, children_fscore = metrics(correct_children, t_children_total, g_children_total)
@@ -196,6 +194,7 @@ def inverted_relations(predicted, gold):
 # def lds_per_label(predicted, gold):
 #     """
 #     TODO: LAS for each UMR label.
+#     (Do I really want it?)
 #     E.g. is every :quant supposed to be a :quant? But what does that even mean?
 #     It means at least that t[1] is :quant, okay, Then? I guess I need the same child, otherwise what am I doing,
 #     comparing random triples that just happen to have the same edge? Nonsense.
@@ -226,8 +225,6 @@ def inverted_relations(predicted, gold):
 #         correct = 0
 #
 #         for t_graph, g_graph in zip(predicted, gold):
-#
-#             print('hic', t_graph, g_graph)
 #
 #             t_edges = [t for t in t_graph.penman_graph[0].edges() if t[1] == rel]
 #             g_edges = [g for g in g_graph.penman_graph[0].edges() if g[1] == rel]
@@ -271,26 +268,6 @@ def las(predicted, gold, category=None):
 
         t_edges = filter_edges(t_graph, category)  # or triples?
         g_edges = filter_edges(g_graph, category)  # or triples?
-
-        # for g in g_edges:  # or triples?
-        #     if g[0] in g_graph.matched_alignment:
-        #         # if g[2] in g_graph.penman_graph[0].variables():
-        #         g_total += g[2] in g_graph.matched_alignment
-        #         # else:
-        #         #     g_total += 1
-        #
-        # for t_parent, t_edge, t_child in t_edges:  # or triples?
-        #     if t_parent in t_graph.matched_alignment:
-        #         # if t[2] in t_graph.penman_graph[0].variables():
-        #         t_total += t_child in t_graph.matched_alignment
-        #         # else:
-        #         #     t_total += 1
-        #
-        # for g in g_edges:  # or triples?
-        #     g_parent = t_graph.matched_alignment.get(t_parent, '')
-        #     g_child = t_graph.matched_alignment.get(t_child, '') if t_child in t_graph.penman_graph[0].variables() else t_child
-        #     if g_parent and g_child:
-        #         correct += g_parent == g[0] and t_edge == g[1] and g_child == g[2]
 
         g_total += sum(g[2] in g_graph.matched_alignment for g in g_edges if g[0] in g_graph.matched_alignment)
         t_total += sum(t[2] in t_graph.matched_alignment for t in t_edges if t[0] in t_graph.matched_alignment)
