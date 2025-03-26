@@ -1245,7 +1245,7 @@ Sentence Gloss (en): Even if the majority of situations that arise in the workpl
                :manner (s26k / konflikt
                             :polarity -
                             :refer-number singular
-                            :wiki "Q180684"))
+                            :wiki "Q180684")))
 
 # alignment:
 s26h: 1-2
@@ -1298,7 +1298,7 @@ Sentence Gloss (en): It aims to take the journey time into account after deducti
                                                                   :mod (s27s / skutečný)
                                                                   :refer-number singular
                                                                   :mod (s27j2 / jízda
-                                                                  :refer-number singular)))))
+                                                                  :refer-number singular))))))
 
 # alignment:
 s27k: 1-1, 3-4
@@ -2343,7 +2343,7 @@ Sentence Gloss (en): After these successes, he signed a contract with Team Telek
             :op1 (s49u / uspět
                 :actor s49p2
                 :modal-strength full-affirmative
-            	:aspect process))
+            	:aspect process)))
     :op2 (s49n2 / nastěhovat
         :modal-strength full-affirmative
         :aspect performance
@@ -2352,21 +2352,21 @@ Sentence Gloss (en): After these successes, he signed a contract with Team Telek
             :name (s49n3 / name
             	:op1 "Merdingen")
             :refer-number singular
-            :place t2 / territory
+            :place (t2 / territory
                 :name (s49n4 / name
                 	:op1 "Bádensko")
-                :mod (s49j / jižní))
-                :refer-number singular
+                :mod (s49j / jižní)
+                :refer-number singular)
             :place-of (s49ž / žít
                 :actor s49p2
                 :temporal (u/ until
                     :op1 (d/ date-entity
                 	:year 2002)
                 :modal-strength full-affirmative
-                :aspect action))
+                :aspect activity)))
         :companion (s49p3 / přítelkyně
             :refer-number singular
-            :possessor s49p2
+            :possessor s49p2)))
 
 # alignment:
 s49a: 9-9
@@ -2409,7 +2409,7 @@ Sentence Gloss (en): The Viguier and La Conte districts contain the majority of 
             :refer-number singular
             :name (s50n2 / name
             	:op1 "La"
-            	:op2 "Conte"))
+            	:op2 "Conte")))
     :ARG2 (s50b / bydlení
         :refer-number singular
         :quant (s50v / většina)
@@ -2430,7 +2430,7 @@ Sentence Gloss (en): The Viguier and La Conte districts contain the majority of 
                             :refer-number singular)))
                 :manner (s50h / hlavně)
                 :modal-strength full-affirmative
-                :aspect state)
+                :aspect state)))
     :modal-strength full-affirmative
     :aspect state)
 
@@ -2594,7 +2594,7 @@ Sentence Gloss (en): From about the 8th century BC city states began to appear: 
     :temporal (s53f / from
             :op1 (s53d / date-entity
                 :century 8
-                :era (s53b / BC)
+                :era (s53b / BC))
             :modal-strength neutral-affirmative)
     :modal-strength full-affirmative
     :aspect inceptive)
@@ -3174,7 +3174,7 @@ Sentence Gloss (en): Tradition has it that the theme was selected intentionally 
                     :name (s64n2 / name
                     	:op1 "Palma"))
               :modal-strength full-affirmative
-              :aspect action)))
+              :aspect activity)))
     :modal-strength full-affirmative
     :aspect activity)
 
@@ -3277,7 +3277,7 @@ Sentence Gloss (en): The collapse of and intervention in dozens of banks lead to
                 :op2 (s66i / intervenovat
                 	:actor s66b
                 	:modal-strength full-affirmative
-            		:aspect activity)
+            		:aspect activity)))
 
 # alignment:
 s66b2: 16-16

@@ -218,9 +218,8 @@ for languages other than Latin.
 
 - [My notes (06.03.2025)]
   - To obtain the **PRED** test set to evaluate the converter:
-    1. run the converter on the 30 sentences selected for manual
-    annotation;
-    2. run the converter on the 70 sentences selected for graph correction, by changing the `sent_num` to 31;
+    1. run the converter on the 30 sentences selected for manual annotation;
+    2. run the converter on the 70 sentences selected for graph correction, by changing the `sent_num` to 30;
     3. merge the two files into a single test set by running
     `cat testset/converter-output_30_{lang}_test.txt testset/converter-output_70_{lang}_test.txt > testset/converter-output_total_{lang}_test.txt`.
 

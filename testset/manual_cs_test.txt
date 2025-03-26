@@ -528,7 +528,7 @@ Sentence Gloss (en): According to Le Figaro, this government plan could free up 
                     :theme (s12m / monetary-quantity
                                  :quant 42
                                  :unit (s12e/ eur)
-                                 :ARG2-of(s12i / include-91
+                                 :ARG2-of (s12i / include-91
                                                  :aspect state
                                                  :modal-strength neutral-affirmative
                                                  :ARG1 (s12m1 / monetary-quantity
