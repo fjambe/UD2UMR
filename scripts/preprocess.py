@@ -21,7 +21,7 @@ def get_deprels(ud_tree) -> dict:
         'quant': lambda d: d.deprel == 'nummod' or d.sdeprel in ['nummod', 'numgov'],
         'vocative': lambda d: d.deprel == 'vocative',
         'recipient': lambda d: d.udeprel in ['iobj', 'obl'] and d.feats.get('Case') == 'Dat',
-        'MOD/POSS': lambda d: d.udeprel == 'nmod' and d.feats.get('Case') == 'Gen',
+        'MOD-POSS': lambda d: d.udeprel == 'nmod' and d.feats.get('Case') == 'Gen',
         'possessor': lambda d: d.sdeprel == 'poss',
         'identity-91': lambda d: d.deprel == 'appos',
         'COPULA': lambda d: d.deprel == 'cop',
