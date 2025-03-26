@@ -472,7 +472,7 @@ Sentence Gloss (en): According to the programme, she will speak at 23.45.
     :OBLIQUE (s10p / programma
         :mod (s10i / il)
         :refer-number singular)
-    :OBLIQUE (s10x / 23:45)
+    :OBLIQUE (s10x / 23.45)
     :modal-strength full-affirmative
     :aspect ASP)
 
@@ -2658,7 +2658,7 @@ Sentence Gloss (en): According to the programme, she will speak at 23.45.
 (s53p2 / parlare
     :actor (s53f / FILL
         :refer-number singular)
-    :OBLIQUE (s53x / 23:45)
+    :OBLIQUE (s53x / 23.45)
     :OBLIQUE (s53p / programma
         :mod (s53i / il)
         :refer-number singular)

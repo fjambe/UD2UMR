@@ -1961,7 +1961,7 @@ Sentence Gloss (en): Federico Fellini once said: "The clown is to humanity as th
                                 :modal-strength full-affirmative
                                 :aspect state)
                   :ARG2 (s41i2 / identity-91
-                                :ARG1(s41s / stín
+                                :ARG1 (s41s / stín
                                              :refer-number singular)
                                 :ARG2 (s41c / člověk
                                              :refer-number singular)

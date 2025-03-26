@@ -1066,7 +1066,7 @@ Sentence Gloss (en): Greece was divided into many small, self-governing communit
 			:op2 (s23ú / údolí)
 			:op3 (s23r2 / rovina)
 			:quant (s23k2 / každý))
-		:source (s23s / soused
+		:source (s23s2 / soused
 			:possessor s23a
 			:refer-number plural)
 		:cause (s23o3 / or
@@ -1094,7 +1094,7 @@ s23o2: 19-19
 s23ú: 21-21
 s23r2: 23-23
 s23k2: 18-18
-s23s: 28-28
+s23s2: 28-28
 s23o3: 30-30
 s23m3: 29-29
 s23p2: 31-31
@@ -1160,29 +1160,56 @@ Sentence: V roce 1976 se závodiště už nepoužívalo; v roce 1990 požár zni
 Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables.
 
 # sentence level graph:
-(s25 / )
+(s25a / and
+	:op1 (s25p / používat
+		:modal-strength full-negative
+		:aspect activity
+		:undergoer (s25z / závodiště
+			:refer-number singular)
+		:temporal (d / date-entity
+			:year 1976))
+	:op2 (s25z2 / zničit
+		:modal-strength full-affirmative
+		:aspect performance
+		:cause (s25p2 / požár
+			:refer-number singular)
+		:undergoer (s25t / thing
+			:refer-number singular
+			:theme-of (s25z4 / zbýt
+				:modal-strength full-negative
+				:aspect state
+				:source (s25t2 / tribuna
+					:refer-number plural
+					:material (s25d2 / dřevěný))))
+		:temporal (s25d3 / date-entity
+			:year 1990))
+	:op3 (s25z3 / zbourat
+		:modal-strength full-affirmative
+		:aspect performance
+		:temporal (s25p3 / pozdě
+			:degree (s25m / more))
+		:undergoer (s25a2 / and
+			:op1 s25t
+			:op2 (s25s / stáj
+				:refer-number plural))))
 
 # alignment:
-s25r:
-s251:
-s25s:
-s25z:
-s25u:
-s25n:
-s25r2:
-s2512:
-s25p:
-s25z2:
-s25c:
-s25z3:
-s25d:
-s25t:
-s25k:
-s25b:
-s25p2:
-s25z4:
-s25s2:
-s25s3:
+s25a: 0-0
+s25p: 7-7
+s25z: 5-5
+s25d: 2-3
+s25z2: 13-13
+s25p2: 12-12
+s25t: 15-15
+s25t2: 19-19
+s25d2: 18-18
+s25z3: 24-24
+s25p3: 23-23
+s25a2: 0-0
+s25m: 0-0
+s25s: 27-27
+s25z4: 16-16
+s25d3: 10-11
 
 # document level annotation:
 
