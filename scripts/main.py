@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright © 2024 Federica Gamba <gamba@ufal.mff.cuni.cz>
+# Copyright © 2025 Federica Gamba <gamba@ufal.mff.cuni.cz>
 
 import os
 import argparse

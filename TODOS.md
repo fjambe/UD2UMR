@@ -192,6 +192,11 @@ for languages other than Latin.
   However, I need to come back to this at some point. \
   Old repo: https://github.com/sxndqc/ancast \
   New repo: https://github.com/umr4nlp/ancast
+  
+  - Several other issues with Ancast, mainly the lack of support for discontinuous alignments. It also has a problem
+  when the colon : is found in a concept name (e.g., _23:45_), because it interprets it as a signal to break the triple,
+  but then the resulting triple is not well-formed (e.g. no child). For now I fixed it manually in the data, both
+  converted and annotated from scratch.
 
 
 - [Dan (21.01.2025)]
@@ -230,10 +235,6 @@ for languages other than Latin.
     `cat testset/manual_{lang}_test.txt testset/converted_{lang}_test.txt > testset/temp_gold_total_{lang}_test.txt`;
     4. change sentence numbers in `temp_gold_total_{lang}_test.txt` by running `python3 renumber_sentences.py`
     (as of now, the language is hardcoded in the code and needs to be updated there).
-
-- [Abishek (11.03.2025)]
-  - Add a coefficient to penalize `NULL` elements (maybe in the gold)? Like a weighted average, where the weight element
-  can be the `NULL`.
 
 # PAPER
 - [Alexis (10.12.2024) + other] \

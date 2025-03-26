@@ -89,10 +89,14 @@ def print_structure(tree, sent_tree, umr, root, sent_num, output_file=None, prin
             if en_sent:
                 print('Sentence Gloss (en):', f"{en_sent[0].lstrip(' text_en = ')}", file=destination)
                 print(file=destination)
-        print(f'Root: {sent_tree.root_var}', file=destination)
-        print('Triples:', file=destination)
-        for n in reorder_triples(sent_tree.triples):
-            print(n, file=destination)
+        # print(f'Root: {sent_tree.root_var}', file=destination)
+        # for n in reorder_triples(sent_tree.triples):
+        #     print(n, file=destination)
+        print(file=destination)
+        print('# sentence level graph:', file=destination)
+        print(f'({sent_tree.root_var})', file=destination)
+        print(file=destination)
+        print('# alignment:', file=destination)
         print(file=destination)
         print('# document level annotation:', file=destination)
-        print(file=destination)
+        print('\n', file=destination)
