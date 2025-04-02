@@ -1,5 +1,5 @@
 # UD2UMR
-This repository contains all materials for the UD2UMR converter, which converts any Universal Dependencies (UD) treebank
+This repository contains all materials for the UD2UMR converter, which converts any Universal Dependencies (UD) tree
 into a Uniform Meaning Representation (UMR) graph. \
 The converter only handles sentence-level graphs and alignments; document-level annotation has not been implemented.
 
@@ -47,51 +47,71 @@ python3 scripts/main.py --treebank en_pud-ud-test.conllu --lang en --output_dir 
 ## Structure of this repository
 
 * The `data/` folder contains `en_example.conllu`, a sample input file with a single sentence.
-* All scripts are in the `scripts/` folder.
+* All main scripts are in the `scripts/` folder. The `prepare_eval/` subdirectory contains scripts used to prepare the
+annotation templates.
 * External resources providing language-specific lexical information can be found in the `external_resources/` folder.
 Each language has its own subdirectory, where the files are named `advcl.csv`, `have-rel-role,txt`, `modality.json`,
 `conj.json`. Language-specific material for additional languages should be stored in the same way.
 It is not required to include all three files; you may include as many as available. In any case, the converter works
 even without any lexical files.
-* The `testset/` folder contains materials used for evaluating the converter. Namely, the `prepare_scripts` subdirectory
-contains scripts used to prepare the annotation templates, while `final_files` contains the actual files used for
-evaluation. Work-in-progress files are also included in `testset`.
+* The `testset/` folder contains materials used for evaluating the converter.
 
 ```
 UD2UMR
 ├── requirements.txt                        # required dependencies
 ├── scripts
+│ ├── prepare_eval (...)                    # scripts to prepare the annotation template           
 │ ├── main.py                               # main conversion script (to run) 
 │ ├── umr_graphs.py
 │ ├── umr_node.py
-│ └── preprocess.py      
+│ ├── preprocess.py    
+│ ├── print_structure.py    
+│ ├── evaluate_ancast.py                    # for evaluation
+│ └── tests_ancast.py    
 ├── data                                    # folder for input treebanks 
-│ ├── en_example.txt                        # example conllu
+│ └── en_example.txt                        # example conllu
 ├── external_resources                      # folder for language-specific information
 │ ├── cs                                    # materials for Czech
 │ │ ├── advcl.csv
+│ │ ├── conj.json
 │ │ ├── have-rel-role.txt
+│ │ └── modality.json
 │ ├── en                                    # materials for English
 │ │ ├── advcl.csv
 │ │ ├── conj.json
 │ │ ├── have-rel-role.txt
-│ │ ├── modality.json
+│ │ └── modality.json
+│ ├── fr                                    # materials for French
+│ │ ├── advcl.csv
+│ │ ├── conj.json
+│ │ ├── have-rel-role.txt
+│ │ └── modality.json
 │ ├── it                                    # materials for Italian
 │ │ ├── advcl.csv
 │ │ ├── conj.json
 │ │ ├── have-rel-role.txt
-│ │ ├── modality.json
+│ │ └── modality.json
 │ ├── la                                    # materials for Latin
 │ │ ├── advcl.csv
 │ │ ├── conj.json
 │ │ ├── have-rel-role.txt
-│ │ ├── modality.json
+│ │ └── modality.json
 ├── testsets                                # materials for evaluation
-│ ├── final_files
-│ ├── scripts_prepare
-│ ├── ... .txt
-├── README.md         
+│ ├── converter-output_total_cs_test.txt
+│ ├── converter-output_total_en_test.txt
+│ ├── converter-output_total_it_test.txt
+│ ├── gold_total_cs_test.txt
+│ ├── gold_total_en_test.txt
+│ ├── gold_total_it_test.txt
+│ ├── sent-ids_manual_30_test.txt
+│ └── sent-ids_converted_70_test.txt
+└── README.md         
 ```
+
+## Cite
+If you use this project in your work, please cite the following paper:
+
+Gamba, F., Palmer, A., and Zeman, D. (forth.). Bootstrapping UMRs from Universal Dependencies for Scalable Multilingual Annotation.
 
 ## Contact
 * Federica Gamba (ÚFAL, MFF, Charles University, Prague, Czech Republic): `gamba at ufal.mff.cuni.cz`

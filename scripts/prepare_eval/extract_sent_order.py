@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
     doc = udapi.Document(f'../data/{treebank}')
 
-    with open("../sent-ids_converted_70_test.txt", "r") as selection:
+    with open("../../testset/sent-ids_converted_70_test.txt", "r") as selection:
         sents = [s.rstrip() for s in selection.readlines()]
 
     for tree in doc.trees:
