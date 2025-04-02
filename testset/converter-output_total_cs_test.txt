@@ -2436,11 +2436,12 @@ s50t2: 25-26
 
 # sent_id = n02083054
 # :: snt51
+Words: Není žádným překvapením , že federální a státní vlády klasifikovaly National Natural Heritage jako celostátní úsilí s  nejvyšší prioritou a  zdokumentovaly ho od roku 2005 v  koaliční smlouvě .
 Sentence: Není žádným překvapením, že federální a státní vlády klasifikovaly National Natural Heritage jako celostátní úsilí s nejvyšší prioritou a zdokumentovaly ho od roku 2005 v koaliční smlouvě.
 Sentence Gloss (en): It is no surprise that the federal and state governments have classified the National Natural Heritage as a nation-wide endeavor of the highest priority and have documented it starting in 2005 in a coalition contract.
 
 # sentence level graph:
-(s51)
+(s51 / sentence)
 
 # alignment:
 
