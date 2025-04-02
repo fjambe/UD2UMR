@@ -1,5 +1,5 @@
 # UD2UMR
-This repository contains all materials for the UD2UMR converter, which converts any Universal Dependencies (UD) treebank
+This repository contains all materials for the UD2UMR converter, which converts any Universal Dependencies (UD) tree
 into a Uniform Meaning Representation (UMR) graph. \
 The converter only handles sentence-level graphs and alignments; document-level annotation has not been implemented.
 
@@ -92,6 +92,11 @@ UD2UMR
 │ ├── ... .txt
 ├── README.md         
 ```
+
+## Cite
+If you use this project in your work, please cite the following paper:
+
+Gamba, F., Palmer, A., and Zeman, D. (forth.). Bootstrapping UMRs from Universal Dependencies for Scalable Multilingual Annotation.
 
 ## Contact
 * Federica Gamba (ÚFAL, MFF, Charles University, Prague, Czech Republic): `gamba at ufal.mff.cuni.cz`
