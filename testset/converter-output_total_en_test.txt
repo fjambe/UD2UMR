@@ -2398,14 +2398,16 @@ s50x: 36-36
 
 # sent_id = n02083054
 # :: snt51
+Words: It is no surprise that the federal and state governments have classified the National Natural Heritage as a  nation -  wide endeavor of the highest priority and have documented it starting in 2005 in a  coalition contract .
 Sentence: It is no surprise that the federal and state governments have classified the National Natural Heritage as a nation-wide endeavor of the highest priority and have documented it starting in 2005 in a coalition contract.
 
 # sentence level graph:
-(s51)
+(s51 / sentence)
 
 # alignment:
 
 # document level annotation:
+
 
 # sent_id = n03001019
 # :: snt52

@@ -4283,8 +4283,8 @@ s88n2: 22-24
 # sent_id = w04002055
 # :: snt89
 Index: 1  2    3 4   5          6   7  8      9    10 11 12   13 14 15   16        17   18       19 20  21     22          23 24    25   26    27         28    29   30  31      32
-Words: In 1976 , the racecourse was no longer used \; in 1990 ,  a  fire destroyed what remained of the wooden grandstands ,  which were later demolished along with the stables .
-Sentence: In 1976, the racecourse was no longer used\; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables.
+Words: In 1976 , the racecourse was no longer used ; in 1990 ,  a  fire destroyed what remained of the wooden grandstands ,  which were later demolished along with the stables .
+Sentence: In 1976, the racecourse was no longer used; in 1990, a fire destroyed what remained of the wooden grandstands, which were later demolished along with the stables.
 
 # sentence level graph:
 (s89a / and
