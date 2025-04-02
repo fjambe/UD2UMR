@@ -8,16 +8,6 @@ def metrics(correct, pred_total, gold_total):
     fscore = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
     return precision, recall, fscore
 
-# def coordination(predicted, gold, lang):
-#     """ Evaluates the accuracy of coordination relations. """
-#     conjunctions = load_external_files('conj.json', lang)
-#     for t_graph, g_graph in zip(predicted, gold):
-#         t_coord = [t for t in t_graph.penman_graph[0].instances() if t[2] in conjunctions] if conjunctions else \
-#             [t for t in t_graph.penman_graph[0].instances() if t[2] == 'and']
-#
-#         g_coord = [t for t in g_graph.penman_graph[0].instances() if t[2] in conjunctions] if conjunctions else\
-#             [t for t in g_graph.penman_graph[0].instances() if t[2] == 'and']
-
 
 def abstract(predicted, gold):
     """
@@ -191,59 +181,6 @@ def inverted_relations(predicted, gold):
     )
 
 
-# def lds_per_label(predicted, gold):
-#     """
-#     TODO: LAS for each UMR label.
-#     (Do I really want it?)
-#     E.g. is every :quant supposed to be a :quant? But what does that even mean?
-#     It means at least that t[1] is :quant, okay, Then? I guess I need the same child, otherwise what am I doing,
-#     comparing random triples that just happen to have the same edge? Nonsense.
-#     Then, I need t[1] == REL, t[2] == g[2]. But I also need t[1] == g[1], otherwise it's the far west.
-#     SO, the only thing I don't care about is t[0] and g[0], aka the PARENT.
-#
-#     --> In other words, it's like a reverse UAS: not Unlabeled Attachment Score, but Labeled Disattachment score.
-#     Sounds weird.
-#     """
-#
-#     category_rels = {
-#         'arguments': {':ARG0', ':ARG1', ':ARG2', ':ARG3', ':ARG4'},
-#         'operands': {':op1', ':op2', ':op3', ':op4', ':op5'},
-#         'participants': {':actor', ':undergoer', ':theme', ':recipient', ':affectee'},
-#         'non-participants': {':mod', ':manner', ':OBLIQUE', ':temporal', ':ADVCL', ':name', ':possessor',
-#                              ':condition', ':vocative', ':concession'}
-#     }
-#
-#     all_rels = [r for rs in category_rels.values() for r in rs]
-#
-#     print("------------------------- SCORES PER LABEL -------------------------")
-#
-#     for rel in all_rels:
-#
-#         print(rel)
-#
-#         total = 0
-#         correct = 0
-#
-#         for t_graph, g_graph in zip(predicted, gold):
-#
-#             t_edges = [t for t in t_graph.penman_graph[0].edges() if t[1] == rel]
-#             g_edges = [g for g in g_graph.penman_graph[0].edges() if g[1] == rel]
-#
-#             if t_edges:
-#                 for t in t_edges:
-#                     total += 1
-#                     gold = t_graph.matched_alignment.get(t[2], '')  # gold aligned node for t[2]
-#                     for g in g_edges:
-#                         if g[2] == gold:  # this g is the triple I'll compare
-#                             correct += g[1] == t[1]
-#
-#         if total:
-#             print(f"Category: {rel.upper()}, {total}")
-#             print(f"Correctly retrieved edge: {correct} out of {total}.\n",
-#                   f"LDS: {(correct / total):.2f}\n")
-#         else:
-#             print('zero category', rel)
-
 def filter_edges(graph, category):
     """Filter edges based on category."""
     category_rels = {
@@ -260,7 +197,7 @@ def filter_edges(graph, category):
 
 
 def las(predicted, gold, category=None):
-
+    """ Computes Labeled Attachment Score (par, ed, ch). """
     correct = 0
     t_total, g_total = 0, 0
 
@@ -282,7 +219,7 @@ def las(predicted, gold, category=None):
 
 
 def uas(predicted, gold, category=None):
-
+    """ Computes Unlabeled Attachment Score (par, ch). """
     correct = 0
     t_total, g_total = 0, 0
 
@@ -304,7 +241,7 @@ def uas(predicted, gold, category=None):
 
 
 def child_label(predicted, gold):
-
+    """ Computes correctness of (ed, ch). """
     correct = 0
     t_total, g_total = 0, 0
 
@@ -336,7 +273,7 @@ def child_label(predicted, gold):
 
 
 def parent_label(predicted, gold):
-
+    """ Computes correctness of (par, ed). """
     correct = 0
     t_total, g_total = 0, 0
 
