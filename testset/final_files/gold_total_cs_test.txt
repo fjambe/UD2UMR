@@ -1166,7 +1166,7 @@ Sentence Gloss (en): In 1976, the racecourse was no longer used; in 1990, a fire
 		:aspect activity
 		:undergoer (s25z / závodiště
 			:refer-number singular)
-		:temporal (d / date-entity
+		:temporal (s25d / date-entity
 			:year 1976))
 	:op2 (s25z2 / zničit
 		:modal-strength full-affirmative
@@ -3872,15 +3872,15 @@ s79t: 7-7
 s79c: 8-8
 s79n: 0-0
 s79a3: 1-1
-s79ú: 3-3
+s79u: 3-3
 s79n2: 10-10
-s79c2: 16-16
+s79h: 16-16
 s79n3: 0-0
-s79t2: 19-19
+t2: 19-19
 s79n4: 0-0
 s79j: 18-18
-s79u: 23-24
-s79d: 25-26
+u: 23-24
+d: 25-26
 s79p3: 14-14
 
 # document level annotation:
@@ -4455,8 +4455,7 @@ s90p: 4-4
 s90a: 6-6
 s90n: 5-5
 s90n2: 7-7
-s90n3: 0-0
-s90a2: 8-8
+s90n3: 8-8
 s90o: 10-10
 s90č: 12-12
 s90j: 11-11
