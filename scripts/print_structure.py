@@ -60,19 +60,20 @@ def print_structure(tree, sent_tree, umr, root, sent_num, output_file=None, prin
                 print(n)
             print(f"Skipping sentence due to LayoutError: {e}")
 
+    print(f'# sent_id = {tree.address()}', file=destination)
+    print(f'# :: snt{sent_num}', file=destination)
+    numbered_line_with_alignment(tree, destination)
+    print(f'Sentence: {tree.text}', file=destination)
+    if sent_tree.lang != 'en':
+        en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
+        if en_sent:
+            print('Sentence Gloss (en):', f"{en_sent[0].lstrip(' text_en = ')}", file=destination)
+        print(file=destination)
+    else:
+        print(file=destination)
+    print('# sentence level graph:', file=destination)
+
     if umr_string and len(umr_string) > 2:
-        print(f'# sent_id = {tree.address()}', file=destination)
-        print(f'# :: snt{sent_num}', file=destination)
-        numbered_line_with_alignment(tree, destination)
-        print(f'Sentence: {tree.text}', file=destination)
-        if sent_tree.lang != 'en':
-            en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
-            if en_sent:
-                print('Sentence Gloss (en):', f"{en_sent[0].lstrip(' text_en = ')}", file=destination)
-            print(file=destination)
-        else:
-            print(file=destination)
-        print('# sentence level graph:', file=destination)
         print(umr_string, file=destination)
         print(file=destination)
         print('# alignment:', file=destination)
@@ -81,20 +82,7 @@ def print_structure(tree, sent_tree, umr, root, sent_num, output_file=None, prin
         print('# document level annotation:', file=destination)
         print('\n', file=destination)
     else:
-        print(f'# sent_id = {tree.address()}', file=destination)
-        print(f'# :: snt{sent_num}', file=destination)
-        print(f'Sentence: {tree.text}', file=destination)  # add \n when debugging
-        if sent_tree.lang != 'en':
-            en_sent = [c for c in tree.comment.split('\n') if c.startswith(" text_en = ")]
-            if en_sent:
-                print('Sentence Gloss (en):', f"{en_sent[0].lstrip(' text_en = ')}", file=destination)
-                print(file=destination)
-        # print(f'Root: {sent_tree.root_var}', file=destination)
-        # for n in reorder_triples(sent_tree.triples):
-        #     print(n, file=destination)
-        print(file=destination)
-        print('# sentence level graph:', file=destination)
-        print(f'({sent_tree.root_var})', file=destination)
+        print(f'({sent_tree.root_var} / sentence)', file=destination)
         print(file=destination)
         print('# alignment:', file=destination)
         print(file=destination)
