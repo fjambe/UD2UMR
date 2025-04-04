@@ -1,10 +1,9 @@
 from penman import layout
-from preprocess import load_external_files
 
 
 def metrics(correct, pred_total, gold_total):
-    precision = correct / pred_total
-    recall = correct / gold_total
+    precision = correct / pred_total if pred_total > 0 else 0
+    recall = correct / gold_total if gold_total > 0 else 0
     fscore = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
     return precision, recall, fscore
 
