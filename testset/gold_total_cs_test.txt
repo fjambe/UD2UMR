@@ -3847,15 +3847,15 @@ Sentence Gloss (en): After these successes, he signed a contract with Team Telek
             :name (s79n3 / name
             	:op1 "Merdingen")
             :refer-number singular
-            :place (t2 / territory
+            :place (s79t2 / territory
                 :name (s79n4 / name
                 	:op1 "Bádensko")
                 :mod (s79j / jižní)
                 :refer-number singular)
             :place-of (s79ž / žít
                 :actor s79p2
-                :temporal (u/ until
-                    :op1 (d/ date-entity
+                :temporal (s79u2/ until
+                    :op1 (s79d/ date-entity
                 	:year 2002)
                 :modal-strength full-affirmative
                 :aspect activity)))
@@ -3876,11 +3876,11 @@ s79u: 3-3
 s79n2: 10-10
 s79h: 16-16
 s79n3: 0-0
-t2: 19-19
+s79t2: 19-19
 s79n4: 0-0
 s79j: 18-18
-u: 23-24
-d: 25-26
+s79u2: 23-24
+s79d: 25-26
 s79p3: 14-14
 
 # document level annotation:
