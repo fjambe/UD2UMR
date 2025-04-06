@@ -112,8 +112,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s1d (se děje což) to 2 CONV nodes [s1d (děje), s1f2 (což)]
 Ambiguous projection of GOLD node s1s2 (ve Spojených Státech) to 2 CONV nodes [s1s (Spojených), s1s2 (ve Státech)]
-  The winner is GOLD node s1d (se děje což) <--> CONV node s1d (děje): econcepts=dít-se/dít-se, match=2, weak match=3.
-  The winner is GOLD node s1s2 (ve Spojených Státech) <--> CONV node s1s2 (ve Státech): econcepts=country/stát, match=0, weak match=0.
+  The winner is GOLD node s1d (se děje což) <--> CONV node s1d (děje): econcepts=dít-se/dít-se, match=2 (concept=dít-se,:manner=s1p3 mapped to CONV s1p3), weak match=4 (concept,:modal-strength,:aspect,:manner).
+  The winner is GOLD node s1s2 (ve Spojených Státech) <--> CONV node s1s2 (ve Státech): econcepts=country/stát, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s1a  (asistentka svém)         = CONV s1a  (asistentka) 
 Correspondence GOLD s1b  (ve blogu)                = CONV s1b  (ve blogu)   
@@ -392,7 +392,7 @@ File CONV: 1 nodes unaligned: s2p3/person.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s2t (provádíme trestání) to 2 CONV nodes [s2p (provádíme), s2t (trestání)]
-  The winner is GOLD node s2t (provádíme trestání) <--> CONV node s2p (provádíme): econcepts=trestat/provádět, match=1, weak match=3.
+  The winner is GOLD node s2t (provádíme trestání) <--> CONV node s2p (provádíme): econcepts=trestat/provádět, match=1 (:actor=s2p3 mapped to CONV s2p3), weak match=4 (concept,:modal-strength,:aspect,:actor).
 
 Correspondence GOLD s2d  (Dnes)               = CONV s2d  (Dnes)          
 Correspondence GOLD s2k  (pomocí kladiny)     = CONV s2k  (pomocí kladiny)
@@ -514,7 +514,7 @@ File CONV: 0 nodes unaligned: .
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s3s (Suť z ní) to 2 CONV nodes [s3p4 (z ní), s3s (Suť)]
-  The winner is GOLD node s3s (Suť z ní) <--> CONV node s3s (Suť): econcepts=suť/suť, match=1, weak match=0.
+  The winner is GOLD node s3s (Suť z ní) <--> CONV node s3s (Suť): econcepts=suť/suť, match=1 (concept=suť), weak match=1 (concept).
 
 Correspondence GOLD s3a  (a)             = CONV     
 Correspondence GOLD s3g  (gravitace)     = CONV s3g  (gravitace)    
@@ -761,8 +761,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s5p (provedl rozdělení to) to 3 CONV nodes [s5p (provedl), s5r (rozdělení), s5t3 (to)]
 Ambiguous projection of GOLD node s5s (Od třetího století) to 2 CONV nodes [s5s (Od století), s5t (třetího)]
-  The winner is GOLD node s5p (provedl rozdělení to) <--> CONV node s5p (provedl): econcepts=rozdělit/provést, match=0, weak match=3.
-  The winner is GOLD node s5s (Od třetího století) <--> CONV node s5s (Od století): econcepts=date-entity/století, match=0, weak match=0.
+  The winner is GOLD node s5p (provedl rozdělení to) <--> CONV node s5p (provedl): econcepts=rozdělit/provést, match=0 (), weak match=4 (concept,:modal-strength,:aspect,:actor).
+  The winner is GOLD node s5s (Od třetího století) <--> CONV node s5s (Od století): econcepts=date-entity/století, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s5a  (ale)                  = CONV s5b  (ale)       
 Correspondence GOLD s5c  (císař)                = CONV s5c  (císař)     
@@ -1275,8 +1275,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s8a (aplikaci kterou ve které) to 2 CONV nodes [s8a (aplikaci), s8f2 (ve které)]
 Ambiguous projection of GOLD node s8n (ta nejstupidnější) to 2 CONV nodes [s8s (nejstupidnější), s8t (ta)]
-  The winner is GOLD node s8a (aplikaci kterou ve které) <--> CONV node s8a (aplikaci): econcepts=aplikace/aplikace, match=1, weak match=0.
-  The winner is GOLD node s8n (ta nejstupidnější) <--> CONV node s8s (nejstupidnější): econcepts=stupidní/stupidní, match=1, weak match=0.
+  The winner is GOLD node s8a (aplikaci kterou ve které) <--> CONV node s8a (aplikaci): econcepts=aplikace/aplikace, match=1 (concept=aplikace), weak match=1 (concept).
+  The winner is GOLD node s8n (ta nejstupidnější) <--> CONV node s8s (nejstupidnější): econcepts=stupidní/stupidní, match=1 (concept=stupidní), weak match=1 (concept).
 
 Correspondence GOLD s8a  (aplikaci kterou ve které) = CONV s8a  (aplikaci)      
 Correspondence GOLD s8g  (Generace)                 = CONV s8g  (Generace)      
@@ -1456,7 +1456,7 @@ File CONV: 1 nodes unaligned: s9n/name["Dündar"].
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s9n (aby by neměla pochopení) to 2 CONV nodes [s9m (aby by neměla), s9p2 (pochopení)]
-  The winner is GOLD node s9n (aby by neměla pochopení) <--> CONV node s9m (aby by neměla): econcepts=mít-pochopení/mít, match=0, weak match=2.
+  The winner is GOLD node s9n (aby by neměla pochopení) <--> CONV node s9m (aby by neměla): econcepts=mít-pochopení/mít, match=0 (), weak match=3 (concept,:modal-strength,:aspect).
 
 Correspondence GOLD s9d  (Dündar)                  = CONV s9t  (Dündar)        
 Correspondence GOLD s9e  (Evropu)                  = CONV     
@@ -1586,7 +1586,7 @@ File CONV: 2 nodes unaligned: s10a/and, s10f/FILL.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s10d (ve 23 : 45) to 2 CONV nodes [s10x (ve 23), s10x2 (45)]
-  The winner is GOLD node s10d (ve 23 : 45) <--> CONV node s10x (ve 23): econcepts=date-entity/23, match=0, weak match=0.
+  The winner is GOLD node s10d (ve 23 : 45) <--> CONV node s10x (ve 23): econcepts=date-entity/23, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s10d  (ve 23 : 45)     = CONV s10x (ve 23)         
 Correspondence GOLD s10m  (bude mluvit)    = CONV s10m (bude mluvit)   
@@ -1722,7 +1722,7 @@ File CONV: 0 nodes unaligned: .
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s11p (také poznamenal) to 2 CONV nodes [s11p (poznamenal), s11t (také)]
-  The winner is GOLD node s11p (také poznamenal) <--> CONV node s11p (poznamenal): econcepts=poznamenat-004/poznamenat, match=2, weak match=3.
+  The winner is GOLD node s11p (také poznamenal) <--> CONV node s11p (poznamenal): econcepts=poznamenat-004/poznamenat, match=2 (:actor=s11p1 mapped to CONV s11p2,:aspect=performance), weak match=4 (concept,:aspect,:modal-strength,:actor).
 
 Correspondence GOLD s11d  (dokumentu)         = CONV      
 Correspondence GOLD s11d2 (k důsledkům které) = CONV      
@@ -1896,7 +1896,7 @@ File CONV: 0 nodes unaligned: .
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s12m (42 milionů eur z toho) to 3 CONV nodes [s12e (eur), s12f (z toho), s12m (milionů)]
-  The winner is GOLD node s12m (42 milionů eur z toho) <--> CONV node s12m (milionů): econcepts=monetary-quantity/milión, match=1, weak match=1.
+  The winner is GOLD node s12m (42 milionů eur z toho) <--> CONV node s12m (milionů): econcepts=monetary-quantity/milión, match=1 (:quant=42), weak match=2 (concept,:quant).
 
 Correspondence GOLD s12b  (na bezpečnost)         = CONV s12b  (na bezpečnost)
 Correspondence GOLD s12e  (eur)                   = CONV      
@@ -2286,7 +2286,7 @@ File CONV: 2 nodes unaligned: s14f/FILL, s14p3/person.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s14l (loňského roku) to 2 CONV nodes [s14l (loňského), s14r (roku)]
-  The winner is GOLD node s14l (loňského roku) <--> CONV node s14l (loňského): econcepts=loni/loňský, match=0, weak match=0.
+  The winner is GOLD node s14l (loňského roku) <--> CONV node s14l (loňského): econcepts=loni/loňský, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s14a  (a)              = CONV s14a  (a)          
 Correspondence GOLD s14d  (k 24 . říjnu)   = CONV s14ř  (k říjnu)    
@@ -2313,7 +2313,7 @@ Correspondence GOLD s14v  (se vztahují)    = CONV s14v  (vztahují)
 Aligned 15 out of 21 GOLD nodes, that is 71%.
 
 Ambiguous projection of CONV node s14p (ve průměrem) to 2 GOLD nodes [s14h (ve srovnání), s14p2 (s průměrem)]
-  The winner is CONV node s14p (ve průměrem) <--> GOLD node s14p2 (s průměrem): econcepts=průměr/průměr, match=1, weak match=0.
+  The winner is CONV node s14p (ve průměrem) <--> GOLD node s14p2 (s průměrem): econcepts=průměr/průměr, match=1 (concept=průměr), weak match=1 (concept).
 
 Correspondence CONV s14a  (a)           = GOLD s14a  (a)            
 Correspondence CONV s14e  (eur)         = GOLD s14m2 (1,335 eur)    
@@ -2545,7 +2545,7 @@ Correspondence GOLD s15z  (zasedání které) = CONV s15z  (V zasedání)
 Aligned 9 out of 10 GOLD nodes, that is 90%.
 
 Ambiguous projection of CONV node s15z (V zasedání) to 2 GOLD nodes [s15p (V průběhu), s15z (zasedání které)]
-  The winner is CONV node s15z (V zasedání) <--> GOLD node s15z (zasedání které): econcepts=zasedání/zasedání, match=1, weak match=0.
+  The winner is CONV node s15z (V zasedání) <--> GOLD node s15z (zasedání které): econcepts=zasedání/zasedání, match=1 (concept=zasedání), weak match=1 (concept).
 
 Correspondence CONV s15k  (konalo)      = GOLD s15k  (se konalo)     
 Correspondence CONV s15l  (LUISS)       = GOLD s15n  (LUISS)         
@@ -2656,7 +2656,7 @@ File CONV: 1 nodes unaligned: s16p2/person.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s16k (však nepostrádalo kritiku) to 2 CONV nodes [s16k (kritiku), s16p (nepostrádalo)]
-  The winner is GOLD node s16k (však nepostrádalo kritiku) <--> CONV node s16p (nepostrádalo): econcepts=kritizovat-001/postrádat, match=0, weak match=2.
+  The winner is GOLD node s16k (však nepostrádalo kritiku) <--> CONV node s16p (nepostrádalo): econcepts=kritizovat-001/postrádat, match=0 (), weak match=3 (concept,:aspect,:modal-strength).
 
 Correspondence GOLD s16k (však nepostrádalo kritiku) = CONV s16p (nepostrádalo)
 Correspondence GOLD s16p (Jejich)                    = CONV     
@@ -2947,7 +2947,7 @@ File CONV: 1 nodes unaligned: s18n3/name["Latinoameričan"].
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s18o (zda bude mít vliv) to 2 CONV nodes [s18m (zda bude mít), s18v3 (vliv)]
-  The winner is GOLD node s18o (zda bude mít vliv) <--> CONV node s18m (zda bude mít): econcepts=ovlivnit/mít, match=0, weak match=0.
+  The winner is GOLD node s18o (zda bude mít vliv) <--> CONV node s18m (zda bude mít): econcepts=ovlivnit/mít, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s18b  (ale)               = CONV s18b  (ale)            
 Correspondence GOLD s18c  (Časné)             = CONV s18č  (Časné)          
@@ -3147,8 +3147,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s19s (státem Württemberg) to 2 CONV nodes [s19s (státem), s19t3 (Württemberg)]
 Ambiguous projection of GOLD node s19z (s podmínkou zřídit) to 2 CONV nodes [s19p2 (s podmínkou), s19z (zřídit)]
-  The winner is GOLD node s19s (státem Württemberg) <--> CONV node s19t3 (Württemberg): econcepts=state/type-NE, match=1, weak match=1.
-  The winner is GOLD node s19z (s podmínkou zřídit) <--> CONV node s19z (zřídit): econcepts=zřídit-001/zřídit, match=2, weak match=4.
+  The winner is GOLD node s19s (státem Württemberg) <--> CONV node s19t3 (Württemberg): econcepts=state/type-NE, match=1 (:name=s19n2 mapped to CONV s19n2), weak match=2 (concept,:name).
+  The winner is GOLD node s19z (s podmínkou zřídit) <--> CONV node s19z (zřídit): econcepts=zřídit-001/zřídit, match=2 (:aspect=performance,:undergoer=s19z2 mapped to CONV s19z2), weak match=5 (concept,:aspect,:modal-strength,:actor,:undergoer).
 
 Correspondence GOLD s19b  (bývalý)                      = CONV s19b  (bývalý)                     
 Correspondence GOLD s19b3 (na bavlnu)                   = CONV s19b2 (na bavlnu)                  
@@ -3443,7 +3443,7 @@ File CONV: 4 nodes unaligned: s21n/name["Weiss"], s21n2/name["Kolín"], s21n3/na
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s21h (Kolín nad Rýnem) to 2 CONV nodes [s21t2 (Kolín), s21t3 (nad Rýnem)]
-  The winner is GOLD node s21h (Kolín nad Rýnem) <--> CONV node s21t3 (nad Rýnem): econcepts=human-settlement/type-NE, match=0, weak match=1.
+  The winner is GOLD node s21h (Kolín nad Rýnem) <--> CONV node s21t3 (nad Rýnem): econcepts=human-settlement/type-NE, match=0 (), weak match=2 (concept,:name).
 
 Correspondence GOLD s21a  (a)                           = CONV s21a  (a)            
 Correspondence GOLD s21c  (cenami)                      = CONV s21c  (cenami)       
@@ -3585,7 +3585,7 @@ File CONV: 1 nodes unaligned: s22p2/person.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s22d (9 . století př . n . l .) to 2 CONV nodes [s22l (př l), s22s (od století)]
-  The winner is GOLD node s22d (9 . století př . n . l .) <--> CONV node s22s (od století): econcepts=date-entity/století, match=0, weak match=0.
+  The winner is GOLD node s22d (9 . století př . n . l .) <--> CONV node s22s (od století): econcepts=date-entity/století, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s22d  (9 . století př . n . l .) = CONV s22s (od století)
 Correspondence GOLD s22f3 (od)                       = CONV     
@@ -3762,7 +3762,7 @@ File CONV: 2 nodes unaligned: s23a2/and, s23p3/person.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s23o (je odříznuta) to 2 CONV nodes [s23h (je), s23o2 (odříznuta)]
-  The winner is GOLD node s23o (je odříznuta) <--> CONV node s23o2 (odříznuta): econcepts=odříznout/odříznout, match=2, weak match=2.
+  The winner is GOLD node s23o (je odříznuta) <--> CONV node s23o2 (odříznuta): econcepts=odříznout/odříznout, match=2 (concept=odříznout,:modal-strength=full-affirmative), weak match=3 (concept,:modal-strength,:aspect).
 
 Correspondence GOLD s23a  (a)             = CONV      
 Correspondence GOLD s23c  (Řecko)         = CONV      
@@ -3792,9 +3792,9 @@ Aligned 15 out of 22 GOLD nodes, that is 68%.
 Ambiguous projection of CONV node s23m4 (mořem) to 2 GOLD nodes [s23m3 (mořem), s23z (mořem)]
 Ambiguous projection of CONV node s23p2 (pohořím) to 2 GOLD nodes [s23d (pohořím), s23p2 (pohořím)]
 Ambiguous projection of CONV node s23s2 (od sousedů) to 2 GOLD nodes [s23s2 (sousedů), s23v (sousedů)]
-  The winner is CONV node s23m4 (mořem) <--> GOLD node s23m3 (mořem): econcepts=moře/moře, match=2, weak match=1.
-  The winner is CONV node s23p2 (pohořím) <--> GOLD node s23p2 (pohořím): econcepts=pohoří/pohoří, match=2, weak match=1.
-  The winner is CONV node s23s2 (od sousedů) <--> GOLD node s23s2 (sousedů): econcepts=soused/soused, match=2, weak match=2.
+  The winner is CONV node s23m4 (mořem) <--> GOLD node s23m3 (mořem): econcepts=moře/moře, match=2 (concept=moře,:refer-number=singular), weak match=2 (concept,:refer-number).
+  The winner is CONV node s23p2 (pohořím) <--> GOLD node s23p2 (pohořím): econcepts=pohoří/pohoří, match=2 (concept=pohoří,:refer-number=singular), weak match=2 (concept,:refer-number).
+  The winner is CONV node s23s2 (od sousedů) <--> GOLD node s23s2 (sousedů): econcepts=soused/soused, match=2 (concept=soused,:refer-number=plural), weak match=3 (concept,:refer-number,:possessor).
 
 Correspondence CONV s23a  (,)             = GOLD      
 Correspondence CONV s23a2 (and)           = GOLD      
@@ -4036,7 +4036,7 @@ File CONV: 0 nodes unaligned: .
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s24r (se rozvíjel) to 2 CONV nodes [s24p4 (se), s24r (rozvíjel)]
-  The winner is GOLD node s24r (se rozvíjel) <--> CONV node s24r (rozvíjel): econcepts=rozvíjet-se/rozvíjet, match=0, weak match=1.
+  The winner is GOLD node s24r (se rozvíjel) <--> CONV node s24r (rozvíjel): econcepts=rozvíjet-se/rozvíjet, match=0 (), weak match=2 (concept,:undergoer).
 
 Correspondence GOLD s24d2 (doby)               = CONV s24d  (do doby)      
 Correspondence GOLD s24i  (identity-91)        = CONV      
@@ -4054,7 +4054,7 @@ Correspondence GOLD s24z  (základen)           = CONV s24z  (základen)
 Aligned 9 out of 12 GOLD nodes, that is 75%.
 
 Ambiguous projection of CONV node s24d (do doby) to 2 GOLD nodes [s24d2 (doby), s24u (do)]
-  The winner is CONV node s24d (do doby) <--> GOLD node s24d2 (doby): econcepts=doba/doba, match=3, weak match=2.
+  The winner is CONV node s24d (do doby) <--> GOLD node s24d2 (doby): econcepts=doba/doba, match=3 (concept=doba,:mod=s24t mapped to GOLD s24t,:refer-number=singular), weak match=3 (concept,:mod,:refer-number).
 
 Correspondence CONV s24a  (,)             = GOLD      
 Correspondence CONV s24d  (do doby)       = GOLD s24d2 (doby)       
@@ -4703,7 +4703,7 @@ File CONV: 3 nodes unaligned: s27a2/and, s27n/name["Walter"], s27n2/name["Olivie
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s27b (je na cestě) to 2 CONV nodes [s27c (že na cestě), s27h (je)]
-  The winner is GOLD node s27b (je na cestě) <--> CONV node s27h (je): econcepts=být-na-cestě/have-place-91, match=2, weak match=2.
+  The winner is GOLD node s27b (je na cestě) <--> CONV node s27h (je): econcepts=být-na-cestě/have-place-91, match=2 (:aspect=state,:modal-strength=full-affirmative), weak match=3 (concept,:modal-strength,:aspect).
 
 Correspondence GOLD s27a  (a)              = CONV s27a  (a)                
 Correspondence GOLD s27b  (je na cestě)    = CONV s27h  (je)               
@@ -4949,7 +4949,7 @@ File CONV: 2 nodes unaligned: s28n2/name["Andy"], s28n3/name["Amerika"].
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s28c (Jižní Ameriky) to 2 CONV nodes [s28j (Jižní), s28t2 (Ameriky)]
-  The winner is GOLD node s28c (Jižní Ameriky) <--> CONV node s28t2 (Ameriky): econcepts=continent/type-NE, match=0, weak match=1.
+  The winner is GOLD node s28c (Jižní Ameriky) <--> CONV node s28t2 (Ameriky): econcepts=continent/type-NE, match=0 (), weak match=2 (concept,:name).
 
 Correspondence GOLD s28b  (Předtím)                 = CONV s28p  (Předtím)            
 Correspondence GOLD s28c  (Jižní Ameriky)           = CONV s28t2 (Ameriky)            
@@ -5170,7 +5170,7 @@ File CONV: 1 nodes unaligned: s29n2/name["Kiki" "Dee"].
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s29p2 (s přítelem který) to 2 CONV nodes [s29p (přítelem), s29t (s Kiki)]
-  The winner is GOLD node s29p2 (s přítelem který) <--> CONV node s29p (přítelem): econcepts=přítel/přítel, match=1, weak match=0.
+  The winner is GOLD node s29p2 (s přítelem který) <--> CONV node s29p (přítelem): econcepts=přítel/přítel, match=1 (concept=přítel), weak match=1 (concept).
 
 Correspondence GOLD s29d  (dalším)                       = CONV     
 Correspondence GOLD s29d4 (V roce 1976)                  = CONV s29r (V roce)       
@@ -5401,8 +5401,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s30d (1 . ledna 49 př . n . l .) to 2 CONV nodes [s30l (ledna), s30l2 (př l)]
 Ambiguous projection of GOLD node s30p3 (se prokonzul) to 2 CONV nodes [s30p3 (prokonzul), s30p7 (se)]
-  The winner is GOLD node s30d (1 . ledna 49 př . n . l .) <--> CONV node s30l (ledna): econcepts=date-entity/leden, match=0, weak match=0.
-  The winner is GOLD node s30p3 (se prokonzul) <--> CONV node s30p3 (prokonzul): econcepts=prokonzul/prokonzul, match=1, weak match=0.
+  The winner is GOLD node s30d (1 . ledna 49 př . n . l .) <--> CONV node s30l (ledna): econcepts=date-entity/leden, match=0 (), weak match=1 (concept).
+  The winner is GOLD node s30p3 (se prokonzul) <--> CONV node s30p3 (prokonzul): econcepts=prokonzul/prokonzul, match=1 (concept=prokonzul), weak match=1 (concept).
 
 Correspondence GOLD s30b  (BCE)                       = CONV      
 Correspondence GOLD s30d  (1 . ledna 49 př . n . l .) = CONV s30l  (ledna)                    
@@ -5764,7 +5764,7 @@ Correspondence GOLD s32z  (aby by se zúčastnil) = CONV s32z  (aby by zúčastn
 Aligned 15 out of 16 GOLD nodes, that is 94%.
 
 Ambiguous projection of CONV node s32k (že nekomunikoval) to 2 GOLD nodes [s32a (že a), s32k (nekomunikoval)]
-  The winner is CONV node s32k (že nekomunikoval) <--> GOLD node s32k (nekomunikoval): econcepts=komunikovat/komunikovat, match=2, weak match=3.
+  The winner is CONV node s32k (že nekomunikoval) <--> GOLD node s32k (nekomunikoval): econcepts=komunikovat/komunikovat, match=2 (concept=komunikovat,:actor=s32t2 mapped to GOLD s32t2), weak match=4 (concept,:modal-strength,:aspect,:actor).
 
 Correspondence CONV s32a  (,)                = GOLD      
 Correspondence CONV s32b  (do budovy)        = GOLD s32b  (do budovy)          
@@ -6341,8 +6341,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s36h (si hraju) to 2 CONV nodes [s36h (hraju), s36p4 (si)]
 Ambiguous projection of GOLD node s36i (inspiraci ji) to 2 CONV nodes [s36i (inspiraci), s36p5 (ji)]
-  The winner is GOLD node s36h (si hraju) <--> CONV node s36h (hraju): econcepts=hrát-si/hrát, match=1, weak match=3.
-  The winner is GOLD node s36i (inspiraci ji) <--> CONV node s36i (inspiraci): econcepts=inspirace/inspirace, match=2, weak match=1.
+  The winner is GOLD node s36h (si hraju) <--> CONV node s36h (hraju): econcepts=hrát-si/hrát, match=1 (:modal-strength=full-affirmative), weak match=4 (concept,:modal-strength,:aspect,:actor).
+  The winner is GOLD node s36i (inspiraci ji) <--> CONV node s36i (inspiraci): econcepts=inspirace/inspirace, match=2 (concept=inspirace,:refer-number=singular), weak match=2 (concept,:refer-number).
 
 Correspondence GOLD s36a  (a)            = CONV      
 Correspondence GOLD s36h  (si hraju)     = CONV s36h  (hraju)     
@@ -6713,7 +6713,7 @@ File CONV: 1 nodes unaligned: s39n/name["Ramses"].
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s39t2 (Ramses II .) to 2 CONV nodes [s39i (II), s39t2 (Ramses)]
-  The winner is GOLD node s39t2 (Ramses II .) <--> CONV node s39t2 (Ramses): econcepts=person/type-NE, match=0, weak match=1.
+  The winner is GOLD node s39t2 (Ramses II .) <--> CONV node s39t2 (Ramses): econcepts=person/type-NE, match=0 (), weak match=2 (concept,:name).
 
 Correspondence GOLD s39c  (chyby)                   = CONV s39c  (chyby)   
 Correspondence GOLD s39d  (dopustil se)             = CONV s39d  (dopustil)
@@ -6859,7 +6859,7 @@ File CONV: 3 nodes unaligned: s40f/FILL, s40n/name["Rudyard"], s40p5/person.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s40j (kolem jezera po něm) to 2 CONV nodes [s40j (kolem jezera), s40p4 (po něm)]
-  The winner is GOLD node s40j (kolem jezera po něm) <--> CONV node s40j (kolem jezera): econcepts=jezero/jezero, match=1, weak match=0.
+  The winner is GOLD node s40j (kolem jezera po něm) <--> CONV node s40j (kolem jezera): econcepts=jezero/jezero, match=1 (concept=jezero), weak match=1 (concept).
 
 Correspondence GOLD s40d  (dítě)                = CONV s40d  (dítě)          
 Correspondence GOLD s40f  (své)                 = CONV      
@@ -7065,8 +7065,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s41d (že nebude dána najevo) to 2 CONV nodes [s41d (že nebude dána), s41n (najevo)]
 Ambiguous projection of GOLD node s41t2 (Winstonu Churchillovi mu) to 2 CONV nodes [s41p5 (mu), s41t2 (Winstonu)]
-  The winner is GOLD node s41d (že nebude dána najevo) <--> CONV node s41d (že nebude dána): econcepts=dát-najevo/dát, match=3, weak match=4.
-  The winner is GOLD node s41t2 (Winstonu Churchillovi mu) <--> CONV node s41p5 (mu): econcepts=person/person, match=1, weak match=0.
+  The winner is GOLD node s41d (že nebude dána najevo) <--> CONV node s41d (že nebude dána): econcepts=dát-najevo/dát, match=3 (:aspect=performance,:manner=s41v2 mapped to CONV s41v2,:undergoer=s41n2 mapped to CONV s41n2), weak match=5 (concept,:modal-strength,:aspect,:undergoer,:manner).
+  The winner is GOLD node s41t2 (Winstonu Churchillovi mu) <--> CONV node s41p5 (mu): econcepts=person/person, match=1 (concept=person), weak match=1 (concept).
 
 Correspondence GOLD s41a  (a)                             = CONV s41a  (a)                            
 Correspondence GOLD s41d  (že nebude dána najevo)         = CONV s41d  (že nebude dána)               
@@ -7234,7 +7234,7 @@ File CONV: 0 nodes unaligned: .
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s42a2 (dokonce i) to 2 CONV nodes [s42d (dokonce), s42i (i)]
-  The winner is GOLD node s42a2 (dokonce i) <--> CONV node s42d (dokonce): econcepts=and/dokonce, match=0, weak match=0.
+  The winner is GOLD node s42a2 (dokonce i) <--> CONV node s42d (dokonce): econcepts=and/dokonce, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s42a  (a)           = CONV      
 Correspondence GOLD s42a2 (dokonce i)   = CONV s42d  (dokonce)    
@@ -7410,7 +7410,7 @@ File CONV: 0 nodes unaligned: .
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s43i (to byly) to 2 CONV nodes [s43i (byly), s43t4 (to)]
-  The winner is GOLD node s43i (to byly) <--> CONV node s43i (byly): econcepts=vybudovat/identity-91, match=0, weak match=2.
+  The winner is GOLD node s43i (to byly) <--> CONV node s43i (byly): econcepts=vybudovat/identity-91, match=0 (), weak match=3 (concept,:modal-strength,:aspect).
 
 Correspondence GOLD s43a  (a)             = CONV s43a  (a)         
 Correspondence GOLD s43i  (to byly)       = CONV s43i  (byly)      
@@ -7597,7 +7597,7 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s44p (poté , co) to 2 CONV nodes [s44p (poté), s44z (co zajistila)]
 Ambiguous projection of GOLD node s44p2 (si Pebe své) to 2 CONV nodes [s44p2 (Pebe), s44p5 (si)]
-  The winner is GOLD node s44p2 (si Pebe své) <--> CONV node s44p5 (si): econcepts=person/person, match=1, weak match=1.
+  The winner is GOLD node s44p2 (si Pebe své) <--> CONV node s44p5 (si): econcepts=person/person, match=1 (concept=person), weak match=2 (concept,:refer-number).
 
 Correspondence GOLD s44n  (novou)             = CONV s44n  (novou)            
 Correspondence GOLD s44n2 (do Nashvillu)      = CONV s44t  (do Nashvillu)     
@@ -7618,7 +7618,7 @@ Correspondence GOLD s44z  (zajistila)         = CONV s44z  (co zajistila)
 Aligned 13 out of 15 GOLD nodes, that is 87%.
 
 Ambiguous projection of CONV node s44z (co zajistila) to 2 GOLD nodes [s44p (poté , co), s44z (zajistila)]
-  The winner is CONV node s44z (co zajistila) <--> GOLD node s44z (zajistila): econcepts=zajistit/zajistit, match=3, weak match=3.
+  The winner is CONV node s44z (co zajistila) <--> GOLD node s44z (zajistila): econcepts=zajistit/zajistit, match=3 (concept=zajistit,:aspect=performance,:undergoer=s44s mapped to GOLD s44s), weak match=4 (concept,:undergoer,:modal-strength,:aspect).
 
 Correspondence CONV s44n  (novou)             = GOLD s44n  (novou)            
 Correspondence CONV s44n2 (name["Nashville"]) = GOLD      
@@ -7901,7 +7901,7 @@ File CONV: 1 nodes unaligned: s46h2/have-mod-91.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s46v (je vidět) to 2 CONV nodes [s46h (je), s46v (vidět)]
-  The winner is GOLD node s46v (je vidět) <--> CONV node s46v (vidět): econcepts=vidět/vidět, match=2, weak match=3.
+  The winner is GOLD node s46v (je vidět) <--> CONV node s46v (vidět): econcepts=vidět/vidět, match=2 (concept=vidět,:manner=s46j mapped to CONV s46j), weak match=4 (concept,:manner,:modal-strength,:aspect).
 
 Correspondence GOLD s46d  (dotykového)     = CONV s46d  (dotykového)    
 Correspondence GOLD s46d2 (displeje který) = CONV s46d2 (displeje)      
@@ -8878,7 +8878,7 @@ File CONV: 2 nodes unaligned: s53a/and, s53f/FILL.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s53a (ve 23 : 45) to 2 CONV nodes [s53x (ve 23), s53x2 (45)]
-  The winner is GOLD node s53a (ve 23 : 45) <--> CONV node s53x (ve 23): econcepts=date-entity/23, match=0, weak match=0.
+  The winner is GOLD node s53a (ve 23 : 45) <--> CONV node s53x (ve 23): econcepts=date-entity/23, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s53a (ve 23 : 45)     = CONV s53x (ve 23)         
 Correspondence GOLD s53f (person)         = CONV     
@@ -9391,8 +9391,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s57p2 (aniž by bylo třeba) to 2 CONV nodes [s57c (bylo), s57t (aniž by třeba)]
 Ambiguous projection of GOLD node s57u (z uskutečněné) to 2 CONV nodes [s57d2 (z doby), s57u (uskutečněné)]
-  The winner is GOLD node s57p2 (aniž by bylo třeba) <--> CONV node s57c (bylo): econcepts=potřebovat/COPULAR-CONSTRUCTION, match=1, weak match=2.
-  The winner is GOLD node s57u (z uskutečněné) <--> CONV node s57u (uskutečněné): econcepts=uskutečnit/uskutečnit, match=3, weak match=2.
+  The winner is GOLD node s57p2 (aniž by bylo třeba) <--> CONV node s57c (bylo): econcepts=potřebovat/COPULAR-CONSTRUCTION, match=1 (:aspect=state), weak match=3 (concept,:modal-strength,:aspect).
+  The winner is GOLD node s57u (z uskutečněné) <--> CONV node s57u (uskutečněné): econcepts=uskutečnit/uskutečnit, match=3 (concept=uskutečnit,:aspect=performance,:modal-strength=full-affirmative), weak match=3 (concept,:aspect,:modal-strength).
 
 Correspondence GOLD s57b  (brát v úvahu)       = CONV s57b  (brát)       
 Correspondence GOLD s57d  (délku)              = CONV s57d  (délku)      
@@ -9645,7 +9645,7 @@ File CONV: 0 nodes unaligned: .
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s59v (Je vytvořena) to 2 CONV nodes [s59h (Je), s59v (vytvořena)]
-  The winner is GOLD node s59v (Je vytvořena) <--> CONV node s59v (vytvořena): econcepts=vytvořit/vytvořit, match=3, weak match=2.
+  The winner is GOLD node s59v (Je vytvořena) <--> CONV node s59v (vytvořena): econcepts=vytvořit/vytvořit, match=3 (concept=vytvořit,:aspect=performance,:modal-strength=full-affirmative), weak match=3 (concept,:modal-strength,:aspect).
 
 Correspondence GOLD s59l  (lze)                   = CONV     
 Correspondence GOLD s59n  (name["smartphone"])    = CONV     
@@ -9951,9 +9951,9 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s61a2 (i na alternativy) to 2 CONV nodes [s61a (na alternativy), s61i (i)]
 Ambiguous projection of GOLD node s61b2 (ECB bance) to 2 CONV nodes [s61b (bance), s61e (ECB)]
 Ambiguous projection of GOLD node s61s (Jak bylo uvedeno) to 2 CONV nodes [s61j (Jak), s61u (bylo uvedeno)]
-  The winner is GOLD node s61a2 (i na alternativy) <--> CONV node s61a (na alternativy): econcepts=alternativa/alternativa, match=3, weak match=2.
-  The winner is GOLD node s61b2 (ECB bance) <--> CONV node s61b (bance): econcepts=business/banka, match=0, weak match=0.
-  The winner is GOLD node s61s (Jak bylo uvedeno) <--> CONV node s61u (bylo uvedeno): econcepts=say-91/uvést, match=2, weak match=2.
+  The winner is GOLD node s61a2 (i na alternativy) <--> CONV node s61a (na alternativy): econcepts=alternativa/alternativa, match=3 (concept=alternativa,:mod=s61j3 mapped to CONV s61j3,:refer-number=plural), weak match=3 (concept,:refer-number,:mod).
+  The winner is GOLD node s61b2 (ECB bance) <--> CONV node s61b (bance): econcepts=business/banka, match=0 (), weak match=1 (concept).
+  The winner is GOLD node s61s (Jak bylo uvedeno) <--> CONV node s61u (bylo uvedeno): econcepts=say-91/uvést, match=2 (:aspect=performance,:modal-strength=full-affirmative), weak match=3 (concept,:modal-strength,:aspect).
 
 Correspondence GOLD s61a  (a)                = CONV s61a2 (a)             
 Correspondence GOLD s61a2 (i na alternativy) = CONV s61a  (na alternativy)
@@ -10214,7 +10214,7 @@ File CONV: 1 nodes unaligned: s62f/FILL.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s62t2 (to , co) to 2 CONV nodes [s62f2 (co), s62t2 (to)]
-  The winner is GOLD node s62t2 (to , co) <--> CONV node s62t2 (to): econcepts=thing/thing, match=1, weak match=0.
+  The winner is GOLD node s62t2 (to , co) <--> CONV node s62t2 (to): econcepts=thing/thing, match=1 (concept=thing), weak match=1 (concept).
 
 Correspondence GOLD s62b  (bývalého)      = CONV s62b  (bývalého)     
 Correspondence GOLD s62g  (MPS)           = CONV s62m  (MPS)          
@@ -10396,9 +10396,9 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s63c2 (umí číst) to 2 CONV nodes [s63u2 (umí), s63č2 (číst)]
 Ambiguous projection of GOLD node s63p (tím , že pomáhá) to 2 CONV nodes [s63f2 (tím), s63p (že pomáhá)]
 Ambiguous projection of GOLD node s63u (univerzity Roma Tre) to 2 CONV nodes [s63t (Roma), s63u (univerzity)]
-  The winner is GOLD node s63c2 (umí číst) <--> CONV node s63č2 (číst): econcepts=číst/číst, match=1, weak match=2.
-  The winner is GOLD node s63p (tím , že pomáhá) <--> CONV node s63p (že pomáhá): econcepts=pomáhat/pomáhat, match=2, weak match=3.
-  The winner is GOLD node s63u (univerzity Roma Tre) <--> CONV node s63u (univerzity): econcepts=univerzita/univerzita, match=1, weak match=0.
+  The winner is GOLD node s63c2 (umí číst) <--> CONV node s63č2 (číst): econcepts=číst/číst, match=1 (concept=číst), weak match=3 (concept,:modal-strength,:aspect).
+  The winner is GOLD node s63p (tím , že pomáhá) <--> CONV node s63p (že pomáhá): econcepts=pomáhat/pomáhat, match=2 (concept=pomáhat,:theme=s63p2 mapped to CONV s63p2), weak match=4 (concept,:modal-strength,:aspect,:theme).
+  The winner is GOLD node s63u (univerzity Roma Tre) <--> CONV node s63u (univerzity): econcepts=univerzita/univerzita, match=1 (concept=univerzita), weak match=1 (concept).
 
 Correspondence GOLD s63a  (akce)                = CONV s63a  (akce)              
 Correspondence GOLD s63c2 (umí číst)            = CONV s63č2 (číst)              
@@ -10617,8 +10617,8 @@ Aligned 15 out of 22 GOLD nodes, that is 68%.
 
 Ambiguous projection of CONV node s64k (než kdykoli) to 2 GOLD nodes [s64h5 (než), s64k (kdykoli)]
 Ambiguous projection of CONV node s64s2 (než v Silicon) to 2 GOLD nodes [s64h6 (než), s64r4 (v Silicon Valley .)]
-  The winner is CONV node s64k (než kdykoli) <--> GOLD node s64k (kdykoli): econcepts=kdykoli/kdykoli, match=1, weak match=0.
-  The winner is CONV node s64s2 (než v Silicon) <--> GOLD node s64r4 (v Silicon Valley .): econcepts=Silicon/region, match=0, weak match=0.
+  The winner is CONV node s64k (než kdykoli) <--> GOLD node s64k (kdykoli): econcepts=kdykoli/kdykoli, match=1 (concept=kdykoli), weak match=1 (concept).
+  The winner is CONV node s64s2 (než v Silicon) <--> GOLD node s64r4 (v Silicon Valley .): econcepts=Silicon/region, match=0 (), weak match=1 (concept).
 
 Correspondence CONV s64a  (a)               = GOLD s64a  (a)                 
 Correspondence CONV s64a2 (,)               = GOLD      
@@ -11157,7 +11157,7 @@ Correspondence GOLD s68v2 (vláda)                   = CONV
 Aligned 4 out of 7 GOLD nodes, that is 57%.
 
 Ambiguous projection of CONV node s68b (s bramborem) to 2 GOLD nodes [s68b (bramborem), s68d (s dalším)]
-  The winner is CONV node s68b (s bramborem) <--> GOLD node s68b (bramborem): econcepts=brambor/brambor, match=4, weak match=3.
+  The winner is CONV node s68b (s bramborem) <--> GOLD node s68b (bramborem): econcepts=brambor/brambor, match=4 (concept=brambor,:mod=s68d mapped to GOLD s68d,:mod=s68h mapped to GOLD s68h,:refer-number=singular), weak match=4 (concept,:mod,:mod,:refer-number).
 
 Correspondence CONV s68b (s bramborem) = GOLD s68b (bramborem)              
 Correspondence CONV s68d (dalším)      = GOLD s68d (s dalším)               
@@ -11243,7 +11243,7 @@ File CONV: 0 nodes unaligned: .
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s69i (že je) to 2 CONV nodes [s69c (že Cospedal), s69i (je)]
-  The winner is GOLD node s69i (že je) <--> CONV node s69i (je): econcepts=identity-91/identity-91, match=4, weak match=4.
+  The winner is GOLD node s69i (že je) <--> CONV node s69i (je): econcepts=identity-91/identity-91, match=4 (concept=identity-91,:ARG1=s69t mapped to CONV s69t,:ARG2=s69c mapped to CONV s69c,:aspect=state), weak match=5 (concept,:modal-strength,:aspect,:ARG1,:ARG2).
 
 Correspondence GOLD s69c (Cospedal)     = CONV s69c (že Cospedal) 
 Correspondence GOLD s69i (že je)        = CONV s69i (je)          
@@ -11365,7 +11365,7 @@ File CONV: 2 nodes unaligned: s70n3/name["Pedro" "Sánchez"], s70n4/name["Špan�
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s70i (že je) to 2 CONV nodes [s70i (je), s70n (že národ)]
-  The winner is GOLD node s70i (že je) <--> CONV node s70i (je): econcepts=identity-91/identity-91, match=5, weak match=4.
+  The winner is GOLD node s70i (že je) <--> CONV node s70i (je): econcepts=identity-91/identity-91, match=5 (concept=identity-91,:ARG1=s70c2 mapped to CONV s70t2,:ARG2=s70n mapped to CONV s70n,:aspect=state,:modal-strength=full-affirmative), weak match=5 (concept,:modal-strength,:aspect,:ARG1,:ARG2).
 
 Correspondence GOLD s70c2 (Španělsko)               = CONV s70t2 (Španělsko)              
 Correspondence GOLD s70h  (jako)                    = CONV      
@@ -11388,7 +11388,7 @@ Aligned 14 out of 16 GOLD nodes, that is 88%.
 
 Ambiguous projection of CONV node s70n (že národ) to 2 GOLD nodes [s70i (že je), s70n (národ)]
 Ambiguous projection of CONV node s70s2 (jako socialistů) to 2 GOLD nodes [s70h (jako), s70s2 (socialistů)]
-  The winner is CONV node s70s2 (jako socialistů) <--> GOLD node s70s2 (socialistů): econcepts=socialista/socialista, match=3, weak match=2.
+  The winner is CONV node s70s2 (jako socialistů) <--> GOLD node s70s2 (socialistů): econcepts=socialista/socialista, match=3 (concept=socialista,:mod=s70j mapped to GOLD s70j,:quant=s70m mapped to GOLD s70m), weak match=3 (concept,:quant,:mod).
 
 Correspondence CONV s70i  (je)                      = GOLD s70i  (že je)                  
 Correspondence CONV s70j  (jiných)                  = GOLD s70j  (jiných)                 
@@ -11547,7 +11547,7 @@ Correspondence GOLD s71s  (stín)                       = CONV s71s (jako stín)
 Aligned 8 out of 11 GOLD nodes, that is 73%.
 
 Ambiguous projection of CONV node s71s (jako stín) to 2 GOLD nodes [s71h (jako), s71s (stín)]
-  The winner is CONV node s71s (jako stín) <--> GOLD node s71s (stín): econcepts=stín/stín, match=1, weak match=0.
+  The winner is CONV node s71s (jako stín) <--> GOLD node s71s (stín): econcepts=stín/stín, match=1 (concept=stín), weak match=1 (concept).
 
 Correspondence CONV s71c (je)                         = GOLD s71i (je)                        
 Correspondence CONV s71j (jednou)                     = GOLD s71j (jednou)                    
@@ -11670,7 +11670,7 @@ File CONV: 2 nodes unaligned: s72n/name["Plaza" "de" "las" "Victorias"], s72n2/n
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s72p (Desítky přívrženců) to 2 CONV nodes [s72d (Desítky), s72p (přívrženců)]
-  The winner is GOLD node s72p (Desítky přívrženců) <--> CONV node s72p (přívrženců): econcepts=přívrženec/přívrženec, match=2, weak match=1.
+  The winner is GOLD node s72p (Desítky přívrženců) <--> CONV node s72p (přívrženců): econcepts=přívrženec/přívrženec, match=2 (concept=přívrženec,:mod=s72p2 mapped to CONV s72t2), weak match=2 (concept,:mod).
 
 Correspondence GOLD s72h  (na Plaza de las Victorias)            = CONV s72t  (na Plaza)                            
 Correspondence GOLD s72j  (již)                                  = CONV s72j  (již)                                 
@@ -12021,7 +12021,7 @@ File CONV: 3 nodes unaligned: s75h/have-degree-91, s75m/more, s75n/name["Britán
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s75c (ve Velké Británii) to 2 CONV nodes [s75t (ve Británii), s75v (Velké)]
-  The winner is GOLD node s75c (ve Velké Británii) <--> CONV node s75t (ve Británii): econcepts=country/type-NE, match=0, weak match=1.
+  The winner is GOLD node s75c (ve Velké Británii) <--> CONV node s75t (ve Británii): econcepts=country/type-NE, match=0 (), weak match=2 (concept,:name).
 
 Correspondence GOLD s75b  (dříve)                    = CONV s75b  (dříve)      
 Correspondence GOLD s75c  (ve Velké Británii)        = CONV s75t  (ve Británii)
@@ -12038,7 +12038,7 @@ Correspondence GOLD s75z  (v zemi)                   = CONV s75z  (než v zemi)
 Aligned 9 out of 11 GOLD nodes, that is 82%.
 
 Ambiguous projection of CONV node s75z (než v zemi) to 2 GOLD nodes [s75h (než), s75z (v zemi)]
-  The winner is CONV node s75z (než v zemi) <--> GOLD node s75z (v zemi): econcepts=země/země, match=3, weak match=2.
+  The winner is CONV node s75z (než v zemi) <--> GOLD node s75z (v zemi): econcepts=země/země, match=3 (concept=země,:mod=s75j mapped to GOLD s75j,:mod=s75k2 mapped to GOLD s75k2), weak match=3 (concept,:mod,:mod).
 
 Correspondence CONV s75b  (dříve)            = GOLD s75b  (dříve)            
 Correspondence CONV s75h  (have-degree-91)   = GOLD      
@@ -12569,7 +12569,7 @@ File CONV: 1 nodes unaligned: s78n/name["Disibodenberg"].
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s78w (Klášter Disibodenberg) to 2 CONV nodes [s78k (Klášter), s78t (Disibodenberg)]
-  The winner is GOLD node s78w (Klášter Disibodenberg) <--> CONV node s78t (Disibodenberg): econcepts=worship-place/type-NE, match=1, weak match=1.
+  The winner is GOLD node s78w (Klášter Disibodenberg) <--> CONV node s78t (Disibodenberg): econcepts=worship-place/type-NE, match=1 (:name=s78n mapped to CONV s78n), weak match=2 (concept,:name).
 
 Correspondence GOLD s78a  (a)                     = CONV s78a  (a)                    
 Correspondence GOLD s78c  (chátral)               = CONV s78c  (chátral)              
@@ -12738,8 +12738,8 @@ Aligned 15 out of 19 GOLD nodes, that is 79%.
 
 Ambiguous projection of CONV node s79r (do roku) to 2 GOLD nodes [s79d (roku 2002), s79u2 (až do)]
 Ambiguous projection of CONV node s79ú (Po úspěších) to 2 GOLD nodes [s79a3 (Po), s79u (úspěších)]
-  The winner is CONV node s79r (do roku) <--> GOLD node s79d (roku 2002): econcepts=rok/date-entity, match=0, weak match=0.
-  The winner is CONV node s79ú (Po úspěších) <--> GOLD node s79u (úspěších): econcepts=úspěch/uspět, match=0, weak match=0.
+  The winner is CONV node s79r (do roku) <--> GOLD node s79d (roku 2002): econcepts=rok/date-entity, match=0 (), weak match=1 (concept).
+  The winner is CONV node s79ú (Po úspěších) <--> GOLD node s79u (úspěších): econcepts=úspěch/uspět, match=0 (), weak match=1 (concept).
 
 Correspondence CONV s79a  (až)               = GOLD s79u2 (až do)           
 Correspondence CONV s79a2 (a)                = GOLD s79a  (a)               
@@ -12966,7 +12966,7 @@ File CONV: 2 nodes unaligned: s80n/name["Le" "Conte"], s80n2/name["Viguier"].
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s80c (Okresy Viguier) to 2 CONV nodes [s80o (Okresy), s80t3 (Viguier)]
-  The winner is GOLD node s80c (Okresy Viguier) <--> CONV node s80t3 (Viguier): econcepts=country-region/type-NE, match=1, weak match=1.
+  The winner is GOLD node s80c (Okresy Viguier) <--> CONV node s80t3 (Viguier): econcepts=country-region/type-NE, match=1 (:name=s80n mapped to CONV s80n2), weak match=2 (concept,:name).
 
 Correspondence GOLD s80a  (a)                  = CONV s80a  (a)                
 Correspondence GOLD s80b  (bydlení)            = CONV s80b  (bydlení)          
@@ -13318,8 +13318,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s82a3 (abecedu ji) to 2 CONV nodes [s82a (abecedu), s82p2 (ji)]
 Ambiguous projection of GOLD node s82n4 (Řekové řeckou) to 2 CONV nodes [s82t2 (Řekové), s82ř2 (řeckou)]
-  The winner is GOLD node s82a3 (abecedu ji) <--> CONV node s82a (abecedu): econcepts=abeceda/abeceda, match=2, weak match=1.
-  The winner is GOLD node s82n4 (Řekové řeckou) <--> CONV node s82t2 (Řekové): econcepts=nationality/type-NE, match=1, weak match=1.
+  The winner is GOLD node s82a3 (abecedu ji) <--> CONV node s82a (abecedu): econcepts=abeceda/abeceda, match=2 (concept=abeceda,:refer-number=singular), weak match=2 (concept,:refer-number).
+  The winner is GOLD node s82n4 (Řekové řeckou) <--> CONV node s82t2 (Řekové): econcepts=nationality/type-NE, match=1 (:name=s82n2 mapped to CONV s82n), weak match=2 (concept,:name).
 
 Correspondence GOLD s82a  (a)               = CONV s82a3 (a)           
 Correspondence GOLD s82a2 (a)               = CONV      
@@ -13552,8 +13552,8 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s83d (od 8 . století př . n . l .) to 2 CONV nodes [s83l (př l), s83s (od století)]
 Ambiguous projection of GOLD node s83m (městské státy) to 2 CONV nodes [s83m (městské), s83s2 (státy)]
-  The winner is GOLD node s83d (od 8 . století př . n . l .) <--> CONV node s83s (od století): econcepts=date-entity/století, match=0, weak match=0.
-  The winner is GOLD node s83m (městské státy) <--> CONV node s83s2 (státy): econcepts=městský-stát/stát, match=2, weak match=2.
+  The winner is GOLD node s83d (od 8 . století př . n . l .) <--> CONV node s83s (od století): econcepts=date-entity/století, match=0 (), weak match=1 (concept).
+  The winner is GOLD node s83m (městské státy) <--> CONV node s83s2 (státy): econcepts=městský-stát/stát, match=2 (:ARG1-of=s83i mapped to CONV s83i,:refer-number=plural), weak match=3 (concept,:refer-number,:ARG1-of).
 
 Correspondence GOLD s83a  (a)                           = CONV s83a2 (a)            
 Correspondence GOLD s83b  (př . n . l)                  = CONV s83l  (př l)         
@@ -14395,7 +14395,7 @@ Correspondence GOLD s88s  (stádo)                          = CONV s88s  (stádo
 Aligned 12 out of 13 GOLD nodes, that is 92%.
 
 Ambiguous projection of CONV node s88p (Prvkem by) to 2 GOLD nodes [s88h (by bylo), s88p (Prvkem)]
-  The winner is CONV node s88p (Prvkem by) <--> GOLD node s88p (Prvkem): econcepts=prvek/prvek, match=2, weak match=1.
+  The winner is CONV node s88p (Prvkem by) <--> GOLD node s88p (Prvkem): econcepts=prvek/prvek, match=2 (concept=prvek,:refer-number=singular), weak match=2 (concept,:refer-number).
 
 Correspondence CONV s88c  (bylo)                           = GOLD s88h  (by bylo)                       
 Correspondence CONV s88c2 (bylo)                           = GOLD s88h3 (bylo)                          
@@ -14565,7 +14565,7 @@ File CONV: 3 nodes unaligned: s89a/and, s89h/have-degree-91, s89m/more.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s89z3 (co zbylo) to 2 CONV nodes [s89f (co), s89z3 (zbylo)]
-  The winner is GOLD node s89z3 (co zbylo) <--> CONV node s89z3 (zbylo): econcepts=zbýt/zbýt, match=1, weak match=2.
+  The winner is GOLD node s89z3 (co zbylo) <--> CONV node s89z3 (zbylo): econcepts=zbýt/zbýt, match=1 (concept=zbýt), weak match=3 (concept,:modal-strength,:aspect).
 
 Correspondence GOLD s89a  (and)         = CONV      
 Correspondence GOLD s89a2 (and)         = CONV      
@@ -14789,7 +14789,7 @@ File CONV: 1 nodes unaligned: s90n3/name["Apulie"].
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s90d (třináctého století) to 2 CONV nodes [s90s (Během století), s90t (třináctého)]
-  The winner is GOLD node s90d (třináctého století) <--> CONV node s90s (Během století): econcepts=date-entity/století, match=0, weak match=0.
+  The winner is GOLD node s90d (třináctého století) <--> CONV node s90s (Během století): econcepts=date-entity/století, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s90a  (autoři)             = CONV s90a  (autoři)       
 Correspondence GOLD s90d  (třináctého století) = CONV s90s  (Během století)
@@ -15531,7 +15531,7 @@ File CONV: 3 nodes unaligned: s94f/FILL, s94n/name["Žid"], s94n2/name["Palma"].
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s94v (velkému počtu) to 2 CONV nodes [s94p (kvůli počtu), s94v (velkému)]
-  The winner is GOLD node s94v (velkému počtu) <--> CONV node s94p (kvůli počtu): econcepts=velký-počet/počet, match=0, weak match=0.
+  The winner is GOLD node s94v (velkému počtu) <--> CONV node s94p (kvůli počtu): econcepts=velký-počet/počet, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s94h  (Palmě)         = CONV s94t4 (v Palmě)        
 Correspondence GOLD s94n  (name["Žid"])   = CONV s94n  (name["Žid"])    
@@ -16229,12 +16229,12 @@ Ambiguous projection of GOLD node s98p2 (Ludvíka X) to 2 CONV nodes [s98t3 (Lud
 Ambiguous projection of GOLD node s98p3 (Filipa V) to 2 CONV nodes [s98t4 (Filipa), s98v (V)]
 Ambiguous projection of GOLD node s98p4 (Karla IV) to 2 CONV nodes [s98i (IV), s98t5 (Karla)]
 Ambiguous projection of GOLD node s98p5 (Izabela Francouzská) to 2 CONV nodes [s98f (Francouzská), s98t6 (než Izabela)]
-  The winner is GOLD node s98m (měly nárok) <--> CONV node s98m (by měly): econcepts=mít-nárok/mít, match=0, weak match=4.
-  The winner is GOLD node s98m2 (větší nárok) <--> CONV node s98n (nárok): econcepts=more-than/nárok, match=0, weak match=0.
-  The winner is GOLD node s98p2 (Ludvíka X) <--> CONV node s98t3 (Ludvíka): econcepts=person/type-NE, match=0, weak match=1.
-  The winner is GOLD node s98p3 (Filipa V) <--> CONV node s98t4 (Filipa): econcepts=person/type-NE, match=0, weak match=1.
-  The winner is GOLD node s98p4 (Karla IV) <--> CONV node s98t5 (Karla): econcepts=person/type-NE, match=0, weak match=1.
-  The winner is GOLD node s98p5 (Izabela Francouzská) <--> CONV node s98f (Francouzská): econcepts=person/francouzský, match=0, weak match=0.
+  The winner is GOLD node s98m (měly nárok) <--> CONV node s98m (by měly): econcepts=mít-nárok/mít, match=0 (), weak match=5 (concept,:actor,:undergoer,:modal-strength,:aspect).
+  The winner is GOLD node s98m2 (větší nárok) <--> CONV node s98n (nárok): econcepts=more-than/nárok, match=0 (), weak match=1 (concept).
+  The winner is GOLD node s98p2 (Ludvíka X) <--> CONV node s98t3 (Ludvíka): econcepts=person/type-NE, match=0 (), weak match=2 (concept,:name).
+  The winner is GOLD node s98p3 (Filipa V) <--> CONV node s98t4 (Filipa): econcepts=person/type-NE, match=0 (), weak match=2 (concept,:name).
+  The winner is GOLD node s98p4 (Karla IV) <--> CONV node s98t5 (Karla): econcepts=person/type-NE, match=0 (), weak match=2 (concept,:name).
+  The winner is GOLD node s98p5 (Izabela Francouzská) <--> CONV node s98f (Francouzská): econcepts=person/francouzský, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s98a  (a)                             = CONV      
 Correspondence GOLD s98a2 (anglické)                      = CONV s98a  (anglické)             
@@ -16539,7 +16539,7 @@ File CONV: 3 nodes unaligned: s99i/identity-91, s99n4/name["Jindřich"], s99p4/p
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s99s2 (království Francouzského) to 2 CONV nodes [s99f (Francouzského), s99k (království)]
-  The winner is GOLD node s99s2 (království Francouzského) <--> CONV node s99f (Francouzského): econcepts=state/francouzský, match=0, weak match=0.
+  The winner is GOLD node s99s2 (království Francouzského) <--> CONV node s99f (Francouzského): econcepts=state/francouzský, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s99a  (a)                                = CONV s99a  (a)               
 Correspondence GOLD s99c  (celého)                           = CONV s99c  (celého)          
@@ -16773,7 +16773,7 @@ File CONV: 2 nodes unaligned: s100n/name["Marcus" "Antonius"], s100p6/person.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s100d (1 . ledna 49 př . n . l .) to 2 CONV nodes [s100l (ledna), s100l2 (př l)]
-  The winner is GOLD node s100d (1 . ledna 49 př . n . l .) <--> CONV node s100l (ledna): econcepts=date-entity/leden, match=0, weak match=0.
+  The winner is GOLD node s100d (1 . ledna 49 př . n . l .) <--> CONV node s100l (ledna): econcepts=date-entity/leden, match=0 (), weak match=1 (concept).
 
 Correspondence GOLD s100b  (př . n . l)                = CONV s100l2 (př l)                     
 Correspondence GOLD s100d  (1 . ledna 49 př . n . l .) = CONV s100l  (ledna)                    
