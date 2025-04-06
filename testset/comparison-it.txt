@@ -18367,9 +18367,11 @@ Correct 17 out of 48 non-empty GOLD values => precision 35%.
 SUMMARY:
 Number of nodes per file: GOLD:1254, CONV:1390
 File-to-file node mapping:
-Out of 1254 total GOLD nodes, 990 mapped to CONV (0 ambiguously) => recall    = 79%.
-Out of 1390 total CONV nodes, 990 mapped to GOLD (0 ambiguously) => precision = 71%.
+Out of 1254 total GOLD nodes, 990 mapped to CONV => recall    = 79%.
+Out of 1390 total CONV nodes, 990 mapped to GOLD => precision = 71%.
  => F₁(GOLD,CONV) = 75%.
+Before symmetrization, 240 GOLD nodes were projected ambiguously to 515 CONV nodes.
+Before symmetrization, 43 CONV nodes were projected ambiguously to 86 GOLD nodes.
 Concept and relation comparisons (for unmapped nodes all counted as incorrect):
 Out of 3720 non-empty GOLD values, 1451 found in CONV => recall    39%.
 Out of 3504 non-empty CONV values, 1451 found in GOLD => precision 41%.
