@@ -308,7 +308,6 @@ Node CONV s1o / Obamův (Obamova)         mismatch in concept:         CONV = Ob
 Node CONV s1o / Obamův (Obamova)         mismatch in :name:           CONV =                          GOLD = s1n3            
 Node CONV s1p / proces (V procesu)       mismatch in :MOD-POSS:       CONV = s1p2 mapped to GOLD s1p2 GOLD =                 
 Node CONV s1p / proces (V procesu)       mismatch in :refer-number:   CONV = singular                 GOLD =                 
-Node CONV s1p / proces (V procesu)       mismatch in :mod:            CONV =                          GOLD = s1p2            
 Node CONV s1p2 / předávání (předávání)   mismatch in concept:         CONV = předávání                GOLD = předávat        
 Node CONV s1p2 / předávání (předávání)   mismatch in :MOD-POSS:       CONV = s1m mapped to GOLD s1m   GOLD =                 
 Node CONV s1p2 / předávání (předávání)   mismatch in :undergoer:      CONV =                          GOLD = s1m             
@@ -1003,7 +1002,6 @@ Node GOLD s6r / date-entity (V roce 1955)  mismatch in :quant:          GOLD =  
 Node GOLD s6r / date-entity (V roce 1955)  mismatch in :refer-number:   GOLD =                          CONV = singular      
 Node GOLD s6r2 / režim (režim)             mismatch in :actor-of:       GOLD = s6s2 mapped to CONV s6s  CONV =               
 Node GOLD s6r2 / režim (režim)             mismatch in :possessor:      GOLD = s6m mapped to CONV s6t4  CONV = s6p3          
-Node GOLD s6r2 / režim (režim)             mismatch in :mod:            GOLD =                          CONV = s6s           
 Node GOLD s6r2 / režim (režim)             mismatch in :refer-number:   GOLD =                          CONV = singular      
 Node GOLD s6r3 / rate-entity-91 (tří)      mismatch in concept:         GOLD = rate-entity-91           CONV = UNMAPPED      
 Node GOLD s6r3 / rate-entity-91 (tří)      mismatch in :ARG1:           GOLD = 3                        CONV = UNMAPPED      
@@ -1331,7 +1329,6 @@ Node GOLD s8p2 / publikum (publikum)                mismatch in :refer-number:  
 Node GOLD s8s / smartphone (smartphonů)             mismatch in concept:         GOLD = smartphone               CONV = type-NE       
 Node GOLD s8s / smartphone (smartphonů)             mismatch in :refer-number:   GOLD = plural                   CONV =               
 Node GOLD s8s / smartphone (smartphonů)             mismatch in :name:           GOLD =                          CONV = s8n           
-Node GOLD s8s3 / situace (situace)                  mismatch in :mod:            GOLD =                          CONV = s8t           
 Node GOLD s8s3 / situace (situace)                  mismatch in :refer-number:   GOLD =                          CONV = singular      
 Node GOLD s8z / získat (získala)                    mismatch in :modal-strength: GOLD = full-affirmative         CONV = MS-affirmative
 Node GOLD s8z / získat (získala)                    mismatch in :recipient:      GOLD = s8g mapped to CONV s8g   CONV =               
@@ -2854,7 +2851,6 @@ Node CONV s17f / FILL                   mismatch in concept:         CONV = FILL
 Node CONV s17f / FILL                   mismatch in :refer-number:   CONV = plural                     GOLD = UNMAPPED        
 Node CONV s17g / generace (generaci)    mismatch in :MOD-POSS:       CONV = s17a2 mapped to GOLD s17a3 GOLD =                 
 Node CONV s17g / generace (generaci)    mismatch in :refer-number:   CONV = singular                   GOLD = plural          
-Node CONV s17g / generace (generaci)    mismatch in :mod:            CONV =                            GOLD = s17a3           
 Node CONV s17g / generace (generaci)    mismatch in :wiki:           CONV =                            GOLD = "Q213381"       
 Node CONV s17m / mysl (myslí)           mismatch in :refer-number:   CONV = singular                   GOLD =                 
 Node CONV s17m / mysl (myslí)           mismatch in :wiki:           CONV =                            GOLD = "Q450"          
@@ -3629,7 +3625,6 @@ Node GOLD s22o / objevovat-se (se objevovat)            mismatch in :temporal:  
 Node GOLD s22o2 / ordinal-entity (První)                mismatch in concept:         GOLD = ordinal-entity            CONV = první         
 Node GOLD s22o2 / ordinal-entity (První)                mismatch in :value:          GOLD = 1                         CONV =               
 Node GOLD s22t / text (texty)                           mismatch in :ord:            GOLD = s22o2 mapped to CONV s22p CONV =               
-Node GOLD s22t / text (texty)                           mismatch in :mod:            GOLD =                           CONV = s22p          
 Node CONV s22l / letopočet (př l)                       mismatch in concept:         CONV = letopočet                 GOLD = UNMAPPED      
 Node CONV s22l / letopočet (př l)                       mismatch in :possessor:      CONV = s22p2                     GOLD = UNMAPPED      
 Node CONV s22l / letopočet (př l)                       mismatch in :refer-number:   CONV = singular                  GOLD = UNMAPPED      
@@ -4115,7 +4110,6 @@ Node GOLD s24w / world-region (Středomoří) mismatch in :name:           GOLD 
 Node GOLD s24w / world-region (Středomoří) mismatch in :refer-number:   GOLD = plural                     CONV =               
 Node GOLD s24z / základna (základen)       mismatch in :place:          GOLD = s24w mapped to CONV s24s   CONV =               
 Node GOLD s24z / základna (základen)       mismatch in :refer-number:   GOLD = plural                     CONV =               
-Node GOLD s24z / základna (základen)       mismatch in :mod:            GOLD =                            CONV = s24s          
 Node CONV s24a / and (,)                   mismatch in concept:         CONV = and                        GOLD = UNMAPPED      
 Node CONV s24a / and (,)                   mismatch in :op1:            CONV = s24r                       GOLD = UNMAPPED      
 Node CONV s24a / and (,)                   mismatch in :op2:            CONV = s24i                       GOLD = UNMAPPED      
@@ -4544,7 +4538,6 @@ Node GOLD s26v / vydávat (Vydávání)          mismatch in :undergoer:      GO
 Node GOLD s26v / vydávat (Vydávání)          mismatch in :MOD-POSS:       GOLD =                            CONV = s26m          
 Node GOLD s26v / vydávat (Vydávání)          mismatch in :refer-number:   GOLD =                            CONV = singular      
 Node GOLD s26z / záležitost (záležitost)     mismatch in :purpose:        GOLD = s26p2 mapped to CONV s26p2 CONV =               
-Node GOLD s26z / záležitost (záležitost)     mismatch in :mod:            GOLD =                            CONV = s26c          
 Node CONV s26c / cíl (s cílem)               mismatch in concept:         CONV = cíl                        GOLD = UNMAPPED      
 Node CONV s26c / cíl (s cílem)               mismatch in :mod:            CONV = s26p2                      GOLD = UNMAPPED      
 Node CONV s26f / FILL                        mismatch in concept:         CONV = FILL                       GOLD = UNMAPPED      
@@ -6233,7 +6226,6 @@ Comparing attributes of GOLD nodes with their CONV counterparts.
 Node GOLD s35d / den                               mismatch in concept:         GOLD = den                       CONV = UNMAPPED      
 Node GOLD s35d / den                               mismatch in :refer-number:   GOLD = plural                    CONV = UNMAPPED      
 Node GOLD s35e / elektrárna (elektrárna)           mismatch in :place:          GOLD = s35t mapped to CONV s35t  CONV =               
-Node GOLD s35e / elektrárna (elektrárna)           mismatch in :mod:            GOLD =                           CONV = s35t          
 Node GOLD s35i2 / identity-91                      mismatch in :modal-strength: GOLD = full-affirmative          CONV = MS-affirmative
 Node GOLD s35p / přerušit (přeruší)                mismatch in :duration:       GOLD = s35t3 mapped to CONV s35d CONV =               
 Node GOLD s35p / přerušit (přeruší)                mismatch in :OBLIQUE:        GOLD =                           CONV = s35d          
@@ -7125,7 +7117,6 @@ Comparing attributes of GOLD nodes with their CONV counterparts.
 Node GOLD s41d / dát-najevo (že nebude dána najevo) mismatch in concept:         GOLD = dát-najevo                 CONV = dát             
 Node GOLD s41d / dát-najevo (že nebude dána najevo) mismatch in :affectee:       GOLD = s41t2 mapped to CONV s41p5 CONV =                 
 Node GOLD s41d / dát-najevo (že nebude dána najevo) mismatch in :modal-strength: GOLD = full-negative              CONV = full-affirmative
-Node GOLD s41d / dát-najevo (že nebude dána najevo) mismatch in :manner:         GOLD =                            CONV = s41n            
 Node GOLD s41d / dát-najevo (že nebude dána najevo) mismatch in :recipient:      GOLD =                            CONV = s41t2           
 Node GOLD s41n2 / náklonnost (náklonnost)           mismatch in :mod:            GOLD = s41p2 mapped to CONV s41p2 CONV =                 
 Node GOLD s41n2 / náklonnost (náklonnost)           mismatch in :undergoer-of:   GOLD =                            CONV = s41p2           
@@ -7164,7 +7155,6 @@ Node CONV s41d / dát (že nebude dána)        mismatch in :recipient:      CON
 Node CONV s41d / dát (že nebude dána)        mismatch in :affectee:       CONV =                            GOLD = s41t2           
 Node CONV s41n / najevo (najevo)             mismatch in concept:         CONV = najevo                     GOLD = UNMAPPED        
 Node CONV s41n2 / náklonnost (náklonnost)    mismatch in :undergoer-of:   CONV = s41p2 mapped to GOLD s41p2 GOLD =                 
-Node CONV s41n2 / náklonnost (náklonnost)    mismatch in :mod:            CONV =                            GOLD = s41p2           
 Node CONV s41p / pokyn (pokyny)              mismatch in :undergoer-of:   CONV = s41a mapped to GOLD s41a   GOLD =                 
 Node CONV s41p / pokyn (pokyny)              mismatch in :mod:            CONV =                            GOLD = s41a            
 Node CONV s41p2 / přehnat (přehnaná)         mismatch in concept:         CONV = přehnat                    GOLD = přehnaný        
@@ -8425,7 +8415,6 @@ Correct 26 out of 42 non-empty CONV values => precision 62%.
 
 Comparing attributes of CONV nodes with their GOLD counterparts.
 Node CONV s50d / den (den)                             mismatch in :MOD-POSS:       CONV = s50p2 mapped to GOLD s50p2 GOLD =                 
-Node CONV s50d / den (den)                             mismatch in :mod:            CONV =                            GOLD = s50p2           
 Node CONV s50i / identity-91                           mismatch in :modal-strength: CONV = MS-affirmative             GOLD = full-affirmative
 Node CONV s50l / leden (ledna)                         mismatch in concept:         CONV = leden                      GOLD = date-entity     
 Node CONV s50l / leden (ledna)                         mismatch in :quant:          CONV = 2001                       GOLD =                 
@@ -9500,7 +9489,6 @@ Node CONV s57d / délka (délku)               mismatch in :undergoer-of:   CONV
 Node CONV s57d / délka (délku)               mismatch in :mod:            CONV =                            GOLD = s57j            
 Node CONV s57d / délka (délku)               mismatch in :stimulus-of:    CONV =                            GOLD = s57v            
 Node CONV s57d3 / doba (dobu)                mismatch in :MOD-POSS:       CONV = s57j2 mapped to GOLD s57j2 GOLD =                 
-Node CONV s57d3 / doba (dobu)                mismatch in :mod:            CONV =                            GOLD = s57j2           
 Node CONV s57f / FILL                        mismatch in concept:         CONV = FILL                       GOLD = UNMAPPED        
 Node CONV s57f / FILL                        mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED        
 Node CONV s57j / jízda (jízdy)               mismatch in :refer-number:   CONV =                            GOLD = singular        
@@ -10667,7 +10655,6 @@ Node GOLD s64h3 / hodně (více)                mismatch in :degree:         GOL
 Node GOLD s64h3 / hodně (více)                mismatch in :ADVCL:          GOLD =                          CONV = s64k          
 Node GOLD s64h3 / hodně (více)                mismatch in :ARG2-of:        GOLD =                          CONV = s64h5         
 Node GOLD s64h4 / hodně (více)                mismatch in :degree:         GOLD = more                     CONV =               
-Node GOLD s64h4 / hodně (více)                mismatch in :manner:         GOLD =                          CONV = s64d          
 Node GOLD s64h4 / hodně (více)                mismatch in :mod:            GOLD =                          CONV = s64s2         
 Node GOLD s64h5 / have-degree-91 (než)        mismatch in concept:         GOLD = have-degree-91           CONV = UNMAPPED      
 Node GOLD s64h5 / have-degree-91 (než)        mismatch in :ARG3:           GOLD = s64h3                    CONV = UNMAPPED      
@@ -11951,7 +11938,6 @@ Node GOLD s74d / date-entity (roku 2010)    mismatch in :year:           GOLD = 
 Node GOLD s74d / date-entity (roku 2010)    mismatch in :quant:          GOLD =                            CONV = 2010          
 Node GOLD s74h / have-mod-91 (byla)         mismatch in :modal-strength: GOLD = full-affirmative           CONV = MS-affirmative
 Node GOLD s74o / okrsek (ve sedmi okrscích) mismatch in :mod:            GOLD = s74v4 mapped to CONV s74v4 CONV =               
-Node GOLD s74o / okrsek (ve sedmi okrscích) mismatch in :quant:          GOLD =                            CONV = s74v4         
 Node GOLD s74s2 / schopný (schopná)         mismatch in :stimulus:       GOLD = s74v3 mapped to CONV s74v3 CONV =               
 Node GOLD s74s2 / schopný (schopná)         mismatch in :temporal:       GOLD = s74v2 mapped to CONV s74v2 CONV =               
 Node GOLD s74s2 / schopný (schopná)         mismatch in :OBLIQUE:        GOLD =                            CONV = s74v2         
@@ -11970,7 +11956,6 @@ Correct 20 out of 30 non-empty CONV values => precision 67%.
 Comparing attributes of CONV nodes with their GOLD counterparts.
 Node CONV s74h / have-mod-91 (byla)   mismatch in :modal-strength: CONV = MS-affirmative             GOLD = full-affirmative
 Node CONV s74o / okrsek (ve okrscích) mismatch in :quant:          CONV = s74v4 mapped to GOLD s74v4 GOLD =                 
-Node CONV s74o / okrsek (ve okrscích) mismatch in :mod:            CONV =                            GOLD = s74v4           
 Node CONV s74r / rok (roku)           mismatch in concept:         CONV = rok                        GOLD = date-entity     
 Node CONV s74r / rok (roku)           mismatch in :quant:          CONV = 2010                       GOLD =                 
 Node CONV s74r / rok (roku)           mismatch in :year:           CONV =                            GOLD = 2010            
@@ -12258,7 +12243,6 @@ Node GOLD s76d / date-entity (v roce 1917)  mismatch in :year:           GOLD = 
 Node GOLD s76d / date-entity (v roce 1917)  mismatch in :quant:          GOLD =                            CONV = 1917          
 Node GOLD s76n4 / nezávislost (nezávislost) mismatch in :possessor:      GOLD = s76z2 mapped to CONV s76z2 CONV = s76p          
 Node GOLD s76r2 / revoluce (Po revoluci)    mismatch in :temporal:       GOLD = s76d mapped to CONV s76r3  CONV =               
-Node GOLD s76r2 / revoluce (Po revoluci)    mismatch in :mod:            GOLD =                            CONV = s76r3         
 Node GOLD s76r2 / revoluce (Po revoluci)    mismatch in :refer-number:   GOLD =                            CONV = singular      
 Node GOLD s76z / získat (získaly)           mismatch in :aspect:         GOLD = performance                CONV = ASP           
 Node GOLD s76z / získat (získaly)           mismatch in :modal-strength: GOLD = full-affirmative           CONV = MS-affirmative
@@ -13615,7 +13599,6 @@ Comparing attributes of GOLD nodes with their CONV counterparts.
 Node GOLD s83b / BC (př . n . l)                           mismatch in concept:         GOLD = BC                        CONV = letopočet     
 Node GOLD s83b / BC (př . n . l)                           mismatch in :possessor:      GOLD =                           CONV = s83p2         
 Node GOLD s83c / celek (celky)                             mismatch in :part:           GOLD = s83a mapped to CONV s83a2 CONV =               
-Node GOLD s83c / celek (celky)                             mismatch in :mod:            GOLD =                           CONV = s83a2         
 Node GOLD s83d / date-entity (od 8 . století př . n . l .) mismatch in concept:         GOLD = date-entity               CONV = století       
 Node GOLD s83d / date-entity (od 8 . století př . n . l .) mismatch in :century:        GOLD = 8                         CONV =               
 Node GOLD s83d / date-entity (od 8 . století př . n . l .) mismatch in :era:            GOLD = s83b mapped to CONV s83l  CONV =               
@@ -13758,7 +13741,6 @@ Aligned 6 out of 7 CONV nodes, that is 86%.
 
 Comparing attributes of GOLD nodes with their CONV counterparts.
 Node GOLD s84b / bod (bod)                    mismatch in :possessor:      GOLD = s84k mapped to CONV s84k  CONV =            
-Node GOLD s84b / bod (bod)                    mismatch in :mod:            GOLD =                           CONV = s84k       
 Node GOLD s84i / identity-91                  mismatch in concept:         GOLD = identity-91               CONV = UNMAPPED   
 Node GOLD s84i / identity-91                  mismatch in :ARG1:           GOLD = s84z                      CONV = UNMAPPED   
 Node GOLD s84i / identity-91                  mismatch in :ARG2:           GOLD = s84b                      CONV = UNMAPPED   
@@ -14164,7 +14146,6 @@ Node GOLD s86p2 / person               mismatch in concept:         GOLD = perso
 Node GOLD s86p2 / person               mismatch in :refer-number:   GOLD = singular                   CONV = UNMAPPED      
 Node GOLD s86p2 / person               mismatch in :refer-person:   GOLD = 3rd                        CONV = UNMAPPED      
 Node GOLD s86p3 / poměr (poměr)        mismatch in :companion:      GOLD = s86d mapped to CONV s86d2  CONV =               
-Node GOLD s86p3 / poměr (poměr)        mismatch in :mod:            GOLD =                            CONV = s86d2         
 Node GOLD s86z / začít-si (začal)      mismatch in concept:         GOLD = začít-si                   CONV = začít         
 Node GOLD s86z / začít-si (začal)      mismatch in :actor:          GOLD = s86p2 unmapped             CONV =               
 Node GOLD s86z / začít-si (začal)      mismatch in :aspect:         GOLD = performance                CONV = ASP           
