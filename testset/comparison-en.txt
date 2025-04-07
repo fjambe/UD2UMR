@@ -92,6 +92,9 @@ Ambiguous projection of GOLD node s1c2 (United States) to 2 CONV nodes [s1t3 (in
 Ambiguous projection of GOLD node s1n3 (United States) to 2 CONV nodes [s1t3 (in the States), s1u2 (United)]
   The winner is GOLD node s1c2 (United States) <--> CONV node s1t3 (in the States): econcepts=country/type-NE, match=0 (), weak match=2 (concept,:name).
 
+Ambiguous projection of CONV node s1t3 (in the States) to 2 GOLD nodes [s1c2 (United States), s1n3 (United States)]
+Ambiguous projection of CONV node s1u2 (United) to 2 GOLD nodes [s1c2 (United States), s1n3 (United States)]
+
 Correspondence GOLD s1a  (assistant)        = CONV     
 Correspondence GOLD s1b  (blog)             = CONV     
 Correspondence GOLD s1c  (contrast-91)      = CONV     
@@ -117,9 +120,6 @@ Correspondence GOLD s1t2 (transition)       = CONV s1t2 (the transition)
 Correspondence GOLD s1w  (wrote)            = CONV     
 
 Aligned 8 out of 23 GOLD nodes, that is 35%.
-
-Ambiguous projection of CONV node s1t3 (in the States) to 2 GOLD nodes [s1c2 (United States), s1n3 (United States)]
-Ambiguous projection of CONV node s1u2 (United) to 2 GOLD nodes [s1c2 (United States), s1n3 (United States)]
 
 Correspondence CONV s1b  (is)                   = GOLD     
 Correspondence CONV s1c  (COPULAR-CONSTRUCTION) = GOLD     
@@ -368,6 +368,9 @@ File CONV: 1 nodes unaligned: s2f/FILL.
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s2t (Tonight) to 2 GOLD nodes [s2d (Tonight), s2t2 (Tonight)]
+  The winner is CONV node s2t (Tonight) <--> GOLD node s2t2 (Tonight): econcepts=tonight/tonight, match=1 (concept=tonight), weak match=1 (concept).
+
 Correspondence GOLD s2b  (beam)         = CONV s2b  (a beam)      
 Correspondence GOLD s2c  (carrying out) = CONV s2c  (are carrying)
 Correspondence GOLD s2d  (Tonight)      = CONV     
@@ -380,9 +383,6 @@ Correspondence GOLD s2t  (post)         = CONV
 Correspondence GOLD s2t2 (Tonight)      = CONV s2t  (Tonight)     
 
 Aligned 6 out of 10 GOLD nodes, that is 60%.
-
-Ambiguous projection of CONV node s2t (Tonight) to 2 GOLD nodes [s2d (Tonight), s2t2 (Tonight)]
-  The winner is CONV node s2t (Tonight) <--> GOLD node s2t2 (Tonight): econcepts=tonight/tonight, match=1 (concept=tonight), weak match=1 (concept).
 
 Correspondence CONV s2b  (a beam)       = GOLD s2b  (beam)        
 Correspondence CONV s2c  (are carrying) = GOLD s2c  (carrying out)
@@ -536,6 +536,11 @@ File CONV: 2 nodes unaligned: s3f3/FILL, s3n/name["Earth"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s3e (around equator) to 2 GOLD nodes [s3a2 (around), s3e (equator)]
+Ambiguous projection of CONV node s3t2 (the Earth 's) to 2 GOLD nodes [s3n (Earth), s3p (Earth)]
+  The winner is CONV node s3e (around equator) <--> GOLD node s3e (equator): econcepts=equator/equator, match=1 (concept=equator), weak match=1 (concept).
+  The winner is CONV node s3t2 (the Earth 's) <--> GOLD node s3p (Earth): econcepts=type-NE/planet, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s3a2 (around)        = CONV     
 Correspondence GOLD s3c  (and)           = CONV s3a  (and)           
 Correspondence GOLD s3d  (debris)        = CONV s3d  (The debris)    
@@ -552,11 +557,6 @@ Correspondence GOLD s3p  (Earth)         = CONV s3t2 (the Earth 's)
 Correspondence GOLD s3r  (ring)          = CONV s3r  (a ring)        
 
 Aligned 11 out of 14 GOLD nodes, that is 79%.
-
-Ambiguous projection of CONV node s3e (around equator) to 2 GOLD nodes [s3a2 (around), s3e (equator)]
-Ambiguous projection of CONV node s3t2 (the Earth 's) to 2 GOLD nodes [s3n (Earth), s3p (Earth)]
-  The winner is CONV node s3e (around equator) <--> GOLD node s3e (equator): econcepts=equator/equator, match=1 (concept=equator), weak match=1 (concept).
-  The winner is CONV node s3t2 (the Earth 's) <--> GOLD node s3p (Earth): econcepts=type-NE/planet, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s3a  (and)            = GOLD s3c  (and)       
 Correspondence CONV s3d  (The debris)     = GOLD s3d  (debris)    
@@ -820,6 +820,11 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s5d2 (3rd century) to 2 CONV nodes [s5c (By the century), s5x (3rd)]
 
+Ambiguous projection of CONV node s5c (By the century) to 2 GOLD nodes [s5b (By), s5d2 (3rd century)]
+Ambiguous projection of CONV node s5t2 (Caracalla) to 2 GOLD nodes [s5n (Caracalla), s5p (Caracalla)]
+  The winner is CONV node s5c (By the century) <--> GOLD node s5d2 (3rd century): econcepts=century/date-entity, match=0 (), weak match=1 (concept).
+  The winner is CONV node s5t2 (Caracalla) <--> GOLD node s5p (Caracalla): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s5b  (By)               = CONV     
 Correspondence GOLD s5d  (division)         = CONV s5d  (a division)    
 Correspondence GOLD s5d2 (3rd century)      = CONV s5c  (By the century)
@@ -835,11 +840,6 @@ Correspondence GOLD s5s  (short)            = CONV s5s  (short)
 Correspondence GOLD s5t  (time)             = CONV s5t  (a time)        
 
 Aligned 10 out of 13 GOLD nodes, that is 77%.
-
-Ambiguous projection of CONV node s5c (By the century) to 2 GOLD nodes [s5b (By), s5d2 (3rd century)]
-Ambiguous projection of CONV node s5t2 (Caracalla) to 2 GOLD nodes [s5n (Caracalla), s5p (Caracalla)]
-  The winner is CONV node s5c (By the century) <--> GOLD node s5d2 (3rd century): econcepts=century/date-entity, match=0 (), weak match=1 (concept).
-  The winner is CONV node s5t2 (Caracalla) <--> GOLD node s5p (Caracalla): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s5c  (By the century)    = GOLD s5d2 (3rd century)
 Correspondence CONV s5d  (a division)        = GOLD s5d  (division)   
@@ -1028,6 +1028,13 @@ File CONV: 1 nodes unaligned: s6n/name["Mishima"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s6l (of life) to 2 GOLD nodes [s6l (life), s6t3 (life)]
+Ambiguous projection of CONV node s6t3 (Mishima) to 2 GOLD nodes [s6n (Mishima), s6p (Mishima)]
+Ambiguous projection of CONV node s6w3 (per week) to 2 GOLD nodes [s6r2 (per), s6w3 (week)]
+  The winner is CONV node s6l (of life) <--> GOLD node s6l (life): econcepts=life/live-01, match=0 (), weak match=1 (concept).
+  The winner is CONV node s6t3 (Mishima) <--> GOLD node s6p (Mishima): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s6w3 (per week) <--> GOLD node s6w3 (week): econcepts=week/week, match=1 (concept=week), weak match=1 (concept).
+
 Correspondence GOLD s6c  (and)         = CONV s6a  (and)          
 Correspondence GOLD s6d  (1955)        = CONV s6x  (In 1955)      
 Correspondence GOLD s6d2 (disrupted)   = CONV s6d  (was disrupted)
@@ -1048,13 +1055,6 @@ Correspondence GOLD s6w3 (week)        = CONV s6w3 (per week)
 Correspondence GOLD s6y  (years)       = CONV s6y  (for the years)
 
 Aligned 14 out of 18 GOLD nodes, that is 78%.
-
-Ambiguous projection of CONV node s6l (of life) to 2 GOLD nodes [s6l (life), s6t3 (life)]
-Ambiguous projection of CONV node s6t3 (Mishima) to 2 GOLD nodes [s6n (Mishima), s6p (Mishima)]
-Ambiguous projection of CONV node s6w3 (per week) to 2 GOLD nodes [s6r2 (per), s6w3 (week)]
-  The winner is CONV node s6l (of life) <--> GOLD node s6l (life): econcepts=life/live-01, match=0 (), weak match=1 (concept).
-  The winner is CONV node s6t3 (Mishima) <--> GOLD node s6p (Mishima): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s6w3 (per week) <--> GOLD node s6w3 (week): econcepts=week/week, match=1 (concept=week), weak match=1 (concept).
 
 Correspondence CONV s6a  (and)             = GOLD s6c  (and)      
 Correspondence CONV s6d  (was disrupted)   = GOLD s6d2 (disrupted)
@@ -1254,6 +1254,9 @@ File CONV: 1 nodes unaligned: s7n/name["Von" "Beust"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s7t (Von) to 2 GOLD nodes [s7n (Von Beust), s7p (Von Beust)]
+  The winner is CONV node s7t (Von) <--> GOLD node s7p (Von Beust): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s7c  (cost)      = CONV s7c (cost)         
 Correspondence GOLD s7d  (detailed)  = CONV s7d (detailed)     
 Correspondence GOLD s7i  (increases) = CONV s7i (the increases)
@@ -1264,9 +1267,6 @@ Correspondence GOLD s7p  (Von Beust) = CONV s7t (Von)
 Correspondence GOLD s7p2 (planning)  = CONV s7p (of planning)  
 
 Aligned 7 out of 8 GOLD nodes, that is 88%.
-
-Ambiguous projection of CONV node s7t (Von) to 2 GOLD nodes [s7n (Von Beust), s7p (Von Beust)]
-  The winner is CONV node s7t (Von) <--> GOLD node s7p (Von Beust): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s7c (cost)                = GOLD s7c  (cost)     
 Correspondence CONV s7d (detailed)            = GOLD s7d  (detailed) 
@@ -1420,6 +1420,11 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s8g2 (best) to 2 GOLD nodes [s8g2 (best), s8m3 (best)]
+Ambiguous projection of CONV node s8s (smartphone) to 2 GOLD nodes [s8p (smartphone), s8s (smartphone)]
+  The winner is CONV node s8g2 (best) <--> GOLD node s8g2 (best): econcepts=good/good-02, match=0 (), weak match=1 (concept).
+  The winner is CONV node s8s (smartphone) <--> GOLD node s8p (smartphone): econcepts=smartphone/phone, match=0 (), weak match=1 (concept).
+
 Correspondence GOLD s8a  (app)            = CONV s8a  (an app)         
 Correspondence GOLD s8a2 (audience)       = CONV s8a2 (an audience)    
 Correspondence GOLD s8c  (case)           = CONV s8c  (case)           
@@ -1442,11 +1447,6 @@ Correspondence GOLD s8s2 (situation)      = CONV s8s3 (the situation)
 Correspondence GOLD s8s3 (scenario)       = CONV s8s2 (in the scenario)
 
 Aligned 13 out of 20 GOLD nodes, that is 65%.
-
-Ambiguous projection of CONV node s8g2 (best) to 2 GOLD nodes [s8g2 (best), s8m3 (best)]
-Ambiguous projection of CONV node s8s (smartphone) to 2 GOLD nodes [s8p (smartphone), s8s (smartphone)]
-  The winner is CONV node s8g2 (best) <--> GOLD node s8g2 (best): econcepts=good/good-02, match=0 (), weak match=1 (concept).
-  The winner is CONV node s8s (smartphone) <--> GOLD node s8p (smartphone): econcepts=smartphone/phone, match=0 (), weak match=1 (concept).
 
 Correspondence CONV s8a  (an app)          = GOLD s8a  (app)       
 Correspondence CONV s8a2 (an audience)     = GOLD s8a2 (audience)  
@@ -1642,6 +1642,13 @@ File CONV: 4 nodes unaligned: s9f/FILL, s9n/name["Dündar"], s9n2/name["Europe"]
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s9t2 (Dündar) to 2 GOLD nodes [s9n (Dündar), s9p (Dündar)]
+Ambiguous projection of CONV node s9t3 (Europe) to 2 GOLD nodes [s9c (Europe), s9n2 (Europe)]
+Ambiguous projection of CONV node s9t4 (Erdogan 's) to 2 GOLD nodes [s9n3 (Erdogan), s9p2 (Erdogan)]
+  The winner is CONV node s9t2 (Dündar) <--> GOLD node s9p (Dündar): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s9t3 (Europe) <--> GOLD node s9c (Europe): econcepts=type-NE/continent, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s9t4 (Erdogan 's) <--> GOLD node s9p2 (Erdogan): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s9c  (Europe)        = CONV s9t3 (Europe)       
 Correspondence GOLD s9c2 (course)        = CONV s9c  (for course)   
 Correspondence GOLD s9m  (much)          = CONV s9m  (much)         
@@ -1655,13 +1662,6 @@ Correspondence GOLD s9u  (understanding) = CONV s9u  (understanding)
 Correspondence GOLD s9w  (warned)        = CONV s9w  (warned)       
 
 Aligned 8 out of 11 GOLD nodes, that is 73%.
-
-Ambiguous projection of CONV node s9t2 (Dündar) to 2 GOLD nodes [s9n (Dündar), s9p (Dündar)]
-Ambiguous projection of CONV node s9t3 (Europe) to 2 GOLD nodes [s9c (Europe), s9n2 (Europe)]
-Ambiguous projection of CONV node s9t4 (Erdogan 's) to 2 GOLD nodes [s9n3 (Erdogan), s9p2 (Erdogan)]
-  The winner is CONV node s9t2 (Dündar) <--> GOLD node s9p (Dündar): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s9t3 (Europe) <--> GOLD node s9c (Europe): econcepts=type-NE/continent, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s9t4 (Erdogan 's) <--> GOLD node s9p2 (Erdogan): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s9c  (for course)      = GOLD s9c2 (course)       
 Correspondence CONV s9f  (FILL)            = GOLD     
@@ -1809,6 +1809,9 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s10p (According to the programme) to 2 GOLD nodes [s10p (programme), s10s (According)]
+  The winner is CONV node s10p (According to the programme) <--> GOLD node s10p (programme): econcepts=programme/programme, match=1 (concept=programme), weak match=1 (concept).
+
 Correspondence GOLD s10d  (23.45)     = CONV s10x  (at 23.45)                  
 Correspondence GOLD s10p  (programme) = CONV s10p  (According to the programme)
 Correspondence GOLD s10p2 (she)       = CONV s10p2 (she)                       
@@ -1816,9 +1819,6 @@ Correspondence GOLD s10s  (According) = CONV
 Correspondence GOLD s10s2 (speak)     = CONV s10s  (will speak)                
 
 Aligned 4 out of 5 GOLD nodes, that is 80%.
-
-Ambiguous projection of CONV node s10p (According to the programme) to 2 GOLD nodes [s10p (programme), s10s (According)]
-  The winner is CONV node s10p (According to the programme) <--> GOLD node s10p (programme): econcepts=programme/programme, match=1 (concept=programme), weak match=1 (concept).
 
 Correspondence CONV s10p  (According to the programme) = GOLD s10p  (programme)
 Correspondence CONV s10p2 (she)                        = GOLD s10p2 (she)      
@@ -2130,6 +2130,9 @@ File CONV: 1 nodes unaligned: s12n/name["Le" "Figaro"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s12t2 (According to Le) to 3 GOLD nodes [s12n (Le Figaro), s12p (Le Figaro), s12s (According)]
+  The winner is CONV node s12t2 (According to Le) <--> GOLD node s12p (Le Figaro): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s12e  (euros)        = CONV s12e  (euros)           
 Correspondence GOLD s12f  (free up)      = CONV s12f  (could free)      
 Correspondence GOLD s12g  (government)   = CONV s12g  (government)      
@@ -2144,9 +2147,6 @@ Correspondence GOLD s12s  (According)    = CONV
 Correspondence GOLD s12s2 (security)     = CONV s12s  (towards security)
 
 Aligned 8 out of 12 GOLD nodes, that is 67%.
-
-Ambiguous projection of CONV node s12t2 (According to Le) to 3 GOLD nodes [s12n (Le Figaro), s12p (Le Figaro), s12s (According)]
-  The winner is CONV node s12t2 (According to Le) <--> GOLD node s12p (Le Figaro): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s12e  (euros)               = GOLD s12e  (euros)       
 Correspondence CONV s12f  (could free)          = GOLD s12f  (free up)     
@@ -2315,6 +2315,11 @@ File CONV: 2 nodes unaligned: s13c3/COPULAR-CONSTRUCTION, s13n/name["Italy"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s13f (with those) to 2 GOLD nodes [s13p (those), s13t (those)]
+Ambiguous projection of CONV node s13t (against Italy) to 3 GOLD nodes [s13a (against), s13c2 (Italy), s13n (Italy)]
+  The winner is CONV node s13f (with those) <--> GOLD node s13p (those): econcepts=FILL/person, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
+  The winner is CONV node s13t (against Italy) <--> GOLD node s13c2 (Italy): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s13a  (against)    = CONV     
 Correspondence GOLD s13c  (continue)   = CONV s13c (that can continue)  
 Correspondence GOLD s13c2 (Italy)      = CONV s13t (against Italy)      
@@ -2324,11 +2329,6 @@ Correspondence GOLD s13p  (those)      = CONV s13f (with those)
 Correspondence GOLD s13t  (those)      = CONV     
 
 Aligned 4 out of 7 GOLD nodes, that is 57%.
-
-Ambiguous projection of CONV node s13f (with those) to 2 GOLD nodes [s13p (those), s13t (those)]
-Ambiguous projection of CONV node s13t (against Italy) to 3 GOLD nodes [s13a (against), s13c2 (Italy), s13n (Italy)]
-  The winner is CONV node s13f (with those) <--> GOLD node s13p (those): econcepts=FILL/person, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
-  The winner is CONV node s13t (against Italy) <--> GOLD node s13c2 (Italy): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s13a  (absolutely)           = GOLD      
 Correspondence CONV s13b  (are)                  = GOLD      
@@ -2527,6 +2527,13 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s14d (24th of October) to 2 CONV nodes [s14t2 (of October), s14x (to the 24th)]
   The winner is GOLD node s14d (24th of October) <--> CONV node s14x (to the 24th): econcepts=date-entity/24th, match=0 (), weak match=1 (concept).
 
+Ambiguous projection of CONV node s14a (compared with the average) to 2 GOLD nodes [s14a2 (average), s14c2 (compared)]
+Ambiguous projection of CONV node s14l (latest) to 2 GOLD nodes [s14m (latest), s14r2 (latest)]
+Ambiguous projection of CONV node s14t3 (eurozone) to 2 GOLD nodes [s14n3 (eurozone), s14w (eurozone)]
+  The winner is CONV node s14a (compared with the average) <--> GOLD node s14a2 (average): econcepts=average/average, match=1 (concept=average), weak match=1 (concept).
+  The winner is CONV node s14l (latest) <--> GOLD node s14m (latest): econcepts=late/most, match=0 (), weak match=1 (concept).
+  The winner is CONV node s14t3 (eurozone) <--> GOLD node s14w (eurozone): econcepts=type-NE/world-region, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s14a  (and)             = CONV s14a2 (and)                      
 Correspondence GOLD s14a2 (average)         = CONV s14a  (compared with the average)
 Correspondence GOLD s14c  (costs)           = CONV s14c  (that costs)               
@@ -2553,13 +2560,6 @@ Correspondence GOLD s14v  (volume-quantity) = CONV
 Correspondence GOLD s14w  (eurozone)        = CONV s14t3 (eurozone)                 
 
 Aligned 15 out of 24 GOLD nodes, that is 63%.
-
-Ambiguous projection of CONV node s14a (compared with the average) to 2 GOLD nodes [s14a2 (average), s14c2 (compared)]
-Ambiguous projection of CONV node s14l (latest) to 2 GOLD nodes [s14m (latest), s14r2 (latest)]
-Ambiguous projection of CONV node s14t3 (eurozone) to 2 GOLD nodes [s14n3 (eurozone), s14w (eurozone)]
-  The winner is CONV node s14a (compared with the average) <--> GOLD node s14a2 (average): econcepts=average/average, match=1 (concept=average), weak match=1 (concept).
-  The winner is CONV node s14l (latest) <--> GOLD node s14m (latest): econcepts=late/most, match=0 (), weak match=1 (concept).
-  The winner is CONV node s14t3 (eurozone) <--> GOLD node s14w (eurozone): econcepts=type-NE/world-region, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s14a  (compared with the average) = GOLD s14a2 (average)        
 Correspondence CONV s14a2 (and)                       = GOLD s14a  (and)            
@@ -2808,6 +2808,13 @@ File CONV: 2 nodes unaligned: s15n/name["LUISS" "University"], s15n2/name["Rome"
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s15s (Students) to 2 GOLD nodes [s15p (Students), s15s (Students)]
+Ambiguous projection of CONV node s15t3 (LUISS) to 2 GOLD nodes [s15a (LUISS University), s15n (LUISS University)]
+Ambiguous projection of CONV node s15t4 (in Rome) to 2 GOLD nodes [s15h2 (Rome), s15n2 (Rome)]
+  The winner is CONV node s15s (Students) <--> GOLD node s15s (Students): econcepts=student/student, match=1 (concept=student), weak match=1 (concept).
+  The winner is CONV node s15t3 (LUISS) <--> GOLD node s15a (LUISS University): econcepts=type-NE/academic-organization, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s15t4 (in Rome) <--> GOLD node s15h2 (Rome): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s15a  (LUISS University) = CONV s15t3 (LUISS)            
 Correspondence GOLD s15c  (course)           = CONV s15c  (during the course)
 Correspondence GOLD s15h  (have-role-91)     = CONV      
@@ -2820,13 +2827,6 @@ Correspondence GOLD s15s  (Students)         = CONV s15s  (Students)
 Correspondence GOLD s15t  (told)             = CONV s15t  (were told)        
 
 Aligned 6 out of 10 GOLD nodes, that is 60%.
-
-Ambiguous projection of CONV node s15s (Students) to 2 GOLD nodes [s15p (Students), s15s (Students)]
-Ambiguous projection of CONV node s15t3 (LUISS) to 2 GOLD nodes [s15a (LUISS University), s15n (LUISS University)]
-Ambiguous projection of CONV node s15t4 (in Rome) to 2 GOLD nodes [s15h2 (Rome), s15n2 (Rome)]
-  The winner is CONV node s15s (Students) <--> GOLD node s15s (Students): econcepts=student/student, match=1 (concept=student), weak match=1 (concept).
-  The winner is CONV node s15t3 (LUISS) <--> GOLD node s15a (LUISS University): econcepts=type-NE/academic-organization, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s15t4 (in Rome) <--> GOLD node s15h2 (Rome): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s15c  (during the course)          = GOLD s15c  (course)          
 Correspondence CONV s15m  (of a meeting)               = GOLD s15m  (meeting)         
@@ -2983,6 +2983,9 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s16m (management) to 2 GOLD nodes [s16m (management), s16o (management)]
+  The winner is CONV node s16m (management) <--> GOLD node s16m (management): econcepts=management/manage-01, match=0 (), weak match=1 (concept).
+
 Correspondence GOLD s16c  (however)     = CONV s16h (however)     
 Correspondence GOLD s16c2 (criticism)   = CONV s16c (of criticism)
 Correspondence GOLD s16d  (devoid)      = CONV s16d (has devoid)  
@@ -2992,9 +2995,6 @@ Correspondence GOLD s16o  (management)  = CONV
 Correspondence GOLD s16o2 (Its)         = CONV s16t (Its)         
 
 Aligned 5 out of 7 GOLD nodes, that is 71%.
-
-Ambiguous projection of CONV node s16m (management) to 2 GOLD nodes [s16m (management), s16o (management)]
-  The winner is CONV node s16m (management) <--> GOLD node s16m (management): econcepts=management/manage-01, match=0 (), weak match=1 (concept).
 
 Correspondence CONV s16c  (of criticism) = GOLD s16c2 (criticism) 
 Correspondence CONV s16d  (has devoid)   = GOLD s16d  (devoid)    
@@ -3144,6 +3144,9 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s17f (because form) to 2 GOLD nodes [s17f (form), s17h (because)]
+  The winner is CONV node s17f (because form) <--> GOLD node s17f (form): econcepts=form/form-01, match=1 (:undergoer=s17g2 mapped to GOLD s17g2), weak match=4 (concept,:undergoer,:modal-strength,:aspect).
+
 Correspondence GOLD s17a  (And)        = CONV      
 Correspondence GOLD s17a2 (and)        = CONV s17a  (and)            
 Correspondence GOLD s17b  (beauty)     = CONV s17b  (of beauty)      
@@ -3161,9 +3164,6 @@ Correspondence GOLD s17p  (they)       = CONV s17p  (they)
 Correspondence GOLD s17s  (spirit)     = CONV s17s  (with an spirit) 
 
 Aligned 12 out of 15 GOLD nodes, that is 80%.
-
-Ambiguous projection of CONV node s17f (because form) to 2 GOLD nodes [s17f (form), s17h (because)]
-  The winner is CONV node s17f (because form) <--> GOLD node s17f (form): econcepts=form/form-01, match=1 (:undergoer=s17g2 mapped to GOLD s17g2), weak match=4 (concept,:undergoer,:modal-strength,:aspect).
 
 Correspondence CONV s17a  (and)             = GOLD s17a2 (and)       
 Correspondence CONV s17a2 (and)             = GOLD      
@@ -3349,6 +3349,13 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s18i (have impact) to 2 CONV nodes [s18h (whether will have), s18i2 (an impact)]
 
+Ambiguous projection of CONV node s18g (greater) to 3 GOLD nodes [s18g (greater), s18m (greater), s18n2 (greater)]
+Ambiguous projection of CONV node s18h (whether will have) to 2 GOLD nodes [s18i (have impact), s18t (whether)]
+Ambiguous projection of CONV node s18t3 (the Americans) to 3 GOLD nodes [s18n (Latin Americans), s18p (Latin Americans), s18w (Latin Americans)]
+  The winner is CONV node s18g (greater) <--> GOLD node s18g (greater): econcepts=great/great-03, match=0 (), weak match=1 (concept).
+  The winner is CONV node s18h (whether will have) <--> GOLD node s18i (have impact): econcepts=have/impact-01, match=0 (), weak match=1 (concept).
+  The winner is CONV node s18t3 (the Americans) <--> GOLD node s18w (Latin Americans): econcepts=type-NE/world-region, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s18c  (but)             = CONV s18b  (but)              
 Correspondence GOLD s18c2 (come out)        = CONV s18c  (that will come)   
 Correspondence GOLD s18c3 (unclear)         = CONV s18u  (unclear)          
@@ -3369,13 +3376,6 @@ Correspondence GOLD s18v2 (vote)            = CONV s18v2 (vote)
 Correspondence GOLD s18w  (Latin Americans) = CONV s18t3 (the Americans)    
 
 Aligned 11 out of 18 GOLD nodes, that is 61%.
-
-Ambiguous projection of CONV node s18g (greater) to 3 GOLD nodes [s18g (greater), s18m (greater), s18n2 (greater)]
-Ambiguous projection of CONV node s18h (whether will have) to 2 GOLD nodes [s18i (have impact), s18t (whether)]
-Ambiguous projection of CONV node s18t3 (the Americans) to 3 GOLD nodes [s18n (Latin Americans), s18p (Latin Americans), s18w (Latin Americans)]
-  The winner is CONV node s18g (greater) <--> GOLD node s18g (greater): econcepts=great/great-03, match=0 (), weak match=1 (concept).
-  The winner is CONV node s18h (whether will have) <--> GOLD node s18i (have impact): econcepts=have/impact-01, match=0 (), weak match=1 (concept).
-  The winner is CONV node s18t3 (the Americans) <--> GOLD node s18w (Latin Americans): econcepts=type-NE/world-region, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s18b  (but)               = GOLD s18c  (but)            
 Correspondence CONV s18c  (that will come)    = GOLD s18c2 (come out)       
@@ -3638,6 +3638,9 @@ File CONV: 4 nodes unaligned: s19f3/FILL, s19i/identity-91, s19n/name["Georg" "R
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s19t2 (Georg) to 2 GOLD nodes [s19c3 (Georg Reichenbach), s19n2 (Georg Reichenbach)]
+  The winner is CONV node s19t2 (Georg) <--> GOLD node s19c3 (Georg Reichenbach): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s19c  (state)             = CONV s19s2 (by the state)       
 Correspondence GOLD s19c2 (cloister)          = CONV s19c  (the cloister)       
 Correspondence GOLD s19c3 (Georg Reichenbach) = CONV s19t2 (Georg)              
@@ -3653,9 +3656,6 @@ Correspondence GOLD s19n2 (Georg Reichenbach) = CONV
 Correspondence GOLD s19s  (sold)              = CONV s19s  (was sold)           
 
 Aligned 11 out of 13 GOLD nodes, that is 85%.
-
-Ambiguous projection of CONV node s19t2 (Georg) to 2 GOLD nodes [s19c3 (Georg Reichenbach), s19n2 (Georg Reichenbach)]
-  The winner is CONV node s19t2 (Georg) <--> GOLD node s19c3 (Georg Reichenbach): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s19c  (the cloister)                = GOLD s19c2 (cloister)         
 Correspondence CONV s19c2 (cotton)                      = GOLD s19c4 (cotton)           
@@ -3846,6 +3846,9 @@ File CONV: 1 nodes unaligned: s20n/name["Martin" "Luther" "King" "Jr."].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s20t (to Martin) to 2 GOLD nodes [s20n (Martin Luther King , Jr.), s20p (Martin Luther King , Jr.)]
+  The winner is CONV node s20t (to Martin) <--> GOLD node s20p (Martin Luther King , Jr.): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s20c (contains)                 = CONV s20c  (contains)  
 Correspondence GOLD s20m (monument)                 = CONV s20m  (a monument)
 Correspondence GOLD s20n (Martin Luther King , Jr.) = CONV      
@@ -3853,9 +3856,6 @@ Correspondence GOLD s20p (Martin Luther King , Jr.) = CONV s20t  (to Martin)
 Correspondence GOLD s20t (It)                       = CONV s20t2 (It)        
 
 Aligned 4 out of 5 GOLD nodes, that is 80%.
-
-Ambiguous projection of CONV node s20t (to Martin) to 2 GOLD nodes [s20n (Martin Luther King , Jr.), s20p (Martin Luther King , Jr.)]
-  The winner is CONV node s20t (to Martin) <--> GOLD node s20p (Martin Luther King , Jr.): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s20c  (contains)                             = GOLD s20c (contains)                
 Correspondence CONV s20m  (a monument)                           = GOLD s20m (monument)                
@@ -3966,6 +3966,13 @@ File CONV: 3 nodes unaligned: s21n/name["Weiss"], s21n2/name["Cologne"], s21n3/n
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s21t (Weiss) to 2 GOLD nodes [s21n3 (Weiss), s21p (Weiss)]
+Ambiguous projection of CONV node s21t2 (of Cologne) to 2 GOLD nodes [s21h2 (Cologne), s21n (Cologne)]
+Ambiguous projection of CONV node s21t3 (Bremen) to 2 GOLD nodes [s21h3 (Bremen), s21n2 (Bremen)]
+  The winner is CONV node s21t (Weiss) <--> GOLD node s21p (Weiss): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s21t2 (of Cologne) <--> GOLD node s21h2 (Cologne): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s21t3 (Bremen) <--> GOLD node s21h3 (Bremen): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s21a  (and)         = CONV s21a  (and)            
 Correspondence GOLD s21c  (cities)      = CONV s21c  (from the cities)
 Correspondence GOLD s21h  (honored)     = CONV s21h  (was honored)    
@@ -3980,13 +3987,6 @@ Correspondence GOLD s21p  (Weiss)       = CONV s21t  (Weiss)
 Correspondence GOLD s21p2 (prizes)      = CONV s21p  (with the prizes)
 
 Aligned 8 out of 12 GOLD nodes, that is 67%.
-
-Ambiguous projection of CONV node s21t (Weiss) to 2 GOLD nodes [s21n3 (Weiss), s21p (Weiss)]
-Ambiguous projection of CONV node s21t2 (of Cologne) to 2 GOLD nodes [s21h2 (Cologne), s21n (Cologne)]
-Ambiguous projection of CONV node s21t3 (Bremen) to 2 GOLD nodes [s21h3 (Bremen), s21n2 (Bremen)]
-  The winner is CONV node s21t (Weiss) <--> GOLD node s21p (Weiss): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s21t2 (of Cologne) <--> GOLD node s21h2 (Cologne): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s21t3 (Bremen) <--> GOLD node s21h3 (Bremen): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s21a  (and)             = GOLD s21a  (and)       
 Correspondence CONV s21c  (from the cities) = GOLD s21c  (cities)    
@@ -4123,6 +4123,9 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s22d (9th century) to 2 CONV nodes [s22c (From the century), s22x (9th)]
   The winner is GOLD node s22d (9th century) <--> CONV node s22c (From the century): econcepts=date-entity/century, match=0 (), weak match=1 (concept).
 
+Ambiguous projection of CONV node s22b (BC) to 2 GOLD nodes [s22h (BC), s22n (BC)]
+  The winner is CONV node s22b (BC) <--> GOLD node s22h (BC): econcepts=BC/historical-period, match=0 (), weak match=1 (concept).
+
 Correspondence GOLD s22a (appear)      = CONV s22a (appear)          
 Correspondence GOLD s22d (9th century) = CONV s22c (From the century)
 Correspondence GOLD s22h (BC)          = CONV s22b (BC)              
@@ -4131,9 +4134,6 @@ Correspondence GOLD s22o (first)       = CONV s22f (first)
 Correspondence GOLD s22t (texts)       = CONV s22t (the texts)       
 
 Aligned 5 out of 6 GOLD nodes, that is 83%.
-
-Ambiguous projection of CONV node s22b (BC) to 2 GOLD nodes [s22h (BC), s22n (BC)]
-  The winner is CONV node s22b (BC) <--> GOLD node s22h (BC): econcepts=BC/historical-period, match=0 (), weak match=1 (concept).
 
 Correspondence CONV s22a  (appear)           = GOLD s22a (appear)     
 Correspondence CONV s22b  (BC)               = GOLD s22h (BC)         
@@ -4306,6 +4306,9 @@ File CONV: 2 nodes unaligned: s23f/FILL, s23n/name["Greece"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s23t (Greece) to 2 GOLD nodes [s23c (Greece), s23n (Greece)]
+  The winner is CONV node s23t (Greece) <--> GOLD node s23c (Greece): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s23a  (and)              = CONV     
 Correspondence GOLD s23c  (Greece)           = CONV s23t (Greece)          
 Correspondence GOLD s23c2 (communities)      = CONV s23c (into communities)
@@ -4334,9 +4337,6 @@ Correspondence GOLD s23t  (thing)            = CONV
 Correspondence GOLD s23v  (valley)           = CONV     
 
 Aligned 6 out of 26 GOLD nodes, that is 23%.
-
-Ambiguous projection of CONV node s23t (Greece) to 2 GOLD nodes [s23c (Greece), s23n (Greece)]
-  The winner is CONV node s23t (Greece) <--> GOLD node s23c (Greece): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s23c (into communities) = GOLD s23c2 (communities)
 Correspondence CONV s23d (was divided)      = GOLD s23d  (divided)    
@@ -4563,6 +4563,11 @@ File CONV: 3 nodes unaligned: s24f/FILL, s24i/identity-91, s24n/name["Mediterran
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s24t3 (until then) to 2 GOLD nodes [s24t4 (then), s24u2 (until)]
+Ambiguous projection of CONV node s24t4 (throughout the Mediterranean) to 3 GOLD nodes [s24n (Mediterranean), s24t2 (throughout), s24w (Mediterranean)]
+  The winner is CONV node s24t3 (until then) <--> GOLD node s24t4 (then): econcepts=then/then, match=1 (concept=then), weak match=1 (concept).
+  The winner is CONV node s24t4 (throughout the Mediterranean) <--> GOLD node s24w (Mediterranean): econcepts=type-NE/world-region, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s24c  (commercial)    = CONV s24c  (commercial)                  
 Correspondence GOLD s24d  (developed)     = CONV s24d  (was developed)               
 Correspondence GOLD s24e  (establishing)  = CONV s24e  (by establishing)             
@@ -4578,11 +4583,6 @@ Correspondence GOLD s24u2 (until)         = CONV
 Correspondence GOLD s24w  (Mediterranean) = CONV s24t4 (throughout the Mediterranean)
 
 Aligned 10 out of 13 GOLD nodes, that is 77%.
-
-Ambiguous projection of CONV node s24t3 (until then) to 2 GOLD nodes [s24t4 (then), s24u2 (until)]
-Ambiguous projection of CONV node s24t4 (throughout the Mediterranean) to 3 GOLD nodes [s24n (Mediterranean), s24t2 (throughout), s24w (Mediterranean)]
-  The winner is CONV node s24t3 (until then) <--> GOLD node s24t4 (then): econcepts=then/then, match=1 (concept=then), weak match=1 (concept).
-  The winner is CONV node s24t4 (throughout the Mediterranean) <--> GOLD node s24w (Mediterranean): econcepts=type-NE/world-region, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s24c  (commercial)                   = GOLD s24c  (commercial)   
 Correspondence CONV s24d  (was developed)                = GOLD s24d  (developed)    
@@ -4964,6 +4964,9 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s26c2 (to collectors) to 2 GOLD nodes [s26c2 (collectors), s26p (collectors)]
+  The winner is CONV node s26c2 (to collectors) <--> GOLD node s26p (collectors): econcepts=collector/person, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
+
 Correspondence GOLD s26a  (and)          = CONV      
 Correspondence GOLD s26c  (coinage)      = CONV s26c  (of coinage)        
 Correspondence GOLD s26c2 (collectors)   = CONV      
@@ -4976,9 +4979,6 @@ Correspondence GOLD s26p  (collectors)   = CONV s26c2 (to collectors)
 Correspondence GOLD s26s  (sold)         = CONV s26s  (of being sold)     
 
 Aligned 6 out of 10 GOLD nodes, that is 60%.
-
-Ambiguous projection of CONV node s26c2 (to collectors) to 2 GOLD nodes [s26c2 (collectors), s26p (collectors)]
-  The winner is CONV node s26c2 (to collectors) <--> GOLD node s26p (collectors): econcepts=collector/person, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
 
 Correspondence CONV s26c  (of coinage)         = GOLD s26c  (coinage)   
 Correspondence CONV s26c2 (to collectors)      = GOLD s26p  (collectors)
@@ -5174,6 +5174,11 @@ File CONV: 1 nodes unaligned: s27n/name["Walter"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s27p (as had predicted) to 2 GOLD nodes [s27p2 (predicted), s27r (as)]
+Ambiguous projection of CONV node s27t2 (Walter) to 2 GOLD nodes [s27n (Walter), s27p3 (Walter)]
+  The winner is CONV node s27p (as had predicted) <--> GOLD node s27p2 (predicted): econcepts=predict/predict-01, match=0 (), weak match=4 (concept,:actor,:modal-strength,:aspect).
+  The winner is CONV node s27t2 (Walter) <--> GOLD node s27p3 (Walter): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s27a  (among)       = CONV      
 Correspondence GOLD s27c  (child)       = CONV      
 Correspondence GOLD s27c2 (coming)      = CONV s27c  (that is coming)       
@@ -5195,11 +5200,6 @@ Correspondence GOLD s27u  (universes)   = CONV s27u  (between the universes)
 Correspondence GOLD s27w  (war)         = CONV s27w  (a war)                
 
 Aligned 7 out of 19 GOLD nodes, that is 37%.
-
-Ambiguous projection of CONV node s27p (as had predicted) to 2 GOLD nodes [s27p2 (predicted), s27r (as)]
-Ambiguous projection of CONV node s27t2 (Walter) to 2 GOLD nodes [s27n (Walter), s27p3 (Walter)]
-  The winner is CONV node s27p (as had predicted) <--> GOLD node s27p2 (predicted): econcepts=predict/predict-01, match=0 (), weak match=4 (concept,:actor,:modal-strength,:aspect).
-  The winner is CONV node s27t2 (Walter) <--> GOLD node s27p3 (Walter): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s27a  (and)                   = GOLD      
 Correspondence CONV s27c  (that is coming)        = GOLD s27c2 (coming)   
@@ -5402,6 +5402,13 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s28h (been the site) to 2 CONV nodes [s28i (been), s28s (had the site)]
   The winner is GOLD node s28h (been the site) <--> CONV node s28i (been): econcepts=have-place-91/identity-91, match=1 (:aspect=state), weak match=5 (concept,:ARG1,:ARG2,:aspect,:modal-strength).
 
+Ambiguous projection of CONV node s28f (Before were formed) to 2 GOLD nodes [s28b (Before), s28f (formed)]
+Ambiguous projection of CONV node s28t (the Andes) to 2 GOLD nodes [s28m2 (Andes), s28n2 (Andes)]
+Ambiguous projection of CONV node s28t2 (of America) to 2 GOLD nodes [s28c (South America), s28n (South America)]
+  The winner is CONV node s28f (Before were formed) <--> GOLD node s28f (formed): econcepts=form/form-01, match=0 (), weak match=3 (concept,:modal-strength,:aspect).
+  The winner is CONV node s28t (the Andes) <--> GOLD node s28m2 (Andes): econcepts=type-NE/mountain-range, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s28t2 (of America) <--> GOLD node s28c (South America): econcepts=type-NE/continent, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s28a  (already)       = CONV s28a  (already)           
 Correspondence GOLD s28b  (Before)        = CONV      
 Correspondence GOLD s28c  (South America) = CONV s28t2 (of America)        
@@ -5416,13 +5423,6 @@ Correspondence GOLD s28s  (several)       = CONV s28s2 (several)
 Correspondence GOLD s28w  (western)       = CONV s28w  (western)           
 
 Aligned 9 out of 12 GOLD nodes, that is 75%.
-
-Ambiguous projection of CONV node s28f (Before were formed) to 2 GOLD nodes [s28b (Before), s28f (formed)]
-Ambiguous projection of CONV node s28t (the Andes) to 2 GOLD nodes [s28m2 (Andes), s28n2 (Andes)]
-Ambiguous projection of CONV node s28t2 (of America) to 2 GOLD nodes [s28c (South America), s28n (South America)]
-  The winner is CONV node s28f (Before were formed) <--> GOLD node s28f (formed): econcepts=form/form-01, match=0 (), weak match=3 (concept,:modal-strength,:aspect).
-  The winner is CONV node s28t (the Andes) <--> GOLD node s28m2 (Andes): econcepts=type-NE/mountain-range, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s28t2 (of America) <--> GOLD node s28c (South America): econcepts=type-NE/continent, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s28a  (already)            = GOLD s28a  (already)      
 Correspondence CONV s28f  (Before were formed) = GOLD s28f  (formed)       
@@ -5627,6 +5627,13 @@ File CONV: 5 nodes unaligned: s29f2/FILL, s29i/identity-91, s29i2/identity-91, s
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s29f (with a friend) to 2 GOLD nodes [s29f (friend), s29p2 (friend)]
+Ambiguous projection of CONV node s29f3 (what) to 3 GOLD nodes [s29m2 (what would be another remarkable success for him : " Do n't Go Breaking My Heart), s29n3 (what would be another remarkable success for him : " Do n't Go Breaking My Heart), s29t (what)]
+Ambiguous projection of CONV node s29t2 (Company) to 2 GOLD nodes [s29c (The Rocket Record Company), s29n2 (The Rocket Record Company)]
+  The winner is CONV node s29f (with a friend) <--> GOLD node s29f (friend): econcepts=friend/friend, match=1 (concept=friend), weak match=1 (concept).
+  The winner is CONV node s29f3 (what) <--> GOLD node s29m2 (what would be another remarkable success for him : " Do n't Go Breaking My Heart): econcepts=FILL/music, match=0 (), weak match=1 (concept).
+  The winner is CONV node s29t2 (Company) <--> GOLD node s29c (The Rocket Record Company): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s29a  (another)                                                                          = CONV      
 Correspondence GOLD s29c  (The Rocket Record Company)                                                        = CONV s29t2 (Company)      
 Correspondence GOLD s29d  (1976)                                                                             = CONV s29x  (In 1976)      
@@ -5649,13 +5656,6 @@ Correspondence GOLD s29t  (what)                                                
 Correspondence GOLD s29w  (worked)                                                                           = CONV s29w  (worked)       
 
 Aligned 11 out of 20 GOLD nodes, that is 55%.
-
-Ambiguous projection of CONV node s29f (with a friend) to 2 GOLD nodes [s29f (friend), s29p2 (friend)]
-Ambiguous projection of CONV node s29f3 (what) to 3 GOLD nodes [s29m2 (what would be another remarkable success for him : " Do n't Go Breaking My Heart), s29n3 (what would be another remarkable success for him : " Do n't Go Breaking My Heart), s29t (what)]
-Ambiguous projection of CONV node s29t2 (Company) to 2 GOLD nodes [s29c (The Rocket Record Company), s29n2 (The Rocket Record Company)]
-  The winner is CONV node s29f (with a friend) <--> GOLD node s29f (friend): econcepts=friend/friend, match=1 (concept=friend), weak match=1 (concept).
-  The winner is CONV node s29f3 (what) <--> GOLD node s29m2 (what would be another remarkable success for him : " Do n't Go Breaking My Heart): econcepts=FILL/music, match=0 (), weak match=1 (concept).
-  The winner is CONV node s29t2 (Company) <--> GOLD node s29c (The Rocket Record Company): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s29f  (with a friend)      = GOLD s29f  (friend)                                                                          
 Correspondence CONV s29f2 (FILL)               = GOLD      
@@ -5934,6 +5934,13 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s30d3 (1st January 49) to 2 CONV nodes [s30t2 (On the January), s30x (1st)]
   The winner is GOLD node s30d3 (1st January 49) <--> CONV node s30t2 (On the January): econcepts=date-entity/type-NE, match=0 (), weak match=1 (concept).
 
+Ambiguous projection of CONV node s30b (BC) to 2 GOLD nodes [s30h3 (BC), s30n3 (BC)]
+Ambiguous projection of CONV node s30t (Marco) to 2 GOLD nodes [s30n (Marco Antonio), s30p (Marco Antonio)]
+Ambiguous projection of CONV node s30t3 (from Caesar) to 2 GOLD nodes [s30n2 (Caesar), s30p2 (Caesar)]
+  The winner is CONV node s30b (BC) <--> GOLD node s30h3 (BC): econcepts=bc/historical-period, match=0 (), weak match=1 (concept).
+  The winner is CONV node s30t (Marco) <--> GOLD node s30p (Marco Antonio): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s30t3 (from Caesar) <--> GOLD node s30p2 (Caesar): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s30d  (declaration)    = CONV s30d  (a declaration) 
 Correspondence GOLD s30d2 (declared)       = CONV s30d2 (declared)      
 Correspondence GOLD s30d3 (1st January 49) = CONV s30t2 (On the January)
@@ -5952,13 +5959,6 @@ Correspondence GOLD s30p5 (peace)          = CONV s30p2 (of peace)
 Correspondence GOLD s30r  (read)           = CONV s30r  (read)          
 
 Aligned 10 out of 16 GOLD nodes, that is 63%.
-
-Ambiguous projection of CONV node s30b (BC) to 2 GOLD nodes [s30h3 (BC), s30n3 (BC)]
-Ambiguous projection of CONV node s30t (Marco) to 2 GOLD nodes [s30n (Marco Antonio), s30p (Marco Antonio)]
-Ambiguous projection of CONV node s30t3 (from Caesar) to 2 GOLD nodes [s30n2 (Caesar), s30p2 (Caesar)]
-  The winner is CONV node s30b (BC) <--> GOLD node s30h3 (BC): econcepts=bc/historical-period, match=0 (), weak match=1 (concept).
-  The winner is CONV node s30t (Marco) <--> GOLD node s30p (Marco Antonio): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s30t3 (from Caesar) <--> GOLD node s30p2 (Caesar): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s30b  (BC)                      = GOLD s30h3 (BC)            
 Correspondence CONV s30d  (a declaration)           = GOLD s30d  (declaration)   
@@ -6178,6 +6178,11 @@ File CONV: 3 nodes unaligned: s31f/FILL, s31n/name["China"], s31n2/name["Tarlo"]
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s31t2 (In China) to 2 GOLD nodes [s31n (China), s31t2 (China)]
+Ambiguous projection of CONV node s31t3 (Tarlo) to 2 GOLD nodes [s31n2 (Tarlo), s31t3 (Tarlo)]
+  The winner is CONV node s31t2 (In China) <--> GOLD node s31t2 (China): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s31t3 (Tarlo) <--> GOLD node s31t3 (Tarlo): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s31b  (bath)       = CONV s31b  (in a bath)  
 Correspondence GOLD s31c  (chemical)   = CONV s31c  (chemical)   
 Correspondence GOLD s31c2 (cuticle)    = CONV s31c2 (the cuticle)
@@ -6193,11 +6198,6 @@ Correspondence GOLD s31t2 (China)      = CONV s31t2 (In China)
 Correspondence GOLD s31t3 (Tarlo)      = CONV s31t3 (Tarlo)      
 
 Aligned 11 out of 13 GOLD nodes, that is 85%.
-
-Ambiguous projection of CONV node s31t2 (In China) to 2 GOLD nodes [s31n (China), s31t2 (China)]
-Ambiguous projection of CONV node s31t3 (Tarlo) to 2 GOLD nodes [s31n2 (Tarlo), s31t3 (Tarlo)]
-  The winner is CONV node s31t2 (In China) <--> GOLD node s31t2 (China): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s31t3 (Tarlo) <--> GOLD node s31t3 (Tarlo): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s31b  (in a bath)     = GOLD s31b  (bath)      
 Correspondence CONV s31c  (chemical)      = GOLD s31c  (chemical)  
@@ -6364,6 +6364,11 @@ File CONV: 2 nodes unaligned: s32f/FILL, s32n/name["Klein"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s32c2 (under the courthouse) to 2 GOLD nodes [s32c2 (courthouse), s32u4 (under)]
+Ambiguous projection of CONV node s32t (Klein) to 2 GOLD nodes [s32n (Klein), s32t (Klein)]
+  The winner is CONV node s32c2 (under the courthouse) <--> GOLD node s32c2 (courthouse): econcepts=courthouse/courthouse, match=1 (concept=courthouse), weak match=1 (concept).
+  The winner is CONV node s32t (Klein) <--> GOLD node s32t (Klein): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s32a  (also)            = CONV s32a  (also)                
 Correspondence GOLD s32a2 (attend)          = CONV s32a2 (attend)              
 Correspondence GOLD s32a3 (and)             = CONV      
@@ -6383,11 +6388,6 @@ Correspondence GOLD s32u4 (under)           = CONV
 Correspondence GOLD s32w  (walk up)         = CONV s32w  (walk)                
 
 Aligned 13 out of 17 GOLD nodes, that is 76%.
-
-Ambiguous projection of CONV node s32c2 (under the courthouse) to 2 GOLD nodes [s32c2 (courthouse), s32u4 (under)]
-Ambiguous projection of CONV node s32t (Klein) to 2 GOLD nodes [s32n (Klein), s32t (Klein)]
-  The winner is CONV node s32c2 (under the courthouse) <--> GOLD node s32c2 (courthouse): econcepts=courthouse/courthouse, match=1 (concept=courthouse), weak match=1 (concept).
-  The winner is CONV node s32t (Klein) <--> GOLD node s32t (Klein): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s32a  (also)                 = GOLD s32a  (also)           
 Correspondence CONV s32a2 (attend)               = GOLD s32a2 (attend)         
@@ -6591,6 +6591,9 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s33f2 (That) to 2 GOLD nodes [s33f3 (That), s33t (That)]
+  The winner is CONV node s33f2 (That) <--> GOLD node s33f3 (That): econcepts=FILL/thing, match=1 (:refer-number=singular), weak match=2 (concept,:refer-number).
+
 Correspondence GOLD s33c  (country) = CONV s33c  (in country)
 Correspondence GOLD s33f  (folks)   = CONV s33f  (folks)     
 Correspondence GOLD s33f3 (That)    = CONV s33f2 (That)      
@@ -6599,9 +6602,6 @@ Correspondence GOLD s33p  (we)      = CONV s33p  (we)
 Correspondence GOLD s33t  (That)    = CONV      
 
 Aligned 5 out of 6 GOLD nodes, that is 83%.
-
-Ambiguous projection of CONV node s33f2 (That) to 2 GOLD nodes [s33f3 (That), s33t (That)]
-  The winner is CONV node s33f2 (That) <--> GOLD node s33f3 (That): econcepts=FILL/thing, match=1 (:refer-number=singular), weak match=2 (concept,:refer-number).
 
 Correspondence CONV s33b  ('s)         = GOLD      
 Correspondence CONV s33c  (in country) = GOLD s33c  (country)
@@ -6721,6 +6721,9 @@ File CONV: 1 nodes unaligned: s34f/FILL.
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s34t (for taxpayers) to 3 GOLD nodes [s34p2 (taxpayers), s34p3 (taxpayers), s34t (taxpayers)]
+  The winner is CONV node s34t (for taxpayers) <--> GOLD node s34p2 (taxpayers): econcepts=taxpayer/person, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
+
 Correspondence GOLD s34a  (answers)   = CONV s34a (answers)       
 Correspondence GOLD s34g  (getting)   = CONV s34g (in getting)    
 Correspondence GOLD s34m  (missed)    = CONV s34m (will be missed)
@@ -6731,9 +6734,6 @@ Correspondence GOLD s34s  (skill)     = CONV s34s (skill)
 Correspondence GOLD s34t  (taxpayers) = CONV     
 
 Aligned 6 out of 8 GOLD nodes, that is 75%.
-
-Ambiguous projection of CONV node s34t (for taxpayers) to 3 GOLD nodes [s34p2 (taxpayers), s34p3 (taxpayers), s34t (taxpayers)]
-  The winner is CONV node s34t (for taxpayers) <--> GOLD node s34p2 (taxpayers): econcepts=taxpayer/person, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
 
 Correspondence CONV s34a  (answers)        = GOLD s34a  (answers)  
 Correspondence CONV s34f  (FILL)           = GOLD      
@@ -6880,6 +6880,12 @@ Ambiguous projection of GOLD node s35t2 (south - east Delhi) to 3 CONV nodes [s3
   The winner is GOLD node s35n2 (south - east Delhi) <--> CONV node s35s2 (south): econcepts=name["South" "East" "Delhi"]/south, match=0 (), weak match=1 (concept).
   The winner is GOLD node s35t2 (south - east Delhi) <--> CONV node s35t2 (Delhi): econcepts=country-partition/type-NE, match=0 (), weak match=2 (concept,:name).
 
+Ambiguous projection of CONV node s35e (east) to 2 GOLD nodes [s35n2 (south - east Delhi), s35t2 (south - east Delhi)]
+Ambiguous projection of CONV node s35s2 (south) to 2 GOLD nodes [s35n2 (south - east Delhi), s35t2 (south - east Delhi)]
+Ambiguous projection of CONV node s35t (in Badarpur) to 2 GOLD nodes [s35n (Badarpur), s35t (Badarpur)]
+Ambiguous projection of CONV node s35t2 (Delhi) to 2 GOLD nodes [s35n2 (south - east Delhi), s35t2 (south - east Delhi)]
+  The winner is CONV node s35t (in Badarpur) <--> GOLD node s35t (Badarpur): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s35c  (coal)               = CONV s35c  (coal)                 
 Correspondence GOLD s35d  (days)               = CONV s35d  (for days)             
 Correspondence GOLD s35d2 (diesel)             = CONV s35d2 (diesel)               
@@ -6894,12 +6900,6 @@ Correspondence GOLD s35t  (Badarpur)           = CONV s35t  (in Badarpur)
 Correspondence GOLD s35t2 (south - east Delhi) = CONV s35t2 (Delhi)                
 
 Aligned 11 out of 12 GOLD nodes, that is 92%.
-
-Ambiguous projection of CONV node s35e (east) to 2 GOLD nodes [s35n2 (south - east Delhi), s35t2 (south - east Delhi)]
-Ambiguous projection of CONV node s35s2 (south) to 2 GOLD nodes [s35n2 (south - east Delhi), s35t2 (south - east Delhi)]
-Ambiguous projection of CONV node s35t (in Badarpur) to 2 GOLD nodes [s35n (Badarpur), s35t (Badarpur)]
-Ambiguous projection of CONV node s35t2 (Delhi) to 2 GOLD nodes [s35n2 (south - east Delhi), s35t2 (south - east Delhi)]
-  The winner is CONV node s35t (in Badarpur) <--> GOLD node s35t (Badarpur): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s35c  (coal)                  = GOLD s35c  (coal)              
 Correspondence CONV s35c2 (in the city)           = GOLD      
@@ -7110,6 +7110,9 @@ Ambiguous projection of GOLD node s36f (fit bill) to 2 CONV nodes [s36b (bill), 
   The winner is GOLD node s36c (making collection) <--> CONV node s36c (a collection): econcepts=collect/collection, match=0 (), weak match=1 (concept).
   The winner is GOLD node s36f (fit bill) <--> CONV node s36f (fit): econcepts=fit-bill/fit, match=0 (), weak match=3 (concept,:modal-strength,:aspect).
 
+Ambiguous projection of CONV node s36f3 (with that) to 2 GOLD nodes [s36f3 (that), s36t3 (that)]
+  The winner is CONV node s36f3 (with that) <--> GOLD node s36f3 (that): econcepts=FILL/thing, match=1 (:refer-number=singular), weak match=2 (concept,:refer-number).
+
 Correspondence GOLD s36a  (always)            = CONV s36a  (always)             
 Correspondence GOLD s36a2 (and)               = CONV s36a2 (and)                
 Correspondence GOLD s36c  (making collection) = CONV s36c  (a collection)       
@@ -7129,9 +7132,6 @@ Correspondence GOLD s36t2 (one)               = CONV s36o  (one)
 Correspondence GOLD s36t3 (that)              = CONV      
 
 Aligned 15 out of 17 GOLD nodes, that is 88%.
-
-Ambiguous projection of CONV node s36f3 (with that) to 2 GOLD nodes [s36f3 (that), s36t3 (that)]
-  The winner is CONV node s36f3 (with that) <--> GOLD node s36f3 (that): econcepts=FILL/thing, match=1 (:refer-number=singular), weak match=2 (concept,:refer-number).
 
 Correspondence CONV s36a  (always)              = GOLD s36a  (always)           
 Correspondence CONV s36a2 (and)                 = GOLD s36a2 (and)              
@@ -7433,6 +7433,11 @@ Ambiguous projection of GOLD node s38a2 (Achaemenid army) to 2 CONV nodes [s38a 
 Ambiguous projection of GOLD node s38n2 (Achaemenid army) to 2 CONV nodes [s38a (Achaemenid), s38a2 (The army)]
   The winner is GOLD node s38a2 (Achaemenid army) <--> CONV node s38a2 (The army): econcepts=armed-organization/army, match=2 (:mod=s38m mapped to CONV s38m,:refer-number=singular), weak match=3 (concept,:refer-number,:mod).
 
+Ambiguous projection of CONV node s38a (Achaemenid) to 2 GOLD nodes [s38a2 (Achaemenid army), s38n2 (Achaemenid army)]
+Ambiguous projection of CONV node s38a2 (The army) to 2 GOLD nodes [s38a2 (Achaemenid army), s38n2 (Achaemenid army)]
+Ambiguous projection of CONV node s38t (from the Balkans) to 2 GOLD nodes [s38n (the Balkans), s38t (the Balkans)]
+  The winner is CONV node s38t (from the Balkans) <--> GOLD node s38t (the Balkans): econcepts=type-NE/geographical-entity, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s38a2 (Achaemenid army) = CONV s38a2 (The army)        
 Correspondence GOLD s38m  (multi-ethnic)    = CONV s38m  (multi-ethnic)    
 Correspondence GOLD s38m2 (many)            = CONV s38m2 (many)            
@@ -7443,11 +7448,6 @@ Correspondence GOLD s38s  (soldiers)        = CONV s38s  (soldiers)
 Correspondence GOLD s38t  (the Balkans)     = CONV s38t  (from the Balkans)
 
 Aligned 7 out of 8 GOLD nodes, that is 88%.
-
-Ambiguous projection of CONV node s38a (Achaemenid) to 2 GOLD nodes [s38a2 (Achaemenid army), s38n2 (Achaemenid army)]
-Ambiguous projection of CONV node s38a2 (The army) to 2 GOLD nodes [s38a2 (Achaemenid army), s38n2 (Achaemenid army)]
-Ambiguous projection of CONV node s38t (from the Balkans) to 2 GOLD nodes [s38n (the Balkans), s38t (the Balkans)]
-  The winner is CONV node s38t (from the Balkans) <--> GOLD node s38t (the Balkans): econcepts=type-NE/geographical-entity, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s38a  (Achaemenid)       = GOLD s38n2 (Achaemenid army)
 Correspondence CONV s38a2 (The army)         = GOLD s38a2 (Achaemenid army)
@@ -7571,6 +7571,11 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s39e (committed error) to 2 CONV nodes [s39c2 (committed), s39e (a error)]
   The winner is GOLD node s39e (committed error) <--> CONV node s39c2 (committed): econcepts=err/commit, match=2 (:actor=s39t2 mapped to CONV s39t2,:modal-strength=full-affirmative), weak match=4 (concept,:actor,:modal-strength,:aspect).
 
+Ambiguous projection of CONV node s39t2 (Ramesses) to 2 GOLD nodes [s39n (Ramesses II), s39t2 (Ramesses II)]
+Ambiguous projection of CONV node s39t3 (Kadesh) to 2 GOLD nodes [s39n2 (Kadesh), s39t3 (Kadesh)]
+  The winner is CONV node s39t2 (Ramesses) <--> GOLD node s39t2 (Ramesses II): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s39t3 (Kadesh) <--> GOLD node s39t3 (Kadesh): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s39c  (capture)         = CONV s39c  (capture)  
 Correspondence GOLD s39e  (committed error) = CONV s39c2 (committed)
 Correspondence GOLD s39h  (haste)           = CONV s39h  (In haste) 
@@ -7581,11 +7586,6 @@ Correspondence GOLD s39t2 (Ramesses II)     = CONV s39t2 (Ramesses)
 Correspondence GOLD s39t3 (Kadesh)          = CONV s39t3 (Kadesh)   
 
 Aligned 6 out of 8 GOLD nodes, that is 75%.
-
-Ambiguous projection of CONV node s39t2 (Ramesses) to 2 GOLD nodes [s39n (Ramesses II), s39t2 (Ramesses II)]
-Ambiguous projection of CONV node s39t3 (Kadesh) to 2 GOLD nodes [s39n2 (Kadesh), s39t3 (Kadesh)]
-  The winner is CONV node s39t2 (Ramesses) <--> GOLD node s39t2 (Ramesses II): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s39t3 (Kadesh) <--> GOLD node s39t3 (Kadesh): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s39c  (capture)               = GOLD s39c  (capture)        
 Correspondence CONV s39c2 (committed)             = GOLD s39e  (committed error)
@@ -7775,6 +7775,13 @@ File CONV: 2 nodes unaligned: s40f2/FILL, s40n2/name["Lake"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s40c (child) to 2 GOLD nodes [s40c (child), s40p4 (child)]
+Ambiguous projection of CONV node s40m (had been moved) to 2 GOLD nodes [s40h (had been), s40m (moved)]
+Ambiguous projection of CONV node s40t (Lake) to 2 GOLD nodes [s40n2 (Rudyard Lake), s40t (Rudyard Lake)]
+  The winner is CONV node s40c (child) <--> GOLD node s40c (child): econcepts=child/child, match=1 (concept=child), weak match=1 (concept).
+  The winner is CONV node s40m (had been moved) <--> GOLD node s40m (moved): econcepts=move/move, match=1 (concept=move), weak match=1 (concept).
+  The winner is CONV node s40t (Lake) <--> GOLD node s40t (Rudyard Lake): econcepts=type-NE/lake, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s40a  (area)             = CONV s40a  (of the area)    
 Correspondence GOLD s40b  (beauty)           = CONV s40b  (by the beauty)  
 Correspondence GOLD s40b2 (born)             = CONV s40b2 (was born)       
@@ -7792,13 +7799,6 @@ Correspondence GOLD s40s  (so)               = CONV s40s  (so)
 Correspondence GOLD s40t  (Rudyard Lake)     = CONV s40t  (Lake)           
 
 Aligned 11 out of 15 GOLD nodes, that is 73%.
-
-Ambiguous projection of CONV node s40c (child) to 2 GOLD nodes [s40c (child), s40p4 (child)]
-Ambiguous projection of CONV node s40m (had been moved) to 2 GOLD nodes [s40h (had been), s40m (moved)]
-Ambiguous projection of CONV node s40t (Lake) to 2 GOLD nodes [s40n2 (Rudyard Lake), s40t (Rudyard Lake)]
-  The winner is CONV node s40c (child) <--> GOLD node s40c (child): econcepts=child/child, match=1 (concept=child), weak match=1 (concept).
-  The winner is CONV node s40m (had been moved) <--> GOLD node s40m (moved): econcepts=move/move, match=1 (concept=move), weak match=1 (concept).
-  The winner is CONV node s40t (Lake) <--> GOLD node s40t (Rudyard Lake): econcepts=type-NE/lake, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s40a  (of the area)     = GOLD s40a  (area)        
 Correspondence CONV s40b  (by the beauty)   = GOLD s40b  (beauty)      
@@ -8049,6 +8049,11 @@ File CONV: 3 nodes unaligned: s41c/COPULAR-CONSTRUCTION, s41n3/name["De" "Gaulle
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s41t (De) to 2 GOLD nodes [s41n3 (De Gaulle), s41t (De Gaulle)]
+Ambiguous projection of CONV node s41t2 (towards Churchill) to 2 GOLD nodes [s41n4 (Churchill), s41t2 (Churchill)]
+  The winner is CONV node s41t (De) <--> GOLD node s41t (De Gaulle): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s41t2 (towards Churchill) <--> GOLD node s41t2 (Churchill): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s41a  (affection)  = CONV s41a  (of affection)     
 Correspondence GOLD s41a2 (awards)     = CONV s41a2 (awards)           
 Correspondence GOLD s41a3 (agreement)  = CONV s41a3 (without agreement)
@@ -8066,11 +8071,6 @@ Correspondence GOLD s41t2 (Churchill)  = CONV s41t2 (towards Churchill)
 Correspondence GOLD s41t3 (thing)      = CONV      
 
 Aligned 12 out of 15 GOLD nodes, that is 80%.
-
-Ambiguous projection of CONV node s41t (De) to 2 GOLD nodes [s41n3 (De Gaulle), s41t (De Gaulle)]
-Ambiguous projection of CONV node s41t2 (towards Churchill) to 2 GOLD nodes [s41n4 (Churchill), s41t2 (Churchill)]
-  The winner is CONV node s41t (De) <--> GOLD node s41t (De Gaulle): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s41t2 (towards Churchill) <--> GOLD node s41t2 (Churchill): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s41a  (of affection)         = GOLD s41a  (affection) 
 Correspondence CONV s41a2 (awards)               = GOLD s41a2 (awards)    
@@ -8287,6 +8287,9 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s42p2 (with pilots) to 3 GOLD nodes [s42h2 (with), s42p2 (pilots), s42p3 (pilots)]
+  The winner is CONV node s42p2 (with pilots) <--> GOLD node s42p2 (pilots): econcepts=pilot/pilot, match=1 (concept=pilot), weak match=1 (concept).
+
 Correspondence GOLD s42a  (and)          = CONV      
 Correspondence GOLD s42a2 (and)          = CONV      
 Correspondence GOLD s42d  (direct)       = CONV s42d  (direct)     
@@ -8303,9 +8306,6 @@ Correspondence GOLD s42w  (worked)       = CONV s42w  (worked)
 Correspondence GOLD s42w2 (well)         = CONV s42w2 (well)       
 
 Aligned 9 out of 14 GOLD nodes, that is 64%.
-
-Ambiguous projection of CONV node s42p2 (with pilots) to 3 GOLD nodes [s42h2 (with), s42p2 (pilots), s42p3 (pilots)]
-  The winner is CONV node s42p2 (with pilots) <--> GOLD node s42p2 (pilots): econcepts=pilot/pilot, match=1 (concept=pilot), weak match=1 (concept).
 
 Correspondence CONV s42a  (,)           = GOLD      
 Correspondence CONV s42d  (direct)      = GOLD s42d  (direct)    
@@ -8659,6 +8659,17 @@ File CONV: 5 nodes unaligned: s44f2/FILL, s44i/identity-91, s44n2/name["Pebe"], 
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s44f (the family) to 2 GOLD nodes [s44f (family), s44p2 (family)]
+Ambiguous projection of CONV node s44s2 (for songwriting) to 2 GOLD nodes [s44s2 (songwriting), s44w (songwriting)]
+Ambiguous projection of CONV node s44t (Pebe) to 2 GOLD nodes [s44n2 (Pebe), s44t (Pebe)]
+Ambiguous projection of CONV node s44t2 (to Nashville) to 2 GOLD nodes [s44n3 (Nashville), s44t2 (Nashville)]
+Ambiguous projection of CONV node s44t3 (Tennessee) to 2 GOLD nodes [s44n4 (Tennessee), s44t3 (Tennessee)]
+  The winner is CONV node s44f (the family) <--> GOLD node s44f (family): econcepts=family/family, match=1 (concept=family), weak match=1 (concept).
+  The winner is CONV node s44s2 (for songwriting) <--> GOLD node s44s2 (songwriting): econcepts=songwriting/song, match=0 (), weak match=1 (concept).
+  The winner is CONV node s44t (Pebe) <--> GOLD node s44t (Pebe): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s44t2 (to Nashville) <--> GOLD node s44t2 (Nashville): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s44t3 (Tennessee) <--> GOLD node s44t3 (Tennessee): econcepts=type-NE/country-partition, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s44d  (deal)             = CONV s44d  (a deal)         
 Correspondence GOLD s44d2 (1991)             = CONV s44x  (in 1991)        
 Correspondence GOLD s44f  (family)           = CONV s44f  (the family)     
@@ -8678,17 +8689,6 @@ Correspondence GOLD s44t3 (Tennessee)        = CONV s44t3 (Tennessee)
 Correspondence GOLD s44w  (songwriting)      = CONV      
 
 Aligned 11 out of 17 GOLD nodes, that is 65%.
-
-Ambiguous projection of CONV node s44f (the family) to 2 GOLD nodes [s44f (family), s44p2 (family)]
-Ambiguous projection of CONV node s44s2 (for songwriting) to 2 GOLD nodes [s44s2 (songwriting), s44w (songwriting)]
-Ambiguous projection of CONV node s44t (Pebe) to 2 GOLD nodes [s44n2 (Pebe), s44t (Pebe)]
-Ambiguous projection of CONV node s44t2 (to Nashville) to 2 GOLD nodes [s44n3 (Nashville), s44t2 (Nashville)]
-Ambiguous projection of CONV node s44t3 (Tennessee) to 2 GOLD nodes [s44n4 (Tennessee), s44t3 (Tennessee)]
-  The winner is CONV node s44f (the family) <--> GOLD node s44f (family): econcepts=family/family, match=1 (concept=family), weak match=1 (concept).
-  The winner is CONV node s44s2 (for songwriting) <--> GOLD node s44s2 (songwriting): econcepts=songwriting/song, match=0 (), weak match=1 (concept).
-  The winner is CONV node s44t (Pebe) <--> GOLD node s44t (Pebe): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s44t2 (to Nashville) <--> GOLD node s44t2 (Nashville): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s44t3 (Tennessee) <--> GOLD node s44t3 (Tennessee): econcepts=type-NE/country-partition, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s44d  (a deal)            = GOLD s44d  (deal)       
 Correspondence CONV s44f  (the family)        = GOLD s44f  (family)     
@@ -8915,6 +8915,9 @@ File CONV: 1 nodes unaligned: s45n2/name["DFB"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s45t (for the DFB) to 2 GOLD nodes [s45n2 (DFB), s45t (DFB)]
+  The winner is CONV node s45t (for the DFB) <--> GOLD node s45t (DFB): econcepts=type-NE/sports-organization, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s45g  (goals)         = CONV s45g  (With goals)   
 Correspondence GOLD s45g2 (goals)         = CONV s45g2 (of goals)     
 Correspondence GOLD s45i  (international) = CONV s45i  (international)
@@ -8928,9 +8931,6 @@ Correspondence GOLD s45s  (shot)          = CONV s45s  (has shot)
 Correspondence GOLD s45t  (DFB)           = CONV s45t  (for the DFB)  
 
 Aligned 9 out of 11 GOLD nodes, that is 82%.
-
-Ambiguous projection of CONV node s45t (for the DFB) to 2 GOLD nodes [s45n2 (DFB), s45t (DFB)]
-  The winner is CONV node s45t (for the DFB) <--> GOLD node s45t (DFB): econcepts=type-NE/sports-organization, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s45g  (With goals)    = GOLD s45g  (goals)        
 Correspondence CONV s45g2 (of goals)      = GOLD s45g2 (goals)        
@@ -9056,6 +9056,9 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s46k (above the keyboard) to 2 GOLD nodes [s46a2 (above), s46k (keyboard)]
+  The winner is CONV node s46k (above the keyboard) <--> GOLD node s46k (keyboard): econcepts=keyboard/keyboard, match=1 (concept=keyboard), weak match=1 (concept).
+
 Correspondence GOLD s46a  (anticipated) = CONV s46a (has been anticipated)
 Correspondence GOLD s46a2 (above)       = CONV     
 Correspondence GOLD s46b  (bar)         = CONV s46b (the bar)             
@@ -9069,9 +9072,6 @@ Correspondence GOLD s46s  (shows)       = CONV s46s (shows)
 Correspondence GOLD s46t  (touch)       = CONV s46t (touch)               
 
 Aligned 10 out of 11 GOLD nodes, that is 91%.
-
-Ambiguous projection of CONV node s46k (above the keyboard) to 2 GOLD nodes [s46a2 (above), s46k (keyboard)]
-  The winner is CONV node s46k (above the keyboard) <--> GOLD node s46k (keyboard): econcepts=keyboard/keyboard, match=1 (concept=keyboard), weak match=1 (concept).
 
 Correspondence CONV s46a (has been anticipated) = GOLD s46a (anticipated)
 Correspondence CONV s46b (the bar)              = GOLD s46b (bar)        
@@ -9169,6 +9169,9 @@ File CONV: 2 nodes unaligned: s47n/name["Russia"], s47n2/name["October"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s47t (Russia) to 2 GOLD nodes [s47n (Russia), s47t (Russia)]
+  The winner is CONV node s47t (Russia) <--> GOLD node s47t (Russia): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s47a  (announced)  = CONV s47a  (announced)       
 Correspondence GOLD s47b  (beginning)  = CONV s47b  (at the beginning)
 Correspondence GOLD s47c  (contract)   = CONV s47c  (of the contract) 
@@ -9178,9 +9181,6 @@ Correspondence GOLD s47t  (Russia)     = CONV s47t  (Russia)
 Correspondence GOLD s47t2 (October)    = CONV s47t2 (of October)      
 
 Aligned 6 out of 7 GOLD nodes, that is 86%.
-
-Ambiguous projection of CONV node s47t (Russia) to 2 GOLD nodes [s47n (Russia), s47t (Russia)]
-  The winner is CONV node s47t (Russia) <--> GOLD node s47t (Russia): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s47a  (announced)        = GOLD s47a  (announced) 
 Correspondence CONV s47b  (at the beginning) = GOLD s47b  (beginning) 
@@ -9364,6 +9364,9 @@ File CONV: 1 nodes unaligned: s49n/name["Barroso"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s49t (for Barroso) to 2 GOLD nodes [s49n (Barroso), s49t (Barroso)]
+  The winner is CONV node s49t (for Barroso) <--> GOLD node s49t (Barroso): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s49h (be)      = CONV s49h (be)         
 Correspondence GOLD s49i (issue)   = CONV s49i (The issue)  
 Correspondence GOLD s49n (Barroso) = CONV     
@@ -9371,9 +9374,6 @@ Correspondence GOLD s49o (over)    = CONV s49o (might over)
 Correspondence GOLD s49t (Barroso) = CONV s49t (for Barroso)
 
 Aligned 4 out of 5 GOLD nodes, that is 80%.
-
-Ambiguous projection of CONV node s49t (for Barroso) to 2 GOLD nodes [s49n (Barroso), s49t (Barroso)]
-  The winner is CONV node s49t (for Barroso) <--> GOLD node s49t (Barroso): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s49h (be)              = GOLD s49h (be)     
 Correspondence CONV s49i (The issue)       = GOLD s49i (issue)  
@@ -9517,6 +9517,15 @@ Ambiguous projection of GOLD node s50t5 (January 20 , 2001) to 2 CONV nodes [s50
   The winner is GOLD node s50t2 (White House) <--> CONV node s50t3 (for the House): econcepts=government-organization/type-NE, match=0 (), weak match=2 (concept,:name).
   The winner is GOLD node s50t5 (January 20 , 2001) <--> CONV node s50t5 (January): econcepts=date-entity/type-NE, match=0 (), weak match=1 (concept).
 
+Ambiguous projection of CONV node s50h (The husband) to 2 GOLD nodes [s50h (husband), s50p4 (husband)]
+Ambiguous projection of CONV node s50t (Hillary) to 2 GOLD nodes [s50n2 (Hillary Clinton), s50p5 (Hillary Clinton)]
+Ambiguous projection of CONV node s50t2 (White) to 2 GOLD nodes [s50n3 (White House), s50t2 (White House)]
+Ambiguous projection of CONV node s50t3 (for the House) to 2 GOLD nodes [s50n3 (White House), s50t2 (White House)]
+Ambiguous projection of CONV node s50t4 (Rich) to 2 GOLD nodes [s50n5 (Rich), s50t4 (Rich)]
+  The winner is CONV node s50h (The husband) <--> GOLD node s50h (husband): econcepts=husband/husband, match=1 (concept=husband), weak match=1 (concept).
+  The winner is CONV node s50t (Hillary) <--> GOLD node s50p5 (Hillary Clinton): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s50t4 (Rich) <--> GOLD node s50t4 (Rich): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s50a  (also)              = CONV s50a  (also)            
 Correspondence GOLD s50c  (current)           = CONV s50c  (current)         
 Correspondence GOLD s50c2 (candidate)         = CONV s50c2 (of the candidate)
@@ -9542,15 +9551,6 @@ Correspondence GOLD s50t4 (Rich)              = CONV s50t4 (Rich)
 Correspondence GOLD s50t5 (January 20 , 2001) = CONV s50t5 (January)         
 
 Aligned 16 out of 23 GOLD nodes, that is 70%.
-
-Ambiguous projection of CONV node s50h (The husband) to 2 GOLD nodes [s50h (husband), s50p4 (husband)]
-Ambiguous projection of CONV node s50t (Hillary) to 2 GOLD nodes [s50n2 (Hillary Clinton), s50p5 (Hillary Clinton)]
-Ambiguous projection of CONV node s50t2 (White) to 2 GOLD nodes [s50n3 (White House), s50t2 (White House)]
-Ambiguous projection of CONV node s50t3 (for the House) to 2 GOLD nodes [s50n3 (White House), s50t2 (White House)]
-Ambiguous projection of CONV node s50t4 (Rich) to 2 GOLD nodes [s50n5 (Rich), s50t4 (Rich)]
-  The winner is CONV node s50h (The husband) <--> GOLD node s50h (husband): econcepts=husband/husband, match=1 (concept=husband), weak match=1 (concept).
-  The winner is CONV node s50t (Hillary) <--> GOLD node s50p5 (Hillary Clinton): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s50t4 (Rich) <--> GOLD node s50t4 (Rich): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s50a  (also)                      = GOLD s50a  (also)             
 Correspondence CONV s50c  (current)                   = GOLD s50c  (current)          
@@ -10097,6 +10097,11 @@ File CONV: 1 nodes unaligned: s52n/name["Democrat"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s52o (opponent) to 2 GOLD nodes [s52o (opponent), s52p (opponent)]
+Ambiguous projection of CONV node s52t (Democrat) to 2 GOLD nodes [s52n (Democrat), s52t (Democrat)]
+  The winner is CONV node s52o (opponent) <--> GOLD node s52o (opponent): econcepts=opponent/opponent, match=2 (concept=opponent,:mod=s52t mapped to GOLD s52n, s52t), weak match=2 (concept,:mod).
+  The winner is CONV node s52t (Democrat) <--> GOLD node s52t (Democrat): econcepts=type-NE/political-organization, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s52a  (assured)             = CONV s52a  (assured)            
 Correspondence GOLD s52e  (elected)             = CONV s52e  (be elected)         
 Correspondence GOLD s52h  (have-rel-role-92)    = CONV      
@@ -10109,11 +10114,6 @@ Correspondence GOLD s52t  (Democrat)            = CONV s52t  (Democrat)
 Correspondence GOLD s52y  (years)               = CONV s52y  (for years)          
 
 Aligned 7 out of 10 GOLD nodes, that is 70%.
-
-Ambiguous projection of CONV node s52o (opponent) to 2 GOLD nodes [s52o (opponent), s52p (opponent)]
-Ambiguous projection of CONV node s52t (Democrat) to 2 GOLD nodes [s52n (Democrat), s52t (Democrat)]
-  The winner is CONV node s52o (opponent) <--> GOLD node s52o (opponent): econcepts=opponent/opponent, match=2 (concept=opponent,:mod=s52t mapped to GOLD s52n, s52t), weak match=2 (concept,:mod).
-  The winner is CONV node s52t (Democrat) <--> GOLD node s52t (Democrat): econcepts=type-NE/political-organization, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s52a  (assured)             = GOLD s52a  (assured)            
 Correspondence CONV s52b  (If were)             = GOLD      
@@ -10368,6 +10368,13 @@ File CONV: 1 nodes unaligned: s54n/name["AKP"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s54c (conservatives) to 2 GOLD nodes [s54c (conservatives), s54p (conservatives)]
+Ambiguous projection of CONV node s54i (Islamic) to 2 GOLD nodes [s54i (Islamic), s54n2 (Islamic)]
+Ambiguous projection of CONV node s54t3 (The AKP 's) to 2 GOLD nodes [s54n (AKP), s54t3 (AKP)]
+  The winner is CONV node s54c (conservatives) <--> GOLD node s54c (conservatives): econcepts=conservative/conservative, match=2 (concept=conservative,:mod=s54i mapped to GOLD s54i, s54n2), weak match=2 (concept,:mod).
+  The winner is CONV node s54i (Islamic) <--> GOLD node s54i (Islamic): econcepts=Islamic/religious-organization, match=0 (), weak match=1 (concept).
+  The winner is CONV node s54t3 (The AKP 's) <--> GOLD node s54t3 (AKP): econcepts=type-NE/political-organization, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s54c  (conservatives)    = CONV s54c  (conservatives)       
 Correspondence GOLD s54h  (have-role-91)     = CONV      
 Correspondence GOLD s54h2 (have-org-role-92) = CONV      
@@ -10383,13 +10390,6 @@ Correspondence GOLD s54t2 (this)             = CONV s54t2 (this)
 Correspondence GOLD s54t3 (AKP)              = CONV s54t3 (The AKP 's)          
 
 Aligned 8 out of 13 GOLD nodes, that is 62%.
-
-Ambiguous projection of CONV node s54c (conservatives) to 2 GOLD nodes [s54c (conservatives), s54p (conservatives)]
-Ambiguous projection of CONV node s54i (Islamic) to 2 GOLD nodes [s54i (Islamic), s54n2 (Islamic)]
-Ambiguous projection of CONV node s54t3 (The AKP 's) to 2 GOLD nodes [s54n (AKP), s54t3 (AKP)]
-  The winner is CONV node s54c (conservatives) <--> GOLD node s54c (conservatives): econcepts=conservative/conservative, match=2 (concept=conservative,:mod=s54i mapped to GOLD s54i, s54n2), weak match=2 (concept,:mod).
-  The winner is CONV node s54i (Islamic) <--> GOLD node s54i (Islamic): econcepts=Islamic/religious-organization, match=0 (), weak match=1 (concept).
-  The winner is CONV node s54t3 (The AKP 's) <--> GOLD node s54t3 (AKP): econcepts=type-NE/political-organization, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s54c  (conservatives)        = GOLD s54c  (conservatives)
 Correspondence CONV s54i  (Islamic)              = GOLD s54i  (Islamic)      
@@ -10550,6 +10550,9 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s55b (of beliefs) to 2 GOLD nodes [s55b (beliefs), s55t (beliefs)]
+  The winner is CONV node s55b (of beliefs) <--> GOLD node s55b (beliefs): econcepts=belief/belief, match=1 (concept=belief), weak match=1 (concept).
+
 Correspondence GOLD s55b  (beliefs)    = CONV s55b  (of beliefs)    
 Correspondence GOLD s55c  (companies)  = CONV s55c  (in companies)  
 Correspondence GOLD s55e  (expression) = CONV s55e  (the expression)
@@ -10562,9 +10565,6 @@ Correspondence GOLD s55r  (religious)  = CONV s55r  (religious)
 Correspondence GOLD s55t  (beliefs)    = CONV      
 
 Aligned 9 out of 10 GOLD nodes, that is 90%.
-
-Ambiguous projection of CONV node s55b (of beliefs) to 2 GOLD nodes [s55b (beliefs), s55t (beliefs)]
-  The winner is CONV node s55b (of beliefs) <--> GOLD node s55b (beliefs): econcepts=belief/belief, match=1 (concept=belief), weak match=1 (concept).
 
 Correspondence CONV s55b  (of beliefs)     = GOLD s55b  (beliefs)   
 Correspondence CONV s55c  (in companies)   = GOLD s55c  (companies) 
@@ -10682,6 +10682,9 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s56h (Even if) to 2 CONV nodes [s56e (Even), s56r (if can be resolved)]
 
+Ambiguous projection of CONV node s56r (if can be resolved) to 2 GOLD nodes [s56h (Even if), s56r (resolved)]
+  The winner is CONV node s56r (if can be resolved) <--> GOLD node s56r (resolved): econcepts=resolve/resolve, match=2 (concept=resolve,:undergoer=s56m mapped to GOLD s56m), weak match=5 (concept,:undergoer,:manner,:modal-strength,:aspect).
+
 Correspondence GOLD s56a  (arise)      = CONV s56a (arise)             
 Correspondence GOLD s56c  (conflict)   = CONV s56c (without conflict)  
 Correspondence GOLD s56e2 (event)      = CONV     
@@ -10692,9 +10695,6 @@ Correspondence GOLD s56s  (situations) = CONV s56s (of situations)
 Correspondence GOLD s56w  (workplace)  = CONV s56w (in the workplace)  
 
 Aligned 7 out of 8 GOLD nodes, that is 88%.
-
-Ambiguous projection of CONV node s56r (if can be resolved) to 2 GOLD nodes [s56h (Even if), s56r (resolved)]
-  The winner is CONV node s56r (if can be resolved) <--> GOLD node s56r (resolved): econcepts=resolve/resolve, match=2 (concept=resolve,:undergoer=s56m mapped to GOLD s56m), weak match=5 (concept,:undergoer,:manner,:modal-strength,:aspect).
 
 Correspondence CONV s56a (arise)              = GOLD s56a (arise)     
 Correspondence CONV s56c (without conflict)   = GOLD s56c (conflict)  
@@ -10854,6 +10854,9 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s57t (take into account) to 2 CONV nodes [s57a2 (into account), s57t (take)]
   The winner is GOLD node s57t (take into account) <--> CONV node s57t (take): econcepts=take-into-account/take, match=0 (), weak match=4 (concept,:temporal,:modal-strength,:aspect).
 
+Ambiguous projection of CONV node s57d (after deducting) to 2 GOLD nodes [s57a2 (after), s57d (deducting)]
+  The winner is CONV node s57d (after deducting) <--> GOLD node s57d (deducting): econcepts=deduct/deduct, match=1 (concept=deduct), weak match=5 (concept,:actor,:undergoer,:modal-strength,:aspect).
+
 Correspondence GOLD s57a  (aims)              = CONV s57a  (aims)           
 Correspondence GOLD s57a2 (after)             = CONV      
 Correspondence GOLD s57a3 (actually)          = CONV s57a3 (actually)       
@@ -10871,9 +10874,6 @@ Correspondence GOLD s57t4 (It)                = CONV s57t4 (It)
 Correspondence GOLD s57w  (working)           = CONV s57w  (working)        
 
 Aligned 14 out of 15 GOLD nodes, that is 93%.
-
-Ambiguous projection of CONV node s57d (after deducting) to 2 GOLD nodes [s57a2 (after), s57d (deducting)]
-  The winner is CONV node s57d (after deducting) <--> GOLD node s57d (deducting): econcepts=deduct/deduct, match=1 (concept=deduct), weak match=5 (concept,:actor,:undergoer,:modal-strength,:aspect).
 
 Correspondence CONV s57a  (aims)            = GOLD s57a  (aims)             
 Correspondence CONV s57a2 (into account)    = GOLD      
@@ -11068,6 +11068,9 @@ File CONV: 1 nodes unaligned: s58n/name["France"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s58t (France) to 2 GOLD nodes [s58n (France), s58t (France)]
+  The winner is CONV node s58t (France) <--> GOLD node s58t (France): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s58g (good)       = CONV s58g (good)        
 Correspondence GOLD s58h (have)       = CONV s58h (does have)   
 Correspondence GOLD s58n (France)     = CONV     
@@ -11075,9 +11078,6 @@ Correspondence GOLD s58r (reputation) = CONV s58r (a reputation)
 Correspondence GOLD s58t (France)     = CONV s58t (France)      
 
 Aligned 4 out of 5 GOLD nodes, that is 80%.
-
-Ambiguous projection of CONV node s58t (France) to 2 GOLD nodes [s58n (France), s58t (France)]
-  The winner is CONV node s58t (France) <--> GOLD node s58t (France): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s58g (good)           = GOLD s58g (good)      
 Correspondence CONV s58h (does have)      = GOLD s58h (have)      
@@ -11452,6 +11452,9 @@ File CONV: 4 nodes unaligned: s61f/FILL, s61f2/FILL, s61f3/FILL, s61n/name["ECB"
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s61t (of the ECB) to 2 GOLD nodes [s61n (ECB), s61t (ECB)]
+  The winner is CONV node s61t (of the ECB) <--> GOLD node s61t (ECB): econcepts=type-NE/organization, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s61a  (appear)        = CONV s61a  (would appear)   
 Correspondence GOLD s61a2 (alternatives)  = CONV s61a2 (at alternatives)
 Correspondence GOLD s61a3 (and)           = CONV s61a3 (and)            
@@ -11470,9 +11473,6 @@ Correspondence GOLD s61s2 (speak)         = CONV s61s2 (speak)
 Correspondence GOLD s61t  (ECB)           = CONV s61t  (of the ECB)     
 
 Aligned 14 out of 16 GOLD nodes, that is 88%.
-
-Ambiguous projection of CONV node s61t (of the ECB) to 2 GOLD nodes [s61n (ECB), s61t (ECB)]
-  The winner is CONV node s61t (of the ECB) <--> GOLD node s61t (ECB): econcepts=type-NE/organization, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s61a  (would appear)    = GOLD s61a  (appear)       
 Correspondence CONV s61a2 (at alternatives) = GOLD s61a2 (alternatives) 
@@ -11698,6 +11698,15 @@ File CONV: 2 nodes unaligned: s62f/FILL, s62n2/name["Mps"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s62d (after the decision) to 2 GOLD nodes [s62a (after), s62d (decision)]
+Ambiguous projection of CONV node s62e (of the ex-minister) to 2 GOLD nodes [s62e (ex-minister), s62p3 (ex-minister)]
+Ambiguous projection of CONV node s62f2 (This) to 2 GOLD nodes [s62f2 (This), s62t2 (This)]
+Ambiguous projection of CONV node s62t (to Mps) to 3 GOLD nodes [s62m (Mps), s62p2 (Mps), s62t (Mps)]
+  The winner is CONV node s62d (after the decision) <--> GOLD node s62d (decision): econcepts=decision/decision, match=1 (concept=decision), weak match=1 (concept).
+  The winner is CONV node s62e (of the ex-minister) <--> GOLD node s62e (ex-minister): econcepts=ex-minister/ex-minister, match=1 (concept=ex-minister), weak match=1 (concept).
+  The winner is CONV node s62f2 (This) <--> GOLD node s62f2 (This): econcepts=FILL/thing, match=1 (:refer-number=singular), weak match=2 (concept,:refer-number).
+  The winner is CONV node s62t (to Mps) <--> GOLD node s62m (Mps): econcepts=type-NE/member, match=0 (), weak match=1 (concept).
+
 Correspondence GOLD s62a  (after)            = CONV      
 Correspondence GOLD s62d  (decision)         = CONV s62d  (after the decision)
 Correspondence GOLD s62e  (ex-minister)      = CONV s62e  (of the ex-minister)
@@ -11715,15 +11724,6 @@ Correspondence GOLD s62t2 (This)             = CONV
 Correspondence GOLD s62w  (written)          = CONV s62w  (has been written)  
 
 Aligned 8 out of 15 GOLD nodes, that is 53%.
-
-Ambiguous projection of CONV node s62d (after the decision) to 2 GOLD nodes [s62a (after), s62d (decision)]
-Ambiguous projection of CONV node s62e (of the ex-minister) to 2 GOLD nodes [s62e (ex-minister), s62p3 (ex-minister)]
-Ambiguous projection of CONV node s62f2 (This) to 2 GOLD nodes [s62f2 (This), s62t2 (This)]
-Ambiguous projection of CONV node s62t (to Mps) to 3 GOLD nodes [s62m (Mps), s62p2 (Mps), s62t (Mps)]
-  The winner is CONV node s62d (after the decision) <--> GOLD node s62d (decision): econcepts=decision/decision, match=1 (concept=decision), weak match=1 (concept).
-  The winner is CONV node s62e (of the ex-minister) <--> GOLD node s62e (ex-minister): econcepts=ex-minister/ex-minister, match=1 (concept=ex-minister), weak match=1 (concept).
-  The winner is CONV node s62f2 (This) <--> GOLD node s62f2 (This): econcepts=FILL/thing, match=1 (:refer-number=singular), weak match=2 (concept,:refer-number).
-  The winner is CONV node s62t (to Mps) <--> GOLD node s62m (Mps): econcepts=type-NE/member, match=0 (), weak match=1 (concept).
 
 Correspondence CONV s62d  (after the decision) = GOLD s62d  (decision)   
 Correspondence CONV s62e  (of the ex-minister) = GOLD s62e  (ex-minister)
@@ -11929,6 +11929,13 @@ File CONV: 2 nodes unaligned: s63f/FILL, s63n/name["University"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s63d2 (drivers ') to 2 GOLD nodes [s63d2 (drivers), s63p (drivers)]
+Ambiguous projection of CONV node s63t (thoughts) to 2 GOLD nodes [s63t (thoughts), s63t3 (thoughts)]
+Ambiguous projection of CONV node s63t2 (at University) to 2 GOLD nodes [s63n (Roma Tre University), s63t2 (Roma Tre University)]
+  The winner is CONV node s63d2 (drivers ') <--> GOLD node s63p (drivers): econcepts=driver/person, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
+  The winner is CONV node s63t (thoughts) <--> GOLD node s63t (thoughts): econcepts=thought/thing, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
+  The winner is CONV node s63t2 (at University) <--> GOLD node s63t2 (Roma Tre University): econcepts=type-NE/academic-organization, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s63a  (anticipate)          = CONV s63a  (anticipate)    
 Correspondence GOLD s63a2 (actions)             = CONV s63a2 (actions)       
 Correspondence GOLD s63d  (developed)           = CONV s63d  (have developed)
@@ -11945,13 +11952,6 @@ Correspondence GOLD s63t2 (Roma Tre University) = CONV s63t2 (at University)
 Correspondence GOLD s63t3 (thoughts)            = CONV      
 
 Aligned 11 out of 14 GOLD nodes, that is 79%.
-
-Ambiguous projection of CONV node s63d2 (drivers ') to 2 GOLD nodes [s63d2 (drivers), s63p (drivers)]
-Ambiguous projection of CONV node s63t (thoughts) to 2 GOLD nodes [s63t (thoughts), s63t3 (thoughts)]
-Ambiguous projection of CONV node s63t2 (at University) to 2 GOLD nodes [s63n (Roma Tre University), s63t2 (Roma Tre University)]
-  The winner is CONV node s63d2 (drivers ') <--> GOLD node s63p (drivers): econcepts=driver/person, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
-  The winner is CONV node s63t (thoughts) <--> GOLD node s63t (thoughts): econcepts=thought/thing, match=1 (:refer-number=plural), weak match=2 (concept,:refer-number).
-  The winner is CONV node s63t2 (at University) <--> GOLD node s63t2 (Roma Tre University): econcepts=type-NE/academic-organization, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s63a  (anticipate)         = GOLD s63a  (anticipate)         
 Correspondence CONV s63a2 (actions)            = GOLD s63a2 (actions)            
@@ -12123,6 +12123,11 @@ Ambiguous projection of GOLD node s64m (More and more) to 3 CONV nodes [s64a (an
   The winner is GOLD node s64c2 (calling shots) <--> CONV node s64c2 (are calling): econcepts=call-shots/call, match=1 (:actor=s64c mapped to CONV s64c), weak match=4 (concept,:actor,:modal-strength,:aspect).
   The winner is GOLD node s64m (More and more) <--> CONV node s64m (More): econcepts=more-and-more/more, match=0 (), weak match=1 (concept).
 
+Ambiguous projection of CONV node s64t2 (on Street) to 2 GOLD nodes [s64n (Wall Street), s64t2 (Wall Street)]
+Ambiguous projection of CONV node s64t3 (than in Valley) to 2 GOLD nodes [s64n2 (Silicon Valley), s64t3 (Silicon Valley)]
+  The winner is CONV node s64t2 (on Street) <--> GOLD node s64t2 (Wall Street): econcepts=type-NE/market-sector, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s64t3 (than in Valley) <--> GOLD node s64t3 (Silicon Valley): econcepts=type-NE/market-sector, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s64b  (before)         = CONV s64b  (than before)   
 Correspondence GOLD s64c  (companies)      = CONV s64c  (companies)     
 Correspondence GOLD s64c2 (calling shots)  = CONV s64c2 (are calling)   
@@ -12143,11 +12148,6 @@ Correspondence GOLD s64t2 (Wall Street)    = CONV s64t2 (on Street)
 Correspondence GOLD s64t3 (Silicon Valley) = CONV s64t3 (than in Valley)
 
 Aligned 11 out of 18 GOLD nodes, that is 61%.
-
-Ambiguous projection of CONV node s64t2 (on Street) to 2 GOLD nodes [s64n (Wall Street), s64t2 (Wall Street)]
-Ambiguous projection of CONV node s64t3 (than in Valley) to 2 GOLD nodes [s64n2 (Silicon Valley), s64t3 (Silicon Valley)]
-  The winner is CONV node s64t2 (on Street) <--> GOLD node s64t2 (Wall Street): econcepts=type-NE/market-sector, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s64t3 (than in Valley) <--> GOLD node s64t3 (Silicon Valley): econcepts=type-NE/market-sector, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s64a  (and)            = GOLD      
 Correspondence CONV s64b  (than before)    = GOLD s64b  (before)        
@@ -12356,6 +12356,19 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s65a2 (in addition to) to 2 CONV nodes [s65a2 (in addition), s65t5 (to the Summit)]
 
+Ambiguous projection of CONV node s65p (private) to 2 GOLD nodes [s65p (private), s65p2 (private)]
+Ambiguous projection of CONV node s65t (such Spotify) to 2 GOLD nodes [s65n (Spotify), s65t (Spotify)]
+Ambiguous projection of CONV node s65t2 (Tesla) to 2 GOLD nodes [s65n2 (Tesla), s65t2 (Tesla)]
+Ambiguous projection of CONV node s65t3 (Uber) to 2 GOLD nodes [s65n3 (Uber), s65t3 (Uber)]
+Ambiguous projection of CONV node s65t4 (Snapchat) to 2 GOLD nodes [s65n4 (Snapchat), s65t4 (Snapchat)]
+Ambiguous projection of CONV node s65t5 (to the Summit) to 3 GOLD nodes [s65a2 (in addition to), s65n5 (Mountain View Summit), s65t5 (Mountain View Summit)]
+  The winner is CONV node s65p (private) <--> GOLD node s65p2 (private): econcepts=private/private, match=1 (concept=private), weak match=1 (concept).
+  The winner is CONV node s65t (such Spotify) <--> GOLD node s65t (Spotify): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s65t2 (Tesla) <--> GOLD node s65t2 (Tesla): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s65t3 (Uber) <--> GOLD node s65t3 (Uber): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s65t4 (Snapchat) <--> GOLD node s65t4 (Snapchat): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s65t5 (to the Summit) <--> GOLD node s65t5 (Mountain View Summit): econcepts=type-NE/event, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s65a  (attend)               = CONV s65a  (will attend)  
 Correspondence GOLD s65a2 (in addition to)       = CONV s65a2 (in addition)  
 Correspondence GOLD s65a3 (,)                    = CONV s65a3 (,)            
@@ -12376,19 +12389,6 @@ Correspondence GOLD s65t4 (Snapchat)             = CONV s65t4 (Snapchat)
 Correspondence GOLD s65t5 (Mountain View Summit) = CONV s65t5 (to the Summit)
 
 Aligned 12 out of 18 GOLD nodes, that is 67%.
-
-Ambiguous projection of CONV node s65p (private) to 2 GOLD nodes [s65p (private), s65p2 (private)]
-Ambiguous projection of CONV node s65t (such Spotify) to 2 GOLD nodes [s65n (Spotify), s65t (Spotify)]
-Ambiguous projection of CONV node s65t2 (Tesla) to 2 GOLD nodes [s65n2 (Tesla), s65t2 (Tesla)]
-Ambiguous projection of CONV node s65t3 (Uber) to 2 GOLD nodes [s65n3 (Uber), s65t3 (Uber)]
-Ambiguous projection of CONV node s65t4 (Snapchat) to 2 GOLD nodes [s65n4 (Snapchat), s65t4 (Snapchat)]
-Ambiguous projection of CONV node s65t5 (to the Summit) to 3 GOLD nodes [s65a2 (in addition to), s65n5 (Mountain View Summit), s65t5 (Mountain View Summit)]
-  The winner is CONV node s65p (private) <--> GOLD node s65p2 (private): econcepts=private/private, match=1 (concept=private), weak match=1 (concept).
-  The winner is CONV node s65t (such Spotify) <--> GOLD node s65t (Spotify): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s65t2 (Tesla) <--> GOLD node s65t2 (Tesla): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s65t3 (Uber) <--> GOLD node s65t3 (Uber): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s65t4 (Snapchat) <--> GOLD node s65t4 (Snapchat): econcepts=type-NE/company, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s65t5 (to the Summit) <--> GOLD node s65t5 (Mountain View Summit): econcepts=type-NE/event, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s65a  (will attend)      = GOLD s65a  (attend)              
 Correspondence CONV s65a2 (in addition)      = GOLD s65a2 (in addition to)      
@@ -12571,6 +12571,9 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s66c (devoid of criticism) to 2 CONV nodes [s66c (of criticism), s66d (has devoid)]
   The winner is GOLD node s66c (devoid of criticism) <--> CONV node s66c (of criticism): econcepts=criticize/criticism, match=0 (), weak match=1 (concept).
 
+Ambiguous projection of CONV node s66m (management) to 2 GOLD nodes [s66m (management), s66o (management)]
+  The winner is CONV node s66m (management) <--> GOLD node s66o (management): econcepts=management/organization, match=1 (:refer-number=singular), weak match=2 (concept,:refer-number).
+
 Correspondence GOLD s66c  (devoid of criticism) = CONV s66c  (of criticism)
 Correspondence GOLD s66h  (however)             = CONV s66h  (however)     
 Correspondence GOLD s66h2 (been)                = CONV s66h2 (been)        
@@ -12579,9 +12582,6 @@ Correspondence GOLD s66o  (management)          = CONV s66m  (management)
 Correspondence GOLD s66t  (Its)                 = CONV s66t  (Its)         
 
 Aligned 5 out of 6 GOLD nodes, that is 83%.
-
-Ambiguous projection of CONV node s66m (management) to 2 GOLD nodes [s66m (management), s66o (management)]
-  The winner is CONV node s66m (management) <--> GOLD node s66o (management): econcepts=management/organization, match=1 (:refer-number=singular), weak match=2 (concept,:refer-number).
 
 Correspondence CONV s66c  (of criticism) = GOLD s66c  (devoid of criticism)
 Correspondence CONV s66d  (has devoid)   = GOLD      
@@ -12857,6 +12857,11 @@ File CONV: 1 nodes unaligned: s69n/name["Cospedal"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s69s (The sources) to 2 GOLD nodes [s69p (sources), s69s (sources)]
+Ambiguous projection of CONV node s69t2 (that Cospedal) to 2 GOLD nodes [s69n (Cospedal), s69t2 (Cospedal)]
+  The winner is CONV node s69s (The sources) <--> GOLD node s69s (sources): econcepts=source/source, match=1 (concept=source), weak match=1 (concept).
+  The winner is CONV node s69t2 (that Cospedal) <--> GOLD node s69t2 (Cospedal): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s69c  (consulted)    = CONV s69c  (consulted)    
 Correspondence GOLD s69h  (have-role-91) = CONV      
 Correspondence GOLD s69i  (is)           = CONV s69i  (is)           
@@ -12869,11 +12874,6 @@ Correspondence GOLD s69t  (it)           = CONV s69t  (it)
 Correspondence GOLD s69t2 (Cospedal)     = CONV s69t2 (that Cospedal)
 
 Aligned 6 out of 10 GOLD nodes, that is 60%.
-
-Ambiguous projection of CONV node s69s (The sources) to 2 GOLD nodes [s69p (sources), s69s (sources)]
-Ambiguous projection of CONV node s69t2 (that Cospedal) to 2 GOLD nodes [s69n (Cospedal), s69t2 (Cospedal)]
-  The winner is CONV node s69s (The sources) <--> GOLD node s69s (sources): econcepts=source/source, match=1 (concept=source), weak match=1 (concept).
-  The winner is CONV node s69t2 (that Cospedal) <--> GOLD node s69t2 (Cospedal): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s69c  (consulted)        = GOLD s69c  (consulted)
 Correspondence CONV s69i  (is)               = GOLD s69i  (is)       
@@ -13015,6 +13015,11 @@ File CONV: 4 nodes unaligned: s70i/identity-91, s70n3/name["Pedro" "Sánchez"], 
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s70t2 (Évole) to 2 GOLD nodes [s70n4 (Évole), s70t2 (Évole)]
+Ambiguous projection of CONV node s70t3 (Spain) to 2 GOLD nodes [s70n5 (Spain), s70t3 (Spain)]
+  The winner is CONV node s70t2 (Évole) <--> GOLD node s70t2 (Évole): econcepts=type-NE/broadcast-program, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s70t3 (Spain) <--> GOLD node s70t3 (Spain): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s70h  (have-role-91) = CONV      
 Correspondence GOLD s70i  (identity-91)  = CONV s70i  (identity-91)     
 Correspondence GOLD s70i2 (is)           = CONV s70i2 (is)              
@@ -13036,11 +13041,6 @@ Correspondence GOLD s70t2 (Évole)        = CONV s70t2 (Évole)
 Correspondence GOLD s70t3 (Spain)        = CONV s70t3 (Spain)           
 
 Aligned 8 out of 19 GOLD nodes, that is 42%.
-
-Ambiguous projection of CONV node s70t2 (Évole) to 2 GOLD nodes [s70n4 (Évole), s70t2 (Évole)]
-Ambiguous projection of CONV node s70t3 (Spain) to 2 GOLD nodes [s70n5 (Spain), s70t3 (Spain)]
-  The winner is CONV node s70t2 (Évole) <--> GOLD node s70t2 (Évole): econcepts=type-NE/broadcast-program, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s70t3 (Spain) <--> GOLD node s70t3 (Spain): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s70i  (identity-91)             = GOLD s70i  (identity-91)
 Correspondence CONV s70i2 (is)                      = GOLD s70i2 (is)         
@@ -13231,6 +13231,15 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s71c2 (is to) to 2 CONV nodes [s71b (is), s71h (to humanity)]
 Ambiguous projection of GOLD node s71c3 (is to) to 2 CONV nodes [s71b2 (as is), s71m (to man)]
 
+Ambiguous projection of CONV node s71b2 (as is) to 2 GOLD nodes [s71c3 (is to), s71r (as)]
+Ambiguous projection of CONV node s71h (to humanity) to 2 GOLD nodes [s71c2 (is to), s71h (humanity)]
+Ambiguous projection of CONV node s71m (to man) to 2 GOLD nodes [s71c3 (is to), s71m (man)]
+Ambiguous projection of CONV node s71t (Federico) to 2 GOLD nodes [s71n (Federico Fellini), s71t (Federico Fellini)]
+  The winner is CONV node s71b2 (as is) <--> GOLD node s71c3 (is to): econcepts=be/COPULAR-CONSTRUCTION, match=0 (), weak match=3 (concept,:modal-strength,:aspect).
+  The winner is CONV node s71h (to humanity) <--> GOLD node s71h (humanity): econcepts=humanity/humanity, match=2 (concept=humanity,:refer-number=singular), weak match=2 (concept,:refer-number).
+  The winner is CONV node s71m (to man) <--> GOLD node s71m (man): econcepts=man/man, match=2 (concept=man,:refer-number=singular), weak match=2 (concept,:refer-number).
+  The winner is CONV node s71t (Federico) <--> GOLD node s71t (Federico Fellini): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s71c  (clown)            = CONV s71c  (The clown)  
 Correspondence GOLD s71c2 (is to)            = CONV s71b  (is)         
 Correspondence GOLD s71c3 (is to)            = CONV s71b2 (as is)      
@@ -13244,15 +13253,6 @@ Correspondence GOLD s71s2 (shadow)           = CONV s71s2 (the shadow)
 Correspondence GOLD s71t  (Federico Fellini) = CONV s71t  (Federico)   
 
 Aligned 9 out of 11 GOLD nodes, that is 82%.
-
-Ambiguous projection of CONV node s71b2 (as is) to 2 GOLD nodes [s71c3 (is to), s71r (as)]
-Ambiguous projection of CONV node s71h (to humanity) to 2 GOLD nodes [s71c2 (is to), s71h (humanity)]
-Ambiguous projection of CONV node s71m (to man) to 2 GOLD nodes [s71c3 (is to), s71m (man)]
-Ambiguous projection of CONV node s71t (Federico) to 2 GOLD nodes [s71n (Federico Fellini), s71t (Federico Fellini)]
-  The winner is CONV node s71b2 (as is) <--> GOLD node s71c3 (is to): econcepts=be/COPULAR-CONSTRUCTION, match=0 (), weak match=3 (concept,:modal-strength,:aspect).
-  The winner is CONV node s71h (to humanity) <--> GOLD node s71h (humanity): econcepts=humanity/humanity, match=2 (concept=humanity,:refer-number=singular), weak match=2 (concept,:refer-number).
-  The winner is CONV node s71m (to man) <--> GOLD node s71m (man): econcepts=man/man, match=2 (concept=man,:refer-number=singular), weak match=2 (concept,:refer-number).
-  The winner is CONV node s71t (Federico) <--> GOLD node s71t (Federico Fellini): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s71b  (is)                         = GOLD s71c2 (is to)           
 Correspondence CONV s71b2 (as is)                      = GOLD s71c3 (is to)           
@@ -13408,6 +13408,15 @@ File CONV: 2 nodes unaligned: s72n/name["FSLN"], s72n2/name["Victorias"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s72d (Dozens) to 2 GOLD nodes [s72d (Dozens), s72m (Dozens)]
+Ambiguous projection of CONV node s72f (of followers) to 2 GOLD nodes [s72f (followers), s72p (followers)]
+Ambiguous projection of CONV node s72t (FSLN) to 2 GOLD nodes [s72n (FSLN), s72t (FSLN)]
+Ambiguous projection of CONV node s72t2 (in the Victorias) to 2 GOLD nodes [s72n2 (Plaza de las Victorias), s72t2 (Plaza de las Victorias)]
+  The winner is CONV node s72d (Dozens) <--> GOLD node s72d (Dozens): econcepts=dozen/dozen, match=1 (concept=dozen), weak match=1 (concept).
+  The winner is CONV node s72f (of followers) <--> GOLD node s72f (followers): econcepts=follower/follow, match=0 (), weak match=1 (concept).
+  The winner is CONV node s72t (FSLN) <--> GOLD node s72t (FSLN): econcepts=type-NE/political-organization, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s72t2 (in the Victorias) <--> GOLD node s72t2 (Plaza de las Victorias): econcepts=type-NE/city-square, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s72a  (already)                = CONV s72a  (already)         
 Correspondence GOLD s72c  (celebrating)            = CONV s72c  (are celebrating) 
 Correspondence GOLD s72d  (Dozens)                 = CONV s72d  (Dozens)          
@@ -13421,15 +13430,6 @@ Correspondence GOLD s72t2 (Plaza de las Victorias) = CONV s72t2 (in the Victoria
 Correspondence GOLD s72v  (victory)                = CONV s72v  (the victory)     
 
 Aligned 7 out of 11 GOLD nodes, that is 64%.
-
-Ambiguous projection of CONV node s72d (Dozens) to 2 GOLD nodes [s72d (Dozens), s72m (Dozens)]
-Ambiguous projection of CONV node s72f (of followers) to 2 GOLD nodes [s72f (followers), s72p (followers)]
-Ambiguous projection of CONV node s72t (FSLN) to 2 GOLD nodes [s72n (FSLN), s72t (FSLN)]
-Ambiguous projection of CONV node s72t2 (in the Victorias) to 2 GOLD nodes [s72n2 (Plaza de las Victorias), s72t2 (Plaza de las Victorias)]
-  The winner is CONV node s72d (Dozens) <--> GOLD node s72d (Dozens): econcepts=dozen/dozen, match=1 (concept=dozen), weak match=1 (concept).
-  The winner is CONV node s72f (of followers) <--> GOLD node s72f (followers): econcepts=follower/follow, match=0 (), weak match=1 (concept).
-  The winner is CONV node s72t (FSLN) <--> GOLD node s72t (FSLN): econcepts=type-NE/political-organization, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s72t2 (in the Victorias) <--> GOLD node s72t2 (Plaza de las Victorias): econcepts=type-NE/city-square, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s72a  (already)           = GOLD s72a  (already)               
 Correspondence CONV s72c  (are celebrating)   = GOLD s72c  (celebrating)           
@@ -13577,6 +13577,15 @@ File CONV: 1 nodes unaligned: s73n/name["Turkey"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s73b (since the beginning) to 2 GOLD nodes [s73b (beginning), s73s2 (since)]
+Ambiguous projection of CONV node s73c (The citizens) to 2 GOLD nodes [s73c (citizens), s73p2 (citizens)]
+Ambiguous projection of CONV node s73i (Islamic) to 2 GOLD nodes [s73i (Islamic), s73n2 (Islamic)]
+Ambiguous projection of CONV node s73t (from Turkey) to 2 GOLD nodes [s73n (Turkey), s73t (Turkey)]
+  The winner is CONV node s73b (since the beginning) <--> GOLD node s73b (beginning): econcepts=beginning/beginning, match=1 (concept=beginning), weak match=1 (concept).
+  The winner is CONV node s73c (The citizens) <--> GOLD node s73c (citizens): econcepts=citizen/citizen, match=1 (concept=citizen), weak match=1 (concept).
+  The winner is CONV node s73i (Islamic) <--> GOLD node s73i (Islamic): econcepts=Islamic/religion, match=0 (), weak match=1 (concept).
+  The winner is CONV node s73t (from Turkey) <--> GOLD node s73t (Turkey): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s73b  (beginning)        = CONV s73b (since the beginning)
 Correspondence GOLD s73c  (citizens)         = CONV s73c (The citizens)       
 Correspondence GOLD s73d  (1960s)            = CONV s73x (of the 1960s)       
@@ -13593,15 +13602,6 @@ Correspondence GOLD s73s2 (since)            = CONV
 Correspondence GOLD s73t  (Turkey)           = CONV s73t (from Turkey)        
 
 Aligned 8 out of 14 GOLD nodes, that is 57%.
-
-Ambiguous projection of CONV node s73b (since the beginning) to 2 GOLD nodes [s73b (beginning), s73s2 (since)]
-Ambiguous projection of CONV node s73c (The citizens) to 2 GOLD nodes [s73c (citizens), s73p2 (citizens)]
-Ambiguous projection of CONV node s73i (Islamic) to 2 GOLD nodes [s73i (Islamic), s73n2 (Islamic)]
-Ambiguous projection of CONV node s73t (from Turkey) to 2 GOLD nodes [s73n (Turkey), s73t (Turkey)]
-  The winner is CONV node s73b (since the beginning) <--> GOLD node s73b (beginning): econcepts=beginning/beginning, match=1 (concept=beginning), weak match=1 (concept).
-  The winner is CONV node s73c (The citizens) <--> GOLD node s73c (citizens): econcepts=citizen/citizen, match=1 (concept=citizen), weak match=1 (concept).
-  The winner is CONV node s73i (Islamic) <--> GOLD node s73i (Islamic): econcepts=Islamic/religion, match=0 (), weak match=1 (concept).
-  The winner is CONV node s73t (from Turkey) <--> GOLD node s73t (Turkey): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s73b (since the beginning) = GOLD s73b (beginning)
 Correspondence CONV s73c (The citizens)        = GOLD s73c (citizens) 
@@ -13755,6 +13755,9 @@ File CONV: 1 nodes unaligned: s74n/name["Party"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s74t (the Party) to 2 GOLD nodes [s74n (Labor Party), s74t (Labor Party)]
+  The winner is CONV node s74t (the Party) <--> GOLD node s74t (Labor Party): econcepts=type-NE/political-organization, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s74a2 (all)         = CONV s74a2 (all)                
 Correspondence GOLD s74d  (districts)   = CONV s74d  (districts)          
 Correspondence GOLD s74d2 (2010)        = CONV      
@@ -13766,9 +13769,6 @@ Correspondence GOLD s74v  (voting)      = CONV s74v  (voting)
 Correspondence GOLD s74w  (win)         = CONV s74w  (win)                
 
 Aligned 7 out of 9 GOLD nodes, that is 78%.
-
-Ambiguous projection of CONV node s74t (the Party) to 2 GOLD nodes [s74n (Labor Party), s74t (Labor Party)]
-  The winner is CONV node s74t (the Party) <--> GOLD node s74t (Labor Party): econcepts=type-NE/political-organization, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s74a  (able)                = GOLD      
 Correspondence CONV s74a2 (all)                 = GOLD s74a2 (all)        
@@ -13907,6 +13907,13 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s75t (took place) to 2 CONV nodes [s75p (place), s75t (took)]
   The winner is GOLD node s75t (took place) <--> CONV node s75t (took): econcepts=take-place/take, match=1 (:modal-strength=full-affirmative), weak match=3 (concept,:modal-strength,:aspect).
 
+Ambiguous projection of CONV node s75e (earlier) to 2 GOLD nodes [s75e (earlier), s75m (earlier)]
+Ambiguous projection of CONV node s75t2 (The Revolution) to 2 GOLD nodes [s75n (Industrial Revolution), s75t2 (Industrial Revolution)]
+Ambiguous projection of CONV node s75t3 (in Britain) to 2 GOLD nodes [s75n2 (Great Britain), s75t3 (Great Britain)]
+  The winner is CONV node s75e (earlier) <--> GOLD node s75e (earlier): econcepts=early/early, match=2 (concept=early,:ARG2-of=s75h mapped to GOLD s75h), weak match=2 (concept,:ARG2-of).
+  The winner is CONV node s75t2 (The Revolution) <--> GOLD node s75t2 (Industrial Revolution): econcepts=type-NE/historical-period, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s75t3 (in Britain) <--> GOLD node s75t3 (Great Britain): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s75a  (any)                   = CONV s75a  (any)            
 Correspondence GOLD s75c  (country)               = CONV s75c  (than in country)
 Correspondence GOLD s75e  (earlier)               = CONV s75e  (earlier)        
@@ -13920,13 +13927,6 @@ Correspondence GOLD s75t2 (Industrial Revolution) = CONV s75t2 (The Revolution)
 Correspondence GOLD s75t3 (Great Britain)         = CONV s75t3 (in Britain)     
 
 Aligned 8 out of 11 GOLD nodes, that is 73%.
-
-Ambiguous projection of CONV node s75e (earlier) to 2 GOLD nodes [s75e (earlier), s75m (earlier)]
-Ambiguous projection of CONV node s75t2 (The Revolution) to 2 GOLD nodes [s75n (Industrial Revolution), s75t2 (Industrial Revolution)]
-Ambiguous projection of CONV node s75t3 (in Britain) to 2 GOLD nodes [s75n2 (Great Britain), s75t3 (Great Britain)]
-  The winner is CONV node s75e (earlier) <--> GOLD node s75e (earlier): econcepts=early/early, match=2 (concept=early,:ARG2-of=s75h mapped to GOLD s75h), weak match=2 (concept,:ARG2-of).
-  The winner is CONV node s75t2 (The Revolution) <--> GOLD node s75t2 (Industrial Revolution): econcepts=type-NE/historical-period, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s75t3 (in Britain) <--> GOLD node s75t3 (Great Britain): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s75a  (any)                = GOLD s75a  (any)                  
 Correspondence CONV s75c  (than in country)    = GOLD s75c  (country)              
@@ -14086,6 +14086,15 @@ Ambiguous projection of GOLD node s76n4 (Baltic States) to 2 CONV nodes [s76s2 (
 Ambiguous projection of GOLD node s76t4 (Baltic States) to 2 CONV nodes [s76s2 (the States), s76t4 (Baltic)]
   The winner is GOLD node s76t4 (Baltic States) <--> CONV node s76t4 (Baltic): econcepts=world-region/type-NE, match=0 (), weak match=2 (concept,:name).
 
+Ambiguous projection of CONV node s76s2 (the States) to 2 GOLD nodes [s76n4 (Baltic States), s76t4 (Baltic States)]
+Ambiguous projection of CONV node s76t (After the Revolution) to 3 GOLD nodes [s76a2 (After), s76n (Russian Revolution), s76t (Russian Revolution)]
+Ambiguous projection of CONV node s76t2 (such Finland) to 2 GOLD nodes [s76n2 (Finland), s76t2 (Finland)]
+Ambiguous projection of CONV node s76t3 (Poland) to 2 GOLD nodes [s76n3 (Poland), s76t3 (Poland)]
+Ambiguous projection of CONV node s76t4 (Baltic) to 2 GOLD nodes [s76n4 (Baltic States), s76t4 (Baltic States)]
+  The winner is CONV node s76t (After the Revolution) <--> GOLD node s76t (Russian Revolution): econcepts=type-NE/historical-period, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s76t2 (such Finland) <--> GOLD node s76t2 (Finland): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s76t3 (Poland) <--> GOLD node s76t3 (Poland): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s76a  (and)                = CONV      
 Correspondence GOLD s76a2 (After)              = CONV      
 Correspondence GOLD s76c  (countries)          = CONV s76c  (countries)           
@@ -14103,15 +14112,6 @@ Correspondence GOLD s76t4 (Baltic States)      = CONV s76t4 (Baltic)
 Correspondence GOLD s76w  (won)                = CONV s76w  (won)                 
 
 Aligned 10 out of 15 GOLD nodes, that is 67%.
-
-Ambiguous projection of CONV node s76s2 (the States) to 2 GOLD nodes [s76n4 (Baltic States), s76t4 (Baltic States)]
-Ambiguous projection of CONV node s76t (After the Revolution) to 3 GOLD nodes [s76a2 (After), s76n (Russian Revolution), s76t (Russian Revolution)]
-Ambiguous projection of CONV node s76t2 (such Finland) to 2 GOLD nodes [s76n2 (Finland), s76t2 (Finland)]
-Ambiguous projection of CONV node s76t3 (Poland) to 2 GOLD nodes [s76n3 (Poland), s76t3 (Poland)]
-Ambiguous projection of CONV node s76t4 (Baltic) to 2 GOLD nodes [s76n4 (Baltic States), s76t4 (Baltic States)]
-  The winner is CONV node s76t (After the Revolution) <--> GOLD node s76t (Russian Revolution): econcepts=type-NE/historical-period, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s76t2 (such Finland) <--> GOLD node s76t2 (Finland): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s76t3 (Poland) <--> GOLD node s76t3 (Poland): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s76a  (,)                    = GOLD      
 Correspondence CONV s76c  (countries)            = GOLD s76c  (countries)         
@@ -14330,6 +14330,9 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s77p (placing pressure) to 2 CONV nodes [s77p (of placing), s77p2 (pressure)]
   The winner is GOLD node s77p (placing pressure) <--> CONV node s77p2 (pressure): econcepts=pressure/pressure, match=1 (concept=pressure), weak match=1 (concept).
 
+Ambiguous projection of CONV node s77t2 (on Hungary) to 2 GOLD nodes [s77n (Hungary), s77t2 (Hungary)]
+  The winner is CONV node s77t2 (on Hungary) <--> GOLD node s77t2 (Hungary): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s77a  (and)              = CONV s77a  (and)        
 Correspondence GOLD s77e  (elections)        = CONV s77e  (elections)  
 Correspondence GOLD s77f  (free)             = CONV s77f  (free)       
@@ -14345,9 +14348,6 @@ Correspondence GOLD s77t  (threat)           = CONV s77t  (the threat)
 Correspondence GOLD s77t2 (Hungary)          = CONV s77t2 (on Hungary) 
 
 Aligned 12 out of 13 GOLD nodes, that is 92%.
-
-Ambiguous projection of CONV node s77t2 (on Hungary) to 2 GOLD nodes [s77n (Hungary), s77t2 (Hungary)]
-  The winner is CONV node s77t2 (on Hungary) <--> GOLD node s77t2 (Hungary): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s77a  (and)             = GOLD s77a  (and)             
 Correspondence CONV s77e  (elections)       = GOLD s77e  (elections)       
@@ -14538,6 +14538,11 @@ Ambiguous projection of GOLD node s78r (fell into ruin) to 2 CONV nodes [s78f (f
   The winner is GOLD node s78c (Disibodenberg cloister) <--> CONV node s78t (Disibodenberg): econcepts=worship-place/type-NE, match=0 (), weak match=2 (concept,:name).
   The winner is GOLD node s78r (fell into ruin) <--> CONV node s78r (into ruin): econcepts=ruin/ruin, match=1 (concept=ruin), weak match=1 (concept).
 
+Ambiguous projection of CONV node s78c (The cloister) to 2 GOLD nodes [s78c (Disibodenberg cloister), s78n (Disibodenberg cloister)]
+Ambiguous projection of CONV node s78t (Disibodenberg) to 2 GOLD nodes [s78c (Disibodenberg cloister), s78n (Disibodenberg cloister)]
+Ambiguous projection of CONV node s78t2 (of the Reformation) to 2 GOLD nodes [s78n2 (Reformation), s78t2 (Reformation)]
+  The winner is CONV node s78t2 (of the Reformation) <--> GOLD node s78t2 (Reformation): econcepts=type-NE/movement, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s78a  (and)                    = CONV s78a  (and)               
 Correspondence GOLD s78c  (Disibodenberg cloister) = CONV s78t  (Disibodenberg)     
 Correspondence GOLD s78d  (disbanded)              = CONV s78d  (was disbanded)     
@@ -14547,11 +14552,6 @@ Correspondence GOLD s78r  (fell into ruin)         = CONV s78r  (into ruin)
 Correspondence GOLD s78t2 (Reformation)            = CONV s78t2 (of the Reformation)
 
 Aligned 6 out of 7 GOLD nodes, that is 86%.
-
-Ambiguous projection of CONV node s78c (The cloister) to 2 GOLD nodes [s78c (Disibodenberg cloister), s78n (Disibodenberg cloister)]
-Ambiguous projection of CONV node s78t (Disibodenberg) to 2 GOLD nodes [s78c (Disibodenberg cloister), s78n (Disibodenberg cloister)]
-Ambiguous projection of CONV node s78t2 (of the Reformation) to 2 GOLD nodes [s78n2 (Reformation), s78t2 (Reformation)]
-  The winner is CONV node s78t2 (of the Reformation) <--> GOLD node s78t2 (Reformation): econcepts=type-NE/movement, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s78a  (and)                   = GOLD s78a  (and)                   
 Correspondence CONV s78c  (The cloister)          = GOLD s78n  (Disibodenberg cloister)
@@ -14734,6 +14734,19 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s79m (moved in) to 2 CONV nodes [s79i (in), s79m (moved)]
   The winner is GOLD node s79m (moved in) <--> CONV node s79m (moved): econcepts=move-in/move, match=0 (), weak match=4 (concept,:actor,:modal-strength,:aspect).
 
+Ambiguous projection of CONV node s79g (with girlfriend) to 2 GOLD nodes [s79g (girlfriend), s79p4 (girlfriend)]
+Ambiguous projection of CONV node s79s (After successes) to 2 GOLD nodes [s79a2 (After), s79s (successes)]
+Ambiguous projection of CONV node s79t2 (with Telekom) to 2 GOLD nodes [s79n (Team Telekom), s79t2 (Team Telekom)]
+Ambiguous projection of CONV node s79t3 (in Merdingen) to 2 GOLD nodes [s79n2 (Merdingen), s79t3 (Merdingen)]
+Ambiguous projection of CONV node s79t4 (in Südbaden) to 2 GOLD nodes [s79n3 (Südbaden), s79t4 (Südbaden)]
+Ambiguous projection of CONV node s79x (until 2002) to 2 GOLD nodes [s79d (2002), s79u (until)]
+  The winner is CONV node s79g (with girlfriend) <--> GOLD node s79g (girlfriend): econcepts=girlfriend/girlfriend, match=1 (concept=girlfriend), weak match=1 (concept).
+  The winner is CONV node s79s (After successes) <--> GOLD node s79s (successes): econcepts=success/success, match=3 (concept=success,:mod=s79t mapped to GOLD s79t,:refer-number=plural), weak match=3 (concept,:mod,:refer-number).
+  The winner is CONV node s79t2 (with Telekom) <--> GOLD node s79t2 (Team Telekom): econcepts=type-NE/sports-organization, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s79t3 (in Merdingen) <--> GOLD node s79t3 (Merdingen): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s79t4 (in Südbaden) <--> GOLD node s79t4 (Südbaden): econcepts=type-NE/country-partition, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s79x (until 2002) <--> GOLD node s79u (until): econcepts=2002/until, match=0 (), weak match=1 (concept).
+
 Correspondence GOLD s79a  (and)              = CONV s79a  (and)            
 Correspondence GOLD s79a2 (After)            = CONV      
 Correspondence GOLD s79c  (contract)         = CONV s79c  (a contract)     
@@ -14756,19 +14769,6 @@ Correspondence GOLD s79t4 (Südbaden)         = CONV s79t4 (in Südbaden)
 Correspondence GOLD s79u  (until)            = CONV s79x  (until 2002)     
 
 Aligned 13 out of 20 GOLD nodes, that is 65%.
-
-Ambiguous projection of CONV node s79g (with girlfriend) to 2 GOLD nodes [s79g (girlfriend), s79p4 (girlfriend)]
-Ambiguous projection of CONV node s79s (After successes) to 2 GOLD nodes [s79a2 (After), s79s (successes)]
-Ambiguous projection of CONV node s79t2 (with Telekom) to 2 GOLD nodes [s79n (Team Telekom), s79t2 (Team Telekom)]
-Ambiguous projection of CONV node s79t3 (in Merdingen) to 2 GOLD nodes [s79n2 (Merdingen), s79t3 (Merdingen)]
-Ambiguous projection of CONV node s79t4 (in Südbaden) to 2 GOLD nodes [s79n3 (Südbaden), s79t4 (Südbaden)]
-Ambiguous projection of CONV node s79x (until 2002) to 2 GOLD nodes [s79d (2002), s79u (until)]
-  The winner is CONV node s79g (with girlfriend) <--> GOLD node s79g (girlfriend): econcepts=girlfriend/girlfriend, match=1 (concept=girlfriend), weak match=1 (concept).
-  The winner is CONV node s79s (After successes) <--> GOLD node s79s (successes): econcepts=success/success, match=3 (concept=success,:mod=s79t mapped to GOLD s79t,:refer-number=plural), weak match=3 (concept,:mod,:refer-number).
-  The winner is CONV node s79t2 (with Telekom) <--> GOLD node s79t2 (Team Telekom): econcepts=type-NE/sports-organization, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s79t3 (in Merdingen) <--> GOLD node s79t3 (Merdingen): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s79t4 (in Südbaden) <--> GOLD node s79t4 (Südbaden): econcepts=type-NE/country-partition, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s79x (until 2002) <--> GOLD node s79u (until): econcepts=2002/until, match=0 (), weak match=1 (concept).
 
 Correspondence CONV s79a  (and)               = GOLD s79a  (and)         
 Correspondence CONV s79c  (a contract)        = GOLD s79c  (contract)    
@@ -15018,6 +15018,15 @@ File CONV: 2 nodes unaligned: s80n/name["Viguier"], s80n2/name["Conte"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s80f (those) to 2 GOLD nodes [s80f (those), s80t3 (those)]
+Ambiguous projection of CONV node s80i (of immigrants) to 2 GOLD nodes [s80i (immigrants), s80p2 (immigrants)]
+Ambiguous projection of CONV node s80t (Viguier) to 2 GOLD nodes [s80n (Viguier), s80t (Viguier)]
+Ambiguous projection of CONV node s80t2 (Conte) to 2 GOLD nodes [s80n2 (La Conte), s80t2 (La Conte)]
+  The winner is CONV node s80f (those) <--> GOLD node s80f (those): econcepts=FILL/person, match=2 (:mod=s80o mapped to GOLD s80o,:refer-number=plural), weak match=3 (concept,:refer-number,:mod).
+  The winner is CONV node s80i (of immigrants) <--> GOLD node s80i (immigrants): econcepts=immigrant/immigrant, match=1 (concept=immigrant), weak match=1 (concept).
+  The winner is CONV node s80t (Viguier) <--> GOLD node s80t (Viguier): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s80t2 (Conte) <--> GOLD node s80t2 (La Conte): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s80a  (and)          = CONV s80a  (and)           
 Correspondence GOLD s80c  (contain)      = CONV s80c  (contain)       
 Correspondence GOLD s80c2 (city)         = CONV s80c2 (the city 's)   
@@ -15043,15 +15052,6 @@ Correspondence GOLD s80t2 (La Conte)     = CONV s80t2 (Conte)
 Correspondence GOLD s80t3 (those)        = CONV      
 
 Aligned 17 out of 23 GOLD nodes, that is 74%.
-
-Ambiguous projection of CONV node s80f (those) to 2 GOLD nodes [s80f (those), s80t3 (those)]
-Ambiguous projection of CONV node s80i (of immigrants) to 2 GOLD nodes [s80i (immigrants), s80p2 (immigrants)]
-Ambiguous projection of CONV node s80t (Viguier) to 2 GOLD nodes [s80n (Viguier), s80t (Viguier)]
-Ambiguous projection of CONV node s80t2 (Conte) to 2 GOLD nodes [s80n2 (La Conte), s80t2 (La Conte)]
-  The winner is CONV node s80f (those) <--> GOLD node s80f (those): econcepts=FILL/person, match=2 (:mod=s80o mapped to GOLD s80o,:refer-number=plural), weak match=3 (concept,:refer-number,:mod).
-  The winner is CONV node s80i (of immigrants) <--> GOLD node s80i (immigrants): econcepts=immigrant/immigrant, match=1 (concept=immigrant), weak match=1 (concept).
-  The winner is CONV node s80t (Viguier) <--> GOLD node s80t (Viguier): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s80t2 (Conte) <--> GOLD node s80t2 (La Conte): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s80a  (and)             = GOLD s80a  (and)       
 Correspondence CONV s80c  (contain)         = GOLD s80c  (contain)   
@@ -15227,6 +15227,11 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s81d (doctors) to 2 GOLD nodes [s81d (doctors), s81p (doctors)]
+Ambiguous projection of CONV node s81i (per inhabitants) to 2 GOLD nodes [s81i (inhabitants), s81p2 (inhabitants)]
+  The winner is CONV node s81d (doctors) <--> GOLD node s81d (doctors): econcepts=doctor/doctor, match=1 (concept=doctor), weak match=1 (concept).
+  The winner is CONV node s81i (per inhabitants) <--> GOLD node s81i (inhabitants): econcepts=inhabitant/inhabitant, match=1 (concept=inhabitant), weak match=1 (concept).
+
 Correspondence GOLD s81b  (were)         = CONV s81b (were)           
 Correspondence GOLD s81d  (doctors)      = CONV s81d (doctors)        
 Correspondence GOLD s81d2 (2000s)        = CONV s81x (In the 2000s)   
@@ -15238,11 +15243,6 @@ Correspondence GOLD s81p  (doctors)      = CONV
 Correspondence GOLD s81p2 (inhabitants)  = CONV     
 
 Aligned 5 out of 9 GOLD nodes, that is 56%.
-
-Ambiguous projection of CONV node s81d (doctors) to 2 GOLD nodes [s81d (doctors), s81p (doctors)]
-Ambiguous projection of CONV node s81i (per inhabitants) to 2 GOLD nodes [s81i (inhabitants), s81p2 (inhabitants)]
-  The winner is CONV node s81d (doctors) <--> GOLD node s81d (doctors): econcepts=doctor/doctor, match=1 (concept=doctor), weak match=1 (concept).
-  The winner is CONV node s81i (per inhabitants) <--> GOLD node s81i (inhabitants): econcepts=inhabitant/inhabitant, match=1 (concept=inhabitant), weak match=1 (concept).
 
 Correspondence CONV s81b (were)            = GOLD s81b  (were)       
 Correspondence CONV s81d (doctors)         = GOLD s81d  (doctors)    
@@ -15391,6 +15391,17 @@ Ambiguous projection of GOLD node s82p (Phoenician alphabet) to 2 CONV nodes [s8
   The winner is GOLD node s82a2 (Phoenician alphabet) <--> CONV node s82a2 (the alphabet): econcepts=writing-system/alphabet, match=0 (), weak match=1 (concept).
   The winner is GOLD node s82a3 (Greek alphabet) <--> CONV node s82a3 (the alphabet): econcepts=writing-system/alphabet, match=0 (), weak match=1 (concept).
 
+Ambiguous projection of CONV node s82a2 (the alphabet) to 2 GOLD nodes [s82a2 (Phoenician alphabet), s82p (Phoenician alphabet)]
+Ambiguous projection of CONV node s82a3 (the alphabet) to 2 GOLD nodes [s82a3 (Greek alphabet), s82n2 (Greek alphabet)]
+Ambiguous projection of CONV node s82c (create) to 2 GOLD nodes [s82c (create), s82n (create)]
+Ambiguous projection of CONV node s82g (Greek) to 2 GOLD nodes [s82a3 (Greek alphabet), s82n2 (Greek alphabet)]
+Ambiguous projection of CONV node s82m (Mycenaean) to 2 GOLD nodes [s82l3 (Mycenaean), s82m (Mycenaean)]
+Ambiguous projection of CONV node s82p (Phoenician) to 2 GOLD nodes [s82a2 (Phoenician alphabet), s82p (Phoenician alphabet)]
+Ambiguous projection of CONV node s82t (the Greeks) to 2 GOLD nodes [s82c2 (Greeks), s82t (Greeks)]
+  The winner is CONV node s82c (create) <--> GOLD node s82c (create): econcepts=create/create, match=2 (concept=create,:undergoer=s82a3 mapped to GOLD s82a3, s82n2), weak match=4 (concept,:modal-strength,:aspect,:undergoer).
+  The winner is CONV node s82m (Mycenaean) <--> GOLD node s82l3 (Mycenaean): econcepts=mycenaean/language, match=0 (), weak match=1 (concept).
+  The winner is CONV node s82t (the Greeks) <--> GOLD node s82c2 (Greeks): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s82a  (adopted)             = CONV s82a  (adopted)      
 Correspondence GOLD s82a2 (Phoenician alphabet) = CONV s82a2 (the alphabet) 
 Correspondence GOLD s82a3 (Greek alphabet)      = CONV s82a3 (the alphabet) 
@@ -15411,17 +15422,6 @@ Correspondence GOLD s82s  (script)              = CONV s82s  (script)
 Correspondence GOLD s82t  (Greeks)              = CONV      
 
 Aligned 14 out of 18 GOLD nodes, that is 78%.
-
-Ambiguous projection of CONV node s82a2 (the alphabet) to 2 GOLD nodes [s82a2 (Phoenician alphabet), s82p (Phoenician alphabet)]
-Ambiguous projection of CONV node s82a3 (the alphabet) to 2 GOLD nodes [s82a3 (Greek alphabet), s82n2 (Greek alphabet)]
-Ambiguous projection of CONV node s82c (create) to 2 GOLD nodes [s82c (create), s82n (create)]
-Ambiguous projection of CONV node s82g (Greek) to 2 GOLD nodes [s82a3 (Greek alphabet), s82n2 (Greek alphabet)]
-Ambiguous projection of CONV node s82m (Mycenaean) to 2 GOLD nodes [s82l3 (Mycenaean), s82m (Mycenaean)]
-Ambiguous projection of CONV node s82p (Phoenician) to 2 GOLD nodes [s82a2 (Phoenician alphabet), s82p (Phoenician alphabet)]
-Ambiguous projection of CONV node s82t (the Greeks) to 2 GOLD nodes [s82c2 (Greeks), s82t (Greeks)]
-  The winner is CONV node s82c (create) <--> GOLD node s82c (create): econcepts=create/create, match=2 (concept=create,:undergoer=s82a3 mapped to GOLD s82a3, s82n2), weak match=4 (concept,:modal-strength,:aspect,:undergoer).
-  The winner is CONV node s82m (Mycenaean) <--> GOLD node s82l3 (Mycenaean): econcepts=mycenaean/language, match=0 (), weak match=1 (concept).
-  The winner is CONV node s82t (the Greeks) <--> GOLD node s82c2 (Greeks): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s82a  (adopted)        = GOLD s82a  (adopted)            
 Correspondence CONV s82a2 (the alphabet)   = GOLD s82a2 (Phoenician alphabet)
@@ -15635,6 +15635,9 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s83d (8th century) to 2 CONV nodes [s83c (From the century), s83x (8th)]
 
+Ambiguous projection of CONV node s83c (From the century) to 2 GOLD nodes [s83d (8th century), s83f (From)]
+  The winner is CONV node s83c (From the century) <--> GOLD node s83d (8th century): econcepts=century/date-entity, match=0 (), weak match=1 (concept).
+
 Correspondence GOLD s83a  (about)        = CONV s83a  (about)           
 Correspondence GOLD s83a2 (appear)       = CONV s83a2 (appear)          
 Correspondence GOLD s83b  (BC)           = CONV s83b  (BC)              
@@ -15650,9 +15653,6 @@ Correspondence GOLD s83s3 (small)        = CONV
 Correspondence GOLD s83t  (territories)  = CONV      
 
 Aligned 6 out of 13 GOLD nodes, that is 46%.
-
-Ambiguous projection of CONV node s83c (From the century) to 2 GOLD nodes [s83d (8th century), s83f (From)]
-  The winner is CONV node s83c (From the century) <--> GOLD node s83d (8th century): econcepts=century/date-entity, match=0 (), weak match=1 (concept).
 
 Correspondence CONV s83a  (about)            = GOLD s83a  (about)      
 Correspondence CONV s83a2 (appear)           = GOLD s83a2 (appear)     
@@ -15807,6 +15807,11 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s84p (as the point) to 2 GOLD nodes [s84i (as), s84p (point)]
+Ambiguous projection of CONV node s84r2 (as a revolutionary) to 2 GOLD nodes [s84i2 (as), s84r2 (revolutionary)]
+  The winner is CONV node s84p (as the point) <--> GOLD node s84p (point): econcepts=point/point, match=2 (concept=point,:refer-number=singular), weak match=2 (concept,:refer-number).
+  The winner is CONV node s84r2 (as a revolutionary) <--> GOLD node s84r2 (revolutionary): econcepts=revolutionary/revolutionary, match=2 (concept=revolutionary,:mod=s84r mapped to GOLD s84r), weak match=2 (concept,:mod).
+
 Correspondence GOLD s84a  (affair)        = CONV s84a  (affair)            
 Correspondence GOLD s84c  (career)        = CONV s84c  (for career)        
 Correspondence GOLD s84h  (have-role-91)  = CONV      
@@ -15821,11 +15826,6 @@ Correspondence GOLD s84s2 (starting)      = CONV s84s2 (starting)
 Correspondence GOLD s84t  (This)          = CONV s84t  (This)              
 
 Aligned 8 out of 12 GOLD nodes, that is 67%.
-
-Ambiguous projection of CONV node s84p (as the point) to 2 GOLD nodes [s84i (as), s84p (point)]
-Ambiguous projection of CONV node s84r2 (as a revolutionary) to 2 GOLD nodes [s84i2 (as), s84r2 (revolutionary)]
-  The winner is CONV node s84p (as the point) <--> GOLD node s84p (point): econcepts=point/point, match=2 (concept=point,:refer-number=singular), weak match=2 (concept,:refer-number).
-  The winner is CONV node s84r2 (as a revolutionary) <--> GOLD node s84r2 (revolutionary): econcepts=revolutionary/revolutionary, match=2 (concept=revolutionary,:mod=s84r mapped to GOLD s84r), weak match=2 (concept,:mod).
 
 Correspondence CONV s84a  (affair)             = GOLD s84a  (affair)       
 Correspondence CONV s84c  (for career)         = GOLD s84c  (career)       
@@ -15993,6 +15993,19 @@ File CONV: 6 nodes unaligned: s85a3/and, s85i/identity-91, s85n/name["Georges"],
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s85f (of friends) to 2 GOLD nodes [s85f (friends), s85p3 (friends)]
+Ambiguous projection of CONV node s85t (Georges) to 2 GOLD nodes [s85n (Georges), s85t (Georges)]
+Ambiguous projection of CONV node s85t2 (to Switzerland) to 2 GOLD nodes [s85n2 (Switzerland), s85t2 (Switzerland)]
+Ambiguous projection of CONV node s85t3 (by Rosane) to 2 GOLD nodes [s85n3 (Rosane), s85t3 (Rosane)]
+Ambiguous projection of CONV node s85t4 (Germaine 's) to 2 GOLD nodes [s85n4 (Germaine), s85t4 (Germaine)]
+Ambiguous projection of CONV node s85w (wife) to 2 GOLD nodes [s85p4 (wife), s85w (wife)]
+  The winner is CONV node s85f (of friends) <--> GOLD node s85f (friends): econcepts=friend/friend, match=1 (concept=friend), weak match=1 (concept).
+  The winner is CONV node s85t (Georges) <--> GOLD node s85t (Georges): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s85t2 (to Switzerland) <--> GOLD node s85t2 (Switzerland): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s85t3 (by Rosane) <--> GOLD node s85t3 (Rosane): econcepts=type-NE/person, match=0 (), weak match=3 (concept,:ARG1-of,:name).
+  The winner is CONV node s85t4 (Germaine 's) <--> GOLD node s85t4 (Germaine): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s85w (wife) <--> GOLD node s85w (wife): econcepts=wife/wife, match=1 (concept=wife), weak match=1 (concept).
+
 Correspondence GOLD s85a2 (and)              = CONV s85a2 (and)           
 Correspondence GOLD s85d  (daughter)         = CONV s85d  (the daughter)  
 Correspondence GOLD s85f  (friends)          = CONV s85f  (of friends)    
@@ -16017,19 +16030,6 @@ Correspondence GOLD s85w  (wife)             = CONV s85w  (wife)
 Correspondence GOLD s85y  (year)             = CONV s85y  (year)          
 
 Aligned 12 out of 22 GOLD nodes, that is 55%.
-
-Ambiguous projection of CONV node s85f (of friends) to 2 GOLD nodes [s85f (friends), s85p3 (friends)]
-Ambiguous projection of CONV node s85t (Georges) to 2 GOLD nodes [s85n (Georges), s85t (Georges)]
-Ambiguous projection of CONV node s85t2 (to Switzerland) to 2 GOLD nodes [s85n2 (Switzerland), s85t2 (Switzerland)]
-Ambiguous projection of CONV node s85t3 (by Rosane) to 2 GOLD nodes [s85n3 (Rosane), s85t3 (Rosane)]
-Ambiguous projection of CONV node s85t4 (Germaine 's) to 2 GOLD nodes [s85n4 (Germaine), s85t4 (Germaine)]
-Ambiguous projection of CONV node s85w (wife) to 2 GOLD nodes [s85p4 (wife), s85w (wife)]
-  The winner is CONV node s85f (of friends) <--> GOLD node s85f (friends): econcepts=friend/friend, match=1 (concept=friend), weak match=1 (concept).
-  The winner is CONV node s85t (Georges) <--> GOLD node s85t (Georges): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s85t2 (to Switzerland) <--> GOLD node s85t2 (Switzerland): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s85t3 (by Rosane) <--> GOLD node s85t3 (Rosane): econcepts=type-NE/person, match=0 (), weak match=3 (concept,:ARG1-of,:name).
-  The winner is CONV node s85t4 (Germaine 's) <--> GOLD node s85t4 (Germaine): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s85w (wife) <--> GOLD node s85w (wife): econcepts=wife/wife, match=1 (concept=wife), weak match=1 (concept).
 
 Correspondence CONV s85a  (accompanied)         = GOLD      
 Correspondence CONV s85a2 (and)                 = GOLD s85a2 (and)        
@@ -16426,6 +16426,9 @@ File CONV: 0 nodes unaligned: .
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s87s (during the summer) to 2 GOLD nodes [s87d (summer), s87s (summer)]
+  The winner is CONV node s87s (during the summer) <--> GOLD node s87s (summer): econcepts=summer/summer, match=1 (concept=summer), weak match=1 (concept).
+
 Correspondence GOLD s87d (summer)      = CONV     
 Correspondence GOLD s87f (Furthermore) = CONV s87f (Furthermore)      
 Correspondence GOLD s87h (hurricanes)  = CONV s87h (of hurricanes)    
@@ -16433,9 +16436,6 @@ Correspondence GOLD s87i (island)      = CONV s87i (on the island)
 Correspondence GOLD s87s (summer)      = CONV s87s (during the summer)
 
 Aligned 4 out of 5 GOLD nodes, that is 80%.
-
-Ambiguous projection of CONV node s87s (during the summer) to 2 GOLD nodes [s87d (summer), s87s (summer)]
-  The winner is CONV node s87s (during the summer) <--> GOLD node s87s (summer): econcepts=summer/summer, match=1 (concept=summer), weak match=1 (concept).
 
 Correspondence CONV s87f  (Furthermore)       = GOLD s87f (Furthermore)
 Correspondence CONV s87h  (of hurricanes)     = GOLD s87h (hurricanes) 
@@ -16570,6 +16570,11 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s88t2 (took place) to 2 CONV nodes [s88p (place), s88t2 (took)]
   The winner is GOLD node s88t2 (took place) <--> CONV node s88t2 (took): econcepts=take-place/take, match=0 (), weak match=3 (concept,:modal-strength,:aspect).
 
+Ambiguous projection of CONV node s88t3 (at Pelucca) to 2 GOLD nodes [s88n (Villa Pelucca), s88t3 (Villa Pelucca)]
+Ambiguous projection of CONV node s88t4 (in Giovanni) to 2 GOLD nodes [s88n2 (Sesto San Giovanni), s88t4 (Sesto San Giovanni)]
+  The winner is CONV node s88t3 (at Pelucca) <--> GOLD node s88t3 (Villa Pelucca): econcepts=type-NE/palace, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s88t4 (in Giovanni) <--> GOLD node s88t4 (Sesto San Giovanni): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s88e  (element)            = CONV s88e  (An element)         
 Correspondence GOLD s88h  (hypothesis)         = CONV s88h  (hypothesis)         
 Correspondence GOLD s88h2 (horses)             = CONV s88h2 (of horses)          
@@ -16586,11 +16591,6 @@ Correspondence GOLD s88t3 (Villa Pelucca)      = CONV s88t3 (at Pelucca)
 Correspondence GOLD s88t4 (Sesto San Giovanni) = CONV s88t4 (in Giovanni)        
 
 Aligned 12 out of 14 GOLD nodes, that is 86%.
-
-Ambiguous projection of CONV node s88t3 (at Pelucca) to 2 GOLD nodes [s88n (Villa Pelucca), s88t3 (Villa Pelucca)]
-Ambiguous projection of CONV node s88t4 (in Giovanni) to 2 GOLD nodes [s88n2 (Sesto San Giovanni), s88t4 (Sesto San Giovanni)]
-  The winner is CONV node s88t3 (at Pelucca) <--> GOLD node s88t3 (Villa Pelucca): econcepts=type-NE/palace, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s88t4 (in Giovanni) <--> GOLD node s88t4 (Sesto San Giovanni): econcepts=type-NE/human-settlement, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s88e  (An element)          = GOLD s88e  (element)           
 Correspondence CONV s88f  (FILL)                = GOLD      
@@ -17164,6 +17164,11 @@ File CONV: 2 nodes unaligned: s91n/name["historian" "David" "Crouch"], s91n2/nam
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s91t2 (around time) to 2 GOLD nodes [s91a2 (around), s91t2 (time)]
+Ambiguous projection of CONV node s91t4 (Stephen) to 2 GOLD nodes [s91n2 (Stephen), s91t4 (Stephen)]
+  The winner is CONV node s91t2 (around time) <--> GOLD node s91t2 (time): econcepts=time/time, match=3 (concept=time,:mod=s91t mapped to GOLD s91t,:refer-number=singular), weak match=3 (concept,:mod,:refer-number).
+  The winner is CONV node s91t4 (Stephen) <--> GOLD node s91t4 (Stephen): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s91a  (abandoned)    = CONV s91a  (that abandoned)    
 Correspondence GOLD s91a2 (around)       = CONV      
 Correspondence GOLD s91c  (challenge)    = CONV s91c  (from the challenge)
@@ -17181,11 +17186,6 @@ Correspondence GOLD s91t3 (David Crouch) = CONV
 Correspondence GOLD s91t4 (Stephen)      = CONV s91t4 (Stephen)           
 
 Aligned 10 out of 15 GOLD nodes, that is 67%.
-
-Ambiguous projection of CONV node s91t2 (around time) to 2 GOLD nodes [s91a2 (around), s91t2 (time)]
-Ambiguous projection of CONV node s91t4 (Stephen) to 2 GOLD nodes [s91n2 (Stephen), s91t4 (Stephen)]
-  The winner is CONV node s91t2 (around time) <--> GOLD node s91t2 (time): econcepts=time/time, match=3 (concept=time,:mod=s91t mapped to GOLD s91t,:refer-number=singular), weak match=3 (concept,:mod,:refer-number).
-  The winner is CONV node s91t4 (Stephen) <--> GOLD node s91t4 (Stephen): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s91a  (that abandoned)                     = GOLD s91a  (abandoned)
 Correspondence CONV s91c  (from the challenge)                 = GOLD s91c  (challenge)
@@ -17372,6 +17372,15 @@ Ambiguous projection of GOLD node s92t2 (Battle of Marengo) to 2 CONV nodes [s92
   The winner is GOLD node s92t (second time) <--> CONV node s92t (for the time): econcepts=ordinal-entity/time, match=0 (), weak match=1 (concept).
   The winner is GOLD node s92t2 (Battle of Marengo) <--> CONV node s92t2 (at the Battle): econcepts=war/type-NE, match=0 (), weak match=2 (concept,:name).
 
+Ambiguous projection of CONV node s92f (French) to 2 GOLD nodes [s92f (French), s92n5 (French)]
+Ambiguous projection of CONV node s92t2 (at the Battle) to 2 GOLD nodes [s92n2 (Battle of Marengo), s92t2 (Battle of Marengo)]
+Ambiguous projection of CONV node s92t3 (of Marengo) to 2 GOLD nodes [s92n2 (Battle of Marengo), s92t2 (Battle of Marengo)]
+Ambiguous projection of CONV node s92t4 (the Austrians) to 2 GOLD nodes [s92n3 (Austrians), s92t4 (Austrians)]
+Ambiguous projection of CONV node s92t5 (Italy) to 2 GOLD nodes [s92n4 (Italy), s92t5 (Italy)]
+  The winner is CONV node s92f (French) <--> GOLD node s92f (French): econcepts=French/country, match=0 (), weak match=1 (concept).
+  The winner is CONV node s92t4 (the Austrians) <--> GOLD node s92t4 (Austrians): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s92t5 (Italy) <--> GOLD node s92t5 (Italy): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s92c  (conflict)          = CONV s92c  (of the conflict)    
 Correspondence GOLD s92f  (French)            = CONV s92f  (French)             
 Correspondence GOLD s92f2 (forced)            = CONV s92f2 (forced)             
@@ -17388,15 +17397,6 @@ Correspondence GOLD s92t5 (Italy)             = CONV s92t5 (Italy)
 Correspondence GOLD s92v  (victory)           = CONV s92v  (the victory)        
 
 Aligned 11 out of 14 GOLD nodes, that is 79%.
-
-Ambiguous projection of CONV node s92f (French) to 2 GOLD nodes [s92f (French), s92n5 (French)]
-Ambiguous projection of CONV node s92t2 (at the Battle) to 2 GOLD nodes [s92n2 (Battle of Marengo), s92t2 (Battle of Marengo)]
-Ambiguous projection of CONV node s92t3 (of Marengo) to 2 GOLD nodes [s92n2 (Battle of Marengo), s92t2 (Battle of Marengo)]
-Ambiguous projection of CONV node s92t4 (the Austrians) to 2 GOLD nodes [s92n3 (Austrians), s92t4 (Austrians)]
-Ambiguous projection of CONV node s92t5 (Italy) to 2 GOLD nodes [s92n4 (Italy), s92t5 (Italy)]
-  The winner is CONV node s92f (French) <--> GOLD node s92f (French): econcepts=French/country, match=0 (), weak match=1 (concept).
-  The winner is CONV node s92t4 (the Austrians) <--> GOLD node s92t4 (Austrians): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s92t5 (Italy) <--> GOLD node s92t5 (Italy): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s92c  (of the conflict)     = GOLD s92c  (conflict)         
 Correspondence CONV s92f  (French)              = GOLD s92f  (French)           
@@ -17615,6 +17615,13 @@ File CONV: 4 nodes unaligned: s93f/FILL, s93n/name["Fiorello"], s93n2/name["Chur
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s93t (Fiorello) to 2 GOLD nodes [s93n (Fiorello), s93t (Fiorello)]
+Ambiguous projection of CONV node s93t2 (within the Church) to 2 GOLD nodes [s93n2 (Episcopal Church), s93t2 (Episcopal Church)]
+Ambiguous projection of CONV node s93t3 (of the Church) to 2 GOLD nodes [s93n3 (Protestant Church), s93t3 (Protestant Church)]
+  The winner is CONV node s93t (Fiorello) <--> GOLD node s93t (Fiorello): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s93t2 (within the Church) <--> GOLD node s93t2 (Episcopal Church): econcepts=type-NE/religious-organization, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s93t3 (of the Church) <--> GOLD node s93t3 (Protestant Church): econcepts=type-NE/religious-organization, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s93a  (and)               = CONV s93a  (and)              
 Correspondence GOLD s93e  (educated)          = CONV s93e  (was educated)     
 Correspondence GOLD s93h  (have-org-role-92)  = CONV      
@@ -17631,13 +17638,6 @@ Correspondence GOLD s93t2 (Episcopal Church)  = CONV s93t2 (within the Church)
 Correspondence GOLD s93t3 (Protestant Church) = CONV s93t3 (of the Church)    
 
 Aligned 10 out of 14 GOLD nodes, that is 71%.
-
-Ambiguous projection of CONV node s93t (Fiorello) to 2 GOLD nodes [s93n (Fiorello), s93t (Fiorello)]
-Ambiguous projection of CONV node s93t2 (within the Church) to 2 GOLD nodes [s93n2 (Episcopal Church), s93t2 (Episcopal Church)]
-Ambiguous projection of CONV node s93t3 (of the Church) to 2 GOLD nodes [s93n3 (Protestant Church), s93t3 (Protestant Church)]
-  The winner is CONV node s93t (Fiorello) <--> GOLD node s93t (Fiorello): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s93t2 (within the Church) <--> GOLD node s93t2 (Episcopal Church): econcepts=type-NE/religious-organization, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s93t3 (of the Church) <--> GOLD node s93t3 (Protestant Church): econcepts=type-NE/religious-organization, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s93a  (and)               = GOLD s93a  (and)              
 Correspondence CONV s93e  (was educated)      = GOLD s93e  (educated)         
@@ -17840,6 +17840,11 @@ File CONV: 2 nodes unaligned: s94n2/name["Jews"], s94n3/name["Palma"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s94t3 (of Jews) to 3 GOLD nodes [s94n2 (Jews), s94p (Jews), s94t3 (Jews)]
+Ambiguous projection of CONV node s94t4 (in Palma) to 2 GOLD nodes [s94n3 (Palma), s94t4 (Palma)]
+  The winner is CONV node s94t3 (of Jews) <--> GOLD node s94p (Jews): econcepts=type-NE/person, match=1 (:actor-of=s94l mapped to GOLD s94l), weak match=2 (concept,:actor-of).
+  The winner is CONV node s94t4 (in Palma) <--> GOLD node s94t4 (Palma): econcepts=type-NE/geo-political-entity, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s94c  (converted)     = CONV s94c  (converted)         
 Correspondence GOLD s94g  (great)         = CONV s94g  (great)             
 Correspondence GOLD s94h  (has)           = CONV s94h  (has)               
@@ -17857,11 +17862,6 @@ Correspondence GOLD s94t3 (Jews)          = CONV
 Correspondence GOLD s94t4 (Palma)         = CONV s94t4 (in Palma)          
 
 Aligned 11 out of 15 GOLD nodes, that is 73%.
-
-Ambiguous projection of CONV node s94t3 (of Jews) to 3 GOLD nodes [s94n2 (Jews), s94p (Jews), s94t3 (Jews)]
-Ambiguous projection of CONV node s94t4 (in Palma) to 2 GOLD nodes [s94n3 (Palma), s94t4 (Palma)]
-  The winner is CONV node s94t3 (of Jews) <--> GOLD node s94p (Jews): econcepts=type-NE/person, match=1 (:actor-of=s94l mapped to GOLD s94l), weak match=2 (concept,:actor-of).
-  The winner is CONV node s94t4 (in Palma) <--> GOLD node s94t4 (Palma): econcepts=type-NE/geo-political-entity, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s94c  (converted)          = GOLD s94c  (converted)    
 Correspondence CONV s94g  (great)              = GOLD s94g  (great)        
@@ -18047,6 +18047,11 @@ Ambiguous projection of GOLD node s95n2 (Revolution of Vindication) to 2 CONV no
 Ambiguous projection of GOLD node s95t2 (Revolution of Vindication) to 2 CONV nodes [s95t2 (the Revolution), s95t3 (of Vindication)]
   The winner is GOLD node s95t2 (Revolution of Vindication) <--> CONV node s95t2 (the Revolution): econcepts=movement/type-NE, match=1 (:actor-of=s95o mapped to CONV s95o), weak match=3 (concept,:name,:actor-of).
 
+Ambiguous projection of CONV node s95t (Linares) to 2 GOLD nodes [s95n (Linares), s95t (Linares)]
+Ambiguous projection of CONV node s95t2 (the Revolution) to 2 GOLD nodes [s95n2 (Revolution of Vindication), s95t2 (Revolution of Vindication)]
+Ambiguous projection of CONV node s95t3 (of Vindication) to 2 GOLD nodes [s95n2 (Revolution of Vindication), s95t2 (Revolution of Vindication)]
+  The winner is CONV node s95t (Linares) <--> GOLD node s95t (Linares): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s95a2 (and)                       = CONV s95a2 (and)                
 Correspondence GOLD s95b  (breakdown)                 = CONV s95b  (the breakdown)      
 Correspondence GOLD s95d  (discontinuation)           = CONV s95d  (the discontinuation)
@@ -18063,11 +18068,6 @@ Correspondence GOLD s95t  (Linares)                   = CONV s95t  (Linares)
 Correspondence GOLD s95t2 (Revolution of Vindication) = CONV s95t2 (the Revolution)     
 
 Aligned 13 out of 14 GOLD nodes, that is 93%.
-
-Ambiguous projection of CONV node s95t (Linares) to 2 GOLD nodes [s95n (Linares), s95t (Linares)]
-Ambiguous projection of CONV node s95t2 (the Revolution) to 2 GOLD nodes [s95n2 (Revolution of Vindication), s95t2 (Revolution of Vindication)]
-Ambiguous projection of CONV node s95t3 (of Vindication) to 2 GOLD nodes [s95n2 (Revolution of Vindication), s95t2 (Revolution of Vindication)]
-  The winner is CONV node s95t (Linares) <--> GOLD node s95t (Linares): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s95a  (and)                 = GOLD      
 Correspondence CONV s95a2 (and)                 = GOLD s95a2 (and)                      
@@ -18440,6 +18440,9 @@ File CONV: 1 nodes unaligned: s97n/name["coup" "de" "grâce"].
 
 Node-node correspondences:
 
+Ambiguous projection of CONV node s97f (This) to 2 GOLD nodes [s97t (This), s97t2 (This)]
+  The winner is CONV node s97f (This) <--> GOLD node s97t (This): econcepts=FILL/thing, match=0 (), weak match=1 (concept).
+
 Correspondence GOLD s97a  (and)           = CONV s97a (and)          
 Correspondence GOLD s97c  (coup de grâce) = CONV s97t (the coup)     
 Correspondence GOLD s97e  (encouragement) = CONV s97e (encouragement)
@@ -18453,9 +18456,6 @@ Correspondence GOLD s97t  (This)          = CONV s97f (This)
 Correspondence GOLD s97t2 (This)          = CONV     
 
 Aligned 5 out of 11 GOLD nodes, that is 45%.
-
-Ambiguous projection of CONV node s97f (This) to 2 GOLD nodes [s97t (This), s97t2 (This)]
-  The winner is CONV node s97f (This) <--> GOLD node s97t (This): econcepts=FILL/thing, match=0 (), weak match=1 (concept).
 
 Correspondence CONV s97a (and)                       = GOLD s97a (and)          
 Correspondence CONV s97c (was)                       = GOLD s97i (was)          
@@ -18657,6 +18657,16 @@ Ambiguous projection of GOLD node s98p4 (Isabella of France) to 2 CONV nodes [s9
   The winner is GOLD node s98c (have claim) <--> CONV node s98c (of a claim): econcepts=claim/claim, match=1 (concept=claim), weak match=1 (concept).
   The winner is GOLD node s98p4 (Isabella of France) <--> CONV node s98t4 (of France): econcepts=person/type-NE, match=0 (), weak match=2 (concept,:name).
 
+Ambiguous projection of CONV node s98d (the daughters) to 6 GOLD nodes [s98d (daughters), s98d2 (daughters), s98d3 (daughters), s98p (daughters), s98p2 (daughters), s98p3 (daughters)]
+Ambiguous projection of CONV node s98e (English) to 2 GOLD nodes [s98e (English), s98n4 (English)]
+Ambiguous projection of CONV node s98h (would have had) to 2 GOLD nodes [s98c (have claim), s98h (have)]
+Ambiguous projection of CONV node s98t2 (of Luis) to 2 GOLD nodes [s98n2 (Luis X), s98t2 (Luis X)]
+Ambiguous projection of CONV node s98t3 (Isabella) to 2 GOLD nodes [s98n3 (Isabella of France), s98p4 (Isabella of France)]
+Ambiguous projection of CONV node s98t4 (of France) to 2 GOLD nodes [s98n3 (Isabella of France), s98p4 (Isabella of France)]
+  The winner is CONV node s98d (the daughters) <--> GOLD node s98d (daughters): econcepts=daughter/daughter, match=1 (concept=daughter), weak match=1 (concept).
+  The winner is CONV node s98e (English) <--> GOLD node s98e (English): econcepts=English/country, match=0 (), weak match=1 (concept).
+  The winner is CONV node s98t2 (of Luis) <--> GOLD node s98t2 (Luis X): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s98a  (accepted)           = CONV s98a  (if had been accepted)
 Correspondence GOLD s98a2 (aunt)               = CONV s98a2 (above aunt)          
 Correspondence GOLD s98a3 (and)                = CONV      
@@ -18688,16 +18698,6 @@ Correspondence GOLD s98t5 (Felipe V)           = CONV
 Correspondence GOLD s98t6 (Carlos IV)          = CONV      
 
 Aligned 13 out of 29 GOLD nodes, that is 45%.
-
-Ambiguous projection of CONV node s98d (the daughters) to 6 GOLD nodes [s98d (daughters), s98d2 (daughters), s98d3 (daughters), s98p (daughters), s98p2 (daughters), s98p3 (daughters)]
-Ambiguous projection of CONV node s98e (English) to 2 GOLD nodes [s98e (English), s98n4 (English)]
-Ambiguous projection of CONV node s98h (would have had) to 2 GOLD nodes [s98c (have claim), s98h (have)]
-Ambiguous projection of CONV node s98t2 (of Luis) to 2 GOLD nodes [s98n2 (Luis X), s98t2 (Luis X)]
-Ambiguous projection of CONV node s98t3 (Isabella) to 2 GOLD nodes [s98n3 (Isabella of France), s98p4 (Isabella of France)]
-Ambiguous projection of CONV node s98t4 (of France) to 2 GOLD nodes [s98n3 (Isabella of France), s98p4 (Isabella of France)]
-  The winner is CONV node s98d (the daughters) <--> GOLD node s98d (daughters): econcepts=daughter/daughter, match=1 (concept=daughter), weak match=1 (concept).
-  The winner is CONV node s98e (English) <--> GOLD node s98e (English): econcepts=English/country, match=0 (), weak match=1 (concept).
-  The winner is CONV node s98t2 (of Luis) <--> GOLD node s98t2 (Luis X): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s98a  (if had been accepted) = GOLD s98a  (accepted)          
 Correspondence CONV s98a2 (above aunt)           = GOLD s98a2 (aunt)              
@@ -19018,6 +19018,11 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s99p (making peace) to 2 CONV nodes [s99m (at making), s99p (peace)]
   The winner is GOLD node s99p (making peace) <--> CONV node s99p (peace): econcepts=peace/peace, match=1 (concept=peace), weak match=1 (concept).
 
+Ambiguous projection of CONV node s99t (Enrique) to 2 GOLD nodes [s99n (Enrique), s99t (Enrique)]
+Ambiguous projection of CONV node s99t3 (of France) to 2 GOLD nodes [s99n3 (France), s99t3 (France)]
+  The winner is CONV node s99t (Enrique) <--> GOLD node s99t (Enrique): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s99t3 (of France) <--> GOLD node s99t3 (France): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s99a  (attempts)     = CONV s99a  (The attempts)  
 Correspondence GOLD s99a2 (and)          = CONV s99a2 (and)           
 Correspondence GOLD s99d  (decided)      = CONV s99d  (decided)       
@@ -19039,11 +19044,6 @@ Correspondence GOLD s99t2 (Kingdom)      = CONV s99t2 (of the Kingdom)
 Correspondence GOLD s99t3 (France)       = CONV s99t3 (of France)     
 
 Aligned 15 out of 19 GOLD nodes, that is 79%.
-
-Ambiguous projection of CONV node s99t (Enrique) to 2 GOLD nodes [s99n (Enrique), s99t (Enrique)]
-Ambiguous projection of CONV node s99t3 (of France) to 2 GOLD nodes [s99n3 (France), s99t3 (France)]
-  The winner is CONV node s99t (Enrique) <--> GOLD node s99t (Enrique): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s99t3 (of France) <--> GOLD node s99t3 (France): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s99a  (The attempts)    = GOLD s99a  (attempts)    
 Correspondence CONV s99a2 (and)             = GOLD s99a2 (and)         
@@ -19316,6 +19316,13 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s100t2 (1st January 49) to 2 CONV nodes [s100t2 (On the January), s100x (1st)]
   The winner is GOLD node s100t2 (1st January 49) <--> CONV node s100t2 (On the January): econcepts=date-entity/type-NE, match=0 (), weak match=1 (concept).
 
+Ambiguous projection of CONV node s100p (the proconsul) to 2 GOLD nodes [s100p (proconsul), s100p4 (proconsul)]
+Ambiguous projection of CONV node s100t (Marco) to 2 GOLD nodes [s100n (Marco Antonio), s100t (Marco Antonio)]
+Ambiguous projection of CONV node s100t3 (from Caesar) to 2 GOLD nodes [s100n3 (Caesar), s100t3 (Caesar)]
+  The winner is CONV node s100p (the proconsul) <--> GOLD node s100p (proconsul): econcepts=proconsul/proconsul, match=1 (concept=proconsul), weak match=1 (concept).
+  The winner is CONV node s100t (Marco) <--> GOLD node s100t (Marco Antonio): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+  The winner is CONV node s100t3 (from Caesar) <--> GOLD node s100t3 (Caesar): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
+
 Correspondence GOLD s100b  (BC)               = CONV s100b  (BC)            
 Correspondence GOLD s100d  (declaration)      = CONV s100d  (a declaration) 
 Correspondence GOLD s100d2 (declared)         = CONV s100d2 (declared)      
@@ -19334,13 +19341,6 @@ Correspondence GOLD s100t2 (1st January 49)   = CONV s100t2 (On the January)
 Correspondence GOLD s100t3 (Caesar)           = CONV s100t3 (from Caesar)   
 
 Aligned 10 out of 16 GOLD nodes, that is 63%.
-
-Ambiguous projection of CONV node s100p (the proconsul) to 2 GOLD nodes [s100p (proconsul), s100p4 (proconsul)]
-Ambiguous projection of CONV node s100t (Marco) to 2 GOLD nodes [s100n (Marco Antonio), s100t (Marco Antonio)]
-Ambiguous projection of CONV node s100t3 (from Caesar) to 2 GOLD nodes [s100n3 (Caesar), s100t3 (Caesar)]
-  The winner is CONV node s100p (the proconsul) <--> GOLD node s100p (proconsul): econcepts=proconsul/proconsul, match=1 (concept=proconsul), weak match=1 (concept).
-  The winner is CONV node s100t (Marco) <--> GOLD node s100t (Marco Antonio): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
-  The winner is CONV node s100t3 (from Caesar) <--> GOLD node s100t3 (Caesar): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
 
 Correspondence CONV s100b  (BC)                      = GOLD s100b  (BC)            
 Correspondence CONV s100d  (a declaration)           = GOLD s100d  (declaration)   
