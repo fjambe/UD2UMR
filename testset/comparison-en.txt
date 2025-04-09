@@ -5347,6 +5347,9 @@ File CONV: 5 nodes unaligned: s29f2/FILL, s29i/identity-91, s29i2/identity-91, s
 
 Node-node correspondences:
 
+Ambiguous projection of GOLD node s29i (identity-91) to 2 CONV nodes [s29i (identity-91), s29i2 (identity-91)]
+  The winner is GOLD node s29i (identity-91) <--> CONV node s29i (identity-91): econcepts=identity-91/identity-91, match=1 (concept=identity-91), weak match=2 (concept,:ARG2).
+
 Ambiguous projection of CONV node s29f (with a friend) to 2 GOLD nodes [s29f (friend), s29p2 (friend)]
 Ambiguous projection of CONV node s29f3 (what) to 3 GOLD nodes [s29m2 (what would be another remarkable success for him : " Do n't Go Breaking My Heart), s29n3 (what would be another remarkable success for him : " Do n't Go Breaking My Heart), s29t (what)]
 Ambiguous projection of CONV node s29t2 (Company) to 2 GOLD nodes [s29c (The Rocket Record Company), s29n2 (The Rocket Record Company)]
@@ -5357,6 +5360,7 @@ Ambiguous projection of CONV node s29t2 (Company) to 2 GOLD nodes [s29c (The Roc
 Correspondence GOLD s29c  (The Rocket Record Company)                                                        = CONV s29t2 (Company)
 Correspondence GOLD s29d  (1976)                                                                             = CONV s29x  (In 1976)
 Correspondence GOLD s29f  (friend)                                                                           = CONV s29f  (with a friend)
+Correspondence GOLD s29i  (identity-91)                                                                      = CONV s29i  (identity-91)
 Correspondence GOLD s29l  (label)                                                                            = CONV s29l  (with label)
 Correspondence GOLD s29m  (met)                                                                              = CONV s29m  (met)
 Correspondence GOLD s29m2 (what would be another remarkable success for him : " Do n't Go Breaking My Heart) = CONV s29f3 (what)
@@ -5368,21 +5372,19 @@ Correspondence GOLD s29w  (worked)                                              
 Correspondence GOLD s29a  (another)                                                                          = CONV 
 Correspondence GOLD s29h  (have-rel-role-92)                                                                 = CONV 
 Correspondence GOLD s29h2 (have-role-91)                                                                     = CONV 
-Correspondence GOLD s29i  (identity-91)                                                                      = CONV 
 Correspondence GOLD s29n2 (The Rocket Record Company)                                                        = CONV 
 Correspondence GOLD s29n3 (what would be another remarkable success for him : " Do n't Go Breaking My Heart) = CONV 
 Correspondence GOLD s29p2 (friend)                                                                           = CONV 
 Correspondence GOLD s29s  (success)                                                                          = CONV 
 Correspondence GOLD s29t  (what)                                                                             = CONV 
 Correspondence GOLD                                                                                          = CONV s29f2 (FILL)
-Correspondence GOLD                                                                                          = CONV s29i  (identity-91)
 Correspondence GOLD                                                                                          = CONV s29i2 (identity-91)
 Correspondence GOLD                                                                                          = CONV s29n  (name["Kiki" "Dee"])
 Correspondence GOLD                                                                                          = CONV s29n2 (name["company"])
 Correspondence GOLD                                                                                          = CONV s29p2 (his)
 
-Aligned 11 out of 20 GOLD nodes, that is 55%.
-Aligned 11 out of 17 CONV nodes, that is 65%.
+Aligned 12 out of 20 GOLD nodes, that is 60%.
+Aligned 12 out of 17 CONV nodes, that is 71%.
 
 Comparing attributes of GOLD nodes with their CONV counterparts.
 Node GOLD s29a / another (another)                                                                         mismatch in concept:         GOLD = another                    CONV = UNMAPPED
@@ -5400,8 +5402,9 @@ Node GOLD s29h / have-rel-role-92                                               
 Node GOLD s29h2 / have-role-91                                                                             mismatch in concept:         GOLD = have-role-91               CONV = UNMAPPED
 Node GOLD s29h2 / have-role-91                                                                             mismatch in :ARG2:           GOLD = s29p                       CONV = UNMAPPED
 Node GOLD s29h2 / have-role-91                                                                             mismatch in :ARG3:           GOLD = s29l                       CONV = UNMAPPED
-Node GOLD s29i / identity-91                                                                               mismatch in concept:         GOLD = identity-91                CONV = UNMAPPED
-Node GOLD s29i / identity-91                                                                               mismatch in :ARG2:           GOLD = s29m2                      CONV = UNMAPPED
+Node GOLD s29i / identity-91                                                                               mismatch in :ARG2:           GOLD = s29m2 mapped to CONV s29f3 CONV = s29t2
+Node GOLD s29i / identity-91                                                                               mismatch in :aspect:         GOLD =                            CONV = state
+Node GOLD s29i / identity-91                                                                               mismatch in :modal-strength: GOLD =                            CONV = MS-affirmative
 Node GOLD s29l / label (label)                                                                             mismatch in :ARG1-of:        GOLD =                            CONV = s29i
 Node GOLD s29l / label (label)                                                                             mismatch in :possessor:      GOLD =                            CONV = s29p2
 Node GOLD s29l / label (label)                                                                             mismatch in :refer-number:   GOLD =                            CONV = singular
@@ -5456,10 +5459,6 @@ Node GOLD s29w / work-01 (worked)                                               
 Node GOLD s29w / work-01 (worked)                                                                          mismatch in :OBLIQUE:        GOLD =                            CONV = s29l
 Node CONV s29f2 / FILL                                                                                     mismatch in concept:         CONV = FILL                       GOLD = UNMAPPED
 Node CONV s29f2 / FILL                                                                                     mismatch in :refer-number:   CONV = FILL                       GOLD = UNMAPPED
-Node CONV s29i / identity-91                                                                               mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
-Node CONV s29i / identity-91                                                                               mismatch in :ARG2:           CONV = s29t2                      GOLD = UNMAPPED
-Node CONV s29i / identity-91                                                                               mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
-Node CONV s29i / identity-91                                                                               mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
 Node CONV s29i2 / identity-91                                                                              mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
 Node CONV s29i2 / identity-91                                                                              mismatch in :ARG2:           CONV = s29t                       GOLD = UNMAPPED
 Node CONV s29i2 / identity-91                                                                              mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
@@ -5473,8 +5472,8 @@ Node CONV s29p2 / person (his)                                                  
 Node CONV s29p2 / person (his)                                                                             mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED
 Node CONV s29p2 / person (his)                                                                             mismatch in :refer-person:   CONV = 3rd                        GOLD = UNMAPPED
 
-Correct 9 out of 64 non-empty GOLD values => recall    14%.
-Correct 9 out of 55 non-empty CONV values => precision 16%.
+Correct 10 out of 64 non-empty GOLD values => recall    16%.
+Correct 10 out of 55 non-empty CONV values => precision 18%.
 
 Comparing attributes of CONV nodes with their GOLD counterparts.
 Node CONV s29f / friend (with a friend)                                                                   mismatch in :actor-of:       CONV = s29w mapped to GOLD s29w   GOLD = 
@@ -5485,15 +5484,14 @@ Node CONV s29f2 / FILL                                                          
 Node CONV s29f3 / FILL (what)                                                                             mismatch in concept:         CONV = FILL                       GOLD = music
 Node CONV s29f3 / FILL (what)                                                                             mismatch in :refer-number:   CONV = FILL                       GOLD = 
 Node CONV s29f3 / FILL (what)                                                                             mismatch in :name:           CONV =                            GOLD = s29n3
-Node CONV s29i / identity-91                                                                              mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
-Node CONV s29i / identity-91                                                                              mismatch in :ARG2:           CONV = s29t2                      GOLD = UNMAPPED
-Node CONV s29i / identity-91                                                                              mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
-Node CONV s29i / identity-91                                                                              mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
+Node CONV s29i / identity-91                                                                              mismatch in :ARG2:           CONV = s29t2 mapped to GOLD s29c  GOLD = s29m2
+Node CONV s29i / identity-91                                                                              mismatch in :aspect:         CONV = state                      GOLD = 
+Node CONV s29i / identity-91                                                                              mismatch in :modal-strength: CONV = MS-affirmative             GOLD = 
 Node CONV s29i2 / identity-91                                                                             mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
 Node CONV s29i2 / identity-91                                                                             mismatch in :ARG2:           CONV = s29t                       GOLD = UNMAPPED
 Node CONV s29i2 / identity-91                                                                             mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
 Node CONV s29i2 / identity-91                                                                             mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
-Node CONV s29l / label (with label)                                                                       mismatch in :ARG1-of:        CONV = s29i unmapped              GOLD = 
+Node CONV s29l / label (with label)                                                                       mismatch in :ARG1-of:        CONV = s29i mapped to GOLD s29i   GOLD = 
 Node CONV s29l / label (with label)                                                                       mismatch in :possessor:      CONV = s29p2 unmapped             GOLD = 
 Node CONV s29l / label (with label)                                                                       mismatch in :refer-number:   CONV = singular                   GOLD = 
 Node CONV s29m / meet (met)                                                                               mismatch in concept:         CONV = meet                       GOLD = meet-01
@@ -5540,8 +5538,6 @@ Node GOLD s29h / have-rel-role-92                                               
 Node GOLD s29h2 / have-role-91                                                                            mismatch in concept:         GOLD = have-role-91               CONV = UNMAPPED
 Node GOLD s29h2 / have-role-91                                                                            mismatch in :ARG2:           GOLD = s29p                       CONV = UNMAPPED
 Node GOLD s29h2 / have-role-91                                                                            mismatch in :ARG3:           GOLD = s29l                       CONV = UNMAPPED
-Node GOLD s29i / identity-91                                                                              mismatch in concept:         GOLD = identity-91                CONV = UNMAPPED
-Node GOLD s29i / identity-91                                                                              mismatch in :ARG2:           GOLD = s29m2                      CONV = UNMAPPED
 Node GOLD s29n2 / name (The Rocket Record Company)                                                        mismatch in concept:         GOLD = name                       CONV = UNMAPPED
 Node GOLD s29n2 / name (The Rocket Record Company)                                                        mismatch in :op1:            GOLD = "The"                      CONV = UNMAPPED
 Node GOLD s29n2 / name (The Rocket Record Company)                                                        mismatch in :op2:            GOLD = "Rocket"                   CONV = UNMAPPED
@@ -5565,8 +5561,8 @@ Node GOLD s29t / thing (what)                                                   
 Node GOLD s29t / thing (what)                                                                             mismatch in :mod:            GOLD = s29a                       CONV = UNMAPPED
 Node GOLD s29t / thing (what)                                                                             mismatch in :theme-of:       GOLD = s29s                       CONV = UNMAPPED
 
-Correct 9 out of 55 non-empty CONV values => recall    16%.
-Correct 9 out of 64 non-empty GOLD values => precision 14%.
+Correct 10 out of 55 non-empty CONV values => recall    18%.
+Correct 10 out of 64 non-empty GOLD values => precision 16%.
 
 -------------------------------------------------------------------------------
 Comparing sentence 30:
@@ -9001,9 +8997,11 @@ File CONV: 8 nodes unaligned: s50f/FILL, s50i2/identity-91, s50i3/identity-91, s
 
 Node-node correspondences:
 
+Ambiguous projection of GOLD node s50i3 (identity-91) to 2 CONV nodes [s50i2 (identity-91), s50i3 (identity-91)]
 Ambiguous projection of GOLD node s50n3 (White House) to 2 CONV nodes [s50t2 (White), s50t3 (for the House)]
 Ambiguous projection of GOLD node s50t2 (White House) to 2 CONV nodes [s50t2 (White), s50t3 (for the House)]
 Ambiguous projection of GOLD node s50t5 (January 20 , 2001) to 2 CONV nodes [s50t5 (January), s50x (2001)]
+  The winner is GOLD node s50i3 (identity-91) <--> CONV node s50i3 (identity-91): econcepts=identity-91/identity-91, match=2 (concept=identity-91,:ARG2=s50t5 mapped to CONV s50t5, s50x), weak match=2 (concept,:ARG2).
   The winner is GOLD node s50t2 (White House) <--> CONV node s50t3 (for the House): econcepts=government-organization/type-NE, match=0 (), weak match=2 (concept,:name).
   The winner is GOLD node s50t5 (January 20 , 2001) <--> CONV node s50t5 (January): econcepts=date-entity/type-NE, match=0 (), weak match=1 (concept).
 
@@ -9022,6 +9020,7 @@ Correspondence GOLD s50c2 (candidate)         = CONV s50c2 (of the candidate)
 Correspondence GOLD s50d  (day)               = CONV s50d  (on the day)
 Correspondence GOLD s50h  (husband)           = CONV s50h  (The husband)
 Correspondence GOLD s50i  (including)         = CONV s50i  (including)
+Correspondence GOLD s50i3 (identity-91)       = CONV s50i3 (identity-91)
 Correspondence GOLD s50l  (last)              = CONV s50l  (last)
 Correspondence GOLD s50n  (number)            = CONV s50n  (a number)
 Correspondence GOLD s50n3 (White House)       = CONV s50t2 (White)
@@ -9035,13 +9034,11 @@ Correspondence GOLD s50t5 (January 20 , 2001) = CONV s50t5 (January)
 Correspondence GOLD s50h2 (have-rel-role-92)  = CONV 
 Correspondence GOLD s50h3 (have-org-role-91)  = CONV 
 Correspondence GOLD s50h4 (have-org-role-91)  = CONV 
-Correspondence GOLD s50i3 (identity-91)       = CONV 
 Correspondence GOLD s50n2 (Hillary Clinton)   = CONV 
 Correspondence GOLD s50n5 (Rich)              = CONV 
 Correspondence GOLD s50p4 (husband)           = CONV 
 Correspondence GOLD                           = CONV s50f  (FILL)
 Correspondence GOLD                           = CONV s50i2 (identity-91)
-Correspondence GOLD                           = CONV s50i3 (identity-91)
 Correspondence GOLD                           = CONV s50n2 (name["Hillary" "Clinton"])
 Correspondence GOLD                           = CONV s50n3 (name["White"])
 Correspondence GOLD                           = CONV s50n4 (name["House"])
@@ -9050,13 +9047,12 @@ Correspondence GOLD                           = CONV s50n6 (name["January"])
 Correspondence GOLD                           = CONV s50p4 (his)
 Correspondence GOLD                           = CONV s50x  (2001)
 
-Aligned 16 out of 23 GOLD nodes, that is 70%.
-Aligned 16 out of 26 CONV nodes, that is 62%.
+Aligned 17 out of 23 GOLD nodes, that is 74%.
+Aligned 17 out of 26 CONV nodes, that is 65%.
 
 Comparing attributes of GOLD nodes with their CONV counterparts.
 Node GOLD s50c2 / candidate (candidate)                 mismatch in :mod:            GOLD =                            CONV = s50t3
 Node GOLD s50c2 / candidate (candidate)                 mismatch in :mod:            GOLD =                            CONV = s50c
-Node GOLD s50d / day (day)                              mismatch in :ARG1-of:        GOLD = s50i3 unmapped             CONV = s50i3
 Node GOLD s50d / day (day)                              mismatch in :temporal-of:    GOLD = s50p3 mapped to CONV s50p3 CONV = 
 Node GOLD s50h / husband (husband)                      mismatch in :mod:            GOLD =                            CONV = s50c2
 Node GOLD s50h / husband (husband)                      mismatch in :refer-number:   GOLD =                            CONV = singular
@@ -9077,8 +9073,8 @@ Node GOLD s50i / include-01 (including)                 mismatch in :aspect:    
 Node GOLD s50i / include-01 (including)                 mismatch in :manner:         GOLD =                            CONV = s50a
 Node GOLD s50i / include-01 (including)                 mismatch in :modal-strength: GOLD =                            CONV = MS-affirmative
 Node GOLD s50i / include-01 (including)                 mismatch in :undergoer:      GOLD =                            CONV = s50t4
-Node GOLD s50i3 / identity-91                           mismatch in concept:         GOLD = identity-91                CONV = UNMAPPED
-Node GOLD s50i3 / identity-91                           mismatch in :ARG2:           GOLD = s50t5                      CONV = UNMAPPED
+Node GOLD s50i3 / identity-91                           mismatch in :aspect:         GOLD =                            CONV = state
+Node GOLD s50i3 / identity-91                           mismatch in :modal-strength: GOLD =                            CONV = MS-affirmative
 Node GOLD s50l / ordinal-entity (last)                  mismatch in concept:         GOLD = ordinal-entity             CONV = last
 Node GOLD s50l / ordinal-entity (last)                  mismatch in :value:          GOLD = "-1"                       CONV = 
 Node GOLD s50n / number (number)                        mismatch in :mod:            GOLD =                            CONV = s50i
@@ -9127,10 +9123,6 @@ Node CONV s50i2 / identity-91                           mismatch in concept:    
 Node CONV s50i2 / identity-91                           mismatch in :ARG2:           CONV = s50t                       GOLD = UNMAPPED
 Node CONV s50i2 / identity-91                           mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
 Node CONV s50i2 / identity-91                           mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
-Node CONV s50i3 / identity-91                           mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
-Node CONV s50i3 / identity-91                           mismatch in :ARG2:           CONV = s50t5                      GOLD = UNMAPPED
-Node CONV s50i3 / identity-91                           mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
-Node CONV s50i3 / identity-91                           mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
 Node CONV s50n2 / name                                  mismatch in concept:         CONV = name                       GOLD = UNMAPPED
 Node CONV s50n2 / name                                  mismatch in :op1:            CONV = "Hillary"                  GOLD = UNMAPPED
 Node CONV s50n2 / name                                  mismatch in :op2:            CONV = "Clinton"                  GOLD = UNMAPPED
@@ -9147,13 +9139,12 @@ Node CONV s50p4 / person (his)                          mismatch in :refer-numbe
 Node CONV s50p4 / person (his)                          mismatch in :refer-person:   CONV = 3rd                        GOLD = UNMAPPED
 Node CONV s50x / 2001 (2001)                            mismatch in concept:         CONV = 2001                       GOLD = UNMAPPED
 
-Correct 11 out of 58 non-empty GOLD values => recall    19%.
-Correct 11 out of 72 non-empty CONV values => precision 15%.
+Correct 14 out of 58 non-empty GOLD values => recall    24%.
+Correct 14 out of 72 non-empty CONV values => precision 19%.
 
 Comparing attributes of CONV nodes with their GOLD counterparts.
 Node CONV s50c2 / candidate (of the candidate) mismatch in :mod:            CONV = s50t3 mapped to GOLD s50t2 GOLD = 
 Node CONV s50c2 / candidate (of the candidate) mismatch in :mod:            CONV = s50c mapped to GOLD s50c   GOLD = 
-Node CONV s50d / day (on the day)              mismatch in :ARG1-of:        CONV = s50i3 unmapped             GOLD = s50i3
 Node CONV s50d / day (on the day)              mismatch in :mod:            CONV = s50p3 mapped to GOLD s50p3 GOLD = 
 Node CONV s50d / day (on the day)              mismatch in :temporal-of:    CONV =                            GOLD = s50p3
 Node CONV s50f / FILL                          mismatch in concept:         CONV = FILL                       GOLD = UNMAPPED
@@ -9172,10 +9163,8 @@ Node CONV s50i2 / identity-91                  mismatch in concept:         CONV
 Node CONV s50i2 / identity-91                  mismatch in :ARG2:           CONV = s50t                       GOLD = UNMAPPED
 Node CONV s50i2 / identity-91                  mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
 Node CONV s50i2 / identity-91                  mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
-Node CONV s50i3 / identity-91                  mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
-Node CONV s50i3 / identity-91                  mismatch in :ARG2:           CONV = s50t5                      GOLD = UNMAPPED
-Node CONV s50i3 / identity-91                  mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
-Node CONV s50i3 / identity-91                  mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
+Node CONV s50i3 / identity-91                  mismatch in :aspect:         CONV = state                      GOLD = 
+Node CONV s50i3 / identity-91                  mismatch in :modal-strength: CONV = MS-affirmative             GOLD = 
 Node CONV s50l / last (last)                   mismatch in concept:         CONV = last                       GOLD = ordinal-entity
 Node CONV s50l / last (last)                   mismatch in :value:          CONV =                            GOLD = "-1"
 Node CONV s50n / number (a number)             mismatch in :mod:            CONV = s50i mapped to GOLD s50i   GOLD = 
@@ -9235,8 +9224,6 @@ Node GOLD s50h3 / have-org-role-91             mismatch in :ARG3:           GOLD
 Node GOLD s50h3 / have-org-role-91             mismatch in :temporal:       GOLD = s50c                       CONV = UNMAPPED
 Node GOLD s50h4 / have-org-role-91             mismatch in concept:         GOLD = have-org-role-91           CONV = UNMAPPED
 Node GOLD s50h4 / have-org-role-91             mismatch in :ARG1:           GOLD = s50t4                      CONV = UNMAPPED
-Node GOLD s50i3 / identity-91                  mismatch in concept:         GOLD = identity-91                CONV = UNMAPPED
-Node GOLD s50i3 / identity-91                  mismatch in :ARG2:           GOLD = s50t5                      CONV = UNMAPPED
 Node GOLD s50n2 / name (Hillary Clinton)       mismatch in concept:         GOLD = name                       CONV = UNMAPPED
 Node GOLD s50n2 / name (Hillary Clinton)       mismatch in :op1:            GOLD = "Hillary"                  CONV = UNMAPPED
 Node GOLD s50n2 / name (Hillary Clinton)       mismatch in :op2:            GOLD = "Clinton"                  CONV = UNMAPPED
@@ -9245,8 +9232,8 @@ Node GOLD s50n5 / name (Rich)                  mismatch in :op1:            GOLD
 Node GOLD s50p4 / person (husband)             mismatch in concept:         GOLD = person                     CONV = UNMAPPED
 Node GOLD s50p4 / person (husband)             mismatch in :ARG1-of:        GOLD = s50h2                      CONV = UNMAPPED
 
-Correct 11 out of 72 non-empty CONV values => recall    15%.
-Correct 11 out of 58 non-empty GOLD values => precision 19%.
+Correct 14 out of 72 non-empty CONV values => recall    19%.
+Correct 14 out of 58 non-empty GOLD values => precision 24%.
 
 -------------------------------------------------------------------------------
 Comparing sentence 51:
@@ -17975,8 +17962,10 @@ Node-node correspondences:
 Ambiguous projection of GOLD node s99p (making peace) to 2 CONV nodes [s99m (at making), s99p (peace)]
   The winner is GOLD node s99p (making peace) <--> CONV node s99p (peace): econcepts=peace/peace, match=1 (concept=peace), weak match=1 (concept).
 
+Ambiguous projection of CONV node s99i2 (identity-91) to 2 GOLD nodes [s99i2 (identity-91), s99i3 (identity-91)]
 Ambiguous projection of CONV node s99t (Enrique) to 2 GOLD nodes [s99n (Enrique), s99t (Enrique)]
 Ambiguous projection of CONV node s99t3 (of France) to 2 GOLD nodes [s99n3 (France), s99t3 (France)]
+  The winner is CONV node s99i2 (identity-91) <--> GOLD node s99i2 (identity-91): econcepts=identity-91/identity-91, match=2 (concept=identity-91,:ARG2=s99i mapped to GOLD s99i), weak match=2 (concept,:ARG2).
   The winner is CONV node s99t (Enrique) <--> GOLD node s99t (Enrique): econcepts=type-NE/person, match=0 (), weak match=2 (concept,:name).
   The winner is CONV node s99t3 (of France) <--> GOLD node s99t3 (France): econcepts=type-NE/country, match=0 (), weak match=2 (concept,:name).
 
@@ -17989,26 +17978,25 @@ Correspondence GOLD s99e2 (execute)      = CONV s99e2 (execute)
 Correspondence GOLD s99e3 (entire)       = CONV s99e3 (entire)
 Correspondence GOLD s99f  (finally)      = CONV s99f  (finally)
 Correspondence GOLD s99i  (invasion)     = CONV s99i  (an invasion)
+Correspondence GOLD s99i2 (identity-91)  = CONV s99i2 (identity-91)
 Correspondence GOLD s99p  (making peace) = CONV s99p  (peace)
 Correspondence GOLD s99p2 (plan)         = CONV s99p2 (plan)
 Correspondence GOLD s99s  (spring)       = CONV s99s  (in spring)
 Correspondence GOLD s99t  (Enrique)      = CONV s99t  (Enrique)
 Correspondence GOLD s99t2 (Kingdom)      = CONV s99t2 (of the Kingdom)
 Correspondence GOLD s99t3 (France)       = CONV s99t3 (of France)
-Correspondence GOLD s99i2 (identity-91)  = CONV 
 Correspondence GOLD s99i3 (identity-91)  = CONV 
 Correspondence GOLD s99n  (Enrique)      = CONV 
 Correspondence GOLD s99n3 (France)       = CONV 
 Correspondence GOLD                      = CONV s99f2 (FILL)
-Correspondence GOLD                      = CONV s99i2 (identity-91)
 Correspondence GOLD                      = CONV s99m  (at making)
 Correspondence GOLD                      = CONV s99n  (name["Enrique"])
 Correspondence GOLD                      = CONV s99n2 (name["Kingdom"])
 Correspondence GOLD                      = CONV s99n3 (name["France"])
 Correspondence GOLD                      = CONV s99p3 (his)
 
-Aligned 15 out of 19 GOLD nodes, that is 79%.
-Aligned 15 out of 22 CONV nodes, that is 68%.
+Aligned 16 out of 19 GOLD nodes, that is 84%.
+Aligned 16 out of 22 CONV nodes, that is 73%.
 
 Comparing attributes of GOLD nodes with their CONV counterparts.
 Node GOLD s99a / attempt (attempts)   mismatch in :aspect:         GOLD = activity                   CONV = 
@@ -18041,8 +18029,8 @@ Node GOLD s99i / invasion (invasion)  mismatch in :goal:           GOLD = s99t2 
 Node GOLD s99i / invasion (invasion)  mismatch in :modal-strength: GOLD = full-affirmative           CONV = 
 Node GOLD s99i / invasion (invasion)  mismatch in :mod:            GOLD =                            CONV = s99t2
 Node GOLD s99i / invasion (invasion)  mismatch in :refer-number:   GOLD =                            CONV = singular
-Node GOLD s99i2 / identity-91         mismatch in concept:         GOLD = identity-91                CONV = UNMAPPED
-Node GOLD s99i2 / identity-91         mismatch in :ARG2:           GOLD = s99i                       CONV = UNMAPPED
+Node GOLD s99i2 / identity-91         mismatch in :aspect:         GOLD =                            CONV = state
+Node GOLD s99i2 / identity-91         mismatch in :modal-strength: GOLD =                            CONV = MS-affirmative
 Node GOLD s99i3 / identity-91         mismatch in concept:         GOLD = identity-91                CONV = UNMAPPED
 Node GOLD s99i3 / identity-91         mismatch in :ARG2:           GOLD = s99t3                      CONV = UNMAPPED
 Node GOLD s99n / name (Enrique)       mismatch in concept:         GOLD = name                       CONV = UNMAPPED
@@ -18053,7 +18041,6 @@ Node GOLD s99p / peace (making peace) mismatch in :aspect:         GOLD = perfor
 Node GOLD s99p / peace (making peace) mismatch in :modal-strength: GOLD = full-affirmative           CONV = 
 Node GOLD s99p / peace (making peace) mismatch in :refer-number:   GOLD =                            CONV = singular
 Node GOLD s99p2 / plan (plan)         mismatch in :actor:          GOLD = s99t mapped to CONV s99t   CONV = 
-Node GOLD s99p2 / plan (plan)         mismatch in :ARG1-of:        GOLD = s99i2 unmapped             CONV = s99i2
 Node GOLD s99p2 / plan (plan)         mismatch in :aspect:         GOLD = process                    CONV = 
 Node GOLD s99p2 / plan (plan)         mismatch in :modal-strength: GOLD = full-affirmative           CONV = 
 Node GOLD s99p2 / plan (plan)         mismatch in :possessor:      GOLD =                            CONV = s99p3
@@ -18072,10 +18059,6 @@ Node GOLD s99t3 / country (France)    mismatch in concept:         GOLD = countr
 Node GOLD s99t3 / country (France)    mismatch in :name:           GOLD = s99n3 unmapped             CONV = s99n3
 Node CONV s99f2 / FILL                mismatch in concept:         CONV = FILL                       GOLD = UNMAPPED
 Node CONV s99f2 / FILL                mismatch in :refer-number:   CONV = FILL                       GOLD = UNMAPPED
-Node CONV s99i2 / identity-91         mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
-Node CONV s99i2 / identity-91         mismatch in :ARG2:           CONV = s99i                       GOLD = UNMAPPED
-Node CONV s99i2 / identity-91         mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
-Node CONV s99i2 / identity-91         mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
 Node CONV s99m / make (at making)     mismatch in concept:         CONV = make                       GOLD = UNMAPPED
 Node CONV s99m / make (at making)     mismatch in :actor:          CONV = s99f2                      GOLD = UNMAPPED
 Node CONV s99m / make (at making)     mismatch in :aspect:         CONV = ASP                        GOLD = UNMAPPED
@@ -18091,8 +18074,8 @@ Node CONV s99p3 / person (his)        mismatch in concept:         CONV = person
 Node CONV s99p3 / person (his)        mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED
 Node CONV s99p3 / person (his)        mismatch in :refer-person:   CONV = 3rd                        GOLD = UNMAPPED
 
-Correct 15 out of 57 non-empty GOLD values => recall    26%.
-Correct 15 out of 64 non-empty CONV values => precision 23%.
+Correct 18 out of 57 non-empty GOLD values => recall    32%.
+Correct 18 out of 64 non-empty CONV values => precision 28%.
 
 Comparing attributes of CONV nodes with their GOLD counterparts.
 Node CONV s99a / attempt (The attempts)    mismatch in :mod:            CONV = s99m unmapped              GOLD = 
@@ -18124,10 +18107,8 @@ Node CONV s99i / invasion (an invasion)    mismatch in :refer-number:   CONV = s
 Node CONV s99i / invasion (an invasion)    mismatch in :aspect:         CONV =                            GOLD = process
 Node CONV s99i / invasion (an invasion)    mismatch in :goal:           CONV =                            GOLD = s99t2
 Node CONV s99i / invasion (an invasion)    mismatch in :modal-strength: CONV =                            GOLD = full-affirmative
-Node CONV s99i2 / identity-91              mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
-Node CONV s99i2 / identity-91              mismatch in :ARG2:           CONV = s99i                       GOLD = UNMAPPED
-Node CONV s99i2 / identity-91              mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
-Node CONV s99i2 / identity-91              mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
+Node CONV s99i2 / identity-91              mismatch in :aspect:         CONV = state                      GOLD = 
+Node CONV s99i2 / identity-91              mismatch in :modal-strength: CONV = MS-affirmative             GOLD = 
 Node CONV s99m / make (at making)          mismatch in concept:         CONV = make                       GOLD = UNMAPPED
 Node CONV s99m / make (at making)          mismatch in :actor:          CONV = s99f2                      GOLD = UNMAPPED
 Node CONV s99m / make (at making)          mismatch in :aspect:         CONV = ASP                        GOLD = UNMAPPED
@@ -18142,7 +18123,6 @@ Node CONV s99n3 / name                     mismatch in :op1:            CONV = "
 Node CONV s99p / peace (peace)             mismatch in :refer-number:   CONV = singular                   GOLD = 
 Node CONV s99p / peace (peace)             mismatch in :aspect:         CONV =                            GOLD = performance
 Node CONV s99p / peace (peace)             mismatch in :modal-strength: CONV =                            GOLD = full-affirmative
-Node CONV s99p2 / plan (plan)              mismatch in :ARG1-of:        CONV = s99i2 unmapped             GOLD = s99i2
 Node CONV s99p2 / plan (plan)              mismatch in :possessor:      CONV = s99p3 unmapped             GOLD = 
 Node CONV s99p2 / plan (plan)              mismatch in :refer-number:   CONV = singular                   GOLD = 
 Node CONV s99p2 / plan (plan)              mismatch in :actor:          CONV =                            GOLD = s99t
@@ -18166,8 +18146,6 @@ Node CONV s99t3 / type-NE (of France)      mismatch in :name:           CONV = s
 Node CONV s99x / 1415 (of 1415)            mismatch in concept:         CONV = 1415                       GOLD = date-entity
 Node CONV s99x / 1415 (of 1415)            mismatch in :season:         CONV =                            GOLD = s99s
 Node CONV s99x / 1415 (of 1415)            mismatch in :year:           CONV =                            GOLD = 1415
-Node GOLD s99i2 / identity-91              mismatch in concept:         GOLD = identity-91                CONV = UNMAPPED
-Node GOLD s99i2 / identity-91              mismatch in :ARG2:           GOLD = s99i                       CONV = UNMAPPED
 Node GOLD s99i3 / identity-91              mismatch in concept:         GOLD = identity-91                CONV = UNMAPPED
 Node GOLD s99i3 / identity-91              mismatch in :ARG2:           GOLD = s99t3                      CONV = UNMAPPED
 Node GOLD s99n / name (Enrique)            mismatch in concept:         GOLD = name                       CONV = UNMAPPED
@@ -18175,8 +18153,8 @@ Node GOLD s99n / name (Enrique)            mismatch in :op1:            GOLD = "
 Node GOLD s99n3 / name (France)            mismatch in concept:         GOLD = name                       CONV = UNMAPPED
 Node GOLD s99n3 / name (France)            mismatch in :op1:            GOLD = "France"                   CONV = UNMAPPED
 
-Correct 15 out of 64 non-empty CONV values => recall    23%.
-Correct 15 out of 57 non-empty GOLD values => precision 26%.
+Correct 18 out of 64 non-empty CONV values => recall    28%.
+Correct 18 out of 57 non-empty GOLD values => precision 32%.
 
 -------------------------------------------------------------------------------
 Comparing sentence 100:
@@ -18436,12 +18414,12 @@ Correct 9 out of 51 non-empty GOLD values => precision 18%.
 SUMMARY:
 Number of nodes per file: GOLD:1279, CONV:1195
 File-to-file node mapping:
-Out of 1279 total GOLD nodes, 872 mapped to CONV => recall    = 68%.
-Out of 1195 total CONV nodes, 872 mapped to GOLD => precision = 73%.
- => F₁(GOLD,CONV) = 70%.
-Before symmetrization, 52 GOLD nodes were projected ambiguously to 107 CONV nodes.
-Before symmetrization, 201 CONV nodes were projected ambiguously to 418 GOLD nodes.
+Out of 1279 total GOLD nodes, 875 mapped to CONV => recall    = 68%.
+Out of 1195 total CONV nodes, 875 mapped to GOLD => precision = 73%.
+ => F₁(GOLD,CONV) = 71%.
+Before symmetrization, 54 GOLD nodes were projected ambiguously to 111 CONV nodes.
+Before symmetrization, 202 CONV nodes were projected ambiguously to 420 GOLD nodes.
 Concept and relation comparisons (for unmapped nodes all counted as incorrect):
-Out of 3702 non-empty GOLD values, 962 found in CONV => recall    26%.
-Out of 3401 non-empty CONV values, 962 found in GOLD => precision 28%.
+Out of 3702 non-empty GOLD values, 969 found in CONV => recall    26%.
+Out of 3401 non-empty CONV values, 969 found in GOLD => precision 28%.
  => juːmæʧ (GOLD, CONV) = F₁ = 27%.

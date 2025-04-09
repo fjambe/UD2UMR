@@ -5902,54 +5902,47 @@ File CONV: 2 nodes unaligned: s33p2/person, s33p3/person.
 Node-node correspondences:
 
 Ambiguous projection of GOLD node s33a2 (abbiamo bisogno) to 2 CONV nodes [s33a2 (abbiamo), s33b (bisogno)]
-  The winner is GOLD node s33a2 (abbiamo bisogno) <--> CONV node s33a2 (abbiamo): econcepts=avere-bisogno/avere, match=0 (), weak match=4 (concept,:actor,:modal-strength,:aspect).
+Ambiguous projection of GOLD node s33p2 (person) to 2 CONV nodes [s33p2 (person), s33p3 (person)]
+  The winner is GOLD node s33a2 (abbiamo bisogno) <--> CONV node s33a2 (abbiamo): econcepts=avere-bisogno/avere, match=1 (:actor=s33p2 mapped to CONV s33p2), weak match=4 (concept,:actor,:modal-strength,:aspect).
+  The winner is GOLD node s33p2 (person) <--> CONV node s33p2 (person): econcepts=person/person, match=3 (concept=person,:refer-number=plural,:refer-person=1st), weak match=3 (concept,:refer-person,:refer-number).
 
 Correspondence GOLD s33a  (Amici)           = CONV s33a  (Amici)
 Correspondence GOLD s33a2 (abbiamo bisogno) = CONV s33a2 (abbiamo)
 Correspondence GOLD s33i  (non è)           = CONV s33i  (è)
 Correspondence GOLD s33p  (in il paese)     = CONV s33p  (in il paese)
+Correspondence GOLD s33p2 (person)          = CONV s33p2 (person)
 Correspondence GOLD s33t  (questo)          = CONV s33f  (questo)
 Correspondence GOLD s33t2 (ciò)             = CONV s33f2 (ciò)
-Correspondence GOLD s33p2 (person)          = CONV 
 Correspondence GOLD                         = CONV s33b  (bisogno)
-Correspondence GOLD                         = CONV s33p2 (person)
 Correspondence GOLD                         = CONV s33p3 (person)
 
-Aligned 6 out of 7 GOLD nodes, that is 86%.
-Aligned 6 out of 9 CONV nodes, that is 67%.
+Aligned 7 out of 7 GOLD nodes, that is 100%.
+Aligned 7 out of 9 CONV nodes, that is 78%.
 
 Comparing attributes of GOLD nodes with their CONV counterparts.
 Node GOLD s33a2 / avere-bisogno (abbiamo bisogno) mismatch in concept:         GOLD = avere-bisogno              CONV = avere
-Node GOLD s33a2 / avere-bisogno (abbiamo bisogno) mismatch in :actor:          GOLD = s33p2 unmapped             CONV = s33p2
 Node GOLD s33a2 / avere-bisogno (abbiamo bisogno) mismatch in :aspect:         GOLD = state                      CONV = ASP
 Node GOLD s33a2 / avere-bisogno (abbiamo bisogno) mismatch in :modal-strength: GOLD = full-affirmative           CONV = MS-affirmative
 Node GOLD s33a2 / avere-bisogno (abbiamo bisogno) mismatch in :place:          GOLD = s33p mapped to CONV s33p   CONV = 
 Node GOLD s33a2 / avere-bisogno (abbiamo bisogno) mismatch in :OBLIQUE:        GOLD =                            CONV = s33p
 Node GOLD s33a2 / avere-bisogno (abbiamo bisogno) mismatch in :undergoer:      GOLD =                            CONV = s33b
 Node GOLD s33i / identity-91 (non è)              mismatch in :modal-strength: GOLD = full-negative              CONV = MS-affirmative
-Node GOLD s33p / paese (in il paese)              mismatch in :possessor:      GOLD = s33p2 unmapped             CONV = s33p3
-Node GOLD s33p2 / person                          mismatch in concept:         GOLD = person                     CONV = UNMAPPED
-Node GOLD s33p2 / person                          mismatch in :refer-number:   GOLD = plural                     CONV = UNMAPPED
-Node GOLD s33p2 / person                          mismatch in :refer-person:   GOLD = 1st                        CONV = UNMAPPED
+Node GOLD s33p / paese (in il paese)              mismatch in :possessor:      GOLD = s33p2 mapped to CONV s33p2 CONV = s33p3
 Node GOLD s33t / thing (questo)                   mismatch in concept:         GOLD = thing                      CONV = FILL
 Node GOLD s33t2 / thing (ciò)                     mismatch in concept:         GOLD = thing                      CONV = FILL
 Node GOLD s33t2 / thing (ciò)                     mismatch in :undergoer-of:   GOLD = s33a2 mapped to CONV s33a2 CONV = 
 Node GOLD s33t2 / thing (ciò)                     mismatch in :OBLIQUE-of:     GOLD =                            CONV = s33a2
 Node CONV s33b / bisogno (bisogno)                mismatch in concept:         CONV = bisogno                    GOLD = UNMAPPED
 Node CONV s33b / bisogno (bisogno)                mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED
-Node CONV s33p2 / person                          mismatch in concept:         CONV = person                     GOLD = UNMAPPED
-Node CONV s33p2 / person                          mismatch in :refer-number:   CONV = plural                     GOLD = UNMAPPED
-Node CONV s33p2 / person                          mismatch in :refer-person:   CONV = 1st                        GOLD = UNMAPPED
 Node CONV s33p3 / person                          mismatch in concept:         CONV = person                     GOLD = UNMAPPED
 Node CONV s33p3 / person                          mismatch in :refer-number:   CONV = plural                     GOLD = UNMAPPED
 Node CONV s33p3 / person                          mismatch in :refer-person:   CONV = 1st                        GOLD = UNMAPPED
 
-Correct 11 out of 24 non-empty GOLD values => recall    46%.
-Correct 11 out of 30 non-empty CONV values => precision 37%.
+Correct 15 out of 24 non-empty GOLD values => recall    63%.
+Correct 15 out of 30 non-empty CONV values => precision 50%.
 
 Comparing attributes of CONV nodes with their GOLD counterparts.
 Node CONV s33a2 / avere (abbiamo)    mismatch in concept:         CONV = avere                      GOLD = avere-bisogno
-Node CONV s33a2 / avere (abbiamo)    mismatch in :actor:          CONV = s33p2 unmapped             GOLD = s33p2
 Node CONV s33a2 / avere (abbiamo)    mismatch in :aspect:         CONV = ASP                        GOLD = state
 Node CONV s33a2 / avere (abbiamo)    mismatch in :modal-strength: CONV = MS-affirmative             GOLD = full-affirmative
 Node CONV s33a2 / avere (abbiamo)    mismatch in :OBLIQUE:        CONV = s33p mapped to GOLD s33p   GOLD = 
@@ -5963,18 +5956,12 @@ Node CONV s33f2 / FILL (ciò)         mismatch in :OBLIQUE-of:     CONV = s33a2 
 Node CONV s33f2 / FILL (ciò)         mismatch in :undergoer-of:   CONV =                            GOLD = s33a2
 Node CONV s33i / identity-91 (è)     mismatch in :modal-strength: CONV = MS-affirmative             GOLD = full-negative
 Node CONV s33p / paese (in il paese) mismatch in :possessor:      CONV = s33p3 unmapped             GOLD = s33p2
-Node CONV s33p2 / person             mismatch in concept:         CONV = person                     GOLD = UNMAPPED
-Node CONV s33p2 / person             mismatch in :refer-number:   CONV = plural                     GOLD = UNMAPPED
-Node CONV s33p2 / person             mismatch in :refer-person:   CONV = 1st                        GOLD = UNMAPPED
 Node CONV s33p3 / person             mismatch in concept:         CONV = person                     GOLD = UNMAPPED
 Node CONV s33p3 / person             mismatch in :refer-number:   CONV = plural                     GOLD = UNMAPPED
 Node CONV s33p3 / person             mismatch in :refer-person:   CONV = 1st                        GOLD = UNMAPPED
-Node GOLD s33p2 / person             mismatch in concept:         GOLD = person                     CONV = UNMAPPED
-Node GOLD s33p2 / person             mismatch in :refer-number:   GOLD = plural                     CONV = UNMAPPED
-Node GOLD s33p2 / person             mismatch in :refer-person:   GOLD = 1st                        CONV = UNMAPPED
 
-Correct 11 out of 30 non-empty CONV values => recall    37%.
-Correct 11 out of 24 non-empty GOLD values => precision 46%.
+Correct 15 out of 30 non-empty CONV values => recall    50%.
+Correct 15 out of 24 non-empty GOLD values => precision 63%.
 
 -------------------------------------------------------------------------------
 Comparing sentence 34:
@@ -6436,9 +6423,11 @@ Node-node correspondences:
 
 Ambiguous projection of GOLD node s36c (una collezione) to 2 CONV nodes [s36c (collezione), s36u (una)]
 Ambiguous projection of GOLD node s36h (perché è) to 2 CONV nodes [s36h (è), s36i (perché interessante)]
+Ambiguous projection of GOLD node s36p2 (person) to 3 CONV nodes [s36p2 (person), s36p3 (person), s36p4 (person)]
 Ambiguous projection of GOLD node s36r (sono a la ricerca) to 2 CONV nodes [s36i2 (sono), s36r (a la ricerca)]
   The winner is GOLD node s36c (una collezione) <--> CONV node s36c (collezione): econcepts=collezione/collezione, match=2 (concept=collezione,:refer-number=singular), weak match=2 (concept,:refer-number).
   The winner is GOLD node s36h (perché è) <--> CONV node s36h (è): econcepts=have-mod-91/have-mod-91, match=4 (concept=have-mod-91,:ARG1=s36p mapped to CONV s36p,:ARG2=s36i mapped to CONV s36i,:aspect=state), weak match=5 (concept,:ARG1,:ARG2,:modal-strength,:aspect).
+  The winner is GOLD node s36p2 (person) <--> CONV node s36p2 (person): econcepts=person/person, match=3 (concept=person,:refer-number=singular,:refer-person=1st), weak match=3 (concept,:refer-person,:refer-number).
   The winner is GOLD node s36r (sono a la ricerca) <--> CONV node s36r (a la ricerca): econcepts=ricercare/ricerca, match=1 (:manner=s36s mapped to CONV s36s), weak match=2 (concept,:manner).
 
 Ambiguous projection of CONV node s36i (perché interessante) to 2 GOLD nodes [s36h (perché è), s36i (interessante)]
@@ -6453,150 +6442,137 @@ Correspondence GOLD s36h  (perché è)          = CONV s36h  (è)
 Correspondence GOLD s36i  (interessante)      = CONV s36i  (perché interessante)
 Correspondence GOLD s36m  (di muse)           = CONV s36m  (di muse)
 Correspondence GOLD s36p  (preparare)         = CONV s36p  (preparare)
+Correspondence GOLD s36p2 (person)            = CONV s36p2 (person)
 Correspondence GOLD s36r  (sono a la ricerca) = CONV s36r  (a la ricerca)
 Correspondence GOLD s36s  (sempre)            = CONV s36s  (sempre)
 Correspondence GOLD s36t2 (quando trovo)      = CONV s36t  (quando trovo)
-Correspondence GOLD s36p2 (person)            = CONV 
 Correspondence GOLD s36t  (ci)                = CONV 
 Correspondence GOLD                           = CONV s36i2 (sono)
-Correspondence GOLD                           = CONV s36p2 (person)
 Correspondence GOLD                           = CONV s36p3 (person)
 Correspondence GOLD                           = CONV s36p4 (person)
 Correspondence GOLD                           = CONV s36u  (una)
 Correspondence GOLD                           = CONV s36u2 (una)
 
-Aligned 13 out of 15 GOLD nodes, that is 87%.
-Aligned 13 out of 19 CONV nodes, that is 68%.
+Aligned 14 out of 15 GOLD nodes, that is 93%.
+Aligned 14 out of 19 CONV nodes, that is 74%.
 
 Comparing attributes of GOLD nodes with their CONV counterparts.
-Node GOLD s36a / amare (Amo)                   mismatch in :aspect:         GOLD = state                     CONV = ASP
-Node GOLD s36a / amare (Amo)                   mismatch in :experiencer:    GOLD = s36p2 unmapped            CONV = 
-Node GOLD s36a / amare (Amo)                   mismatch in :stimulus:       GOLD = s36g mapped to CONV s36g  CONV = 
-Node GOLD s36a / amare (Amo)                   mismatch in :actor:          GOLD =                           CONV = s36p2
-Node GOLD s36a / amare (Amo)                   mismatch in :theme:          GOLD =                           CONV = s36g
-Node GOLD s36a3 / and (e)                      mismatch in :op2:            GOLD = s36r mapped to CONV s36r  CONV = s36i2
-Node GOLD s36c / collezione (una collezione)   mismatch in :temporal:       GOLD = s36t2 mapped to CONV s36t CONV = 
-Node GOLD s36c / collezione (una collezione)   mismatch in :mod:            GOLD =                           CONV = s36u
-Node GOLD s36g / giocare (giocar)              mismatch in concept:         GOLD = giocare                   CONV = giocare-ci
-Node GOLD s36g / giocare (giocar)              mismatch in :actor:          GOLD = s36p2 unmapped            CONV = 
-Node GOLD s36g / giocare (giocar)              mismatch in :aspect:         GOLD = activity                  CONV = ASP
-Node GOLD s36g / giocare (giocar)              mismatch in :instrument:     GOLD = s36t unmapped             CONV = 
-Node GOLD s36g / giocare (giocar)              mismatch in :modal-strength: GOLD = full-affirmative          CONV = MS-affirmative
-Node GOLD s36h / have-mod-91 (perché è)        mismatch in :manner:         GOLD = s36d mapped to CONV s36d  CONV = 
-Node GOLD s36h / have-mod-91 (perché è)        mismatch in :modal-strength: GOLD = full-affirmative          CONV = MS-affirmative
-Node GOLD s36i / interessare (interessante)    mismatch in concept:         GOLD = interessare               CONV = interessante
-Node GOLD s36i / interessare (interessante)    mismatch in :aspect:         GOLD = state                     CONV = ASP
-Node GOLD s36i / interessare (interessante)    mismatch in :modal-strength: GOLD = full-affirmative          CONV = MS-affirmative
-Node GOLD s36i / interessare (interessante)    mismatch in :manner:         GOLD =                           CONV = s36d
-Node GOLD s36m / musa (di muse)                mismatch in :refer-number:   GOLD = plural                    CONV = 
-Node GOLD s36p / preparare (preparare)         mismatch in :actor:          GOLD = s36p2 unmapped            CONV = 
-Node GOLD s36p / preparare (preparare)         mismatch in :aspect:         GOLD = activity                  CONV = 
-Node GOLD s36p / preparare (preparare)         mismatch in :modal-strength: GOLD = full-affirmative          CONV = 
-Node GOLD s36p / preparare (preparare)         mismatch in :temporal:       GOLD =                           CONV = s36t
-Node GOLD s36p2 / person                       mismatch in concept:         GOLD = person                    CONV = UNMAPPED
-Node GOLD s36p2 / person                       mismatch in :refer-number:   GOLD = singular                  CONV = UNMAPPED
-Node GOLD s36p2 / person                       mismatch in :refer-person:   GOLD = 1st                       CONV = UNMAPPED
-Node GOLD s36r / ricercare (sono a la ricerca) mismatch in concept:         GOLD = ricercare                 CONV = ricerca
-Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :actor:          GOLD = s36p2 unmapped            CONV = 
-Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :aspect:         GOLD = activity                  CONV = 
-Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :modal-strength: GOLD = full-affirmative          CONV = 
-Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :reason:         GOLD = s36h mapped to CONV s36h  CONV = 
-Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :theme:          GOLD = s36m mapped to CONV s36m  CONV = 
-Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :ADVCL:          GOLD =                           CONV = s36h
-Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :mod:            GOLD =                           CONV = s36m
-Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :refer-number:   GOLD =                           CONV = singular
-Node GOLD s36t / thing (ci)                    mismatch in concept:         GOLD = thing                     CONV = UNMAPPED
-Node GOLD s36t2 / trovare (quando trovo)       mismatch in concept:         GOLD = trovare                   CONV = trovare-ne
-Node GOLD s36t2 / trovare (quando trovo)       mismatch in :actor:          GOLD = s36p2 unmapped            CONV = s36p4
-Node GOLD s36t2 / trovare (quando trovo)       mismatch in :aspect:         GOLD = performance               CONV = ASP
-Node GOLD s36t2 / trovare (quando trovo)       mismatch in :modal-strength: GOLD = full-affirmative          CONV = MS-affirmative
-Node GOLD s36t2 / trovare (quando trovo)       mismatch in :theme:          GOLD = s36c mapped to CONV s36c  CONV = 
-Node GOLD s36t2 / trovare (quando trovo)       mismatch in :undergoer:      GOLD =                           CONV = s36u2
-Node CONV s36i2 / identity-91 (sono)           mismatch in concept:         CONV = identity-91               GOLD = UNMAPPED
-Node CONV s36i2 / identity-91 (sono)           mismatch in :ARG1:           CONV = s36p3                     GOLD = UNMAPPED
-Node CONV s36i2 / identity-91 (sono)           mismatch in :ARG2:           CONV = s36r                      GOLD = UNMAPPED
-Node CONV s36i2 / identity-91 (sono)           mismatch in :aspect:         CONV = state                     GOLD = UNMAPPED
-Node CONV s36i2 / identity-91 (sono)           mismatch in :modal-strength: CONV = MS-affirmative            GOLD = UNMAPPED
-Node CONV s36p2 / person                       mismatch in concept:         CONV = person                    GOLD = UNMAPPED
-Node CONV s36p2 / person                       mismatch in :refer-number:   CONV = singular                  GOLD = UNMAPPED
-Node CONV s36p2 / person                       mismatch in :refer-person:   CONV = 1st                       GOLD = UNMAPPED
-Node CONV s36p3 / person                       mismatch in concept:         CONV = person                    GOLD = UNMAPPED
-Node CONV s36p3 / person                       mismatch in :refer-number:   CONV = singular                  GOLD = UNMAPPED
-Node CONV s36p3 / person                       mismatch in :refer-person:   CONV = 1st                       GOLD = UNMAPPED
-Node CONV s36p4 / person                       mismatch in concept:         CONV = person                    GOLD = UNMAPPED
-Node CONV s36p4 / person                       mismatch in :refer-number:   CONV = singular                  GOLD = UNMAPPED
-Node CONV s36p4 / person                       mismatch in :refer-person:   CONV = 1st                       GOLD = UNMAPPED
-Node CONV s36u / uno (una)                     mismatch in concept:         CONV = uno                       GOLD = UNMAPPED
-Node CONV s36u2 / uno (una)                    mismatch in concept:         CONV = uno                       GOLD = UNMAPPED
-Node CONV s36u2 / uno (una)                    mismatch in :refer-number:   CONV = singular                  GOLD = UNMAPPED
+Node GOLD s36a / amare (Amo)                   mismatch in :aspect:         GOLD = state                      CONV = ASP
+Node GOLD s36a / amare (Amo)                   mismatch in :experiencer:    GOLD = s36p2 mapped to CONV s36p2 CONV = 
+Node GOLD s36a / amare (Amo)                   mismatch in :stimulus:       GOLD = s36g mapped to CONV s36g   CONV = 
+Node GOLD s36a / amare (Amo)                   mismatch in :actor:          GOLD =                            CONV = s36p2
+Node GOLD s36a / amare (Amo)                   mismatch in :theme:          GOLD =                            CONV = s36g
+Node GOLD s36a3 / and (e)                      mismatch in :op2:            GOLD = s36r mapped to CONV s36r   CONV = s36i2
+Node GOLD s36c / collezione (una collezione)   mismatch in :temporal:       GOLD = s36t2 mapped to CONV s36t  CONV = 
+Node GOLD s36c / collezione (una collezione)   mismatch in :mod:            GOLD =                            CONV = s36u
+Node GOLD s36g / giocare (giocar)              mismatch in concept:         GOLD = giocare                    CONV = giocare-ci
+Node GOLD s36g / giocare (giocar)              mismatch in :actor:          GOLD = s36p2 mapped to CONV s36p2 CONV = 
+Node GOLD s36g / giocare (giocar)              mismatch in :aspect:         GOLD = activity                   CONV = ASP
+Node GOLD s36g / giocare (giocar)              mismatch in :instrument:     GOLD = s36t unmapped              CONV = 
+Node GOLD s36g / giocare (giocar)              mismatch in :modal-strength: GOLD = full-affirmative           CONV = MS-affirmative
+Node GOLD s36h / have-mod-91 (perché è)        mismatch in :manner:         GOLD = s36d mapped to CONV s36d   CONV = 
+Node GOLD s36h / have-mod-91 (perché è)        mismatch in :modal-strength: GOLD = full-affirmative           CONV = MS-affirmative
+Node GOLD s36i / interessare (interessante)    mismatch in concept:         GOLD = interessare                CONV = interessante
+Node GOLD s36i / interessare (interessante)    mismatch in :aspect:         GOLD = state                      CONV = ASP
+Node GOLD s36i / interessare (interessante)    mismatch in :modal-strength: GOLD = full-affirmative           CONV = MS-affirmative
+Node GOLD s36i / interessare (interessante)    mismatch in :manner:         GOLD =                            CONV = s36d
+Node GOLD s36m / musa (di muse)                mismatch in :refer-number:   GOLD = plural                     CONV = 
+Node GOLD s36p / preparare (preparare)         mismatch in :actor:          GOLD = s36p2 mapped to CONV s36p2 CONV = 
+Node GOLD s36p / preparare (preparare)         mismatch in :aspect:         GOLD = activity                   CONV = 
+Node GOLD s36p / preparare (preparare)         mismatch in :modal-strength: GOLD = full-affirmative           CONV = 
+Node GOLD s36p / preparare (preparare)         mismatch in :temporal:       GOLD =                            CONV = s36t
+Node GOLD s36r / ricercare (sono a la ricerca) mismatch in concept:         GOLD = ricercare                  CONV = ricerca
+Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :actor:          GOLD = s36p2 mapped to CONV s36p2 CONV = 
+Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :aspect:         GOLD = activity                   CONV = 
+Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :modal-strength: GOLD = full-affirmative           CONV = 
+Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :reason:         GOLD = s36h mapped to CONV s36h   CONV = 
+Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :theme:          GOLD = s36m mapped to CONV s36m   CONV = 
+Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :ADVCL:          GOLD =                            CONV = s36h
+Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :mod:            GOLD =                            CONV = s36m
+Node GOLD s36r / ricercare (sono a la ricerca) mismatch in :refer-number:   GOLD =                            CONV = singular
+Node GOLD s36t / thing (ci)                    mismatch in concept:         GOLD = thing                      CONV = UNMAPPED
+Node GOLD s36t2 / trovare (quando trovo)       mismatch in concept:         GOLD = trovare                    CONV = trovare-ne
+Node GOLD s36t2 / trovare (quando trovo)       mismatch in :actor:          GOLD = s36p2 mapped to CONV s36p2 CONV = s36p4
+Node GOLD s36t2 / trovare (quando trovo)       mismatch in :aspect:         GOLD = performance                CONV = ASP
+Node GOLD s36t2 / trovare (quando trovo)       mismatch in :modal-strength: GOLD = full-affirmative           CONV = MS-affirmative
+Node GOLD s36t2 / trovare (quando trovo)       mismatch in :theme:          GOLD = s36c mapped to CONV s36c   CONV = 
+Node GOLD s36t2 / trovare (quando trovo)       mismatch in :undergoer:      GOLD =                            CONV = s36u2
+Node CONV s36i2 / identity-91 (sono)           mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
+Node CONV s36i2 / identity-91 (sono)           mismatch in :ARG1:           CONV = s36p3                      GOLD = UNMAPPED
+Node CONV s36i2 / identity-91 (sono)           mismatch in :ARG2:           CONV = s36r                       GOLD = UNMAPPED
+Node CONV s36i2 / identity-91 (sono)           mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
+Node CONV s36i2 / identity-91 (sono)           mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
+Node CONV s36p3 / person                       mismatch in concept:         CONV = person                     GOLD = UNMAPPED
+Node CONV s36p3 / person                       mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED
+Node CONV s36p3 / person                       mismatch in :refer-person:   CONV = 1st                        GOLD = UNMAPPED
+Node CONV s36p4 / person                       mismatch in concept:         CONV = person                     GOLD = UNMAPPED
+Node CONV s36p4 / person                       mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED
+Node CONV s36p4 / person                       mismatch in :refer-person:   CONV = 1st                        GOLD = UNMAPPED
+Node CONV s36u / uno (una)                     mismatch in concept:         CONV = uno                        GOLD = UNMAPPED
+Node CONV s36u2 / uno (una)                    mismatch in concept:         CONV = uno                        GOLD = UNMAPPED
+Node CONV s36u2 / uno (una)                    mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED
 
-Correct 18 out of 52 non-empty GOLD values => recall    35%.
-Correct 18 out of 58 non-empty CONV values => precision 31%.
+Correct 21 out of 52 non-empty GOLD values => recall    40%.
+Correct 21 out of 58 non-empty CONV values => precision 36%.
 
 Comparing attributes of CONV nodes with their GOLD counterparts.
-Node CONV s36a / amare (Amo)                        mismatch in :actor:          CONV = s36p2 unmapped            GOLD = 
-Node CONV s36a / amare (Amo)                        mismatch in :aspect:         CONV = ASP                       GOLD = state
-Node CONV s36a / amare (Amo)                        mismatch in :theme:          CONV = s36g mapped to GOLD s36g  GOLD = 
-Node CONV s36a / amare (Amo)                        mismatch in :experiencer:    CONV =                           GOLD = s36p2
-Node CONV s36a / amare (Amo)                        mismatch in :stimulus:       CONV =                           GOLD = s36g
-Node CONV s36a3 / and (e)                           mismatch in :op2:            CONV = s36i2 unmapped            GOLD = s36r
-Node CONV s36c / collezione (collezione)            mismatch in :mod:            CONV = s36u unmapped             GOLD = 
-Node CONV s36c / collezione (collezione)            mismatch in :temporal:       CONV =                           GOLD = s36t2
-Node CONV s36g / giocare-ci (giocar)                mismatch in concept:         CONV = giocare-ci                GOLD = giocare
-Node CONV s36g / giocare-ci (giocar)                mismatch in :aspect:         CONV = ASP                       GOLD = activity
-Node CONV s36g / giocare-ci (giocar)                mismatch in :modal-strength: CONV = MS-affirmative            GOLD = full-affirmative
-Node CONV s36g / giocare-ci (giocar)                mismatch in :actor:          CONV =                           GOLD = s36p2
-Node CONV s36g / giocare-ci (giocar)                mismatch in :instrument:     CONV =                           GOLD = s36t
-Node CONV s36h / have-mod-91 (è)                    mismatch in :modal-strength: CONV = MS-affirmative            GOLD = full-affirmative
-Node CONV s36h / have-mod-91 (è)                    mismatch in :manner:         CONV =                           GOLD = s36d
-Node CONV s36i / interessante (perché interessante) mismatch in concept:         CONV = interessante              GOLD = interessare
-Node CONV s36i / interessante (perché interessante) mismatch in :aspect:         CONV = ASP                       GOLD = state
-Node CONV s36i / interessante (perché interessante) mismatch in :manner:         CONV = s36d mapped to GOLD s36d  GOLD = 
-Node CONV s36i / interessante (perché interessante) mismatch in :modal-strength: CONV = MS-affirmative            GOLD = full-affirmative
-Node CONV s36i2 / identity-91 (sono)                mismatch in concept:         CONV = identity-91               GOLD = UNMAPPED
-Node CONV s36i2 / identity-91 (sono)                mismatch in :ARG1:           CONV = s36p3                     GOLD = UNMAPPED
-Node CONV s36i2 / identity-91 (sono)                mismatch in :ARG2:           CONV = s36r                      GOLD = UNMAPPED
-Node CONV s36i2 / identity-91 (sono)                mismatch in :aspect:         CONV = state                     GOLD = UNMAPPED
-Node CONV s36i2 / identity-91 (sono)                mismatch in :modal-strength: CONV = MS-affirmative            GOLD = UNMAPPED
-Node CONV s36m / musa (di muse)                     mismatch in :refer-number:   CONV =                           GOLD = plural
-Node CONV s36p / preparare (preparare)              mismatch in :temporal:       CONV = s36t mapped to GOLD s36t2 GOLD = 
-Node CONV s36p / preparare (preparare)              mismatch in :actor:          CONV =                           GOLD = s36p2
-Node CONV s36p / preparare (preparare)              mismatch in :aspect:         CONV =                           GOLD = activity
-Node CONV s36p / preparare (preparare)              mismatch in :modal-strength: CONV =                           GOLD = full-affirmative
-Node CONV s36p2 / person                            mismatch in concept:         CONV = person                    GOLD = UNMAPPED
-Node CONV s36p2 / person                            mismatch in :refer-number:   CONV = singular                  GOLD = UNMAPPED
-Node CONV s36p2 / person                            mismatch in :refer-person:   CONV = 1st                       GOLD = UNMAPPED
-Node CONV s36p3 / person                            mismatch in concept:         CONV = person                    GOLD = UNMAPPED
-Node CONV s36p3 / person                            mismatch in :refer-number:   CONV = singular                  GOLD = UNMAPPED
-Node CONV s36p3 / person                            mismatch in :refer-person:   CONV = 1st                       GOLD = UNMAPPED
-Node CONV s36p4 / person                            mismatch in concept:         CONV = person                    GOLD = UNMAPPED
-Node CONV s36p4 / person                            mismatch in :refer-number:   CONV = singular                  GOLD = UNMAPPED
-Node CONV s36p4 / person                            mismatch in :refer-person:   CONV = 1st                       GOLD = UNMAPPED
-Node CONV s36r / ricerca (a la ricerca)             mismatch in concept:         CONV = ricerca                   GOLD = ricercare
-Node CONV s36r / ricerca (a la ricerca)             mismatch in :ADVCL:          CONV = s36h mapped to GOLD s36h  GOLD = 
-Node CONV s36r / ricerca (a la ricerca)             mismatch in :mod:            CONV = s36m mapped to GOLD s36m  GOLD = 
-Node CONV s36r / ricerca (a la ricerca)             mismatch in :refer-number:   CONV = singular                  GOLD = 
-Node CONV s36r / ricerca (a la ricerca)             mismatch in :actor:          CONV =                           GOLD = s36p2
-Node CONV s36r / ricerca (a la ricerca)             mismatch in :aspect:         CONV =                           GOLD = activity
-Node CONV s36r / ricerca (a la ricerca)             mismatch in :modal-strength: CONV =                           GOLD = full-affirmative
-Node CONV s36r / ricerca (a la ricerca)             mismatch in :reason:         CONV =                           GOLD = s36h
-Node CONV s36r / ricerca (a la ricerca)             mismatch in :theme:          CONV =                           GOLD = s36m
-Node CONV s36t / trovare-ne (quando trovo)          mismatch in concept:         CONV = trovare-ne                GOLD = trovare
-Node CONV s36t / trovare-ne (quando trovo)          mismatch in :actor:          CONV = s36p4 unmapped            GOLD = s36p2
-Node CONV s36t / trovare-ne (quando trovo)          mismatch in :aspect:         CONV = ASP                       GOLD = performance
-Node CONV s36t / trovare-ne (quando trovo)          mismatch in :modal-strength: CONV = MS-affirmative            GOLD = full-affirmative
-Node CONV s36t / trovare-ne (quando trovo)          mismatch in :undergoer:      CONV = s36u2 unmapped            GOLD = 
-Node CONV s36t / trovare-ne (quando trovo)          mismatch in :theme:          CONV =                           GOLD = s36c
-Node CONV s36u / uno (una)                          mismatch in concept:         CONV = uno                       GOLD = UNMAPPED
-Node CONV s36u2 / uno (una)                         mismatch in concept:         CONV = uno                       GOLD = UNMAPPED
-Node CONV s36u2 / uno (una)                         mismatch in :refer-number:   CONV = singular                  GOLD = UNMAPPED
-Node GOLD s36p2 / person                            mismatch in concept:         GOLD = person                    CONV = UNMAPPED
-Node GOLD s36p2 / person                            mismatch in :refer-number:   GOLD = singular                  CONV = UNMAPPED
-Node GOLD s36p2 / person                            mismatch in :refer-person:   GOLD = 1st                       CONV = UNMAPPED
-Node GOLD s36t / thing (ci)                         mismatch in concept:         GOLD = thing                     CONV = UNMAPPED
+Node CONV s36a / amare (Amo)                        mismatch in :actor:          CONV = s36p2 mapped to GOLD s36p2 GOLD = 
+Node CONV s36a / amare (Amo)                        mismatch in :aspect:         CONV = ASP                        GOLD = state
+Node CONV s36a / amare (Amo)                        mismatch in :theme:          CONV = s36g mapped to GOLD s36g   GOLD = 
+Node CONV s36a / amare (Amo)                        mismatch in :experiencer:    CONV =                            GOLD = s36p2
+Node CONV s36a / amare (Amo)                        mismatch in :stimulus:       CONV =                            GOLD = s36g
+Node CONV s36a3 / and (e)                           mismatch in :op2:            CONV = s36i2 unmapped             GOLD = s36r
+Node CONV s36c / collezione (collezione)            mismatch in :mod:            CONV = s36u unmapped              GOLD = 
+Node CONV s36c / collezione (collezione)            mismatch in :temporal:       CONV =                            GOLD = s36t2
+Node CONV s36g / giocare-ci (giocar)                mismatch in concept:         CONV = giocare-ci                 GOLD = giocare
+Node CONV s36g / giocare-ci (giocar)                mismatch in :aspect:         CONV = ASP                        GOLD = activity
+Node CONV s36g / giocare-ci (giocar)                mismatch in :modal-strength: CONV = MS-affirmative             GOLD = full-affirmative
+Node CONV s36g / giocare-ci (giocar)                mismatch in :actor:          CONV =                            GOLD = s36p2
+Node CONV s36g / giocare-ci (giocar)                mismatch in :instrument:     CONV =                            GOLD = s36t
+Node CONV s36h / have-mod-91 (è)                    mismatch in :modal-strength: CONV = MS-affirmative             GOLD = full-affirmative
+Node CONV s36h / have-mod-91 (è)                    mismatch in :manner:         CONV =                            GOLD = s36d
+Node CONV s36i / interessante (perché interessante) mismatch in concept:         CONV = interessante               GOLD = interessare
+Node CONV s36i / interessante (perché interessante) mismatch in :aspect:         CONV = ASP                        GOLD = state
+Node CONV s36i / interessante (perché interessante) mismatch in :manner:         CONV = s36d mapped to GOLD s36d   GOLD = 
+Node CONV s36i / interessante (perché interessante) mismatch in :modal-strength: CONV = MS-affirmative             GOLD = full-affirmative
+Node CONV s36i2 / identity-91 (sono)                mismatch in concept:         CONV = identity-91                GOLD = UNMAPPED
+Node CONV s36i2 / identity-91 (sono)                mismatch in :ARG1:           CONV = s36p3                      GOLD = UNMAPPED
+Node CONV s36i2 / identity-91 (sono)                mismatch in :ARG2:           CONV = s36r                       GOLD = UNMAPPED
+Node CONV s36i2 / identity-91 (sono)                mismatch in :aspect:         CONV = state                      GOLD = UNMAPPED
+Node CONV s36i2 / identity-91 (sono)                mismatch in :modal-strength: CONV = MS-affirmative             GOLD = UNMAPPED
+Node CONV s36m / musa (di muse)                     mismatch in :refer-number:   CONV =                            GOLD = plural
+Node CONV s36p / preparare (preparare)              mismatch in :temporal:       CONV = s36t mapped to GOLD s36t2  GOLD = 
+Node CONV s36p / preparare (preparare)              mismatch in :actor:          CONV =                            GOLD = s36p2
+Node CONV s36p / preparare (preparare)              mismatch in :aspect:         CONV =                            GOLD = activity
+Node CONV s36p / preparare (preparare)              mismatch in :modal-strength: CONV =                            GOLD = full-affirmative
+Node CONV s36p3 / person                            mismatch in concept:         CONV = person                     GOLD = UNMAPPED
+Node CONV s36p3 / person                            mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED
+Node CONV s36p3 / person                            mismatch in :refer-person:   CONV = 1st                        GOLD = UNMAPPED
+Node CONV s36p4 / person                            mismatch in concept:         CONV = person                     GOLD = UNMAPPED
+Node CONV s36p4 / person                            mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED
+Node CONV s36p4 / person                            mismatch in :refer-person:   CONV = 1st                        GOLD = UNMAPPED
+Node CONV s36r / ricerca (a la ricerca)             mismatch in concept:         CONV = ricerca                    GOLD = ricercare
+Node CONV s36r / ricerca (a la ricerca)             mismatch in :ADVCL:          CONV = s36h mapped to GOLD s36h   GOLD = 
+Node CONV s36r / ricerca (a la ricerca)             mismatch in :mod:            CONV = s36m mapped to GOLD s36m   GOLD = 
+Node CONV s36r / ricerca (a la ricerca)             mismatch in :refer-number:   CONV = singular                   GOLD = 
+Node CONV s36r / ricerca (a la ricerca)             mismatch in :actor:          CONV =                            GOLD = s36p2
+Node CONV s36r / ricerca (a la ricerca)             mismatch in :aspect:         CONV =                            GOLD = activity
+Node CONV s36r / ricerca (a la ricerca)             mismatch in :modal-strength: CONV =                            GOLD = full-affirmative
+Node CONV s36r / ricerca (a la ricerca)             mismatch in :reason:         CONV =                            GOLD = s36h
+Node CONV s36r / ricerca (a la ricerca)             mismatch in :theme:          CONV =                            GOLD = s36m
+Node CONV s36t / trovare-ne (quando trovo)          mismatch in concept:         CONV = trovare-ne                 GOLD = trovare
+Node CONV s36t / trovare-ne (quando trovo)          mismatch in :actor:          CONV = s36p4 unmapped             GOLD = s36p2
+Node CONV s36t / trovare-ne (quando trovo)          mismatch in :aspect:         CONV = ASP                        GOLD = performance
+Node CONV s36t / trovare-ne (quando trovo)          mismatch in :modal-strength: CONV = MS-affirmative             GOLD = full-affirmative
+Node CONV s36t / trovare-ne (quando trovo)          mismatch in :undergoer:      CONV = s36u2 unmapped             GOLD = 
+Node CONV s36t / trovare-ne (quando trovo)          mismatch in :theme:          CONV =                            GOLD = s36c
+Node CONV s36u / uno (una)                          mismatch in concept:         CONV = uno                        GOLD = UNMAPPED
+Node CONV s36u2 / uno (una)                         mismatch in concept:         CONV = uno                        GOLD = UNMAPPED
+Node CONV s36u2 / uno (una)                         mismatch in :refer-number:   CONV = singular                   GOLD = UNMAPPED
+Node GOLD s36t / thing (ci)                         mismatch in concept:         GOLD = thing                      CONV = UNMAPPED
 
-Correct 18 out of 58 non-empty CONV values => recall    31%.
-Correct 18 out of 52 non-empty GOLD values => precision 35%.
+Correct 21 out of 58 non-empty CONV values => recall    36%.
+Correct 21 out of 52 non-empty GOLD values => precision 40%.
 
 -------------------------------------------------------------------------------
 Comparing sentence 37:
@@ -17441,12 +17417,12 @@ Correct 17 out of 48 non-empty GOLD values => precision 35%.
 SUMMARY:
 Number of nodes per file: GOLD:1254, CONV:1390
 File-to-file node mapping:
-Out of 1254 total GOLD nodes, 990 mapped to CONV => recall    = 79%.
-Out of 1390 total CONV nodes, 990 mapped to GOLD => precision = 71%.
+Out of 1254 total GOLD nodes, 992 mapped to CONV => recall    = 79%.
+Out of 1390 total CONV nodes, 992 mapped to GOLD => precision = 71%.
  => F₁(GOLD,CONV) = 75%.
-Before symmetrization, 240 GOLD nodes were projected ambiguously to 515 CONV nodes.
+Before symmetrization, 242 GOLD nodes were projected ambiguously to 520 CONV nodes.
 Before symmetrization, 43 CONV nodes were projected ambiguously to 86 GOLD nodes.
 Concept and relation comparisons (for unmapped nodes all counted as incorrect):
-Out of 3754 non-empty GOLD values, 1511 found in CONV => recall    40%.
-Out of 3711 non-empty CONV values, 1511 found in GOLD => precision 41%.
- => juːmæʧ (GOLD, CONV) = F₁ = 40%.
+Out of 3754 non-empty GOLD values, 1518 found in CONV => recall    40%.
+Out of 3711 non-empty CONV values, 1518 found in GOLD => precision 41%.
+ => juːmæʧ (GOLD, CONV) = F₁ = 41%.
