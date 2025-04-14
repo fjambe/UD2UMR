@@ -18412,6 +18412,7 @@ Correct 9 out of 51 non-empty GOLD values => precision 18%.
 
 -------------------------------------------------------------------------------
 SUMMARY:
+Number of tokens: 2120
 Number of nodes per file: GOLD:1279, CONV:1195
 File-to-file node mapping:
 Out of 1279 total GOLD nodes, 875 mapped to CONV => recall    = 68%.
