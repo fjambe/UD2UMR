@@ -496,15 +496,19 @@ class UMRNode:
         if category == 'person':
             self.get_number_person('person', new_node.var_name)
 
-        if not reflex and category not in ['NE-TYPE', 'name', 'more', 'most']:
-            self.get_number_person('number', new_node.var_name)
+        if not reflex:
+            if category == 'FILL':
+                self.get_number_person('number', new_node.var_name, empty_parent=True)
+            elif category not in ['NE-TYPE', 'name', 'more', 'most']:
+                self.get_number_person('number', new_node.var_name)
 
         return new_node
 
     def get_number_person(self,
                           feature: str,
                           new_var_name: str = None,
-                          given_feat: str = None):
+                          given_feat: str = None,
+                          empty_parent: bool = False):
         """ Extract refer-number and refer-person attributes. """
 
         feats = {
@@ -516,12 +520,14 @@ class UMRNode:
         }
 
         var_name = new_var_name if new_var_name else self.var_name
-        if not given_feat:
+        if given_feat:
+            feat = given_feat
+        else:
             feat = feats.get(
                 self.ud_node.feats.get(f"{feature.capitalize()}[psor]") or self.ud_node.feats.get(feature.capitalize()) or self.ud_node.lemma,
                 'FILL')
-        else:
-            feat = given_feat
+            if empty_parent and feat == 'FILL':
+                return
 
         self.umr_graph.triples.append((var_name, f'refer-{feature}', feat))
 

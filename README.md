@@ -44,7 +44,6 @@ the `--output_dir` argument:
 python3 scripts/main.py --treebank en_pud-ud-test.conllu --lang en --output_dir /directory/to/store/umrs
 ```
 
-
 By default, variable names are generated using the first letter of the concept (e.g., `h` for `have-mod-91`).
 However, for certain languages (such as Chinese), it may be more appropriate to use a generic variable name like `x`.
 You can control this behavior using the `--var_naming` argument, which accepts two values:
