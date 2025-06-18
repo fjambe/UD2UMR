@@ -464,7 +464,7 @@ class UMRNode:
             - 'person': A node representing a person.
             - 'thing': A node representing a non-person entity.
             - 'FILL': Used when the node type cannot be automatically classified as 'person' or 'thing'.
-            - 'type-NE': Specifies the type of Named Entity (NE).
+            - 'NE-TYPE': Specifies the type of Named Entity (NE).
             - 'name': Specifies the name of the NE itself.
             - 'more'/'most': Specifies the degree in a have-degree-91 construction.
 
@@ -496,7 +496,7 @@ class UMRNode:
         if category == 'person':
             self.get_number_person('person', new_node.var_name)
 
-        if not reflex and category not in ['type-NE', 'name', 'more', 'most']:
+        if not reflex and category not in ['NE-TYPE', 'name', 'more', 'most']:
             self.get_number_person('number', new_node.var_name)
 
         return new_node
@@ -815,7 +815,7 @@ class UMRNode:
     def named_entities(self):
         """
         Processes proper nouns (PROPNs) and represents them as Named Entities (NE) following the conventions of the UMR
-        framework. The entity type is not specified; `type-NE` is a placeholder that will have to be replaced by the
+        framework. The entity type is not specified; `NE-TYPE` is a placeholder that will have to be replaced by the
         annotator.
         """
         if not self.replaced and self.role != 'other':
@@ -823,7 +823,7 @@ class UMRNode:
             names = [c for c in self.ud_node.children if c.udeprel == 'flat']
             if self.ud_node.upos == 'PROPN' or (self.ud_node.upos in ['NOUN', 'X'] and names):
 
-                entity = self.create_node('type-NE', self.role, replace=True)
+                entity = self.create_node('NE-TYPE', self.role, replace=True)
                 entity.ord = self.ord
                 entity.ud_node = self.ud_node
                 entity.parent = self.parent
@@ -988,7 +988,8 @@ class UMRNode:
             _ = self.replace_with_abstract_roleset(concept, replace_arg, overt=copula)
             self.already_added = True
             if copula:
-                self.umr_graph.triples.remove((self.var_name, 'instance', self.ud_node.lemma))
+                if (self.var_name, 'instance', self.ud_node.lemma) in self.umr_graph.triples:  # added for safety
+                    self.umr_graph.triples.remove((self.var_name, 'instance', self.ud_node.lemma))
 
     def relative_clauses(self, rel_pron_node):
         """
@@ -1189,7 +1190,7 @@ class UMRNode:
         # NUMs are already handled in quantifiers()
 
         # E.g., for English phrasal verbs or Czech reflexives
-        if self.ud_node.sdeprel in ['prt', 'pv'] or self.parent.ud_node.upos in ['VERB', 'ADJ', 'ADV']:
+        if self.ud_node.sdeprel in ['prt', 'pv'] or (self.parent.ud_node and self.parent.ud_node.upos in ['VERB', 'ADJ', 'ADV']):
             for i, tup in enumerate(self.umr_graph.triples):
                 if tup[0] == self.parent.var_name and tup[1] == 'instance':
                     if self.parent.ud_node.upos == 'ADJ':
@@ -1198,7 +1199,7 @@ class UMRNode:
                         self.umr_graph.triples[i] = (tup[0], tup[1], self.parent.ud_node.lemma + '-' + self.ud_node.lemma)
             self.already_added = True
 
-        if self.parent.ud_node.upos == 'NOUN':
+        if self.parent.ud_node and self.parent.ud_node.upos == 'NOUN':
             self.role = 'mod'
             self.add_node(self.role)
             if self.ud_node.upos == 'NOUN':

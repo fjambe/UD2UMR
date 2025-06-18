@@ -78,7 +78,7 @@ def reorder_triples(triples):
 
 
 class UMRGraph:
-    def __init__(self, ud_tree, sent_num, deprels, language, rel_roles, advcls, modality, conjunctions):
+    def __init__(self, ud_tree, sent_num, deprels, language, vnaming, rel_roles, advcls, modality, conjunctions):
         """
         Initializes a UMRGraph instance to represent a sentence UMR graph.
 
@@ -96,6 +96,7 @@ class UMRGraph:
             ud_tree: The UD tree representing syntactic dependencies in the sentence.
             deprels (dict): A dictionary mapping UD dependency relations to UMR roles.
             language (str): The langauge of the tree.
+            vnaming (str): The naming convention for variable names, either 'first' or 'x'.
             rel_roles (set): lexical resource to disambiguate have-rel-role-92.
             advcls (dict): lexical resource to disambiguate adverbial clauses.
             modality (dict): lexical resource to disambiguate modal-strength and modal-predicate.
@@ -107,6 +108,7 @@ class UMRGraph:
         self.root_var = None
         self.nodes: list[UMRNode] = []
         self.lang = language
+        self.var_naming = vnaming
         self.triples = []
         self.track_conj = {}
         self.extra_level = {}  # node: new_umr_parent, e.g. {var of ARG1: var of roleset-91}
@@ -127,7 +129,7 @@ class UMRGraph:
 
     def assign_variable_name(self, form):
         """
-        Assign a unique variable name based on the first letter of ud_node.lemma.
+        Assign a unique variable name based on the first letter of ud_node.lemma, if var_naming == 'first'. Else, 'x'.
         If a name is already taken, add a number suffix to make it unique.
 
         Args:
@@ -136,18 +138,23 @@ class UMRGraph:
         Returns:
             str: A unique variable name.
         """
-        first_letter = form.lemma[0].lower() if hasattr(form, 'lemma') else form[0].lower()
-        if not first_letter.isalpha():
-            first_letter = 'x'
-        first_letter = 's' + str(self.sent_num) + first_letter
+        lemma = form.lemma if hasattr(form, 'lemma') else form
+
+        if self.var_naming == 'first':
+            first_char = form.lemma[0].lower() if hasattr(form, 'lemma') else form[0].lower()
+            first_char = first_char if first_char.isalpha() else 'x'
+        else:  # self.var_naming == 'x'
+            first_char = 'x'
+
+        base_name = f"s{self.sent_num}{first_char}"
         count = 2
 
-        if first_letter in self.variable_names:
-            while f"{first_letter}{count}" in self.variable_names:
-                count += 1
+        # ensure uniqueness
+        var_name = base_name
+        while var_name in self.variable_names:
+            var_name = f"{base_name}{count}"
+            count += 1
 
-        var_name = first_letter if first_letter not in self.variable_names else f"{first_letter}{count}"
-        lemma = form.lemma if hasattr(form, 'lemma') else form
         self.triples.append((var_name, 'instance', lemma))
 
         if not isinstance(form, str) and form.parent.is_root():

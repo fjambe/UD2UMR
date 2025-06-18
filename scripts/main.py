@@ -16,6 +16,9 @@ parser.add_argument("--data_dir",
                     help="Path of the directory where the input treebanks are stored, if not 'data'.", default='./data')
 parser.add_argument("--output_dir",
                     help="Path of the directory where converted UMRs are stored, if not 'output'.", default='./output')
+parser.add_argument("--var_naming",
+                    help="Specify whether to use the first letter of the concept as the variable name (default), or use 'x' instead.",
+                    choices=['first', 'x'], default='first')
 
 
 if __name__ == "__main__":
@@ -45,7 +48,7 @@ if __name__ == "__main__":
                 sent_num += 1
 
                 deprels_to_relations = pr.get_deprels(tree)
-                sent_tree = UMRGraph(tree, sent_num, deprels_to_relations, args.lang, interpersonal, advcl, modals, conjunctions)
+                sent_tree = UMRGraph(tree, sent_num, deprels_to_relations, args.lang, args.var_naming, interpersonal, advcl, modals, conjunctions)
 
                 # First pass: create variables for UD nodes.
                 for node in tree.descendants:

@@ -44,6 +44,17 @@ the `--output_dir` argument:
 python3 scripts/main.py --treebank en_pud-ud-test.conllu --lang en --output_dir /directory/to/store/umrs
 ```
 
+
+By default, variable names are generated using the first letter of the concept (e.g., `h` for `have-mod-91`).
+However, for certain languages (such as Chinese), it may be more appropriate to use a generic variable name like `x`.
+You can control this behavior using the `--var_naming` argument, which accepts two values:
+- `first` (default): use the first letter of the concept as the variable name.
+- `x`: use `x` as the default variable name.
+
+```commandline
+python3 scripts/main.py --treebank ky_tuecl-ud-test.conllu --lang ky --var_naming x
+```
+
 ## Structure of this repository
 
 * The `data/` folder contains `en_example.conllu`, a sample input file with a single sentence.
