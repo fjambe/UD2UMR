@@ -26,8 +26,9 @@ def get_deprels(ud_tree) -> dict:
         'identity-91': lambda d: d.deprel == 'appos',
         'COPULA': lambda d: d.deprel == 'cop',
         'conj': lambda d: d.deprel == 'conj',
+        'UNATTACHED': lambda d: d.deprel == 'parataxis',
         'other': lambda d: d.udeprel in ['advcl', 'punct', 'cc', 'fixed', 'flat', 'mark', 'xcomp', 'dislocated', 'aux',
-                                         'discourse', 'acl', 'case', 'compound', 'parataxis', 'dep', 'orphan', 'expl:pv']
+                                         'discourse', 'acl', 'case', 'compound', 'dep', 'orphan', 'expl:pv']
     }
 
     deprels = {rel: [d for d in ud_tree.descendants if condition(d)] for rel, condition in mapping_conditions.items()}
