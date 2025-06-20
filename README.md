@@ -54,6 +54,8 @@ You can control this behavior using the `--var_naming` argument, which accepts t
 python3 scripts/main.py --treebank ky_tuecl-ud-test.conllu --lang ky --var_naming x
 ```
 
+Potential rendering issues with right-to-left languages (e.g., variable names and concepts appearing swapped in the graph) may be resolved by using the `--var_naming x` option.
+
 ## Structure of this repository
 
 * The `data/` folder contains `en_example.conllu`, a sample input file with a single sentence.
