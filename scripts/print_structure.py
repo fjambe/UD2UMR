@@ -61,7 +61,7 @@ def print_structure(tree, sent_tree, umr, root, sent_num, output_file=None, prin
             print(f"Skipping sentence due to LayoutError: {e}")
 
     print('#' * 80, file=destination)
-    print(f'# sent_id = {tree.address()}', file=destination)
+    print(f'# meta-info :: sent_id = {tree.address()}', file=destination)
     print(f'# :: snt{sent_num}', file=destination)
     numbered_line_with_alignment(tree, destination)
     print(f'Sentence: {tree.text}', file=destination)
